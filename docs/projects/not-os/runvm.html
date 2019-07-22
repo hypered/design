@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>noteed.com &mdash; not-os</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4">
+  <li class="mr4"><a href="../../">noteed.com</a>
+  <li class="mr4"><a href="../../blog/">blog</a>
+  <li><a href="../../projects/not-os/">not-os</a>
+</ul>
+
+<div class="measure-wide">
+<h1>not-os</h1>
+<h2 id="runvm">runvm</h2>
+<pre><code>$ nix-build -A runvm
+/nix/store/lbzckv39kxzg6m24ccs14kqqnmn9bhzk-runvm</code></pre>
+<p>runvm is the main derivation of not-os. It is defined in <a href="default.html"><code>default.nix</code></a>. Every other derivation is a dependency.</p>
+<p>The result is (a symlink to) a script calling qemu-kvm with the right parameters, in particular the kernel Ⓐ, the initrd Ⓑ, and the rootfs Ⓒ.</p>
+<pre><code>
+#! ${pkgs.stdenv.shell}
+exec ${pkgs.qemu_kvm}/bin/qemu-kvm \
+  -name not-os \
+  -m 512 \
+  -kernel <a href="kernel.html">${config.system.build.kernel}/bzImage Ⓐ</a> \
+  -initrd <a href="initrd.html">${config.system.build.initialRamdisk}/initrd Ⓑ</a> \
+  -drive index=0,id=drive1,file=<a href="rootfs.html">${config.system.build.squashfs} Ⓒ,
+    </a>readonly,media=cdrom,format=raw,if=virtio \
+  -append "console=ttyS0 <a href="cmdline.html">${toString config.boot.kernelParams} Ⓓ
+   </a> quiet panic=-1" \
+  -device virtio-net,netdev=net0 \
+  -netdev user,id=net0,net=10.0.2.0/24,host=10.0.2.2,
+    </a>dns=10.0.2.3,hostfwd=tcp::2222-:22 \
+  -redir tcp:8000::80 \
+  -device virtio-rng-pci \
+  -nographic \
+  -no-reboot
+
+/nix/store/wlc6c6grhdk10gp2wz5z2kyv8am94v4s-runvm.sh
+</code></pre>
+<p><em>Note: artifial newlines added.</em></p>
+<p>A kernel command line Ⓓ is used to let the stage-1 know about the location of toplevel;</p>
+<h3 id="example-execution">Example execution</h3>
+<p>Executing the resulting script looks like:</p>
+<pre><code>$ ./result
+Entering stage-1...
+/nix/store/1mq5jkzjcy2g2ypah1b9f848l00m5whq-stage-1
+Creating base file systems...
+Using /nix/store/w5dbz7ig5s3g0c1xz7aqqs9klghhq4lm-extra-utils...
+Using /nix/store/70jf5sm6750jbbsirv6rqihwj22gsbvj-linux-4.14.84-shrunk...
+Loading kernel module virtio...
+Loading kernel module virtio_pci...
+Loading kernel module virtio_net...
+Loading kernel module virtio_rng...
+Loading kernel module virtio_blk...
+Loading kernel module virtio_console...
+Loading kernel module dm_mod...
+Loading kernel module tun...
+Loading kernel module loop...
+Loading kernel module squashfs...
+Loading kernel module overlay...
+Creating writable Nix store...
+Switching root filesystem...
+
+Entering stage-2...
+/nix/store/w1g8p9zi8apj336xk177q2y6ddcp04nn-stage-2
+Creating base file systems...
+Using /nix/store/2whzzgy0ivkp6vw3i67w51kf78ij87n4-toplevel...
+setting up /etc...
+- runit: $Id: 25da3b86f7bed4038b8a039d2f8e8c9bbcf0822b $: booting.
+- runit: enter stage: /etc/runit/1
+Setting static IP address...
+Running ntpdate...
+23 Mar 14:20:27 ntpdate[108]: step time server 193.190.253.212 offset -2.542015 sec
+- runit: leave stage: /etc/runit/1
+- runit: enter stage: /etc/runit/2
+Running runsvdir...
+Running nix-daemon...
+Running sshd...
+QEMU: Terminated</code></pre>
+<p>You can type <code>ctrl-a x</code> to quit. You can also enter the QEMU monitor with <code>ctrl-a c</code>, then e.g. type <code>screendump filename.ppm</code> to capture an image like the one in the test, then <code>quit</code> to terminate QEMU.</p>
+<br />
+<hr />
+<div class="mv5 flex-ns">
+<section class="w-60-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Intro
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/index.html">not-os</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Notes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/digital-ocean.html">Digital Ocean</a>
+<li class="mr4">
+<a href="../../projects/not-os/todo.html">TODO</a>
+</ul>
+</section>
+<section class="w-70-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Main attributes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/runvm.html">runvm</a>
+<li class="mr4">
+<a href="../../projects/not-os/kernel.html">kernel</a>
+<li class="mr4">
+<a href="../../projects/not-os/initrd.html">initrd</a>
+<li class="mr4">
+<a href="../../projects/not-os/rootfs.html">rootfs</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-1.html">stage-1</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-2.html">stage-2</a>
+<li class="mr4">
+<a href="../../projects/not-os/dist.html">dist</a>
+<li class="mr4">
+<a href="../../projects/not-os/extra-utils.html">extra-utils</a>
+<li class="mr4">
+<a href="../../projects/not-os/path.html">path</a>
+<li class="mr4">
+<a href="../../projects/not-os/shrunk.html">shrunk</a>
+<li class="mr4">
+<a href="../../projects/not-os/toplevel.html">toplevel</a>
+<li class="mr4">
+<a href="../../projects/not-os/boot.html">boot</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/raw.html">raw</a>
+<li class="mr4">
+<a href="../../projects/not-os/qcow2.html">qcow2</a>
+<li class="mr4">
+<a href="../../projects/not-os/syslinux.html">syslinux</a>
+</ul>
+</section>
+<section class="w-50-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Values
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/cmdline.html">cmdline</a>
+<li class="mr4">
+<a href="../../projects/not-os/root-modules.html">root-modules</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Source
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/default.html">default.nix</a>
+</ul>
+</section>
+</div>
+</div>
+<hr />
+<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+
+</div></body></html>

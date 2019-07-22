@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Entrypoint &mdash; #263</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4 ep-nav">
+  <li class="mr4"><a href="../../">Entrypoint</a>
+  <li class="mr4"><a href="../../projects/waveguide.html">Waveguide</a>
+  <li class="mr4"><a href="../../projects/station.html">Station</a>
+  <li class="mr4"><a href="../../nubs/smartbe.html">Work</a>
+  <li class="mr4"><a href="../../nubs/">Nubs</a>
+  <li class="mr4"><a href="../../decks/">Decks</a>
+  <li class="mr4"><a href="../../edit/">Edit</a>
+  <li class="mr4"><a href="../../more.html">More</a>
+  <li><a href="../../README.html">About</a>
+</ul>
+
+<div class="measure-wide">
+<h1>#263</h1>
+<p><a href="provisioning.log">raw</a></p>
+<pre><code>Waveguide run number: 263.
+Working directory: /tmp/waveguide-Xi7D
+Nix install script verison: https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh.
+Repository URL: git@github.com:hypered/reesd-stack.git.
+Revision: 334c6681eb9b3b22b3e0ead9e290ce3588fa62dd.
+Creating north user...
+Extracting payload tarball...
+Copying SSH deploy keys...
+Creating Nix directories...
+cURL and Git already installed.
+Exec'ing the user script...
+Running user script...
+Installing Nix...
+Running command curl -s https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh -o /home/north/install-nix.sh...
+Running command /home/north/install-nix.sh...
+/home/north/install-nix.sh: line 1: syntax error near unexpected token `&lt;'
+/home/north/install-nix.sh: line 1: `&lt;html&gt;&lt;body&gt;&lt;h1&gt;503 Service Unavailable&lt;/h1&gt;'
+Adding /nix/store/h180y3n5k1ypxgm1pcvj243qix5j45zz-nix-2.1.1/bin/ to $PATH...
+Running command nix --version...
+/tmp/waveguide-Xi7D/as-north.sh: line 14: nix: command not found
+Configuring cache...
+Running command du -hs /nix/store...
+du: cannot access '/nix/store': No such file or directory
+Setting default nixpkgs to https://github.com/nixos/nixpkgs/archive/e9d4bab04458cd03cb9029d2d571c37cc017ffdc.tar.gz.
+Installing nix-prefetch-git...
+Received signal EXIT.</code></pre>
+</div>
+<hr />
+<footer>&copy; Hypered, 2018-2019.</footer>
+
+</div></body></html>

@@ -1,0 +1,32 @@
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Waveguide run number: 265.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Working directory: /tmp/waveguide-UjfP
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Nix install script verison: https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Repository URL: git@github.com:hypered/reesd-stack.git.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Revision: 334c6681eb9b3b22b3e0ead9e290ce3588fa62dd.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Creating north user...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Extracting payload tarball...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Copying SSH deploy keys...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Creating Nix directories...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO cURL and Git already installed.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-roo INFO Exec'ing the user script...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-usr INFO Running user script...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-usr INFO Installing Nix...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-usr INFO Running command curl https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh -o /home/north/install-nix.sh...
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO                                  Dload  Upload   Total   Spent    Left  Speed
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO   0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO curl: (60) SSL certificate problem: unable to get local issuer certificate
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO More details here: https://curl.haxx.se/docs/sslcerts.html
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO 
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO curl performs SSL certificate verification by default, using a "bundle"
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  of Certificate Authority (CA) public keys (CA certs). If the default
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  bundle file isn't adequate, you can specify an alternate file
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  using the --cacert option.
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO If this HTTPS server uses a certificate signed by a CA represented in
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  the bundle, the certificate verification probably failed due to a
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  problem with the certificate (it might be expired, or the name might
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  not match the domain name in the URL).
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO If you'd like to turn off curl's verification of the certificate, use
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-err INFO  the -k (or --insecure) option.
+chmod: cannot access '/home/north/install-nix.sh': No such file or directory
+2019-02-13T16:07:06+00:00 pgTNLInT waveguide-usr INFO Received signal EXIT.

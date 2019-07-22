@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>noteed.com &mdash; Exposing a local server through HAProxy using a reverse SSH tunnel</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4">
+  <li class="mr4"><a href="../">noteed.com</a>
+  <li class="mr4"><a href="../blog/">blog</a>
+  <li><a href="../projects/not-os/">not-os</a>
+</ul>
+
+<div class="measure-wide">
+<h1>Exposing a local server through HAProxy using a reverse SSH tunnel</h1>
+<p>Probably the most frequent way to write a server is to run it on a laptop and access it directly, using <code>localhost</code> or <code>127.0.0.1</code>. It works and is enough for simple settings. Sometimes though, such a setup is a bit <em>too</em> simple. For instance you might want your server to check the content of the Host header, or let coworkers and webhooks reach it.</p>
+<p>A possible solution is to use a service like <a href="https://ngrok.com/">ngrok</a>. Another solution when you’re already using HAProxy somewhere in the cloud, is to expand its configuration to include a new subdomain using a new backend (your laptop), accessible through a reverse SSH tunnel.</p>
+<p>Among the reasons to re-use an existing HAProxy deployment, I see sharing a common namespace, making it easier for people to remember which hostname is used for who or which service. E.g. imagine having:</p>
+<ul>
+<li><code>alice.example.com</code> points to Alice’s laptop</li>
+<li><code>bob.example.com</code> points to Bob’s workstation</li>
+<li><code>alpha.example.com</code> points to a development machine in the cloud</li>
+</ul>
+<p>Even when working alone, Alice can use the realistic <code>alice.example.com</code> domain, and share URLs easily with Bob later.</p>
+<p>Another reason to re-use HAProxy is to share parts of its configuration: for instance require a client certificate to access some subdomains.</p>
+<p>In practice, using HAproxy to expose a developer computer means a few things:</p>
+<ul>
+<li>Run your server on your machine. Here we assume it runs within a container with IP address <code>172.17.0.12</code> on the port <code>8008</code>.</li>
+<li>Assuming you own <code>example.com</code>, configure your DNS to point <code>alice.example.com</code> to the machine running HAProxy.</li>
+<li>Create the reverse SSH tunnel, from your machine to the HAProxy server, opening, say, the port <code>10008</code>. This means that HAProxy will be able to use <code>127.0.0.1:10008</code> in a new backend configuration.</li>
+<li>Configure HAProxy to route <code>alice.example.com</code> to the new backend.</li>
+</ul>
+<p>Instead of having SSH create a listening port on the HAProxy server, it can also, since version 6.7, create a UNIX domain socket. This is useful if HAProxy cannot use the loopback address to access the tunnel (e.g. because it runs within a container). Instead of having SSH listen on <code>0.0.0.0</code>, you can share the socket path. (Listening on <code>0.0.0.0</code> would expose the port to the outside world and defeat the use of client certificates when routing the subdomain to your laptop.)</p>
+<h2 id="haproxy-configuration-and-ssh-command">HAProxy configuration and <code>ssh</code> command:</h2>
+<p>Using a UNIX domain socket is possible in HAProxy: simply give the path instead of an <code>addr:port</code> pair:</p>
+<pre><code>server alice /forwarder/alice.sock cookie alice</code></pre>
+<p>On the laptop, running the tunnel looks like:</p>
+<pre><code>&gt; ssh -NT -R /forwarder/alice.sock:172.17.0.12:8008 -l alice example.com</code></pre>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>In the next sections, I show some possible problems you might encounter.</p>
+<h3 id="using-curl-with-unix-domain-sockets">Using cURL with UNIX domain sockets</h3>
+<p>On the HAProxy machine, you can check if your server is indeed accessible through the forwaded UNIX domain socket with a command like:</p>
+<pre><code>&gt; curl --unix-socket /forwarder/alice.sock http://alice</code></pre>
+<h3 id="deleting-an-existing-socket-when-a-client-tries-to-establish-a-reverse-tunnel">Deleting an existing socket when a client tries to establish a reverse tunnel</h3>
+<p>You can read an error looking like the following:</p>
+<pre><code>Warning: remote port forwarding failed for listen path /forwarder/alice.sock</code></pre>
+<p>It might be because the file already exists. If the error disappears when you delete it, you can configure you SSH server to reuse existing paths: in <code>sshd_config</code>, set <code>StreamLocalBindUnlink yes</code>.</p>
+<h3 id="allow-the-forwarded-port-to-listen-to-a-public-address.">Allow the forwarded port to listen to a public address.</h3>
+<p>If you use a regular port instead of a UNIX domain socket, you should know that by default the SSH server will make forwarded ports listen only on the loopback address. If HAProxy should connect to another address for some reason (e.g. it is running in a container and the SSH server is in another), in <code>sshd_config</code>, set <code>GatewayPort yes</code>.</p>
+<p>Be carefull if your <code>address:port</code> combination is accessible from the outside world.</p>
+<h3 id="haproxy-access-right">HAProxy access right</h3>
+<p>Make sure the HAProxy process can read the socket (i.e. can read the file and traverse the necessary directories).</p>
+</div>
+<hr />
+<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+
+</div></body></html>

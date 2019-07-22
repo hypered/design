@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Entrypoint &mdash; Waveguide</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,600,600i" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4 ep-nav">
+  <li class="mr4"><a href="../">Entrypoint</a>
+  <li class="mr4"><a href="../projects/waveguide.html">Waveguide</a>
+  <li class="mr4"><a href="../projects/station.html">Station</a>
+  <li class="mr4"><a href="../nubs/smartbe.html">Work</a>
+  <li class="mr4"><a href="../nubs/">Nubs</a>
+  <li class="mr4"><a href="../decks/">Decks</a>
+  <li class="mr4"><a href="../edit/">Edit</a>
+  <li class="mr4"><a href="../more.html">More</a>
+  <li><a href="../README.html">About</a>
+</ul>
+
+<h1>Waveguide</h1>
+  <div class="cf nl2 lr2">
+    <div class="fl w-70 w-60-l ph2">
+      <div class="measure-wide">
+<p>Waveguide builds and/or runs a Nix expression on a freshly provisioned machine.</p>
+<p>Waveguide performs the following six steps:</p>
+<ol style="list-style-type: decimal">
+<li><code>doctl compute droplet create</code></li>
+<li><code>nix-x.x-install.sh</code></li>
+<li><code>git clone</code></li>
+<li><code>nix-build</code> or <code>nix run</code></li>
+<li><code>s3cmd sync</code></li>
+<li><code>doctl compute droplet delete</code></li>
+</ol>
+<hr />
+<h2 id="credentials">Credentials</h2>
+<p>The steps 1, 2, and 3 require credentials:</p>
+<ul>
+<li>Creating a new Dropet on DigitalOcean requires an API key.</li>
+<li>Cloning a Git repository through the Git protocol requires a private SSH deploy key.</li>
+<li>Uploading the build logs, and optionaly the Nix results, requires a secret S3 access key.</li>
+</ul>
+<h2 id="input">Input</h2>
+<p>Beside the credentials described above, Waveguide is parametrized with:</p>
+<ul>
+<li>The Nix install script version.</li>
+<li>The Git repository URL and revision.</li>
+<li>Optionaly the name Nix expression attribute names to build.</li>
+<li>Optionaly the command to run with Nix.</li>
+<li>The S3 path to upload the logs.</li>
+<li>Optionaly the S3 path to cache the Nix results.</li>
+</ul>
+<p>If neither a list of attribute names or a command are given, Waveguide instrospects the Nix expression and builds all the found attributes.</p>
+<h2 id="output">Output</h2>
+<p>Waveguide produces logs and optionaly populate a Nix cache on S3.</p>
+      </div>
+    </div>
+    <div class="fl w-30 w-40-l ph2">
+<hr class="dn" />
+<p>Latest runs</p>
+<ul class="list pl0">
+  
+    <li>
+      <a href="../run/282/provisioning.html">#282</a>
+    </li>
+  
+    <li>
+      <a href="../run/281/provisioning.html">#281</a>
+    </li>
+  
+    <li>
+      <a href="../run/280/provisioning.html">#280</a>
+    </li>
+  
+    <li>
+      <a href="../run/279/provisioning.html">#279</a>
+    </li>
+  
+    <li>
+      <a href="../run/278/provisioning.html">#278</a>
+    </li>
+  
+    <li>
+      <a href="../run/277/provisioning.html">#277</a>
+    </li>
+  
+    <li>
+      <a href="../run/276/provisioning.html">#276</a>
+    </li>
+  
+    <li>
+      <a href="../run/275/provisioning.html">#275</a>
+    </li>
+  
+    <li>
+      <a href="../run/274/provisioning.html">#274</a>
+    </li>
+  
+    <li>
+      <a href="../run/273/provisioning.html">#273</a>
+    </li>
+  
+    <li>
+      <a href="../run/272/provisioning.html">#272</a>
+    </li>
+  
+    <li>
+      <a href="../run/268/provisioning.html">#268</a>
+    </li>
+  
+    <li>
+      <a href="../run/267/provisioning.html">#267</a>
+    </li>
+  
+    <li>
+      <a href="../run/266/provisioning.html">#266</a>
+    </li>
+  
+    <li>
+      <a href="../run/265/provisioning.html">#265</a>
+    </li>
+  
+    <li>
+      <a href="../run/264/provisioning.html">#264</a>
+    </li>
+  
+    <li>
+      <a href="../run/263/provisioning.html">#263</a>
+    </li>
+  
+</ul>
+</p>
+    </div>
+  </div>
+<hr />
+<footer>&copy; Hypered, 2018-2019.</footer>
+
+</div></body></html>

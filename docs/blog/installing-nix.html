@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>noteed.com &mdash; installing-nix</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4">
+  <li class="mr4"><a href="../">noteed.com</a>
+  <li class="mr4"><a href="../blog/">blog</a>
+  <li><a href="../projects/not-os/">not-os</a>
+</ul>
+
+<div class="measure-wide">
+<h1>installing-nix</h1>
+<h1 id="nix-notes-installing-nix">Nix notes: Installing Nix</h1>
+<p>To install Nix, the Nix homepage https://nixos.org/nix/ shows the following command (to run as a regular user):</p>
+<pre><code>$ curl https://nixos.org/nix/install | sh</code></pre>
+<p>The steps the script performs are as follow.</p>
+<ul>
+<li>Depending on the platform (as given by <code>$(uname -s).$(uname -m)</code>), it downloads a binary distribution, e.g.</li>
+</ul>
+<p><code>https://nixos.org/releases/nix/nix-2.0.4/nix-2.0.4-x86_64-linux.tar.bz2</code></p>
+<ul>
+<li>The tarball is about 22MB and contains a minimal Nix store, together wih a install script:</li>
+</ul>
+<pre><code>$ tar tf install-nix.tar.bz2 | head
+nix-2.0.4-x86_64-linux/install
+nix-2.0.4-x86_64-linux/install-darwin-multi-user.sh
+nix-2.0.4-x86_64-linux/install-systemd-multi-user.sh
+nix-2.0.4-x86_64-linux/install-multi-user
+nix-2.0.4-x86_64-linux/.reginfo
+nix-2.0.4-x86_64-linux/store/0d60i73mcv8z1m8d2m74yfn84980gfsa-nix-2.0.4/
+nix-2.0.4-x86_64-linux/store/0d60i73mcv8z1m8d2m74yfn84980gfsa-nix-2.0.4/share/
+nix-2.0.4-x86_64-linux/store/0d60i73mcv8z1m8d2m74yfn84980gfsa-nix-2.0.4/share/nix/
+nix-2.0.4-x86_64-linux/store/0d60i73mcv8z1m8d2m74yfn84980gfsa-nix-2.0.4/share/nix/sandbox/
+nix-2.0.4-x86_64-linux/store/0d60i73mcv8z1m8d2m74yfn84980gfsa-nix-2.0.4/share/nix/sandbox/sandbox-network.sb
+...</code></pre>
+<ul>
+<li><p>TODO What is .reginfo (the associated message suggests it is used to register valid paths within the Nix store) ?</p></li>
+<li><p>In single-user mode (I haven’t tried the multi-user mode), the scripts will use sudo to create a /nix directory. If the directory already exists and is assigned to the current user, suod is not required.</p></li>
+<li><p>It will copy its minimal Nix store to /nix/store, and make it read-only.</p></li>
+<li><p>It will call nix-store –init, nix-store load-db &lt; .reginfo.</p></li>
+<li><p>It will source a nix.sh file.</p></li>
+</ul>
+<p>It creates a link from ~/.nix-profile to a directory within the store (at /nix/var/nix/profiles/per-user/$USER).</p>
+<p>It sets ~/.nix-channels to “https://nixos.org/channels/nixpkgs-unstable nixpkgs”.</p>
+<p>It sets a directory to hold the GC roots for our user (at /nix/var/nix/gcroots/per-user/$USER).</p>
+<p>It creates a ~/.nix-defexpr for a default Nix expression, actully a link to /nix/var/nix/profiles/per-user/thu/channels/ (well it seems to be root…).</p>
+<p>It sets a NIX_SSL_CERT_FILE environment variable, resusing the host CA certificate path, instead of the one bundled with the installer when available.</p>
+<p>That sourced file also sets the PATH and MANPATH, NIX_PATH.</p>
+<ul>
+<li><p>It nix-env -i the just installed Nix (so that it is in the user environment).</p></li>
+<li><p>It installs a CA certificate bundle if the NIX_SSL_CERT_FILE wasn’t yet set.</p></li>
+<li><p>It runs nix-channel add and nix-channel update (maybe this is what sets my .nix-defexpr).</p></li>
+<li><p>It then ensures HOME/.nix-profile/etc/profile.d/nix.sh is sourced in .bash_profile or similar.</p></li>
+</ul>
+</div>
+<hr />
+<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+
+</div></body></html>

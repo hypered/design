@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>Entrypoint &mdash; #265</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4 ep-nav">
+  <li class="mr4"><a href="../../">Entrypoint</a>
+  <li class="mr4"><a href="../../projects/waveguide.html">Waveguide</a>
+  <li class="mr4"><a href="../../projects/station.html">Station</a>
+  <li class="mr4"><a href="../../nubs/smartbe.html">Work</a>
+  <li class="mr4"><a href="../../nubs/">Nubs</a>
+  <li class="mr4"><a href="../../decks/">Decks</a>
+  <li class="mr4"><a href="../../edit/">Edit</a>
+  <li class="mr4"><a href="../../more.html">More</a>
+  <li><a href="../../README.html">About</a>
+</ul>
+
+<div class="measure-wide">
+<h1>#265</h1>
+<p><a href="provisioning.log">raw</a></p>
+<pre><code>Waveguide run number: 265.
+Working directory: /tmp/waveguide-UjfP
+Nix install script verison: https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh.
+Repository URL: git@github.com:hypered/reesd-stack.git.
+Revision: 334c6681eb9b3b22b3e0ead9e290ce3588fa62dd.
+Creating north user...
+Extracting payload tarball...
+Copying SSH deploy keys...
+Creating Nix directories...
+cURL and Git already installed.
+Exec'ing the user script...
+Running user script...
+Installing Nix...
+Running command curl https://0.entrypoint.co/scripts/hypered-nix-2.1.1-install.sh -o /home/north/install-nix.sh...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+curl: (60) SSL certificate problem: unable to get local issuer certificate
+More details here: https://curl.haxx.se/docs/sslcerts.html
+
+curl performs SSL certificate verification by default, using a &quot;bundle&quot;
+ of Certificate Authority (CA) public keys (CA certs). If the default
+ bundle file isn't adequate, you can specify an alternate file
+ using the --cacert option.
+If this HTTPS server uses a certificate signed by a CA represented in
+ the bundle, the certificate verification probably failed due to a
+ problem with the certificate (it might be expired, or the name might
+ not match the domain name in the URL).
+If you'd like to turn off curl's verification of the certificate, use
+ the -k (or --insecure) option.
+chmod: cannot access '/home/north/install-nix.sh': No such file or directory
+Received signal EXIT.</code></pre>
+</div>
+<hr />
+<footer>&copy; Hypered, 2018-2019.</footer>
+
+</div></body></html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>noteed.com &mdash; not-os</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4">
+  <li class="mr4"><a href="../../">noteed.com</a>
+  <li class="mr4"><a href="../../blog/">blog</a>
+  <li><a href="../../projects/not-os/">not-os</a>
+</ul>
+
+<div class="measure-wide">
+<h1>not-os</h1>
+<h2 id="digital-ocean">Digital Ocean</h2>
+<pre><code>$ ./make-qcow2.sh
+...</code></pre>
+<p>The <code>make-qcow2.sh</code> script creates an image that boots with Digital Ocean custom image feature.</p>
+<p>This script is a work around the limitation of Digital Ocean not supporting the FAT16 boot partition of the raw derivation. It is also not just a Nix attribute in <code>default.nix</code> because I didn’t find a way to built the same result without using <code>sudo</code>, <code>losetup</code> or <code>mount</code>.</p>
+<p>The resulting <code>image.qcow2</code> file can further be compressed with <code>gzip</code> and uploaded to Digital Ocean.</p>
+<h3 id="notes">Notes</h3>
+<ul>
+<li><p>Digital Ocean supports only EXT3 and EXT4 file systems in their custom image feature.</p></li>
+<li><p>Normally <code>cloud-init</code> should be used. Currently the generated image only supports requesting an IP address using <code>dhcpcd</code>.</p></li>
+<li><p>The console logs show some possible problem related to <code>rngd</code>. I think I should run <code>haveged</code>.</p></li>
+<li><p>When running <code>blkid</code> during the boot process on Digital Ocean, one can see</p></li>
+</ul>
+<pre><code>/dev/vdb: LABEL=&quot;config-2&quot; TYPE=&quot;iso9660&quot;
+/dev/vda1: LABEL=&quot;rootfs&quot; UUID=&quot;...&quot; TYPE=&quot;ext4&quot;</code></pre>
+<ul>
+<li><p>The <code>config-2</code> drive is the configuration disk intended for cloud-init.</p></li>
+<li><p>When I tried to run <code>dhcpcd</code> in the <code>runit</code> <code>1</code> script, I saw an error like</p>
+<pre><code>dhcp_openpbf: Address family not supported by protocol</code></pre>
+<p>The solution was to load the <code>af_packet</code> kernel module.</p></li>
+<li><p>The <code>doctl</code> tool doesn’t currently seem to support the upload of custom images.</p></li>
+<li><p>Currently Digital Ocean has a big shortcoming: it is not possible to assign a floating IP to a VM created from a custom image. The only documented way to keep an IP, is to rebuild an existing VM. But it is actually not possible because custom images are not proposed on the rebuild screen. This means that nixos-rebuild is a must have.</p></li>
+<li><p>Once the isofs kernel module is loaded, it is possible to mount the config-2 drive:</p>
+<pre><code>-bash-4.4# blkid
+/dev/vda1: LABEL=&quot;rootfs&quot; UUID=&quot;..&quot; TYPE=&quot;ext4&quot; PARTUUID=&quot;20000000-01&quot;
+/dev/vdb: UUID=&quot;2019-04-13-09-08-27-00&quot; LABEL=&quot;config-2&quot; TYPE=&quot;iso9660</code></pre>
+<pre><code>-bash-4.4# mkdir /mnt
+-bash-4.4# mount /dev/vdb /mnt
+mount: /mnt: WARNING: device write-protected, mounted read-only.
+-bash-4.4# ls /mnt/
+digitalocean_meta_data.json  openstack</code></pre>
+<p>The three openstack directories have identical content:</p>
+<pre><code>-bash-4.4# sha1sum /mnt/openstack/latest/*
+96f6d38846239ade3f965e1a35386919eae6d5ce  /mnt/openstack/latest/meta_data.json
+472c2b3220721e376aa870c6d68ae5110ef78b1a  /mnt/openstack/latest/network_data.json
+da39a3ee5e6b4b0d3255bfef95601890afd80709  /mnt/openstack/latest/user_data
+c82748155cc4abc84e30e158a24e11fe577cc63f  /mnt/openstack/latest/vendor_data.json
+-bash-4.4# sha1sum /mnt/openstack/2012-08-10/*
+96f6d38846239ade3f965e1a35386919eae6d5ce  /mnt/openstack/2012-08-10/meta_data.json
+472c2b3220721e376aa870c6d68ae5110ef78b1a  /mnt/openstack/2012-08-10/network_data.json
+da39a3ee5e6b4b0d3255bfef95601890afd80709  /mnt/openstack/2012-08-10/user_data
+c82748155cc4abc84e30e158a24e11fe577cc63f  /mnt/openstack/2012-08-10/vendor_data.json
+-bash-4.4# sha1sum /mnt/openstack/2015-10-16/*
+96f6d38846239ade3f965e1a35386919eae6d5ce  /mnt/openstack/2015-10-16/meta_data.json
+472c2b3220721e376aa870c6d68ae5110ef78b1a  /mnt/openstack/2015-10-16/network_data.json
+da39a3ee5e6b4b0d3255bfef95601890afd80709  /mnt/openstack/2015-10-16/user_data
+c82748155cc4abc84e30e158a24e11fe577cc63f  /mnt/openstack/2015-10-16/vendor_data.json</code></pre>
+<p>The <code>digitalocean_meta_data.json</code> seems to combine the the openstack files (although with different names or structures).</p>
+<p>The part we’re mostly interested in is the one with the SSH key to provision:</p>
+<pre><code>-bash-4.4# cat /mnt/openstack/latest/meta_data.json
+{
+  &quot;admin_pass&quot;: &quot;d624c3a16791b2997de776861b47de45&quot;,
+  &quot;availability_zone&quot;: &quot;ams3&quot;,
+  &quot;instance_id&quot;: &quot;129714139&quot;,
+  &quot;hostname&quot;: &quot;not-os-config-2.qcow2.s-1vcpu-1gb-ams3-01&quot;,
+  &quot;public_keys&quot;: {
+    &quot;0&quot;: &quot;ssh-rsa AAAA...&quot;
+  },
+  &quot;uuid&quot;: &quot;129714139&quot;
+}</code></pre>
+<p>The public key, as set by the NixOS script, is at <code>/etc/ssh/authorized_keys.d/root</code>. We can just overwrite it.</p></li>
+</ul>
+<br />
+<hr />
+<div class="mv5 flex-ns">
+<section class="w-60-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Intro
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/index.html">not-os</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Notes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/digital-ocean.html">Digital Ocean</a>
+<li class="mr4">
+<a href="../../projects/not-os/todo.html">TODO</a>
+</ul>
+</section>
+<section class="w-70-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Main attributes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/runvm.html">runvm</a>
+<li class="mr4">
+<a href="../../projects/not-os/kernel.html">kernel</a>
+<li class="mr4">
+<a href="../../projects/not-os/initrd.html">initrd</a>
+<li class="mr4">
+<a href="../../projects/not-os/rootfs.html">rootfs</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-1.html">stage-1</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-2.html">stage-2</a>
+<li class="mr4">
+<a href="../../projects/not-os/dist.html">dist</a>
+<li class="mr4">
+<a href="../../projects/not-os/extra-utils.html">extra-utils</a>
+<li class="mr4">
+<a href="../../projects/not-os/path.html">path</a>
+<li class="mr4">
+<a href="../../projects/not-os/shrunk.html">shrunk</a>
+<li class="mr4">
+<a href="../../projects/not-os/toplevel.html">toplevel</a>
+<li class="mr4">
+<a href="../../projects/not-os/boot.html">boot</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/raw.html">raw</a>
+<li class="mr4">
+<a href="../../projects/not-os/qcow2.html">qcow2</a>
+<li class="mr4">
+<a href="../../projects/not-os/syslinux.html">syslinux</a>
+</ul>
+</section>
+<section class="w-50-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Values
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/cmdline.html">cmdline</a>
+<li class="mr4">
+<a href="../../projects/not-os/root-modules.html">root-modules</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Source
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/default.html">default.nix</a>
+</ul>
+</section>
+</div>
+</div>
+<hr />
+<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+
+</div></body></html>

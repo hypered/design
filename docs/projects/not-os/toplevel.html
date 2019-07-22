@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<title>noteed.com &mdash; not-os</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
+<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
+<ul class="list flex ma0 pa0 mt4">
+  <li class="mr4"><a href="../../">noteed.com</a>
+  <li class="mr4"><a href="../../blog/">blog</a>
+  <li><a href="../../projects/not-os/">not-os</a>
+</ul>
+
+<div class="measure-wide">
+<h1>not-os</h1>
+<h2 id="toplevel">toplevel</h2>
+<pre><code>$ nix-build -A toplevel
+/nix/store/zi6a3i50k6ym6xxrmmlrvrfcfgr9bwsb-toplevel</code></pre>
+<p>The toplevel contains two scripts and a directory (actually a symlink):</p>
+<pre><code>$ ls /nix/store/q40j6y70nwhgazvhzrlzh79cjlfik7jv-not-os/
+activate  init  sw</code></pre>
+<ul>
+<li><code>activate</code> content is the value of <code>config.system.activationScripts.script</code>. In particular it calls the <code>setup-etc.pl</code> script.</li>
+<li><code>init</code> content is the value of <code>stage-2</code>, which is <code>stage-2-init.sh</code>, with <code>systemConfig</code> replaced by toplevel’s path, and <code>sw/bin/</code> set as its <code>$PATH</code>. The <code>init</code> script mounts a few special filesystems, calls the <code>activate</code> script, then execute `runit.</li>
+<li><code>sw</code> is a symlink to <code>path</code>, which contains only a <code>bin/</code> directory with symlinks to base executables (e.g. <code>[</code>, <code>nix-build</code>, <code>yes</code>, …).</li>
+</ul>
+<p>The toplevel is packaged as a squashfs image.</p>
+<p>The toplevel’s path is sometimes called <code>systemConfig</code> or <code>sysconfig</code>.</p>
+<br />
+<hr />
+<div class="mv5 flex-ns">
+<section class="w-60-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Intro
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/index.html">not-os</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Notes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/digital-ocean.html">Digital Ocean</a>
+<li class="mr4">
+<a href="../../projects/not-os/todo.html">TODO</a>
+</ul>
+</section>
+<section class="w-70-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Main attributes
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/runvm.html">runvm</a>
+<li class="mr4">
+<a href="../../projects/not-os/kernel.html">kernel</a>
+<li class="mr4">
+<a href="../../projects/not-os/initrd.html">initrd</a>
+<li class="mr4">
+<a href="../../projects/not-os/rootfs.html">rootfs</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-1.html">stage-1</a>
+<li class="mr4">
+<a href="../../projects/not-os/stage-2.html">stage-2</a>
+<li class="mr4">
+<a href="../../projects/not-os/dist.html">dist</a>
+<li class="mr4">
+<a href="../../projects/not-os/extra-utils.html">extra-utils</a>
+<li class="mr4">
+<a href="../../projects/not-os/path.html">path</a>
+<li class="mr4">
+<a href="../../projects/not-os/shrunk.html">shrunk</a>
+<li class="mr4">
+<a href="../../projects/not-os/toplevel.html">toplevel</a>
+<li class="mr4">
+<a href="../../projects/not-os/boot.html">boot</a>
+<li class="mr4">
+<a href="../../projects/not-os/ext4.html">ext4</a>
+<li class="mr4">
+<a href="../../projects/not-os/raw.html">raw</a>
+<li class="mr4">
+<a href="../../projects/not-os/qcow2.html">qcow2</a>
+<li class="mr4">
+<a href="../../projects/not-os/syslinux.html">syslinux</a>
+</ul>
+</section>
+<section class="w-50-ns pr4 mb5">
+<h1 class="f5 ttu lh-title mb3">
+Values
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/cmdline.html">cmdline</a>
+<li class="mr4">
+<a href="../../projects/not-os/root-modules.html">root-modules</a>
+</ul>
+<br />
+<h1 class="f5 ttu lh-title mb3">
+Source
+</h1>
+<ul class="list pa0 ma0 lh-copy">
+<li class="mr4">
+<a href="../../projects/not-os/default.html">default.nix</a>
+</ul>
+</section>
+</div>
+</div>
+<hr />
+<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+
+</div></body></html>
