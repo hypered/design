@@ -1,0 +1,144 @@
+div.station {
+  color: #333;
+  background: #fff;
+  /* font-family: "PT Sans", sans-serif; */
+  font-family: "IBM Plex Mono", sans-serif;
+  font-size: 18px;
+  /* width: 900px; */
+  margin: 1em;
+}
+
+header, footer {
+  font-size: small;
+}
+
+#menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+table, thead, tbody, tr, td, pre {
+  margin: 0;
+  padding: 0;
+}
+
+tr > td:not(:last-of-type) {
+  padding: 0 2em 0 0;
+}
+
+table {
+  border-spacing: 0;
+}
+
+table a {
+  color: #000;
+  text-decoration: none;
+}
+
+caption {
+  font-size: 16px;
+  font-style: italic;
+  color: #999;
+}
+
+code, pre {
+  font-size: 15px;
+}
+
+.proper-fields {
+  font-size: 16px;
+  text-align: center;
+  color: #6ad;
+  background: #dff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.relational-fields {
+  font-size: 16px;
+  text-align: center;
+  color: #c77;
+  background: #fee;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  min-width: 7em;
+}
+
+.aggregate-fields {
+  font-size: 16px;
+  text-align: center;
+  color: #d65;
+  background: #fec;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+  min-width: 7em;
+}
+
+.function-fields {
+  font-size: 16px;
+  text-align: center;
+  color: #7c7;
+  background: #dfd;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.inline {
+  display: inline;
+}
+
+.button-as-link {
+  background: none;
+  border: none;
+  color: blue;
+  background: #f4f4ff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: inline;
+}
+
+.button-as-link:focus {
+  outline: none;
+}
+
+.button-as-link:active {
+  color: #e00;
+}
+
+.grid tr td{
+  padding: 0;
+}
+
+.grid td {
+  width: 6em;
+  height: 2em;
+  border: 2px solid #fff;
+}
+
+.grid [contenteditable="true"]:active,
+.grid [contenteditable="true"]:focus {
+  border:none;
+  outline:none;
+}
+
+.field-name {
+  font-weight: bold;
+}
+
+#xmenu {
+  z-index: 30;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  visibility: hidden;
+  background: #fff;
+  border: 2px solid #88f
+}
+
+#xmenu td {
+  height: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
