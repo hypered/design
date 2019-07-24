@@ -1,27 +1,92 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8">
-<title>noteed.com &mdash; Blog</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>noteed.com &mdash; Blog</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="../static/css/ibm-plex.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="../static/css/tachyons.min.v4.11.1.css" />
-<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
-</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
-<ul class="list flex ma0 pa0 mt4">
-  <li class="mr4"><a href="../">noteed.com</a>
-  <li class="mr4"><a href="../blog/">blog</a>
-  <li><a href="../projects/not-os/">not-os</a>
-</ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/css/ibm-plex.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/tachyons.min.v4.11.1.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  </head>
 
-<div class="measure-wide">
-<h1>Blog</h1>
-<ul>
-<li><a href="starting-with-nixops-2.html">Starting with NixOps (and thus Nix and NixOS), part 2</a> - 2017-08-15</li>
-<li><a href="starting-with-nixops-1.html">Starting with NixOps (and thus Nix and NixOS), part 1</a> - 2017-08-04</li>
-<li><a href="expose-local-server.html">Exposing a local server through HAProxy using a reverse SSH tunnel</a> - 2017-08-03</li>
-</ul>
-</div>
-<hr />
-<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+  <body class="ibm-plex-sans lh-copy">
+    <div class="mw9 center ph4">
+      <header class="pv4">
+        <nav class="flex align-items-center lh-copy">
+          <a href="../" class="mr3 a black">noteed.com</a>
+          <a href="../blog/" class="mr3 a black b">blog</a>
+          <a href="../projects/not-os/" class="mr3 a black">not-os</a>
+        </nav>
+      </header>
 
-</div></body></html>
+      <main>
+        <h1 class="f2 lh-title">Blog</h1>
+
+        <section>
+          <article class="mb4">
+            <h2 class="f3 lh-title mv0">
+              <a href="starting-with-nixops-2.html" class="black">
+                Starting with NixOps (and thus Nix and NixOS), part 2
+              </a>
+            </h2>
+            <time datetime="2017-08-15">2017-08-15</time>
+            <p class="measure-wide">
+              In part 1, I showed how to write a very basic Nix expression to
+              describe a machine to be deployed on Digital Ocean using NixOps,
+              and the few commands necessary to deploy and destroy it.
+            </p>
+            <a href="starting-with-nixops-2.html" class="black b">
+              Continue reading&#8230;
+            </a>
+          </article>
+
+          <article class="mb4">
+            <h2 class="f3 lh-title mv0">
+              <a href="starting-with-nixops-1.html" class="black">
+                Starting with NixOps (and thus Nix and NixOS), part 1
+              </a>
+            </h2>
+            <time datetime="2017-08-04">2017-08-04</time>
+            <p class="measure-wide">
+              While learning the Nix ecosystem and trying to use it, I found it
+              a bit more harder than I thought to achieve what I wanted. In this
+              post and the next one, I’m documenting what I learned, partly for
+              myself, partly to share with other people that would like to
+              follow the same path.
+            </p>
+            <a href="starting-with-nixops-1.html" class="black b">
+              Continue reading&#8230;
+            </a>
+          </article>
+
+          <article class="mb4">
+            <h2 class="f3 lh-title mv0">
+              <a href="expose-local-server.html" class="black">
+                Exposing a local server through HAProxy using a reverse SSH
+                tunnel
+              </a>
+            </h2>
+            <time datetime="2017-08-03">2017-08-03</time>
+            <p class="measure-wide">
+              In part 1, I showed how to write a very basic Nix expression to
+              describe a machine to be deployed on Digital Ocean using NixOps,
+              and the few commands necessary to deploy and destroy it.
+            </p>
+            <a href="expose-local-server.html" class="black b">
+              Continue reading&#8230;
+            </a>
+          </article>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; Võ Minh Thu, 2017-2019.</p>
+      </footer>
+    </div>
+  </body>
+</html>
