@@ -1,123 +1,77 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8">
-<title>noteed.com &mdash; Starting with NixOps (and thus Nix and NixOS), part 2</title>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>noteed.com &mdash; blog</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="../static/css/ibm-plex.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="../static/css/tachyons.min.v4.11.1.css" />
-<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
-</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
-<ul class="list flex ma0 pa0 mt4">
-  <li class="mr4"><a href="../">noteed.com</a>
-  <li class="mr4"><a href="../blog/">blog</a>
-  <li><a href="../projects/not-os/">not-os</a>
-</ul>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/css/ibm-plex.css" rel="stylesheet" />
+    <link href="../static/css/inter.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../static/css/tachyons.min.v4.11.1.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+  </head>
 
-<div class="measure-wide">
-<h1>Starting with NixOps (and thus Nix and NixOS), part 2</h1>
-<p>In <a href="starting-with-nixops-1.html">part 1</a>, I showed how to write a very basic Nix expression to describe a machine to be deployed on Digital Ocean using NixOps, and the few commands necessary to deploy and destroy it.</p>
-<p>I also showed that it was possible to SSH into it. Acutally this is not something you really want to do. Instead we will update the Nix expression to refine the setup of our droplet and let NixOps do the rest. (SSHing into a machine should only be used to investigate problems, not to change the state of a machine.)</p>
-<p>In this post, I’ll show how to add a handful of things to our deployment.</p>
-<h2 id="envrc">.envrc</h2>
-<p>Having to specify the <code>DIGITAL_OCEAN_AUTH_TOKEN</code> environment variable is tiresome (and possibly insecure since it is visible is various places, e.g. the shell history), so I’m using a <code>.envrc</code> file:</p>
-<pre><code>$ echo 'export DIGITAL_OCEAN_AUTH_TOKEN=xxxx' &gt; .envrc
-$ direnv allow</code></pre>
-<p>In the reminder of the blog post, I will thus no longer prefix my commands with the Digital Ocean token.</p>
-<h2 id="nginx">Nginx</h2>
-<p>As a first modification to our deployment, let’s add Nginx. Since Nginx is already part of NixOS, we don’t have much to do:</p>
-<ul>
-<li>add a firewall rule to expose the port 80,</li>
-<li>enable Nginx.</li>
-</ul>
-<p>This translates to the two following lines (to be added in the <code>machine-1</code> description):</p>
-<pre><code>    networking.firewall.allowedTCPPorts = [ 80 ];
-    services.nginx.enable = true;</code></pre>
-<p>After deployment, you should be able to get an answer from your server:</p>
-<pre><code>$ nixops deploy -d do-rem
-$ curl http://185.14.186.74</code></pre>
-<p>(The answer is a 404 since we need to further configure Nginx.)</p>
-<p>As a reminder, in addition to retrieving the IP address from the Digital Ocean web interface, you can also use <code>nixops info</code>.</p>
-<h2 id="static-site">Static site</h2>
-<p>In this section we prepare a simple one-file static site. We turn it into a Nix expression that we use in our deployment.</p>
-<p>We create a directory (this could be a complete Git repository) to contain the site andd associated scripts (e.g. a static site generator that would generate a <code>_site</code> directory):</p>
-<pre><code>$ mkdir -p static_site/_site
-$ echo &quot;Hello.&quot; &gt; static_site/_site/index.html</code></pre>
-<p>We add a <code>default.nix</code> file to build the site:</p>
-<pre><code>with import &lt;nixpkgs&gt; {};
-{
-  static_site = stdenv.mkDerivation {
-    name = &quot;static_site&quot;;
-    src  = ./.;
-    installPhase = ''
-      mkdir -p &quot;$out/&quot;
-      cp -a ./_site &quot;$out/&quot;
-    '';
-  };
-}</code></pre>
-<p>The <code>default.nix</code> file uses the standard Nix machinery, nothing specific to NixOS. All it does is copying the <code>_site</code> directory. In a more realistic setup, it would probably first build it.</p>
-<p>Now to use that package in our deployment, we:</p>
-<ul>
-<li>import it</li>
-<li>use it in the Nginx configuration</li>
-</ul>
-<p>At the top of our <code>do.nix</code> file we add</p>
-<pre><code>let
-  static_site = (import ./static_site).static_site;
-in</code></pre>
-<p>We modify the Nginx part with:</p>
-<pre><code>    services.nginx = {
-      enable = true;
-      virtualHosts = {
-        &quot;example.com&quot; = {
-          root = &quot;${static_site}/_site&quot;;
-        };
-      };
-    };</code></pre>
-<p>After deploying again:</p>
-<pre><code>$ curl http://185.14.186.74
-Hello.</code></pre>
-<h2 id="users">Users</h2>
-<p>Adding users look like this:</p>
-<pre><code>    users.mutableUsers = false;
-    users.extraUsers.toto = {
-      uid = 1000;
-      isNormalUser = true;
-      home = &quot;/home/toto&quot;;
-      description = &quot;The Toto User&quot;;
-      extraGroups = [ &quot;wheel&quot; ];
-      openssh.authorizedKeys.keys = [ &quot;ssh-rsa xxxx toto@somewhere&quot; ];
-    };</code></pre>
-<p>Stating <code>mutableUsers = false</code> basically means that existing users and passwords are configured by the deployment instead of by login into the machine then changing things.</p>
-<p>Now that we hase a user, we can provision some data directory:</p>
-<pre><code>    system.activationScripts.toto =
-      ''
-        echo Creating toto directories...
-        mkdir -m 0755 -p /home/toto/toto
-        chown toto:users /home/toto/toto
-      '';</code></pre>
-<p>We can confirm all is well:</p>
-<pre><code>$ nixops ssh -d do-rem machine-1
-[root@machine-1:~]# su toto
-[toto@machine-1:/root]$ cd
-[toto@machine-1:~]$ ls
-toto</code></pre>
-<h2 id="cron">Cron</h2>
-<p>We the above user and directory in place, we add a cron job to fill that directory:</p>
-<pre><code>    services.cron = {
-      enable = true;
-      systemCronJobs = [
-        &quot;0 5 * * * toto cd /home/toto/toto &amp;&amp; date &gt; date.log&quot;
-      ];
-    };</code></pre>
-<h2 id="packages">Packages</h2>
-<p>If you need a pakcage that is not automatically installed (i.e. it is not yet a dependency of your deployment), you can specify it by itself. Here we add <code>wget</code>:</p>
-<pre><code>    environment.systemPackages = [
-      pkgs.wget
-    ];</code></pre>
-<h2 id="imports">Imports</h2>
-<p>Instead of having everything in the same Nix expression (beside the static site), it is possible to use the <code>imports</code> feature of NixOS.</p>
-<p>We remove the <code>extraUsers</code>,<code>activationScripts</code> and <code>systemCronJobs</code> parts and move them to a new file, <code>toto.nix</code>:</p>
-<pre><code>{ config, pkgs, ... }: {
+  <body class="inter lh-copy">
+    <div class="mw9 center ph4">
+      <header class="pv4">
+        <nav class="flex align-items-center lh-copy">
+          <a href="../" class="mr3 link black hover-blue">noteed.com</a>
+          <a href="../blog/" class="mr3 link black hover-blue b">blog</a>
+          <a href="../projects/not-os/" class="mr3 link black hover-blue">
+            not-os
+          </a>
+        </nav>
+      </header>
+
+      <main>
+        <article class="measure-wide">
+          <h1 class="f2 lh-title mv2">
+            Starting with NixOps (and thus Nix and NixOS), part 2
+          </h1>
+          <h2 id="imports" class="f3 lh-title mv2">This is a H2</h2>
+          <h3 id="imports" class="f4 lh-title mv2">This is a H3</h3>
+          <h4 id="imports" class="f5 lh-title mv2">This is a H4</h4>
+          <h5 id="imports" class="f6 lh-title mv2">This is a H5</h5>
+          <h6 id="imports" class="f7 lh-title mv2 ttu">This is a H6</h6>
+
+          <p>
+            Instead of having everything in the same Nix expression (beside the
+            static site), it is possible to use the
+            <code class="f5 dark-red bg-washed-red">imports</code> feature of
+            NixOS.
+          </p>
+
+          <p>
+            Instead of having everything in the same Nix expression (beside the
+            static site), it is possible to use the
+            <code class="f5 dark-red bg-washed-red">imports</code> feature of
+            NixOS.
+          </p>
+
+          <p>
+            <em class="db bl bw2 pa3 normal">
+              To follow along, you can clone the Git repository and run each
+              nix-build command as they appear at the top of each page.
+            </em>
+          </p>
+
+          <p>
+            We remove the
+            <code class="f5 dark-red bg-washed-red">extraUsers</code>,<code
+              class="f5 dark-red bg-washed-red"
+              >activationScripts</code
+            >
+            and
+            <code class="f5 dark-red bg-washed-red">systemCronJobs</code> parts
+            and move them to a new file,
+            <code class="f5 dark-red bg-washed-red">toto.nix</code>:
+          </p>
+
+          <pre class="pa3 bg-near-white br2"><code>{ config, pkgs, ... }: {
   users.extraUsers.toto = {
     uid = 1000;
     isNormalUser = true;
@@ -138,11 +92,17 @@ toto</code></pre>
         &quot;35 * * * * toto cd /home/toto/toto &amp;&amp; echo Hello &gt; date.log&quot;
     ];
 }</code></pre>
-<p>In their place, we simply import the new file:</p>
-<pre><code>    imports = [ ./toto.nix ];</code></pre>
-<p>NixOS will merge similar records to create the deployment.</p>
-</div>
-<hr />
-<footer>&copy; Võ Minh Thu, 2017-2019.</footer>
+          <p>In their place, we simply import the new file:</p>
+          <pre
+            class="pa3 bg-near-white br2"
+          ><code>    imports = [ ./toto.nix ];</code></pre>
+          <p>NixOS will merge similar records to create the deployment.</p>
+        </article>
+      </main>
 
-</div></body></html>
+      <footer class="mt5 pb5">
+        <p>&copy; Võ Minh Thu, 2017-2019.</p>
+      </footer>
+    </div>
+  </body>
+</html>
