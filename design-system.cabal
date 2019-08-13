@@ -24,6 +24,5 @@ executable hypered-guide
   hs-source-dirs:      bin
   main-is:             hypered-guide.hs
   build-depends:       base == 4.*,
-                       design-system,
-                       text
+                       design-system
   ghc-options:         -Wall

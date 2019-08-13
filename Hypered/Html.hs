@@ -16,17 +16,25 @@ import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 
 
 ------------------------------------------------------------------------------
-generateHtml :: Font -> FilePath -> FilePath -> Text -> IO ()
-generateHtml font base path title = do
-  createDirectoryIfMissing True (takeDirectory (base </> path))
-  withFile (base </> path) WriteMode $ \h ->
-    T.hPutStr h . renderHtml $ document font path title
+-- | Generate both the normal and pretty-printed HTML versions.
+generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
+generate path title body = do
+  generateHtml Inter "generated/min" path title (body path)
+  prettyHtml Inter "generated/pretty" path title (body path)
 
-prettyHtml :: Font -> FilePath -> FilePath -> Text -> IO ()
-prettyHtml font base path title = do
+
+------------------------------------------------------------------------------
+generateHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
+generateHtml font base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    hPutStr h . Pretty.renderHtml $ document font path title
+    T.hPutStr h . renderHtml $ document font path title body
+
+prettyHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
+prettyHtml font base path title body = do
+  createDirectoryIfMissing True (takeDirectory (base </> path))
+  withFile (base </> path) WriteMode $ \h ->
+    hPutStr h . Pretty.renderHtml $ document font path title body
 
 
 ------------------------------------------------------------------------------
@@ -44,8 +52,8 @@ fontCss Inter = "static/css/inter.css"
 
 
 ------------------------------------------------------------------------------
-document :: Font -> FilePath -> Text -> Html
-document font path title = do
+document :: Font -> FilePath -> Text -> Html -> Html
+document font path title body = do
   let depth = length (splitPath path) - 1
       relativize = (joinPath (replicate depth "..") </>)
   H.docType
@@ -64,18 +72,25 @@ document font path title = do
 
     H.body ! A.class_ (H.toValue (fontClass font ++ " lh-copy")) $
       H.div ! A.class_ "mw9 center ph4" $
-        H.header ! A.class_ "pv4" $
-          H.nav ! A.class_ "flex align-items-center lh-copy" $
-            mapM_ (\(a, b) ->
-              H.a ! A.class_ "mr3 link black hover-blue"
-                  ! A.href (H.toValue (relativize a)) $ b)
-              [ (".",                       "Entrypoint")
-              , ("projects/waveguide.html", "Waveguide")
-              , ("projects/station.html",   "Station")
-              , ("nubs/work.html",          "Work")
-              , ("nubs/",                   "Nubs")
-              , ("decks/",                  "Decks")
-              , ("edit/",                   "Edit")
-              , ("more.html",               "More")
-              , ("README.html",             "About")
-              ]
+        body
+
+
+navigation :: FilePath -> Html
+navigation path = do
+  let depth = length (splitPath path) - 1
+      relativize = (joinPath (replicate depth "..") </>)
+  H.header ! A.class_ "pv4" $
+    H.nav ! A.class_ "flex align-items-center lh-copy" $
+      mapM_ (\(a, b) ->
+        H.a ! A.class_ "mr3 link black hover-blue"
+            ! A.href (H.toValue (relativize a)) $ b)
+        [ (".",                       "Entrypoint")
+        , ("projects/waveguide.html", "Waveguide")
+        , ("projects/station.html",   "Station")
+        , ("nubs/work.html",          "Work")
+        , ("nubs/",                   "Nubs")
+        , ("decks/",                  "Decks")
+        , ("edit/",                   "Edit")
+        , ("more.html",               "More")
+        , ("README.html",             "About")
+        ]
