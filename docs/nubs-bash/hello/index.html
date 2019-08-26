@@ -1,51 +1,65 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>Entrypoint &mdash; Edit</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../static/css/ibm-plex.css" />
-<link rel="stylesheet" type="text/css" href="../../static/css/tachyons.min.v4.11.1.css" />
-<link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
-<link rel="stylesheet" type="text/css" href="../../static/css/station.css" />
-</head><body class="ibm-plex-sans"><div class="ph3 mt2 mb4 f4 center main-mw">
-<!-- Build failure. -->
-<!-- End build failure. -->
-<ul class="list flex ma0 pa0 mt4">
-  <li class=mr4><a href=../../>Entrypoint</a>
-  <li class=mr4><a href="../../projects/waveguide.html">Waveguide</a>
-  <li class=mr4><a href="../../projects/station.html">Station</a>
-  <li class=mr4><a href="../../nubs/smartbe.html">Work</a>
-  <li class=mr4><a href="../../nubs/">Nubs</a>
-  <li class=mr4><a href="../../decks/">Decks</a>
-  <li class=mr4><a href="../../edit/">Edit</a>
-  <li class=mr4><a href="../../more.html">More</a>
-  <li><a href="../../about.html">About</a>
-</ul>
-</div>
-<div class="station">
-<header><a href="../../nubs-bash">nubs-bash</a></header>
-<div id="main">
-<br/>
-<style>
-[contenteditable="true"] {
-  margin-top: 0.4em;
-  padding-top: 0.4em;
-  border:none;
-  background-color: #f5f5f5; */
-}
-[contenteditable="true"]:active,
-[contenteditable="true"]:focus {
-  outline:none;
-}
-</style>
-<!-- README.md file. -->
-<p>hello</p>
-<hr />
-show-ref -s fetchgit
-<code><pre>
-169d47c075145d084a10ef35c35a690942dda1b1
-</pre></code>
-<br />
-ls-tree fetchgit --long
-<code><pre>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>noteed.com &mdash; not-os</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../static/css/ibm-plex.css" rel="stylesheet" />
+    <link href="../../static/css/inter.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../static/css/tachyons.min.v4.11.1.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../static/css/style.css" />
+
+    <style>
+      [contenteditable="true"] {
+      }
+      [contenteditable="true"]:active,
+      [contenteditable="true"]:focus {
+        background: #fff;
+        box-shadow: 0 0 0 1px #96ccff;
+        outline: none;
+      }
+    </style>
+  </head>
+
+  <body class="inter lh-copy">
+    <div class="mw9 center ph4">
+      <header class="pv4">
+        <nav class="flex align-items-center lh-copy">
+          <a href="../../" class="mr3 link black hover-blue">Entrypoint</a>
+          <a
+            href="../../projects/waveguide.html"
+            class="mr3 link black hover-blue"
+          >
+            Waveguide
+          </a>
+          <a href="../projects/station.html" class="mr3 link black hover-blue">
+            Station</a
+          >
+          <a href="../nubs/smartbe.html" class="mr3 link black hover-blue">
+            Work</a
+          >
+          <a href="../../nubs/" class="mr3 link black hover-blue b">Nubs</a>
+          <a href="../../decks/" class="mr3 link black hover-blue">Decks</a>
+          <a href="../../edit/" class="mr3 link black hover-blue">Edit</a>
+          <a href="../../more.html" class="mr3 link black hover-blue">More</a>
+          <a href="../../README.html" class="mr3 link black hover-blue"
+            >About</a
+          >
+        </nav>
+      </header>
+
+      <main class="flex flex-wrap nl3 nr3 mt4">
+        <section class="w-100 mw8 ph3">
+          <article>
+            <h1 class="f1 lh-title mv0">hello</h1>
+
+            <!-- prettier-ignore -->
+            <code><pre class="pre overflow-auto">
 100644 blob ce013625030ba8dba906f756967f9e9ca394464a       6	README.md
 100644 blob af30b8907eb547584db9acde06330c0bd9499ade     159	default.nix
 100644 blob 3d1b4caeea857ba5904176a3747bce4f21308903     111	example-2.json
@@ -53,144 +67,60 @@ ls-tree fetchgit --long
 100644 blob 607e191c3e33779a370948a5f17ee5d57b625efb     568	git.json
 100644 blob a68af143f8ca45ddeaf13f45968abb4dfdcf6040     513	layla.json
 100644 blob 5596e6e27e686c21ae2f258ec79fd32a0527e988     321	spawn.sh
-100644 blob bb7f9d263a7691eb76690f8ab4912c1a95892bdc     264	texts.json
-</pre></code>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c1").innerHTML;'>
-show fetchgit:README.md 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=README.md />
-<input type=hidden name=content />
-<code><pre id=c1 contenteditable=true spellcheck=false>
-hello
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c2").innerHTML;'>
-show fetchgit:default.nix 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=default.nix />
-<input type=hidden name=content />
-<code><pre id=c2 contenteditable=true spellcheck=false>
-let
-  pkgs = import <nixpkgs> {};
-  readme.md = ./README.md;
-in
-  pkgs.runCommand "dummy" {
-  }
-  "${pkgs.pandoc}/bin/pandoc --standalone ${readme.md} > $out"
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c3").innerHTML;'>
-show fetchgit:example-2.json 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=example-2.json />
-<input type=hidden name=content />
-<code><pre id=c3 contenteditable=true spellcheck=false>
+100644 blob bb7f9d263a7691eb76690f8ab4912c1a95892bdc     264	texts.json</pre></code>
+
+            <p>
+              Waveguide builds and/or runs a Nix expression on a freshly
+              provisioned machine.
+            </p>
+
+            <form
+              method="post"
+              action="/edit/save"
+              onsubmit='this.content.value=document.getElementById("c1").innerHTML;'
+              class="nl3 nr3"
+            >
+              <div
+                class="flex flex-wrap items-center bt bb justify-between pv2 mh3"
+              >
+                <div>show fetchgit:README.md</div>
+                <div>
+                  <input
+                    type="submit"
+                    value="Save"
+                    class="button-reset bg-black ph3 pv2 white br2 bn"
+                  />
+                  <input type="hidden" name="repository" value="hello" />
+                  <input type="hidden" name="filename" value="README.md" />
+                  <input type="hidden" name="content" />
+                </div>
+              </div>
+
+              <!-- prettier-ignore -->
+              <code>
+              <pre
+                id="c1"
+                contenteditable="true"
+                spellcheck="false"
+                class="pv3 ph3 mv0 relative pre overflow-auto">
 [
-  { "id": 1, "x": 40, "y": 80, "text": "Haskell" },
-  { "id": 2, "x": 40, "y": 100, "text": "JavaScript" }
-]
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c4").innerHTML;'>
-show fetchgit:example-3.json 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=example-3.json />
-<input type=hidden name=content />
-<code><pre id=c4 contenteditable=true spellcheck=false>
-[
-  {"id":1,"x":252,"y":38,"text":"Haskell"},
-  {"id":2,"x":40,"y":100,"text":"Java"}
-]
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c5").innerHTML;'>
-show fetchgit:git.json 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=git.json />
-<input type=hidden name=content />
-<code><pre id=c5 contenteditable=true spellcheck=false>
-[
-  {"id":1,"x":127,"y":99,"text":"Git","size":32},
-  {"id":2,"x":127,"y":151,"text":"shape-2","size":16},
-  {"decoration":"bullet","id":3,"x":127,"y":206,"text":"shape-3","size":16},
-  {"decoration":"rect","id":4,"x":-1,"y":255,"text":"work dir.","size":16},
-  {"decoration":"rect","id":5,"x":212,"y":255,"text":"index","size":16},
-  {"decoration":"rect","id":6,"x":439,"y":255,"text":".git","size":16},
-  {"id":7,"x":124,"y":594,"text":"Note: the index is actually part of .git","size":16},
+ {"id":1,"x":127,"y":99,"text":"Git","size":32},
+ {"id":2,"x":127,"y":151,"text":"shape-2","size":16},
+ {"decoration":"bullet","id":3,"x":127,"y":206,"text":"shape-3","size":16},
+ {"decoration":"rect","id":4,"x":-1,"y":255,"text":"work dir.","size":16},
+ {"decoration":"rect","id":5,"x":212,"y":255,"text":"index","size":16},
+ {"decoration":"rect","id":6,"x":439,"y":255,"text":".git","size":16},
+ {"id":7,"x":124,"y":594,"text":"Note: the index is actually part of .git","size":16},
   {"decoration":"rect","id":8,"x":664,"y":255,"text":"github","size":16}
-]
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c6").innerHTML;'>
-show fetchgit:layla.json 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=layla.json />
-<input type=hidden name=content />
-<code><pre id=c6 contenteditable=true spellcheck=false>
-[
-  {"id":1,"x":293,"type":"rect","y":105,"text":"shape-1"},
-  {"id":2,"x":223,"type":"bullet","y":415,"text":"shape-2"},
-  {"id":3,"x":394,"y":527,"text":"shape-3"},
-  {"id":4,"x":561,"type":"circle","y":725,"text":"shape-4"},
-  {"id":5,"x":166,"type":"control","y":169,"text":"control-5"},
-  {"id":6,"x":216,"type":"control","y":269,"text":"control-6"},
-  {"id":7,"x":493,"type":"control","y":395,"text":"control-7"},
-  {"id":8,"x":540,"type":"control","y":230,"text":"control-8"},
-  {"id":9,"type":"bezier"}
-]
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c7").innerHTML;'>
-show fetchgit:spawn.sh 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=spawn.sh />
-<input type=hidden name=content />
-<code><pre id=c7 contenteditable=true spellcheck=false>
-#! /usr/bin/env bash
+]</pre></code>
+            </form>
+          </article>
+        </section>
+      </main>
 
-# This script initializes an example repository with the content
-# of this directory.
-
-bin/nubs-init hello.git
-cat README.md | bin/nubs-write-file hello.git README.md
-cat default.nix | bin/nubs-write-file hello.git default.nix
-cat spawn.sh | bin/nubs-write-file hello.git spawn.sh
-bin/nubs-generate
-</pre></code>
-</form>
-<br />
-<form method=post action=/edit/save onsubmit='this.content.value=document.getElementById("c8").innerHTML;'>
-show fetchgit:texts.json 
-<input type=submit value=Save class=button-as-link />
-<input type=hidden name=repository value=hello />
-<input type=hidden name=filename value=texts.json />
-<input type=hidden name=content />
-<code><pre id=c8 contenteditable=true spellcheck=false>
-[
-  {"id":1,"x":127,"y":99,"text":"shape-1","size":32},
-  {"id":2,"x":127,"y":151,"text":"shape-2","size":16},
-  {"decoration":"bullet","id":3,"x":127,"y":206,"text":"shape-3","size":16},
-  {"decoration":"rect","id":4,"x":127,"y":269,"text":"shape-4","size":16}
-]
-</pre></code>
-</form>
-<br />
-<br/>
-</div>
-</div>
-
-</body></html>
+      <footer class="mt5 pb4">
+        <p>&copy; Võ Minh Thu, 2017-2019.</p>
+      </footer>
+    </div>
+  </body>
+</html>
