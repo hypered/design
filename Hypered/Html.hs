@@ -74,7 +74,7 @@ document font path title body = do
       H.div ! A.class_ "mw9 center ph4" $
         body
 
-
+-- | Horizontal navigation at the top of a page.
 navigation :: FilePath -> Html
 navigation path = do
   let depth = length (splitPath path) - 1
@@ -94,3 +94,34 @@ navigation path = do
         , ("more.html",               "More")
         , ("README.html",             "About")
         ]
+
+-- | The main content wrapper, at the same level as navigation.
+wrap :: Html -> Html
+wrap content = do
+  H.main ! A.class_ "mw7" $
+    H.div ! A.class_ "flex flex-wrap nl3 nr3" $
+      content
+
+-- | The main content, as a left column.
+section :: Html -> Html
+section content = do
+  H.section ! A.class_ "w-100 w-two-thirds-m w-two-thirds-l ph3" $
+    content
+
+-- | A right column, with a title and a list of links.
+aside :: Html
+aside = do
+  H.aside ! A.class_ "w-100 w-third-m w-third-l ph3 mt0 mt5-m mt5-l" $ do
+    H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
+    H.div ! A.class_ "nl3 nr3" $
+      H.ul ! A.class_ "bg-near-white list pa3" $ do
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a
+            ! A.class_ "black hover-blue"
+            ! A.href "../run/264/provisioning.html" $
+            "&rarr; #264"
+        H.li ! A.class_ "pv1" $
+          H.a
+            ! A.class_ "black hover-blue"
+            ! A.href "../run/263/provisioning.html" $
+            "&rarr; #263"
