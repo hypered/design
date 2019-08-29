@@ -1,18 +1,21 @@
 import React from "react";
+import Link from "next/link";
+
+function NavLink(props) {
+  return (
+    <Link href={props.href}>
+      <a className="link mr3 black hover-blue">{props.children}</a>
+    </Link>
+  );
+}
 
 function Nav() {
   return (
-    <header class="">
-      <nav class="flex align-items-center lh-copy">
-        <a href="/" class="mr3 link black hover-blue">
-          noteed.com
-        </a>
-        <a href="/blog/" class="mr3 link hover-blue black">
-          blog
-        </a>
-        <a href="/projects/not-os/" class="mr3 link hover-blue black">
-          not-os
-        </a>
+    <header>
+      <nav className="flex align-items-center lh-copy">
+        <NavLink href="/">noteed.com</NavLink>
+        <NavLink href="/blog">blog</NavLink>
+        <NavLink href="/projects/not-os">not-os</NavLink>
       </nav>
     </header>
   );
