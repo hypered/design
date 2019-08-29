@@ -6,7 +6,7 @@ function Layout(props) {
   return (
     <div className="pa4">
       <Nav></Nav>
-      {props.children}
+      <main>{props.children}</main>
     </div>
   );
 }
