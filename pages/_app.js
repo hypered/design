@@ -1,5 +1,5 @@
 import React from "react";
-import App, { Container } from "next/app";
+import App from "next/app";
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
 import { normalize } from "polished";
@@ -46,7 +46,7 @@ class MyApp extends App {
     const { Component, pageProps } = this.props;
 
     return (
-      <Container>
+      <>
         <Head>
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link
@@ -59,7 +59,7 @@ class MyApp extends App {
         <GlobalStyle />
         <InterFontCSS />
         <Component {...pageProps} />
-      </Container>
+      </>
     );
   }
 }
