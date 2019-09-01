@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, H1, H2, P } from "../components";
+import { Layout, H1, H2, P } from "../../components";
 
 const posts = [
   {
