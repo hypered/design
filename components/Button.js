@@ -8,4 +8,16 @@ function Button(props) {
   );
 }
 
-export { Button };
+function ButtonDisabled(props) {
+  return (
+    <button
+      className="button-reset ph4 pv3 bg-gray white bn"
+      disabled
+      {...props}
+    >
+      {props.children}
+    </button>
+  );
+}
+
+export { Button, ButtonDisabled };

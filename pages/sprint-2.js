@@ -4,6 +4,7 @@ import {
   Layout,
   Input,
   Button,
+  ButtonDisabled,
   Table,
   TH1,
   TH2,
@@ -99,13 +100,25 @@ function Sprint2() {
         </div>
 
         <h3>Button</h3>
-        <Button>Submit</Button>
+        <div className="flex">
+          <div className="mr3">
+            <Button>Submit</Button>
+          </div>
+          <div className="mr3">
+            <ButtonDisabled>Submit</ButtonDisabled>
+          </div>
+        </div>
 
         <h3>Login Form</h3>
         <div className="mw6">
           <form className="pa4 bg-white ba b--black bw1">
             <h2>Log in to your account</h2>
-            <Input type="email" label="Email" placeholder="john@doe.com" />
+            <Input
+              type="email"
+              label="Email"
+              placeholder="john@doe.com"
+              message="You have entered an invalid email"
+            />
             <Input type="password" label="Password" placeholder="" />
             <div className="flex flex-wrap justify-between">
               <a
