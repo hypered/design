@@ -12,7 +12,7 @@ function Input(props) {
           placeholder={props.placeholder}
           {...props}
         />
-        <div class="mv1 h1">{props.message}</div>
+        <div class="mv1 h1 red fw5">{props.message}</div>
       </div>
     </div>
   );
