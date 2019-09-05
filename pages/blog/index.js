@@ -26,9 +26,9 @@ const posts = [
 function Blog(props) {
   return (
     <Layout>
-      <section className="mw7">
+      <section>
         <H1>Blog</H1>
-        <ul className="list pa0 measure-wide mt4">
+        <ul className="list pa0">
           {posts.map(post => {
             return (
               <li className="mb4">
