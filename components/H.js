@@ -1,19 +1,19 @@
 import React from "react";
 
 function H1(props) {
-  return <h1 class="f1 lh-title mv2">{props.children}</h1>;
+  return <h1 class="f1 lh-title mv2 tracked-tight">{props.children}</h1>;
 }
 
 function H2(props) {
-  return <h2 class="f2 lh-title mv2">{props.children}</h2>;
+  return <h2 class="f2 lh-title mv2 tracked-tight">{props.children}</h2>;
 }
 
 function H3(props) {
-  return <h3 class="f3 lh-title mv2">{props.children}</h3>;
+  return <h3 class="f3 lh-title mv2 tracked-tight">{props.children}</h3>;
 }
 
 function H4(props) {
-  return <h4 class="f4 lh-title mv2">{props.children}</h4>;
+  return <h4 class="f4 lh-title mv2 tracked-tight">{props.children}</h4>;
 }
 
 function H5(props) {
