@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { Layout, P } from "../../../components";
+import { Layout, P, H1 } from "../../../components";
 
 function NavTitle(props) {
   return <h3 className="f5 ttu mv1">{props.children}</h3>;
@@ -131,7 +131,7 @@ function Article(props) {
   return (
     <section className="w-100 w-75-m w-75-l ph3">
       <article>
-        <h1 className="f1 lh-title mv0">not-os</h1>
+        <H1>not-os</H1>
         <P>
           not-os is a minimal OS based on the Linux kernel, coreutils, runit,
           and Nix. It is also the build script, written in Nix expressions, to
