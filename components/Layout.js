@@ -4,7 +4,7 @@ import { Nav } from "../components";
 
 function Layout(props) {
   return (
-    <div className="pa4">
+    <div className="mw8 center pa4">
       <Nav></Nav>
       <main>{props.children}</main>
     </div>
