@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, H1, H2, P } from "../../components";
+import { Layout, H1, H3, P } from "../../components";
 
 const posts = [
   {
@@ -32,7 +32,7 @@ function Blog(props) {
           {posts.map(post => {
             return (
               <li className="mb4">
-                <H2>{post.title}</H2>
+                <H3>{post.title}</H3>
                 <div>{post.date}</div>
                 <P>{post.summary}</P>
               </li>
