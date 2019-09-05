@@ -11,11 +11,15 @@ function NavLink(props) {
 
 function Nav() {
   return (
-    <header className="mb4">
+    <header className="flex mb4">
       <nav className="flex align-items-center lh-copy">
         <NavLink href="/">noteed.com</NavLink>
         <NavLink href="/blog">blog</NavLink>
         <NavLink href="/projects/not-os">not-os</NavLink>
+      </nav>
+
+      <nav className="flex align-items-center lh-copy ml4">
+        <NavLink href="/sprint-2">sprint-2</NavLink>
       </nav>
     </header>
   );
