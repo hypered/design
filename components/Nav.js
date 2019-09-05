@@ -11,7 +11,7 @@ function NavLink(props) {
 
 function Nav() {
   return (
-    <header>
+    <header className="mb4">
       <nav className="flex align-items-center lh-copy">
         <NavLink href="/">noteed.com</NavLink>
         <NavLink href="/blog">blog</NavLink>
