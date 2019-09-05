@@ -93,14 +93,27 @@ function Sprint2() {
       </section>
 
       <section>
+        <h3>Input</h3>
+        <div className="mw5">
+          <Input type="text" label="Full Name" placeholder="John Doe" />
+        </div>
+
+        <h3>Button</h3>
+        <Button>Submit</Button>
+
         <h3>Login Form</h3>
         <div className="mw6">
-          <form>
-            <h2>Login</h2>
+          <form className="pa4 bg-white ba b--black bw1">
+            <h2>Log in to your account</h2>
             <Input type="email" label="Email" placeholder="john@doe.com" />
             <Input type="password" label="Password" placeholder="" />
             <div className="flex flex-wrap justify-between">
-              <div>Forgot Password</div>
+              <a
+                className="link no-underline black hover-blue self-center"
+                href="#"
+              >
+                Forgot Password
+              </a>
               <Button>Log In —></Button>
             </div>
           </form>
