@@ -1,6 +1,20 @@
 import React from "react";
+import styled from "styled-components";
 
 import { Layout, H1, P } from "../../../components";
+
+const EditablePre = styled.pre.attrs(props => ({
+  contentEditable: true,
+  spellCheck: false,
+  className: "pv3 ph3 mv0 relative pre overflow-auto",
+}))`
+  &[contenteditable="true"]:active,
+  &[contenteditable="true"]:focus {
+    background: #fff;
+    box-shadow: 0 0 0 1px #96ccff;
+    outline: none;
+  }
+`;
 
 function Hello(props) {
   return (
@@ -43,12 +57,7 @@ h1100644 blob a68af143f8ca45ddeaf13f45968abb4dfdcf6040     513	layla.json
           </div>
 
           <code>
-            <pre
-              id="c1"
-              contentEditable="true"
-              spellCheck="false"
-              className="pv3 ph3 mv0 relative pre overflow-auto"
-            >
+            <EditablePre>
               {`[
  {"id":1,"x":127,"y":99,"text":"Git","size":32},
  {"id":2,"x":127,"y":151,"text":"shape-2","size":16},
@@ -60,23 +69,10 @@ h1100644 blob a68af143f8ca45ddeaf13f45968abb4dfdcf6040     513	layla.json
   {"decoration":"rect","id":8,"x":664,"y":255,"text":"github","size":16}
 ]
 `}
-            </pre>
+            </EditablePre>
           </code>
         </form>
       </article>
-
-      <style jsx>
-        {`
-          [contenteditable="true"] {
-          }
-          [contenteditable="true"]:active,
-          [contenteditable="true"]:focus {
-            background: #fff;
-            box-shadow: 0 0 0 1px #96ccff;
-            outline: none;
-          }
-        `}
-      </style>
     </Layout>
   );
 }
