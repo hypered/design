@@ -1,6 +1,15 @@
 import React from "react";
+import Link from "next/link";
 
 import { Layout, H1, H4, P } from "../../components";
+
+function BlogLink(props) {
+  return (
+    <Link href="/blog/starting-with-nixops-1">
+      <a className="link no-underline black hover-blue">{props.children}</a>
+    </Link>
+  );
+}
 
 const posts = [
   {
@@ -32,9 +41,13 @@ function Blog(props) {
           {posts.map(post => {
             return (
               <li className="mb4">
-                <H4>{post.title}</H4>
-                <div>{post.date}</div>
-                <P>{post.summary}</P>
+                <Link href="/blog/starting-with-nixops-1">
+                  <BlogLink>
+                    <H4>{post.title}</H4>
+                    <div>{post.date}</div>
+                    <P>{post.summary}</P>
+                  </BlogLink>
+                </Link>
               </li>
             );
           })}
