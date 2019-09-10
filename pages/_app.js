@@ -4,47 +4,34 @@ import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
 import { normalize } from "polished";
 
-const Normalize = createGlobalStyle`${normalize()}`;
-
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
 
-  body {
-    background: #ffffff;
-    color: #000000;
-  	-webkit-font-smoothing: antialiased;
-  	-moz-osx-font-smoothing: grayscale;
-  }
-`;
-
-const InterFontCSS = createGlobalStyle`
   @import url('https://rsms.me/inter/inter.css');
+
   html {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
+
   @supports (font-variation-settings: normal) {
     html {
       font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif;
     }
   }
+
+  body {
+    background: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 `;
 
-class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
-    return { pageProps };
-  }
-
+export default class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
-
     return (
       <>
         <Head>
@@ -55,13 +42,9 @@ class MyApp extends App {
           />
         </Head>
 
-        <Normalize />
         <GlobalStyle />
-        <InterFontCSS />
         <Component {...pageProps} />
       </>
     );
   }
 }
-
-export default MyApp;
