@@ -5,7 +5,7 @@ import { Layout } from "../../components";
 
 function WaveguideArticle(props) {
   return (
-    <article className="measure-wide">
+    <article className="">
       <h1 className="f2 lh-title mv2">Waveguide</h1>
       <p>
         Waveguide builds and/or runs a Nix expression on a freshly provisioned
@@ -88,7 +88,7 @@ function AsideLink(props) {
 
 function WaveguideAside(props) {
   return (
-    <aside className="w-100 w-third-m w-third-l ph3 mt0 mt5-m mt5-l">
+    <aside className="w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l">
       <div className="nl3 nr3">
         <AsideTitle>Latest Runs</AsideTitle>
         <ul className="bg-near-white list pa3">
@@ -157,14 +157,12 @@ function WaveguideAside(props) {
 function Waveguide(props) {
   return (
     <Layout>
-      <div className="mw7">
-        <div className="flex flex-wrap nl3 nr3">
-          <section className="w-100 w-two-thirds-m w-two-thirds-l ph3">
-            <WaveguideArticle />
-          </section>
+      <div className="flex flex-wrap nl3 nr3">
+        <section className="w-100 w-80-m w-80-l ph3">
+          <WaveguideArticle />
+        </section>
 
-          <WaveguideAside />
-        </div>
+        <WaveguideAside />
       </div>
     </Layout>
   );

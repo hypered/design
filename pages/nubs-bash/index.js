@@ -5,7 +5,7 @@ import { Layout } from "../../components";
 function NubsBash(props) {
   return (
     <Layout>
-      <div className="measure-wide">
+      <article>
         <h1>Starting with NixOps (and thus Nix and NixOS), part 1</h1>
         <p>
           While learning the Nix ecosystem and trying to use it, I found it a
@@ -72,7 +72,7 @@ $ cat do.nix
           and provision it (you can create API tokens at
           https://cloud.digitalocean.com/settings/api/tokens):
         </p>
-      </div>
+      </article>
     </Layout>
   );
 }
