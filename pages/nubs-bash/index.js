@@ -1,28 +1,28 @@
 import React from "react";
 
-import { Layout } from "../../components";
+import { Layout, H1, H2, P } from "../../components";
 
 function NubsBash(props) {
   return (
     <Layout>
       <article>
-        <h1>Starting with NixOps (and thus Nix and NixOS), part 1</h1>
-        <p>
+        <H1>Starting with NixOps (and thus Nix and NixOS), part 1</H1>
+        <P>
           While learning the Nix ecosystem and trying to use it, I found it a
           bit more harder than I thought to achieve what I wanted. In this post
           and the next one, I’m documenting what I learned, partly for myself,
           partly to share with other people that would like to follow the same
           path.
-        </p>
-        <p>
+        </P>
+        <P>
           The prerequesite to follow along this post is to install Nix and
           NixOps.
-        </p>
-        <h2 id="basics">Basics</h2>
-        <p>
+        </P>
+        <H2 id="basics">Basics</H2>
+        <P>
           The basics of Nix are actually very well documented elsewhere; in
           particular:
-        </p>
+        </P>
         <ul>
           <li>
             <a href="http://nixos.org/nix/manual/">The Nix manual</a>
@@ -38,12 +38,12 @@ function NubsBash(props) {
             </a>
           </li>
         </ul>
-        <h2 id="running-example">Running example</h2>
-        <p>
+        <H2 id="running-example">Running example</H2>
+        <P>
           As as a starting point, here I give a <code>do.nix</code> file
           suitable for the <code>nixops</code> executable. I will use it in the
           rest of the post as a running example:
-        </p>
+        </P>
         <pre>
           <code>{`
 $ cat do.nix
@@ -61,17 +61,17 @@ $ cat do.nix
 }
   `}</code>
         </pre>
-        <p>
+        <P>
           That file contains a single Nix expression and is enough to get a
           machine up and running on Digital Ocean. (It seems the support for the
           AWS environment is much more mature but for what this post is about,
           Digital Ocean support is fine.)
-        </p>
-        <p>
+        </P>
+        <P>
           Here is how you instruct NixOps to use that file to spin up a machine
           and provision it (you can create API tokens at
           https://cloud.digitalocean.com/settings/api/tokens):
-        </p>
+        </P>
       </article>
     </Layout>
   );

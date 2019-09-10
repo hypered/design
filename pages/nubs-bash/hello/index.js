@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Layout } from "../../../components";
+import { Layout, H1, P } from "../../../components";
 
 function Hello(props) {
   return (
     <Layout>
       <article>
-        <h1 className="f1 lh-title mv0">hello</h1>
+        <H1 className="f1 lh-title mv0">hello</H1>
 
         <code>
           <pre className="pre overflow-auto">
@@ -15,17 +15,17 @@ function Hello(props) {
 100644 blob 3d1b4caeea857ba5904176a3747bce4f21308903     111	example-2.json
 100644 blob b97348f9a83a7b8524092e5023645d7d5cfffc98      88	example-3.json
 100644 blob 607e191c3e33779a370948a5f17ee5d57b625efb     568	git.json
-100644 blob a68af143f8ca45ddeaf13f45968abb4dfdcf6040     513	layla.json
+h1100644 blob a68af143f8ca45ddeaf13f45968abb4dfdcf6040     513	layla.json
 100644 blob 5596e6e27e686c21ae2f258ec79fd32a0527e988     321	spawn.sh
 100644 blob bb7f9d263a7691eb76690f8ab4912c1a95892bdc     264	texts.json
 `}
           </pre>
         </code>
 
-        <p>
+        <P>
           Waveguide builds and/or runs a Nix expression on a freshly provisioned
           machine.
-        </p>
+        </P>
 
         <form className="nl3 nr3">
           <div className="flex flex-wrap items-center bt bb justify-between pv2 mh3">
