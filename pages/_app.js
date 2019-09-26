@@ -2,7 +2,6 @@ import React from "react";
 import App from "next/app";
 import { createGlobalStyle } from "styled-components";
 import Head from "next/head";
-import { normalize } from "polished";
 
 const GlobalStyle = createGlobalStyle`
   * {
