@@ -25,7 +25,7 @@ function NavLink(props) {
 
 function Nav(props) {
   return (
-    <nav className="w-25 pv3">
+    <nav className="order-1 order-0-m order-0-l w-100 w-25-m w-25-l pv3 ph3">
       <NavTitle>Intro</NavTitle>
       <NavUL>
         <NavLI>
@@ -129,7 +129,7 @@ function Nav(props) {
 
 function Article(props) {
   return (
-    <section className="w-100 w-75-m w-75-l ph3">
+    <section className="order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3">
       <article>
         <H1>not-os</H1>
         <P>
@@ -407,7 +407,7 @@ function NavSection(props) {
 function NotOS(props) {
   return (
     <Layout>
-      <div className="flex">
+      <div className="flex flex-wrap nl3 nr3">
         <Nav />
         <Article />
       </div>
