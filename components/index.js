@@ -7,3 +7,4 @@ export * from "./Input";
 export * from "./Table";
 export * from "./Button";
 export * from "./Alert";
+export * from "./Code";

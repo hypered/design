@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, H1, H2, P } from "../../components";
+import { Layout, H1, H2, P, Code } from "../../components";
 
 function NubsBash(props) {
   return (
@@ -44,9 +44,7 @@ function NubsBash(props) {
           suitable for the <code>nixops</code> executable. I will use it in the
           rest of the post as a running example:
         </P>
-        <pre>
-          <code>{`
-$ cat do.nix
+        <Code>{`$ cat do.nix
 {
   network.description = &quot;Some machines (actually just one)&quot;;
 
@@ -58,9 +56,8 @@ $ cat do.nix
     deployment.digitalOcean.size = &quot;512mb&quot;;
 
   }; # machine-1
-}
-  `}</code>
-        </pre>
+}`}</Code>
+
         <P>
           That file contains a single Nix expression and is enough to get a
           machine up and running on Digital Ocean. (It seems the support for the

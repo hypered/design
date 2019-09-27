@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Layout, H1, H2, P } from "../../components";
+import { Layout, H1, H2, P, Code } from "../../components";
 
 function Nixops() {
   return (
@@ -46,8 +46,7 @@ function Nixops() {
           rest of the post as a running example:
         </P>
 
-        <pre>
-          <code>{`$ cat do.nix
+        <Code>{`$ cat do.nix
 {
   network.description = &quot;Some machines (actually just one)&quot;;
 
@@ -59,8 +58,7 @@ function Nixops() {
     deployment.digitalOcean.size = &quot;512mb&quot;;
 
   }; # machine-1
-}`}</code>
-        </pre>
+}`}</Code>
 
         <P>
           That file contains a single Nix expression and is enough to get a
@@ -75,8 +73,7 @@ function Nixops() {
           https://cloud.digitalocean.com/settings/api/tokens):
         </P>
 
-        <pre>
-          <code>{`$ nixops create -d do do.nix
+        <Code>{`$ nixops create -d do do.nix
 $ nixops list
 +----------------+------+------------------------+------------+--------------+
 | UUID           | Name | Description            | # Machines |     Type     |
@@ -96,8 +93,7 @@ Nix expressions: /home/thu/projects/web/nixops/do.nix
 +-----------+---------------+---------------------+-------------+------------+
 $ DIGITAL_OCEAN_AUTH_TOKEN=xxxx nixops deploy -d do
 machine-1&gt; creating droplet ...
-...`}</code>
-        </pre>
+...`}</Code>
 
         <P>
           This creates a “deployment” using our expression: a mean for NixOps to
@@ -113,8 +109,7 @@ machine-1&gt; creating droplet ...
           should be able to SSH into the machine:
         </P>
 
-        <pre>
-          <code>{`
+        <Code>{`
 machine-1&gt; activation finished successfully
 do&gt; deployment finished successfully
 $ nixops ssh -d do machine-1
@@ -137,8 +132,7 @@ Nix expressions: /home/thu/projects/web/nixops/do.nix
 +-----------+-----------------+--------------+-------------+----------------+
 | machine-1 | Up / Up-to-date | digitalOcean |             | 188.226.174.95 |
 | ssh-key   | Up / Up-to-date | ssh-keypair  |             |                |
-+-----------+-----------------+--------------+-------------+----------------+`}</code>
-        </pre>
++-----------+-----------------+--------------+-------------+----------------+`}</Code>
 
         <H2 id="deploying-changes">Deploying changes</H2>
         <P>
@@ -149,10 +143,8 @@ Nix expressions: /home/thu/projects/web/nixops/do.nix
         </P>
         <H2 id="destroying-the-machine">Destroying the machine</H2>
         <P>You can destroy the droplet with the following command:</P>
-        <pre>
-          <code>{`$ DIGITAL_OCEAN_AUTH_TOKEN=xxxx nixops destroy -d do
-machine-1&gt; destroying droplet 57418645`}</code>
-        </pre>
+        <Code>{`$ DIGITAL_OCEAN_AUTH_TOKEN=xxxx nixops destroy -d do
+machine-1&gt; destroying droplet 57418645`}</Code>
         <H2 id="next">Next</H2>
         <P>
           <a href="starting-with-nixops-2.html">Part 2 is here.</a>
