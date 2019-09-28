@@ -1,0 +1,11 @@
+.inter {
+  @import url("https://rsms.me/inter/inter.css");
+
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  @supports (font-variation-settings: normal) {
+    html {
+      font-family: "Inter var", -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+  }
+}
