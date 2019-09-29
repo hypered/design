@@ -1,4 +1,5 @@
 import { configure, addDecorator } from "@storybook/react";
+import { withStaticMarkup } from "storybook-react-to-static-markup";
 import { withInfo } from "@storybook/addon-info";
 
 // automatically import all files ending in *.stories.js
@@ -11,6 +12,7 @@ configure(
 );
 
 addDecorator(
+  withStaticMarkup,
   withInfo({
     inline: true,
   }),
