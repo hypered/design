@@ -4,6 +4,7 @@ import {
   ButtonPrimaryDisabled,
   ButtonSecondary,
   ButtonSecondaryDisabled,
+  ButtonFullWidth,
 } from "../../components";
 
 export default {
@@ -22,4 +23,8 @@ export const secondary = () => (
 
 export const secondaryDisabled = () => (
   <ButtonSecondaryDisabled>Primary Button</ButtonSecondaryDisabled>
+);
+
+export const fullWidth = () => (
+  <ButtonFullWidth>Primary Button</ButtonFullWidth>
 );

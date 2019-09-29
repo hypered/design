@@ -40,9 +40,18 @@ function ButtonSecondaryDisabled(props) {
   );
 }
 
+function ButtonFullWidth(props) {
+  return (
+    <button className="inter f5 button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
+      {props.children}
+    </button>
+  );
+}
+
 export {
   ButtonPrimary,
   ButtonPrimaryDisabled,
   ButtonSecondary,
   ButtonSecondaryDisabled,
+  ButtonFullWidth,
 };
