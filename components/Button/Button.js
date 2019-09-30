@@ -4,7 +4,7 @@ import "../../static/css/tachyons.css";
 
 function ButtonPrimary(props) {
   return (
-    <button className="inter f5 button-reset ph4 pv3 bg-black white ba bw1 b--black">
+    <button className="f5 button-reset ph4 pv3 bg-black white ba bw1 b--black">
       {props.children}
     </button>
   );
@@ -13,7 +13,7 @@ function ButtonPrimary(props) {
 function ButtonPrimaryDisabled(props) {
   return (
     <button
-      className="inter button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
+      className="button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
       disabled
     >
       {props.children}
@@ -23,7 +23,7 @@ function ButtonPrimaryDisabled(props) {
 
 function ButtonSecondary(props) {
   return (
-    <button className="inter button-reset ph4 pv3 bg-white black ba b--black bw1">
+    <button className="button-reset ph4 pv3 bg-white black ba b--black bw1">
       {props.children}
     </button>
   );
@@ -32,7 +32,7 @@ function ButtonSecondary(props) {
 function ButtonSecondaryDisabled(props) {
   return (
     <button
-      className="inter button-reset ph4 pv3 bg-white black ba b--black bw1 o-50"
+      className="button-reset ph4 pv3 bg-white black ba b--black bw1 o-50"
       disabled
     >
       {props.children}
@@ -42,7 +42,7 @@ function ButtonSecondaryDisabled(props) {
 
 function ButtonFullWidth(props) {
   return (
-    <button className="inter f5 button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
+    <button className="f5 button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
       {props.children}
     </button>
   );
