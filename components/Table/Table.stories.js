@@ -20,8 +20,8 @@ export const Default = () => (
       </tr>
     </thead>
     <tbody>
-      {[...Array(_rows)].map(row => (
-        <tr>
+      {[...Array(_rows)].map((row, i) => (
+        <tr key={i}>
           <TD1>Red</TD1>
           <TD1>Green</TD1>
           <TD1>Blue</TD1>
@@ -49,8 +49,8 @@ export const Compact = () => (
       </tr>
     </thead>
     <tbody>
-      {[...Array(_rows)].map(row => (
-        <tr>
+      {[...Array(_rows)].map((row, i) => (
+        <tr key={i}>
           <TD2>Red</TD2>
           <TD2>Green</TD2>
           <TD2>Blue</TD2>
