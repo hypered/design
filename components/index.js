@@ -8,3 +8,4 @@ export * from "./Table";
 export * from "./Button/Button";
 export * from "./Alert";
 export * from "./Code";
+export * from "./Form/Form";
