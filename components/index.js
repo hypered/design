@@ -3,7 +3,7 @@ export * from "./Footer";
 export * from "./Layout";
 export * from "./H";
 export * from "./P";
-export * from "./Input";
+export * from "./Input/Input";
 export * from "./Table";
 export * from "./Button/Button";
 export * from "./Alert";
