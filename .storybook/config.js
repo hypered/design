@@ -1,6 +1,7 @@
 import { configure, addDecorator } from "@storybook/react";
 import { withStaticMarkup } from "storybook-react-to-static-markup";
-import { withInfo } from "@storybook/addon-info";
+import "../static/css/styles.css";
+import "../static/css/tachyons.css";
 
 // automatically import all files ending in *.stories.js
 configure(
@@ -11,9 +12,10 @@ configure(
   module,
 );
 
-addDecorator(
-  withStaticMarkup,
-  withInfo({
-    inline: true,
-  }),
-);
+addDecorator(withStaticMarkup);
+
+addDecorator(storyFn => (
+  <div className="inter" style={{ padding: "0" }}>
+    {storyFn()}
+  </div>
+));
