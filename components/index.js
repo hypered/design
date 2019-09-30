@@ -6,6 +6,6 @@ export * from "./P";
 export * from "./Input/Input";
 export * from "./Table";
 export * from "./Button/Button";
-export * from "./Alert";
+export * from "./Banner/Banner";
 export * from "./Code";
 export * from "./Form/Form";
