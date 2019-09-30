@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Input, ButtonPrimary } from "../../components";
 
 export const LoginForm = () => (
