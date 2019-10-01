@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Nav, Footer } from "../components";
+import { Nav, Footer } from "../../components";
 
 function Layout(props) {
   return (
