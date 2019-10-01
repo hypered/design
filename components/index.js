@@ -1,4 +1,5 @@
 export * from "./Nav/Nav";
+export * from "./Sidebar/Sidebar";
 export * from "./Footer/Footer";
 export * from "./Layout/Layout";
 export * from "./Typography/Typography";
