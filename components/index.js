@@ -6,5 +6,5 @@ export * from "./Input/Input";
 export * from "./Table/Table";
 export * from "./Button/Button";
 export * from "./Banner/Banner";
-export * from "./Code";
+export * from "./Code/Code";
 export * from "./Form/Form";
