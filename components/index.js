@@ -1,6 +1,6 @@
 export * from "./Nav/Nav";
-export * from "./Footer";
 export * from "./Layout";
+export * from "./Footer/Footer";
 export * from "./Typography/Typography";
 export * from "./Input/Input";
 export * from "./Table/Table";
