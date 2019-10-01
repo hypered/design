@@ -1,7 +1,6 @@
-import React from "react";
 import Link from "next/link";
 
-const NavLink = () => (
+const NavLink = props => (
   <Link href={props.href}>
     <a className="link mr3 black hover-blue">{props.children}</a>
   </Link>
