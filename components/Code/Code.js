@@ -25,6 +25,19 @@ const EditablePre = props => (
   </EditablePreStyled>
 );
 
+export const CodeToolbar = props => (
+  <div className="flex flex-wrap items-center bt bb justify-between pv2 mh3">
+    <div>show fetchgit:README.md</div>
+    <div>
+      <input
+        type="submit"
+        value="Save"
+        className="button-reset bg-black ph3 pv2 white br2 bn"
+      />
+    </div>
+  </div>
+);
+
 export const Code = props => (
   <>
     {props.editable ? (
