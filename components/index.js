@@ -6,6 +6,7 @@ export * from "./Layout/Layout";
 export * from "./Typography/Typography";
 export * from "./Input/Input";
 export * from "./Table/Table";
+export * from "./NavBlock/NavBlock";
 export * from "./Button/Button";
 export * from "./Banner/Banner";
 export * from "./Code/Code";
