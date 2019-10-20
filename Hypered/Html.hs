@@ -125,3 +125,14 @@ aside = do
             ! A.class_ "black hover-blue"
             ! A.href "../run/263/provisioning.html" $
             "&rarr; #263"
+
+-- | Green variant of a banner.
+bannerGreen = banner "bg-green"
+
+-- | Yellow variant of a banner.
+bannerYellow = banner "bg-yellow"
+
+-- | Red variant of a banner.
+bannerRed = banner "bg-red"
+
+banner bg = H.div ! A.class_ (H.toValue (bg ++ " pa3 white tc fw6 mv3"))
