@@ -5,6 +5,10 @@
 
 module Main where
 
+import Text.Blaze.Html5 (Html, (!))
+import qualified Text.Blaze.Html5 as H
+import qualified Text.Blaze.Html5.Attributes as A
+
 import Hypered.Html
   ( bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
@@ -18,7 +22,18 @@ main = do
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
-  generate "index.html" "Hypered style guide" navigation
+  generate "index.html" "Hypered style guide" $ \path -> do
+    navigation path
+    H.ul $ do
+      H.li $ H.a ! A.href "banner--green.html" $ "Banner, green"
+      H.li $ H.a ! A.href "banner--yellow.html" $ "Banner, yellow"
+      H.li $ H.a ! A.href "banner--red.html" $ "Banner, red"
+
+      H.li $ H.a ! A.href "button--primary.html" $ "Button, primary"
+      H.li $ H.a ! A.href "button--primary-disabled.html" $ "Button, primary disabled"
+      H.li $ H.a ! A.href "button--secondary.html" $ "Button, secondary"
+      H.li $ H.a ! A.href "button--secondary-disabled.html" $ "Button, secondary disabled"
+      H.li $ H.a ! A.href "button--full-width.html" $ "Button, full width"
 
   -- Banner
 
