@@ -14,7 +14,7 @@ import qualified Text.Blaze.Html5.Attributes as A
 import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled
+  , buttonSecondaryDisabled, footer
   , generate, navigation)
 
 
@@ -69,3 +69,8 @@ main = do
 
   generate "code-block.html" "Hypered style guide - Code block"
     (const codeBlock)
+
+  -- Footer
+
+  generate "footer.html" "Hypered style guide - Footer"
+    (const footer)

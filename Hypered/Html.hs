@@ -169,3 +169,8 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
   "// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
+
+footer =
+  H.footer ! A.class_ "pv4" $
+    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
+      "© Võ Minh Thu, 2017-2019."
