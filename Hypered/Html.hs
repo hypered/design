@@ -21,6 +21,7 @@ generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
 generate path title body = do
   generateHtml Inter "generated/min" path title (body path)
   prettyHtml Inter "generated/pretty" path title (body path)
+  partialHtml Inter "generated/partial" path title (body path)
 
 
 ------------------------------------------------------------------------------
@@ -35,6 +36,14 @@ prettyHtml font base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
     hPutStr h . Pretty.renderHtml $ document font path title body
+
+-- | Same as prettyHtml but doesn't wrap the content to create a full
+-- standalone HTML document.
+partialHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
+partialHtml font base path title body = do
+  createDirectoryIfMissing True (takeDirectory (base </> path))
+  withFile (base </> path) WriteMode $ \h ->
+    hPutStr h . Pretty.renderHtml $ body
 
 
 ------------------------------------------------------------------------------

@@ -1,5 +1,7 @@
 -- | This program generates static HTML pages matching the content of the
--- manually-created guide.html.
+-- Storybook component explorer. The generated HTML files are created in the
+-- generated/ directory. They are available as production, pretty-printed, and
+-- partial HTML.
 
 {-# LANGUAGE OverloadedStrings #-}
 
