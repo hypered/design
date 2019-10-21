@@ -6,7 +6,10 @@
 module Main where
 
 import Hypered.Html
-  (bannerGreen, bannerRed, bannerYellow, generate, navigation)
+  ( bannerGreen, bannerRed, bannerYellow
+  , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
+  , buttonSecondaryDisabled
+  , generate, navigation)
 
 
 ------------------------------------------------------------------------------
@@ -25,3 +28,16 @@ main = do
     (const (bannerYellow "Something might be wrong."))
   generate "banner--red.html" "Hypered style guide - Banner"
     (const (bannerRed "Error, something is wrong."))
+
+  -- Button
+
+  generate "button--primary.html" "Hypered style guide - Button"
+    (const (buttonPrimary "Primary Button"))
+  generate "button--primary-disabled.html" "Hypered style guide - Button"
+    (const (buttonPrimaryDisabled "Primary Button"))
+  generate "button--secondary.html" "Hypered style guide - Button"
+    (const (buttonSecondary "Secondary Button"))
+  generate "button--secondary-disabled.html" "Hypered style guide - Button"
+    (const (buttonSecondaryDisabled "Secondary Button"))
+  generate "button--full-width.html" "Hypered style guide - Button"
+    (const (buttonFullWidth "Primary Button"))

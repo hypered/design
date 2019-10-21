@@ -136,3 +136,20 @@ bannerYellow = banner "bg-yellow"
 bannerRed = banner "bg-red"
 
 banner bg = H.div ! A.class_ (H.toValue (bg ++ " pa3 white tc fw6 mv3"))
+
+buttonPrimary = H.button
+  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black"
+
+buttonPrimaryDisabled = H.button
+  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
+  ! A.disabled ""
+
+buttonSecondary = H.button
+  ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black"
+
+buttonSecondaryDisabled = H.button
+  ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black o-50"
+  ! A.disabled ""
+
+buttonFullWidth = H.button
+  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black w-100"
