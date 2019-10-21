@@ -10,7 +10,7 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 import Hypered.Html
-  ( bannerGreen, bannerRed, bannerYellow
+  ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled
   , generate, navigation)
@@ -35,6 +35,8 @@ main = do
       H.li $ H.a ! A.href "button--secondary-disabled.html" $ "Button, secondary disabled"
       H.li $ H.a ! A.href "button--full-width.html" $ "Button, full width"
 
+      H.li $ H.a ! A.href "code-block.html" $ "Code block"
+
   -- Banner
 
   generate "banner--green.html" "Hypered style guide - Banner"
@@ -56,3 +58,8 @@ main = do
     (const (buttonSecondaryDisabled "Secondary Button"))
   generate "button--full-width.html" "Hypered style guide - Button"
     (const (buttonFullWidth "Primary Button"))
+
+  -- Code block
+
+  generate "code-block.html" "Hypered style guide - Code block"
+    (const codeBlock)

@@ -153,3 +153,10 @@ buttonSecondaryDisabled = H.button
 
 buttonFullWidth = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black w-100"
+
+-- TODO When pretty-printing the HTML, the first line within the code element
+-- is indented, which is not correct.
+codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
+  "// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
