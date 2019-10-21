@@ -20,11 +20,10 @@ import Hypered.Html
 main :: IO ()
 main = do
 
-  -- Horizontal navigation bar:
-  -- This is mostly header / nav / a, a, ...
-  generate "index.html" "Hypered style guide" $ \path -> do
-    navigation path
+  generate "index.html" "Hypered style guide" $ \_ -> do
     H.ul $ do
+      H.li $ H.a ! A.href "navigation.html" $ "Navigation"
+
       H.li $ H.a ! A.href "banner--green.html" $ "Banner, green"
       H.li $ H.a ! A.href "banner--yellow.html" $ "Banner, yellow"
       H.li $ H.a ! A.href "banner--red.html" $ "Banner, red"
@@ -36,6 +35,11 @@ main = do
       H.li $ H.a ! A.href "button--full-width.html" $ "Button, full width"
 
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
+
+  -- Horizontal navigation bar:
+  -- This is mostly header / nav / a, a, ...
+
+  generate "navigation.html" "Hypered style guide - Navigation" navigation
 
   -- Banner
 
