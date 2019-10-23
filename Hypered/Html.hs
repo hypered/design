@@ -19,28 +19,28 @@ import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 -- | Generate both the normal and pretty-printed HTML versions.
 generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
 generate path title body = do
-  generateHtml Inter "generated/min" path title (body path)
-  prettyHtml Inter "generated/pretty" path title (body path)
-  partialHtml Inter "generated/partial" path title (body path)
+  generateHtml defaultConfig "generated/min" path title (body path)
+  prettyHtml defaultConfig "generated/pretty" path title (body path)
+  partialHtml defaultConfig "generated/partial" path title (body path)
 
 
 ------------------------------------------------------------------------------
-generateHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
-generateHtml font base path title body = do
+generateHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
+generateHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    T.hPutStr h . renderHtml $ document font path title body
+    T.hPutStr h . renderHtml $ document config path title body
 
-prettyHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
-prettyHtml font base path title body = do
+prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
+prettyHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    hPutStr h . Pretty.renderHtml $ document font path title body
+    hPutStr h . Pretty.renderHtml $ document config path title body
 
 -- | Same as prettyHtml but doesn't wrap the content to create a full
 -- standalone HTML document.
-partialHtml :: Font -> FilePath -> FilePath -> Text -> Html -> IO ()
-partialHtml font base path title body = do
+partialHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
+partialHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
     hPutStr h . Pretty.renderHtml $ body
@@ -56,13 +56,28 @@ fontClass IbmPlex = "ibm-plex-sans"
 fontClass Inter = "inter"
 
 fontCss :: Font -> String
-fontCss IbmPlex = "static/css/ibm-plex.css"
-fontCss Inter = "static/css/inter.css"
+fontCss IbmPlex = "css/ibm-plex.css"
+fontCss Inter = "css/inter.css"
 
+data Config = Config
+  { cStaticPath :: FilePath
+  , cFont :: Font
+  }
+
+defaultConfig = Config
+  { cStaticPath = "static"
+  , cFont = Inter
+  }
 
 ------------------------------------------------------------------------------
-document :: Font -> FilePath -> Text -> Html -> Html
-document font path title body = do
+mkRelativize path = relativize
+  where
+    depth = length (splitPath path) - 1
+    relativize = (joinPath (replicate depth "..") </>)
+
+------------------------------------------------------------------------------
+document :: Config -> FilePath -> Text -> Html -> Html
+document Config{..} path title body = do
   let depth = length (splitPath path) - 1
       relativize = (joinPath (replicate depth "..") </>)
   H.docType
@@ -74,12 +89,12 @@ document font path title body = do
              ! A.content "width=device-width, initial-scale=1.0"
       H.style $ do
         mapM_ (\a -> H.toHtml ("@import url(" ++ relativize a ++ ");"))
-          [ fontCss font
-          , "static/css/tachyons.min.v4.11.1.css"
-          , "static/css/style.css"
+          [ cStaticPath </> fontCss cFont
+          , cStaticPath </> "css/tachyons.min.v4.11.1.css"
+          , cStaticPath </> "css/style.css"
           ]
 
-    H.body ! A.class_ (H.toValue (fontClass font ++ " lh-copy")) $
+    H.body ! A.class_ (H.toValue (fontClass cFont ++ " lh-copy")) $
       H.div ! A.class_ "mw9 center ph4" $
         body
 
