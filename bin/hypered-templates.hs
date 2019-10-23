@@ -21,3 +21,18 @@ main :: IO ()
 main = do
   prettyHtml config "generated/templates" "default.html" "$title$"
     ("$body$" >> footer)
+
+  -- TODO Currently reusing the default.html template.
+  prettyHtml config "generated/templates" "default-2-cols.html" "$title$"
+    ("$body$" >> footer)
+
+  -- TODO Currently reusing the default.html template.
+  prettyHtml config "generated/templates" "poster.html" "$title$"
+    ("$body$" >> footer)
+
+  -- We probably don't need the footer, navigation, and title partial
+  -- templates since they can be generated with the complete templates.
+
+  partialHtml config "generated/templates" "footer.html" "" footer
+  partialHtml config "generated/templates" "navigation.html" "" (navigation ".")
+  partialHtml config "generated/templates" "title.html" "" title
