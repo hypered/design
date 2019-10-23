@@ -10,6 +10,9 @@ A component explorer based on [Storybook](https://storybook.js.org/) is visible
 at
 [storybook-static.andyngo1.now.sh](https://storybook-static.andyngo1.now.sh/).
 
+The same components, but rendered using `blaze-html`, are visible at
+[hypered.github.io/design-system/components/](https://hypered.github.io/design-system/components/).
+
 A Next.js-based site to quickly experiment with the current design and new
 components is visible at
 [noteed-next.andyngo1.now.sh](https://noteed-next.andyngo1.now.sh/).
