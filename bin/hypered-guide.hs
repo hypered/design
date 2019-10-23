@@ -14,7 +14,7 @@ import qualified Text.Blaze.Html5.Attributes as A
 import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, footer
+  , buttonSecondaryDisabled, exampleSidebar, footer
   , generate, navigation)
 
 
@@ -37,6 +37,8 @@ main = do
       H.li $ H.a ! A.href "button--full-width.html" $ "Button, full width"
 
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
+
+      H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
@@ -74,3 +76,8 @@ main = do
 
   generate "footer.html" "Hypered style guide - Footer"
     (const footer)
+
+  -- Example usage
+
+  generate "example--sidebar.html" "Hypered style guide - Sidebar Example"
+    (const exampleSidebar)
