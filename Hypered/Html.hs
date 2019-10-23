@@ -94,8 +94,8 @@ document Config{..} path title body = do
           , cStaticPath </> "css/style.css"
           ]
 
-    H.body ! A.class_ (H.toValue (fontClass cFont ++ " lh-copy")) $
-      H.div ! A.class_ "mw9 center ph4" $
+    H.body ! A.class_ (H.toValue (fontClass cFont)) $
+      H.div ! A.class_ "mw9 center ph4 lh-copy" $
         body
 
 -- | Horizontal navigation at the top of a page.
@@ -125,6 +125,13 @@ wrap content = do
   H.main ! A.class_ "mw7" $
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $
       content
+
+-- | The footer, at the same level as both navigation and wrap.
+footer =
+  H.footer ! A.class_ "pv4" $
+    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
+      "© Võ Minh Thu, 2017-2019."
+
 
 -- | The main content, as a left column.
 section :: Html -> Html
@@ -184,10 +191,5 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
   "// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
-
-footer =
-  H.footer ! A.class_ "pv4" $
-    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
-      "© Võ Minh Thu, 2017-2019."
 
 title = H.title "Hypered"

@@ -9,7 +9,7 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 import Hypered.Html
-  ( footer, navigation, title, partialHtml, prettyHtml
+  ( footer, navigation, title, partialHtml, prettyHtml, wrap
   , Config(..), Font(Inter)
   )
 
@@ -20,15 +20,15 @@ config = Config "/static" Inter
 main :: IO ()
 main = do
   prettyHtml config "generated/templates" "default.html" "$title$"
-    ("$body$" >> footer)
+    (wrap "$body$" >> footer)
 
   -- TODO Currently reusing the default.html template.
   prettyHtml config "generated/templates" "default-2-cols.html" "$title$"
-    ("$body$" >> footer)
+    (wrap "$body$" >> footer)
 
   -- TODO Currently reusing the default.html template.
   prettyHtml config "generated/templates" "poster.html" "$title$"
-    ("$body$" >> footer)
+    (wrap "$body$" >> footer)
 
   -- We probably don't need the footer, navigation, and title partial
   -- templates since they can be generated with the complete templates.
