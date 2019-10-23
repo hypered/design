@@ -1,1 +1,19 @@
- html{overflow-y:scroll}pre{font-family:"DejaVu Sans Mono for Powerline",monospace;-webkit-font-smoothing:antialiased;font-size:1em}.hs-keyglyph{color:grey}.hs-layout{color:black}.hs-keyword{color:green}.hs-comment,.hs-comment a{color:blue}.hs-str,.hs-chr{color:red}.hs-keyword,.hs-conid,.hs-varid,.hs-conop,.hs-varop,.hs-num,.hs-cpp,.hs-sel,.hs-definition{}
+/* This is the hscolour.css file shipped with Haddock version 2.17.3
+ * modified to match Entrypoint style.
+ */
+html {
+  overflow-y: scroll;
+}
+
+pre {
+  font-family: "DejaVu Sans Mono for Powerline", monospace;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1em;
+}
+
+.hs-keyglyph {color: grey;}
+.hs-layout   {color: black;}
+.hs-keyword {color: green;}
+.hs-comment, .hs-comment a {color: blue;}
+.hs-str, .hs-chr {color: red;}
+.hs-keyword, .hs-conid, .hs-varid, .hs-conop, .hs-varop, .hs-num, .hs-cpp, .hs-sel, .hs-definition {}
