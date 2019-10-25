@@ -224,3 +224,36 @@ exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
   H.footer ! A.class_ "pv4" $
     H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
       "© Võ Minh Thu, 2017-2019."
+
+exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
+  H.header ! A.class_ "flex mb4" $
+    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+  H.main $ do
+    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+      H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
+        H.article $ do
+          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "If neither a list of attribute names or a command are given, "
+            "Waveguide instrospects the Nix expression and builds all the "
+            "found attributes."
+      H.aside ! A.class_ "w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l" $
+        H.div ! A.class_ "nl3 nr3" $ do
+          H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
+          H.ul ! A.class_ "bg-near-white list pa3" $ do
+            H.li ! A.class_ "pv1 bb b--black-10" $
+              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #001"
+            H.li ! A.class_ "pv1 bb b--black-10" $
+              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #002"
+            H.li ! A.class_ "pv1 bb b--black-10" $
+              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #003"
+            H.li ! A.class_ "pv1 bb b--black-10" $
+              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
+            H.li ! A.class_ "pv1 bb b--black-10" $
+              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
+  H.footer ! A.class_ "pv4" $
+    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
+      "© Võ Minh Thu, 2017-2019."
