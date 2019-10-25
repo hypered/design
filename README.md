@@ -34,3 +34,8 @@ There is also a custom Revealjs template that (should) match the design-system.
 
 The `docs/` directory is used because this repository can then use the GitHub
 Pages feature from the `master` branch.
+
+
+## Elsewhere
+
+- The [IBM design system](https://www.carbondesignsystem.com/) is open source.
