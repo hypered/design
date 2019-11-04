@@ -10,9 +10,9 @@ import {
   TH2,
   TD1,
   TD2,
-  AlertGreen,
-  AlertRed,
-  AlertYellow,
+  BannerGreen,
+  BannerRed,
+  BannerYellow,
 } from "../components";
 
 import data from "../data/bus-stops";
@@ -137,11 +137,11 @@ function Sprint2() {
         <h3>Alert Dialogs</h3>
 
         <div className="mw6">
-          <AlertGreen>You have successfully logged in.</AlertGreen>
-          <AlertRed>
+          <BannerGreen>You have successfully logged in.</BannerGreen>
+          <BannerRed>
             Uh-oh. You have entered the wrong email / password.
-          </AlertRed>
-          <AlertYellow>Your network seems to be down.</AlertYellow>
+          </BannerRed>
+          <BannerYellow>Your network seems to be down.</BannerYellow>
         </div>
       </section>
     </Layout>
