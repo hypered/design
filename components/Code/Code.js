@@ -6,7 +6,7 @@ const Pre = props => (
 
 const EditablePre = props => (
   <pre
-    className="pre editable-pre bg-woof pv3 ph3 mv0 overflow-auto"
+    className="pre editable-pre pv3 ph3 mv0 overflow-auto"
     contentEditable="true"
   >
     <code>{props.children}</code>
