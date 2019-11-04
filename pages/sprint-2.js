@@ -3,8 +3,8 @@ import React from "react";
 import {
   Layout,
   Input,
-  Button,
-  ButtonDisabled,
+  ButtonPrimary,
+  ButtonPrimaryDisabled,
   Table,
   TH1,
   TH2,
@@ -102,10 +102,10 @@ function Sprint2() {
         <h3>Button</h3>
         <div className="flex">
           <div className="mr3">
-            <Button>Submit</Button>
+            <ButtonPrimary>Submit</ButtonPrimary>
           </div>
           <div className="mr3">
-            <ButtonDisabled>Submit</ButtonDisabled>
+            <ButtonPrimaryDisabled>Submit</ButtonPrimaryDisabled>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ function Sprint2() {
               >
                 Forgot Password
               </a>
-              <Button>Log In —></Button>
+              <ButtonPrimary>Log In —></ButtonPrimary>
             </div>
           </form>
         </div>
