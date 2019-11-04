@@ -11,3 +11,4 @@ export * from "./Button/Button";
 export * from "./Banner/Banner";
 export * from "./Code/Code";
 export * from "./Form/Form";
+export * from "./BlockQuote/BlockQuote";
