@@ -249,6 +249,17 @@ Pages feature from the `master` branch.
 There is still old examples in the `docs/` directory.
 
 
+## xelatex PDF example
+
+In the `xelatex/` directory, run:
+
+```
+$ nix-build
+```
+
+The resulting PDF file is then `result/example.pdf`.
+
+
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
