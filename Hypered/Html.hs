@@ -119,6 +119,13 @@ navigation path = do
         , ("README.html",             "About")
         ]
 
+navigationNoteed =
+  H.header ! A.class_ "flex mb4" $
+    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+
 -- | The main content wrapper, at the same level as navigation.
 wrap :: Html -> Html
 wrap content = do
@@ -195,11 +202,7 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
 title = H.title "Hypered"
 
 exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
-  H.header ! A.class_ "flex mb4" $
-    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+  navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
       H.nav ! A.class_ "order-1 order-0-m order-0-l w-100 w-25-m w-25-l pv3 ph3" $ do
@@ -218,19 +221,13 @@ exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
         H.article $ do
           H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
           H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "not-os is a minimal OS based on the Linux kernel, coreutils, "
-            "runit, and Nix. It is also the build script, written in Nix "
+            "not-os is a minimal OS based on the Linux kernel, coreutils,"
+            "runit, and Nix. It is also the build script, written in Nix"
             "expressions, to build such OS."
-  H.footer ! A.class_ "pv4" $
-    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
-      "© Võ Minh Thu, 2017-2019."
+  footer
 
 exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
-  H.header ! A.class_ "flex mb4" $
-    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+  navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
       H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
@@ -254,6 +251,4 @@ exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  H.footer ! A.class_ "pv4" $
-    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
-      "© Võ Minh Thu, 2017-2019."
+  footer

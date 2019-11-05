@@ -41,6 +41,8 @@ main = do
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
 
+      H.li $ H.a ! A.href "example--template.html" $ "Example, template"
+
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
 
