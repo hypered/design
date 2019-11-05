@@ -106,7 +106,7 @@ navigation path = do
   H.header ! A.class_ "pv4" $
     H.nav ! A.class_ "flex align-items-center lh-copy" $
       mapM_ (\(a, b) ->
-        H.a ! A.class_ "mr3 link black hover-blue"
+        H.a ! A.class_ "link mr3 black hover-blue"
             ! A.href (H.toValue (relativize a)) $ b)
         [ (".",                       "Entrypoint")
         , ("projects/waveguide.html", "Waveguide")
