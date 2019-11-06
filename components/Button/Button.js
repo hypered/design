@@ -1,5 +1,5 @@
 export const ButtonPrimary = props => (
-  <button className="f5 button-reset ph4 pv3 bg-black white ba bw1 b--black">
+  <button className="button-reset ph4 pv3 bg-black white ba bw1 b--black">
     {props.children}
   </button>
 );
@@ -29,7 +29,7 @@ export const ButtonSecondaryDisabled = props => (
 );
 
 export const ButtonFullWidth = props => (
-  <button className="f5 button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
+  <button className="button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
     {props.children}
   </button>
 );
