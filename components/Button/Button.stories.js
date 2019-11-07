@@ -14,17 +14,17 @@ export default {
 export const primary = () => <ButtonPrimary>Primary Button</ButtonPrimary>;
 
 export const primaryDisabled = () => (
-  <ButtonPrimaryDisabled>Disabled</ButtonPrimaryDisabled>
+  <ButtonPrimaryDisabled>Primary Disabled</ButtonPrimaryDisabled>
 );
 
 export const secondary = () => (
-  <ButtonSecondary>Primary Button</ButtonSecondary>
+  <ButtonSecondary>Secondary Button</ButtonSecondary>
 );
 
 export const secondaryDisabled = () => (
-  <ButtonSecondaryDisabled>Primary Button</ButtonSecondaryDisabled>
+  <ButtonSecondaryDisabled>Secondary Disabled Button</ButtonSecondaryDisabled>
 );
 
 export const fullWidth = () => (
-  <ButtonFullWidth>Primary Button</ButtonFullWidth>
+  <ButtonFullWidth>Button Full Width</ButtonFullWidth>
 );
