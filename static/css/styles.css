@@ -4,6 +4,10 @@
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+.ff-tab-num {
+  font-feature-settings: "tnum" 1;
+}
+
 .editable-pre[contenteditable="true"]:active,
 .editable-pre[contenteditable="true"]:focus {
   background: #fff;
