@@ -210,11 +210,20 @@ wrapPost title content =
         -- I'll have to ask Andy how to achieve both in the same document.
       content
 
--- | The main content wrapper, at the same level as navigation.
+-- | The main content wrapper, at the same level as navigation and footer.
 wrap :: Html -> Html
 wrap content = do
   H.main ! A.class_ "mw7" $
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $
+      content
+
+-- TODO I'd like the two wrapper to match.
+-- Another wrapper, this time from the Next.js version of
+-- blog/starting-with-nixops-1.html.
+wrap' :: Html -> Html
+wrap' content =
+  H.main $
+    H.article $
       content
 
 -- | The footer, at the same level as both navigation and wrap.
