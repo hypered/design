@@ -21,3 +21,4 @@ export * from "./home/Gallery";
 export * from "./home/HeaderSection";
 export * from "./home/IntroductionSection";
 export * from "./home/ComponentsSection";
+export * from "./home/FooterSection";
