@@ -1,3 +1,4 @@
+import React from "react";
 import { Section, H1, P } from "../../components";
 
 export const IntroductionSection = props => (
