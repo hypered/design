@@ -8,13 +8,13 @@ import {
 
 function Home() {
   return (
-    <main className="mw8 center ph4">
+    <div className="mw8 center ph4">
       <HeaderSection />
 
       <IntroductionSection />
 
       <ComponentsSection />
-    </main>
+    </div>
   );
 }
 
