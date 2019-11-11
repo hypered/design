@@ -1,9 +1,21 @@
 import React from "react";
 
-import { Layout } from "../components";
+import {
+  HeaderSection,
+  IntroductionSection,
+  ComponentsSection,
+} from "../components";
 
 function Home() {
-  return <Layout>Hello world!</Layout>;
+  return (
+    <main className="mw8 center ph4">
+      <HeaderSection />
+
+      <IntroductionSection />
+
+      <ComponentsSection />
+    </main>
+  );
 }
 
 export default Home;
