@@ -15,6 +15,7 @@ export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
 
+export * from "./home/HomeLayout";
 export * from "./home/Section";
 export * from "./home/Divider";
 export * from "./home/Gallery";

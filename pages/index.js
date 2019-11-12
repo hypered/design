@@ -1,6 +1,7 @@
 import React from "react";
 
 import {
+  HomeLayout,
   HeaderSection,
   IntroductionSection,
   ComponentsSection,
@@ -9,7 +10,7 @@ import {
 
 function Home() {
   return (
-    <div className="mw8 center ph3 ph4-m ph4-l">
+    <HomeLayout>
       <HeaderSection />
 
       <IntroductionSection />
@@ -17,7 +18,7 @@ function Home() {
       <ComponentsSection />
 
       <FooterSection />
-    </div>
+    </HomeLayout>
   );
 }
 
