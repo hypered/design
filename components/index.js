@@ -22,5 +22,6 @@ export * from "./home/Divider";
 export * from "./home/Gallery";
 export * from "./home/HeaderSection";
 export * from "./home/GettingStartedSection";
+export * from "./home/GalleryPreviewSection";
 export * from "./home/ComponentsSection";
 export * from "./home/FooterSection";

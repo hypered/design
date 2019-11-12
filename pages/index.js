@@ -4,7 +4,7 @@ import {
   HomeLayout,
   HeaderSection,
   GettingStartedSection,
-  ComponentsSection,
+  GalleryPreviewSection,
 } from "../components";
 
 function Home() {
@@ -14,7 +14,7 @@ function Home() {
 
       <GettingStartedSection />
 
-      <ComponentsSection />
+      <GalleryPreviewSection />
     </HomeLayout>
   );
 }

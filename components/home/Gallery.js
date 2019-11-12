@@ -2,16 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 const OverlayStyled = styled.a.attrs(props => ({
-  className: "no-underline absolute absolute--fill bg-black-10",
+  className: "no-underline absolute absolute--fill",
 }))`
   opacity: 0;
 `;
 
 const Overlay = props => (
-  <OverlayStyled href="#">
-    <div className="absolute right-0 bottom-0 inline-flex bg-black white f6 fw6 pv2 ph3">
-      View Storybook &#8599;
-    </div>
+  <OverlayStyled href={props.href}>
+    {props.href ? (
+      <div className="absolute right-0 bottom-0 inline-flex bg-black white f6 fw6 pv2 ph3">
+        View Storybook &#8599;
+      </div>
+    ) : null}
   </OverlayStyled>
 );
 
@@ -25,10 +27,10 @@ const AspectRatioObject = styled.div.attrs(props => ({
 `;
 
 export const Gallery = props => (
-  <div className="db black no-underline w-100 w-50-m w-50-l ph3 mb4" href="#">
+  <div className="db black no-underline w-100 w-50-m w-50-l ph3 mb4">
     <div className="bg-white ba b--black aspect-ratio aspect-ratio--7x5 relative z-0">
       <AspectRatioObject>
-        <Overlay />
+        <Overlay href={props.href} />
         {props.children}
       </AspectRatioObject>
     </div>

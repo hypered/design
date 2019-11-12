@@ -44,18 +44,8 @@ import {
 
 export const ComponentsSection = props => (
   <Section>
-    <H2>Components</H2>
-    {/* @TODO: replace copy */}
-    <P>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-      convallis mollis nulla, molestie tempor velit consequat non. Integer quam
-      ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim
-      quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus
-      id dui convallis feugiat.
-    </P>
-
     <div className="flex flex-wrap nl3 nr3">
-      <Gallery title="Buttons">
+      <Gallery title="Buttons" href="#">
         <div>
           <div className="mb2">
             <ButtonPrimary>Click me</ButtonPrimary>
@@ -72,7 +62,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Link Buttons">
+      <Gallery title="Link Buttons" href="#">
         <div>
           <div className="mb2">
             <ButtonLinkPrimary>Browse page</ButtonLinkPrimary>
@@ -89,7 +79,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Banners">
+      <Gallery title="Banners" href="#">
         <div className="w-100">
           <div>
             <BannerGreen>Email successfully delivered.</BannerGreen>
@@ -103,7 +93,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Code Block">
+      <Gallery title="Code Block" href="#">
         <div className="w-100">
           <Code>{`.tachyons {
   display: block;
@@ -111,7 +101,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Table">
+      <Gallery title="Table" href="#">
         <div className="w-100">
           <Table>
             <thead>
@@ -160,7 +150,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Heading">
+      <Gallery title="Heading" href="#">
         <div>
           <H1>Heading 1</H1>
           <H2>Heading 2</H2>
@@ -171,7 +161,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Sidebar">
+      <Gallery title="Sidebar" href="#">
         <div className="w-100">
           <nav>
             <SidebarTitle>Section 1</SidebarTitle>
@@ -216,7 +206,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Paragraph">
+      <Gallery title="Paragraph" href="#">
         <div>
           <H4>Introduction</H4>
           <P>
@@ -226,7 +216,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Blockquote">
+      <Gallery title="Blockquote" href="#">
         <div>
           <BlockQuote>
             You have power over your mind - not outside events. Realize this,
@@ -235,7 +225,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Lists">
+      <Gallery title="Lists" href="#">
         <div>
           <OL>
             <LI>One</LI>
@@ -251,20 +241,20 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Forms">
+      <Gallery title="Forms" href="#">
         <div className="w-100">
           <LoginForm />
         </div>
       </Gallery>
 
-      <Gallery title="Input">
+      <Gallery title="Input" href="#">
         <div className="w-100">
           <Input label="First Name" placeholder="John" />
           <Input label="Last Name" placeholder="Doe" />
         </div>
       </Gallery>
 
-      <Gallery title="Nav Block">
+      <Gallery title="Nav Block" href="#">
         <div className="w-100">
           <NavBlockWrapper>
             <div className="flex flex-wrap nl3 nr3">
@@ -307,7 +297,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Nav">
+      <Gallery title="Nav" href="#">
         <Nav>
           <NavLink active={"true"}>One</NavLink>
           <NavLink>Two</NavLink>
