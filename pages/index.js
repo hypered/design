@@ -3,7 +3,7 @@ import React from "react";
 import {
   HomeLayout,
   HeaderSection,
-  IntroductionSection,
+  GettingStartedSection,
   ComponentsSection,
 } from "../components";
 
@@ -12,7 +12,7 @@ function Home() {
     <HomeLayout>
       <HeaderSection />
 
-      <IntroductionSection />
+      <GettingStartedSection />
 
       <ComponentsSection />
     </HomeLayout>

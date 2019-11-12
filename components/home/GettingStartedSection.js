@@ -1,7 +1,7 @@
 import React from "react";
 import { Section, H2, P } from "../../components";
 
-export const IntroductionSection = props => (
+export const GettingStartedSection = props => (
   <Section>
     <H2>Introduction</H2>
     <pre className="bg-light-gray pa3">
