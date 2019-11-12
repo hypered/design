@@ -9,7 +9,7 @@ import {
 
 function Home() {
   return (
-    <div className="mw8 center ph4">
+    <div className="mw8 center ph3 ph4-m ph4-l">
       <HeaderSection />
 
       <IntroductionSection />
