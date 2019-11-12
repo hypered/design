@@ -2,6 +2,7 @@ import React from "react";
 
 import {
   Nav,
+  NavLink,
   Sidebar,
   Section,
   Gallery,
@@ -268,7 +269,11 @@ export const ComponentsSection = props => (
       </Gallery>
 
       <Gallery title="Nav">
-        <Nav />
+        <Nav>
+          <NavLink active={"true"}>One</NavLink>
+          <NavLink>Two</NavLink>
+          <NavLink>Three</NavLink>
+        </Nav>
       </Gallery>
     </div>
   </Section>

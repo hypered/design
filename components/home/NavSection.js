@@ -11,7 +11,7 @@ const NavItem = withRouter(({ children, href, router }) => {
 
   return (
     <Link href={href} passHref>
-      <NavLink active={active}>{children}</NavLink>
+      <NavLink active={active ? 1 : null}>{children}</NavLink>
     </Link>
   );
 });
