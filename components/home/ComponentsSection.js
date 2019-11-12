@@ -173,7 +173,46 @@ export const ComponentsSection = props => (
 
       <Gallery title="Sidebar">
         <div className="w-100">
-          <Sidebar />
+          <nav>
+            <SidebarTitle>Section 1</SidebarTitle>
+            <SidebarUL>
+              <SidebarLI>
+                <SidebarLink href="#">Item One</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Two</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Three</SidebarLink>
+              </SidebarLI>
+            </SidebarUL>
+
+            <SidebarTitle>Section 2</SidebarTitle>
+            <SidebarUL>
+              <SidebarLI>
+                <SidebarLink href="#">Item One</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Two</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Three</SidebarLink>
+              </SidebarLI>
+            </SidebarUL>
+
+            <SidebarTitle>Section 3</SidebarTitle>
+            <SidebarUL>
+              <SidebarLI>
+                <SidebarLink href="#">Item One</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Two</SidebarLink>
+              </SidebarLI>
+              <SidebarLI>
+                <SidebarLink href="#">Item Three</SidebarLink>
+              </SidebarLI>
+            </SidebarUL>
+          </nav>
         </div>
       </Gallery>
 
@@ -213,7 +252,7 @@ export const ComponentsSection = props => (
       </Gallery>
 
       <Gallery title="Forms">
-        <div>
+        <div className="w-100">
           <LoginForm />
         </div>
       </Gallery>
