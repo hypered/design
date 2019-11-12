@@ -3,7 +3,7 @@ import { Divider } from "../../components";
 
 export const Section = props => (
   <>
-    <section className="pv5">{props.children}</section>
+    <section className="pv4 pv5-l">{props.children}</section>
     <Divider />
   </>
 );
