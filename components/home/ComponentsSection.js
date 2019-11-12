@@ -43,7 +43,7 @@ import {
 
 export const ComponentsSection = props => (
   <Section>
-    <H1>Components</H1>
+    <H2>Components</H2>
     {/* @TODO: replace copy */}
     <P>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
