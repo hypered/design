@@ -16,15 +16,7 @@ function Components() {
         <P>hello world</P>
       </header>
 
-      <section>
-        <div className="flex flex-wrap nl3 nr3">
-          <div className="w-80 ph3">
-            <ComponentsSection />
-          </div>
-        </div>
-      </section>
-
-      <FooterSection />
+      <ComponentsSection />
     </HomeLayout>
   );
 }

@@ -5,7 +5,6 @@ import {
   HeaderSection,
   IntroductionSection,
   ComponentsSection,
-  FooterSection,
 } from "../components";
 
 function Home() {
@@ -16,8 +15,6 @@ function Home() {
       <IntroductionSection />
 
       <ComponentsSection />
-
-      <FooterSection />
     </HomeLayout>
   );
 }
