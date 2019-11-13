@@ -9,11 +9,8 @@ import {
 export const HeaderSection = props => (
   <>
     <header className="pv4 pv5-l">
-      <h2 className="f5 f4-m f4-l mv0 lh-title relative top-1-m top-1-l">
-        Hypered
-      </h2>
-      <h1 className="f2 f-subheadline-m f-headline-l fw6 fw5-m fw5-l tracked-tight mv0 lh-title relative">
-        Design System
+      <h1 className="f2 f-subheadline-l fw6 fw5-m fw5-l tracked-tight mv0 lh-title relative">
+        Hypered <span className="fw3">Design System</span>
       </h1>
       {/* @TODO: replace copy */}
       <p className="f5 fw5 measure-wide lh-copy">
