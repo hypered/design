@@ -1,21 +1,16 @@
-import Link from "next/link";
-
-const NavLink = props => (
-  <Link href={props.href}>
-    <a className={`link mr3 black hover-blue${props.active ? " b" : ""}`}>
+export const NavLink = React.forwardRef(function NavLink(props, ref) {
+  return (
+    <a
+      className={`link mr3 black hover-blue${props.active ? " fw7" : " fw5"}`}
+      {...props}
+    >
       {props.children}
     </a>
-  </Link>
-);
+  );
+});
 
-export const Nav = () => (
-  <header className="flex mb4">
-    <nav className="flex align-items-center lh-copy">
-      <NavLink href="#" active={true}>
-        Item 1
-      </NavLink>
-      <NavLink href="#">Item 2</NavLink>
-      <NavLink href="#">Item 3</NavLink>
-    </nav>
-  </header>
+export const Nav = props => (
+  <nav className="flex align-items-center lh-copy mb4 pv3">
+    {props.children}
+  </nav>
 );

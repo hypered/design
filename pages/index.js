@@ -1,9 +1,22 @@
 import React from "react";
 
-import { Layout } from "../components";
+import {
+  HomeLayout,
+  HeaderSection,
+  GettingStartedSection,
+  GalleryPreviewSection,
+} from "../components";
 
 function Home() {
-  return <Layout>Hello world!</Layout>;
+  return (
+    <HomeLayout>
+      <HeaderSection />
+
+      <GettingStartedSection />
+
+      <GalleryPreviewSection />
+    </HomeLayout>
+  );
 }
 
 export default Home;

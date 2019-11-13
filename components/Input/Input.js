@@ -3,8 +3,8 @@ import React from "react";
 function Input(props) {
   return (
     <div className="mv3">
-      <div class="mb3">
-        <label class="db fw6 mv1">{props.label}</label>
+      <div className="mb3">
+        <label className="db fw6 mv1">{props.label}</label>
         <input
           type={props.type}
           className="input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
@@ -12,7 +12,7 @@ function Input(props) {
           placeholder={props.placeholder}
           {...props}
         />
-        <div class="mv1 h1 red fw5">{props.message}</div>
+        <div className="mv1 h1 red fw5">{props.message}</div>
       </div>
     </div>
   );
