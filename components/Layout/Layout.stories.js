@@ -6,6 +6,4 @@ export default {
 
 export const Default = () => <Layout>Content goes here</Layout>;
 
-export const BlogList = () => (
-  <BlogListLayout>Content goes here</BlogListLayout>
-);
+export const BlogList = () => <BlogListLayout />;
