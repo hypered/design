@@ -1,6 +1,6 @@
-# Noteed-next
+# hypered-design-system
 
-A design playground for Noteed.com. Built with next.js.
+A design system for Hypered. Built with next.js.
 
 ---
 
