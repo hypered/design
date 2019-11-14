@@ -3,7 +3,7 @@ import { Section, H2, P } from "../../components";
 
 export const GettingStartedSection = props => (
   <Section>
-    <H2>Introduction</H2>
+    <H2>Getting Started</H2>
     <pre className="bg-light-gray pa3">
       <code>Hello</code>
     </pre>
