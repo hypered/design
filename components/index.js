@@ -28,3 +28,4 @@ export * from "./home/FooterSection";
 export * from "./Layout/Layout";
 export * from "./Layout/BlogListLayout";
 export * from "./Layout/BlogPostLayout";
+export * from "./Layout/WithSidebarLayout";
