@@ -1,7 +1,18 @@
-import { Layout } from "../../components";
+import {
+  Layout,
+  BlogListLayout,
+  BlogPostLayout,
+  WithSidebarLayout,
+} from "../../components";
 
 export default {
-  title: "Layout",
+  title: "Layouts",
 };
 
 export const Default = () => <Layout>Content goes here</Layout>;
+
+export const BlogList = () => <BlogListLayout />;
+
+export const BlogPost = () => <BlogPostLayout />;
+
+export const WithSidebar = () => <WithSidebarLayout />;

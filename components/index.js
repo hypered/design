@@ -1,9 +1,8 @@
+export * from "./Typography/Typography";
 export * from "./Nav/Nav";
 export * from "./Sidebar/Sidebar";
 export * from "./SidePanel/SidePanel";
 export * from "./Footer/Footer";
-export * from "./Layout/Layout";
-export * from "./Typography/Typography";
 export * from "./Input/Input";
 export * from "./Table/Table";
 export * from "./NavBlock/NavBlock";
@@ -25,3 +24,8 @@ export * from "./home/GettingStartedSection";
 export * from "./home/GalleryPreviewSection";
 export * from "./home/ComponentsSection";
 export * from "./home/FooterSection";
+
+export * from "./Layout/Layout";
+export * from "./Layout/BlogListLayout";
+export * from "./Layout/BlogPostLayout";
+export * from "./Layout/WithSidebarLayout";

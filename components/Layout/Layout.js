@@ -1,12 +1,18 @@
 import React from "react";
 
-import { Nav, Footer } from "../../components";
+import { Nav, NavLink, Footer } from "../../components";
 
 function Layout(props) {
   return (
     <div className="mw8 center pa4 lh-copy">
-      <Nav></Nav>
-      <main>{props.children}</main>
+      <Nav>
+        <NavLink href="#" active={true}>
+          Item 1
+        </NavLink>
+        <NavLink href="#">Item 2</NavLink>
+        <NavLink href="#">Item 3</NavLink>
+      </Nav>
+      {props.children}
       <Footer></Footer>
     </div>
   );

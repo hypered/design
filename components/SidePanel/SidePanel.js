@@ -21,7 +21,7 @@ export const SidePanelLink = props => (
 );
 
 export const SidePanel = props => (
-  <aside className="w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l">
-    <div className="nl3 nr3">{props.children}</div>
+  <aside className="order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2">
+    <div className="">{props.children}</div>
   </aside>
 );

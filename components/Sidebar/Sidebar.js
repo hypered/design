@@ -17,44 +17,46 @@ export const SidebarLink = props => (
 );
 
 export const Sidebar = () => (
-  <nav className="order-1 order-0-m order-0-l w-100 w-25-m w-25-l pv3 ph3">
-    <SidebarTitle>Section 1</SidebarTitle>
-    <SidebarUL>
-      <SidebarLI>
-        <SidebarLink href="#">Item One</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Two</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Three</SidebarLink>
-      </SidebarLI>
-    </SidebarUL>
+  <aside className="order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2">
+    <nav>
+      <SidebarTitle>Section 1</SidebarTitle>
+      <SidebarUL>
+        <SidebarLI>
+          <SidebarLink href="#">Item One</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Two</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Three</SidebarLink>
+        </SidebarLI>
+      </SidebarUL>
 
-    <SidebarTitle>Section 2</SidebarTitle>
-    <SidebarUL>
-      <SidebarLI>
-        <SidebarLink href="#">Item One</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Two</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Three</SidebarLink>
-      </SidebarLI>
-    </SidebarUL>
+      <SidebarTitle>Section 2</SidebarTitle>
+      <SidebarUL>
+        <SidebarLI>
+          <SidebarLink href="#">Item One</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Two</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Three</SidebarLink>
+        </SidebarLI>
+      </SidebarUL>
 
-    <SidebarTitle>Section 3</SidebarTitle>
-    <SidebarUL>
-      <SidebarLI>
-        <SidebarLink href="#">Item One</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Two</SidebarLink>
-      </SidebarLI>
-      <SidebarLI>
-        <SidebarLink href="#">Item Three</SidebarLink>
-      </SidebarLI>
-    </SidebarUL>
-  </nav>
+      <SidebarTitle>Section 3</SidebarTitle>
+      <SidebarUL>
+        <SidebarLI>
+          <SidebarLink href="#">Item One</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Two</SidebarLink>
+        </SidebarLI>
+        <SidebarLI>
+          <SidebarLink href="#">Item Three</SidebarLink>
+        </SidebarLI>
+      </SidebarUL>
+    </nav>
+  </aside>
 );
