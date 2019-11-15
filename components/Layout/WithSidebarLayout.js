@@ -20,7 +20,7 @@ import {
 
 export const WithSidebarLayout = props => (
   <Layout>
-    <div className="flex flex-wrap nl3 nr3">
+    <main className="flex flex-wrap nl3 nr3">
       <Sidebar />
 
       <article className="order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3">
@@ -97,6 +97,6 @@ export const WithSidebarLayout = props => (
           </SidePanelLI>
         </SidePanelUL>
       </SidePanel>
-    </div>
+    </main>
   </Layout>
 );
