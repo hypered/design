@@ -105,6 +105,18 @@ npm run build-storybook
 ```
 
 
+## Rendering React components from the command-line
+
+A helper Node.js script is provided to render components from the command-line:
+
+```
+$ node render-components.js footer
+<footer class="pv4" data-reactroot="">
+  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
+</footer>
+```
+
+
 ## Notes
 
 There is also a custom Revealjs template that (should) match the design-system.
