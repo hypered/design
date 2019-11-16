@@ -22,12 +22,17 @@ var ReactDOMServer = require('react-dom/server');
 var pretty = require('pretty');
 var fs = require('fs');
 
+var Navigation = require("./components/Nav/Nav");
+var Nav = Navigation.Nav;
 var Footer = require("./components/Footer/Footer").Footer;
 
 
 var args = process.argv.slice(2);
 
 switch (args[0]) {
+case 'nav':
+  console.log(pretty(ReactDOMServer.renderToStaticMarkup(Nav([]))));
+  break;
 case 'footer':
   console.log(pretty(ReactDOMServer.renderToStaticMarkup(Footer())));
   break;

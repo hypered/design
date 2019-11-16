@@ -18,7 +18,7 @@ import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
-  , generate, navigation)
+  , generate, nav, navigation)
 
 
 ------------------------------------------------------------------------------
@@ -27,6 +27,7 @@ main = do
   args <- getArgs
   case args of
     [] -> generateGuide
+    ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml footer)
     _ -> error "Unsupported argument."
 

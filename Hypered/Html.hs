@@ -98,13 +98,16 @@ document Config{..} path title body = do
       H.div ! A.class_ "mw9 center ph4 lh-copy" $
         body
 
+nav content =
+  H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ content
+
 -- | Horizontal navigation at the top of a page.
 navigation :: FilePath -> Html
 navigation path = do
   let depth = length (splitPath path) - 1
       relativize = (joinPath (replicate depth "..") </>)
   H.header ! A.class_ "pv4" $
-    H.nav ! A.class_ "flex align-items-center lh-copy" $
+    nav $
       mapM_ (\(a, b) ->
         H.a ! A.class_ "link mr3 black hover-blue"
             ! A.href (H.toValue (relativize a)) $ b)
