@@ -7,9 +7,12 @@
 
 module Main where
 
+import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import Text.Blaze.Html.Renderer.Text (renderHtml)
+import System.Environment (getArgs)
 
 import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
@@ -21,7 +24,16 @@ import Hypered.Html
 ------------------------------------------------------------------------------
 main :: IO ()
 main = do
+  args <- getArgs
+  case args of
+    [] -> generateGuide
+    ["footer"] -> T.putStr (renderHtml footer)
+    _ -> error "Unsupported argument."
 
+
+------------------------------------------------------------------------------
+generateGuide :: IO ()
+generateGuide = do
   generate "index.html" "Hypered style guide" $ \_ -> do
     H.ul $ do
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
