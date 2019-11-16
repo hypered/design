@@ -7,21 +7,33 @@
 
 module Main where
 
+import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import Text.Blaze.Html.Renderer.Text (renderHtml)
+import System.Environment (getArgs)
 
 import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, exampleSidebar, footer
+  , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
   , generate, navigation)
 
 
 ------------------------------------------------------------------------------
 main :: IO ()
 main = do
+  args <- getArgs
+  case args of
+    [] -> generateGuide
+    ["footer"] -> T.putStr (renderHtml footer)
+    _ -> error "Unsupported argument."
 
+
+------------------------------------------------------------------------------
+generateGuide :: IO ()
+generateGuide = do
   generate "index.html" "Hypered style guide" $ \_ -> do
     H.ul $ do
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
@@ -39,6 +51,9 @@ main = do
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
 
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
+      H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
+
+      H.li $ H.a ! A.href "example--template.html" $ "Example, template"
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
@@ -81,3 +96,5 @@ main = do
 
   generate "example--sidebar.html" "Hypered style guide - Sidebar Example"
     (const exampleSidebar)
+  generate "example--side-panel.html" "Hypered style guide - Side panel Example"
+    (const exampleSidePanel)

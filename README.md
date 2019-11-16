@@ -117,6 +117,26 @@ $ node render-components.js footer
 ```
 
 
+## Comparing Haskell and Node outputs
+
+In addition of component names, the above script can process its stdin with
+'pretty' to normalize some input HTML.
+
+In the example below, we can verify the footer component is the same in Haskell
+and Node.
+
+```
+$ nix-shell --run 'runghc bin/hypered-guide.hs footer' | nix-shell -p nodejs --run 'node render-components pretty'
+<footer class="pv4">
+  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
+</footer>
+$ nix-shell -p nodejs --run 'node render-components footer'
+<footer class="pv4">
+  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
+</footer>
+```
+
+
 ## Notes
 
 There is also a custom Revealjs template that (should) match the design-system.
