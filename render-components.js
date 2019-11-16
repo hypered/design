@@ -16,4 +16,13 @@ var pretty = require('pretty');
 
 var Footer = require("./components/Footer/Footer").Footer;
 
-console.log(pretty(ReactDOMServer.renderToStaticMarkup(Footer())));
+
+var args = process.argv.slice(2);
+
+switch (args[0]) {
+case 'footer':
+  console.log(pretty(ReactDOMServer.renderToStaticMarkup(Footer())));
+  break;
+default:
+  console.log('Unsupported argument.');
+}
