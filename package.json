@@ -1,7 +1,8 @@
 {
-  "name": "noteed-next",
+  "name": "hypered-design-system",
   "version": "1.0.0",
-  "description": "",
+  "description": "A design system for Hypered projects.",
+  "repository": "github:hypered/design-system",
   "main": "index.js",
   "scripts": {
     "dev": "next",
