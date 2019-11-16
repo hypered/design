@@ -1,4 +1,4 @@
-# Design System
+# Hypered design system
 
 This is a repository for the (early state) web design system for Hypered SPRL.
 
@@ -28,6 +28,83 @@ Interesting pages are:
 - [nubs-bash/hello](https://noteed-next.andyngo1.now.sh/nubs-bash/hello)
 
 
+## Next.js and Storybook
+
+The following instructions can be followed with either a Docker container or a
+Nix shell.
+
+If using Docker:
+
+```
+$ docker run -it -v $(pwd):/src node bash -c 'cd /src ; <some command>'
+```
+
+If using Nix:
+
+```
+$ nix-shell -p nodejs -p yarn --run '<some command>'
+```
+
+Note: `npm` in the following instructions can be replaced by `yarn`.
+
+
+### Dependencies
+
+Install the dependencies using:
+
+```
+npm install
+```
+
+The result is a `node_modules` directory.
+
+
+### Next.js telemetry
+
+Next.js collects anonymous telemetry. This can be disabled with:
+
+```
+npx next telemetry disable
+```
+
+To check the status of Next.js telemetry:
+
+```
+npx next telemetry status
+```
+
+
+### Running the sites locally
+
+To run the Next.js site locally, on port `3000`:
+
+```
+npm run dev
+```
+
+To run the Storybook.js site locally, on port `6006`:
+
+```
+npm run storybook
+```
+
+
+### Building static sites
+
+To build the Next.js pages into the `out/` directory:
+
+```
+npm next build
+npm next export
+```
+
+To build the Storybook.js pages into the `storybook-static/` directory:
+
+```
+npm run build-storybook
+```
+
+
 ## Notes
 
 There is also a custom Revealjs template that (should) match the design-system.
@@ -39,114 +116,3 @@ Pages feature from the `master` branch.
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
-
-
-# Next.js and Storybook
-
-A design system for Hypered. Built with next.js.
-
----
-
-## Getting Started
-
-Install dependencies using:
-
-```
-npm install
-```
-
-or
-
-```
-yarn install
-```
-
----
-
-## Running the site locally
-
-### Next.js
-
-To run the Next.js site, use `npm run dev` or `yarn run dev`:
-
-```
-npm run dev
-```
-
-or
-
-```
-yarn run dev
-```
-
-This will run Next.js on port `3000` on your machine.
-
-### Storybook.js
-
-To run Storybook.js, use `npm run storybook` or `yarn run storybook`:
-
-```
-npm run storybook
-```
-
-or
-
-```
-yarn run storybook
-```
-
-This will run Storybook on port `6006` on your machine.
-
----
-
-## Build
-
-### Next.js
-
-To build the Next.js pages, run `npm run build` or `yarn run build`:
-
-```
-npm run build
-```
-
-or
-
-```
-yarn run build
-```
-
-###
-
-To build the Storybook.js pages, run `npm run build-storybook` or `yarn run build-storybook`:
-
-```
-npm run build-storybook
-```
-
-or
-
-```
-yarn run build-storybook
-```
-
----
-
-## Miscellaneous
-
-### telemetry
-
-> Next.js collects completely anonymous telemetry data about general usage. Participation in this anonymous program is optional, and you may opt-out if you'd not like to share any information.
-
-If you'd like to opt-out of telemetry, run the following command in the root of your project directory:
-
-```
-npx next telemetry disable
-```
-
-To check the status of telemetry, run `next telemetry status` in the root of your project directory:
-
-```
-npx next telemetry status
-```
-
-For more information, please visit: https://nextjs.org/telemetry
