@@ -137,6 +137,37 @@ $ nix-shell -p nodejs --run 'node render-components footer'
 ```
 
 
+## Pandoc
+
+A Pandoc template can be generated with the `bin/hypered-templates.hs` script.
+
+To render Markdown files to HTML, Pandoc can be used as follow:
+
+```
+$ pandoc --template templates/default.html -M title=README README.md
+```
+
+This renders this `README.md` file as a standalone HTML page using the
+`default.html` templates. It fills the template `$title$` variable with the
+string `"README"`. (See
+https://pandoc.org/MANUAL.html#using-variables-in-templates for details.)
+
+To use the templates provided by this design system, some additional care
+should be taken, for instance to add the necessary Tachyons classes to headers
+(`h1`, `h2`, ...).
+
+Here is how the provided `pandoc/lua.md` example is rendered:
+
+```
+$ pandoc \
+  --standalone \
+  --template generated/templates/default.html \
+  --lua-filter pandoc/tachyons.lua \
+  --output docs/components/example--template.html \
+  pandoc/lua.md
+```
+
+
 ## Notes
 
 There is also a custom Revealjs template that (should) match the design-system.
