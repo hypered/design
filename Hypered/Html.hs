@@ -204,38 +204,57 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
 
 title = H.title "Hypered"
 
+sidebarTitle content =
+  H.h3 ! A.class_ "f5 ttu mv1" $ content
+
+sidebarUL content =
+  H.ul ! A.class_ "list pl0 mb3 mt0" $ content
+
+sidebarLI content =
+  H.li content
+
+sidebarLink content href =
+  H.a ! A.class_ "link black hover-blue" ! A.href href $ content
+
+sidebar xs =
+  H.aside ! A.class_ "order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2" $
+    H.nav $ do
+      mapM_ f xs
+
+  where
+
+  f (title, links) = do
+    sidebarTitle title
+    sidebarUL $
+      mapM_ g links
+  g (name, href) =
+    sidebarLI $
+      sidebarLink name href
+
 exampleSidebar = do
   navigationNoteed
-  H.main $ do
-    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
-      H.nav ! A.class_ "order-1 order-0-m order-0-l w-100 w-25-m w-25-l pv3 ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Intro"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Notes"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "Digital Ocean"
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "TODO"
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Values"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "command-line"
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "root-modules"
-      H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
-        H.article $ do
-          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "not-os is a minimal OS based on the Linux kernel, coreutils,"
-            "runit, and Nix. It is also the build script, written in Nix"
-            "expressions, to build such OS."
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "This is a project of Michael Bishop (cleverca22 on GitHub, clever on"
-            "IRC). I modified it just a bit to make it possible to generate this"
-            "documentation."
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "As a build tool, not-os uses nixpkgs and in particular the"
-            "NixOS module system"
-            "to build the three main components of a Linux-based operating"
-            "system:"
+  H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
+    sidebar
+      [ ("Intro", [("not-os", "#")])
+      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+      , ("Values", [("command-line", "#"), ("root-modules", "#")])
+      ]
+    H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
+      H.article $ do
+        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "not-os is a minimal OS based on the Linux kernel, coreutils,"
+          "runit, and Nix. It is also the build script, written in Nix"
+          "expressions, to build such OS."
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "This is a project of Michael Bishop (cleverca22 on GitHub, clever on"
+          "IRC). I modified it just a bit to make it possible to generate this"
+          "documentation."
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "As a build tool, not-os uses nixpkgs and in particular the"
+          H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
+          "to build the three main components of a Linux-based operating"
+          "system:"
   footer
 
 exampleSidePanel = do
