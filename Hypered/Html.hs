@@ -122,12 +122,31 @@ navigation path = do
         , ("README.html",             "About")
         ]
 
+-- | Horizontal navigation at the top of a page, at the same level as main
+-- wrapper and footer.
 navigationNoteed =
   H.header $
     H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ do
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+
+-- | Content wrapper, for a blog post, at the same level as navigation and
+-- footer.
+wrapPost title content =
+  H.main $
+    H.article ! A.class_ "mw7" $ do
+      H.div ! A.class_ "mb4" $ do
+        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
+          title
+        -- TODO
+        -- The example /storybook/iframe.html?id=layouts--blog-post has this rule:
+        --   H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+        -- But it currently conflicts with the custome style.css that makes the
+        -- rule short and a bit thick.
+        --   H.hr
+        -- I'll have to ask Andy how to achieve both in the same document.
+      content
 
 -- | The main content wrapper, at the same level as navigation.
 wrap :: Html -> Html

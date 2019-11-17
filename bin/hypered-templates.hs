@@ -9,8 +9,8 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 import Hypered.Html
-  ( footer, navigation, title, partialHtml, prettyHtml, wrap
-  , Config(..), Font(Inter)
+  ( footer, navigation, navigationNoteed, title, partialHtml, prettyHtml, wrap
+  , wrapPost , Config(..), Font(Inter)
   )
 
 
@@ -20,7 +20,7 @@ config = Config "/static" Inter
 main :: IO ()
 main = do
   prettyHtml config "generated/templates" "default.html" "$title$"
-    (wrap "$body$" >> footer)
+    (navigationNoteed >> wrapPost "$title$" "$body$" >> footer)
 
   -- TODO Currently reusing the default.html template.
   prettyHtml config "generated/templates" "default-2-cols.html" "$title$"
