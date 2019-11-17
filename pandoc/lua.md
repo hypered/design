@@ -1,5 +1,13 @@
 ---
 title: Template
+nav:
+- name: noteed.com
+  href: "#"
+- name: blog
+  href: "#"
+- name: not-os
+  href: "#"
+footer: © Hypered SPRL, 2019.
 ---
 
 This is an example Markdown file to test the generated templates of the

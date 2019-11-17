@@ -167,6 +167,9 @@ $ pandoc \
   pandoc/lua.md
 ```
 
+Note that the top horizontal navigation component is filled by using the
+document YAML metadata block (which can also be provided as a separate file).
+
 
 ## Notes
 

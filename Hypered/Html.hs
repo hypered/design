@@ -131,6 +131,14 @@ navigationNoteed =
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
 
+navigationTemplate =
+  H.header $
+    H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ do
+      "$for(nav)$"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "$nav.href$" $
+        "$nav.name$"
+      "$endfor$"
+
 -- | Content wrapper, for a blog post, at the same level as navigation and
 -- footer.
 wrapPost title content =
@@ -156,10 +164,10 @@ wrap content = do
       content
 
 -- | The footer, at the same level as both navigation and wrap.
-footer =
+footer content =
   H.footer ! A.class_ "pv4" $
     H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
-      "© Võ Minh Thu, 2017-2019."
+      content
 
 
 -- | The main content, as a left column.
@@ -274,7 +282,7 @@ exampleSidebar = do
           H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
           "to build the three main components of a Linux-based operating"
           "system:"
-  footer
+  footer "© Võ Minh Thu, 2017-2019."
 
 exampleSidePanel = do
   navigationNoteed
@@ -301,4 +309,4 @@ exampleSidePanel = do
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  footer
+  footer "© Võ Minh Thu, 2017-2019."
