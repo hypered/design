@@ -95,7 +95,7 @@ document Config{..} path title body = do
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
-      H.div ! A.class_ "mw9 center ph4 lh-copy" $
+      H.div ! A.class_ "mw8 center pa4 lh-copy" $
         body
 
 nav content =
@@ -123,8 +123,8 @@ navigation path = do
         ]
 
 navigationNoteed =
-  H.header ! A.class_ "flex mb4" $
-    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
+  H.header $
+    H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ do
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
@@ -204,7 +204,7 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
 
 title = H.title "Hypered"
 
-exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
+exampleSidebar = do
   navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
@@ -227,9 +227,18 @@ exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
             "not-os is a minimal OS based on the Linux kernel, coreutils,"
             "runit, and Nix. It is also the build script, written in Nix"
             "expressions, to build such OS."
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "This is a project of Michael Bishop (cleverca22 on GitHub, clever on"
+            "IRC). I modified it just a bit to make it possible to generate this"
+            "documentation."
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "As a build tool, not-os uses nixpkgs and in particular the"
+            "NixOS module system"
+            "to build the three main components of a Linux-based operating"
+            "system:"
   footer
 
-exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
+exampleSidePanel = do
   navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
@@ -237,8 +246,8 @@ exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
         H.article $ do
           H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
           H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "If neither a list of attribute names or a command are given, "
-            "Waveguide instrospects the Nix expression and builds all the "
+            "If neither a list of attribute names or a command are given,"
+            "Waveguide instrospects the Nix expression and builds all the"
             "found attributes."
       H.aside ! A.class_ "w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l" $
         H.div ! A.class_ "nl3 nr3" $ do

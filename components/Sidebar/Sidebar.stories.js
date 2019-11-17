@@ -8,7 +8,7 @@ export const Default = () => <Sidebar />;
 
 export const UsageExample = () => (
   <Layout>
-    <div className="flex flex-wrap nl3 nr3">
+    <main className="flex flex-wrap nl3 nr3">
       <Sidebar />
 
       <section className="order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3">
@@ -34,6 +34,6 @@ export const UsageExample = () => (
           </P>
         </article>
       </section>
-    </div>
+    </main>
   </Layout>
 );
