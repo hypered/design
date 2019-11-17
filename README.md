@@ -1,6 +1,11 @@
 # Hypered design system
 
-This is a repository for the (early state) web design system for Hypered SPRL.
+The Hypered design system is a collection of components, templates, and other
+bits of HTML and CSS to create a unified user experience across Hypered
+projects.
+
+Components are provided in multiple compatible forms: `Next.js`, `blaze-html`,
+and static HTML snippets.
 
 The current example content (located in the `docs/` directory) is raw HTML and
 CSS (using Tachyons). It is visible at
