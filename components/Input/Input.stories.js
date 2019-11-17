@@ -4,17 +4,17 @@ export default {
   title: "Input",
 };
 
-export const text = () => (
+export const Text = () => (
   <Input type="text" label="Full Name" placeholder="John Appleseed" />
 );
 
-export const password = () => (
+export const Password = () => (
   <Input type="password" label="Password" value="hello, world" />
 );
 
-export const number = () => <Input type="number" label="Quantity" value="20" />;
+export const Number = () => <Input type="number" label="Quantity" value="20" />;
 
-export const withMessage = () => (
+export const WithMessage = () => (
   <Input
     type="email"
     label="Email Address"
@@ -23,7 +23,7 @@ export const withMessage = () => (
   />
 );
 
-export const usageExample = () => (
+export const UsageExample = () => (
   <div className="mw6 pa4">
     <Input type="text" label="Full Name" placeholder="John Appleseed" />
     <Input
