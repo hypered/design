@@ -9,7 +9,7 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 import Hypered.Html
-  ( footer, navigation, navigationTemplate, title, partialHtml
+  ( footer, generateHtml, navigation, navigationTemplate, title, partialHtml
   , prettyHtml, wrap , wrapPost , Config(..), Font(Inter)
   )
 
@@ -19,11 +19,12 @@ config = Config "/static" Inter
 ------------------------------------------------------------------------------
 main :: IO ()
 main = do
-  -- TODO The $body$ is indented when using the pretty printed, which
+  -- TODO The $body$ is indented when using the pretty printer, which
   -- then causes Pandoc to indent part of <code> content, which
-  -- is wrong.
-  prettyHtml config "generated/templates" "default.html" "$title$"
-    (navigationTemplate >> wrapPost "$title$" "$body$" >> footer "$footer$")
+  -- is wrong. Same for lots of white space betwee navigation links, which
+  -- causes also some additional "padding".
+  generateHtml config "generated/templates" "default.html" "$title$"
+    (H.div (navigationTemplate >> wrapPost "$title$" "$body$") >> footer "$footer$")
 
   -- TODO Currently reusing the default.html template.
   prettyHtml config "generated/templates" "default-2-cols.html" "$title$"

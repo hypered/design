@@ -92,14 +92,17 @@ document Config{..} path title body = do
           [ cStaticPath </> fontCss cFont
           , cStaticPath </> "css/tachyons.min.v4.11.1.css"
           , cStaticPath </> "css/style.css"
+          , cStaticPath </> "css/styles.css"
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
-      H.div ! A.class_ "mw8 center pa4 lh-copy" $
+      H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy" $
         body
 
 nav content =
-  H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ content
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+    H.div $
+      content
 
 -- | Horizontal navigation at the top of a page.
 navigation :: FilePath -> Html
@@ -126,14 +129,14 @@ navigation path = do
 -- wrapper and footer.
 navigationNoteed =
   H.header $
-    H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ do
+    nav $ do
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
 
 navigationTemplate =
   H.header $
-    H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ do
+    nav $ do
       "$for(nav)$"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "$nav.href$" $
         "$nav.name$"
