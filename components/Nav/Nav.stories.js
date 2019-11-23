@@ -23,7 +23,9 @@ export const NavigationSpaceBetween = () => (
     </div>
     <div>
       <NavLink href="#">blog</NavLink>
-      <NavLink href="#">not-os</NavLink>
+      <NavLink href="#" lastItem={true}>
+        not-os
+      </NavLink>
     </div>
   </Nav>
 );
