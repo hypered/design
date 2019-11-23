@@ -19,42 +19,30 @@ export const SidebarLink = props => (
 export const Sidebar = () => (
   <aside className="order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2">
     <nav>
-      <SidebarTitle>Section 1</SidebarTitle>
+      <SidebarTitle>Intro</SidebarTitle>
       <SidebarUL>
         <SidebarLI>
-          <SidebarLink href="#">Item One</SidebarLink>
-        </SidebarLI>
-        <SidebarLI>
-          <SidebarLink href="#">Item Two</SidebarLink>
-        </SidebarLI>
-        <SidebarLI>
-          <SidebarLink href="#">Item Three</SidebarLink>
+          <SidebarLink href="#">not-os</SidebarLink>
         </SidebarLI>
       </SidebarUL>
 
-      <SidebarTitle>Section 2</SidebarTitle>
+      <SidebarTitle>Notes</SidebarTitle>
       <SidebarUL>
         <SidebarLI>
-          <SidebarLink href="#">Item One</SidebarLink>
+          <SidebarLink href="#">Digital Ocean</SidebarLink>
         </SidebarLI>
         <SidebarLI>
-          <SidebarLink href="#">Item Two</SidebarLink>
-        </SidebarLI>
-        <SidebarLI>
-          <SidebarLink href="#">Item Three</SidebarLink>
+          <SidebarLink href="#">TODO</SidebarLink>
         </SidebarLI>
       </SidebarUL>
 
-      <SidebarTitle>Section 3</SidebarTitle>
+      <SidebarTitle>Values</SidebarTitle>
       <SidebarUL>
         <SidebarLI>
-          <SidebarLink href="#">Item One</SidebarLink>
+          <SidebarLink href="#">command-line</SidebarLink>
         </SidebarLI>
         <SidebarLI>
-          <SidebarLink href="#">Item Two</SidebarLink>
-        </SidebarLI>
-        <SidebarLI>
-          <SidebarLink href="#">Item Three</SidebarLink>
+          <SidebarLink href="#">root-modules</SidebarLink>
         </SidebarLI>
       </SidebarUL>
     </nav>

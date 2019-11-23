@@ -92,14 +92,17 @@ document Config{..} path title body = do
           [ cStaticPath </> fontCss cFont
           , cStaticPath </> "css/tachyons.min.v4.11.1.css"
           , cStaticPath </> "css/style.css"
+          , cStaticPath </> "css/styles.css"
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
-      H.div ! A.class_ "mw9 center ph4 lh-copy" $
+      H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy" $
         body
 
 nav content =
-  H.nav ! A.class_ "flex align-items-center lh-copy mb4 pv3" $ content
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+    H.div $
+      content
 
 -- | Horizontal navigation at the top of a page.
 navigation :: FilePath -> Html
@@ -122,12 +125,39 @@ navigation path = do
         , ("README.html",             "About")
         ]
 
+-- | Horizontal navigation at the top of a page, at the same level as main
+-- wrapper and footer.
 navigationNoteed =
-  H.header ! A.class_ "flex mb4" $
-    H.nav ! A.class_ "flex align-items-center lh-copy" $ do
+  H.header $
+    nav $ do
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
       H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+
+navigationTemplate =
+  H.header $
+    nav $ do
+      "$for(nav)$"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "$nav.href$" $
+        "$nav.name$"
+      "$endfor$"
+
+-- | Content wrapper, for a blog post, at the same level as navigation and
+-- footer.
+wrapPost title content =
+  H.main $
+    H.article ! A.class_ "mw7" $ do
+      H.div ! A.class_ "mb4" $ do
+        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
+          title
+        -- TODO
+        -- The example /storybook/iframe.html?id=layouts--blog-post has this rule:
+        --   H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+        -- But it currently conflicts with the custome style.css that makes the
+        -- rule short and a bit thick.
+        --   H.hr
+        -- I'll have to ask Andy how to achieve both in the same document.
+      content
 
 -- | The main content wrapper, at the same level as navigation.
 wrap :: Html -> Html
@@ -137,10 +167,10 @@ wrap content = do
       content
 
 -- | The footer, at the same level as both navigation and wrap.
-footer =
+footer content =
   H.footer ! A.class_ "pv4" $
     H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
-      "© Võ Minh Thu, 2017-2019."
+      content
 
 
 -- | The main content, as a left column.
@@ -204,32 +234,60 @@ codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
 
 title = H.title "Hypered"
 
-exampleSidebar = H.div ! A.class_  "mw8 center pa4 lh-copy" $ do
-  navigationNoteed
-  H.main $ do
-    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
-      H.nav ! A.class_ "order-1 order-0-m order-0-l w-100 w-25-m w-25-l pv3 ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Intro"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Notes"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "Digital Ocean"
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "TODO"
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Values"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "command-line"
-          H.li $ H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "root-modules"
-      H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
-        H.article $ do
-          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "not-os is a minimal OS based on the Linux kernel, coreutils,"
-            "runit, and Nix. It is also the build script, written in Nix"
-            "expressions, to build such OS."
-  footer
+sidebarTitle content =
+  H.h3 ! A.class_ "f5 ttu mv1" $ content
 
-exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
+sidebarUL content =
+  H.ul ! A.class_ "list pl0 mb3 mt0" $ content
+
+sidebarLI content =
+  H.li content
+
+sidebarLink content href =
+  H.a ! A.class_ "link black hover-blue" ! A.href href $ content
+
+sidebar xs =
+  H.aside ! A.class_ "order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2" $
+    H.nav $ do
+      mapM_ f xs
+
+  where
+
+  f (title, links) = do
+    sidebarTitle title
+    sidebarUL $
+      mapM_ g links
+  g (name, href) =
+    sidebarLI $
+      sidebarLink name href
+
+exampleSidebar = do
+  navigationNoteed
+  H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
+    sidebar
+      [ ("Intro", [("not-os", "#")])
+      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+      , ("Values", [("command-line", "#"), ("root-modules", "#")])
+      ]
+    H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
+      H.article $ do
+        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "not-os is a minimal OS based on the Linux kernel, coreutils,"
+          "runit, and Nix. It is also the build script, written in Nix"
+          "expressions, to build such OS."
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "This is a project of Michael Bishop (cleverca22 on GitHub, clever on"
+          "IRC). I modified it just a bit to make it possible to generate this"
+          "documentation."
+        H.p ! A.class_ "f5 lh-copy mv3" $ do
+          "As a build tool, not-os uses nixpkgs and in particular the"
+          H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
+          "to build the three main components of a Linux-based operating"
+          "system:"
+  footer "© Võ Minh Thu, 2017-2019."
+
+exampleSidePanel = do
   navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
@@ -237,8 +295,8 @@ exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
         H.article $ do
           H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
           H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "If neither a list of attribute names or a command are given, "
-            "Waveguide instrospects the Nix expression and builds all the "
+            "If neither a list of attribute names or a command are given,"
+            "Waveguide instrospects the Nix expression and builds all the"
             "found attributes."
       H.aside ! A.class_ "w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l" $
         H.div ! A.class_ "nl3 nr3" $ do
@@ -254,4 +312,4 @@ exampleSidePanel = H.div ! A.class_ "mw8 center pa4 lh-copy" $ do
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  footer
+  footer "© Võ Minh Thu, 2017-2019."

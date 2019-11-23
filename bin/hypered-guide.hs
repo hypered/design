@@ -28,7 +28,7 @@ main = do
   case args of
     [] -> generateGuide
     ["nav"] -> T.putStr (renderHtml (nav ""))
-    ["footer"] -> T.putStr (renderHtml footer)
+    ["footer"] -> T.putStr (renderHtml (footer "© Võ Minh Thu, 2017-2019."))
     _ -> error "Unsupported argument."
 
 
@@ -91,7 +91,8 @@ generateGuide = do
   -- Footer
 
   generate "footer.html" "Hypered style guide - Footer"
-    (const footer)
+    (const (footer "© Võ Minh Thu, 2017-2019."))
+
 
   -- Example usage
 
