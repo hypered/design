@@ -11,13 +11,14 @@
             @import url(../static/css/inter.css);
             @import url(../static/css/tachyons.min.v4.11.1.css);
             @import url(../static/css/style.css);
+            @import url(../static/css/styles.css);
         </style>
     </head>
     <body class="inter">
-        <div class="mw9 center ph4 lh-copy">
-            <div class="mw8 center pa4 lh-copy">
-                <header class="flex mb4">
-                    <nav class="flex align-items-center lh-copy">
+        <div class="flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy">
+            <header>
+                <nav class="flex justify-between align-items-center lh-copy mb4 pv3">
+                    <div>
                         <a class="link mr3 black hover-blue" href="#">
                             noteed.com
                         </a>
@@ -27,64 +28,64 @@
                         <a class="link mr3 black hover-blue" href="#">
                             not-os
                         </a>
-                    </nav>
-                </header>
-                <main>
-                    <div class="flex flex-wrap nl3 nr3">
-                        <main class="w-100 w-80-m w-80-l ph3">
-                            <article>
-                                <h1 class="f1 lh-title mv2 tracked-tight">
-                                    Waveguide
-                                </h1>
-                                <p class="f5 lh-copy mv3">
-                                    If neither a list of attribute names or a command are given, 
-                                    Waveguide instrospects the Nix expression and builds all the 
-                                    found attributes.
-                                </p>
-                            </article>
-                        </main>
-                        <aside class="w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l">
-                            <div class="nl3 nr3">
-                                <h3 class="f5 lh-title mv2">
-                                    Latest Runs
-                                </h3>
-                                <ul class="bg-near-white list pa3">
-                                    <li class="pv1 bb b--black-10">
-                                        <a class="link no-underline black blue-hover">
-                                            → #001
-                                        </a>
-                                    </li>
-                                    <li class="pv1 bb b--black-10">
-                                        <a class="link no-underline black blue-hover">
-                                            → #002
-                                        </a>
-                                    </li>
-                                    <li class="pv1 bb b--black-10">
-                                        <a class="link no-underline black blue-hover">
-                                            → #003
-                                        </a>
-                                    </li>
-                                    <li class="pv1 bb b--black-10">
-                                        <a class="link no-underline black blue-hover">
-                                            → #004
-                                        </a>
-                                    </li>
-                                    <li class="pv1 bb b--black-10">
-                                        <a class="link no-underline black blue-hover">
-                                            → #005
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </aside>
                     </div>
-                </main>
-                <footer class="pv4">
-                    <p class="inline-flex bt b--black-50 pt4 lh-copy">
-                        © Võ Minh Thu, 2017-2019.
-                    </p>
-                </footer>
-            </div>
+                </nav>
+            </header>
+            <main>
+                <div class="flex flex-wrap nl3 nr3">
+                    <main class="w-100 w-80-m w-80-l ph3">
+                        <article>
+                            <h1 class="f1 lh-title mv2 tracked-tight">
+                                Waveguide
+                            </h1>
+                            <p class="f5 lh-copy mv3">
+                                If neither a list of attribute names or a command are given,
+                                Waveguide instrospects the Nix expression and builds all the
+                                found attributes.
+                            </p>
+                        </article>
+                    </main>
+                    <aside class="w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l">
+                        <div class="nl3 nr3">
+                            <h3 class="f5 lh-title mv2">
+                                Latest Runs
+                            </h3>
+                            <ul class="bg-near-white list pa3">
+                                <li class="pv1 bb b--black-10">
+                                    <a class="link no-underline black blue-hover">
+                                        → #001
+                                    </a>
+                                </li>
+                                <li class="pv1 bb b--black-10">
+                                    <a class="link no-underline black blue-hover">
+                                        → #002
+                                    </a>
+                                </li>
+                                <li class="pv1 bb b--black-10">
+                                    <a class="link no-underline black blue-hover">
+                                        → #003
+                                    </a>
+                                </li>
+                                <li class="pv1 bb b--black-10">
+                                    <a class="link no-underline black blue-hover">
+                                        → #004
+                                    </a>
+                                </li>
+                                <li class="pv1 bb b--black-10">
+                                    <a class="link no-underline black blue-hover">
+                                        → #005
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+            <footer class="pv4">
+                <p class="inline-flex bt b--black-50 pt4 lh-copy">
+                    © Võ Minh Thu, 2017-2019.
+                </p>
+            </footer>
         </div>
     </body>
 </html>
