@@ -299,9 +299,11 @@ export const ComponentsSection = props => (
 
       <Gallery title="Nav" href="#">
         <Nav>
-          <NavLink active={"true"}>One</NavLink>
-          <NavLink>Two</NavLink>
-          <NavLink>Three</NavLink>
+	  <div>
+            <NavLink active={"true"}>One</NavLink>
+            <NavLink>Two</NavLink>
+            <NavLink>Three</NavLink>
+	  </div>
         </Nav>
       </Gallery>
     </div>

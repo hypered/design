@@ -18,8 +18,10 @@ const NavItem = withRouter(({ children, href, router }) => {
 
 const NavSection = props => (
   <Nav>
-    <NavItem href="/">Home</NavItem>
-    <NavItem href="/components">Components</NavItem>
+    <div>
+      <NavItem href="/">Home</NavItem>
+      <NavItem href="/components">Components</NavItem>
+    </div>
   </Nav>
 );
 
