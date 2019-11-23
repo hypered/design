@@ -7,6 +7,7 @@ module Main where
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import System.Environment (getArgs)
 
 import Hypered.Html
   ( footer, generateHtml, navigation, navigationTemplate, title, partialHtml
@@ -14,11 +15,16 @@ import Hypered.Html
   )
 
 
-config = Config "/static" Inter
-
 ------------------------------------------------------------------------------
 main :: IO ()
 main = do
+  args <- getArgs
+  let config = case args of
+        -- Used to generate HTML for GitHub Pages
+        ["docs"] -> Config "/design-system/static" Inter
+        -- Used locally.
+        _ -> Config "/static" Inter
+
   -- TODO The $body$ is indented when using the pretty printer, which
   -- then causes Pandoc to indent part of <code> content, which
   -- is wrong. Same for lots of white space betwee navigation links, which
