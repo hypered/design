@@ -6,10 +6,26 @@ export default {
 
 export const Navigation = () => (
   <Nav>
-    <NavLink href="#" active={true}>
-      Item 1
-    </NavLink>
-    <NavLink href="#">Item 2</NavLink>
-    <NavLink href="#">Item 3</NavLink>
+    <div>
+      <NavLink href="#" active={true}>
+        noteed.com
+      </NavLink>
+      <NavLink href="#">blog</NavLink>
+      <NavLink href="#">not-os</NavLink>
+    </div>
+  </Nav>
+);
+
+export const NavigationSpaceBetween = () => (
+  <Nav>
+    <div>
+      <NavLink href="#">noteed.com</NavLink>
+    </div>
+    <div>
+      <NavLink href="#">blog</NavLink>
+      <NavLink href="#" lastItem={true}>
+        not-os
+      </NavLink>
+    </div>
   </Nav>
 );
