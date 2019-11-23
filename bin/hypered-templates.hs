@@ -19,6 +19,9 @@ config = Config "/static" Inter
 ------------------------------------------------------------------------------
 main :: IO ()
 main = do
+  -- TODO The $body$ is indented when using the pretty printed, which
+  -- then causes Pandoc to indent part of <code> content, which
+  -- is wrong.
   prettyHtml config "generated/templates" "default.html" "$title$"
     (navigationTemplate >> wrapPost "$title$" "$body$" >> footer "$footer$")
 
