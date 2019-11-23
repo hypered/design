@@ -13,6 +13,7 @@ export * from "./Code/Code";
 export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
+export * from "./HR/HR";
 
 export * from "./home/HomeLayout";
 export * from "./home/NavSection";
