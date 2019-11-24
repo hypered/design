@@ -2,7 +2,6 @@ export * from "./Typography/Typography";
 export * from "./Nav/Nav";
 export * from "./Sidebar/Sidebar";
 export * from "./SidePanel/SidePanel";
-export * from "./Footer/Footer";
 export * from "./Input/Input";
 export * from "./Table/Table";
 export * from "./NavBlock/NavBlock";
@@ -14,6 +13,7 @@ export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
 export * from "./HR/HR";
+export * from "./Footer/Footer";
 
 export * from "./home/HomeLayout";
 export * from "./home/NavSection";
