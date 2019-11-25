@@ -8,8 +8,6 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  @import url('https://rsms.me/inter/inter.css');
-
   html {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
