@@ -10,7 +10,7 @@ const NavItem = withRouter(({ children, href, router }) => {
   let active = router.pathname === (pathname || href);
 
   return (
-    <Link href={href} passHref>
+    <Link href={href} passHref as={process.env.BACKEND_URL + href}>
       <NavLink active={active ? 1 : null}>{children}</NavLink>
     </Link>
   );
