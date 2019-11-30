@@ -5,32 +5,26 @@ bits of HTML and CSS to create a unified user experience across Hypered
 projects.
 
 Components are provided in multiple compatible forms: `Next.js`, `blaze-html`,
-and static HTML snippets.
+static HTML snippets, Pandoc templates, ...
 
-The current example content (located in the `docs/` directory) is raw HTML and
-CSS (using Tachyons). It is visible at
-[hypered.github.io/design-system](https://hypered.github.io/design-system/).
-
-A component explorer based on [Storybook](https://storybook.js.org/) is visible
-at
-[storybook-static.andyngo1.now.sh](https://storybook-static.andyngo1.now.sh/).
+The main site is built with Next.js and visible at
+[hypered.github.io/design-system](https://hypered.github.io/design-system/). It
+also contains a [component
+explorer](https://hypered.github.io/design-system/storybook/) based on
+[Storybook](https://storybook.js.org/).
 
 The same components, but rendered using `blaze-html`, are visible at
-[hypered.github.io/design-system/components/](https://hypered.github.io/design-system/components/).
+[hypered.github.io/design-system/hs/](https://hypered.github.io/design-system/hs/).
 
-A Next.js-based site to quickly experiment with the current design and new
-components is visible at
-[noteed-next.andyngo1.now.sh](https://noteed-next.andyngo1.now.sh/).
+Interesting Next.js pages are:
 
-Interesting pages are:
-
-- [sprint-2](https://noteed-next.andyngo1.now.sh/sprint-2)
-- [blog](https://noteed-next.andyngo1.now.sh/blog)
-- [blog post](https://noteed-next.andyngo1.now.sh/blog/starting-with-nixops-1)
-- [not-os](https://noteed-next.andyngo1.now.sh/projects/not-os)
-- [waveguide](https://noteed-next.andyngo1.now.sh/projects/waveguide)
-- [nubs-bash](https://noteed-next.andyngo1.now.sh/nubs-bash)
-- [nubs-bash/hello](https://noteed-next.andyngo1.now.sh/nubs-bash/hello)
+- [sprint-2](https://hypered.github.io/design-system/sprint-2.html)
+- [blog](https://hypered.github.io/design-system/blog/)
+- [blog post](https://hypered.github.io/design-system/blog/starting-with-nixops-2.html)
+- [not-os](https://hypered.github.io/design-system/projects/not-os/)
+- [waveguide](https://hypered.github.io/design-system/projects/waveguide.html)
+- [nubs-bash](https://hypered.github.io/design-system/nubs-bash/)
+- [nubs-bash/hello](https://hypered.github.io/design-system/nubs-bash/hello/)
 
 
 ## Next.js and Storybook
@@ -189,6 +183,8 @@ There is also a custom Revealjs template that (should) match the design-system.
 
 The `docs/` directory is used because this repository can then use the GitHub
 Pages feature from the `master` branch.
+
+There is still old examples in the `docs/` directory.
 
 
 ## Elsewhere
