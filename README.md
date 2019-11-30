@@ -140,6 +140,7 @@ $ nix-shell -p nodejs --run 'node render-components footer'
 ## Pandoc
 
 A Pandoc template can be generated with the `bin/hypered-templates.hs` script.
+The resulting file is versioned at `pandoc/default.html` for convenience.
 
 To render Markdown files to HTML, Pandoc can be used as follow:
 
@@ -161,7 +162,7 @@ Here is how the provided `pandoc/lua.md` example is rendered:
 ```
 $ pandoc \
   --standalone \
-  --template generated/templates/default.html \
+  --template pandoc/default.html \
   --lua-filter pandoc/tachyons.lua \
   --output docs/components/example--template.html \
   pandoc/lua.md
@@ -169,6 +170,12 @@ $ pandoc \
 
 Note that the top horizontal navigation component is filled by using the
 document YAML metadata block (which can also be provided as a separate file).
+
+
+## Nix
+
+A `default.nix` file is provided to show how to render the above Pandoc example
+with Nix.
 
 
 ## Notes
