@@ -175,10 +175,10 @@ wrap content = do
 
 -- | The footer, at the same level as both navigation and wrap.
 footer content =
-  H.footer ! A.class_ "pv4" $
-    H.p ! A.class_ "inline-flex bt b--black-50 pt4 lh-copy" $
+  H.footer $ do
+    H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4"
+    H.p ! A.class_ "inline-flex lh-copy" $
       content
-
 
 -- | The main content, as a left column.
 section :: Html -> Html
