@@ -26,15 +26,18 @@ var Navigation = require("./components/Nav/Nav");
 var Nav = Navigation.Nav;
 var Footer = require("./components/Footer/Footer").Footer;
 
+function render(c) {
+  console.log(pretty(ReactDOMServer.renderToStaticMarkup(c)));
+}
 
 var args = process.argv.slice(2);
 
 switch (args[0]) {
 case 'nav':
-  console.log(pretty(ReactDOMServer.renderToStaticMarkup(Nav([]))));
+  render(Nav([]));
   break;
 case 'footer':
-  console.log(pretty(ReactDOMServer.renderToStaticMarkup(Footer())));
+  render(Footer());
   break;
 case 'pretty':
   var content = fs.readFileSync(0, 'utf-8');
