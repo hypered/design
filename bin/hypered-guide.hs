@@ -28,7 +28,7 @@ main = do
   case args of
     [] -> generateGuide
     ["nav"] -> T.putStr (renderHtml (nav ""))
-    ["footer"] -> T.putStr (renderHtml (footer "© Võ Minh Thu, 2017-2019."))
+    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
     _ -> error "Unsupported argument."
 
 
