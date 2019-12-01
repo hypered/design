@@ -99,10 +99,14 @@ document Config{..} path title body = do
       H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy" $
         body
 
+-- | The main horizontal navigation component. It uses "flex justify-between"
+-- so it is better to group its contained links with `div`s. With a single
+-- `div`, they are all grouped on the left. With two, the first is grouped to
+-- the left and the second to the right.
+-- See https://hypered.github.io/design-system/storybook/?path=/story/navigation--navigation for examples.
 nav content =
   H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
-    H.div $
-      content
+    content
 
 -- | Horizontal navigation at the top of a page.
 navigation :: FilePath -> Html
@@ -111,36 +115,39 @@ navigation path = do
       relativize = (joinPath (replicate depth "..") </>)
   H.header ! A.class_ "pv4" $
     nav $
-      mapM_ (\(a, b) ->
-        H.a ! A.class_ "link mr3 black hover-blue"
-            ! A.href (H.toValue (relativize a)) $ b)
-        [ (".",                       "Entrypoint")
-        , ("projects/waveguide.html", "Waveguide")
-        , ("projects/station.html",   "Station")
-        , ("nubs/work.html",          "Work")
-        , ("nubs/",                   "Nubs")
-        , ("decks/",                  "Decks")
-        , ("edit/",                   "Edit")
-        , ("more.html",               "More")
-        , ("README.html",             "About")
-        ]
+      H.div $
+        mapM_ (\(a, b) ->
+          H.a ! A.class_ "link mr3 black hover-blue"
+              ! A.href (H.toValue (relativize a)) $ b)
+          [ (".",                       "Entrypoint")
+          , ("projects/waveguide.html", "Waveguide")
+          , ("projects/station.html",   "Station")
+          , ("nubs/work.html",          "Work")
+          , ("nubs/",                   "Nubs")
+          , ("decks/",                  "Decks")
+          , ("edit/",                   "Edit")
+          , ("more.html",               "More")
+          , ("README.html",             "About")
+          ]
 
 -- | Horizontal navigation at the top of a page, at the same level as main
 -- wrapper and footer.
 navigationNoteed =
   H.header $
-    nav $ do
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+    nav $
+      H.div $ do
+        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
+        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
+        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
 
 navigationTemplate =
   H.header $
-    nav $ do
-      "$for(nav)$"
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "$nav.href$" $
-        "$nav.name$"
-      "$endfor$"
+    nav $
+      H.div $ do
+        "$for(nav)$"
+        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "$nav.href$" $
+          "$nav.name$"
+        "$endfor$"
 
 -- | Content wrapper, for a blog post, at the same level as navigation and
 -- footer.
