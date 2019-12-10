@@ -37,7 +37,10 @@ export default class MyApp extends App {
             rel="stylesheet"
             href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
           />
-          <link rel="stylesheet" href="/static/css/styles.css" />
+          <link
+            rel="stylesheet"
+            href={`${process.env.BACKEND_URL}/static/css/styles.css`}
+          />
         </Head>
 
         <GlobalStyle />
