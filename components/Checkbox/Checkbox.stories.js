@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Checkbox } from "../../components";
 
 export default {
-  title: "Checkbox",
+  title: "Checkboxes",
 };
 
 export const CheckboxUnchecked = () => {

@@ -70,7 +70,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Checkbox" href="#">
+      <Gallery title="Checkboxes" href="#">
         <div>
           <div className="mb2">
             <Checkbox
