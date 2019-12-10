@@ -15,7 +15,6 @@ export * from "./List/List";
 export * from "./HR/HR";
 export * from "./Footer/Footer";
 
-export * from "./home/HomeLayout";
 export * from "./home/NavSection";
 export * from "./home/Section";
 export * from "./home/Gallery";
@@ -24,6 +23,7 @@ export * from "./home/GettingStartedSection";
 export * from "./home/GalleryPreviewSection";
 export * from "./home/ComponentsSection";
 export * from "./home/FooterSection";
+export * from "./home/HomeLayout";
 
 export * from "./Layout/Layout";
 export * from "./Layout/BlogListLayout";
