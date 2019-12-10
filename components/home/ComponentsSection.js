@@ -12,6 +12,8 @@ import {
   BannerYellow,
   BannerRed,
   Checkbox,
+  Dropdown,
+  Option,
   Code,
   NavBlockWrapper,
   Table,
@@ -84,6 +86,19 @@ export const ComponentsSection = props => (
               label="I agree to the terms and conditions"
               pill
             />
+          </div>
+        </div>
+      </Gallery>
+
+      <Gallery title="Dropdowns" href="#">
+        <div>
+          <div>
+            <Dropdown>
+              <Option>Select from dropdown</Option>
+              <Option>Item One</Option>
+              <Option>Item Two</Option>
+              <Option>Item Three</Option>
+            </Dropdown>
           </div>
         </div>
       </Gallery>
