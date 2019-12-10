@@ -1,13 +1,15 @@
-import { BannerGreen, BannerYellow, BannerRed } from "../../components";
+import { Banner } from "../../components";
 
 export default {
   title: "Banner",
 };
 
-export const Green = () => <BannerGreen>Messages sent!</BannerGreen>;
+export const Green = () => <Banner color="green">Messages sent!</Banner>;
 
 export const Yellow = () => (
-  <BannerYellow>Something might be wrong.</BannerYellow>
+  <Banner color="yellow">Something might be wrong.</Banner>
 );
 
-export const Red = () => <BannerRed>Error, something is wrong.</BannerRed>;
+export const Red = () => (
+  <Banner color="red">Error, something is wrong.</Banner>
+);

@@ -8,9 +8,7 @@ import {
   Gallery,
   Button,
   ButtonLink,
-  BannerGreen,
-  BannerYellow,
-  BannerRed,
+  Banner,
   Checkbox,
   Dropdown,
   Option,
@@ -106,13 +104,15 @@ export const ComponentsSection = props => (
       <Gallery title="Banners" href="#">
         <div className="w-100">
           <div>
-            <BannerGreen>Email successfully delivered.</BannerGreen>
+            <Banner color="green">Email successfully delivered.</Banner>
           </div>
           <div>
-            <BannerYellow>Waiting for internet connection...</BannerYellow>
+            <Banner color="yellow">Waiting for internet connection...</Banner>
           </div>
           <div>
-            <BannerRed>This email contains malicious attachment.</BannerRed>
+            <Banner color="red">
+              This email contains malicious attachment.
+            </Banner>
           </div>
         </div>
       </Gallery>
