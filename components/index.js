@@ -8,6 +8,7 @@ export * from "./NavBlock/NavBlock";
 export * from "./Button/Button";
 export * from "./ButtonLink/ButtonLink";
 export * from "./Banner/Banner";
+export * from "./Checkbox/Checkbox";
 export * from "./Code/Code";
 export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";

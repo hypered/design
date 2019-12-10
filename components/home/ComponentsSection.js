@@ -11,6 +11,7 @@ import {
   BannerGreen,
   BannerYellow,
   BannerRed,
+  Checkbox,
   Code,
   NavBlockWrapper,
   Table,
@@ -65,6 +66,24 @@ export const ComponentsSection = props => (
             <ButtonLink variant="secondary" href="#" size="normal">
               Click me
             </ButtonLink>
+          </div>
+        </div>
+      </Gallery>
+
+      <Gallery title="Checkbox" href="#">
+        <div>
+          <div className="mb2">
+            <Checkbox
+              defaultChecked
+              label="I agree to the terms and conditions"
+            />
+          </div>
+          <div>
+            <Checkbox
+              defaultChecked
+              label="I agree to the terms and conditions"
+              pill
+            />
           </div>
         </div>
       </Gallery>
