@@ -6,15 +6,18 @@ in rec
 {
   template = pandoc/default.html;
   lua-filter = pandoc/tachyons.lua;
-  md.lua = pandoc/lua.md;
-
-  pandoc-example = pkgs.runCommand "pandoc-example" {} ''
-    mkdir $out
+  to-html = src: pkgs.runCommand "html" {} ''
     ${pkgs.pandoc}/bin/pandoc \
+      --from markdown \
+      --to html \
       --standalone \
       --template ${template} \
       --lua-filter ${lua-filter} \
-      --output $out/example--template.html \
-      ${md.lua}
+      --output $out \
+      ${src}
   '';
+
+  md.lua = pandoc/lua.md;
+
+  pandoc-example = to-html md.lua;
 }
