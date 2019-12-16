@@ -1,35 +1,30 @@
-export const ButtonPrimary = props => (
-  <button className="button-reset ph4 pv3 bg-black white ba bw1 b--black">
-    {props.children}
-  </button>
-);
+import React from "react";
+import cx from "classnames";
 
-export const ButtonPrimaryDisabled = props => (
-  <button
-    className="button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
-    disabled
-  >
-    {props.children}
-  </button>
-);
+export const Button = props => {
+  let buttonClassNames = cx(
+    {
+      "bg-black": props.variant === "primary",
+      "b--black": props.variant === "primary",
+      white: props.variant === "primary",
+    },
+    {
+      "bg-white": props.variant === "secondary",
+      "b--black": props.variant === "secondary",
+      black: props.variant === "secondary",
+    },
+    {
+      "o-50": props.disabled,
+    },
+    {
+      "w-100": props.fullWidth,
+    },
+    "button-reset",
+    "ph4",
+    "pv3",
+    "ba",
+    "bw1",
+  );
 
-export const ButtonSecondary = props => (
-  <button className="button-reset ph4 pv3 bg-white black ba b--black bw1">
-    {props.children}
-  </button>
-);
-
-export const ButtonSecondaryDisabled = props => (
-  <button
-    className="button-reset ph4 pv3 bg-white black ba b--black bw1 o-50"
-    disabled
-  >
-    {props.children}
-  </button>
-);
-
-export const ButtonFullWidth = props => (
-  <button className="button-reset ph4 pv3 bg-black white ba bw1 b--black w-100">
-    {props.children}
-  </button>
-);
+  return <button className={buttonClassNames}>{props.children}</button>;
+};

@@ -6,10 +6,7 @@ import {
   Sidebar,
   Section,
   Gallery,
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonLinkPrimary,
-  ButtonLinkSecondary,
+  Button,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -44,22 +41,18 @@ export const ComponentsSection = props => (
       <Gallery title="Buttons" href="#">
         <div>
           <div className="mb2">
-            <ButtonPrimary>Click me</ButtonPrimary>
+            <Button variant="primary">Click me</Button>
           </div>
           <div className="mb2">
-            <ButtonSecondary>Click me</ButtonSecondary>
+            <Button variant="secondary">Click me</Button>
           </div>
         </div>
       </Gallery>
 
       <Gallery title="Link Buttons" href="#">
         <div>
-          <div className="mb2">
-            <ButtonLinkPrimary>Browse page</ButtonLinkPrimary>
-          </div>
-          <div className="mb2">
-            <ButtonLinkSecondary>Browse page</ButtonLinkSecondary>
-          </div>
+          <div className="mb2"></div>
+          <div className="mb2"></div>
         </div>
       </Gallery>
 

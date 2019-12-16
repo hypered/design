@@ -1,30 +1,30 @@
 import React from "react";
-import {
-  ButtonPrimary,
-  ButtonPrimaryDisabled,
-  ButtonSecondary,
-  ButtonSecondaryDisabled,
-  ButtonFullWidth,
-} from "../../components";
+import { Button } from "../../components";
 
 export default {
-  title: "Button",
+  title: "Buttons",
 };
 
-export const primary = () => <ButtonPrimary>Primary Button</ButtonPrimary>;
+export const primary = (props) => <Button variant="primary">Primary Button</Button>;
 
-export const primaryDisabled = () => (
-  <ButtonPrimaryDisabled>Primary Disabled</ButtonPrimaryDisabled>
+export const primaryDisabled = (props) => (
+  <Button variant="primary" disabled="true">
+    Primary Disabled
+  </Button>
 );
 
-export const secondary = () => (
-  <ButtonSecondary>Secondary Button</ButtonSecondary>
+export const secondary = (props) => (
+  <Button variant="secondary">Secondary Button</Button>
 );
 
-export const secondaryDisabled = () => (
-  <ButtonSecondaryDisabled>Secondary Disabled Button</ButtonSecondaryDisabled>
+export const secondaryDisabled = (props) => (
+  <Button variant="secondary" disabled="true">
+    Secondary Disabled Button
+  </Button>
 );
 
-export const fullWidth = () => (
-  <ButtonFullWidth>Button Full Width</ButtonFullWidth>
+export const fullWidth = (props) => (
+  <Button variant="primary" fullWidth>
+    Button Full Width
+  </Button>
 );

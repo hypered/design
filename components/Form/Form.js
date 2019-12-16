@@ -1,4 +1,4 @@
-import { Input, ButtonPrimary } from "../../components";
+import { Input, Button } from "../../components";
 
 export const LoginForm = () => (
   <form className="pa4 bg-white ba b--black bw1 mw6">
@@ -14,7 +14,7 @@ export const LoginForm = () => (
       <a className="link no-underline black hover-blue self-center" href="#">
         Forgot Password
       </a>
-      <ButtonPrimary>Log In —></ButtonPrimary>
+      <Button variant="primary">Log In —></Button>
     </div>
   </form>
 );
