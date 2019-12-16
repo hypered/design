@@ -5,7 +5,7 @@ export default {
   title: "Checkboxes",
 };
 
-export const CheckboxUnchecked = () => {
+export const Default = () => {
   const [checked, setChecked] = useState(true);
 
   function handleChecked(e) {
@@ -14,6 +14,7 @@ export const CheckboxUnchecked = () => {
 
   return (
     <Checkbox
+      type="checkbox"
       checked={checked}
       label={`This is ${checked ? "checked" : "unchecked"}`}
       onChange={e => handleChecked(e)}
@@ -21,7 +22,7 @@ export const CheckboxUnchecked = () => {
   );
 };
 
-export const CheckboxSelectedPill = () => {
+export const CheckboxPill = () => {
   const [checked, setChecked] = useState(true);
 
   function handleChecked(e) {
@@ -30,6 +31,7 @@ export const CheckboxSelectedPill = () => {
 
   return (
     <Checkbox
+      type="checkbox"
       checked={checked}
       label={`This is ${checked ? "checked" : "false"}`}
       onChange={e => handleChecked(e)}
