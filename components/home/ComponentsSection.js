@@ -9,6 +9,7 @@ import {
   Button,
   ButtonLink,
   Banner,
+  Radio,
   Checkbox,
   Dropdown,
   Option,
@@ -74,16 +75,47 @@ export const ComponentsSection = props => (
         <div>
           <div className="mb2">
             <Checkbox
+              type="checkbox"
               defaultChecked
               label="I agree to the terms and conditions"
             />
           </div>
           <div>
             <Checkbox
+              type="checkbox"
               defaultChecked
               label="I agree to the terms and conditions"
-              pill
+              pill="true"
             />
+          </div>
+        </div>
+      </Gallery>
+
+      <Gallery title="Radio" href="#">
+        <div>
+          <div className="mb3">
+            <Radio>
+              <Checkbox pill="true" type="radio" label="Apple" value="apple" />
+              <Checkbox
+                pill="true"
+                type="radio"
+                label="Banana"
+                value="banana"
+              />
+              <Checkbox
+                pill="true"
+                type="radio"
+                label="Cherry"
+                value="cherry"
+              />
+            </Radio>
+          </div>
+          <div>
+            <Radio>
+              <Checkbox type="radio" label="Apple" value="apple" />
+              <Checkbox type="radio" label="Banana" value="banana" />
+              <Checkbox type="radio" label="Cherry" value="cherry" />
+            </Radio>
           </div>
         </div>
       </Gallery>
