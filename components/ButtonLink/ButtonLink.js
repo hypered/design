@@ -1,44 +1,33 @@
-export const ButtonLinkPrimary = props => (
-  <a
-    className="no-underline dib tc ph4 pv3 bg-black white ba bw1 b--black"
-    href={props.href}
-  >
-    {props.children}
-  </a>
-);
+import React from "react";
+import cx from "classnames";
 
-export const ButtonLinkPrimaryDisabled = props => (
-  <a
-    className="no-underline dib tc ph4 pv3 bg-black white ba bw1 b--black o-50"
-    href={props.href}
-  >
-    {props.children}
-  </a>
-);
-
-export const ButtonLinkSecondary = props => (
-  <a
-    className="no-underline dib tc ph4 pv3 bg-white black ba b--black bw1"
-    href={props.href}
-  >
-    {props.children}
-  </a>
-);
-
-export const ButtonLinkSecondaryDisabled = props => (
-  <a
-    className="no-underline dib tc ph4 pv3 bg-white black ba b--black bw1 o-50"
-    href={props.href}
-  >
-    {props.children}
-  </a>
-);
-
-export const ButtonLinkFullWidth = props => (
-  <a
-    className="no-underline dib tc ph4 pv3 bg-black white ba bw1 b--black w-100"
-    href={props.href}
-  >
-    {props.children}
-  </a>
-);
+export const ButtonLink = props => {
+  let buttonLinkClassNames = cx(
+    {
+      "bg-black": props.variant === "primary",
+      "b--black": props.variant === "primary",
+      white: props.variant === "primary",
+    },
+    {
+      "bg-white": props.variant === "secondary",
+      "b--black": props.variant === "secondary",
+      black: props.variant === "secondary",
+    },
+    {
+      "o-50": props.disabled,
+    },
+    { "w-100": props.fullWidth },
+    "dib",
+    "no-underline",
+    "tc",
+    "ph4",
+    "pv3",
+    "ba",
+    "bw1",
+  );
+  return (
+    <a className={buttonLinkClassNames} href={props.href}>
+      {props.children}
+    </a>
+  );
+};

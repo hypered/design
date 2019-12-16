@@ -7,6 +7,7 @@ import {
   Section,
   Gallery,
   Button,
+  ButtonLink,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -51,8 +52,16 @@ export const ComponentsSection = props => (
 
       <Gallery title="Link Buttons" href="#">
         <div>
-          <div className="mb2"></div>
-          <div className="mb2"></div>
+          <div className="mb2">
+            <ButtonLink variant="primary" href="#">
+              Click me
+            </ButtonLink>
+          </div>
+          <div className="mb2">
+            <ButtonLink variant="secondary" href="#">
+              Click me
+            </ButtonLink>
+          </div>
         </div>
       </Gallery>
 

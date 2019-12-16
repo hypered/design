@@ -1,34 +1,32 @@
 import React from "react";
-import {
-  ButtonLinkPrimary,
-  ButtonLinkPrimaryDisabled,
-  ButtonLinkSecondary,
-  ButtonLinkSecondaryDisabled,
-  ButtonLinkFullWidth,
-} from "../../components";
+import { ButtonLink } from "../../components";
 
 export default {
   title: "Button Link",
 };
 
 export const primary = () => (
-  <ButtonLinkPrimary>Primary Button</ButtonLinkPrimary>
+  <ButtonLink variant="primary">Primary Button</ButtonLink>
 );
 
 export const primaryDisabled = () => (
-  <ButtonLinkPrimaryDisabled>Primary Disabled</ButtonLinkPrimaryDisabled>
+  <ButtonLink variant="primary" disabled="true">
+    Primary Disabled
+  </ButtonLink>
 );
 
 export const secondary = () => (
-  <ButtonLinkSecondary>Secondary Button</ButtonLinkSecondary>
+  <ButtonLink variant="secondary">Secondary Button</ButtonLink>
 );
 
 export const secondaryDisabled = () => (
-  <ButtonLinkSecondaryDisabled>
-    Secondary Disabled Button
-  </ButtonLinkSecondaryDisabled>
+  <ButtonLink variant="secondary" disabled="true">
+    Secondary Disabled
+  </ButtonLink>
 );
 
 export const fullWidth = () => (
-  <ButtonLinkFullWidth>Button Full Width</ButtonLinkFullWidth>
+  <ButtonLink variant="primary" fullWidth>
+    Button Full Width
+  </ButtonLink>
 );
