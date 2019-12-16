@@ -8,12 +8,8 @@ import {
   Gallery,
   ButtonPrimary,
   ButtonSecondary,
-  ButtonPrimaryPill,
-  ButtonSecondaryPill,
   ButtonLinkPrimary,
   ButtonLinkSecondary,
-  ButtonLinkPrimaryPill,
-  ButtonLinkSecondaryPill,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -53,12 +49,6 @@ export const ComponentsSection = props => (
           <div className="mb2">
             <ButtonSecondary>Click me</ButtonSecondary>
           </div>
-          <div className="mb2">
-            <ButtonPrimaryPill>Click me</ButtonPrimaryPill>
-          </div>
-          <div>
-            <ButtonSecondaryPill>Click me</ButtonSecondaryPill>
-          </div>
         </div>
       </Gallery>
 
@@ -69,12 +59,6 @@ export const ComponentsSection = props => (
           </div>
           <div className="mb2">
             <ButtonLinkSecondary>Browse page</ButtonLinkSecondary>
-          </div>
-          <div className="mb2">
-            <ButtonLinkPrimaryPill>Browse page</ButtonLinkPrimaryPill>
-          </div>
-          <div>
-            <ButtonLinkSecondaryPill>Browse page</ButtonLinkSecondaryPill>
           </div>
         </div>
       </Gallery>
@@ -299,11 +283,11 @@ export const ComponentsSection = props => (
 
       <Gallery title="Nav" href="#">
         <Nav>
-	  <div>
+          <div>
             <NavLink active={"true"}>One</NavLink>
             <NavLink>Two</NavLink>
             <NavLink>Three</NavLink>
-	  </div>
+          </div>
         </Nav>
       </Gallery>
     </div>
