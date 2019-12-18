@@ -1,8 +1,8 @@
 import { Input, Button } from "../../components";
 
 export const LoginForm = () => (
-  <form className="bg-white ba b--black bw1 mw6">
-    <div className="pa4">
+  <form className="bg-white mw6">
+    <div className="pa4 bt br bl b--black bw1">
       <h2>Log in to your account</h2>
       <Input
         type="email"
@@ -16,6 +16,9 @@ export const LoginForm = () => (
       </a>
     </div>
     <div className="flex justify-between">
+      <Button variant="secondary" size="large">
+        Sign Up
+      </Button>
       <Button variant="primary" size="large">
         Log In —>
       </Button>
