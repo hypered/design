@@ -5,26 +5,44 @@ export default {
   title: "Buttons",
 };
 
-export const primary = (props) => <Button variant="primary">Primary Button</Button>;
+export const primary = props => (
+  <Button variant="primary" size="normal">
+    Primary Button
+  </Button>
+);
 
-export const primaryDisabled = (props) => (
-  <Button variant="primary" disabled="true">
+export const primaryLarge = props => (
+  <Button variant="primary" size="large">
+    Primary Button
+  </Button>
+);
+
+export const primaryDisabled = props => (
+  <Button variant="primary" size="normal" disabled="true">
     Primary Disabled
   </Button>
 );
 
-export const secondary = (props) => (
-  <Button variant="secondary">Secondary Button</Button>
+export const secondary = props => (
+  <Button variant="secondary" size="normal">
+    Secondary Button
+  </Button>
 );
 
-export const secondaryDisabled = (props) => (
-  <Button variant="secondary" disabled="true">
+export const secondaryLarge = props => (
+  <Button variant="secondary" size="large">
+    Secondary Button
+  </Button>
+);
+
+export const secondaryDisabled = props => (
+  <Button variant="secondary" size="normal" disabled="true">
     Secondary Disabled Button
   </Button>
 );
 
-export const fullWidth = (props) => (
-  <Button variant="primary" fullWidth>
+export const fullWidth = props => (
+  <Button variant="primary" size="normal" fullWidth>
     Button Full Width
   </Button>
 );
