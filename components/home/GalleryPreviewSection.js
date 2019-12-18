@@ -7,7 +7,6 @@ import {
   Section,
   Gallery,
   Button,
-  ButtonLink,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -59,10 +58,14 @@ export const GalleryPreviewSection = props => (
       <Gallery title="Buttons">
         <div>
           <div className="mb2">
-            <Button variant="primary">Click me</Button>
+            <Button variant="primary" size="normal">
+              Click me
+            </Button>
           </div>
           <div className="mb2">
-            <Button variant="secondary">Click me</Button>
+            <Button variant="secondary" size="normal">
+              Click me
+            </Button>
           </div>
         </div>
       </Gallery>
