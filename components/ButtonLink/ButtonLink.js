@@ -14,14 +14,24 @@ export const ButtonLink = props => {
       black: props.variant === "secondary",
     },
     {
+      ph4: props.size === "normal",
+      pv3: props.size === "normal",
+      tc: props.size === "normal",
+    },
+    {
+      ph3: props.size === "large",
+      pb4: props.size === "large",
+      pt3: props.size === "large",
+      tl: props.size === "large",
+    },
+    {
       "o-50": props.disabled,
     },
-    { "w-100": props.fullWidth },
+    {
+      "w-100": props.fullWidth || props.size === "large",
+    },
     "dib",
     "no-underline",
-    "tc",
-    "ph4",
-    "pv3",
     "ba",
     "bw1",
   );

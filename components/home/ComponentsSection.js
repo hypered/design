@@ -57,12 +57,12 @@ export const ComponentsSection = props => (
       <Gallery title="Link Buttons" href="#">
         <div>
           <div className="mb2">
-            <ButtonLink variant="primary" href="#">
+            <ButtonLink variant="primary" href="#" size="normal">
               Click me
             </ButtonLink>
           </div>
           <div className="mb2">
-            <ButtonLink variant="secondary" href="#">
+            <ButtonLink variant="secondary" href="#" size="normal">
               Click me
             </ButtonLink>
           </div>
