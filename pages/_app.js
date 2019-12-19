@@ -32,6 +32,11 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
+          <link
+            rel="icon"
+            type="image/png"
+            href={`${process.env.BACKEND_URL}/static/img/favicon.png`}
+          />
           <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link
             rel="stylesheet"
