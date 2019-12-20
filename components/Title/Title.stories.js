@@ -29,6 +29,7 @@ export const JumboUsageExample = () => (
   <div className="mw8 center">
     <header className="pv4 pv5-l">
       <TitleJumbo>Hypered</TitleJumbo>
+      <SubTitleJumbo>Software development, defined</SubTitleJumbo>
       <P>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
         convallis mollis nulla, molestie tempor velit consequat non.
@@ -73,6 +74,7 @@ export const UsageExample = () => (
   <div className="mw8 center">
     <header className="pv4 pv5-l">
       <Title>Hypered</Title>
+      <SubTitle>Software development, defined</SubTitle>
       <P>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
         convallis mollis nulla, molestie tempor velit consequat non.
