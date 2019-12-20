@@ -41,7 +41,7 @@
   background-position: center;
 }
 
-.dropdown {
+.hy-dropdown {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE1IDVIMUw4IDEyTDE1IDVaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4K");
   background-position: right 0.75rem center;
   background-repeat: no-repeat;
