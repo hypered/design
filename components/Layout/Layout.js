@@ -4,7 +4,7 @@ import { Nav, NavLink, Footer } from "../../components";
 
 function Layout(props) {
   return (
-    <div className="flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy">
+    <div className="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
       <div>
         <header>
           <Nav>
