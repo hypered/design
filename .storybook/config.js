@@ -15,7 +15,7 @@ configure(
 addDecorator(withStaticMarkup);
 
 addDecorator(storyFn => (
-  <div className="inter" style={{ padding: "0" }}>
+  <div className="hy-inter" style={{ padding: "0" }}>
     {storyFn()}
   </div>
 ));
