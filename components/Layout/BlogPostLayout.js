@@ -21,7 +21,7 @@ import {
 export const BlogPostLayout = props => (
   <Layout>
     <main>
-      <article className="mw7">
+      <article className="mw7 overflow-auto">
         <div className="mb4">
           <H1>Starting with NixOps (and thus Nix and NixOS)</H1>
           <Divider />
