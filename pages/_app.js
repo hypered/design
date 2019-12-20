@@ -32,6 +32,7 @@ export default class MyApp extends App {
     return (
       <>
         <Head>
+          <title>Hypered Design System</title>
           <link
             rel="icon"
             type="image/png"
