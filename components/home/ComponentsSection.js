@@ -6,14 +6,8 @@ import {
   Sidebar,
   Section,
   Gallery,
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonPrimaryPill,
-  ButtonSecondaryPill,
-  ButtonLinkPrimary,
-  ButtonLinkSecondary,
-  ButtonLinkPrimaryPill,
-  ButtonLinkSecondaryPill,
+  Button,
+  ButtonLink,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -48,16 +42,14 @@ export const ComponentsSection = props => (
       <Gallery title="Buttons" href="#">
         <div>
           <div className="mb2">
-            <ButtonPrimary>Click me</ButtonPrimary>
+            <Button variant="primary" size="normal">
+              Click me
+            </Button>
           </div>
           <div className="mb2">
-            <ButtonSecondary>Click me</ButtonSecondary>
-          </div>
-          <div className="mb2">
-            <ButtonPrimaryPill>Click me</ButtonPrimaryPill>
-          </div>
-          <div>
-            <ButtonSecondaryPill>Click me</ButtonSecondaryPill>
+            <Button variant="secondary" size="normal">
+              Click me
+            </Button>
           </div>
         </div>
       </Gallery>
@@ -65,16 +57,14 @@ export const ComponentsSection = props => (
       <Gallery title="Link Buttons" href="#">
         <div>
           <div className="mb2">
-            <ButtonLinkPrimary>Browse page</ButtonLinkPrimary>
+            <ButtonLink variant="primary" href="#" size="normal">
+              Click me
+            </ButtonLink>
           </div>
           <div className="mb2">
-            <ButtonLinkSecondary>Browse page</ButtonLinkSecondary>
-          </div>
-          <div className="mb2">
-            <ButtonLinkPrimaryPill>Browse page</ButtonLinkPrimaryPill>
-          </div>
-          <div>
-            <ButtonLinkSecondaryPill>Browse page</ButtonLinkSecondaryPill>
+            <ButtonLink variant="secondary" href="#" size="normal">
+              Click me
+            </ButtonLink>
           </div>
         </div>
       </Gallery>
@@ -299,11 +289,11 @@ export const ComponentsSection = props => (
 
       <Gallery title="Nav" href="#">
         <Nav>
-	  <div>
+          <div>
             <NavLink active={"true"}>One</NavLink>
             <NavLink>Two</NavLink>
             <NavLink>Three</NavLink>
-	  </div>
+          </div>
         </Nav>
       </Gallery>
     </div>

@@ -1,54 +1,48 @@
 import React from "react";
-import {
-  ButtonPrimary,
-  ButtonPrimaryDisabled,
-  ButtonPrimaryPill,
-  ButtonPrimaryPillDisabled,
-  ButtonSecondary,
-  ButtonSecondaryDisabled,
-  ButtonSecondaryPill,
-  ButtonSecondaryPillDisabled,
-  ButtonFullWidth,
-} from "../../components";
+import { Button } from "../../components";
 
 export default {
-  title: "Button",
+  title: "Buttons",
 };
 
-export const primary = () => <ButtonPrimary>Primary Button</ButtonPrimary>;
-
-export const primaryDisabled = () => (
-  <ButtonPrimaryDisabled>Primary Disabled</ButtonPrimaryDisabled>
+export const primary = props => (
+  <Button variant="primary" size="normal">
+    Primary Button
+  </Button>
 );
 
-export const primaryPill = () => (
-  <ButtonPrimaryPill>Primary Pill Button</ButtonPrimaryPill>
+export const primaryLarge = props => (
+  <Button variant="primary" size="large">
+    Primary Button
+  </Button>
 );
 
-export const primaryPillDisabled = () => (
-  <ButtonPrimaryPillDisabled>
-    Primary Pill Disabled Button
-  </ButtonPrimaryPillDisabled>
+export const primaryDisabled = props => (
+  <Button variant="primary" size="normal" disabled="true">
+    Primary Disabled
+  </Button>
 );
 
-export const secondary = () => (
-  <ButtonSecondary>Secondary Button</ButtonSecondary>
+export const secondary = props => (
+  <Button variant="secondary" size="normal">
+    Secondary Button
+  </Button>
 );
 
-export const secondaryDisabled = () => (
-  <ButtonSecondaryDisabled>Secondary Disabled Button</ButtonSecondaryDisabled>
+export const secondaryLarge = props => (
+  <Button variant="secondary" size="large">
+    Secondary Button
+  </Button>
 );
 
-export const secondaryPill = () => (
-  <ButtonSecondaryPill>Secondary Pill Button</ButtonSecondaryPill>
+export const secondaryDisabled = props => (
+  <Button variant="secondary" size="normal" disabled="true">
+    Secondary Disabled Button
+  </Button>
 );
 
-export const secondaryPillDisabled = () => (
-  <ButtonSecondaryPillDisabled>
-    Secondary Pill Disabled Button
-  </ButtonSecondaryPillDisabled>
-);
-
-export const fullWidth = () => (
-  <ButtonFullWidth>Button Full Width</ButtonFullWidth>
+export const fullWidth = props => (
+  <Button variant="primary" size="normal" fullWidth>
+    Button Full Width
+  </Button>
 );

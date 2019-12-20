@@ -6,14 +6,7 @@ import {
   Sidebar,
   Section,
   Gallery,
-  ButtonPrimary,
-  ButtonSecondary,
-  ButtonPrimaryPill,
-  ButtonSecondaryPill,
-  ButtonLinkPrimary,
-  ButtonLinkSecondary,
-  ButtonLinkPrimaryPill,
-  ButtonLinkSecondaryPill,
+  Button,
   BannerGreen,
   BannerYellow,
   BannerRed,
@@ -65,16 +58,14 @@ export const GalleryPreviewSection = props => (
       <Gallery title="Buttons">
         <div>
           <div className="mb2">
-            <ButtonPrimary>Click me</ButtonPrimary>
+            <Button variant="primary" size="normal">
+              Click me
+            </Button>
           </div>
           <div className="mb2">
-            <ButtonSecondary>Click me</ButtonSecondary>
-          </div>
-          <div className="mb2">
-            <ButtonPrimaryPill>Click me</ButtonPrimaryPill>
-          </div>
-          <div>
-            <ButtonSecondaryPill>Click me</ButtonSecondaryPill>
+            <Button variant="secondary" size="normal">
+              Click me
+            </Button>
           </div>
         </div>
       </Gallery>

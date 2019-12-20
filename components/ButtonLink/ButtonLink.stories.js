@@ -1,58 +1,48 @@
 import React from "react";
-import {
-  ButtonLinkPrimary,
-  ButtonLinkPrimaryDisabled,
-  ButtonLinkPrimaryPill,
-  ButtonLinkPrimaryPillDisabled,
-  ButtonLinkSecondary,
-  ButtonLinkSecondaryDisabled,
-  ButtonLinkSecondaryPill,
-  ButtonLinkSecondaryPillDisabled,
-  ButtonLinkFullWidth,
-} from "../../components";
+import { ButtonLink } from "../../components";
 
 export default {
   title: "Button Link",
 };
 
 export const primary = () => (
-  <ButtonLinkPrimary>Primary Button</ButtonLinkPrimary>
+  <ButtonLink variant="primary" size="normal">
+    Primary Button
+  </ButtonLink>
+);
+
+export const primaryLarge = () => (
+  <ButtonLink variant="primary" size="large">
+    Primary Button
+  </ButtonLink>
 );
 
 export const primaryDisabled = () => (
-  <ButtonLinkPrimaryDisabled>Primary Disabled</ButtonLinkPrimaryDisabled>
-);
-
-export const primaryPill = () => (
-  <ButtonLinkPrimaryPill>Primary Pill Button</ButtonLinkPrimaryPill>
-);
-
-export const primaryPillDisabled = () => (
-  <ButtonLinkPrimaryPillDisabled>
-    Primary Pill Disabled Button
-  </ButtonLinkPrimaryPillDisabled>
+  <ButtonLink variant="primary" size="normal" disabled="true">
+    Primary Disabled
+  </ButtonLink>
 );
 
 export const secondary = () => (
-  <ButtonLinkSecondary>Secondary Button</ButtonLinkSecondary>
+  <ButtonLink variant="secondary" size="normal">
+    Secondary Button
+  </ButtonLink>
+);
+
+export const secondaryLarge = () => (
+  <ButtonLink variant="secondary" size="large">
+    Secondary Button
+  </ButtonLink>
 );
 
 export const secondaryDisabled = () => (
-  <ButtonLinkSecondaryDisabled>
-    Secondary Disabled Button
-  </ButtonLinkSecondaryDisabled>
-);
-
-export const secondaryPill = () => (
-  <ButtonLinkSecondaryPill>Secondary Pill Button</ButtonLinkSecondaryPill>
-);
-
-export const secondaryPillDisabled = () => (
-  <ButtonLinkSecondaryPillDisabled>
-    Secondary Pill Disabled Button
-  </ButtonLinkSecondaryPillDisabled>
+  <ButtonLink variant="secondary" size="normal" disabled="true">
+    Secondary Disabled
+  </ButtonLink>
 );
 
 export const fullWidth = () => (
-  <ButtonLinkFullWidth>Button Full Width</ButtonLinkFullWidth>
+  <ButtonLink variant="primary" size="normal" fullWidth>
+    Button Full Width
+  </ButtonLink>
 );
