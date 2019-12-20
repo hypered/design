@@ -8,8 +8,8 @@
   font-feature-settings: "tnum" 1;
 }
 
-.editable-pre[contenteditable="true"]:active,
-.editable-pre[contenteditable="true"]:focus {
+.hy-editable-pre[contenteditable="true"]:active,
+.hy-editable-pre[contenteditable="true"]:focus {
   background: #fff;
   box-shadow: 0 0 0 1px #96ccff;
   outline: none;
