@@ -8,6 +8,9 @@ export * from "./NavBlock/NavBlock";
 export * from "./Button/Button";
 export * from "./ButtonLink/ButtonLink";
 export * from "./Banner/Banner";
+export * from "./Checkbox/Checkbox";
+export * from "./Radio/Radio";
+export * from "./Dropdown/Dropdown";
 export * from "./Code/Code";
 export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
@@ -15,7 +18,6 @@ export * from "./List/List";
 export * from "./HR/HR";
 export * from "./Footer/Footer";
 
-export * from "./home/HomeLayout";
 export * from "./home/NavSection";
 export * from "./home/Section";
 export * from "./home/Gallery";
@@ -24,6 +26,7 @@ export * from "./home/GettingStartedSection";
 export * from "./home/GalleryPreviewSection";
 export * from "./home/ComponentsSection";
 export * from "./home/FooterSection";
+export * from "./home/HomeLayout";
 
 export * from "./Layout/Layout";
 export * from "./Layout/BlogListLayout";

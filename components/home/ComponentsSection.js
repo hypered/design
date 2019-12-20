@@ -8,9 +8,11 @@ import {
   Gallery,
   Button,
   ButtonLink,
-  BannerGreen,
-  BannerYellow,
-  BannerRed,
+  Banner,
+  Radio,
+  Checkbox,
+  Dropdown,
+  Option,
   Code,
   NavBlockWrapper,
   Table,
@@ -69,16 +71,80 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
+      <Gallery title="Checkboxes" href="#">
+        <div>
+          <div className="mb2">
+            <Checkbox
+              type="checkbox"
+              defaultChecked
+              label="I agree to the terms and conditions"
+            />
+          </div>
+          <div>
+            <Checkbox
+              type="checkbox"
+              defaultChecked
+              label="I agree to the terms and conditions"
+              pill="true"
+            />
+          </div>
+        </div>
+      </Gallery>
+
+      <Gallery title="Radio" href="#">
+        <div>
+          <div className="mb3">
+            <Radio>
+              <Checkbox pill="true" type="radio" label="Apple" value="apple" />
+              <Checkbox
+                pill="true"
+                type="radio"
+                label="Banana"
+                value="banana"
+              />
+              <Checkbox
+                pill="true"
+                type="radio"
+                label="Cherry"
+                value="cherry"
+              />
+            </Radio>
+          </div>
+          <div>
+            <Radio>
+              <Checkbox type="radio" label="Apple" value="apple" />
+              <Checkbox type="radio" label="Banana" value="banana" />
+              <Checkbox type="radio" label="Cherry" value="cherry" />
+            </Radio>
+          </div>
+        </div>
+      </Gallery>
+
+      <Gallery title="Dropdowns" href="#">
+        <div>
+          <div>
+            <Dropdown>
+              <Option>Select from dropdown</Option>
+              <Option>Item One</Option>
+              <Option>Item Two</Option>
+              <Option>Item Three</Option>
+            </Dropdown>
+          </div>
+        </div>
+      </Gallery>
+
       <Gallery title="Banners" href="#">
         <div className="w-100">
           <div>
-            <BannerGreen>Email successfully delivered.</BannerGreen>
+            <Banner color="green">Email successfully delivered.</Banner>
           </div>
           <div>
-            <BannerYellow>Waiting for internet connection...</BannerYellow>
+            <Banner color="yellow">Waiting for internet connection...</Banner>
           </div>
           <div>
-            <BannerRed>This email contains malicious attachment.</BannerRed>
+            <Banner color="red">
+              This email contains malicious attachment.
+            </Banner>
           </div>
         </div>
       </Gallery>
