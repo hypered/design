@@ -16,6 +16,7 @@ in rec
       --output $out \
       ${src}
   '';
+  replace-md-links = scripts/replace-md-links.sh;
 
   md.lua = pandoc/lua.md;
 
