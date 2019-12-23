@@ -15,6 +15,7 @@ import {
   H4,
   P,
   BlockQuote,
+  PullQuote,
   Divider,
 } from "../../components";
 
@@ -65,6 +66,11 @@ export const WithSidebarLayout = props => (
         </BlockQuote>
 
         <H3>Ending points</H3>
+
+        <PullQuote>
+          To follow along, you can clone the Git repository and run each
+          nix-build command as they appear at the top of each page.
+        </PullQuote>
 
         <P>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

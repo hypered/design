@@ -10,6 +10,7 @@ import {
   P,
   Code,
   BlockQuote,
+  PullQuote,
   Divider,
   NavBlockWrapper,
   SidebarTitle,
@@ -72,6 +73,11 @@ export const BlogPostLayout = props => (
         </BlockQuote>
 
         <H3>Ending points</H3>
+
+        <PullQuote>
+          To follow along, you can clone the Git repository and run each
+          nix-build command as they appear at the top of each page.
+        </PullQuote>
 
         <P>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
