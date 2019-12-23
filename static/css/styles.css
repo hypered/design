@@ -1,5 +1,7 @@
 @import url("https://rsms.me/inter/inter.css");
 
+/* typography */
+
 .hy-inter {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 }
@@ -8,15 +10,19 @@
   font-feature-settings: "tnum" 1;
 }
 
+/* spacing */
+
+.hy-min-height-vh-100 {
+  min-height: 100vh;
+}
+
+/* inputs */
+
 .hy-editable-pre[contenteditable="true"]:active,
 .hy-editable-pre[contenteditable="true"]:focus {
   background: #fff;
   box-shadow: 0 0 0 1px #96ccff;
   outline: none;
-}
-
-.hy-min-height-vh-100 {
-  min-height: 100vh;
 }
 
 .hy-checkbox {
