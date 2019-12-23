@@ -1,5 +1,41 @@
 @import url("https://rsms.me/inter/inter.css");
 
+/* colours - text */
+
+.hy-blue {
+  color: #1a4fcb;
+}
+
+.hy-red {
+  color: #f13e1a;
+}
+
+.hy-green {
+  color: #2ab246;
+}
+
+.hy-yellow {
+  color: #f7c52e;
+}
+
+/* colours - bg */
+
+.hy-bg-blue {
+  background: #1a4fcb;
+}
+
+.hy-bg-red {
+  background: #f13e1a;
+}
+
+.hy-bg-green {
+  background: #2ab246;
+}
+
+.hy-bg-yellow {
+  background: #f7c52e;
+}
+
 /* typography */
 
 .hy-inter {
