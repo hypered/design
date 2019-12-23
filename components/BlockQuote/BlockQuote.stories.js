@@ -20,3 +20,12 @@ export const PullQuoteExample = () => (
     volutpat dignissim, eros eros sodales quam, a suscipit felis eros non dolor.
   </PullQuote>
 );
+
+export const WithOptionalPullQuoteExample = () => (
+  <PullQuote hideQuote>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur
+    tincidunt elit, et semper enim laoreet eu. In hac habitasse platea dictumst.
+    Phasellus consequat quis augue vitae laoreet. In consequat, urna vel
+    volutpat dignissim, eros eros sodales quam, a suscipit felis eros non dolor.
+  </PullQuote>
+);

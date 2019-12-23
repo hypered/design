@@ -8,8 +8,21 @@ export const BlockQuote = props => (
 );
 
 export const PullQuote = props => {
+  let pullQuoteClassNames = cx(
+    {
+      "pull-quote": !props.hideQuote,
+    },
+    "relative",
+    "db",
+    "pv3",
+    "ph4",
+    "f4",
+    "ml0",
+    "mv4",
+    "lh-copy",
+  );
   return (
-    <blockquote className="pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy">
+    <blockquote className={pullQuoteClassNames}>
       <span className="i">{props.children}</span>
     </blockquote>
   );
