@@ -20,7 +20,8 @@ const NavSection = props => (
   <Nav>
     <div>
       <NavItem href="/">Home</NavItem>
-      <NavItem href="/components">Components</NavItem>
+      <NavItem href="/components/">Components</NavItem>
+      <NavItem href="/storybook/">Storybook</NavItem>
     </div>
   </Nav>
 );
