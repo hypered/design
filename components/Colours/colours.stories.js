@@ -79,8 +79,8 @@ export const Background = () => (
 export const Samples = () => (
   <div className="pa4">
     <div className="flex flex-wrap nl2 nr2 mw8">
-      <Specimen className="hy-bg-blue pink" />
-      <Specimen className="hy-bg-red hy-yellow" />
+      <Specimen className="hy-bg-blue light-green" />
+      <Specimen className="hy-bg-red light-yellow" />
       <Specimen className="hy-bg-green black" />
       <Specimen className="hy-bg-yellow hy-red" />
     </div>
