@@ -9,7 +9,7 @@
     "build": "next build",
     "export": "next export",
     "start": "next start",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -s ./static -p 6006",
     "build-storybook": "build-storybook"
   },
   "keywords": [],
