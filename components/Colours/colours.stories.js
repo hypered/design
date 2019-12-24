@@ -34,10 +34,10 @@ const Specimen = ({ className }) => {
       <div className={specimenClassName}>
         <div className="aspect-ratio--object flex items-stretch">
           <div className="flex flex-column justify-between pa4 h-100">
-            <h2 className="f1 mv2 fw6 tracked-tight lh-title">
+            <h2 className="f2 f1-m f1-l mv2 fw6 tracked-tight lh-title">
               Samples <span className="o-50">↗</span>
             </h2>
-            <p className="f5 lh-copy">
+            <p className="f6 f5-m f5-l lh-copy">
               The user interface (UI), in the industrial design field of
               human-computer interaction, is the space where interactions
               between humans and machines occur.
@@ -77,10 +77,12 @@ export const Background = () => (
 );
 
 export const Samples = () => (
-  <div className="flex flex-wrap nl2 nr2 mw8">
-    <Specimen className="hy-bg-blue white" />
-    <Specimen className="hy-bg-red white" />
-    <Specimen className="hy-bg-green white" />
-    <Specimen className="hy-bg-yellow" />
+  <div className="pa4">
+    <div className="flex flex-wrap nl2 nr2 mw8">
+      <Specimen className="hy-bg-blue pink" />
+      <Specimen className="hy-bg-red hy-yellow" />
+      <Specimen className="hy-bg-green black" />
+      <Specimen className="hy-bg-yellow hy-red" />
+    </div>
   </div>
 );
