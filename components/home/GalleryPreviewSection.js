@@ -136,7 +136,7 @@ export const GalleryPreviewSection = props => (
         <P>And many more...</P>
         <a
           className="no-underline dib tc ph4 pv3 bg-black white ba bw1 b--black br-pill"
-          href="/components"
+          href="components/"
         >
           <b>Go to Components Gallery</b>
         </a>
