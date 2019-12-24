@@ -9,7 +9,7 @@ const Box = ({ title, description }) => {
   return (
     <div className="bg-navy light-green flex justify-between h5">
       <div className="flex flex-column justify-between pa4">
-        <h2 className="f2 fw8 lh-title mv1">{title}</h2>
+        <h2 className="f3 f2-m f2-l fw8 lh-title mv1">{title}</h2>
         <div>
           <p className="f7 b tracked lh-copy ttu mv1 o-50">Description</p>
           <p className="f5 lh-copy mv1">{description}</p>
