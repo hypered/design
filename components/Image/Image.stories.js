@@ -17,7 +17,7 @@ export const WithCaption = () => (
 
 export const Examples = () => (
   <Layout>
-    <main className="debug">
+    <main>
       <article className="mw7 cf">
         <H1>Using the Image component</H1>
         <P>
