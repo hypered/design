@@ -64,13 +64,11 @@ export const FullWidth = () => {
 export const Examples = () => {
   return (
     <Layout>
-      <div className="pa4">
-        <h1 className="dib bg-red white f6 mv0 pv1 ph2">Container</h1>
-        <div className="ba b--red debug-grid-16">
-          <AutoWidth />
-          <NegativeMargins />
-          <FullWidth />
-        </div>
+      <h1 className="dib bg-red white f6 mv0 pv1 ph2">Container</h1>
+      <div className="ba b--red debug-grid-16">
+        <AutoWidth />
+        <NegativeMargins />
+        <FullWidth />
       </div>
     </Layout>
   );
