@@ -16,7 +16,7 @@ const Box = ({ title, description }) => {
         </div>
       </div>
       <b
-        className="flex items-center justify-start pa3 bl b--light-green f6"
+        className="flex items-center justify-start pa3 bl f6"
         style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
       >
         Hypered Design System
