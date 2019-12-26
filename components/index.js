@@ -17,6 +17,7 @@ export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
 export * from "./HR/HR";
+export * from "./Image/Image";
 export * from "./Footer/Footer";
 
 export * from "./home/NavSection";

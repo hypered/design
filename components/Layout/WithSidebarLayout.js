@@ -24,7 +24,7 @@ export const WithSidebarLayout = props => (
     <main className="flex flex-wrap nl3 nr3">
       <Sidebar />
 
-      <article className="order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3 overflow-auto">
+      <article className="order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3 cf">
         <div className="mb4">
           <H1>Starting with NixOps (and thus Nix and NixOS)</H1>
           <Divider />
