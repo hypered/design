@@ -14,7 +14,7 @@ export const Option = props => (
 export const Dropdown = props => {
   return (
     <select
-      className="dropdown br1 black ba b--black bw1 br0 pv2 f6"
+      className="hy-dropdown br1 black ba b--black bw1 br0 pv2 f6"
       {...props}
     >
       {props.children}

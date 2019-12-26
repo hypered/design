@@ -9,7 +9,7 @@ export const Checkbox = props => {
     "inline-flex": props.inline,
   });
 
-  let checkboxClassNames = cx("checkbox", "w1", "h1", {
+  let checkboxClassNames = cx("hy-checkbox", "w1", "h1", {
     "br-pill": props.pill,
   });
 

@@ -109,9 +109,10 @@ npm run build-storybook
 A helper Node.js script is provided to render components from the command-line:
 
 ```
-$ node render-components.js footer
-<footer class="pv4" data-reactroot="">
-  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
+$ nix-shell -p nodejs --run "node render-components footer"
+<footer>
+  <hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4" />
+  <p class="inline-flex lh-copy">© Hypered, 2019.</p>
 </footer>
 ```
 
@@ -125,15 +126,16 @@ In the example below, we can verify the footer component is the same in Haskell
 and Node.
 
 ```
-$ nix-shell --run 'runghc bin/hypered-guide.hs footer' | nix-shell -p nodejs --run 'node render-components pretty'
-<footer class="pv4">
-  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
-</footer>
-$ nix-shell -p nodejs --run 'node render-components footer'
-<footer class="pv4">
-  <p class="inline-flex bt b--black-50 pt4 lh-copy">© Võ Minh Thu, 2017-2019.</p>
+$ nix-shell --run 'runghc bin/hypered-guide.hs footer' \
+  | nix-shell -p nodejs --run 'node render-components pretty'
+<footer>
+  <hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4">
+  <p class="inline-flex lh-copy">© Hypered, 2019.</p>
 </footer>
 ```
+
+Notice that blaze-html writes `<hr>` instead of the `<hr />` obtained with the
+Node.js script.
 
 
 ## Pandoc
