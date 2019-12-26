@@ -84,6 +84,11 @@ export const Samples = () => (
       <Specimen className="hy-bg-red light-yellow" />
       <Specimen className="hy-bg-green black" />
       <Specimen className="hy-bg-yellow hy-red" />
+
+      <Specimen className="hy-bg-blue white" />
+      <Specimen className="hy-bg-red white" />
+      <Specimen className="hy-bg-green white" />
+      <Specimen className="hy-bg-yellow white" />
     </div>
   </div>
 );
