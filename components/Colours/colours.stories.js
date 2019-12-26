@@ -29,6 +29,7 @@ const Specimen = ({ className }) => {
     "aspect-ratio--4x3",
     "relative",
   );
+
   return (
     <div className="w-100 w-50-l ph2 mb3">
       <div className={specimenClassName}>
@@ -43,7 +44,7 @@ const Specimen = ({ className }) => {
               between humans and machines occur.
             </p>
           </div>
-          <div className="bl b--white w4">
+          <div className="bl w4">
             <div
               className="flex justify-between items-center pa3 h-100"
               style={{ writingMode: "vertical-lr", textOrientation: "mixed" }}
