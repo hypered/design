@@ -7,6 +7,8 @@
 
 module Main where
 
+import Data.Char (isDigit, isUpper, toLower)
+import Data.List (nub)
 import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -19,6 +21,7 @@ import Hypered.Html
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
   , generate, nav, navigation)
+import Hypered.Stories (stories)
 
 
 ------------------------------------------------------------------------------
@@ -29,7 +32,31 @@ main = do
     [] -> generateGuide
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
+    ["list-categories"] -> mapM_ putStrLn (nub ((map fst (tail stories))))
+    ["list-stories"] -> mapM_ putStrLn
+      (map dashdash (tail stories))
+    ["js-import-stories"] -> mapM_ (putStrLn . jsimport)
+      (nub (map fst (tail stories)))
+    ["js-stories"] -> mapM_ putStrLn
+      (map js (tail stories))
     _ -> error "Unsupported argument."
+
+
+------------------------------------------------------------------------------
+dashdash (a, b) = map toLower (a ++ "--" ++ [head b] ++ concatMap f (tail b))
+  where
+  f c | isUpper c = ['-', c]
+  f c | isDigit c = ['-', c]
+      | otherwise = [c]
+
+jsimport a =
+  "var " ++ a ++ " = require(\"./components/" ++ a ++ "/" ++ a ++ ".stories\");"
+
+js (a, b) = unlines
+  [ "case '" ++ dashdash (a, b) ++ "':"
+  , "  render(" ++ a ++ "." ++ b ++ "());"
+  , "  break;"
+  ]
 
 
 ------------------------------------------------------------------------------
