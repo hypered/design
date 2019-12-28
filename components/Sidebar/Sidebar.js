@@ -12,7 +12,7 @@ export const SidebarLI = props => <li>{props.children}</li>;
 
 export const SidebarLink = props => (
   <Link href={props.href}>
-    <a className="link black hover-blue">{props.children}</a>
+    <a className="link black hy-hover-blue">{props.children}</a>
   </Link>
 );
 

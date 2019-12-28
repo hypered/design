@@ -11,7 +11,7 @@ export const LoginForm = () => (
         message="You have entered an invalid email"
       />
       <Input type="password" label="Password" placeholder="" />
-      <a className="link no-underline black hover-blue" href="#">
+      <a className="link no-underline black hy-hover-blue" href="#">
         Forgot Password
       </a>
     </div>
