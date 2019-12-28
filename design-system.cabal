@@ -17,12 +17,15 @@ library
                        directory,
                        filepath,
                        text
-  exposed-modules:     Hypered.Html
+  exposed-modules:     Hypered.Html,
+                       Hypered.Stories
   ghc-options:         -Wall
 
 executable hypered-guide
   hs-source-dirs:      bin
   main-is:             hypered-guide.hs
   build-depends:       base == 4.*,
-                       design-system
+                       blaze-html,
+                       design-system,
+                       text
   ghc-options:         -Wall

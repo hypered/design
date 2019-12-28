@@ -7,6 +7,7 @@
 
 module Main where
 
+import Data.List (nub)
 import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -19,6 +20,7 @@ import Hypered.Html
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
   , generate, nav, navigation)
+import Hypered.Stories (stories)
 
 
 ------------------------------------------------------------------------------
@@ -29,6 +31,7 @@ main = do
     [] -> generateGuide
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
+    ["list-categories"] -> mapM_ putStrLn (nub ((map fst (tail stories))))
     _ -> error "Unsupported argument."
 
 
