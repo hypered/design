@@ -43,6 +43,8 @@ export const UsageExample = () => (
       Noteed's design-system comprises of components that quickly help you get
       started with your projects.
     </P>
-    <P>The components in this design-system are built with Tachyons.</P>
+    <P>
+      The components in this design-system are built with <a class="no-underline hy-blue" href="#">Tachyons</a>.
+    </P>
   </article>
 );
