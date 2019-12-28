@@ -1,7 +1,7 @@
 import React from 'react';
 import { linkTo } from '@storybook/addon-links';
 import {
-  Layout,
+  BareLayout,
   UL,
   OL,
   LI,
@@ -26,7 +26,7 @@ export default {
 };
 
 export const toStorybook = props => (
-  <Layout>
+  <BareLayout>
     <main>
       <article className="mw7 cf">
         <div className="mb4">
@@ -39,7 +39,7 @@ export const toStorybook = props => (
         </P>
       </article>
     </main>
-  </Layout>
+  </BareLayout>
 );
 
 toStorybook.story = {

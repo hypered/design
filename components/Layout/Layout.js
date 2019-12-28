@@ -2,6 +2,16 @@ import React from "react";
 
 import { Nav, NavLink, Footer } from "../../components";
 
+function BareLayout(props) {
+  return (
+    <div className="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
+      <div>
+        {props.children}
+      </div>
+    </div>
+  );
+}
+
 function Layout(props) {
   return (
     <div className="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
@@ -24,4 +34,4 @@ function Layout(props) {
   );
 }
 
-export { Layout };
+export { BareLayout, Layout };
