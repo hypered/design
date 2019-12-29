@@ -41,7 +41,7 @@ import {
 export const ComponentsSection = props => (
   <Section>
     <div className="flex flex-wrap nl3 nr3">
-      <Gallery title="Buttons" href="#">
+      <Gallery title="Buttons" href="../storybook/?path=/story/buttons--primary">
         <div>
           <div className="mb2">
             <Button variant="primary" size="normal">
@@ -56,7 +56,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Link Buttons" href="#">
+      <Gallery title="Link Buttons" href="../storybook/?path=/story/button-link--primary">
         <div>
           <div className="mb2">
             <ButtonLink variant="primary" href="#" size="normal">
@@ -133,7 +133,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Banners" href="#">
+      <Gallery title="Banners" href="../storybook/?path=/story/banner--green">
         <div className="w-100">
           <div>
             <Banner color="green">Email successfully delivered.</Banner>
@@ -149,7 +149,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Code Block" href="#">
+      <Gallery title="Code Block" href="../storybook/?path=/story/code-block--code-block">
         <div className="w-100">
           <Code>{`.tachyons {
   display: block;
@@ -157,7 +157,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Table" href="#">
+      <Gallery title="Table" href="../storybook/?path=/story/table--default">
         <div className="w-100">
           <Table>
             <thead>
@@ -206,7 +206,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Heading" href="#">
+      <Gallery title="Heading" href="../storybook/?path=/story/typography--heading-1">
         <div>
           <H1>Heading 1</H1>
           <H2>Heading 2</H2>
@@ -217,7 +217,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Sidebar" href="#">
+      <Gallery title="Sidebar" href="../storybook/?path=/story/sidebar--default">
         <div className="w-100">
           <nav>
             <SidebarTitle>Section 1</SidebarTitle>
@@ -262,7 +262,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Paragraph" href="#">
+      <Gallery title="Paragraph" href="../storybook/?path=/story/typography--paragraph">
         <div>
           <H4>Introduction</H4>
           <P>
@@ -272,7 +272,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Blockquote" href="#">
+      <Gallery title="Blockquote" href="../storybook/?path=/story/typography--paragraph">
         <div>
           <BlockQuote>
             You have power over your mind - not outside events. Realize this,
@@ -281,7 +281,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Lists" href="#">
+      <Gallery title="Lists" href="../storybook/?path=/story/list--ordered-list">
         <div>
           <OL>
             <LI>One</LI>
@@ -297,20 +297,20 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Forms" href="#">
+      <Gallery title="Forms" href="../storybook/?path=/story/form--login">
         <div className="w-100">
           <LoginForm />
         </div>
       </Gallery>
 
-      <Gallery title="Input" href="#">
+      <Gallery title="Input" href="../storybook/?path=/story/input--text">
         <div className="w-100">
           <Input label="First Name" placeholder="John" />
           <Input label="Last Name" placeholder="Doe" />
         </div>
       </Gallery>
 
-      <Gallery title="Nav Block" href="#">
+      <Gallery title="Nav Block" href="../storybook/?path=/story/navigation-block--default">
         <div className="w-100">
           <NavBlockWrapper>
             <div className="flex flex-wrap nl3 nr3">
@@ -353,7 +353,7 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Nav" href="#">
+      <Gallery title="Nav" href="../storybook/?path=/story/navigation--navigation">
         <Nav>
           <div>
             <NavLink active={"true"}>One</NavLink>

@@ -6,7 +6,6 @@ import "../static/css/tachyons.css";
 // automatically import all files ending in *.stories.js
 configure(
   [
-    require.context("../stories", true, /\.stories\.js$/),
     require.context("../components", true, /\.stories\.js$/),
   ],
   module,
