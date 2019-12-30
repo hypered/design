@@ -1,4 +1,4 @@
-import { Input, Button } from "../../components";
+import { Input, Button, A } from "../../components";
 
 export const LoginForm = () => (
   <form className="bg-white mw6">
@@ -11,9 +11,9 @@ export const LoginForm = () => (
         message="You have entered an invalid email"
       />
       <Input type="password" label="Password" placeholder="" />
-      <a className="link no-underline black hy-hover-blue" href="#">
+      <A color="black" href="#">
         Forgot Password
-      </a>
+      </A>
     </div>
     <div className="flex justify-between">
       <Button variant="secondary" size="large">
