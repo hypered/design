@@ -1,5 +1,6 @@
 export * from "./Typography/Typography";
 export * from "./Title/Title";
+export * from "./A/A";
 export * from "./Navigation/Navigation";
 export * from "./Sidebar/Sidebar";
 export * from "./SidePanel/SidePanel";
