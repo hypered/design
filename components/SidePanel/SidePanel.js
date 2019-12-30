@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { A } from "../../components";
 
 export const SidePanelTitle = props => (
   <h3 className="f5 lh-title mv2">{props.children}</h3>
@@ -14,9 +15,7 @@ export const SidePanelLI = props => (
 
 export const SidePanelLink = props => (
   <Link href={props.href}>
-    <a className="link no-underline black blue-hover">
-      &rarr; {props.children}
-    </a>
+    <A color="black">&rarr; {props.children}</A>
   </Link>
 );
 

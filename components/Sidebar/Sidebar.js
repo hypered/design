@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { A } from "../../components";
 
 export const SidebarTitle = props => (
   <h3 className="f5 ttu mv1">{props.children}</h3>
@@ -12,7 +13,7 @@ export const SidebarLI = props => <li>{props.children}</li>;
 
 export const SidebarLink = props => (
   <Link href={props.href}>
-    <a className="link black hy-hover-blue">{props.children}</a>
+    <A color="black">{props.children}</A>
   </Link>
 );
 
