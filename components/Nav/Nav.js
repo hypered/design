@@ -1,7 +1,7 @@
 import cx from "classnames";
 
 export const NavLink = React.forwardRef(function NavLink(props, ref) {
-  let NavLinkClasses = cx("link", "black", "hy-hover-blue", {
+  let NavLinkClasses = cx("black", "hy-hover-blue", {
     underline: props.active,
     mr3: !props.lastItem,
   });
