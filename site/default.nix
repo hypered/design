@@ -24,4 +24,10 @@ in rec
     find $out/haddock -maxdepth 1 -name '*.html' \
       -exec ${pkgs.bash}/bin/bash ${../scripts/change-haddock.sh} {} \;
   '';
+
+  static = pkgs.runCommand "static" {} ''
+    mkdir $out
+
+    cp -r ${../static}/* $out/
+  '';
 }
