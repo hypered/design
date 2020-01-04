@@ -20,7 +20,7 @@ import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
-  , generate, nav, navigation)
+  , generate, nav, navigation, navigationNoteed, navigationNoteed')
 import Hypered.Stories (stories)
 
 
@@ -32,6 +32,14 @@ main = do
     [] -> generateGuide
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
+
+    -- Stories form Storybook
+    ["navigation--navigation"] ->
+      T.putStr (renderHtml (navigationNoteed))
+    ["navigation--navigation-space-between"] ->
+      T.putStr (renderHtml (navigationNoteed'))
+    ["layout--default"] -> T.putStr (renderHtml (nav ""))
+
     ["list-categories"] -> mapM_ putStrLn (nub ((map fst (tail stories))))
     ["list-stories"] -> mapM_ putStrLn
       (map dashdash (tail stories))

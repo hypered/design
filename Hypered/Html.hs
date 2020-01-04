@@ -133,12 +133,21 @@ navigation path = do
 -- | Horizontal navigation at the top of a page, at the same level as main
 -- wrapper and footer.
 navigationNoteed =
-  H.header $
-    nav $
-      H.div $ do
-        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "noteed.com"
-        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "blog"
-        H.a ! A.class_ "link mr3 black hover-blue" ! A.href "#" $ "not-os"
+  nav $
+    H.div $ do
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "noteed.com"
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
+
+-- | Same as 'navigationNoteed' but with links on the right, except the first
+-- one.
+navigationNoteed' =
+  nav $ do
+    H.div $ do
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "noteed.com"
+    H.div $ do
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
 
 navigationTemplate =
   H.header $
@@ -269,7 +278,8 @@ sidebar xs =
       sidebarLink name href
 
 exampleSidebar = do
-  navigationNoteed
+  H.header $
+    navigationNoteed
   H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
     sidebar
       [ ("Intro", [("not-os", "#")])
@@ -295,7 +305,8 @@ exampleSidebar = do
   footer "© Võ Minh Thu, 2017-2019."
 
 exampleSidePanel = do
-  navigationNoteed
+  H.header $
+    navigationNoteed
   H.main $ do
     H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
       H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
