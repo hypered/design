@@ -4,7 +4,7 @@
 let
   pkgs = import nixpkgs {};
   inherit (import ../default.nix {}) to-prefixed-html replace-md-links;
-  to-html = src: to-prefixed-html "/design-system" src;
+  to-html = src: to-prefixed-html "/design-system" "inter" src;
   app = (import ../release.nix).guide;
 
 in rec

@@ -50,14 +50,17 @@ partialHtml config base path title body = do
 data Font =
     IbmPlex
   | Inter
+  | Font String
 
 fontClass :: Font -> String
-fontClass IbmPlex = "ibm-plex-sans"
-fontClass Inter = "inter"
+fontClass IbmPlex = "hy-ibm-plex"
+fontClass Inter = "hy-inter"
+fontClass (Font s) = "hy-" ++ s
 
 fontCss :: Font -> String
 fontCss IbmPlex = "css/ibm-plex.css"
 fontCss Inter = "css/inter.css"
+fontCss (Font s) = "css/" ++ s ++ ".css"
 
 data Config = Config
   { cStaticPath :: FilePath

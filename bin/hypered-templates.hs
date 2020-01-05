@@ -11,7 +11,7 @@ import System.Environment (getArgs)
 
 import Hypered.Html
   ( footer, generateHtml, navigation, navigationTemplate, title, partialHtml
-  , prettyHtml, wrap , wrapPost , Config(..), Font(Inter)
+  , prettyHtml, wrap , wrapPost , Config(..), Font(Inter, Font)
   )
 
 
@@ -22,8 +22,8 @@ main = do
   let config = case args of
         -- Used to generate HTML for GitHub Pages
         ["docs"] -> Config "/design-system/static" Inter
-        -- Used locally.
-        _ -> Config "/static" Inter
+        -- Used to generate the template.
+        _ -> Config "$prefix$/static" (Font "$font$")
 
   -- TODO The $body$ is indented when using the pretty printer, which
   -- then causes Pandoc to indent part of <code> content, which

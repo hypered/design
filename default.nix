@@ -6,18 +6,19 @@ in rec
 {
   template = pandoc/default.html;
   lua-filter = pandoc/tachyons.lua;
-  to-prefixed-html = prefix: src: pkgs.runCommand "html" {} ''
+  to-prefixed-html = prefix: font: src: pkgs.runCommand "html" {} ''
     ${pkgs.pandoc}/bin/pandoc \
       --from markdown \
       --to html \
       --standalone \
       --template ${template} \
       -M prefix="${prefix}" \
+      -M font="${font}" \
       --lua-filter ${lua-filter} \
       --output $out \
       ${src}
   '';
-  to-html = src: to-prefixed-html "" src;
+  to-html = src: to-prefixed-html "" "inter" src;
   replace-md-links = scripts/replace-md-links.sh;
 
   md.lua = pandoc/lua.md;

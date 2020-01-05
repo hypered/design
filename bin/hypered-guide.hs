@@ -93,6 +93,8 @@ generateGuide = do
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
 
       H.li $ H.a ! A.href "example--template.html" $ "Example, template"
+      H.li $ H.a ! A.href "example--template-ibm-plex.html" $
+        "Example, template (IBM Plex)"
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
