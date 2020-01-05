@@ -192,7 +192,7 @@ wrap content = do
 -- | The footer, at the same level as both navigation and wrap.
 footer content =
   H.footer $ do
-    H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4"
+    H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
     H.p ! A.class_ "inline-flex lh-copy" $
       content
 
