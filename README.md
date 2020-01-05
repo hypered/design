@@ -138,7 +138,7 @@ Notice that blaze-html writes `<hr>` instead of the `<hr />` obtained with the
 Node.js script.
 
 
-## Pandoc
+## Pandoc template
 
 A Pandoc template can be generated with the `bin/hypered-templates.hs` script.
 The resulting file is versioned at [`pandoc/default.html`](pandoc/default.html)
@@ -147,7 +147,7 @@ for convenience.
 To render Markdown files to HTML, Pandoc can be used as follow:
 
 ```
-$ pandoc --template templates/default.html -M title=README README.md
+$ pandoc --template templates/default.html -M title=README -M font=inter README.md
 ```
 
 This renders this `README.md` file as a standalone HTML page using the
@@ -168,11 +168,17 @@ $ pandoc \
   --template pandoc/default.html \
   --lua-filter pandoc/tachyons.lua \
   --output docs/components/example--template.html \
+  -M prefix="" \
+  -M font=inter \
   pandoc/lua.md
 ```
 
 Note that the top horizontal navigation component is filled by using the
 document YAML metadata block (which can also be provided as a separate file).
+
+The same document is rendered again
+[Here](https://hypered.github.io/design-system/hs/example--template-ibm-plex.html)
+with a different font.
 
 
 ## Nix
