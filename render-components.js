@@ -61,11 +61,11 @@ var args = process.argv.slice(2);
 switch (args[0]) {
 
 case 'nav':
-  render(Nav([]));
+  render(CNav([]));
   break;
 
 case 'footer':
-  render(Footer());
+  render(CFooter());
   break;
 
 case 'pretty':

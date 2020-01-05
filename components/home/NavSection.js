@@ -22,6 +22,8 @@ const NavSection = props => (
       <NavItem href="/">Home</NavItem>
       <NavItem href="/components/">Components</NavItem>
       <NavItem href="/storybook/">Storybook</NavItem>
+      <NavItem href="/nix.html">Documentation</NavItem>
+      <NavItem href="/haddock/">Haddock</NavItem>
     </div>
   </Nav>
 );

@@ -30,6 +30,8 @@ main = do
   args <- getArgs
   case args of
     [] -> generateGuide
+
+    -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
 
@@ -38,7 +40,8 @@ main = do
       T.putStr (renderHtml (navigationNoteed))
     ["navigation--navigation-space-between"] ->
       T.putStr (renderHtml (navigationNoteed'))
-    ["layout--default"] -> T.putStr (renderHtml (nav ""))
+    ["layout--default"] ->
+      T.putStr (renderHtml (nav ""))
 
     ["list-categories"] -> mapM_ putStrLn (nub ((map fst (tail stories))))
     ["list-stories"] -> mapM_ putStrLn

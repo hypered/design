@@ -69,11 +69,13 @@ defaultConfig = Config
   , cFont = Inter
   }
 
+
 ------------------------------------------------------------------------------
 mkRelativize path = relativize
   where
     depth = length (splitPath path) - 1
     relativize = (joinPath (replicate depth "..") </>)
+
 
 ------------------------------------------------------------------------------
 document :: Config -> FilePath -> Text -> Html -> Html
@@ -99,6 +101,8 @@ document Config{..} path title body = do
       H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy" $
         body
 
+
+------------------------------------------------------------------------------
 -- | The main horizontal navigation component. It uses "flex justify-between"
 -- so it is better to group its contained links with `div`s. With a single
 -- `div`, they are all grouped on the left. With two, the first is grouped to
