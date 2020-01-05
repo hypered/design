@@ -26,4 +26,5 @@ in rec
 
   app = (import ./release.nix).guide;
   site = (import site/default.nix {}).html.all;
+  static = (import site/default.nix {}).static;
 }
