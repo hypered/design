@@ -1,4 +1,4 @@
-import { H1, H2, H3, H4, H5, H6, P } from "../../components";
+import { H1, H2, H3, H4, H5, H6, P, A } from "../../components";
 
 export default {
   title: "Typography",
@@ -43,6 +43,12 @@ export const UsageExample = () => (
       Noteed's design-system comprises of components that quickly help you get
       started with your projects.
     </P>
-    <P>The components in this design-system are built with Tachyons.</P>
+    <P>
+      The components in this design-system are built with{" "}
+      <A color="blue" href="#">
+        Tachyons
+      </A>
+      .
+    </P>
   </article>
 );

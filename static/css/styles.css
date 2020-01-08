@@ -18,6 +18,11 @@
   color: #f7c52e;
 }
 
+.hy-hover-blue:focus,
+.hy-hover-blue:hover {
+  color: #0000ff;
+}
+
 /* colours - bg */
 
 .hy-bg-blue {
