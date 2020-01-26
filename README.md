@@ -18,6 +18,7 @@ was the `Next.js` + Tachyons.
 - Pandoc templates
 - Scripts to modify Haddock results
 - XML + XSLT stylesheet (see [README](/xslt/README.md))
+- EPUB (see [README](/epub/README.md))
 - ...
 
 The main site built with Next.js is visible at
