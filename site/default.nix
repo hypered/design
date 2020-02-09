@@ -10,12 +10,15 @@ let
 in rec
 {
   md.nix = ./nix.md;
+  md.nav-block = ./nav-block.md;
 
   html.nix = to-html md.nix;
+  html.nav-block = to-html md.nav-block;
   html.all = pkgs.runCommand "all" {} ''
     mkdir $out
 
     cp ${html.nix} $out/nix.html
+    cp ${html.nav-block} $out/nav-block.html
     ${pkgs.bash}/bin/bash ${replace-md-links} $out
 
     cp -r --no-preserve=mode \
