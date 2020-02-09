@@ -9,5 +9,5 @@ in
     example = ./example.md;
   } ''
     mkdir -p $out
-    pandoc $example -o $out/example.pdf
+    pandoc -s -V geometry:a4paper -o $out/example.pdf $example
   ''
