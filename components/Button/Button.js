@@ -8,10 +8,12 @@ export const Button = props => {
     {
       "bg-black": props.variant === "primary",
       "b--black": props.variant === "primary",
-      white: props.variant === "primary"
+      white: props.variant === "primary",
+      "hover-light-green": props.variant === "primary"
     },
     {
       "bg-white": props.variant === "secondary",
+      "hover-bg-light-gray": props.variant === "secondary",
       "b--black": props.variant === "secondary",
       black: props.variant === "secondary"
     },
