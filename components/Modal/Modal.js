@@ -1,16 +1,27 @@
+export const ModalState = ({ modalName }) => (
+  <>
+    {/* Using input type="checkbox" to toggle modal  */}
+    <input className="modal-state" id={modalName} type="checkbox" />
+  </>
+);
+
 export const ModalOverlay = ({ children, ...props }) => (
-  <label className="bg-black-50 absolute absolute--fill z-0" {...props}>
+  <label className="bg-black-50 fixed absolute--fill z-1" {...props}>
     {children}
   </label>
 );
 
-export const ModalContainer = ({ htmlFor, children }) => (
-  <label className="modal items-center justify-center h-100 absolute absolute--fill z-1">
-    <ModalOverlay htmlFor={htmlFor} />
-    <div className="bg-white relative z-3 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75">
-      {children}
+export const ModalContainer = ({ modalName, htmlFor, children }) => (
+  <>
+    <ModalState modalName={modalName} />
+
+    <div className="modal items-center justify-center h-100 absolute absolute--fill z-1">
+      <div className="bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75">
+        {children}
+      </div>
+      <ModalOverlay htmlFor={htmlFor} />
     </div>
-  </label>
+  </>
 );
 
 export const ModalHeader = ({ children }) => (
