@@ -19,9 +19,19 @@ export const ModalContainer = ({ modalName, htmlFor, children }) => (
       <div className="bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75">
         {children}
       </div>
+
       <ModalOverlay htmlFor={htmlFor} />
     </div>
   </>
+);
+
+export const ModalClose = ({ modalName }) => (
+  <label
+    htmlFor={modalName}
+    className="w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer"
+  >
+    <img src="img/close.svg" />
+  </label>
 );
 
 export const ModalHeader = ({ children }) => (
