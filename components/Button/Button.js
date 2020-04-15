@@ -28,6 +28,7 @@ export const Button = props => {
     {
       "w-100": props.fullWidth || props.size === "large"
     },
+    "pointer",
     "inline-flex",
     "button-reset",
     "ba",
