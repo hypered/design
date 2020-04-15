@@ -4,6 +4,7 @@ import {
   ModalOverlay,
   ModalContainer,
   ModalHeader,
+  ModalClose,
   ModalBody,
   ModalFooter,
   H4,
@@ -34,19 +35,22 @@ const Form = ({ modalName }) => (
   <ModalContainer htmlFor={modalName} modalName={modalName}>
     <ModalHeader>
       <div>
-        <H4>This is a modal</H4>
+        <H4>Sign in to Hypered</H4>
       </div>
-      <label htmlFor={modalName} className="w2 h2 bg-white hover-bg-near-white">
-        <img src="img/close.svg" />
-      </label>
+      <ModalClose modalName={modalName} />
     </ModalHeader>
+
     <ModalBody>
       <Input label="Name" />
-      <Input label="Password" />
+      <Input label="Password" type="password" />
     </ModalBody>
+
     <ModalFooter>
+      <ModalButton htmlFor={modalName} variant="secondary" size="large">
+        Forgot Password?
+      </ModalButton>
       <ModalButton htmlFor={modalName} size="large">
-        Dismiss Modal —>
+        Sign In —>
       </ModalButton>
     </ModalFooter>
   </ModalContainer>
@@ -131,13 +135,13 @@ const TextContent = ({ modalName }) => (
       <div>
         <H4>Terms and Conditions</H4>
       </div>
-      <label htmlFor={modalName}>
-        <img src="img/close.svg" />
-      </label>
+      <ModalClose modalName={modalName} />
     </ModalHeader>
+
     <ModalBody>
       <TC />
     </ModalBody>
+
     <ModalFooter>
       <ModalButton
         as="label"
