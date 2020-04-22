@@ -1,6 +1,6 @@
 export const ModalState = ({ modalName }) => (
   <>
-    {/* Using input type="checkbox" to toggle modal  */}
+    {/* this trick uses input type="checkbox" to toggle modal  */}
     <input className="modal-state" id={modalName} type="checkbox" />
   </>
 );
