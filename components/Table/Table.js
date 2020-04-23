@@ -1,11 +1,9 @@
 import React from "react";
 import cx from "classnames";
 
-export const Table = props => (
+export const Table = ({ children }) => (
   <div className="overflow-x-scroll">
-    <table className="bg-white collapse w-100" style={{ minWidth: "40rem" }}>
-      {props.children}
-    </table>
+    <table className="bg-white collapse w-100">{children}</table>
   </div>
 );
 
