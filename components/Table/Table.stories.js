@@ -1,7 +1,7 @@
-import { Table, TH1, TH2, TD1, TD2 } from "../../components";
+import { Table, TH, TD } from "../../components";
 
 export default {
-  title: "Table",
+  title: "Table"
 };
 
 const _rows = 10;
@@ -10,25 +10,21 @@ export const Default = () => (
   <Table>
     <thead>
       <tr>
-        <TH1>Column 1</TH1>
-        <TH1>Column 2</TH1>
-        <TH1>Column 3</TH1>
-        <TH1>Column 4</TH1>
-        <TH1>
-          <div className="tr">Column 5</div>
-        </TH1>
+        <TH>Column 1</TH>
+        <TH>Column 2</TH>
+        <TH>Column 3</TH>
+        <TH>Column 4</TH>
+        <TH align="right">Column 5</TH>
       </tr>
     </thead>
     <tbody>
       {[...Array(_rows)].map((row, i) => (
         <tr key={i}>
-          <TD1>Red</TD1>
-          <TD1>Green</TD1>
-          <TD1>Blue</TD1>
-          <TD1>Yellow</TD1>
-          <TD1>
-            <div className="tr">001</div>
-          </TD1>
+          <TD>Red</TD>
+          <TD>Green</TD>
+          <TD>Blue</TD>
+          <TD>Yellow</TD>
+          <TD align="right">001</TD>
         </tr>
       ))}
     </tbody>
@@ -39,25 +35,25 @@ export const Compact = () => (
   <Table>
     <thead>
       <tr>
-        <TH2>Column 1</TH2>
-        <TH2>Column 2</TH2>
-        <TH2>Column 3</TH2>
-        <TH2>Column 4</TH2>
-        <TH2>
-          <div className="tr">Column 5</div>
-        </TH2>
+        <TH size="compact">Column 1</TH>
+        <TH size="compact">Column 2</TH>
+        <TH size="compact">Column 3</TH>
+        <TH size="compact">Column 4</TH>
+        <TH size="compact" align="right">
+          Column 5
+        </TH>
       </tr>
     </thead>
     <tbody>
       {[...Array(_rows)].map((row, i) => (
         <tr key={i}>
-          <TD2>Red</TD2>
-          <TD2>Green</TD2>
-          <TD2>Blue</TD2>
-          <TD2>Yellow</TD2>
-          <TD2>
-            <div className="tr">001</div>
-          </TD2>
+          <TD size="compact">Red</TD>
+          <TD size="compact">Green</TD>
+          <TD size="compact">Blue</TD>
+          <TD size="compact">Yellow</TD>
+          <TD size="compact" align="right">
+            001
+          </TD>
         </tr>
       ))}
     </tbody>
