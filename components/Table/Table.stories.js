@@ -1,4 +1,4 @@
-import { Table, TH, TD } from "../../components";
+import { Table, TR, TH, TD } from "../../components";
 
 export default {
   title: "Table"
@@ -6,56 +6,70 @@ export default {
 
 const _rows = 10;
 
-export const Default = () => (
+const TableTemplate = ({ isHeader, size, colDivider, align }) => (
   <Table>
     <thead>
-      <tr>
-        <TH>Column 1</TH>
-        <TH>Column 2</TH>
-        <TH>Column 3</TH>
-        <TH>Column 4</TH>
-        <TH align="right">Column 5</TH>
-      </tr>
+      <TR isHeader>
+        <TH size={size} colDivider={colDivider}>
+          Column 1
+        </TH>
+        <TH size={size} colDivider={colDivider}>
+          Column 2
+        </TH>
+        <TH size={size} colDivider={colDivider}>
+          Column 3
+        </TH>
+        <TH size={size} colDivider={colDivider}>
+          Column 4
+        </TH>
+        <TH size={size} align={"right"}>
+          Column 5
+        </TH>
+      </TR>
     </thead>
+
     <tbody>
-      {[...Array(_rows)].map((row, i) => (
-        <tr key={i}>
-          <TD>Red</TD>
-          <TD>Green</TD>
-          <TD>Blue</TD>
-          <TD>Yellow</TD>
-          <TD align="right">001</TD>
-        </tr>
-      ))}
+      {[...Array(_rows)].map((row, i, arr) => {
+        let hideBottomBorder;
+        if (colDivider) {
+          if (arr.length === i + 1) {
+            hideBottomBorder = true;
+          } else {
+            hideBottomBorder = false;
+          }
+        }
+        return (
+          <TR key={i} hideBottomBorder={hideBottomBorder}>
+            <TD size={size} colDivider={colDivider}>
+              Red
+            </TD>
+            <TD size={size} colDivider={colDivider}>
+              Green
+            </TD>
+            <TD size={size} colDivider={colDivider}>
+              Blue
+            </TD>
+            <TD size={size} colDivider={colDivider}>
+              Yellow
+            </TD>
+            <TD size={size} align="right">
+              001
+            </TD>
+          </TR>
+        );
+      })}
     </tbody>
   </Table>
 );
 
-export const Compact = () => (
-  <Table>
-    <thead>
-      <tr>
-        <TH size="compact">Column 1</TH>
-        <TH size="compact">Column 2</TH>
-        <TH size="compact">Column 3</TH>
-        <TH size="compact">Column 4</TH>
-        <TH size="compact" align="right">
-          Column 5
-        </TH>
-      </tr>
-    </thead>
-    <tbody>
-      {[...Array(_rows)].map((row, i) => (
-        <tr key={i}>
-          <TD size="compact">Red</TD>
-          <TD size="compact">Green</TD>
-          <TD size="compact">Blue</TD>
-          <TD size="compact">Yellow</TD>
-          <TD size="compact" align="right">
-            001
-          </TD>
-        </tr>
-      ))}
-    </tbody>
-  </Table>
+export const Default = () => <TableTemplate size="normal" />;
+
+export const Compact = () => <TableTemplate size="compact" />;
+
+export const WithColumnDivider = () => (
+  <TableTemplate size="normal" colDivider />
+);
+
+export const WithColumnDividerCompact = () => (
+  <TableTemplate size="compact" colDivider />
 );
