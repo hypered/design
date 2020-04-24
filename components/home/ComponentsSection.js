@@ -16,8 +16,9 @@ import {
   Code,
   NavBlockWrapper,
   Table,
-  TH2,
-  TD2,
+  TR,
+  TH,
+  TD,
   SidebarTitle,
   SidebarUL,
   SidebarLI,
@@ -35,13 +36,16 @@ import {
   UL,
   LI,
   Input,
-  NavBlock,
+  NavBlock
 } from "../../components";
 
 export const ComponentsSection = props => (
   <Section>
     <div className="flex flex-wrap nl3 nr3">
-      <Gallery title="Buttons" href="../storybook/?path=/story/buttons--primary">
+      <Gallery
+        title="Buttons"
+        href="../storybook/?path=/story/buttons--primary"
+      >
         <div>
           <div className="mb2">
             <Button variant="primary" size="normal">
@@ -56,7 +60,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Link Buttons" href="../storybook/?path=/story/button-link--primary">
+      <Gallery
+        title="Link Buttons"
+        href="../storybook/?path=/story/button-link--primary"
+      >
         <div>
           <div className="mb2">
             <ButtonLink variant="primary" href="#" size="normal">
@@ -149,7 +156,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Code Block" href="../storybook/?path=/story/code-block--code-block">
+      <Gallery
+        title="Code Block"
+        href="../storybook/?path=/story/code-block--code-block"
+      >
         <div className="w-100">
           <Code>{`.tachyons {
   display: block;
@@ -161,52 +171,41 @@ export const ComponentsSection = props => (
         <div className="w-100">
           <Table>
             <thead>
-              <tr>
-                <TH2>Column 1</TH2>
-                <TH2>Column 2</TH2>
-                <TH2>Column 3</TH2>
-                <TH2>Column 4</TH2>
-                <TH2>
-                  <div className="tr">Column 5</div>
-                </TH2>
-              </tr>
+              <TR>
+                <TH>Column 1</TH>
+                <TH>Column 2</TH>
+                <TH>Column 3</TH>
+                <TH>Column 4</TH>
+              </TR>
             </thead>
             <tbody>
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
-
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
-
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
             </tbody>
           </Table>
         </div>
       </Gallery>
 
-      <Gallery title="Heading" href="../storybook/?path=/story/typography--heading-1">
+      <Gallery
+        title="Heading"
+        href="../storybook/?path=/story/typography--heading-1"
+      >
         <div>
           <H1>Heading 1</H1>
           <H2>Heading 2</H2>
@@ -217,7 +216,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Sidebar" href="../storybook/?path=/story/sidebar--default">
+      <Gallery
+        title="Sidebar"
+        href="../storybook/?path=/story/sidebar--default"
+      >
         <div className="w-100">
           <nav>
             <SidebarTitle>Section 1</SidebarTitle>
@@ -262,7 +264,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Paragraph" href="../storybook/?path=/story/typography--paragraph">
+      <Gallery
+        title="Paragraph"
+        href="../storybook/?path=/story/typography--paragraph"
+      >
         <div>
           <H4>Introduction</H4>
           <P>
@@ -272,7 +277,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Blockquote" href="../storybook/?path=/story/typography--paragraph">
+      <Gallery
+        title="Blockquote"
+        href="../storybook/?path=/story/typography--paragraph"
+      >
         <div>
           <BlockQuote>
             You have power over your mind - not outside events. Realize this,
@@ -281,7 +289,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Lists" href="../storybook/?path=/story/list--ordered-list">
+      <Gallery
+        title="Lists"
+        href="../storybook/?path=/story/list--ordered-list"
+      >
         <div>
           <OL>
             <LI>One</LI>
@@ -310,7 +321,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Nav Block" href="../storybook/?path=/story/navigation-block--default">
+      <Gallery
+        title="Nav Block"
+        href="../storybook/?path=/story/navigation-block--default"
+      >
         <div className="w-100">
           <NavBlockWrapper>
             <div className="flex flex-wrap nl3 nr3">
@@ -353,7 +367,10 @@ export const ComponentsSection = props => (
         </div>
       </Gallery>
 
-      <Gallery title="Nav" href="../storybook/?path=/story/navigation--navigation">
+      <Gallery
+        title="Nav"
+        href="../storybook/?path=/story/navigation--navigation"
+      >
         <Nav>
           <div>
             <NavLink active={"true"}>One</NavLink>
