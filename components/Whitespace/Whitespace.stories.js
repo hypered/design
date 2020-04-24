@@ -1,8 +1,8 @@
 import React from "react";
-import { Layout } from "../../components";
+import { Layout, ContainerWithLabel } from "../../components";
 
 export default {
-  title: "Whitespace",
+  title: "Whitespace"
 };
 
 const Box = ({ title, description }) => {
@@ -64,12 +64,11 @@ export const FullWidth = () => {
 export const Examples = () => {
   return (
     <Layout>
-      <h1 className="dib bg-red white f6 mv0 pv1 ph2">Container</h1>
-      <div className="ba b--red debug-grid-16">
+      <ContainerWithLabel label="Container">
         <AutoWidth />
         <NegativeMargins />
         <FullWidth />
-      </div>
+      </ContainerWithLabel>
     </Layout>
   );
 };

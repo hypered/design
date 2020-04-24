@@ -19,6 +19,7 @@ export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
 export * from "./HR/HR";
 export * from "./Image/Image";
+export * from "./ContainerWithLabel/ContainerWithLabel";
 export * from "./Footer/Footer";
 
 export * from "./home/NavSection";
