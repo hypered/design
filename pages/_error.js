@@ -6,7 +6,11 @@ function Error({ statusCode }) {
   return (
     <HomeLayout>
       <div className="mw8 center">
-        <StatusCode status="Bad Gateway" statusCode="400"></StatusCode>
+        <StatusCode status="Error" statusCode={statusCode}>
+          {statusCode
+            ? `An error ${statusCode} occured on server`
+            : `An error occured on client`}
+        </StatusCode>
       </div>
     </HomeLayout>
   );
