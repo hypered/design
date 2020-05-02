@@ -1,25 +1,95 @@
 import React from "react";
+import cx from "classnames";
 
-export const Table = props => (
+export const Table = ({ children }) => (
   <div className="overflow-x-scroll">
-    <table className="bg-white collapse w-100" style={{ minWidth: "40rem" }}>
-      {props.children}
-    </table>
+    <table className="bg-white collapse w-100">{children}</table>
   </div>
 );
 
-export const TH1 = props => (
-  <th className="tl bb pa2 fw6 nowrap">{props.children}</th>
-);
+export const TR = ({ isHeader, size, hideBottomBorder, children }) => {
+  let trClassNames = cx("b--black", {
+    bw1: isHeader,
+    bb: !hideBottomBorder,
+    "b--black": size === "normal" || !size,
+    "b--silver": size === "compact"
+  });
+  return (
+    <tr
+      className={trClassNames}
+      isHeader={isHeader}
+      size={size}
+      hideBottomBorder={hideBottomBorder}
+    >
+      {children}
+    </tr>
+  );
+};
 
-export const TH2 = props => (
-  <th className="tl bb pa1 fw6 f6 nowrap">{props.children}</th>
-);
+export const TH = ({ size, align, colDivider, children }) => {
+  let thClassNames = cx(
+    "tl",
+    "fw6",
+    "nowrap",
+    {
+      f5: size === "normal" || !size,
+      pa2: size === "normal" || !size
+    },
+    {
+      f6: size === "compact",
+      pa1: size === "compact"
+    },
+    {
+      tl: align === "left" || !align,
+      tr: align === "right",
+      tc: align === "center"
+    },
+    {
+      br: colDivider
+    }
+  );
 
-export const TD1 = props => (
-  <td className="bb b--black pa2 nowrap">{props.children}</td>
-);
+  return (
+    <th
+      className={thClassNames}
+      size={size}
+      align={align}
+      colDivider={colDivider}
+    >
+      {children}
+    </th>
+  );
+};
 
-export const TD2 = props => (
-  <td className="bb b--silver pa1 f6 nowrap">{props.children}</td>
-);
+export const TD = ({ size, align, colDivider, children }) => {
+  let tdClassNames = cx(
+    "nowrap",
+    {
+      f5: size === "normal" || !size,
+      pa2: size === "normal" || !size
+    },
+    {
+      f6: size === "compact",
+      pa1: size === "compact"
+    },
+    {
+      tl: align === "left" || !align,
+      tr: align === "right",
+      tc: align === "center"
+    },
+    {
+      br: colDivider
+    }
+  );
+
+  return (
+    <td
+      className={tdClassNames}
+      size={size}
+      align={align}
+      colDivider={colDivider}
+    >
+      {children}
+    </td>
+  );
+};

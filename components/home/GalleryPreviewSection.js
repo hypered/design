@@ -13,8 +13,9 @@ import {
   Code,
   NavBlockWrapper,
   Table,
-  TH2,
-  TD2,
+  TR,
+  TH,
+  TD,
   SidebarTitle,
   SidebarUL,
   SidebarLI,
@@ -32,7 +33,7 @@ import {
   UL,
   LI,
   Input,
-  NavBlock,
+  NavBlock
 } from "../../components";
 
 export const GalleryPreviewSection = props => (
@@ -74,46 +75,32 @@ export const GalleryPreviewSection = props => (
         <div className="w-100">
           <Table>
             <thead>
-              <tr>
-                <TH2>Column 1</TH2>
-                <TH2>Column 2</TH2>
-                <TH2>Column 3</TH2>
-                <TH2>Column 4</TH2>
-                <TH2>
-                  <div className="tr">Column 5</div>
-                </TH2>
-              </tr>
+              <TR>
+                <TH>Column 1</TH>
+                <TH>Column 2</TH>
+                <TH>Column 3</TH>
+                <TH>Column 4</TH>
+              </TR>
             </thead>
             <tbody>
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
-
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
-
-              <tr>
-                <TD2>Red</TD2>
-                <TD2>Green</TD2>
-                <TD2>Blue</TD2>
-                <TD2>Yellow</TD2>
-                <TD2>
-                  <div className="tr">001</div>
-                </TD2>
-              </tr>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
+              <TR>
+                <TD>Red</TD>
+                <TD>Green</TD>
+                <TD>Blue</TD>
+                <TD>Yellow</TD>
+              </TR>
             </tbody>
           </Table>
         </div>
