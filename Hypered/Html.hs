@@ -35,7 +35,14 @@ prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 prettyHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    hPutStr h . Pretty.renderHtml $ document config path title body
+    hPutStr h . Pretty.renderHtml $ document config path title body'
+  where body' = do
+          H.div $ do
+            H.a ! A.href "../hs/"
+                $ "back to list"
+            "|"
+            H.code $ H.toHtml path
+          body
 
 -- | Same as prettyHtml but doesn't wrap the content to create a full
 -- standalone HTML document.
@@ -338,3 +345,38 @@ exampleSidePanel = do
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
   footer "© Võ Minh Thu, 2017-2021."
+
+
+------------------------------------------------------------------------------
+-- Forms
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+-- | Login form
+-- https://hypered.github.io/design-system/storybook/?path=/story/form--login
+loginForm = do
+  H.form ! A.class_ "bg-white mw6" $ do
+    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+      H.h2 "Log in to your account"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Email"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.type_ "email"
+                  ! A.placeholder "john@doe.com"
+                  ! A.label "Email"
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Password"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.type_ "password"
+                  ! A.placeholder ""
+                  ! A.label "Password"
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
+      H.a ! A.class_ "black no-underline hy-hover-blue"
+          ! A.href "#"
+          $ "Forgot Password"
+    H.div ! A.class_ "flex justify-between" $ do
+      H.button ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Sign Up"
+      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log In —>"

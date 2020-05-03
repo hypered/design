@@ -13,14 +13,17 @@ import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import System.Environment (getArgs)
 
 import Hypered.Html
   ( codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
-  , generate, nav, navigation, navigationNoteed, navigationNoteed')
+  , buttonSecondaryDisabled, defaultConfig, document
+  , exampleSidebar, exampleSidePanel, footer
+  , generate, loginForm
+  , nav, navigation, navigationNoteed, navigationNoteed')
 import Hypered.Stories (stories)
 
 
@@ -31,11 +34,20 @@ main = do
   case args of
     [] -> generateGuide
 
+    -- The document wrapper. This should match `pages/_app.js`.
+    ["wrapper"] ->
+      putStr (Pretty.renderHtml
+        ( document defaultConfig "wrapper.html" "Hypered Design System"
+          ( H.preEscapedToHtml ("<!-- CONTENT MARKER -->" :: String)
+        )))
+
     -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2021."))
 
     -- Stories form Storybook
+    ["form--login"] ->
+      T.putStr (renderHtml loginForm)
     ["navigation--navigation"] ->
       T.putStr (renderHtml (navigationNoteed))
     ["navigation--navigation-space-between"] ->
@@ -89,6 +101,8 @@ generateGuide = do
 
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
 
+      H.li $ H.a ! A.href "form--login.html" $ "Form, login"
+
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
 
@@ -127,6 +141,11 @@ generateGuide = do
 
   generate "code-block.html" "Hypered style guide - Code block"
     (const codeBlock)
+
+  -- Forms
+
+  generate "form--login.html" "Hypered style guide - Form"
+    (const loginForm)
 
   -- Footer
 
