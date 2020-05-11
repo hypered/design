@@ -34,25 +34,27 @@ const ModalButton = ({ defaultChecked, variant, size, children }) => (
 
 const Form = ({ modalName }) => (
   <ModalContainer htmlFor={modalName} modalName={modalName}>
-    <ModalHeader>
-      <div>
-        <H4>Log in to your account</H4>
-      </div>
-      <ModalClose modalName={modalName} />
-    </ModalHeader>
+    <form>
+      <ModalHeader>
+        <div>
+          <H4>Log in to your account</H4>
+        </div>
+        <ModalClose modalName={modalName} />
+      </ModalHeader>
 
-    <ModalBody>
-      <LoginContent />
-    </ModalBody>
+      <ModalBody>
+        <LoginContent />
+      </ModalBody>
 
-    <ModalFooter>
-      <ModalButton htmlFor={modalName} variant="secondary" size="large">
-        Sign Up
-      </ModalButton>
-      <ModalButton htmlFor={modalName} size="large">
-        Log In —>
-      </ModalButton>
-    </ModalFooter>
+      <ModalFooter>
+        <ModalButton htmlFor={modalName} variant="secondary" size="large">
+          Sign Up
+        </ModalButton>
+        <ModalButton htmlFor={modalName} size="large">
+          Log In —>
+        </ModalButton>
+      </ModalFooter>
+    </form>
   </ModalContainer>
 );
 
