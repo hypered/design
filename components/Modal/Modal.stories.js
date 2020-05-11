@@ -10,7 +10,8 @@ import {
   H4,
   Input,
   Button,
-  A
+  A,
+  LoginContent
 } from "../../components";
 
 export default {
@@ -35,22 +36,21 @@ const Form = ({ modalName }) => (
   <ModalContainer htmlFor={modalName} modalName={modalName}>
     <ModalHeader>
       <div>
-        <H4>Sign in to Hypered</H4>
+        <H4>Log in to your account</H4>
       </div>
       <ModalClose modalName={modalName} />
     </ModalHeader>
 
     <ModalBody>
-      <Input label="Name" />
-      <Input label="Password" type="password" />
+      <LoginContent />
     </ModalBody>
 
     <ModalFooter>
       <ModalButton htmlFor={modalName} variant="secondary" size="large">
-        Forgot Password?
+        Sign Up
       </ModalButton>
       <ModalButton htmlFor={modalName} size="large">
-        Sign In —>
+        Log In —>
       </ModalButton>
     </ModalFooter>
   </ModalContainer>
