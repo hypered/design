@@ -16,7 +16,7 @@ export const LoginContent = () => (
 );
 
 export const LoginForm = () => (
-  <form className="bg-white mw6">
+  <form className="bg-white mw6" onSubmit={e => e.preventDefault()}>
     <div className="pa4 bt br bl b--black bw1">
       <h2>Log in to your account</h2>
       <LoginContent />
