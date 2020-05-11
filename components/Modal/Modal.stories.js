@@ -34,7 +34,7 @@ const ModalButton = ({ defaultChecked, variant, size, children }) => (
 
 const Form = ({ modalName }) => (
   <ModalContainer htmlFor={modalName} modalName={modalName}>
-    <form>
+    <form onSubmit={e => e.preventDefault()}>
       <ModalHeader>
         <div>
           <H4>Log in to your account</H4>
