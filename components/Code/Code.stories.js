@@ -3,12 +3,24 @@ import {
   EditablePre,
   EditableTextArea,
   Code,
-  CodeToolbar
+  CodeToolbar,
+  CodeToolbarWithButton
 } from "../../components";
 
 export default {
   title: "Code Block"
 };
+
+const Button = () => (
+  <div className="bt pt3 mh3">
+    <input
+      type="submit"
+      className="db button-reset bg-black pa3 white br2 bn"
+      value="Submit"
+      onClick={e => e.preventDefault()}
+    />
+  </div>
+);
 
 export const CodeBlock = () => (
   <Code>{`// this is a comment
@@ -58,9 +70,22 @@ export const TextArea = () => (
 `}</EditableTextArea>
 );
 
-export const ContentEditableWithToolbar = () => (
+export const ContentEditableWithBottomButton = () => (
   <EditableForm>
-    <CodeToolbar title="show fetchgit:README.md" label="Save" />
+    <CodeToolbar title="show fetchgit:README.md" />
+    <Code editable>{`// This block of code can be edited.
+
+// this is a comment
+// this is another comment
+// this is a slightly longer comment
+`}</Code>
+    <Button />
+  </EditableForm>
+);
+
+export const ContentEditableWithToolbarButton = () => (
+  <EditableForm>
+    <CodeToolbarWithButton title="show fetchgit:README.md" label="Save" />
     <Code editable>{`// This block of code can be edited.
 
 // this is a comment
@@ -70,9 +95,22 @@ export const ContentEditableWithToolbar = () => (
   </EditableForm>
 );
 
-export const TextAreaWithToolbar = () => (
+export const TextAreaWithBottomButton = () => (
   <EditableForm>
     <CodeToolbar title="show fetchgit:README.md" label="Save" />
+    <EditableTextArea>{`// This block of code can be edited.
+
+// this is a comment
+// this is another comment
+// this is a slightly longer comment
+`}</EditableTextArea>
+    <Button />
+  </EditableForm>
+);
+
+export const TextAreaWithToolbarButton = () => (
+  <EditableForm>
+    <CodeToolbarWithButton title="show fetchgit:README.md" label="Save" />
     <EditableTextArea>{`// This block of code can be edited.
 
 // this is a comment

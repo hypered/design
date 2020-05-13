@@ -1,7 +1,7 @@
+import { Button } from "../../components";
+
 const EditableForm = ({ children }) => (
-  <form className="nl3 nr3" onSubmit={e => e.preventDefault()}>
-    {children}
-  </form>
+  <form onSubmit={e => e.preventDefault()}>{children}</form>
 );
 
 const Pre = ({ children }) => (
@@ -31,7 +31,13 @@ const EditableTextArea = ({ children }) => (
   </pre>
 );
 
-const CodeToolbar = ({ title, label }) => (
+const CodeToolbar = ({ title }) => (
+  <div className="flex flex-wrap items-center bt bb justify-between pv3 mh3">
+    <div>{title}</div>
+  </div>
+);
+
+const CodeToolbarWithButton = ({ title, label }) => (
   <div className="flex flex-wrap items-center bt bb justify-between pv2 mh3">
     <div>{title}</div>
     <div>
@@ -51,4 +57,11 @@ const Code = ({ editable, children }) => (
   </>
 );
 
-export { EditableForm, EditablePre, EditableTextArea, CodeToolbar, Code };
+export {
+  EditableForm,
+  EditablePre,
+  EditableTextArea,
+  CodeToolbar,
+  CodeToolbarWithButton,
+  Code
+};
