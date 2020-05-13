@@ -1,7 +1,13 @@
-import { Code, CodeToolbar } from "../../components";
+import {
+  EditableForm,
+  EditablePre,
+  EditableTextArea,
+  Code,
+  CodeToolbar
+} from "../../components";
 
 export default {
-  title: "Code Block",
+  title: "Code Block"
 };
 
 export const CodeBlock = () => (
@@ -43,14 +49,35 @@ export const Editable = () => (
 `}</Code>
 );
 
-export const WithToolbar = () => (
-  <form>
-    <CodeToolbar />
+export const TextArea = () => (
+  <EditableTextArea>{`// This is an example of a block of code that can be edited.
+
+// this is a comment
+// this is another comment
+// this is a slightly longer comment
+`}</EditableTextArea>
+);
+
+export const ContentEditableWithToolbar = () => (
+  <EditableForm>
+    <CodeToolbar title="show fetchgit:README.md" label="Save" />
     <Code editable>{`// This block of code can be edited.
 
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
 `}</Code>
-  </form>
+  </EditableForm>
+);
+
+export const TextAreaWithToolbar = () => (
+  <EditableForm>
+    <CodeToolbar title="show fetchgit:README.md" label="Save" />
+    <EditableTextArea>{`// This block of code can be edited.
+
+// this is a comment
+// this is another comment
+// this is a slightly longer comment
+`}</EditableTextArea>
+  </EditableForm>
 );

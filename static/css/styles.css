@@ -59,11 +59,16 @@
 
 /* inputs */
 
-.hy-editable-pre[contenteditable="true"]:active,
-.hy-editable-pre[contenteditable="true"]:focus {
+.hy-editable:active,
+.hy-editable:focus,
+.hy-editable:focus-within {
   background: #fff;
   box-shadow: 0 0 0 1px #96ccff;
   outline: none;
+}
+
+.hy-editable > textarea {
+  resize: none;
 }
 
 .hy-checkbox {
@@ -127,11 +132,4 @@
   font-weight: bold;
   z-index: -1;
   opacity: 30%;
-}
-
-.editable:active,
-.editable:focus {
-  background: #fff;
-  box-shadow: 0 0 0 1px #96ccff;
-  outline: none;
 }
