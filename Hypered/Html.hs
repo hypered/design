@@ -19,9 +19,16 @@ import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 -- | Generate both the normal and pretty-printed HTML versions.
 generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
 generate path title body = do
-  generateHtml defaultConfig "generated/min" path title (body path)
-  prettyHtml defaultConfig "generated/pretty" path title (body path)
-  partialHtml defaultConfig "generated/partial" path title (body path)
+  generate' path title defaultConfig body
+
+-- | Use this version of `generate` and pass it False to render complete
+-- exemple pages (i.e. without including the wrapper to present the design
+-- system components).
+generate' :: FilePath -> Text -> Config -> (FilePath -> Html) -> IO ()
+generate' path title conf body = do
+  generateHtml conf "generated/min" path title (body path)
+  prettyHtml conf "generated/pretty" path title (body path)
+  partialHtml conf "generated/partial" path title (body path)
 
 
 ------------------------------------------------------------------------------
@@ -37,11 +44,13 @@ prettyHtml config base path title body = do
   withFile (base </> path) WriteMode $ \h ->
     hPutStr h . Pretty.renderHtml $ document config path title body'
   where body' = do
-          H.div $ do
-            H.a ! A.href "../hs/"
-                $ "back to list"
-            "|"
-            H.code $ H.toHtml path
+          if cAddWrapper config
+            then H.div $ do
+                   H.a ! A.href "../hs/"
+                       $ "back to list"
+                   "|"
+                   H.code $ H.toHtml path
+            else return ()
           body
 
 -- | Same as prettyHtml but doesn't wrap the content to create a full
@@ -72,11 +81,15 @@ fontCss (Font s) = "css/" ++ s ++ ".css"
 data Config = Config
   { cStaticPath :: FilePath
   , cFont :: Font
+  , cAddWrapper :: Bool
+    -- ^ Choose True when rendering a component, False when rendering a
+    -- complete page.
   }
 
 defaultConfig = Config
   { cStaticPath = "../static"
   , cFont = Inter
+  , cAddWrapper = True
   }
 
 
