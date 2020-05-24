@@ -207,6 +207,15 @@ Pages feature from the `master` branch.
 There is still old examples in the `docs/` directory.
 
 
+## Maintainers
+
+Thu: when I have a PR from Andy to review, I:
+
+- `git fetch --all` (all, otherwise the `andyngo` remote is not fetched)
+- git checkout the branch (without the `andyngo:` prefix display on the PR)
+- `./upload-to-entrypoint.sh` then it is visible on my local server
+
+
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
