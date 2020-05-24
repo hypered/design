@@ -153,6 +153,11 @@ navigationNoteed =
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
       H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
 
+navigationReesd =
+  nav $
+    H.div $ do
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "/" $ "Reesd"
+
 -- | Same as 'navigationNoteed' but with links on the right, except the first
 -- one.
 navigationNoteed' =
@@ -291,6 +296,13 @@ sidebar xs =
     sidebarLI $
       sidebarLink name href
 
+exampleLoginForm = do
+  H.header $
+    navigationReesd
+  H.p "Reesd is in private alpha. New registrations are currently disabled."
+  loginForm
+  footer "© Hypered, 2020."
+
 exampleSidebar = do
   H.header $
     navigationNoteed
@@ -355,28 +367,37 @@ exampleSidePanel = do
 -- | Login form
 -- https://hypered.github.io/design-system/storybook/?path=/story/form--login
 loginForm = do
-  H.form ! A.class_ "bg-white mw6" $ do
+  H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/a/login"
+         $ do
     H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Log in to your account"
+      H.h2 "Sign in"
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Email"
+          H.label ! A.class_ "db fw6 mv1" $ "Username"
+                  ! A.for "login"
           H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                  ! A.type_ "email"
-                  ! A.placeholder "john@doe.com"
-                  ! A.label "Email"
+                  ! A.label "login"
+                  ! A.name "login"
+                  ! A.id "login"
+                  ! A.type_ "text"
+                  ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Password"
+                  ! A.for "password"
           H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.label "password"
+                  ! A.name "password"
+                  ! A.id "password"
                   ! A.type_ "password"
                   ! A.placeholder ""
-                  ! A.label "Password"
           -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
       H.a ! A.class_ "black no-underline hy-hover-blue"
-          ! A.href "#"
-          $ "Forgot Password"
+          ! A.href "form--reset.html"
+          $ "Reset password"
     H.div ! A.class_ "flex justify-between" $ do
       H.button ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Sign Up"
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log In —>"
