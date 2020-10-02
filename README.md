@@ -171,6 +171,17 @@ The same document is rendered again
 with a different font.
 
 
+## Pandoc + pdflatex PDF example
+
+In the `pandoc-pdflatex/` directory, run:
+
+```
+$ nix-build
+```
+
+The resulting PDF file is then `result/example.pdf`.
+
+
 ## Nix
 
 A `default.nix` file is provided to show how to render the above Pandoc example
