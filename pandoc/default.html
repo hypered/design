@@ -20,4 +20,8 @@ $endfor$
 </nav>
 $endif$
 
-<footer><hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"><p class="inline-flex lh-copy">$footer$</p></footer></div></body></html>
+<footer><hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black">
+$if(path)$<code class="db gray">Path: $path$</code>$endif$
+$if(created)$<code class="db gray">Created: $created$</code>$endif$
+$if(updated)$<code class="db gray">Updated: $updated$</code>$endif$
+<p class="inline-flex lh-copy">$footer$</p></footer></div></body></html>
