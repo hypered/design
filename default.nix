@@ -25,7 +25,14 @@ in rec
 
   pandoc-example = to-html md.lua;
 
+  # This is bin/hypered-guide.hs.
   app = (import ./release.nix).guide;
+
+  # This is the non-Next, non-Storybook static site. It contains
+  # some rendered Markdown documentation and Haddock.
   site = (import site/default.nix {}).html.all;
+
+  # This is the static directory, usually hosted as /static
+  # on websites using this design system.
   static = (import site/default.nix {}).static;
 }
