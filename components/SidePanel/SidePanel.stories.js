@@ -18,19 +18,19 @@ export const Default = () => (
     <SidePanelTitle>Latest Runs</SidePanelTitle>
     <SidePanelUL>
       <SidePanelLI>
-        <SidePanelLink>#001</SidePanelLink>
+        <SidePanelLink href='#'>#001</SidePanelLink>
       </SidePanelLI>
       <SidePanelLI>
-        <SidePanelLink>#002</SidePanelLink>
+        <SidePanelLink href='#'>#002</SidePanelLink>
       </SidePanelLI>
       <SidePanelLI>
-        <SidePanelLink>#003</SidePanelLink>
+        <SidePanelLink href='#'>#003</SidePanelLink>
       </SidePanelLI>
       <SidePanelLI>
-        <SidePanelLink>#004</SidePanelLink>
+        <SidePanelLink href='#'>#004</SidePanelLink>
       </SidePanelLI>
       <SidePanelLI>
-        <SidePanelLink>#005</SidePanelLink>
+        <SidePanelLink href='#'>#005</SidePanelLink>
       </SidePanelLI>
     </SidePanelUL>
   </SidePanel>
