@@ -42,7 +42,7 @@ Note: `npm` in the following instructions can be replaced by `yarn`.
 Install the dependencies using:
 
 ```
-npm install
+$ npm install
 ```
 
 The result is a `node_modules` directory.
@@ -68,7 +68,7 @@ npx next telemetry status
 To run the Next.js site locally, on port `3000`:
 
 ```
-npm run dev
+$ yarn run dev
 ```
 
 To run the Storybook.js site locally, on port `6006`:
