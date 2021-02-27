@@ -33,7 +33,7 @@ main = do
 
     -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
-    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019."))
+    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2021."))
 
     -- Stories form Storybook
     ["navigation--navigation"] ->
@@ -131,7 +131,7 @@ generateGuide = do
   -- Footer
 
   generate "footer.html" "Hypered style guide - Footer"
-    (const (footer "© Võ Minh Thu, 2017-2019."))
+    (const (footer "© Võ Minh Thu, 2017-2021."))
 
 
   -- Example usage

@@ -309,7 +309,7 @@ exampleSidebar = do
           H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
           "to build the three main components of a Linux-based operating"
           "system:"
-  footer "© Võ Minh Thu, 2017-2019."
+  footer "© Võ Minh Thu, 2017-2021."
 
 exampleSidePanel = do
   H.header $
@@ -337,4 +337,4 @@ exampleSidePanel = do
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  footer "© Võ Minh Thu, 2017-2019."
+  footer "© Võ Minh Thu, 2017-2021."
