@@ -13,14 +13,18 @@ import qualified Data.Text.Lazy.IO as T
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import System.Environment (getArgs)
 
 import Hypered.Html
-  ( codeBlock, bannerGreen, bannerRed, bannerYellow
+  ( cAddWrapper, cFont, Font(IbmPlex)
+  , codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, exampleSidebar, exampleSidePanel, footer
-  , generate, nav, navigation, navigationNoteed, navigationNoteed')
+  , buttonSecondaryDisabled, defaultConfig, document
+  , exampleLoginForm, exampleSidebar, exampleSidePanel, footer
+  , generate, generate', loginForm
+  , nav, navigation, navigationNoteed, navigationNoteed')
 import Hypered.Stories (stories)
 
 
@@ -31,11 +35,20 @@ main = do
   case args of
     [] -> generateGuide
 
+    -- The document wrapper. This should match `pages/_app.js`.
+    ["wrapper"] ->
+      putStr (Pretty.renderHtml
+        ( document defaultConfig "wrapper.html" "Hypered Design System"
+          ( H.preEscapedToHtml ("<!-- CONTENT MARKER -->" :: String)
+        )))
+
     -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
     ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2021."))
 
     -- Stories form Storybook
+    ["form--login"] ->
+      T.putStr (renderHtml loginForm)
     ["navigation--navigation"] ->
       T.putStr (renderHtml (navigationNoteed))
     ["navigation--navigation-space-between"] ->
@@ -73,7 +86,10 @@ js (a, b) = unlines
 ------------------------------------------------------------------------------
 generateGuide :: IO ()
 generateGuide = do
-  generate "index.html" "Hypered style guide" $ \_ -> do
+  let conf = defaultConfig { cAddWrapper = False }
+
+  generate' "index.html" "Hypered style guide" conf $ \_ -> do
+    H.h1 "Components and examples"
     H.ul $ do
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
 
@@ -89,10 +105,21 @@ generateGuide = do
 
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
 
+      H.li $ H.a ! A.href "form--login.html" $ "Form, login"
+
+      H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
 
       H.li $ H.a ! A.href "example--template.html" $ "Example, template"
+
+      H.li $ H.a ! A.href "example--login-form-ibm-plex.html" $
+        "Example, login form (IBM Plex)"
+      H.li $ H.a ! A.href "example--sidebar-ibm-plex.html" $
+        "Example, sidebar (IBM Plex)"
+      H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
+        "Example, side panel (IBM Plex)"
+
       H.li $ H.a ! A.href "example--template-ibm-plex.html" $
         "Example, template (IBM Plex)"
 
@@ -128,6 +155,11 @@ generateGuide = do
   generate "code-block.html" "Hypered style guide - Code block"
     (const codeBlock)
 
+  -- Forms
+
+  generate "form--login.html" "Hypered style guide - Form"
+    (const loginForm)
+
   -- Footer
 
   generate "footer.html" "Hypered style guide - Footer"
@@ -136,7 +168,19 @@ generateGuide = do
 
   -- Example usage
 
-  generate "example--sidebar.html" "Hypered style guide - Sidebar Example"
-    (const exampleSidebar)
-  generate "example--side-panel.html" "Hypered style guide - Side panel Example"
-    (const exampleSidePanel)
+  generate' "example--login-form.html" "Hypered style guide - Login Form Example"
+    conf (const exampleLoginForm)
+  generate' "example--sidebar.html" "Hypered style guide - Sidebar Example"
+    conf (const exampleSidebar)
+  generate' "example--side-panel.html" "Hypered style guide - Side panel Example"
+    conf (const exampleSidePanel)
+
+  -- Example usage using IBM Plex
+
+  let conf' = conf { cFont = IbmPlex }
+  generate' "example--login-form-ibm-plex.html" "Hypered style guide - Login Form Example"
+    conf' (const exampleLoginForm)
+  generate' "example--sidebar-ibm-plex.html" "Hypered style guide - Sidebar Example"
+    conf' (const exampleSidebar)
+  generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
+    conf' (const exampleSidePanel)

@@ -19,9 +19,16 @@ import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 -- | Generate both the normal and pretty-printed HTML versions.
 generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
 generate path title body = do
-  generateHtml defaultConfig "generated/min" path title (body path)
-  prettyHtml defaultConfig "generated/pretty" path title (body path)
-  partialHtml defaultConfig "generated/partial" path title (body path)
+  generate' path title defaultConfig body
+
+-- | Use this version of `generate` and pass it False to render complete
+-- exemple pages (i.e. without including the wrapper to present the design
+-- system components).
+generate' :: FilePath -> Text -> Config -> (FilePath -> Html) -> IO ()
+generate' path title conf body = do
+  generateHtml conf "generated/min" path title (body path)
+  prettyHtml conf "generated/pretty" path title (body path)
+  partialHtml conf "generated/partial" path title (body path)
 
 
 ------------------------------------------------------------------------------
@@ -35,7 +42,16 @@ prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 prettyHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    hPutStr h . Pretty.renderHtml $ document config path title body
+    hPutStr h . Pretty.renderHtml $ document config path title body'
+  where body' = do
+          if cAddWrapper config
+            then H.div $ do
+                   H.a ! A.href "../hs/"
+                       $ "back to list"
+                   "|"
+                   H.code $ H.toHtml path
+            else return ()
+          body
 
 -- | Same as prettyHtml but doesn't wrap the content to create a full
 -- standalone HTML document.
@@ -65,11 +81,15 @@ fontCss (Font s) = "css/" ++ s ++ ".css"
 data Config = Config
   { cStaticPath :: FilePath
   , cFont :: Font
+  , cAddWrapper :: Bool
+    -- ^ Choose True when rendering a component, False when rendering a
+    -- complete page.
   }
 
 defaultConfig = Config
   { cStaticPath = "../static"
   , cFont = Inter
+  , cAddWrapper = True
   }
 
 
@@ -145,6 +165,11 @@ navigationNoteed =
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "noteed.com"
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
       H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
+
+navigationReesd =
+  nav $
+    H.div $ do
+      H.a ! A.class_ "link black hover-blue mr3" ! A.href "/" $ "Reesd"
 
 -- | Same as 'navigationNoteed' but with links on the right, except the first
 -- one.
@@ -284,6 +309,14 @@ sidebar xs =
     sidebarLI $
       sidebarLink name href
 
+exampleLoginForm = do
+  H.header $
+    navigationReesd
+  H.p "Reesd is in private alpha. New registrations are currently disabled."
+  loginForm
+  -- There could be a footer, but on simple forms, I think I prefer without.
+  -- footer "© Hypered, 2020-2021."
+
 exampleSidebar = do
   H.header $
     navigationNoteed
@@ -338,3 +371,47 @@ exampleSidePanel = do
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
   footer "© Võ Minh Thu, 2017-2021."
+
+
+------------------------------------------------------------------------------
+-- Forms
+------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------
+-- | Login form
+-- https://hypered.github.io/design-system/storybook/?path=/story/form--login
+loginForm = do
+  H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/a/login"
+         $ do
+    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+      H.h2 "Sign in"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Username"
+                  ! A.for "login"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.label "login"
+                  ! A.name "login"
+                  ! A.id "login"
+                  ! A.type_ "text"
+                  ! A.placeholder ""
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Password"
+                  ! A.for "password"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.label "password"
+                  ! A.name "password"
+                  ! A.id "password"
+                  ! A.type_ "password"
+                  ! A.placeholder ""
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
+      H.a ! A.class_ "black no-underline hy-hover-blue"
+          ! A.href "form--reset.html"
+          $ "Reset password"
+    H.div ! A.class_ "flex justify-between" $ do
+      H.button ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Sign Up"
+      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log In —>"
