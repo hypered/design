@@ -314,7 +314,8 @@ exampleLoginForm = do
     navigationReesd
   H.p "Reesd is in private alpha. New registrations are currently disabled."
   loginForm
-  footer "© Hypered, 2020."
+  -- There could be a footer, but on simple forms, I think I prefer without.
+  -- footer "© Hypered, 2020-2021."
 
 exampleSidebar = do
   H.header $
