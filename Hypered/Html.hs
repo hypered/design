@@ -325,6 +325,15 @@ exampleRegisterForm = do
   -- There could be a footer, but on simple forms, I think I prefer without.
   -- footer "© Hypered, 2020-2021."
 
+exampleResetForm = do
+  H.header $
+    navigationReesd
+  H.p "Enter a verified email address and we'll send a password reset link\
+    \ to that address."
+  resetForm
+  -- There could be a footer, but on simple forms, I think I prefer without.
+  -- footer "© Hypered, 2020-2021."
+
 exampleSidebar = do
   H.header $
     navigationNoteed
@@ -430,7 +439,7 @@ loginForm = do
 registerForm = do
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"
-         ! A.action "/a/login"
+         ! A.action "/a/register"
          $ do
     H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
       H.h2 "Register for Reesd"
@@ -471,3 +480,28 @@ registerForm = do
           ! A.href "/login"
           $ "Log in"
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Register —>"
+
+-- | Reset form
+resetForm = do
+  H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/a/reset"
+         $ do
+    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+      H.h2 "Reset password for Reesd"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Email address"
+                  ! A.for "email"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+                  ! A.label "email"
+                  ! A.name "email"
+                  ! A.id "email"
+                  ! A.type_ "email"
+                  ! A.placeholder ""
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
+    H.div ! A.class_ "flex justify-between" $ do
+      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
+          ! A.href "/login"
+          $ "Log in"
+      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Reset password —>"

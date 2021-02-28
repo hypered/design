@@ -25,7 +25,8 @@ import Hypered.Html
   , codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, defaultConfig, document
-  , exampleLoginForm, exampleRegisterForm, exampleSidebar, exampleSidePanel
+  , exampleLoginForm, exampleRegisterForm, exampleResetForm
+  , exampleSidebar, exampleSidePanel
   , footer, generate, generate', loginForm
   , nav, navigation, navigationNoteed, navigationNoteed')
 import Hypered.Stories (stories)
@@ -104,6 +105,8 @@ generateGuide = do
         "Example, login form (IBM Plex)"
       H.li $ H.a ! A.href "example--register-form-ibm-plex.html" $
         "Example, register form (IBM Plex)"
+      H.li $ H.a ! A.href "example--reset-form-ibm-plex.html" $
+        "Example, reset form (IBM Plex)"
       H.li $ H.a ! A.href "example--sidebar-ibm-plex.html" $
         "Example, sidebar (IBM Plex)"
       H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
@@ -172,6 +175,9 @@ generateGuide = do
   generate' "example--register-form-ibm-plex.html"
     "Hypered style guide - Register Form Example"
     conf' (const exampleRegisterForm)
+  generate' "example--reset-form-ibm-plex.html"
+    "Hypered style guide - Reset Form Example"
+    conf' (const exampleResetForm)
   generate' "example--sidebar-ibm-plex.html" "Hypered style guide - Sidebar Example"
     conf' (const exampleSidebar)
   generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
