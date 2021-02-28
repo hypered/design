@@ -399,7 +399,7 @@ loginForm = do
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Username"
                   ! A.for "username"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
                   ! A.label "username"
                   ! A.name "username"
                   ! A.id "username"
@@ -410,7 +410,7 @@ loginForm = do
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Password"
                   ! A.for "password"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
                   ! A.label "password"
                   ! A.name "password"
                   ! A.id "password"
