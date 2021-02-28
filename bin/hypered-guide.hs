@@ -2,6 +2,9 @@
 -- Storybook component explorer. The generated HTML files are created in the
 -- generated/ directory. They are available as production, pretty-printed, and
 -- partial HTML.
+--
+-- They are also exposed in docs/hs/, i.e. at
+-- https://hypered.github.io/design-system/hs/.
 
 {-# LANGUAGE OverloadedStrings #-}
 
@@ -63,24 +66,8 @@ main = do
       (nub (map fst (tail stories)))
     ["js-stories"] -> mapM_ putStrLn
       (map js (tail stories))
+
     _ -> error "Unsupported argument."
-
-
-------------------------------------------------------------------------------
-dashdash (a, b) = map toLower (a ++ "--" ++ [head b] ++ concatMap f (tail b))
-  where
-  f c | isUpper c = ['-', c]
-  f c | isDigit c = ['-', c]
-      | otherwise = [c]
-
-jsimport a =
-  "var " ++ a ++ " = require(\"./components/" ++ a ++ "/" ++ a ++ ".stories\");"
-
-js (a, b) = unlines
-  [ "case '" ++ dashdash (a, b) ++ "':"
-  , "  render(" ++ a ++ "." ++ b ++ "());"
-  , "  break;"
-  ]
 
 
 ------------------------------------------------------------------------------
@@ -184,3 +171,20 @@ generateGuide = do
     conf' (const exampleSidebar)
   generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
     conf' (const exampleSidePanel)
+
+
+------------------------------------------------------------------------------
+dashdash (a, b) = map toLower (a ++ "--" ++ [head b] ++ concatMap f (tail b))
+  where
+  f c | isUpper c = ['-', c]
+  f c | isDigit c = ['-', c]
+      | otherwise = [c]
+
+jsimport a =
+  "var " ++ a ++ " = require(\"./components/" ++ a ++ "/" ++ a ++ ".stories\");"
+
+js (a, b) = unlines
+  [ "case '" ++ dashdash (a, b) ++ "':"
+  , "  render(" ++ a ++ "." ++ b ++ "());"
+  , "  break;"
+  ]
