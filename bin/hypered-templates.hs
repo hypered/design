@@ -21,9 +21,9 @@ main = do
   args <- getArgs
   let config = case args of
         -- Used to generate HTML for GitHub Pages
-        ["docs"] -> Config "/design-system/static" Inter
+        ["docs"] -> Config "/design-system/static" Inter False
         -- Used to generate the template.
-        _ -> Config "$prefix$/static" (Font "$font$")
+        _ -> Config "$prefix$/static" (Font "$font$") False
 
   -- TODO The $body$ is indented when using the pretty printer, which
   -- then causes Pandoc to indent part of <code> content, which
