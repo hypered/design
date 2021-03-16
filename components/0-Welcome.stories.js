@@ -44,6 +44,4 @@ export const toStorybook = props => (
   </BareLayout>
 );
 
-toStorybook.story = {
-  name: 'Design System',
-};
+toStorybook.storyName = 'Design System';
