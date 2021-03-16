@@ -121,7 +121,7 @@ document Config{..} path title body = do
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
-      H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy" $
+      H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $
         body
 
 
@@ -427,7 +427,7 @@ loginForm = do
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
       H.a ! A.class_ "black no-underline hy-hover-blue"
-          ! A.href "form--reset.html"
+          ! A.href "/reset"
           $ "Reset password"
     H.div ! A.class_ "flex justify-between" $ do
       H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
