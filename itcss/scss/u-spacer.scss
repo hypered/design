@@ -1,0 +1,51 @@
+$g-spacer-unit: 1rem !default;
+
+
+.u-spacer-top-xs {
+  margin-top: calc($g-spacer-unit / 2) !important;
+}
+
+.u-spacer-top-s {
+  margin-top: $g-spacer-unit !important;
+}
+
+.u-spacer-top {
+  margin-top: $g-spacer-unit * 2 !important;
+}
+
+.u-spacer-top-l {
+  margin-top: $g-spacer-unit * 3 !important;
+}
+
+.u-spacer-top-xl {
+  margin-top: $g-spacer-unit * 4 !important;
+}
+
+.u-spacer-top-auto {
+  margin-top: auto;
+}
+
+
+.u-spacer-bottom-s {
+  margin-bottom: $g-spacer-unit !important;
+}
+
+.u-spacer-bottom {
+  margin-bottom: $g-spacer-unit * 2 !important;
+}
+
+.u-spacer-bottom-m {
+  margin-bottom: $g-spacer-unit * 3 !important;
+}
+
+.u-spacer-bottom-l {
+  margin-bottom: $g-spacer-unit * 3.5 !important;
+}
+
+.u-spacer-bottom-xl {
+  margin-bottom: $g-spacer-unit * 4 !important;
+}
+
+.u-spacer-bottom-auto {
+  margin-bottom: auto !important;
+}
