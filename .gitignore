@@ -1,5 +1,9 @@
 .next
+generated
+itcss/dist
 node_modules
 out
 storybook-static
-itcss/dist
+result
+_site
+.*.swp
