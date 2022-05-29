@@ -1,8 +1,10 @@
-.c-display h1 {
+.c-display h1,
+.c-display h2 {
   color: $color-heading;
 }
 
-.c-display h1 {
+.c-display h1,
+.c-display h2 {
   font-family: $g-headings-font-family;
 }
 
@@ -10,5 +12,45 @@
   font-weight: 600;
   font-size: 3rem;
   line-height: 1.25;
+  letter-spacing: -0.05em;
   margin: 4.8rem 0 3.2rem;
+}
+
+.c-display h2 {
+  font-weight: 600;
+  font-size: 2.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.05em;
+  margin: 4.8rem 0 3.2rem;
+}
+
+.c-display p {
+  color: $color-body;
+}
+
+.c-display a {
+  color: $color-link;
+}
+
+.c-display hr {
+  color: $color-body;
+  background-color: $color-body;
+}
+
+.c-display p,
+.c-display a {
+  font-family: $g-base-font-family;
+}
+
+.c-display p {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.c-display hr {
+  width: 8rem;
+  border: none;
+  height: .125rem;
+  margin: 0;
 }
