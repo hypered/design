@@ -1,2 +1,14 @@
-h1 {
+.c-display h1 {
+  color: $color-heading;
+}
+
+.c-display h1 {
+  font-family: $g-headings-font-family;
+}
+
+.c-display h1 {
+  font-weight: 600;
+  font-size: 3rem;
+  line-height: 1.25;
+  margin: 4.8rem 0 3.2rem;
 }
