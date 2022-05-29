@@ -22,7 +22,7 @@ function styles() {
       outputStyle: 'compressed',
       onError: bs.notify
     }))
-    .pipe(gulp.dest('dist/css'))
+    .pipe(gulp.dest('dist/static/css'))
     .pipe(bs.stream())
 }
 
