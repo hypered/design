@@ -83,8 +83,14 @@ npm run storybook
 To build the Next.js pages into the `out/` directory:
 
 ```
-npm next build
-npm next export
+npm run build
+npm run export
+```
+
+One way to serve the directory locally is:
+
+```
+nix-shell -p busybox --run "httpd -f -p 9000 -h out/"
 ```
 
 To build the Storybook.js pages into the `storybook-static/` directory:
@@ -93,13 +99,19 @@ To build the Storybook.js pages into the `storybook-static/` directory:
 npm run build-storybook
 ```
 
+Again, one way to serve the directory locally is:
+
+```
+nix-shell -p busybox --run "httpd -f -p 9000 -h storybook-static/"
+```
+
 
 ## Rendering React components from the command-line
 
 A helper Node.js script is provided to render components from the command-line:
 
 ```
-$ nix-shell -p nodejs --run "node render-components footer"
+$ node render-components footer
 <footer>
   <hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4" />
   <p class="inline-flex lh-copy">© Hypered, 2019.</p>
