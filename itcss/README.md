@@ -7,19 +7,12 @@ To have a quick feedback loop during development, a Gulp file is provided. It
 automatically rebuild CSS from SCSS files and Pug templates upon changes, and
 serves the result.
 
-I used `nix-shell -p nodejs` then manually installed some dependencies. They
-ended up into `../node_modules` (I guess this is because there is already a
-`../packages.json` file) instead of being in this directory. It also means that
-this changes the `packages.json` file but I don't want to commit those changes.
+A `package.json` file is provided to install the required dependencies. Once
+the dependencies are installed, it is possible to build or serve everything
+with the `build.sh` and `serve.sh` scripts.
 
 ```
 $ nix-shell -p nodejs
-$ npm install gulp
-$ npm install gulp-pug
-$ npm install gulp-sass
-$ npm install browser-sync
-$ npm install sass
+$ npm install
+$ ./build.sh
 ```
-
-Once the dependencies are installed, it is possible to build or serve
-everything with the `build.sh` and `serve.sh` scripts.
