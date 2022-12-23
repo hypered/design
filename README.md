@@ -194,6 +194,17 @@ $ nix-build
 The resulting PDF file is then `result/example.pdf`.
 
 
+## LaTeX-based brochure template
+
+In the `brochure/` directory, run:
+
+```
+$ ./build.sh
+```
+
+The resulting PDF file is then `template.pdf`.
+
+
 ## Nix
 
 A `default.nix` file is provided to show how to render the above Pandoc example
@@ -223,3 +234,13 @@ There is still old examples in the `docs/` directory.
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
+
+
+## Acknowledgement
+
+
+- The PDF brochure was designed using Figma by Marina Rizo:
+  - Email address: rizo.marina@gmail.com
+  - Dribbble: [rinxols](https://dribbble.com/rinxols)
+- The LaTeX implementation of the brochure design was done by Vel from
+  [LaTeXTypesetting.com](latextypesetting.com).

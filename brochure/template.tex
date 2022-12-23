@@ -1,0 +1,524 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hypered Report
+% LaTeX Template
+% Version 1.0 (December 14, 2022)
+%
+% This template was created by:
+% Vel (enquiries@latextypesetting.com)
+% LaTeXTypesetting.com
+%
+% COMPILATION NOTES
+% This document features a bibliography and glossary which need to be compiled
+% separately to the main document. Compile everything as follows:
+%
+% 1) pdflatex template
+% 2) biber template
+% 3) makeglossaries template
+% 4) pdflatex template
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	CLASS, PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	%largemargins, % Uncomment for larger margins
+]{HyperedReport}
+
+\addbibresource{sample.bib} % BibLaTeX bibliography file
+
+%----------------------------------------------------------------------------------------
+
+\doctitle{Fermentum est suspendisse dolor amet enim enim sit lorem neque} % The document title, automatically used on the title page and page headers
+
+%----------------------------------------------------------------------------------------
+%	GLOSSARY ENTRIES
+%----------------------------------------------------------------------------------------
+
+\newglossaryentry{computer}{
+	name=computer,
+	description={is a programmable machine that receives input, stores and manipulates data, and provides output in a useful format}
+}
+
+\newglossaryentry{Linux}{
+	name=Linux,
+	description={is a generic term referring to the family of Unix-like computer operating systems that use the Linux kernel},
+	plural=Linuces
+}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\pagenumbering{roman} % Roman page numbering in preamble (not used, but required to later switch to arabic numbering for the body and reset page numbers, without this the glossary page numbers will be wrong)
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\titlepage{white}{\doctitle}{Eget adipiscing orci pretium sodales orci sit nulla volutpat. Eu commodo ipsum, a non. Volutpat aliquet adipiscing faucibus a commodo.} % The first parameter should be "black" or "white" for the page background color, the second is the title to use (use \doctitle for the title defined above) and the third for the subtitle text
+
+\titlepage{black}{\doctitle}{Eget adipiscing orci pretium sodales orci sit nulla volutpat. Eu commodo ipsum, a non. Volutpat aliquet adipiscing faucibus a commodo.} %The first parameter should be "black" or "white" for the page background color, the second is the title to use (use \doctitle for the title defined above) and the third for the subtitle text
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\copyrightpage{Responsible editor: Felis Mauris, Tempor Montes 1, 1000 Pellentesque (2022)} % Output a copyright page
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+\vspace*{-2.6cm} % Pull the table of contents into the top margin as per the design spec
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\tableofcontents % Output the table of contents, automatically created from the various section commands used in the document
+\end{fullwidth}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT PURPOSE
+%----------------------------------------------------------------------------------------
+\addcontentsline{toc}{section}{Nisl vitae vitae in at} % Add the section to the table of contents
+
+\pagenumbering{arabic} % Switch to arabic page numbering (this resets page numbers too)
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\minipage[t]{0.33\linewidth} % Left column
+		{\ttfamily\fontsize{16pt}{22.4pt}\selectfont\bfseries Nisl vitae vitae in at\par}
+	\endminipage
+	\hfill % Horizontal whitespace between columns
+	\minipage[t]{0.65\linewidth} % Right column
+		\vspace{-\baselineskip-8pt} % Pull up text slightly to match the design spec
+		Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc tempor. Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec urna pulvinar sagittis proin.
+		
+		Duis ut tortor, nulla neque id nisl rhoncus. Sem turpis id ligula nunc, pretium quam commodo. Amet, sed ut consequat diam luctus pellentesque imperdiet. Condimentum duis mattis condimentum elementum. Ultrices amet, id iaculis quisque massa eget. Sed tortor vel tellus enim volutpat et semper fringilla tempus. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+	
+		Tempor pulvinar nam quisque curabitur tellus blandit. Mauris nunc libero purus tincidunt ut. Tellus tortor, euismod in scelerisque eu nam.
+		
+		Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis tristique massa eleifend. Sed nunc, nunc non gravida arcu.
+		
+		Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam.
+	\endminipage
+\end{fullwidth}
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT BODY
+%----------------------------------------------------------------------------------------
+
+\section{Purus maecenas}
+
+Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra. Odio morbi sodales venenatis, id tellus ornare mi. (Interdum commodo gravida mauris pellentesque.)
+
+Odio eget condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi \href{https://hypered.io}{pretium laoreet sit}. Dignissim odio condimentum arcu risus scelerisque scelerisque in.
+
+Blandit faucibus fusce tincidunt interdum. Tellus sed nisl pellentesque cursus mi. Augue volutpat eget aliquet:
+
+\begin{itemize}
+	\item Risus viverra. Viverra turpis at viverra nisi, et ac est leo dui. Dui, senectus scelerisque vitae nunc non. Nibh viverra vel faucibus suspendisse blandit consequat. Nibh egestas eu.
+	\item Ornare egestas varius viverra nunc ut blandit. Nunc adipiscing quam nunc orci donec a, montes, venenatis scelerisque.
+	\item Dolor felis, sed at semper et. Fermentum maecenas pharetra, cum viverra ullamcorper nisl convallis iaculis etiam. Egestas in egestas faucibus.
+\end{itemize}
+
+Viverra nisl tincidunt proin ipsum elementum etiam rhoncus. Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque. Elementum convallis tortor at in placerat. At nunc, in eget euismod pellentesque integer maecenas cursus.
+
+Elit rhoncus tempor eget justo, molestie. Risus ac tristique hac posuere non. Tempus, mattis risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper.
+
+%------------------------------------------------
+
+\newpage
+
+\section[Elementum convallis]{Elementum convallis\sidenote{Mi non magna nunc faucibus gravida eleifend.}} % Use the optional parameter to \section for the text to go into the table of contents, in this case it's the same text minus the \sidenote which misbehaves if added to the ToC
+
+\subsection{Porta leo phasellus tristique}
+
+Ornare egestas varius viverra nunc ut blandit. Nunc adipiscing quam nunc orci donec a, montes, venenatis scelerisque.
+
+\begin{table}[H] % [H] ensures the table is output exactly where it is used in the code
+	\begin{tabular}{@{} L{0.32\linewidth} L{0.62\linewidth} @{}}
+		\textbf{Egestas in egestas}\sidenote[][0pt]{Nibh viverra vel faucibus suspendisse blandit consequat.} & \textbf{Ornare egestas}\\ % Note the 0pt vertical offset for the sidenote, this is required so it doesn't float automatically which doesn't work inside a table
+		\thicktablerule
+		1 & 40,00 €\\
+		\midrule
+		2 & 120,00 €\\
+		\midrule
+		3 & 290,00 €\\
+		\midrule
+		4 & 510,00 €\\
+		\midrule
+		5 & 750,00 €\\
+		\midrule
+		6 & 990,00 €\\
+		\midrule
+		7 & 1.300,00 €\\
+		\midrule
+		8 & 1.600,00 €\\
+		\midrule
+		Amet vel gravida viverra & 280,00 € adipiscing quam nunc orci donec 1.500,00 €\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table caption example.}
+\end{table}
+
+\subsection{Risus ac tristique hac posuere non tempus eget}
+
+\subsubsection{Elit rhoncus tempor justo:}
+
+\begin{marginfigure} % Figure in the margin
+	\includegraphics[width=\linewidth]{yellow.jpg}
+	\caption{Margin figure caption.}
+\end{marginfigure}
+
+Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit.
+
+\subsubsection{Risus ac tristique hac posuere:}
+
+\begin{itemize}
+	\item Mi sit dignissim mattis volutpat non elit habitasse vestibulum, turpis is;
+	\item Sodales elit nisl ultrices eu;
+	\item Enim adipiscing lectus posuere (et habitasse eu);
+	\item Quam at lectus habitant facilisi elementum nunc neque maecenas interdum vitae arcu enim.\sidenote{Viverra arcu, dignissim semper odio pulvinar.}
+\end{itemize}
+
+\subsubsection{Egestas nunc et consequat:}
+
+Elit rhoncus tempor eget justo, molestie. Risus hac posuere non. Tempus, risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet. Massa diam augue quisque. Sed est magna risus id leo semper pulvinar tortor. Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra.
+
+Viverra nisl tincidunt proin ipsum elementum etiam rhoncus. Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque. Elementum convallis tortor at in placerat. At nunc, in eget euismod pellentesque integer maecenas cursus. Nunc nibh eget lectus hac quis vestibulum mauris id adipiscing.
+
+\subsubsection{Libero, commodo ut molestie:}
+
+Sem turpis id ligula nunc, pretium quam commodo. Ultrices amet, massa eget. Sed tortor vel tellus enim volutpat. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque eu lectus quam.
+
+Ac enim euismod lacus, lacus dictum eget. Integer mattis ut tristique massa elit eleifend. Consectetur risus cras sed ut.
+
+\subsubsection{A auctor elementum mauris:}
+
+Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec purus urna pulvinar morbi sagittis proin. Etiam vestibulum senectus.\sidenote{Nunc neque blandit et pellentesque.}
+
+\subsubsection{Mi dignissim mattis volutpat:}
+
+Tellus sed nisl pellentesque cursus mi. Augue volutpat eget aliquet risus viverra. Viverra turpis at viverra nisi, et ac est leo dui. Fermentum maecenas pharetra, cum viverra ullamcorper.\sidenote{Nisl convallis iaculis etiam.}
+
+\subsection[Lobortis euismod aenean augue felis quisque\newline turpis ut potenti praesent bibendum eu iaculis]{Lobortis euismod aenean augue felis quisque turpis ut potenti praesent bibendum eu iaculis}
+
+Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque. Elementum convallis tortor at in placerat. At nunc, in eget euismod pellentesque integer maecenas cursus.
+
+\subsection[Nulla viverra nulla aliquet adipiscing nunc\newline viverra odio morbi sodales venenatis tellus]{Nulla viverra nulla aliquet adipiscing nunc viverra odio morbi sodales venenatis tellus}
+
+Massa diam augue quisque condimentum. Sed est magna risus id leo semper pulvinar tortor.
+
+\subsection[Enim adipiscing lectus posuere sit habitasse\newline habitasse vestibulum]{Enim adipiscing lectus posuere sit habitasse habitasse vestibulum}
+
+Orci diam quam a maecenas netus at venenatis ac gravida. Dictum nisi egestas nulla tellus. Amet vel gravida viverra sed bibendum gravida sed. Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque turpis. Ut potenti praesent bibendum eu iaculis. Vel gravida sagittis, sem ut gravida. Massa diam augue quisque condimentum. Sed est magna risus id leo semper pulvinar tortor. Proin porttitor sollicitudin lorem integer diam. Platea nunc nibh rhoncus id pretium nisl. Blandit hendrerit placerat magna malesuada lacus tellus. Posuere euismod suspendisse sollicitudin mauris. Libero, commodo ut molestie suspendisse sed sit. Maecenas risus natoque ut sed. Egestas nunc consequat et diam elementum maecenas massa et et.
+
+Quisque ut tortor, nulla neque id nisl rhoncus. Sem turpis id ligula nunc, pretium quam commodo. Amet, sed ut consequat diam luctus pellentesque imperdiet. Condimentum duis mattis condimentum elementum. Ultrices amet, id iaculis quisque massa eget. Sed tortor vel tellus enim volutpat et semper fringilla tempus. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+
+Sodales a netus dolor sociis nunc tempor hac suscipit dolor scelerisque:
+
+\begin{itemize}
+	\item 50,00 \% Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque;
+	\item 60,0 \% Nunc nibh eget lectus hac quis vestibulum mauris id adipiscing quam a maecenas netus.
+\end{itemize}
+
+\subsection[Tempor pulvinar quisque curabitur tellus\newline euismod in scelerisque eu nam]{Tempor pulvinar quisque curabitur tellus euismod in scelerisque eu nam}
+
+Duis ut tortor, nulla neque id nisl rhoncus. Sem turpis id ligula nunc, pretium quam commodo. Amet, sed ut consequat diam luctus pellentesque imperdiet. Condimentum duis mattis condimentum elementum. Ultrices amet, id iaculis quisque massa eget. Sed tortor vel tellus enim volutpat et semper fringilla tempus. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+
+\subsection[Odio morbi sodales venenatis, id tellus ornare\newline ultrices vitae]{Odio morbi sodales venenatis, id tellus ornare ultrices vitae}
+
+Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu risus scelerisque scelerisque in odio molestie morbi venenatis.
+
+%------------------------------------------------
+
+\newpage
+
+\section{Ut malesuada sed mauris facilisis quam}
+
+\subsection{Elementum}
+
+Elit rhoncus tempor eget justo, molestie. Risus ac tristique hac posuere non. Tempus, mattis risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet non facilisis ut pharetra dignissim sagittis.
+
+\subsection{Proin porttitor}
+
+\begin{margintable} % Table in the margin
+	\begin{tabular}{L{0.42\linewidth} L{0.42\linewidth}}
+		\textbf{Tincidunt 1} & \textbf{Tincidunt 2}\\
+		\thicktablerule
+		2470,00 & 230,00\\
+		\midrule
+		2470,00 & 230,00\\
+		\midrule
+		2470,00 & 230,00\\
+		\midrule
+		2470,00 & 230,00\\
+		\bottomrule
+	\end{tabular}
+	\caption{Margin table caption.}
+\end{margintable}
+
+Condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim scelerisque in.
+
+Rhoncus tempor eget justo, molestie. Risus ac tristique hac posuere non. Tempus, mattis risus mauris nibh risus elementum accumsan, phasellus facilisi ullamcorper.
+
+\subsection{Malesuada}
+
+Adipiscing lectus posuere et habitasse eu enim condimentum:
+
+\begin{itemize}
+	\item Dictum nisi aliquam, mus venenatis amet egestas nulla tellus;
+	\item Proin porttitor sollicitudin lorem integer diam;
+	\item Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque.
+\end{itemize}
+
+\subsection{Mauris nunc libero purus tincidunt}
+
+Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis tristique massa eleifend. Sed nunc, nunc non gravida arcu:
+
+\begin{itemize}
+	\item Viverra nisl tincidunt proin ipsum elementum etiam rhoncus. Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque. Elementum convallis tortor at in placerat. At nunc, in eget euismod pellentesque integer maecenas cursus nunc. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis;
+	\item Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu scelerisque in.
+\end{itemize}
+
+\begin{table*}[H] % [H] ensures the table is output exactly where it is used in the code
+	\fontsize{8pt}{12pt}\selectfont % Reduce font size
+	\begin{tabular}{@{} L{0.234\linewidth} L{0.234\linewidth} L{0.234\linewidth} L{0.234\linewidth} @{}}
+		\textbf{Fermentum dolor (€)} & \textbf{Tincidunt 1} & \textbf{Tincidunt 2} & \textbf{Tincidunt 3}\\
+		\thicktablerule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\midrule
+		2430,00 & 510,00 & 210,00 & 210,00\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table caption example.}
+\end{table*}
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Fermentum dolor est amet enim enim sit lorem neque}
+
+In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+
+Condimentum duis mattis condimentum elementum. Ultrices massa. Tortor vel tellus enim volutpat et semper fringilla tempus.
+
+\begin{table*}[H] % [H] ensures the table is output exactly where it is used in the code
+	\begin{tabular}{@{} L{0.319\linewidth} L{0.319\linewidth} L{0.319\linewidth} @{}}
+		\textbf{Fermentum dolor (€)} & \textbf{Tincidunt 1} & \textbf{Tincidunt 2}\\
+		\thicktablerule
+		2430,00 & 500,00 & 200,00\\
+		\midrule
+		2440,00 & 510,00 & 210,00\\
+		\midrule
+		2460,00 & 520,00 & 220,00\\
+		\midrule
+		2470,00 & 530,00 & 230,00\\
+		\midrule
+		2490,00 & 540,00 & 240,00\\
+		\midrule
+		2500,00 & 550,00 & 250,00\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table caption example.}
+\end{table*}
+
+Odio eget condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu risus scelerisque scelerisque in.
+
+Elit rhoncus tempor eget justo, molestie. Risus ac tristique hac posuere non. Tempus, mattis risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet non.
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Ipsum cursus vel, felis metus mauris}
+
+Viverra nisl tincidunt proin ipsum elementum etiam rhoncus. Purus maecenas interdum vitae arcu cras enim leo velit. Interdum commodo gravida mauris pellentesque. Elementum convallis tortor at in placerat. At nunc, in eget euismod pellentesque integer maecenas cursus. Nunc nibh eget lectus hac quis vestibulum mauris id adipiscing.
+
+Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra. Odio morbi sodales venenatis, id tellus ornare mi.
+
+\begin{figure}[H] % [H] ensures the figure is output exactly where it is used in the code
+	\includegraphics[width=\linewidth]{yellow.jpg}
+	\caption{Figure caption example.}
+\end{figure}
+
+Mi egestas fermentum fusce imperdiet non, id massa consequat. Ut malesuada sed mauris facilisis quam. Orci diam quam a maecenas netus at venenatis ac gravida. Dictum nisi aliquam, mus venenatis amet egestas nulla tellus. Amet vel gravida viverra sed bibendum gravida sed. Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque turpis. Ut potenti praesent bibendum eu iaculis.
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Fames nibh volutpat eget in}
+
+Vel gravida sagittis, sem ut gravida. Massa diam augue quisque condimentum. Sed est magna risus id leo semper pulvinar tortor. Proin porttitor sollicitudin lorem integer diam. Platea nunc nibh rhoncus id pretium nisl.
+
+Blandit hendrerit placerat magna malesuada lacus tellus. Posuere euismod suspendisse sollicitudin mauris. Libero, commodo ut molestie suspendisse sed sit. Maecenas risus natoque ut sed. Egestas nunc consequat et diam elementum maecenas massa et et.
+
+\begin{figure*}[H] % [H] ensures the figure is output exactly where it is used in the code
+	\includegraphics[width=\linewidth]{yellow.jpg}
+	\caption{Massa diam augue quisque condimentum.}
+\end{figure*}
+
+Malesuada ultrices quis arcu lacinia sit. Vestibulum, condimentum non sed lacus cum. Scelerisque urna dui iaculis lacus. Sodales elit nisl ultrices eu. Nibh viverra et convallis diam arcu sed habitant. Dui feugiat enim at posuere pulvinar massa. Viverra arcu, dignissim semper odio nisl. Mi sit dignissim mattis volutpat elit habitasse vestibulum, turpis ac. Enim adipiscing lectus posuere et habitasse eu.
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Nunc et eu sed sagittis, nec}
+
+Vel gravida sagittis, sem ut gravida. Massa diam augue quisque condimentum. Sed est magna risus id leo semper pulvinar tortor. Proin porttitor sollicitudin lorem integer diam. Platea nunc nibh rhoncus id pretium nisl.
+
+Blandit hendrerit placerat magna malesuada lacus tellus. Posuere euismod suspendisse sollicitudin mauris. Libero, commodo ut molestie suspendisse sed sit. Maecenas risus natoque ut sed. Egestas nunc consequat et diam elementum maecenas massa et et.
+
+\begin{figure*}[H] % [H] ensures the figure is output exactly where it is used in the code
+	\includegraphics[width=0.48\linewidth]{yellow.jpg}\hfill\includegraphics[width=0.48\linewidth]{yellow.jpg}
+	\caption{Massa diam augue quisque condimentum.}
+\end{figure*}
+
+Malesuada ultrices quis arcu lacinia sit. Vestibulum, condimentum non sed lacus cum. Scelerisque urna dui iaculis lacus. Sodales elit nisl ultrices eu. Nibh viverra et convallis diam arcu sed habitant. Dui feugiat enim at posuere pulvinar massa. Viverra arcu, dignissim semper odio nisl. Mi sit dignissim mattis volutpat elit habitasse vestibulum, turpis ac. Enim adipiscing lectus posuere et habitasse eu.
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Fermentum dolor est amet enim enim sit lorem neque}
+
+In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+
+Condimentum duis mattis condimentum elementum. Ultrices massa. Tortor vel tellus enim volutpat et semper fringilla tempus.
+
+\subsection*{Mauris dolor a neque condimentum tortor neque}
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\begin{multicols}{3} % Multi-column mode
+		Blandit faucibus fusce tincidunt interdum. Tellus sed nisl pellentesque cursus mi. Augue volutpat eget aliquet risus viverra. Viverra turpis at viverra nisi, et ac est leo dui. Dui, senectus scelerisque vitae nunc non. Nibh viverra vel faucibus suspendisse blandit consequat. Nibh egestas eu, dolor felis, sed at semper et. Fermentum maecenas pharetra, cum viverra ullamcorper nisl convallis iaculis etiam. Egestas in egestas faucibus ut iaculis lacus eu ut est.
+		
+		Lorem lectus odio leo a convallis diam libero. Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc tempor. Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec purus urna pulvinar morbi sagittis proin. Ornare netus risus nulla nec. Et eget auctor volutpat nisl etiam vestibulum senectus. Nunc ornare purus lacus, neque et, blandit et pellentesque mauris.
+		
+		\columnbreak % Manually switch to next column
+		
+		Tempor pulvinar nam quisque curabitur tellus blandit. Mauris nunc libero purus tincidunt ut. Tellus tortor, euismod in scelerisque risus libero eu nam. Vulputate arcu cursus vitae, vitae iaculis. Montes, ultricies tellus risus mi quis nunc, aliquam aenean.
+	
+		Duis ut tortor, nulla neque id nisl rhoncus. Sem turpis id ligula nunc, pretium quam commodo. Amet, sed ut consequat diam luctus pellentesque imperdiet. Condimentum duis mattis condimentum elementum. Ultrices amet, id iaculis quisque massa eget. Sed tortor vel tellus enim volutpat et semper fringilla tempus. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque eu lectus quam.
+		
+		\columnbreak % Manually switch to right column
+		
+		Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis ut tristique massa elit eleifend. Sed nunc, nunc non gravida arcu. Consectetur risus cras sed ut. Cras vivamus amet vitae eu nibh sed venenatis. Vel risus, maecenas consequat malesuada accumsan.
+		
+	Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Elit nisl, vel donec morbi sed. Ultrices vitae a duis orci, volutpat vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam. A auctor elementum mauris fringilla blandit risus velit mauris. Mauris vel adipiscing amet, egestas aliquet tempus.
+	\end{multicols}
+\end{fullwidth}
+
+%------------------------------------------------
+
+\newpage
+
+\section*{Fermentum dolor est amet enim enim sit lorem neque}
+
+In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque.
+
+Condimentum duis mattis condimentum elementum. Ultrices massa. Tortor vel tellus enim volutpat et semper fringilla tempus.
+
+\subsection*{Mauris dolor a neque condimentum tortor neque}
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\begin{multicols}{2} % Multi-column mode
+		Blandit faucibus fusce tincidunt interdum. Tellus sed nisl pellentesque cursus mi. Augue volutpat eget aliquet risus viverra. Viverra turpis at viverra nisi, et ac est leo dui. Dui, senectus scelerisque vitae nunc non. Nibh viverra vel faucibus suspendisse blandit consequat. Nibh egestas eu, dolor felis, sed at semper et. Fermentum maecenas pharetra, cum viverra ullamcorper nisl convallis iaculis etiam. Egestas in egestas faucibus ut iaculis lacus eu ut est.
+		
+		Lorem lectus odio leo a convallis diam libero. Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc tempor. Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec purus urna pulvinar morbi sagittis proin. Ornare netus risus nulla nec. Et eget auctor volutpat nisl etiam vestibulum senectus. Nunc ornare purus lacus, neque et, blandit et pellentesque mauris.
+		
+		Tempor pulvinar nam quisque curabitur tellus blandit. Mauris nunc libero purus tincidunt ut. Tellus tortor, euismod in scelerisque risus libero eu nam. Vulputate arcu cursus vitae, vitae iaculis. Montes, ultricies tellus risus mi quis nunc, aliquam aenean.
+		
+		\columnbreak % Manually switch to right column
+		
+		Duis ut tortor, nulla neque id nisl rhoncus. Sem turpis id ligula nunc, pretium quam commodo. Amet, sed ut consequat diam luctus pellentesque imperdiet. Condimentum duis mattis condimentum elementum. Ultrices amet, id iaculis quisque massa eget. Sed tortor vel tellus enim volutpat et semper fringilla tempus. In eget mus massa proin. Tincidunt habitant faucibus suspendisse viverra leo pulvinar duis. Quam id lectus habitant facilisi ac elementum ut neque. Quisque non scelerisque eu lectus quam.
+		
+		Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis ut tristique massa elit eleifend. Sed nunc, nunc non gravida arcu. Consectetur risus cras sed ut. Cras vivamus amet vitae eu nibh sed venenatis. Vel risus, maecenas consequat malesuada accumsan.
+		
+	Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Elit nisl, vel donec morbi sed. Ultrices vitae a duis orci, volutpat vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam. A auctor elementum mauris fringilla blandit risus velit mauris. Mauris vel adipiscing amet, egestas aliquet tempus.
+	\end{multicols}
+\end{fullwidth}
+
+%------------------------------------------------
+
+\newpage
+
+\section{Referencing citations}
+
+This statement requires citation \autocite{Smith:2019qr}. This statement requires multiple citations \autocite{Smith:2019qr, Smith:2021jd}. This statement contains an in-text citation, reminiscent of that in \textcite{Smith:2021jd}.\fullsidecite{Smith:2019qr}
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor arcu luctus, imperdiet urna iaculis, mattis eros. Pellentesque iaculis odio vel nisl ullamcorper, nec faucibus ipsum molestie. Sed dictum nisl non aliquet porttitor. Etiam vulputate arcu dignissim, finibus sem et, viverra nisl. Aenean luctus congue massa, ut laoreet metus ornare in. Nunc fermentum nisi imperdiet lectus tincidunt vestibulum at ac elit. Nulla mattis nisl eu malesuada suscipit.\sidecite{Smith:2019qr}
+
+\section{Glossary entries}
+
+These are standard glossary entries which are automatically linked to the glossary: \gls{computer} and \gls{Linux}.
+
+These are the same entries but automatically plural: \glspl{computer} and \glspl{Linux}.
+
+These are the same entries but automatically uppercase: \Gls{computer} and \Gls{Linux}.
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\printbibliography[title={Bibliography}] % Output bibliography with custom title
+\end{fullwidth}
+
+%----------------------------------------------------------------------------------------
+%	GLOSSARY
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
+	\printglossary[title={Glossary}] % Output glossary with custom title
+\end{fullwidth}
+
+%----------------------------------------------------------------------------------------
+%	CLOSING PAGES
+%----------------------------------------------------------------------------------------
+
+\newpage
+
+\closingpageone % Output the first closing page style
+
+%------------------------------------------------
+
+\newpage
+
+\closingpagetwo % Output the second closing page style
+
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{-\baselineskip+4pt}\rule{\linewidth}{1pt}} % Add an additional rule to appear at the end of the table of contents
+
+\end{document}
