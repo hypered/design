@@ -239,6 +239,8 @@ There is still old examples in the `docs/` directory.
 ## Acknowledgement
 
 
-- The PDF brochure was designed using Figma by Marina Rizo.
+- The PDF brochure was designed using Figma by Marina Rizo:
+  - Email address: rizo.marina@gmail.com
+  - Dribbble: [rinxols](https://dribbble.com/rinxols)
 - The LaTeX implementation of the brochure design was done by Vel from
   [LaTeXTypesetting.com](latextypesetting.com).
