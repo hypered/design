@@ -12,13 +12,15 @@ SITE="$1"
 # site (e.g. when the build happens within /pages).
 PREFIX_TO_REMOVE="${2:-}"
 
+# If true, remove the .html extension.
+REMOVE_SUFFIX="${3:-}"
+
 function replace_link
 {
   # Path to the .html file.
   FILE="$1"
-  echo Processing $FILE...
   PREFIX_TO_REMOVE="${2:-}"
-  echo With $PREFIX_TO_REMOVE
+  REMOVE_SUFFIX="${3:-}"
 
   # Find .md links. TODO Use a HTML parser instead, to replace actual links
   # instead of every occurence.
@@ -41,9 +43,15 @@ function replace_link
   done < md-links.txt | sort -u > md-links-existing.txt
 
   # Turn those links into a sed replace script (allow / to appear in links).
-  cat md-links-existing.txt \
-    | sed 's@\(.*\).html@s|href="'$PREFIX_TO_REMOVE'\1.md"|href="\1.html"|@' \
-    > md-links-sed.txt
+  if [[ -z "$REMOVE_SUFFIX" ]] ; then
+    cat md-links-existing.txt \
+      | sed 's@\(.*\).html@s|href="'$PREFIX_TO_REMOVE'\1.md"|href="\1.html"|@' \
+      > md-links-sed.txt
+  else
+    cat md-links-existing.txt \
+      | sed 's@\(.*\).html@s|href="'$PREFIX_TO_REMOVE'\1.md"|href="\1"|@' \
+      > md-links-sed.txt
+  fi
 
   # Run the sed script over the .html file.
   sed -i -f md-links-sed.txt "$FILE"
@@ -52,4 +60,4 @@ function replace_link
 # Run the function over the .html files.
 export -f replace_link
 find "$SITE" -type f -name '*.html' -exec \
-  bash -c "replace_link \"\$0\" $PREFIX_TO_REMOVE" {} \;
+  bash -c "replace_link \"\$0\" $PREFIX_TO_REMOVE $REMOVE_SUFFIX" {} \;
