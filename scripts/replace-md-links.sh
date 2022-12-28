@@ -7,16 +7,24 @@
 # Path to the directory containing .html files.
 SITE="$1"
 
+# Possible prefix to remove. For instance if an about page is within the
+# repository at /pages/about.md, but you want to remove '/pages' in the actual
+# site (e.g. when the build happens within /pages).
+PREFIX_TO_REMOVE="${2:-}"
+
 function replace_link
 {
   # Path to the .html file.
   FILE="$1"
+  echo Processing $FILE...
+  PREFIX_TO_REMOVE="${2:-}"
+  echo With $PREFIX_TO_REMOVE
 
   # Find .md links. TODO Use a HTML parser instead, to replace actual links
   # instead of every occurence.
   grep 'href="[a-zA-Z0-9/\.-]*\.md"' "$FILE" -ho \
     | sort -u \
-    | sed 's@href="\(.*\)\.md"@\1.html@' \
+    | sed 's@href="'$PREFIX_TO_REMOVE'\(.*\)\.md"@\1.html@' \
     > md-links.txt
 
   # Keep only links with existing .html files.
@@ -34,7 +42,7 @@ function replace_link
 
   # Turn those links into a sed replace script (allow / to appear in links).
   cat md-links-existing.txt \
-    | sed 's@\(.*\).html@s|href="\1.md"|href="\1.html"|@' \
+    | sed 's@\(.*\).html@s|href="'$PREFIX_TO_REMOVE'\1.md"|href="\1.html"|@' \
     > md-links-sed.txt
 
   # Run the sed script over the .html file.
@@ -44,4 +52,4 @@ function replace_link
 # Run the function over the .html files.
 export -f replace_link
 find "$SITE" -type f -name '*.html' -exec \
-  bash -c 'replace_link "$0"' {} \;
+  bash -c "replace_link \"\$0\" $PREFIX_TO_REMOVE" {} \;
