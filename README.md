@@ -17,6 +17,7 @@ was the `Next.js` + Tachyons.
 - static HTML snippets
 - Pandoc templates
 - Scripts to modify Haddock results
+- XML + XSLT stylesheet (see [README](/xslt/README.md))
 - ...
 
 The main site built with Next.js is visible at
