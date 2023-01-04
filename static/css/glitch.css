@@ -1,0 +1,100 @@
+
+@keyframes glitch-1 {
+  0% {
+    opacity: 1;
+    transform: scaleX(1.0329162778) scaleY(0.9624880521);
+  }
+  12.5% {
+    transform: scaleX(0.9594370913) scaleY(0.9506424701);
+  }
+  25% {
+    transform: scaleX(0.9609167887) scaleY(0.9939509189);
+  }
+  37.5% {
+    transform: scaleX(0.9748098798) scaleY(1.016507008);
+  }
+  50% {
+    transform: scaleX(1.0090070602) scaleY(1.0293011137);
+  }
+  62.5% {
+    transform: scaleX(1.011470297) scaleY(0.9798958466);
+  }
+  75% {
+    transform: scaleX(1.0139757613) scaleY(1.0132142825);
+  }
+  87.5% {
+    transform: scaleX(0.9966595719) scaleY(0.9653377351);
+  }
+  100% {
+    transform: scaleX(1.0107728028) scaleY(1.0299823559);
+  }
+}
+@keyframes glitch-2 {
+  0% {
+    opacity: 1;
+    transform: scaleX(1.0153638162) scaleY(0.9589924759);
+  }
+  12.5% {
+    transform: scaleX(1.0129333274) scaleY(0.9706429895);
+  }
+  25% {
+    transform: scaleX(1.0490139047) scaleY(0.9530988471);
+  }
+  37.5% {
+    transform: scaleX(1.0294264153) scaleY(1.0011773602);
+  }
+  50% {
+    transform: scaleX(1.0165361213) scaleY(1.0161648472);
+  }
+  62.5% {
+    transform: scaleX(0.9536013452) scaleY(1.0382458113);
+  }
+  75% {
+    transform: scaleX(1.0189016142) scaleY(1.0006529632);
+  }
+  87.5% {
+    transform: scaleX(0.9682949246) scaleY(1.0070691552);
+  }
+  100% {
+    transform: scaleX(0.9824294528) scaleY(0.9930084328);
+  }
+}
+
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  transform-origin: (50% 50%);
+}
+
+.glitch::before {
+  opacity: 0;
+  color: rgba(255, 0, 0, 1);
+  top: 2px;
+  left: 2px;
+  z-index: -1;
+  animation: glitch-1 1s steps(2) alternate-reverse;
+}
+
+.glitch::after {
+  opacity: 0;
+  color: rgba(0, 0, 255, 1);
+  top: -2px;
+  left: -2px;
+  z-index: -1;
+  animation: glitch-2 1s steps(2) alternate-reverse;
+}
+
+.glitch:hover::before {
+  display: block;
+  animation: glitch-1 1s infinite steps(2) alternate-reverse;
+}
+
+.glitch:hover::after {
+  display: block;
+  animation: glitch-2 1s infinite steps(2) alternate-reverse;
+}
