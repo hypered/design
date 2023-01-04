@@ -2,12 +2,24 @@
 
 The Hypered design system is a collection of components, templates, and other
 bits of HTML and CSS to create a unified user experience across Hypered
-projects.
+projects. It also contains non-web implementations, such as LaTeX templates.
 
-Components are provided in multiple compatible forms: `Next.js`, `blaze-html`,
-static HTML snippets, Pandoc templates, ...
+Components are provided in multiple compatible forms. The first one to exist
+was the `Next.js` + Tachyons.
 
-The main site is built with Next.js and visible at
+- `Next.js` + Tachyons. This is currently regarded as the reference
+  implementation, until the ITCSS version is mature enough. This is the one
+  re-implemented by other approaches.
+- Pugs + ITCSS. This should be the reference implementation at some point,
+  especially as it is created alongside a Figma file (which should be the
+  source of truth).
+- `blaze-html` (Haskell)
+- static HTML snippets
+- Pandoc templates
+- Scripts to modify Haddock results
+- ...
+
+The main site built with Next.js is visible at
 [hypered.github.io/design-system](https://hypered.github.io/design-system/). It
 also contains a [component
 explorer](https://hypered.github.io/design-system/storybook/) based on
@@ -138,6 +150,11 @@ $ nix-shell --run 'runghc bin/hypered-guide.hs footer' \
 
 Notice that blaze-html writes `<hr>` instead of the `<hr />` obtained with the
 Node.js script.
+
+
+## ITCSS
+
+The ITCSS approach is in the [`itcss/`](/itcss/README.md) directory.
 
 
 ## Pandoc template
