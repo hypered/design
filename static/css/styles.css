@@ -128,3 +128,23 @@
   z-index: -1;
   opacity: 30%;
 }
+
+.mh-75 {
+  max-height: 75vh;
+}
+
+.modal {
+  display: none;
+}
+
+.modal-body {
+  max-height: 24rem;
+}
+
+.modal-state {
+  display: none;
+}
+
+.modal-state:checked + .modal {
+  display: flex;
+}

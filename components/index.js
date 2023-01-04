@@ -20,6 +20,7 @@ export * from "./List/List";
 export * from "./HR/HR";
 export * from "./Image/Image";
 export * from "./Footer/Footer";
+export * from "./Modal/Modal";
 
 export * from "./home/NavSection";
 export * from "./home/Section";
