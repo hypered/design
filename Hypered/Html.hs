@@ -101,6 +101,9 @@ mkRelativize path = relativize
 
 
 ------------------------------------------------------------------------------
+-- | This is the main wrapper. This is exposed as
+--   $ nix-shell --run "runghc bin/hypered-guide.hs wrapper"
+-- and should match the content of `pages/_app.js`.
 document :: Config -> FilePath -> Text -> Html -> Html
 document Config{..} path title body = do
   let depth = length (splitPath path) - 1
