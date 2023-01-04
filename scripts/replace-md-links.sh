@@ -5,7 +5,7 @@
 # by their .html counterparts when the target has been converted to .html.
 
 # Path to the directory containing .html files.
-SITE="$1"
+export SITE="$1"
 
 # Possible prefix to remove. For instance if an about page is within the
 # repository at /pages/about.md, but you want to remove '/pages' in the actual
@@ -31,11 +31,16 @@ function replace_link
 
   # Keep only links with existing .html files.
   while read p ; do
+    if [[ "$p" =~ ^/ ]] ; then
+      q="$SITE/$p"
+    else
+      q="$(dirname "$FILE")/$p"
+    fi
     realpath \
       --quiet \
       --canonicalize-existing \
       --relative-to "$(dirname "$FILE")" \
-      "$(dirname "$FILE")/$p" > /dev/null
+      "$q" > /dev/null
     exit_code=$?
     if [[ $exit_code -eq 0 ]] ; then
       echo "$p"
