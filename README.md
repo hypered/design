@@ -30,6 +30,34 @@ explorer](https://hypered.github.io/design/storybook/) based on
 The same components, but rendered using `blaze-html`, are visible at
 [hypered.github.io/design/hs/](https://hypered.github.io/design/hs/).
 
+# Static website
+
+The static website at
+[hypered.github.io/design](https://hypered.github.io/design) contains content
+generated (or copied as-is) from different parts of this repository. Or,
+conversely, the following directories (or programs) generate parts of the
+static website:
+
+- `bin/hypered-guide.hs` (generates [design/hs](https://hypered.github.io/design/hs/))
+- `components/` (processed with Next.js and Storybook)
+  - [components](https://hypered.github.io/design/storybook/)
+- `docs/` (i.e. as-is HTML pages):
+  - [sprint-2](https://hypered.github.io/design/sprint-2.html)
+  - [blog](https://hypered.github.io/design/blog/)
+  - [blog post](https://hypered.github.io/design/blog/starting-with-nixops-1.html)
+  - [blog post](https://hypered.github.io/design/blog/starting-with-nixops-2.html)
+  - [not-os](https://hypered.github.io/design/projects/not-os/)
+  - [waveguide](https://hypered.github.io/design/projects/waveguide.html)
+  - [nubs-bash](https://hypered.github.io/design/nubs-bash/)
+  - [nubs-bash/hello](https://hypered.github.io/design/nubs-bash/hello/)
+- `pages/` (processed with Next.js)
+  - [/](https://hypered.github.io/design/) (the landing page)
+  - [components](https://hypered.github.io/design/components/) (components preview)
+- `site/` (processed with `site/default.nix`):
+  - [nav-block](https://hypered.github.io/design/nav-block.html)
+  - [nix](https://hypered.github.io/design/nix.html)
+  - [Haddock](https://hypered.github.io/design/haddock/) (copied and modified from the binary)
+
 
 ## Next.js and Storybook
 
@@ -247,17 +275,6 @@ There is also a custom Revealjs template that (should) match the design system.
 
 The `docs/` directory is used because this repository can then use the GitHub
 Pages feature from the `main` branch.
-
-There is still old examples in the `docs/` directory.
-
-- [sprint-2](https://hypered.github.io/design/sprint-2)
-- [blog](https://hypered.github.io/design/blog)
-- [blog post](https://hypered.github.io/design/blog/starting-with-nixops-1)
-- [blog post](https://hypered.github.io/design/blog/starting-with-nixops-2)
-- [not-os](https://hypered.github.io/design/projects/not-os)
-- [waveguide](https://hypered.github.io/design/projects/waveguide)
-- [nubs-bash](https://hypered.github.io/design/nubs-bash)
-- [nubs-bash/hello](https://hypered.github.io/design/nubs-bash/hello)
 
 
 ## xelatex PDF example
