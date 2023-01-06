@@ -250,6 +250,15 @@ Pages feature from the `main` branch.
 
 There is still old examples in the `docs/` directory.
 
+- [sprint-2](https://hypered.github.io/design/sprint-2)
+- [blog](https://hypered.github.io/design/blog)
+- [blog post](https://hypered.github.io/design/blog/starting-with-nixops-1)
+- [blog post](https://hypered.github.io/design/blog/starting-with-nixops-2)
+- [not-os](https://hypered.github.io/design/projects/not-os)
+- [waveguide](https://hypered.github.io/design/projects/waveguide)
+- [nubs-bash](https://hypered.github.io/design/nubs-bash)
+- [nubs-bash/hello](https://hypered.github.io/design/nubs-bash/hello)
+
 
 ## xelatex PDF example
 
