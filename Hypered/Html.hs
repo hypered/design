@@ -318,7 +318,7 @@ exampleLoginForm = do
   H.p "Reesd is in private alpha. New registrations are currently disabled."
   loginForm
   -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2021."
+  -- footer "© Hypered, 2020-2023."
 
 exampleRegisterForm = do
   H.header $
@@ -326,7 +326,7 @@ exampleRegisterForm = do
   H.p "Reesd is in private alpha. New registrations are currently disabled."
   registerForm
   -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2021."
+  -- footer "© Hypered, 2020-2023."
 
 exampleResetForm = do
   H.header $
@@ -335,7 +335,7 @@ exampleResetForm = do
     \ to that address."
   resetForm
   -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2021."
+  -- footer "© Hypered, 2020-2023."
 
 exampleSidebar = do
   H.header $
@@ -362,7 +362,7 @@ exampleSidebar = do
           H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
           "to build the three main components of a Linux-based operating"
           "system:"
-  footer "© Võ Minh Thu, 2017-2021."
+  footer "© Võ Minh Thu, 2017-2023."
 
 exampleSidePanel = do
   H.header $
@@ -390,7 +390,7 @@ exampleSidePanel = do
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
             H.li ! A.class_ "pv1 bb b--black-10" $
               H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  footer "© Võ Minh Thu, 2017-2021."
+  footer "© Võ Minh Thu, 2017-2023."
 
 
 ------------------------------------------------------------------------------

@@ -48,7 +48,7 @@ main = do
 
     -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
-    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2021."))
+    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2023."))
 
     -- Stories form Storybook
     ["form--login"] ->
