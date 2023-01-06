@@ -6,6 +6,7 @@ let
   inherit (import ../.) to-prefixed-html replace-md-links;
   to-html = src: to-prefixed-html "/design" "inter" src;
   app = (import ../release.nix).guide;
+  binaries = (import ../.).binaries;
   # TODO We need to update our change-haddock.sh script to use
   # this more recent derivation.
   haddock = (import ../.).haddock;
@@ -33,6 +34,45 @@ in rec
     rm $out/haddock/ocean.css
     find $out/haddock -maxdepth 1 -name '*.html' \
       -exec ${pkgs.bash}/bin/bash ${../scripts/change-haddock.sh} {} \;
+  '';
+
+  html.hs = pkgs.runCommand "hs" {
+      buildInputs = [ pkgs.glibcLocales ];
+    } ''
+    export LANG="en_US.UTF-8"
+    export LC_ALL="en_US.UTF-8"
+
+    # Generate the guide
+
+    mkdir -p generated/{min,pretty,static} $out
+    ${binaries}/bin/hypered-guide $@
+    mv generated/pretty $out/hs
+
+    # Create the template and example pages
+
+    mkdir -p docs/hs
+    ${binaries}/bin/hypered-templates
+
+    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+      --standalone \
+      --template generated/templates/default.html \
+      --lua-filter ${../pandoc/tachyons.lua} \
+      --output docs/hs/example--template.html \
+      -M prefix="/design" \
+      -M font="inter" \
+      ${../pandoc/lua.md}
+
+    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+      --standalone \
+      --template generated/templates/default.html \
+      --lua-filter ${../pandoc/tachyons.lua} \
+      --output docs/hs/example--template-ibm-plex.html \
+      -M prefix="/design" \
+      -M font="ibm-plex" \
+      ${../pandoc/lua.md}
+
+    cp docs/hs/example--template.html $out/hs/
+    cp docs/hs/example--template-ibm-plex.html $out/hs/
   '';
 
   static = pkgs.runCommand "static" {} ''

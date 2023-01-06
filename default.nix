@@ -38,6 +38,7 @@ in rec
   # This is the non-Next, non-Storybook static site. It contains
   # some rendered Markdown documentation and Haddock.
   site = (import site/default.nix {}).html.all;
+  hs = (import site/default.nix {}).html.hs;
 
   # This is the static directory, usually hosted as /static
   # on websites using this design system.
