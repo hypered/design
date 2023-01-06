@@ -22,6 +22,11 @@ module Hypered.Html
 
 -- | Generate both the normal and pretty-printed HTML versions.
 generate :: FilePath -> Text -> (FilePath -> Html) -> IO ()
+
+-- | Use this version of <a>generate</a> and pass it False to render
+--   complete exemple pages (i.e. without including the wrapper to present
+--   the design system components).
+generate' :: FilePath -> Text -> Config -> (FilePath -> Html) -> IO ()
 generateHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 
@@ -35,11 +40,19 @@ Font :: String -> Font
 fontClass :: Font -> String
 fontCss :: Font -> String
 data Config
-Config :: FilePath -> Font -> Config
+Config :: FilePath -> Font -> Bool -> Config
 [cStaticPath] :: Config -> FilePath
 [cFont] :: Config -> Font
+
+-- | Choose True when rendering a component, False when rendering a
+--   complete page.
+[cAddWrapper] :: Config -> Bool
 defaultConfig :: Config
 mkRelativize :: FilePath -> FilePath -> FilePath
+
+-- | This is the main wrapper. This is exposed as $ nix-shell --run "runghc
+--   bin/hypered-guide.hs wrapper" and should match the content of
+--   `pages/_app.js`.
 document :: Config -> FilePath -> Text -> Html -> Html
 
 -- | The main horizontal navigation component. It uses "flex
@@ -47,7 +60,7 @@ document :: Config -> FilePath -> Text -> Html -> Html
 --   <a>div</a>s. With a single <a>div</a>, they are all grouped on the
 --   left. With two, the first is grouped to the left and the second to the
 --   right. See
---   <a>https://hypered.github.io/design-system/storybook/?path=/story/navigation--navigation</a>
+--   <a>https://hypered.github.io/design/storybook/?path=/story/navigation--navigation</a>
 --   for examples.
 nav :: Html -> Html
 
@@ -57,6 +70,7 @@ navigation :: FilePath -> Html
 -- | Horizontal navigation at the top of a page, at the same level as main
 --   wrapper and footer.
 navigationNoteed :: Html
+navigationReesd :: Html
 
 -- | Same as <a>navigationNoteed</a> but with links on the right, except
 --   the first one.
@@ -100,5 +114,18 @@ sidebarUL :: Html -> Html
 sidebarLI :: Html -> Html
 sidebarLink :: Html -> AttributeValue -> Html
 sidebar :: (Foldable t, Foldable t1) => t1 (Html, t (Html, AttributeValue)) -> Html
+exampleLoginForm :: MarkupM ()
+exampleRegisterForm :: MarkupM ()
+exampleResetForm :: MarkupM ()
 exampleSidebar :: MarkupM ()
 exampleSidePanel :: MarkupM ()
+
+-- | Login form
+--   <a>https://hypered.github.io/design/storybook/?path=/story/form--login</a>
+loginForm :: Html
+
+-- | Register form
+registerForm :: Html
+
+-- | Reset form
+resetForm :: Html

@@ -1,4 +1,5 @@
 @import url("https://rsms.me/inter/inter.css");
+@import url("./glitch.css");
 
 /* colours - text */
 
@@ -59,11 +60,17 @@
 
 /* inputs */
 
-.hy-editable-pre[contenteditable="true"]:active,
-.hy-editable-pre[contenteditable="true"]:focus {
+.hy-editable:active,
+.hy-editable:focus,
+.hy-editable:focus-within {
   background: #fff;
   box-shadow: 0 0 0 1px #96ccff;
   outline: none;
+  position: relative;
+}
+
+.hy-editable > textarea {
+  resize: none;
 }
 
 .hy-checkbox {
@@ -127,4 +134,24 @@
   font-weight: bold;
   z-index: -1;
   opacity: 30%;
+}
+
+.mh-75 {
+  max-height: 75vh;
+}
+
+.modal {
+  display: none;
+}
+
+.modal-body {
+  max-height: 24rem;
+}
+
+.modal-state {
+  display: none;
+}
+
+.modal-state:checked + .modal {
+  display: flex;
 }
