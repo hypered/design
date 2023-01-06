@@ -1,4 +1,23 @@
 <!DOCTYPE HTML>
-<html><head><meta charset="utf-8"><title>Template</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@import url(/design-system/static/css/inter.css);@import url(/design-system/static/css/tachyons.min.v4.11.1.css);@import url(/design-system/static/css/style.css);@import url(/design-system/static/css/styles.css);</style></head><body class="hy-inter"><div class="flex flex-column justify-between min-height-vh-100 mw8 center pa4 lh-copy"><div><header><nav class="flex justify-between align-items-center lh-copy mb4 pv3"><div><a class="link mr3 black hover-blue" href="#">noteed.com</a><a class="link mr3 black hover-blue" href="#">blog</a><a class="link mr3 black hover-blue" href="#">not-os</a></div></nav></header><main><article class="mw7"><div class="mb4"><h1 class="f1 lh-title mv2 tracked-tight">Template</h1></div><p>This is an example Markdown file to test the generated templates of the <a href="https://github.com/hypered/design-system">Hypered design system</a>. In addition of the templates themselves, there are also Pandoc Lua filters to help format the final HTML.</p>
-<h2 id="reference" class="f2 lh-title mv2 tracked-tight">Reference</h2>
-<p>This page should match this <a href="../storybook/iframe.html?id=layouts--blog-post">Storybook example</a>.</p></article></main></div><footer><hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"><p class="inline-flex lh-copy">© Hypered SPRL, 2019.</p></footer></div></body></html>
+<html><head><meta charset="utf-8"><title>Pandoc
+template</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>@import url(/design/static/css/inter.css);@import url(/design/static/css/tachyons.min.v4.11.1.css);@import url(/design/static/css/style.css);@import url(/design/static/css/styles.css);</style></head><body class="hy-inter"><div class="flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy"><div><header><nav class="flex justify-between align-items-center lh-copy mb3 pv1"><div><a class="link mr3 black hover-blue" href="#">noteed.com</a><a class="link mr3 black hover-blue" href="#">blog</a><a class="link mr3 black hover-blue" href="#">not-os</a></div></nav></header><main><article class="mw7"><div class="mb4"><h1 class="f1 lh-title mv2 tracked-tight">Pandoc
+template</h1></div><p>This is an example Markdown file to test the
+generated templates of the <a
+href="https://github.com/hypered/design">Hypered design system</a>. In
+addition of the templates themselves, there are also Pandoc Lua filters
+to help format the final HTML.</p>
+<h2 class="f2 lh-title mv2 tracked-tight" id="reference">Reference</h2>
+<p>This page should match this <a
+href="../storybook/iframe.html?id=layouts--blog-post">Storybook
+example</a>.</p>
+<h2 class="f2 lh-title mv2 tracked-tight" id="building">Building</h2>
+<p>This page can be built with the following command:</p>
+<pre><code>$ pandoc \
+  --standalone \
+  --template pandoc/default.html \
+  --lua-filter pandoc/tachyons.lua \
+  --output docs/components/example--template.html \
+  -M prefix=&quot;&quot; \
+  -M font=inter \
+  pandoc/lua.md</code></pre></article></main></div><footer><hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"><p class="inline-flex lh-copy">©
+Hypered SPRL, 2019-2020.</p></footer></div></body></html>
