@@ -18,11 +18,11 @@ let
 in
 
 pkgs.stdenv.mkDerivation {
-  name = "design-system-env";
+  name = "design-env";
   buildInputs = [
   ] ++ drv.env.nativeBuildInputs;
   shellHook = ''
-    # echo Entering the Nix environment for design-system...
+    # echo Entering the Nix environment for design...
     # nix --version
     # ghc --version
     # ghci -ghci-script ghci-nix-shell.conf

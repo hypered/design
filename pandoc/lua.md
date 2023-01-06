@@ -11,7 +11,7 @@ footer: © Hypered SPRL, 2019-2020.
 ---
 
 This is an example Markdown file to test the generated templates of the
-[Hypered design system](https://github.com/hypered/design-system). In addition
+[Hypered design system](https://github.com/hypered/design). In addition
 of the templates themselves, there are also Pandoc Lua filters to help format
 the final HTML.
 

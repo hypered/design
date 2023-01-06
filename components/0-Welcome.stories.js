@@ -35,13 +35,13 @@ export const toStorybook = props => (
 
         <P>
           This is the Storybook-based component explorer for
-          the <a href="/design-system/">Hypered design system</a>.
+          the <a href="/design/">Hypered design system</a>.
           The Git repository
-          is <a href="https://github.com/hypered/design-system">on GitHub</a>.
+          is <a href="https://github.com/hypered/design">on GitHub</a>.
         </P>
       </article>
     </main>
   </BareLayout>
 );
 
-toStorybook.storyName = 'Design System';
+toStorybook.storyName = 'Design system';

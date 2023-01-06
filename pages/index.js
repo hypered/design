@@ -1,5 +1,5 @@
 // This is the index page of the main site, visible at
-// https://hypered.github.io/design-system/.
+// https://hypered.github.io/design/.
 import React from "react";
 
 import {

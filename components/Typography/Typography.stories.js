@@ -37,14 +37,14 @@ export const Paragraph = () => (
 export const UsageExample = () => (
   <article className="measure-wide">
     <H1>Design System Blog</H1>
-    <P>This is an intro to using Noteed's design-system.</P>
+    <P>This is an intro to using Hypered design system.</P>
     <H2>Components</H2>
     <P>
-      Noteed's design-system comprises of components that quickly help you get
+      Hypered design system comprises of components that quickly help you get
       started with your projects.
     </P>
     <P>
-      The components in this design-system are built with{" "}
+      The components in this design system are built with{" "}
       <A color="blue" href="#">
         Tachyons
       </A>

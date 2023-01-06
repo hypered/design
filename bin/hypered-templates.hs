@@ -21,7 +21,7 @@ main = do
   args <- getArgs
   let config = case args of
         -- Used to generate HTML for GitHub Pages
-        ["docs"] -> Config "/design-system/static" Inter False
+        ["docs"] -> Config "/design/static" Inter False
         -- Used to generate the template.
         _ -> Config "$prefix$/static" (Font "$font$") False
 

@@ -1,8 +1,8 @@
 {
-  "name": "hypered-design-system",
+  "name": "hypered-design",
   "version": "1.0.0",
   "description": "A design system for Hypered projects.",
-  "repository": "github:hypered/design-system",
+  "repository": "github:hypered/design",
   "scripts": {},
   "keywords": [],
   "author": "",

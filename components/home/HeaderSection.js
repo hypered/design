@@ -31,7 +31,7 @@ export const HeaderSection = props => (
         <div className="w-100 w-auto-m w-auto-l ph2">
           <a
             className="no-underline db tc ph4 pv3 bg-white black ba b--black bw1 br-pill"
-            href="https://github.com/hypered/design-system"
+            href="https://github.com/hypered/design"
           >
             Contribute on GitHub
           </a>

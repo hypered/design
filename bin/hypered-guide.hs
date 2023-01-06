@@ -4,7 +4,7 @@
 -- partial HTML.
 --
 -- They are also exposed in docs/hs/, i.e. at
--- https://hypered.github.io/design-system/hs/.
+-- https://hypered.github.io/design/hs/.
 
 {-# LANGUAGE OverloadedStrings #-}
 
