@@ -56,7 +56,7 @@ prettyHtml config base path title body = do
 -- | Same as prettyHtml but doesn't wrap the content to create a full
 -- standalone HTML document.
 partialHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
-partialHtml config base path title body = do
+partialHtml _ base path _ body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
     hPutStr h . Pretty.renderHtml $ body
@@ -86,6 +86,7 @@ data Config = Config
     -- complete page.
   }
 
+defaultConfig :: Config
 defaultConfig = Config
   { cStaticPath = "../static"
   , cFont = Inter
@@ -94,6 +95,7 @@ defaultConfig = Config
 
 
 ------------------------------------------------------------------------------
+mkRelativize :: FilePath -> FilePath -> FilePath
 mkRelativize path = relativize
   where
     depth = length (splitPath path) - 1
@@ -134,6 +136,7 @@ document Config{..} path title body = do
 -- `div`, they are all grouped on the left. With two, the first is grouped to
 -- the left and the second to the right.
 -- See https://hypered.github.io/design/storybook/?path=/story/navigation--navigation for examples.
+nav :: Html -> Html
 nav content =
   H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb3 pv1" $
     content
@@ -162,6 +165,7 @@ navigation path = do
 
 -- | Horizontal navigation at the top of a page, at the same level as main
 -- wrapper and footer.
+navigationNoteed :: Html
 navigationNoteed =
   nav $
     H.div $ do
@@ -169,6 +173,7 @@ navigationNoteed =
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
       H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
 
+navigationReesd :: Html
 navigationReesd =
   nav $
     H.div $ do
@@ -176,6 +181,7 @@ navigationReesd =
 
 -- | Same as 'navigationNoteed' but with links on the right, except the first
 -- one.
+navigationNoteed' :: Html
 navigationNoteed' =
   nav $ do
     H.div $ do
@@ -184,6 +190,7 @@ navigationNoteed' =
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
       H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
 
+navigationTemplate :: Html
 navigationTemplate =
   H.header $
     nav $
@@ -195,6 +202,7 @@ navigationTemplate =
 
 -- | Content wrapper, for a blog post, at the same level as navigation and
 -- footer.
+wrapPost :: Html -> Html -> Html
 wrapPost title content =
   H.main $
     H.article ! A.class_ "mw7" $ do
@@ -218,6 +226,7 @@ wrap content = do
       content
 
 -- | The footer, at the same level as both navigation and wrap.
+footer :: Html -> Html
 footer content =
   H.footer $ do
     H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
@@ -249,54 +258,70 @@ aside = do
             "&rarr; #263"
 
 -- | Green variant of a banner.
+bannerGreen :: Html -> Html
 bannerGreen = banner "bg-green"
 
 -- | Yellow variant of a banner.
+bannerYellow :: Html -> Html
 bannerYellow = banner "bg-yellow"
 
 -- | Red variant of a banner.
+bannerRed :: Html -> Html
 bannerRed = banner "bg-red"
 
+banner :: String -> Html -> Html
 banner bg = H.div ! A.class_ (H.toValue (bg ++ " pa3 white tc fw6 mv3"))
 
+buttonPrimary :: Html -> Html
 buttonPrimary = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black"
 
+buttonPrimaryDisabled :: Html -> Html
 buttonPrimaryDisabled = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
   ! A.disabled ""
 
+buttonSecondary :: Html -> Html
 buttonSecondary = H.button
   ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black"
 
+buttonSecondaryDisabled :: Html -> Html
 buttonSecondaryDisabled = H.button
   ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black o-50"
   ! A.disabled ""
 
+buttonFullWidth :: Html -> Html
 buttonFullWidth = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black w-100"
 
 -- TODO When pretty-printing the HTML, the first line within the code element
 -- is indented, which is not correct.
+codeBlock :: Html
 codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
   "// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
 
-title = H.title "Hypered"
+headTitle :: Html
+headTitle = H.title "Hypered"
 
+sidebarTitle :: Html -> Html
 sidebarTitle content =
   H.h3 ! A.class_ "f5 ttu mv1" $ content
 
+sidebarUL :: Html -> Html
 sidebarUL content =
   H.ul ! A.class_ "list pl0 mb3 mt0" $ content
 
+sidebarLI :: Html -> Html
 sidebarLI content =
   H.li content
 
+sidebarLink :: Html -> H.AttributeValue -> Html
 sidebarLink content href =
   H.a ! A.class_ "link black hover-blue" ! A.href href $ content
 
+sidebar :: [(Html, [(Html, H.AttributeValue)])] -> Html
 sidebar xs =
   H.aside ! A.class_ "order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2" $
     H.nav $ do
@@ -312,6 +337,7 @@ sidebar xs =
     sidebarLI $
       sidebarLink name href
 
+exampleLoginForm :: Html
 exampleLoginForm = do
   H.header $
     navigationReesd
@@ -320,6 +346,7 @@ exampleLoginForm = do
   -- There could be a footer, but on simple forms, I think I prefer without.
   -- footer "© Hypered, 2020-2023."
 
+exampleRegisterForm :: Html
 exampleRegisterForm = do
   H.header $
     navigationReesd
@@ -328,6 +355,7 @@ exampleRegisterForm = do
   -- There could be a footer, but on simple forms, I think I prefer without.
   -- footer "© Hypered, 2020-2023."
 
+exampleResetForm :: Html
 exampleResetForm = do
   H.header $
     navigationReesd
@@ -337,6 +365,7 @@ exampleResetForm = do
   -- There could be a footer, but on simple forms, I think I prefer without.
   -- footer "© Hypered, 2020-2023."
 
+exampleSidebar :: Html
 exampleSidebar = do
   H.header $
     navigationNoteed
@@ -364,6 +393,7 @@ exampleSidebar = do
           "system:"
   footer "© Võ Minh Thu, 2017-2023."
 
+exampleSidePanel :: Html
 exampleSidePanel = do
   H.header $
     navigationNoteed
@@ -400,6 +430,7 @@ exampleSidePanel = do
 ------------------------------------------------------------------------------
 -- | Login form
 -- https://hypered.github.io/design/storybook/?path=/story/form--login
+loginForm :: Html
 loginForm = do
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"

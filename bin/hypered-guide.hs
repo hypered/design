@@ -13,7 +13,7 @@ module Main where
 import Data.Char (isDigit, isUpper, toLower)
 import Data.List (nub)
 import qualified Data.Text.Lazy.IO as T
-import Text.Blaze.Html5 (Html, (!))
+import Text.Blaze.Html5 ((!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
@@ -185,15 +185,18 @@ generateGuide = do
 
 
 ------------------------------------------------------------------------------
+dashdash :: (String, String) -> String
 dashdash (a, b) = map toLower (a ++ "--" ++ [head b] ++ concatMap f (tail b))
   where
   f c | isUpper c = ['-', c]
   f c | isDigit c = ['-', c]
       | otherwise = [c]
 
+jsimport :: String -> String
 jsimport a =
   "var " ++ a ++ " = require(\"./components/" ++ a ++ "/" ++ a ++ ".stories\");"
 
+js :: (String, String) -> String
 js (a, b) = unlines
   [ "case '" ++ dashdash (a, b) ++ "':"
   , "  render(" ++ a ++ "." ++ b ++ "());"

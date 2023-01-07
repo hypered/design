@@ -8,7 +8,7 @@ import qualified Text.Blaze.Html5 as H
 import System.Environment (getArgs)
 
 import Hypered.Html
-  ( footer, generateHtml, navigation, navigationTemplate, title, partialHtml
+  ( footer, generateHtml, navigation, navigationTemplate, headTitle, partialHtml
   , prettyHtml, wrap , wrapPost , Config(..), Font(Inter, Font)
   )
 
@@ -43,4 +43,4 @@ main = do
 
   partialHtml config "generated/templates" "footer.html" "" (footer "$footer$")
   partialHtml config "generated/templates" "navigation.html" "" (navigation ".")
-  partialHtml config "generated/templates" "title.html" "" title
+  partialHtml config "generated/templates" "title.html" "" headTitle
