@@ -26,10 +26,6 @@ in rec
   docbook-example = (import docbook/default.nix {}).minimal;
   pandoc-example = to-html md.lua;
 
-  # This is bin/hypered-guide.hs, compiled with an old reesd-stack (and
-  # producing the Haddock expected by our scripts (that need to be updated)).
-  app = (import ./release.nix).guide;
-
   # Build with nix-build -A <attr>
   # binaries + haddock are also available as binaries.all.
   binaries = nixpkgs.haskellPackages.hypered-design;

@@ -5,7 +5,7 @@ module Hypered.Html where
 
 import Data.Text (Text)
 import qualified Data.Text.Lazy.IO as T
-import System.FilePath (joinPath, splitPath, takeDirectory, FilePath, (</>))
+import System.FilePath (joinPath, splitPath, takeDirectory, (</>))
 import System.Directory (createDirectoryIfMissing)
 import System.IO (hPutStr, withFile, IOMode(WriteMode))
 import Text.Blaze.Html5 (Html, (!))
