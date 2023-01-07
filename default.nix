@@ -39,4 +39,15 @@ in rec
   # This is the static directory, usually hosted as /static
   # on websites using this design system.
   static = (import site/default.nix {}).static;
+
+  # A shell to try out our binaries
+  # Run with nix-shell default.nix -A shell
+  shell = nixpkgs.mkShell {
+    buildInputs = [
+      binaries
+    ];
+    shellHook = ''
+      source <(hypered-design --bash-completion-script `which hypered-design`)
+    '';
+  };
 }
