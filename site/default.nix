@@ -38,7 +38,7 @@ in rec
     # Generate the guide
 
     mkdir -p generated/{min,pretty,static} $out
-    ${binaries}/bin/hypered-guide $@
+    ${binaries}/bin/hypered-design generate-guide
     mv generated/pretty $out/hs
 
     # Create the template and example pages

@@ -15,7 +15,7 @@ for i in \
   ; \
 do
   echo $i
-  nix-shell --run "runghc bin/hypered-guide.hs $i" | \
+  nix-shell --run "runghc bin/hypered-design.hs generate-guide $i" | \
     nix-shell -p nodejs --run 'node render-components pretty' | \
     norm > a
   nix-shell -p nodejs --run "node render-components $i" > b
