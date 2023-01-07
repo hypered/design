@@ -4,9 +4,7 @@
 
 module Main where
 
-import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
-import qualified Text.Blaze.Html5.Attributes as A
 import System.Environment (getArgs)
 
 import Hypered.Html

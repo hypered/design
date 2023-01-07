@@ -439,6 +439,7 @@ loginForm = do
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log in —>"
 
 -- | Register form
+registerForm :: Html
 registerForm = do
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"
@@ -485,6 +486,7 @@ registerForm = do
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Register —>"
 
 -- | Reset form
+resetForm :: Html
 resetForm = do
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"
