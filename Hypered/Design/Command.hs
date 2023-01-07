@@ -29,6 +29,13 @@ data Command =
   | GenerateNavigation
   | GenerateNavigationSpaceBetween
   | GenerateLayoutDefault
+
+    -- Helpers to explore Storybook stories
+
+  | ListCategories
+  | ListStories
+  | JsImportStories
+  | JsStories
   deriving (Eq, Show)
 
 
@@ -99,6 +106,30 @@ parser =
           ( A.info (parserLayoutDefault <**> A.helper)
           $ A.progDesc "Generate the default layout."
           )
+
+      <> A.command
+          "list-categories"
+          ( A.info (parserListCategories <**> A.helper)
+          $ A.progDesc "List Storybook categories."
+          )
+
+      <> A.command
+          "list-stories"
+          ( A.info (parserListStories <**> A.helper)
+          $ A.progDesc "List Storybook stories."
+          )
+
+      <> A.command
+          "js-import-stories"
+          ( A.info (parserJsImportStories <**> A.helper)
+          $ A.progDesc "Generate JS code to import the Storybook stories."
+          )
+
+      <> A.command
+          "js-stories"
+          ( A.info (parserJsStories <**> A.helper)
+          $ A.progDesc "Generate JS code to render Storybook stories."
+          )
       )
 
 
@@ -130,3 +161,15 @@ parserNavigationSpaceBetween = pure GenerateNavigationSpaceBetween
 
 parserLayoutDefault :: A.Parser Command
 parserLayoutDefault = pure GenerateLayoutDefault
+
+parserListCategories :: A.Parser Command
+parserListCategories = pure ListCategories
+
+parserListStories :: A.Parser Command
+parserListStories = pure ListStories
+
+parserJsImportStories :: A.Parser Command
+parserJsImportStories = pure JsImportStories
+
+parserJsStories :: A.Parser Command
+parserJsStories = pure JsStories

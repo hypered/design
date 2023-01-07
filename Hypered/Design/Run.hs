@@ -4,11 +4,14 @@ module Hypered.Design.Run
   ( run
   ) where
 
+import           Data.List (nub, tail)
+import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
 import           Hypered.Html
   ( footer, generateHtml, navigation, navigationTemplate, headTitle, partialHtml
   , prettyHtml, wrap , wrapPost , Config(..), Font(Inter, Font)
   )
+import           Hypered.Stories (stories)
 import           Protolude
 import           Text.Blaze.Html5 ((!))
 import qualified Text.Blaze.Html5 as H
@@ -49,6 +52,15 @@ run Command.GenerateNavigation = generateNavigation
 run Command.GenerateNavigationSpaceBetween = generateNavigationSpaceBetween
 
 run Command.GenerateLayoutDefault = generateLayoutDefault
+
+run Command.ListCategories = listCategories
+
+run Command.ListStories = listStories
+
+run Command.JsImportStories = jsImportStories
+
+run Command.JsStories = jsStories
+
 
 --------------------------------------------------------------------------------
 generateTemplates :: Bool -> IO ()
@@ -219,6 +231,7 @@ generateFooter = putStr (renderHtml (footer "© Hypered, 2019-2023."))
 
 ------------------------------------------------------------------------------
 -- Stories from Storybook
+
 generateFormLogin :: IO ()
 generateFormLogin = putStr (renderHtml loginForm)
 
@@ -230,3 +243,41 @@ generateNavigationSpaceBetween = putStr (renderHtml (navigationNoteed'))
 
 generateLayoutDefault :: IO ()
 generateLayoutDefault = putStr (renderHtml (nav ""))
+
+
+------------------------------------------------------------------------------
+-- Helpers to explore Storybook stories
+
+listCategories :: IO ()
+listCategories = mapM_ putStrLn (nub ((map fst (tail stories))))
+
+listStories :: IO ()
+listStories = mapM_ putStrLn (map dashdash (tail stories))
+
+jsImportStories :: IO ()
+jsImportStories = mapM_ (putStrLn . jsimport) (nub (map fst (tail stories)))
+
+jsStories :: IO ()
+jsStories = mapM_ putStrLn (map js (tail stories))
+
+
+------------------------------------------------------------------------------
+dashdash :: (Text, Text) -> Text
+dashdash (a, b) = case T.uncons b of
+  Nothing -> T.toLower a
+  Just (hd, tl) -> T.toLower (a <> "--" <> T.singleton hd <> T.concatMap f tl)
+  where
+  f c | isUpper c = T.pack ['-', c]
+  f c | isDigit c = T.pack ['-', c]
+      | otherwise = T.singleton c
+
+jsimport :: Text -> Text
+jsimport a =
+  "var " <> a <> " = require(\"./components/" <> a <> "/" <> a <> ".stories\");"
+
+js :: (Text, Text) -> Text
+js (a, b) = unlines
+  [ "case '" <> dashdash (a, b) <> "':"
+  , "  render(" <> a <> "." <> b <> "());"
+  , "  break;"
+  ]

@@ -27,15 +27,6 @@ library
                        Hypered.Stories
   ghc-options:         -Wall
 
-executable hypered-guide
-  hs-source-dirs:      bin
-  main-is:             hypered-guide.hs
-  build-depends:       base == 4.*,
-                       blaze-html,
-                       design-system,
-                       text
-  ghc-options:         -Wall
-
 executable hypered-design
   hs-source-dirs:      bin
   main-is:             hypered-design.hs
