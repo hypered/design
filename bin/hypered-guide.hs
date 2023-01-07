@@ -12,8 +12,6 @@ module Main where
 
 import Data.Char (isDigit, isUpper, toLower)
 import Data.List (nub)
-import qualified Data.Text.Lazy.IO as T
-import Text.Blaze.Html.Renderer.Text (renderHtml)
 import System.Environment (getArgs)
 
 import Hypered.Html
@@ -33,20 +31,6 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
-
-    -- Individual components
-    ["nav"] -> T.putStr (renderHtml (nav ""))
-    ["footer"] -> T.putStr (renderHtml (footer "© Hypered, 2019-2023."))
-
-    -- Stories form Storybook
-    ["form--login"] ->
-      T.putStr (renderHtml loginForm)
-    ["navigation--navigation"] ->
-      T.putStr (renderHtml (navigationNoteed))
-    ["navigation--navigation-space-between"] ->
-      T.putStr (renderHtml (navigationNoteed'))
-    ["layout--default"] ->
-      T.putStr (renderHtml (nav ""))
 
     ["list-categories"] -> mapM_ putStrLn (nub ((map fst (tail stories))))
     ["list-stories"] -> mapM_ putStrLn

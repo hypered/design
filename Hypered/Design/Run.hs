@@ -14,6 +14,7 @@ import           Text.Blaze.Html5 ((!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
 
 
 
@@ -26,7 +27,7 @@ import Hypered.Html
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
-  )
+  , nav, navigationNoteed, navigationNoteed')
 
 
 --------------------------------------------------------------------------------
@@ -37,6 +38,17 @@ run Command.GenerateGuide = generateGuide
 
 run Command.Wrapper = generateWrapper
 
+run Command.GenerateNav = generateNav
+
+run Command.GenerateFooter = generateFooter
+
+run Command.GenerateFormLogin = generateFormLogin
+
+run Command.GenerateNavigation = generateNavigation
+
+run Command.GenerateNavigationSpaceBetween = generateNavigationSpaceBetween
+
+run Command.GenerateLayoutDefault = generateLayoutDefault
 
 --------------------------------------------------------------------------------
 generateTemplates :: Bool -> IO ()
@@ -193,3 +205,28 @@ generateWrapper = do
     ( document defaultConfig "wrapper.html" "Hypered design system"
       ( H.preEscapedToHtml @Text "<!-- CONTENT MARKER -->"
     )))
+
+
+------------------------------------------------------------------------------
+-- Individual components
+
+generateNav :: IO ()
+generateNav = putStr (renderHtml (nav ""))
+
+generateFooter :: IO ()
+generateFooter = putStr (renderHtml (footer "© Hypered, 2019-2023."))
+
+
+------------------------------------------------------------------------------
+-- Stories from Storybook
+generateFormLogin :: IO ()
+generateFormLogin = putStr (renderHtml loginForm)
+
+generateNavigation :: IO ()
+generateNavigation = putStr (renderHtml (navigationNoteed))
+
+generateNavigationSpaceBetween :: IO ()
+generateNavigationSpaceBetween = putStr (renderHtml (navigationNoteed'))
+
+generateLayoutDefault :: IO ()
+generateLayoutDefault = putStr (renderHtml (nav ""))

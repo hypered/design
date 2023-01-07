@@ -17,6 +17,18 @@ data Command =
   | GenerateGuide
   | Wrapper
     -- ^ The document wrapper. This should match `pages/_app.js`.
+
+    -- Individual components
+
+  | GenerateNav
+  | GenerateFooter
+
+    -- Stories from Storybook
+
+  | GenerateFormLogin
+  | GenerateNavigation
+  | GenerateNavigationSpaceBetween
+  | GenerateLayoutDefault
   deriving (Eq, Show)
 
 
@@ -51,6 +63,42 @@ parser =
           ( A.info (parserWrapper <**> A.helper)
           $ A.progDesc "Generate the document wrapper. This should match `pages/_app.js`."
           )
+
+      <> A.command
+          "nav"
+          ( A.info (parserNav <**> A.helper)
+          $ A.progDesc "Generate a nav component."
+          )
+
+      <> A.command
+          "footer"
+          ( A.info (parserFooter <**> A.helper)
+          $ A.progDesc "Generate a footer component."
+          )
+
+      <> A.command
+          "form--login"
+          ( A.info (parserFormLogin <**> A.helper)
+          $ A.progDesc "Generate a login form example."
+          )
+
+      <> A.command
+          "navigation--navigation"
+          ( A.info (parserNavigation <**> A.helper)
+          $ A.progDesc "Generate a navigation bar example."
+          )
+
+      <> A.command
+          "navigation--navigation-space-between"
+          ( A.info (parserNavigationSpaceBetween <**> A.helper)
+          $ A.progDesc "Generate a navigation bar example."
+          )
+
+      <> A.command
+          "layout--default"
+          ( A.info (parserLayoutDefault <**> A.helper)
+          $ A.progDesc "Generate the default layout."
+          )
       )
 
 
@@ -64,3 +112,21 @@ parserGenerateGuide = pure GenerateGuide
 
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper
+
+parserNav :: A.Parser Command
+parserNav = pure GenerateNav
+
+parserFooter :: A.Parser Command
+parserFooter = pure GenerateFooter
+
+parserFormLogin :: A.Parser Command
+parserFormLogin = pure GenerateFormLogin
+
+parserNavigation :: A.Parser Command
+parserNavigation = pure GenerateNavigation
+
+parserNavigationSpaceBetween :: A.Parser Command
+parserNavigationSpaceBetween = pure GenerateNavigationSpaceBetween
+
+parserLayoutDefault :: A.Parser Command
+parserLayoutDefault = pure GenerateLayoutDefault
