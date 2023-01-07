@@ -14,8 +14,9 @@ data Command =
     GenerateTemplates Bool
     -- ^ If True, use a prefix suitable for GitHub Pages (i.e. the /design
     -- prefix, since the static site is at hypered.github.io/design).
-  | Dummy
   | GenerateGuide
+  | Wrapper
+    -- ^ The document wrapper. This should match `pages/_app.js`.
   deriving (Eq, Show)
 
 
@@ -40,15 +41,15 @@ parser =
           )
 
       <> A.command
-          "dummy"
-          ( A.info (parserDummy <**> A.helper)
+          "generate-guide"
+          ( A.info (parserGenerateGuide <**> A.helper)
           $ A.progDesc "A dummy command"
           )
 
       <> A.command
-          "generate-guide"
-          ( A.info (parserGenerateGuide <**> A.helper)
-          $ A.progDesc "A dummy command"
+          "wrapper"
+          ( A.info (parserWrapper <**> A.helper)
+          $ A.progDesc "Generate the document wrapper. This should match `pages/_app.js`."
           )
       )
 
@@ -58,8 +59,8 @@ parserGenerateTemplates :: A.Parser Command
 parserGenerateTemplates = GenerateTemplates <$> A.switch
   (A.long "docs" <> A.help "Use a prefix suitable for GitHub Pages.")
 
-parserDummy :: A.Parser Command
-parserDummy = pure Dummy
-
 parserGenerateGuide :: A.Parser Command
 parserGenerateGuide = pure GenerateGuide
+
+parserWrapper :: A.Parser Command
+parserWrapper = pure Wrapper

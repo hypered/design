@@ -13,8 +13,6 @@ module Main where
 import Data.Char (isDigit, isUpper, toLower)
 import Data.List (nub)
 import qualified Data.Text.Lazy.IO as T
-import qualified Text.Blaze.Html5 as H
-import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
 import Text.Blaze.Html.Renderer.Text (renderHtml)
 import System.Environment (getArgs)
 
@@ -35,12 +33,6 @@ main :: IO ()
 main = do
   args <- getArgs
   case args of
-    -- The document wrapper. This should match `pages/_app.js`.
-    ["wrapper"] ->
-      putStr (Pretty.renderHtml
-        ( document defaultConfig "wrapper.html" "Hypered Design System"
-          ( H.preEscapedToHtml ("<!-- CONTENT MARKER -->" :: String)
-        )))
 
     -- Individual components
     ["nav"] -> T.putStr (renderHtml (nav ""))
@@ -63,8 +55,6 @@ main = do
       (nub (map fst (tail stories)))
     ["js-stories"] -> mapM_ putStrLn
       (map js (tail stories))
-
-    _ -> error "Unsupported argument."
 
 
 ------------------------------------------------------------------------------

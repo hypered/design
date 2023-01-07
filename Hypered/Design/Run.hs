@@ -10,18 +10,19 @@ import           Hypered.Html
   , prettyHtml, wrap , wrapPost , Config(..), Font(Inter, Font)
   )
 import           Protolude
+import           Text.Blaze.Html5 ((!))
 import qualified Text.Blaze.Html5 as H
-
-
-
-import Text.Blaze.Html5 ((!))
 import qualified Text.Blaze.Html5.Attributes as A
+import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
+
+
+
 
 import Hypered.Html
   ( Font(IbmPlex)
   , codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, defaultConfig
+  , buttonSecondaryDisabled, defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
@@ -32,11 +33,9 @@ import Hypered.Html
 run :: Command.Command -> IO ()
 run (Command.GenerateTemplates forGitHubPages) = generateTemplates forGitHubPages
 
-run Command.Dummy = do
-  putStrLn @Text "Dummy"
-  exitSuccess
-
 run Command.GenerateGuide = generateGuide
+
+run Command.Wrapper = generateWrapper
 
 
 --------------------------------------------------------------------------------
@@ -184,3 +183,13 @@ generateGuide = do
     conf' (const exampleSidebar)
   generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
     conf' (const exampleSidePanel)
+
+
+------------------------------------------------------------------------------
+-- The document wrapper. This should match `pages/_app.js`.
+generateWrapper :: IO ()
+generateWrapper = do
+  putStr (Pretty.renderHtml
+    ( document defaultConfig "wrapper.html" "Hypered design system"
+      ( H.preEscapedToHtml @Text "<!-- CONTENT MARKER -->"
+    )))
