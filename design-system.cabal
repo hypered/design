@@ -1,23 +1,29 @@
+cabal-version:       2.2
 name:                design-system
 version:             0.0.0
-Cabal-Version:       >= 1.8
 synopsis:            Design system for Hypered.
 description:         Design system for Hypered.
 category:            System
-license:             BSD2
+license:             BSD-2-Clause
 license-file:        LICENSE
 author:              Vo Minh Thu
 maintainer:          thu@hypered.io
 build-type:          Simple
 
 library
+  default-extensions:
+                       TypeApplications
   build-depends:       base == 4.*,
                        blaze-builder,
                        blaze-html,
                        directory,
                        filepath,
+                       optparse-applicative,
+                       protolude,
                        text
-  exposed-modules:     Hypered.Html,
+  exposed-modules:     Hypered.Design.Command,
+                       Hypered.Design.Run,
+                       Hypered.Html,
                        Hypered.Stories
   ghc-options:         -Wall
 
@@ -36,5 +42,16 @@ executable hypered-templates
   build-depends:       base == 4.*,
                        blaze-html,
                        design-system,
+                       text
+  ghc-options:         -Wall
+
+executable hypered-design
+  hs-source-dirs:      bin
+  main-is:             hypered-design.hs
+  build-depends:       base == 4.*,
+                       blaze-html,
+                       design-system,
+                       optparse-applicative,
+                       protolude,
                        text
   ghc-options:         -Wall
