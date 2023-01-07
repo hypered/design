@@ -190,7 +190,7 @@ The ITCSS approach is in the [`itcss/`](/itcss/README.md) directory.
 
 ## Pandoc template
 
-A Pandoc template can be generated with the `bin/hypered-templates.hs` script.
+A Pandoc template can be generated with the `bin/hypered-design.hs` script.
 The resulting file is versioned at [`pandoc/default.html`](pandoc/default.html)
 for convenience.
 

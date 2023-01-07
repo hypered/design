@@ -44,7 +44,7 @@ in rec
     # Create the template and example pages
 
     mkdir -p docs/hs
-    ${binaries}/bin/hypered-templates
+    ${binaries}/bin/hypered-design generate-templates
 
     ${pkgs.haskellPackages.pandoc}/bin/pandoc \
       --standalone \

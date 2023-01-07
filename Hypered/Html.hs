@@ -3,11 +3,10 @@
 -- | Define HTML code for the Hypered design system.
 module Hypered.Html where
 
-import Data.Text (Text)
 import qualified Data.Text.Lazy.IO as T
+import           Protolude
 import System.FilePath (joinPath, splitPath, takeDirectory, (</>))
 import System.Directory (createDirectoryIfMissing)
-import System.IO (hPutStr, withFile, IOMode(WriteMode))
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
@@ -66,14 +65,14 @@ partialHtml _ base path _ body = do
 data Font =
     IbmPlex
   | Inter
-  | Font String
+  | Font FilePath
 
-fontClass :: Font -> String
+fontClass :: Font -> FilePath
 fontClass IbmPlex = "hy-ibm-plex"
 fontClass Inter = "hy-inter"
 fontClass (Font s) = "hy-" ++ s
 
-fontCss :: Font -> String
+fontCss :: Font -> FilePath
 fontCss IbmPlex = "css/ibm-plex.css"
 fontCss Inter = "css/inter.css"
 fontCss (Font s) = "css/" ++ s ++ ".css"
@@ -118,7 +117,7 @@ document Config{..} path title body = do
       H.meta ! A.name "viewport"
              ! A.content "width=device-width, initial-scale=1.0"
       H.style $ do
-        mapM_ (\a -> H.toHtml ("@import url(" ++ relativize a ++ ");"))
+        mapM_ (\a -> H.toHtml ("@import url(" <> relativize a <> ");"))
           [ cStaticPath </> fontCss cFont
           , cStaticPath </> "css/tachyons.min.v4.11.1.css"
           , cStaticPath </> "css/style.css"
@@ -269,8 +268,8 @@ bannerYellow = banner "bg-yellow"
 bannerRed :: Html -> Html
 bannerRed = banner "bg-red"
 
-banner :: String -> Html -> Html
-banner bg = H.div ! A.class_ (H.toValue (bg ++ " pa3 white tc fw6 mv3"))
+banner :: Text -> Html -> Html
+banner bg = H.div ! A.class_ (H.toValue (bg <> " pa3 white tc fw6 mv3"))
 
 buttonPrimary :: Html -> Html
 buttonPrimary = H.button

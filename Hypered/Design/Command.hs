@@ -12,7 +12,9 @@ import           Protolude
 --------------------------------------------------------------------------------
 data Command =
     Dummy
-  | Dummy_
+  | GenerateTemplates Bool
+    -- ^ If True, use a prefix suitable for GitHub Pages (i.e. the /design
+    -- prefix, since the static site is at hypered.github.io/design).
   deriving (Eq, Show)
 
 
@@ -37,9 +39,9 @@ parser =
           )
 
       <> A.command
-          "dummy_"
-          ( A.info (parserDummy_ <**> A.helper)
-          $ A.progDesc "A dummy command"
+          "generate-templates"
+          ( A.info (parserGenerateTemplates <**> A.helper)
+          $ A.progDesc "Generate HTML templates that can be used with Pandoc"
           )
       )
 
@@ -48,5 +50,6 @@ parser =
 parserDummy :: A.Parser Command
 parserDummy = pure Dummy
 
-parserDummy_ :: A.Parser Command
-parserDummy_ = pure Dummy_
+parserGenerateTemplates :: A.Parser Command
+parserGenerateTemplates = GenerateTemplates <$> A.switch
+  (A.long "docs" <> A.help "Use a prefix suitable for GitHub Pages.")

@@ -36,15 +36,6 @@ executable hypered-guide
                        text
   ghc-options:         -Wall
 
-executable hypered-templates
-  hs-source-dirs:      bin
-  main-is:             hypered-templates.hs
-  build-depends:       base == 4.*,
-                       blaze-html,
-                       design-system,
-                       text
-  ghc-options:         -Wall
-
 executable hypered-design
   hs-source-dirs:      bin
   main-is:             hypered-design.hs
