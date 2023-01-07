@@ -19,6 +19,7 @@ echo '  [ ("Hypered", "DesignSystem")'
 
 # See the list-stories.sh script for explanations.
 grep '^export const' -Ir components/ --include '*.stories.js' \
+  | grep -v toStorybook \
   | sort \
   | sed -s 's@components/[^/]\+/\([^.]\+\).stories.js:export const \([^ ]\+\) .*@  , ("\1", "\2")@'
 
