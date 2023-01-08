@@ -13,7 +13,7 @@ import           Hypered.Html
   )
 import           Hypered.Stories (stories)
 import           Protolude
-import           Text.Blaze.Html5 ((!))
+import           Text.Blaze.Html5 ((!), Html)
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
@@ -42,6 +42,22 @@ run Command.GenerateGuide = generateGuide
 run Command.Wrapper = generateWrapper
 
 run Command.GenerateNav = generateNav
+
+run Command.GenerateBannerGreen = generateBannerGreen
+
+run Command.GenerateBannerYellow = generateBannerYellow
+
+run Command.GenerateBannerRed = generateBannerRed
+
+run Command.GenerateButtonPrimary = generateButtonPrimary
+
+run Command.GenerateButtonPrimaryDisabled = generateButtonPrimaryDisabled
+
+run Command.GenerateButtonSecondary = generateButtonSecondary
+
+run Command.GenerateButtonSecondaryDisabled = generateButtonSecondaryDisabled
+
+run Command.GenerateButtonFullWidth = generateButtonFullWidth
 
 run Command.GenerateFooter = generateFooter
 
@@ -148,24 +164,24 @@ generateGuide = do
   -- Banner
 
   generate "banner--green.html" "Hypered style guide - Banner"
-    (const (bannerGreen "Message sent!"))
+    (const bannerGreenExample)
   generate "banner--yellow.html" "Hypered style guide - Banner"
-    (const (bannerYellow "Something might be wrong."))
+    (const bannerYellowExample)
   generate "banner--red.html" "Hypered style guide - Banner"
-    (const (bannerRed "Error, something is wrong."))
+    (const bannerRedExample)
 
   -- Button
 
   generate "button--primary.html" "Hypered style guide - Button"
-    (const (buttonPrimary "Primary Button"))
+    (const buttonPrimaryExample)
   generate "button--primary-disabled.html" "Hypered style guide - Button"
-    (const (buttonPrimaryDisabled "Primary Button"))
+    (const buttonPrimaryDisabledExample)
   generate "button--secondary.html" "Hypered style guide - Button"
-    (const (buttonSecondary "Secondary Button"))
+    (const buttonSecondaryExample)
   generate "button--secondary-disabled.html" "Hypered style guide - Button"
-    (const (buttonSecondaryDisabled "Secondary Button"))
+    (const buttonSecondaryDisabledExample)
   generate "button--full-width.html" "Hypered style guide - Button"
-    (const (buttonFullWidth "Primary Button"))
+    (const buttonFullWidthExample)
 
   -- Code block
 
@@ -180,7 +196,7 @@ generateGuide = do
   -- Footer
 
   generate "footer.html" "Hypered style guide - Footer"
-    (const (footer "© Võ Minh Thu, 2017-2021."))
+    (const footerExample)
 
 
   -- Example usage
@@ -223,10 +239,63 @@ generateWrapper = do
 -- Individual components
 
 generateNav :: IO ()
-generateNav = putStr (renderHtml (nav ""))
+generateNav = putStr $ renderHtml (nav "")
+
+generateBannerGreen :: IO ()
+generateBannerGreen = putStr $ renderHtml bannerGreenExample
+
+generateBannerYellow :: IO ()
+generateBannerYellow = putStr $ renderHtml bannerYellowExample
+
+generateBannerRed :: IO ()
+generateBannerRed = putStr $ renderHtml bannerRedExample
+
+generateButtonPrimary :: IO ()
+generateButtonPrimary = putStr $ renderHtml buttonPrimaryExample
+
+generateButtonPrimaryDisabled :: IO ()
+generateButtonPrimaryDisabled = putStr $ renderHtml buttonPrimaryDisabledExample
+
+generateButtonSecondary :: IO ()
+generateButtonSecondary = putStr $ renderHtml buttonSecondaryExample
+
+generateButtonSecondaryDisabled :: IO ()
+generateButtonSecondaryDisabled = putStr $ renderHtml buttonSecondaryDisabledExample
+
+generateButtonFullWidth :: IO ()
+generateButtonFullWidth = putStr $ renderHtml buttonFullWidthExample
 
 generateFooter :: IO ()
-generateFooter = putStr (renderHtml (footer "© Hypered, 2019-2023."))
+generateFooter = putStr $ renderHtml footerExample
+
+
+------------------------------------------------------------------------------
+bannerGreenExample :: Html
+bannerGreenExample = bannerGreen "Message sent!"
+
+bannerYellowExample :: Html
+bannerYellowExample = bannerYellow "Something might be wrong."
+
+bannerRedExample :: Html
+bannerRedExample = bannerRed "Error, something is wrong."
+
+buttonPrimaryExample :: Html
+buttonPrimaryExample = buttonPrimary "Primary Button"
+
+buttonPrimaryDisabledExample :: Html
+buttonPrimaryDisabledExample = buttonPrimaryDisabled "Primary Button"
+
+buttonSecondaryExample :: Html
+buttonSecondaryExample = buttonSecondary "Secondary Button"
+
+buttonSecondaryDisabledExample :: Html
+buttonSecondaryDisabledExample = buttonSecondaryDisabled "Secondary Button"
+
+buttonFullWidthExample :: Html
+buttonFullWidthExample = buttonFullWidth "Primary Button"
+
+footerExample :: Html
+footerExample = footer "© Hypered, 2019-2023."
 
 
 ------------------------------------------------------------------------------

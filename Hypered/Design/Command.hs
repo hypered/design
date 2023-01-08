@@ -21,6 +21,14 @@ data Command =
     -- Individual components
 
   | GenerateNav
+  | GenerateBannerGreen
+  | GenerateBannerYellow
+  | GenerateBannerRed
+  | GenerateButtonPrimary
+  | GenerateButtonPrimaryDisabled
+  | GenerateButtonSecondary
+  | GenerateButtonSecondaryDisabled
+  | GenerateButtonFullWidth
   | GenerateFooter
 
     -- Stories from Storybook
@@ -75,6 +83,54 @@ parser =
           "nav"
           ( A.info (parserNav <**> A.helper)
           $ A.progDesc "Generate a nav component."
+          )
+
+      <> A.command
+          "banner--green"
+          ( A.info (parserBannerGreen <**> A.helper)
+          $ A.progDesc "Generate a green banner component."
+          )
+
+      <> A.command
+          "banner--yellow"
+          ( A.info (parserBannerYellow <**> A.helper)
+          $ A.progDesc "Generate a yellow banner component."
+          )
+
+      <> A.command
+          "banner--red"
+          ( A.info (parserBannerRed <**> A.helper)
+          $ A.progDesc "Generate a red banner component."
+          )
+
+      <> A.command
+          "button--primary"
+          ( A.info (parserButtonPrimary <**> A.helper)
+          $ A.progDesc "Generate a primary button component."
+          )
+
+      <> A.command
+          "button--primary-disabled"
+          ( A.info (parserButtonPrimaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled primary button component."
+          )
+
+      <> A.command
+          "button--secondary"
+          ( A.info (parserButtonSecondary <**> A.helper)
+          $ A.progDesc "Generate a secondary button component."
+          )
+
+      <> A.command
+          "button--secondary-disabled"
+          ( A.info (parserButtonSecondaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled secondary button component."
+          )
+
+      <> A.command
+          "button--full-with"
+          ( A.info (parserButtonFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width button component."
           )
 
       <> A.command
@@ -146,6 +202,30 @@ parserWrapper = pure Wrapper
 
 parserNav :: A.Parser Command
 parserNav = pure GenerateNav
+
+parserBannerGreen :: A.Parser Command
+parserBannerGreen = pure GenerateBannerGreen
+
+parserBannerYellow :: A.Parser Command
+parserBannerYellow = pure GenerateBannerYellow
+
+parserBannerRed :: A.Parser Command
+parserBannerRed = pure GenerateBannerRed
+
+parserButtonPrimary :: A.Parser Command
+parserButtonPrimary = pure GenerateButtonPrimary
+
+parserButtonPrimaryDisabled :: A.Parser Command
+parserButtonPrimaryDisabled = pure GenerateButtonPrimaryDisabled
+
+parserButtonSecondary :: A.Parser Command
+parserButtonSecondary = pure GenerateButtonSecondary
+
+parserButtonSecondaryDisabled :: A.Parser Command
+parserButtonSecondaryDisabled = pure GenerateButtonSecondaryDisabled
+
+parserButtonFullWidth :: A.Parser Command
+parserButtonFullWidth = pure GenerateButtonFullWidth
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
