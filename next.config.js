@@ -4,7 +4,7 @@ module.exports = {
   trailingSlash: true,
   exportPathMap: function() {
     return {
-      "/": { page: "/" },
+      "/landing": { page: "/landing" },
       "/components": { page: "/components" },
     };
   },
