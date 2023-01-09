@@ -4,7 +4,7 @@
 let
   pkgs = import nixpkgs {};
   inherit (import ../.) to-prefixed-html replace-md-links;
-  to-html = src: to-prefixed-html "/design" "inter" src;
+  to-html = src: to-prefixed-html "" "inter" src;
   binaries = (import ../.).binaries;
   # TODO We need to update our change-haddock.sh script to use
   # this more recent derivation.
@@ -55,7 +55,7 @@ in rec
       --template generated/templates/default.html \
       --lua-filter ${../pandoc/tachyons.lua} \
       --output docs/hs/example--template.html \
-      -M prefix="/design" \
+      -M prefix="" \
       -M font="inter" \
       ${../pandoc/lua.md}
 
@@ -64,7 +64,7 @@ in rec
       --template generated/templates/default.html \
       --lua-filter ${../pandoc/tachyons.lua} \
       --output docs/hs/example--template-ibm-plex.html \
-      -M prefix="/design" \
+      -M prefix="" \
       -M font="ibm-plex" \
       ${../pandoc/lua.md}
 

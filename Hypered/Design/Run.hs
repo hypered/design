@@ -97,7 +97,7 @@ generateTemplates forGitHubPages = do
   let config = if forGitHubPages
                then
                  -- Used to generate HTML for GitHub Pages
-                 Config "/design/static" Inter False
+                 Config "/static" Inter False
                else
                  -- Used to generate the template.
                  Config "$prefix$/static" (Font "$font$") False

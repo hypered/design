@@ -8,5 +8,5 @@ module.exports = {
       "/components": { page: "/components" },
     };
   },
-  assetPrefix: !debug ? "/design" : "",
+  assetPrefix: !debug ? "" : "",
 };
