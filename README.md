@@ -232,6 +232,15 @@ The same document is rendered again
 with a different font.
 
 
+## Markdown pages
+
+Part of the static site are Markdown pages rendered to HTML using Pandoc:
+
+```
+$ nix-build -A site
+```
+
+
 ## Pandoc + pdflatex PDF example
 
 In the `pandoc-pdflatex/` directory, run:

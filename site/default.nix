@@ -12,14 +12,18 @@ let
 
 in rec
 {
+  md.index = ./index.md;
   md.nix = ./nix.md;
   md.nav-block = ./nav-block.md;
 
+  html.index = to-html md.index;
   html.nix = to-html md.nix;
   html.nav-block = to-html md.nav-block;
+
   html.all = pkgs.runCommand "all" {} ''
     mkdir $out
 
+    cp ${html.index} $out/index.html
     cp ${html.nix} $out/nix.html
     cp ${html.nav-block} $out/nav-block.html
     ${pkgs.bash}/bin/bash ${replace-md-links} $out
