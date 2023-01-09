@@ -305,7 +305,8 @@ The resulting PDF file is then `result/example.pdf`.
 
 ## Acknowledgement
 
-
+- The initial Next.js + Storybook -based work was done by
+  [@andyngo](https://twitter.com/andyngo).
 - The PDF brochure was designed using Figma by Marina Rizo:
   - Email address: rizo.marina@gmail.com
   - Dribbble: [rinxols](https://dribbble.com/rinxols)
