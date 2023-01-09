@@ -17,7 +17,8 @@ See the README file in the GitHub
 
 The initial design work was done in Next.js. It made it possible to create
 re-usable snippets of HTML show-cased in Storybook. Two pages to introduce the
-design system were also created, with the addition of an error page.
+design system were also created, with the addition of an error page. The CSS
+part was done using Tachyons.
 
 - [Landing page](landing/) - An initial landing page for the design system
   itself.
@@ -26,3 +27,10 @@ design system were also created, with the addition of an error page.
 - [404 page](404/) - An error page using CSS animations.
 - [Components (Storybook)](storybook/) - A Storybook-based page to explore all
   the components.
+
+There is an attempt at creating an implementation of the design system using
+the ITCSS approach. Only a single page exists for now.
+
+- [ITCSS example page](static-binaries.html) - This page should match an
+  [existing page](https://noteed.com/notes/static-binaries.html).
+

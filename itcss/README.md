@@ -17,6 +17,13 @@ with the `build.sh` and `serve.sh` scripts.
 $ nix-shell -p nodejs
 $ npm install
 $ ./build.sh
+```
+
+The resulting files are in the `dist/` directory.
+
+For development, another script is available:
+
+```
 $ ./serve.sh
 ```
 
