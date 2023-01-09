@@ -19,6 +19,7 @@ for i in \
   blockquote--default \
   blockquote--pull-quote-example \
   blockquote--with-optional-pull-quote-example \
+  button--primary \
   nav \
   footer \
   ; \

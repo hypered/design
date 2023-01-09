@@ -314,7 +314,8 @@ pullQuote content =
 --------------------------------------------------------------------------------
 buttonPrimary :: Html -> Html
 buttonPrimary = H.button
-  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black"
+  ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "primary"
 
 buttonPrimaryDisabled :: Html -> Html
 buttonPrimaryDisabled = H.button
