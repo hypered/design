@@ -20,6 +20,8 @@ data Command =
 
     -- Individual components
 
+  | GenerateAnchorBlue
+  | GenerateAnchorBlack
   | GenerateNav
   | GenerateBannerGreen
   | GenerateBannerYellow
@@ -77,6 +79,18 @@ parser =
           "wrapper"
           ( A.info (parserWrapper <**> A.helper)
           $ A.progDesc "Generate the document wrapper. This should match `pages/_app.js`."
+          )
+
+      <> A.command
+          "a--blue"
+          ( A.info (parserAnchorBlue <**> A.helper)
+          $ A.progDesc "Generate a blue link component."
+          )
+
+      <> A.command
+          "a--black"
+          ( A.info (parserAnchorBlack <**> A.helper)
+          $ A.progDesc "Generate a black link component."
           )
 
       <> A.command
@@ -199,6 +213,12 @@ parserGenerateGuide = pure GenerateGuide
 
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper
+
+parserAnchorBlue :: A.Parser Command
+parserAnchorBlue = pure GenerateAnchorBlue
+
+parserAnchorBlack :: A.Parser Command
+parserAnchorBlack = pure GenerateAnchorBlack
 
 parserNav :: A.Parser Command
 parserNav = pure GenerateNav

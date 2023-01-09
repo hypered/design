@@ -130,6 +130,20 @@ document Config{..} path title body = do
 
 
 ------------------------------------------------------------------------------
+anchorBlue :: Text -> Text -> Html
+anchorBlue href content =
+  H.a ! A.class_ "hy-blue no-underline hy-hover-blue"
+      ! A.href (H.toValue href)
+      $ H.text content
+
+anchorBlack :: Text -> Text -> Html
+anchorBlack href content =
+  H.a ! A.class_ "black no-underline hy-hover-blue"
+      ! A.href (H.toValue href)
+      $ H.text content
+
+
+------------------------------------------------------------------------------
 -- | The main horizontal navigation component. It uses "flex justify-between"
 -- so it is better to group its contained links with `div`s. With a single
 -- `div`, they are all grouped on the left. With two, the first is grouped to

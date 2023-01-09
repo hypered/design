@@ -24,6 +24,7 @@ import           Text.Blaze.Html.Renderer.Text (renderHtml)
 
 import Hypered.Html
   ( Font(IbmPlex)
+  , anchorBlue, anchorBlack
   , codeBlock, bannerGreen, bannerRed, bannerYellow
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, defaultConfig, document
@@ -40,6 +41,10 @@ run (Command.GenerateTemplates forGitHubPages) = generateTemplates forGitHubPage
 run Command.GenerateGuide = generateGuide
 
 run Command.Wrapper = generateWrapper
+
+run Command.GenerateAnchorBlue = generateAnchorBlue
+
+run Command.GenerateAnchorBlack = generateAnchorBlack
 
 run Command.GenerateNav = generateNav
 
@@ -238,6 +243,12 @@ generateWrapper = do
 ------------------------------------------------------------------------------
 -- Individual components
 
+generateAnchorBlue :: IO ()
+generateAnchorBlue = putStr $ renderHtml anchorBlueExample
+
+generateAnchorBlack :: IO ()
+generateAnchorBlack = putStr $ renderHtml anchorBlackExample
+
 generateNav :: IO ()
 generateNav = putStr $ renderHtml (nav "")
 
@@ -270,6 +281,12 @@ generateFooter = putStr $ renderHtml footerExample
 
 
 ------------------------------------------------------------------------------
+anchorBlueExample :: Html
+anchorBlueExample = anchorBlue "#" "This is a blue link"
+
+anchorBlackExample :: Html
+anchorBlackExample = anchorBlack "#" "This is a black link"
+
 bannerGreenExample :: Html
 bannerGreenExample = bannerGreen "Message sent!"
 
