@@ -34,3 +34,7 @@ the ITCSS approach. Only a single page exists for now.
 - [ITCSS example page](static-binaries.html) - This page should match an
   [existing page](https://noteed.com/notes/static-binaries.html).
 
+## See also
+
+Another attempt at creating a Pandoc template is visible at
+[alt.hypered.design](https://alt.hypered.design).
