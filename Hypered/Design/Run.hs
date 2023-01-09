@@ -26,6 +26,7 @@ import Hypered.Html
   ( Font(IbmPlex)
   , anchorBlue, anchorBlack
   , codeBlock, bannerGreen, bannerRed, bannerYellow
+  , blockquote, pullQuote, pullQuote'
   , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
   , buttonSecondaryDisabled, defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
@@ -53,6 +54,13 @@ run Command.GenerateBannerGreen = generateBannerGreen
 run Command.GenerateBannerRed = generateBannerRed
 
 run Command.GenerateBannerYellow = generateBannerYellow
+
+run Command.GenerateBlockquoteDefault = generateBlockquoteDefault
+
+run Command.GenerateBlockquotePullQuoteExample = generateBlockquotePullQuoteExample
+
+run Command.GenerateBlockquoteWithOptionalPullQuoteExample =
+  generateBlockquoteWithOptionalPullQuoteExample
 
 run Command.GenerateButtonPrimary = generateButtonPrimary
 
@@ -261,6 +269,16 @@ generateBannerRed = putStr $ renderHtml bannerRedExample
 generateBannerYellow :: IO ()
 generateBannerYellow = putStr $ renderHtml bannerYellowExample
 
+generateBlockquoteDefault :: IO ()
+generateBlockquoteDefault = putStr $ renderHtml blockquoteDefault
+
+generateBlockquotePullQuoteExample :: IO ()
+generateBlockquotePullQuoteExample = putStr $ renderHtml blockquotePullQuoteExample
+
+generateBlockquoteWithOptionalPullQuoteExample :: IO ()
+generateBlockquoteWithOptionalPullQuoteExample =
+  putStr $ renderHtml blockquoteWithOptionalPullQuoteExample
+
 generateButtonPrimary :: IO ()
 generateButtonPrimary = putStr $ renderHtml buttonPrimaryExample
 
@@ -295,6 +313,29 @@ bannerRedExample = bannerRed "Error, something is wrong."
 
 bannerYellowExample :: Html
 bannerYellowExample = bannerYellow "Something might be wrong."
+
+blockquoteDefault :: Html
+blockquoteDefault = blockquote $
+  "You have power over your mind - not outside events. \
+  \Realize this, and you will find strength."
+
+blockquotePullQuoteExample :: Html
+blockquotePullQuoteExample = pullQuote'
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+  \Nullam consectetur tincidunt elit, et semper enim laoreet eu. \
+  \In hac habitasse platea dictumst. \
+  \Phasellus consequat quis augue vitae laoreet. \
+  \In consequat, urna vel volutpat dignissim, eros eros sodales quam, \
+  \a suscipit felis eros non dolor."
+
+blockquoteWithOptionalPullQuoteExample :: Html
+blockquoteWithOptionalPullQuoteExample = pullQuote
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+  \Nullam consectetur tincidunt elit, et semper enim laoreet eu. \
+  \In hac habitasse platea dictumst. \
+  \Phasellus consequat quis augue vitae laoreet. \
+  \In consequat, urna vel volutpat dignissim, eros eros sodales quam, \
+  \a suscipit felis eros non dolor."
 
 buttonPrimaryExample :: Html
 buttonPrimaryExample = buttonPrimary "Primary Button"

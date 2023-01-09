@@ -26,6 +26,9 @@ data Command =
   | GenerateBannerGreen
   | GenerateBannerRed
   | GenerateBannerYellow
+  | GenerateBlockquoteDefault
+  | GenerateBlockquotePullQuoteExample
+  | GenerateBlockquoteWithOptionalPullQuoteExample
   | GenerateButtonPrimary
   | GenerateButtonPrimaryDisabled
   | GenerateButtonSecondary
@@ -115,6 +118,24 @@ parser =
           "banner--yellow"
           ( A.info (parserBannerYellow <**> A.helper)
           $ A.progDesc "Generate a yellow banner component."
+          )
+
+      <> A.command
+          "blockquote--default"
+          ( A.info (parserBlockquoteDefault <**> A.helper)
+          $ A.progDesc "Generate a blockquote component."
+          )
+
+      <> A.command
+          "blockquote--pull-quote-example"
+          ( A.info (parserBlockquotePullQuoteExample <**> A.helper)
+          $ A.progDesc "Generate a pull quote component."
+          )
+
+      <> A.command
+          "blockquote--with-optional-pull-quote-example"
+          ( A.info (parserBlockquoteWithOptionalPullQuoteExample <**> A.helper)
+          $ A.progDesc "Generate a pull quote component with no quote symbols."
           )
 
       <> A.command
@@ -234,6 +255,16 @@ parserBannerYellow = pure GenerateBannerYellow
 
 parserButtonPrimary :: A.Parser Command
 parserButtonPrimary = pure GenerateButtonPrimary
+
+parserBlockquoteDefault :: A.Parser Command
+parserBlockquoteDefault = pure GenerateBlockquoteDefault
+
+parserBlockquotePullQuoteExample :: A.Parser Command
+parserBlockquotePullQuoteExample = pure GenerateBlockquotePullQuoteExample
+
+parserBlockquoteWithOptionalPullQuoteExample :: A.Parser Command
+parserBlockquoteWithOptionalPullQuoteExample =
+  pure GenerateBlockquoteWithOptionalPullQuoteExample
 
 parserButtonPrimaryDisabled :: A.Parser Command
 parserButtonPrimaryDisabled = pure GenerateButtonPrimaryDisabled

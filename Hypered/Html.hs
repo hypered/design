@@ -292,6 +292,26 @@ banner color =
 
 
 --------------------------------------------------------------------------------
+blockquote :: Text -> Html
+blockquote content =
+  H.blockquote ! A.class_ "db bl bw2 pv2 ph3 ml0 mv4 lh-copy" $
+    H.span ! A.class_ "i" $
+      H.text content
+
+pullQuote' :: Text -> Html
+pullQuote' content =
+  H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
+    H.span ! A.class_ "i" $
+      H.text content
+
+pullQuote :: Text -> Html
+pullQuote content =
+  H.blockquote ! A.class_ "relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
+    H.span ! A.class_ "i" $
+      H.text content
+
+
+--------------------------------------------------------------------------------
 buttonPrimary :: Html -> Html
 buttonPrimary = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black"

@@ -16,6 +16,9 @@ for i in \
   banner--green \
   banner--red \
   banner--yellow \
+  blockquote--default \
+  blockquote--pull-quote-example \
+  blockquote--with-optional-pull-quote-example \
   nav \
   footer \
   ; \
