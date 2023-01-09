@@ -24,8 +24,8 @@ data Command =
   | GenerateAnchorBlack
   | GenerateNav
   | GenerateBannerGreen
-  | GenerateBannerYellow
   | GenerateBannerRed
+  | GenerateBannerYellow
   | GenerateButtonPrimary
   | GenerateButtonPrimaryDisabled
   | GenerateButtonSecondary
@@ -106,15 +106,15 @@ parser =
           )
 
       <> A.command
-          "banner--yellow"
-          ( A.info (parserBannerYellow <**> A.helper)
-          $ A.progDesc "Generate a yellow banner component."
-          )
-
-      <> A.command
           "banner--red"
           ( A.info (parserBannerRed <**> A.helper)
           $ A.progDesc "Generate a red banner component."
+          )
+
+      <> A.command
+          "banner--yellow"
+          ( A.info (parserBannerYellow <**> A.helper)
+          $ A.progDesc "Generate a yellow banner component."
           )
 
       <> A.command
@@ -226,11 +226,11 @@ parserNav = pure GenerateNav
 parserBannerGreen :: A.Parser Command
 parserBannerGreen = pure GenerateBannerGreen
 
-parserBannerYellow :: A.Parser Command
-parserBannerYellow = pure GenerateBannerYellow
-
 parserBannerRed :: A.Parser Command
 parserBannerRed = pure GenerateBannerRed
+
+parserBannerYellow :: A.Parser Command
+parserBannerYellow = pure GenerateBannerYellow
 
 parserButtonPrimary :: A.Parser Command
 parserButtonPrimary = pure GenerateButtonPrimary

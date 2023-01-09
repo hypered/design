@@ -13,6 +13,9 @@ function norm {
 for i in \
   a--blue \
   a--black \
+  banner--green \
+  banner--red \
+  banner--yellow \
   nav \
   footer \
   ; \

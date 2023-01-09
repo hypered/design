@@ -7,6 +7,7 @@ import qualified Data.Text.Lazy.IO as T
 import           Protolude
 import System.FilePath (joinPath, splitPath, takeDirectory, (</>))
 import System.Directory (createDirectoryIfMissing)
+import Text.Blaze (customAttribute)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
@@ -270,21 +271,27 @@ aside = do
             ! A.href "../run/263/provisioning.html" $
             "&rarr; #263"
 
+
+--------------------------------------------------------------------------------
 -- | Green variant of a banner.
 bannerGreen :: Html -> Html
-bannerGreen = banner "bg-green"
-
--- | Yellow variant of a banner.
-bannerYellow :: Html -> Html
-bannerYellow = banner "bg-yellow"
+bannerGreen = banner "green"
 
 -- | Red variant of a banner.
 bannerRed :: Html -> Html
-bannerRed = banner "bg-red"
+bannerRed = banner "red"
+
+-- | Yellow variant of a banner.
+bannerYellow :: Html -> Html
+bannerYellow = banner "yellow"
 
 banner :: Text -> Html -> Html
-banner bg = H.div ! A.class_ (H.toValue (bg <> " pa3 white tc fw6 mv3"))
+banner color =
+  H.div ! A.class_ (H.toValue ("bg-black pa3 white tc fw6 mv3 bl bw3 b--" <> color))
+        ! customAttribute "color" (H.toValue color)
 
+
+--------------------------------------------------------------------------------
 buttonPrimary :: Html -> Html
 buttonPrimary = H.button
   ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black"

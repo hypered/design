@@ -50,9 +50,9 @@ run Command.GenerateNav = generateNav
 
 run Command.GenerateBannerGreen = generateBannerGreen
 
-run Command.GenerateBannerYellow = generateBannerYellow
-
 run Command.GenerateBannerRed = generateBannerRed
+
+run Command.GenerateBannerYellow = generateBannerYellow
 
 run Command.GenerateButtonPrimary = generateButtonPrimary
 
@@ -170,10 +170,10 @@ generateGuide = do
 
   generate "banner--green.html" "Hypered style guide - Banner"
     (const bannerGreenExample)
-  generate "banner--yellow.html" "Hypered style guide - Banner"
-    (const bannerYellowExample)
   generate "banner--red.html" "Hypered style guide - Banner"
     (const bannerRedExample)
+  generate "banner--yellow.html" "Hypered style guide - Banner"
+    (const bannerYellowExample)
 
   -- Button
 
@@ -255,11 +255,11 @@ generateNav = putStr $ renderHtml (nav "")
 generateBannerGreen :: IO ()
 generateBannerGreen = putStr $ renderHtml bannerGreenExample
 
-generateBannerYellow :: IO ()
-generateBannerYellow = putStr $ renderHtml bannerYellowExample
-
 generateBannerRed :: IO ()
 generateBannerRed = putStr $ renderHtml bannerRedExample
+
+generateBannerYellow :: IO ()
+generateBannerYellow = putStr $ renderHtml bannerYellowExample
 
 generateButtonPrimary :: IO ()
 generateButtonPrimary = putStr $ renderHtml buttonPrimaryExample
@@ -288,13 +288,13 @@ anchorBlackExample :: Html
 anchorBlackExample = anchorBlack "#" "This is a black link"
 
 bannerGreenExample :: Html
-bannerGreenExample = bannerGreen "Message sent!"
-
-bannerYellowExample :: Html
-bannerYellowExample = bannerYellow "Something might be wrong."
+bannerGreenExample = bannerGreen "Messages sent!"
 
 bannerRedExample :: Html
 bannerRedExample = bannerRed "Error, something is wrong."
+
+bannerYellowExample :: Html
+bannerYellowExample = bannerYellow "Something might be wrong."
 
 buttonPrimaryExample :: Html
 buttonPrimaryExample = buttonPrimary "Primary Button"
