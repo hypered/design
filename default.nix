@@ -45,6 +45,7 @@ in rec
   shell = nixpkgs.mkShell {
     buildInputs = [
       binaries
+      nixpkgs.nodejs
     ];
     shellHook = ''
       source <(hypered-design --bash-completion-script `which hypered-design`)

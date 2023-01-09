@@ -85,6 +85,7 @@ Install the dependencies using:
 
 ```
 $ npm install
+$ npx browserslist@latest --update-db  # optional
 ```
 
 The result is a `node_modules` directory.

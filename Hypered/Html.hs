@@ -151,7 +151,7 @@ anchorBlack href content =
 -- See https://hypered.github.io/design/storybook/?path=/story/navigation--navigation for examples.
 nav :: Html -> Html
 nav content =
-  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb3 pv1" $
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
     content
 
 -- | Horizontal navigation at the top of a page.
