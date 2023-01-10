@@ -17,9 +17,7 @@ export const TR = ({ isHeader, size, hideBottomBorder, children }) => {
   return (
     <tr
       className={trClassNames}
-      isHeader={isHeader}
       size={size}
-      hideBottomBorder={hideBottomBorder}
     >
       {children}
     </tr>
@@ -54,7 +52,6 @@ export const TH = ({ size, align, colDivider, children }) => {
       className={thClassNames}
       size={size}
       align={align}
-      colDivider={colDivider}
     >
       {children}
     </th>
@@ -87,7 +84,6 @@ export const TD = ({ size, align, colDivider, children }) => {
       className={tdClassNames}
       size={size}
       align={align}
-      colDivider={colDivider}
     >
       {children}
     </td>
