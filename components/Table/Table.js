@@ -7,17 +7,14 @@ export const Table = ({ children }) => (
   </div>
 );
 
-export const TR = ({ isHeader, size, hideBottomBorder, children }) => {
+export const TR = ({ isHeader, hideBottomBorder, children }) => {
   let trClassNames = cx("b--black", {
     bw1: isHeader,
     bb: !hideBottomBorder,
-    "b--black": size === "normal" || !size,
-    "b--silver": size === "compact"
   });
   return (
     <tr
       className={trClassNames}
-      size={size}
     >
       {children}
     </tr>
