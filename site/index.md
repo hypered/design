@@ -34,6 +34,12 @@ the ITCSS approach. Only a single page exists for now.
 - [ITCSS example page](static-binaries.html) - This page should match an
   [existing page](https://noteed.com/notes/static-binaries.html).
 
+The main usage of the design system is within applications written in Haskell.
+Examples generated with the Haskell code are also available:
+
+- [Haskell examples](hs/) - Overtime, everything that exist in the original
+  implementation should exist here too.
+
 ## See also
 
 Another attempt at creating a Pandoc template is visible at
