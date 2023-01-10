@@ -32,7 +32,9 @@ import Hypered.Html
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
-  , nav, navigationNoteed, navigationNoteed')
+  , nav, navigationNoteed, navigationNoteed'
+  , tableDefault
+  )
 
 
 --------------------------------------------------------------------------------
@@ -73,6 +75,8 @@ run Command.GenerateButtonSecondaryDisabled = generateButtonSecondaryDisabled
 run Command.GenerateButtonFullWidth = generateButtonFullWidth
 
 run Command.GenerateFooter = generateFooter
+
+run Command.GenerateTableDefault = generateTableDefault
 
 run Command.GenerateFormLogin = generateFormLogin
 
@@ -297,6 +301,9 @@ generateButtonFullWidth = putStr $ renderHtml buttonFullWidthExample
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
+generateTableDefault :: IO ()
+generateTableDefault = putStr $ renderHtml tableDefaultExample
+
 
 ------------------------------------------------------------------------------
 anchorBlueExample :: Html
@@ -354,6 +361,9 @@ buttonFullWidthExample = buttonFullWidth "Primary Button"
 
 footerExample :: Html
 footerExample = footer "© Hypered, 2019-2023."
+
+tableDefaultExample :: Html
+tableDefaultExample = tableDefault
 
 
 ------------------------------------------------------------------------------

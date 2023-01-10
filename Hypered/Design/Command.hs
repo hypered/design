@@ -35,6 +35,7 @@ data Command =
   | GenerateButtonSecondaryDisabled
   | GenerateButtonFullWidth
   | GenerateFooter
+  | GenerateTableDefault
 
     -- Stories from Storybook
 
@@ -175,6 +176,12 @@ parser =
           )
 
       <> A.command
+          "table--default"
+          ( A.info (parserTableDefault <**> A.helper)
+          $ A.progDesc "Generate a table example."
+          )
+
+      <> A.command
           "form--login"
           ( A.info (parserFormLogin <**> A.helper)
           $ A.progDesc "Generate a login form example."
@@ -280,6 +287,9 @@ parserButtonFullWidth = pure GenerateButtonFullWidth
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
+
+parserTableDefault :: A.Parser Command
+parserTableDefault = pure GenerateTableDefault
 
 parserFormLogin :: A.Parser Command
 parserFormLogin = pure GenerateFormLogin

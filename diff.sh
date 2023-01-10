@@ -22,6 +22,7 @@ for i in \
   button--primary \
   nav \
   footer \
+  table--default \
   ; \
 do
   echo $i

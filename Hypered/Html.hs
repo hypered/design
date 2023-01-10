@@ -582,3 +582,28 @@ resetForm = do
           ! A.href "/login"
           $ "Log in"
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Reset password —>"
+
+
+------------------------------------------------------------------------------
+tableDefault :: Html
+tableDefault =
+  H.div ! A.class_ "overflow-x-scroll" $
+    H.table ! A.class_ "bg-white collapse w-100" $ do
+      H.thead $
+        H.tr ! A.class_ "b--black bw1 bb b--black" $ do
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl" $ "Column 1"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl" $ "Column 2"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl" $ "Column 3"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl" $ "Column 4"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tr"
+               ! customAttribute "align" "right" $
+            "Column 5"
+      H.tbody $
+        replicateM_ 10 $
+          H.tr ! A.class_ "b--black bb b--black" $ do
+            H.td ! A.class_ "nowrap f5 pa2 tl" $ "Red"
+            H.td ! A.class_ "nowrap f5 pa2 tl" $ "Green"
+            H.td ! A.class_ "nowrap f5 pa2 tl" $ "Blue"
+            H.td ! A.class_ "nowrap f5 pa2 tl" $ "Yellow"
+            H.td ! A.class_ "nowrap f5 pa2 tr"
+                 ! customAttribute "align" "right" $ "001"
