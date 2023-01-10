@@ -344,6 +344,14 @@ case 'table--default':
   render(Table.Default());
   break;
 
+case 'table--with-column-divider':
+  render(Table.WithColumnDivider());
+  break;
+
+case 'table--with-column-divider-compact':
+  render(Table.WithColumnDividerCompact());
+  break
+
 case 'title--jumbo-usage-example':
   render(Title.JumboUsageExample());
   break;

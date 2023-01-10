@@ -607,3 +607,88 @@ tableDefault =
             H.td ! A.class_ "nowrap f5 pa2 tl" $ "Yellow"
             H.td ! A.class_ "nowrap f5 pa2 tr"
                  ! customAttribute "align" "right" $ "001"
+
+tableCompact :: Html
+tableCompact =
+  H.div ! A.class_ "overflow-x-scroll" $
+    H.table ! A.class_ "bg-white collapse w-100" $ do
+      H.thead $
+        H.tr ! A.class_ "b--black bw1 bb b--black" $ do
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl" $ "Column 1"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl" $ "Column 2"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl" $ "Column 3"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl" $ "Column 4"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tr"
+               ! customAttribute "align" "right" $
+            "Column 5"
+      H.tbody $
+        replicateM_ 10 $
+          H.tr ! A.class_ "b--black bb b--black" $ do
+            H.td ! A.class_ "nowrap f6 pa1 tl" $ "Red"
+            H.td ! A.class_ "nowrap f6 pa1 tl" $ "Green"
+            H.td ! A.class_ "nowrap f6 pa1 tl" $ "Blue"
+            H.td ! A.class_ "nowrap f6 pa1 tl" $ "Yellow"
+            H.td ! A.class_ "nowrap f6 pa1 tr"
+                 ! customAttribute "align" "right" $ "001"
+
+tableWithColumnDivider :: Html
+tableWithColumnDivider =
+  H.div ! A.class_ "overflow-x-scroll" $
+    H.table ! A.class_ "bg-white collapse w-100" $ do
+      H.thead $
+        H.tr ! A.class_ "b--black bw1 bb b--black" $ do
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl br" $ "Column 1"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl br" $ "Column 2"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl br" $ "Column 3"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tl br" $ "Column 4"
+          H.th ! A.class_ "tl fw6 nowrap f5 pa2 tr"
+               ! customAttribute "align" "right" $
+            "Column 5"
+      H.tbody $ do
+        replicateM_ 9 $
+          H.tr ! A.class_ "b--black bb b--black" $ do
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Red"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Green"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Blue"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Yellow"
+            H.td ! A.class_ "nowrap f5 pa2 tr"
+                 ! customAttribute "align" "right" $ "001"
+        replicateM_ 1 $
+          H.tr ! A.class_ "b--black b--black" $ do
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Red"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Green"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Blue"
+            H.td ! A.class_ "nowrap f5 pa2 tl br" $ "Yellow"
+            H.td ! A.class_ "nowrap f5 pa2 tr"
+                 ! customAttribute "align" "right" $ "001"
+
+tableWithColumnDividerCompact :: Html
+tableWithColumnDividerCompact =
+  H.div ! A.class_ "overflow-x-scroll" $
+    H.table ! A.class_ "bg-white collapse w-100" $ do
+      H.thead $
+        H.tr ! A.class_ "b--black bw1 bb b--black" $ do
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl br" $ "Column 1"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl br" $ "Column 2"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl br" $ "Column 3"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tl br" $ "Column 4"
+          H.th ! A.class_ "tl fw6 nowrap f6 pa1 tr"
+               ! customAttribute "align" "right" $
+            "Column 5"
+      H.tbody $ do
+        replicateM_ 9 $
+          H.tr ! A.class_ "b--black bb b--black" $ do
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Red"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Green"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Blue"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Yellow"
+            H.td ! A.class_ "nowrap f6 pa1 tr"
+                 ! customAttribute "align" "right" $ "001"
+        replicateM_ 1 $
+          H.tr ! A.class_ "b--black b--black" $ do
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Red"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Green"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Blue"
+            H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Yellow"
+            H.td ! A.class_ "nowrap f6 pa1 tr"
+                 ! customAttribute "align" "right" $ "001"

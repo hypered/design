@@ -33,7 +33,8 @@ import Hypered.Html
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
   , nav, navigationNoteed, navigationNoteed'
-  , tableDefault
+  , tableDefault, tableCompact, tableWithColumnDivider
+  , tableWithColumnDividerCompact
   )
 
 
@@ -77,6 +78,13 @@ run Command.GenerateButtonFullWidth = generateButtonFullWidth
 run Command.GenerateFooter = generateFooter
 
 run Command.GenerateTableDefault = generateTableDefault
+
+run Command.GenerateTableCompact = generateTableCompact
+
+run Command.GenerateTableWithColumnDivider = generateTableWithColumnDivider
+
+run Command.GenerateTableWithColumnDividerCompact =
+  generateTableWithColumnDividerCompact
 
 run Command.GenerateFormLogin = generateFormLogin
 
@@ -304,6 +312,17 @@ generateFooter = putStr $ renderHtml footerExample
 generateTableDefault :: IO ()
 generateTableDefault = putStr $ renderHtml tableDefaultExample
 
+generateTableCompact :: IO ()
+generateTableCompact = putStr $ renderHtml tableCompactExample
+
+generateTableWithColumnDivider :: IO ()
+generateTableWithColumnDivider =
+  putStr $ renderHtml tableWithColumnDividerExample
+
+generateTableWithColumnDividerCompact :: IO ()
+generateTableWithColumnDividerCompact =
+  putStr $ renderHtml tableWithColumnDividerCompactExample
+
 
 ------------------------------------------------------------------------------
 anchorBlueExample :: Html
@@ -363,7 +382,16 @@ footerExample :: Html
 footerExample = footer "© Hypered, 2019-2023."
 
 tableDefaultExample :: Html
-tableDefaultExample = tableDefault
+tableDefaultExample = tableDefault -- TODO Arguments.
+
+tableCompactExample :: Html
+tableCompactExample = tableCompact
+
+tableWithColumnDividerExample :: Html
+tableWithColumnDividerExample = tableWithColumnDivider
+
+tableWithColumnDividerCompactExample :: Html
+tableWithColumnDividerCompactExample = tableWithColumnDividerCompact
 
 
 ------------------------------------------------------------------------------

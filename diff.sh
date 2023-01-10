@@ -23,6 +23,9 @@ for i in \
   nav \
   footer \
   table--default \
+  table--compact \
+  table--with-column-divider \
+  table--with-column-divider-compact \
   ; \
 do
   echo $i

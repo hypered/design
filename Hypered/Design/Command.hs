@@ -36,6 +36,9 @@ data Command =
   | GenerateButtonFullWidth
   | GenerateFooter
   | GenerateTableDefault
+  | GenerateTableCompact
+  | GenerateTableWithColumnDivider
+  | GenerateTableWithColumnDividerCompact
 
     -- Stories from Storybook
 
@@ -182,6 +185,24 @@ parser =
           )
 
       <> A.command
+          "table--compact"
+          ( A.info (parserTableCompact <**> A.helper)
+          $ A.progDesc "Generate a compact table example."
+          )
+
+      <> A.command
+          "table--with-column-divider"
+          ( A.info (parserTableWithColumnDivider <**> A.helper)
+          $ A.progDesc "Generate a table example, with column divider."
+          )
+
+      <> A.command
+          "table--with-column-divider-compact"
+          ( A.info (parserTableWithColumnDividerCompact <**> A.helper)
+          $ A.progDesc "Generate a compact table example, with column divider."
+          )
+
+      <> A.command
           "form--login"
           ( A.info (parserFormLogin <**> A.helper)
           $ A.progDesc "Generate a login form example."
@@ -290,6 +311,16 @@ parserFooter = pure GenerateFooter
 
 parserTableDefault :: A.Parser Command
 parserTableDefault = pure GenerateTableDefault
+
+parserTableCompact :: A.Parser Command
+parserTableCompact = pure GenerateTableCompact
+
+parserTableWithColumnDivider :: A.Parser Command
+parserTableWithColumnDivider = pure GenerateTableWithColumnDivider
+
+parserTableWithColumnDividerCompact :: A.Parser Command
+parserTableWithColumnDividerCompact =
+  pure GenerateTableWithColumnDividerCompact
 
 parserFormLogin :: A.Parser Command
 parserFormLogin = pure GenerateFormLogin
