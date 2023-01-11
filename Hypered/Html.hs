@@ -646,6 +646,263 @@ resetForm = do
 
 
 ------------------------------------------------------------------------------
+navigationBlockDefault :: Html
+navigationBlockDefault =
+  H.nav ! A.class_ "bg-near-white pa4 db w-100 mw8 br1" $
+    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 1"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 2"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 3"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 1)"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 2)"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+ where
+  links = do
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Four"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Five"
+
+navigationBlockUsageExample :: Html
+navigationBlockUsageExample = navigationBlockDefault
+
+
+------------------------------------------------------------------------------
+navigationDefault :: Html
+navigationDefault = navigationNoteed
+
+navigationSpaceBetween :: Html
+navigationSpaceBetween =
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $ do
+    H.div $
+      H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+        "noteed.com"
+    H.div $ do
+      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "black hy-hover-blue" ! A.href "#" $ "not-os"
+
+
+------------------------------------------------------------------------------
+radioDefault :: Html
+radioDefault =
+  H.div ! A.class_ "db" $ do
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.checked ""
+              ! A.value "apple"
+      H.div ! A.class_ "ml1" $ "Apple"
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.value "banana"
+      H.div ! A.class_ "ml1" $ "Banana"
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_"radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.value "cherry"
+      H.div ! A.class_ "ml1" $ "Cherry"
+
+radioPillInline :: Html
+radioPillInline =
+  H.div ! A.class_ "flex items-center" $ do
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.checked ""
+              ! A.value "apple"
+      H.div ! A.class_ "ml1" $ "Apple"
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.value "banana"
+      H.div ! A.class_ "ml1" $ "Banana"
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1 br-pill"
+              ! A.name "fruits"
+              ! A.value "cherry"
+      H.div ! A.class_ "ml1" $ "Cherry"
+
+radioCheckbox :: Html
+radioCheckbox =
+  H.div ! A.class_ "db" $ do
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.checked ""
+              ! A.value "apple"
+      H.div ! A.class_ "ml1" $ "Apple"
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.value "banana"
+      H.div ! A.class_ "ml1" $ "Banana"
+    H.label ! A.class_ "flex items-center mb2 flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.value "cherry"
+      H.div ! A.class_ "ml1" $ "Cherry"
+
+radioCheckboxInline :: Html
+radioCheckboxInline =
+  H.div ! A.class_ "flex items-center" $ do
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.checked ""
+              ! A.value "apple"
+      H.div ! A.class_ "ml1" $ "Apple"
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.value "banana"
+      H.div ! A.class_ "ml1" $ "Banana"
+    H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
+      H.input ! A.type_ "radio"
+              ! A.class_ "hy-checkbox w1 h1"
+              ! A.name "fruits"
+              ! A.value "cherry"
+      H.div ! A.class_ "ml1" $ "Cherry"
+
+
+------------------------------------------------------------------------------
+sidePanelExample :: Html
+sidePanelExample =
+    sidebar
+      [ ("Intro", [("not-os", "#")])
+      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+      , ("Values", [("command-line", "#"), ("root-modules", "#")])
+      ]
+
+sidePanelUsageExample :: Html
+sidePanelUsageExample = exampleSidePanel
+
+
+------------------------------------------------------------------------------
+sidebarExample :: Html
+sidebarExample =
+    sidebar
+      [ ("Intro", [("not-os", "#")])
+      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+      , ("Values", [("command-line", "#"), ("root-modules", "#")])
+      ]
+
+sidebarUsageExample :: Html
+sidebarUsageExample = exampleSidebar
+
+
+------------------------------------------------------------------------------
+statusCodeError400 :: Html
+statusCodeError400 =
+  H.div ! A.class_ "flex items-center justify-center vh-100 mw8 center pa4" $
+    H.div $ do
+      H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Status"
+      H.div ! A.class_ "ba b--red debug-grid-16" $
+        H.div ! A.class_ "pa6" $ do
+          H.h2 ! A.class_ "red f4 fw8 tracked-tight lh-title mv0 ttu" $ "Error"
+          H.h3 ! A.class_ "glitch f1 f-subheadline-m f-subheadline-l fw9 tracked-tight lh-title mv0"
+               ! customAttribute "data-text" "400 Bad Gateway"
+               $ "400 Bad Gateway"
+          H.div $
+            H.div $ do
+              H.p ! A.class_ "f5 lh-copy mv3" $
+                "Looks like the page you&#x27;re looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
+              H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "/"
+                      $ "Home"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "components/"
+                      $ "Components"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "storybook/"
+                      $ "Storybook"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "documentation/"
+                      $ "Documentation"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "haddock/"
+                      $ "Haddock"
+
+statusCodeError404 :: Html
+statusCodeError404 =
+  H.div ! A.class_ "flex items-center justify-center vh-100 mw8 center pa4" $
+    H.div $ do
+      H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Status"
+      H.div ! A.class_ "ba b--red debug-grid-16" $
+        H.div ! A.class_ "pa6" $ do
+          H.h2 ! A.class_ "red f4 fw8 tracked-tight lh-title mv0 ttu" $ "Error"
+          H.h3 ! A.class_ "glitch f1 f-subheadline-m f-subheadline-l fw9 tracked-tight lh-title mv0"
+               ! customAttribute "data-text" "404 Not Found"
+               $ "404 Not Found"
+          H.div $
+            H.div $ do
+              H.p ! A.class_ "f5 lh-copy mv3" $
+                "Looks like the page you&#x27;re looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
+              H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "/"
+                      $ "Home"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "components/"
+                      $ "Components"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "storybook/"
+                      $ "Storybook"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "documentation/"
+                      $ "Documentation"
+                H.li ! A.class_ "mv1" $
+                  H.a ! A.class_ "no-underline hy-hover-blue"
+                      ! A.href "haddock/"
+                      $ "Haddock"
+
+
+------------------------------------------------------------------------------
 tableDefault :: Html
 tableDefault =
   H.div ! A.class_ "overflow-x-scroll" $
@@ -753,3 +1010,231 @@ tableWithColumnDividerCompact =
             H.td ! A.class_ "nowrap f6 pa1 tl br" $ "Yellow"
             H.td ! A.class_ "nowrap f6 pa1 tr"
                  ! customAttribute "align" "right" $ "001"
+
+
+--------------------------------------------------------------------------------
+titleJumboExample :: Html
+titleJumboExample =
+  H.h1 ! A.class_ "f1 f-subheadline-m f-subheadline-l tracked-tight mv2" $ do
+    "Hypered "
+    H.span ! A.class_ "normal" $ "Design System"
+
+titleSubtitleJumboExample :: Html
+titleSubtitleJumboExample =
+  H.h2 ! A.class_ "f1 tracked-tight mv2" $ "Introduction"
+
+titleDefaultExample :: Html
+titleDefaultExample =
+  H.h1 ! A.class_ "f1 f1-l tracked-tight mv2" $ "Introduction"
+
+titleSubtitleDefaultExample :: Html
+titleSubtitleDefaultExample =
+  H.h2 ! A.class_ "f2 tracked-tight mv2" $ "Introduction"
+
+titleJumboUsageExample :: Html
+titleJumboUsageExample =
+  H.div ! A.class_ "mw8 center" $ do
+    H.header ! A.class_ "pv4 pv5-l" $ do
+      H.h1 ! A.class_ "f1 f-subheadline-m f-subheadline-l tracked-tight mv2" $
+        "Hypered"
+      H.h2 ! A.class_ "f1 tracked-tight mv2" $
+        "Software development, defined"
+      H.p ! A.class_ "f5 lh-copy mv3" $
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non."
+    H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+    H.section ! A.class_ "pv4 pv5-l" $ do
+      H.h2 ! A.class_ "f1 tracked-tight mv2" $ "Introduction"
+      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
+    H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+    H.section ! A.class_ "pv4 pv5-l" $
+      H.div ! A.class_ "flex flex-wrap nl3 nr3 tc" $ do
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f1 tracked-tight mv2" $ "23,000"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "downloads"
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f1 tracked-tight mv2" $ "3.2kb"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "gzipped"
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f1 tracked-tight mv2" $ "626"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "stars on GitHub"
+
+titleDefaultUsageExample :: Html
+titleDefaultUsageExample =
+  H.div ! A.class_ "mw8 center" $ do
+    H.header ! A.class_ "pv4 pv5-l" $ do
+      H.h1 ! A.class_ "f1 f1-l tracked-tight mv2" $ "Hypered"
+      H.h2 ! A.class_ "f2 tracked-tight mv2" $ "Software development, defined"
+      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non."
+    H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+    H.section ! A.class_ "pv4 pv5-l" $ do
+      H.h2 ! A.class_ "f2 tracked-tight mv2" $ "Introduction"
+      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
+    H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+    H.section ! A.class_ "pv4 pv5-l" $
+      H.div ! A.class_ "flex flex-wrap nl3 nr3 tc" $ do
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f2 tracked-tight mv2" $ "23,000"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "downloads"
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f2 tracked-tight mv2" $ "3.2kb"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "gzipped"
+        H.div ! A.class_ "w-100 w-third-l ph3" $ do
+          H.h2 ! A.class_ "f2 tracked-tight mv2" $ "626"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "stars on GitHub"
+
+
+--------------------------------------------------------------------------------
+typographyHeading1 :: Html
+typographyHeading1 =
+  H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Heading 1"
+
+typographyHeading2 :: Html
+typographyHeading2 =
+  H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Heading 2"
+
+typographyHeading3 :: Html
+typographyHeading3 =
+  H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Heading 3"
+
+typographyHeading4 :: Html
+typographyHeading4 =
+  H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Heading 4"
+
+typographyHeading5 :: Html
+typographyHeading5 =
+  H.h5 ! A.class_ "f5 lh-title mv2" $ "Heading 5"
+
+typographyHeading6 :: Html
+typographyHeading6 =
+  H.h6 ! A.class_ "f6 lh-title mv2 ttu" $ "Heading 6"
+
+typographyParagraph :: Html
+typographyParagraph =
+  H.p ! A.class_ "f5 lh-copy mv3" $
+   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin malesuada est. Sed efficitur laoreet massa, eu dictum est luctus sit amet. Morbi elementum dapibus pellentesque. Sed varius nisi nisi, nec imperdiet nunc bibendum at. Maecenas bibendum, neque nec vehicula dignissim, sem dolor congue risus, ac consequat sapien nibh in felis. Suspendisse at est a nisl dictum condimentum. Suspendisse ut dolor vitae nisi dictum hendrerit a vel magna. Etiam porttitor lacus magna, non bibendum tellus lobortis sit amet. Duis quis lectus massa. Nam quis fringilla dui. Fusce felis leo, iaculis id dui eu, lacinia varius dolor. Praesent molestie rhoncus mi, ac malesuada neque placerat vitae. Aliquam placerat auctor pretium. Mauris egestas condimentum erat sit amet tempor. Quisque imperdiet, augue nec eleifend placerat, lacus tortor pellentesque metus, sit amet laoreet lectus enim et mauris. Vivamus sollicitudin a ex sit amet ullamcorper."
+
+typographyUsageExample :: Html
+typographyUsageExample =
+  H.article ! A.class_ "measure-wide" $ do
+    H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
+      "Design System Blog"
+    H.p ! A.class_ "f5 lh-copy mv3" $
+      "This is an intro to using Hypered design system."
+    H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Components"
+    H.p ! A.class_ "f5 lh-copy mv3" $
+      "Hypered design system comprises of components that quickly help you get started with your projects."
+    H.p ! A.class_ "f5 lh-copy mv3" $ do
+      "The components in this design system are built with "
+      H.a ! A.class_ "hy-blue no-underline hy-hover-blue" ! A.href "#" $ "Tachyons"
+      "."
+
+
+--------------------------------------------------------------------------------
+whitespaceAutoWidth :: Html
+whitespaceAutoWidth =
+  H.div ! A.class_ "flex justify-center mb4" $
+    H.div ! A.class_ "h5 w-auto self-center" $
+      H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+        H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+          H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $ "01. Auto Width"
+          H.div $ do
+            H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $ "Description"
+            H.p ! A.class_ "f5 lh-copy mv1" $
+              "This box takes up the size of its content and is centered."
+        H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+            ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+            $ "Hypered Design System"
+
+whitespaceNegativeMargins :: Html
+whitespaceNegativeMargins =
+  H.div ! A.class_ "nl4 nr4 mb4" $
+    H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+      H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+        H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $
+          "02. Negative Margins"
+        H.div $ do
+          H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
+            "Description"
+          H.p ! A.class_ "f5 lh-copy mv1" $
+            "This box has negative margins and should extend beyond its parent&#x27;s container."
+      H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+          ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+          $ "Hypered Design System"
+
+whitespaceFullWidth :: Html
+whitespaceFullWidth =
+  H.div ! A.class_ "w-100" $
+    H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+      H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+        H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $ "03. Full Width"
+        H.div $ do
+          H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
+            "Description"
+          H.p ! A.class_ "f5 lh-copy mv1" $
+            "This box takes up the full width of its parent&#x27;s container."
+      H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+          ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+          $ "Hypered Design System"
+
+whitespaceExamples :: Html
+whitespaceExamples =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3"
+                ! A.href "#"
+                $ "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3"
+                ! A.href "#"
+                $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3"
+                ! A.href "#"
+                $ "not-os"
+      H.div $ do
+        H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Container"
+        H.div ! A.class_ "ba b--red debug-grid-16" $ do
+          H.div ! A.class_ "flex justify-center mb4" $
+            H.div ! A.class_ "h5 w-auto self-center" $
+              H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+                H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+                  H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $
+                    "01. Auto Width"
+                  H.div $ do
+                    H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
+                      "Description"
+                    H.p ! A.class_ "f5 lh-copy mv1" $
+                      "This box takes up the size of its content and is centered."
+                H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+                    ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+                    $ "Hypered Design System"
+          H.div ! A.class_ "nl4 nr4 mb4" $
+            H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+              H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+                H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $
+                  "02. Negative Margins"
+                H.div $ do
+                  H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
+                    "Description"
+                  H.p ! A.class_ "f5 lh-copy mv1" $
+                    "This box has negative margins and should extend beyond its parent&#x27;s container."
+              H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+                  ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+                  $ "Hypered Design System"
+          H.div ! A.class_ "w-100" $
+            H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
+              H.div ! A.class_ "flex flex-column justify-between pa4" $ do
+                H.h2 ! A.class_ "f3 f2-m f2-l fw8 lh-title mv1" $
+                  "03. Full Width"
+                H.div $ do
+                  H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
+                    "Description"
+                  H.p ! A.class_ "f5 lh-copy mv1" $
+                    "This box takes up the full width of its parent&#x27;s container."
+              H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
+                  ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
+                  $ "Hypered Design System"
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
