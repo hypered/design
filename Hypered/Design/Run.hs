@@ -145,6 +145,12 @@ generateGuide = do
   generate' "index.html" "Hypered style guide" conf $ \_ -> do
     H.h1 "Components and examples"
     H.ul $ do
+      mapM_
+        (\(cat, variant, href, f) ->
+          H.li $ H.a ! A.href (H.toValue href) $
+            H.text $ cat <> ", " <> variant)
+        guideData
+
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
 
       H.li $ H.a ! A.href "banner--green.html" $ "Banner, green"
@@ -180,6 +186,11 @@ generateGuide = do
 
       H.li $ H.a ! A.href "example--template-ibm-plex.html" $
         "Example, template (IBM Plex)"
+
+  mapM_
+    (\(cat, variant, href, f) ->
+      generate href ("Hypered style guide - " <> cat) f)
+    guideData
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
@@ -248,6 +259,15 @@ generateGuide = do
     conf' (const exampleSidebar)
   generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
     conf' (const exampleSidePanel)
+
+
+------------------------------------------------------------------------------
+guideData :: [(Text, Text, FilePath, FilePath -> Html)]
+guideData =
+  [
+    -- Anchor
+    ("Anchor", "blue", "a--blue.html", const anchorBlueExample)
+  ]
 
 
 ------------------------------------------------------------------------------
