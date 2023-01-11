@@ -248,6 +248,16 @@ guideData =
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
   , ("Navigation", "default", "navigation.html", navigation)
+
+  -- Tables
+
+  , ("Table", "default", "table--default.html", const tableDefaultExample)
+  , ("Table", "compact", "table--compact.html", const tableCompactExample)
+  , ("Table", "with column divider", "table--with-column-divider.html"
+    , const tableWithColumnDividerExample)
+  , ("Table", "with column divider, compact"
+    , "table--with-column-divider-compact.html"
+    , const tableWithColumnDividerCompactExample)
   ]
 
 
