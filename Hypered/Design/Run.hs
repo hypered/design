@@ -146,9 +146,12 @@ generateGuide = do
     H.h1 "Components and examples"
     H.ul $ do
       mapM_
-        (\(cat, variant, href, f) ->
-          H.li $ H.a ! A.href (H.toValue href) $
-            H.text $ cat <> ", " <> variant)
+        (\(cat, variants) ->
+          mapM_
+            (\(variant, href, f) ->
+              H.li $ H.a ! A.href (H.toValue href) $
+                H.text $ cat <> ", " <> variant)
+            variants)
         guideData
 
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
@@ -172,8 +175,11 @@ generateGuide = do
         "Example, template (IBM Plex)"
 
   mapM_
-    (\(cat, variant, href, f) ->
-      generate href ("Hypered style guide - " <> cat) f)
+    (\(cat, variants) ->
+      mapM_
+        (\(variant, href, f) ->
+          generate href ("Hypered style guide - " <> cat) f)
+        variants)
     guideData
 
   -- Example usage
@@ -203,61 +209,76 @@ generateGuide = do
 
 
 ------------------------------------------------------------------------------
-guideData :: [(Text, Text, FilePath, FilePath -> Html)]
+guideData :: [(Text, [(Text, FilePath, FilePath -> Html)])]
 guideData =
   [
-  -- Anchor
-    ("Anchor", "blue", "a--blue.html", const anchorBlueExample)
-  , ("Anchor", "black", "a--black.html", const anchorBlackExample)
+    ( "Anchor"
+    , [ ("blue", "a--blue.html", const anchorBlueExample)
+      , ("black", "a--black.html", const anchorBlackExample)
+      ])
 
-  -- Banner
+  , ( "Banner"
+    , [ ("green", "banner--green.html", const bannerGreenExample)
+      , ("red", "banner--red.html", const bannerRedExample)
+      , ("yellow", "banner--yellow.html", const bannerYellowExample)
+      ])
 
-  , ("Banner", "green", "banner--green.html", const bannerGreenExample)
-  , ("Banner", "red", "banner--red.html", const bannerRedExample)
-  , ("Banner", "yellow", "banner--yellow.html", const bannerYellowExample)
+  , ( "Block quote"
+    , [ ("default", "blockquote--default.html", const blockquoteDefault)
+      , ("pull quote", "blockquote--pull-quote-example.html"
+        , const blockquotePullQuoteExample)
+      , ("optional pull quote"
+        , "blockquote--with-optional-pull-quote-example.html"
+        , const blockquoteWithOptionalPullQuoteExample)
+      ])
 
-  -- Block quote
-  , ("Block quote", "default", "blockquote--default.html"
-    , const blockquoteDefault)
-  , ("Block quote", "pull quote", "blockquote--pull-quote-example.html"
-    , const blockquotePullQuoteExample)
-  , ("Block quote", "optional pull quote"
-    , "blockquote--with-optional-pull-quote-example.html"
-    , const blockquoteWithOptionalPullQuoteExample)
-
-  -- Button
-
-  , ("Button", "primary", "button--primary.html", const buttonPrimaryExample)
-  , ("Button", "primary disabled", "button--primary-disabled.html", const buttonPrimaryDisabledExample)
-  , ("Button", "secondary", "button--secondary.html", const buttonSecondaryExample)
-  , ("Button", "secondary disabled", "button--secondary-disabled.html", const buttonSecondaryDisabledExample)
-  , ("Button", "full width", "button--full-width.html", const buttonFullWidthExample)
+  , ( "Button"
+    , [ ("primary", "button--primary.html", const buttonPrimaryExample)
+      , ("primary disabled", "button--primary-disabled.html"
+        , const buttonPrimaryDisabledExample)
+      , ("secondary", "button--secondary.html"
+        , const buttonSecondaryExample)
+      , ("secondary disabled", "button--secondary-disabled.html"
+        , const buttonSecondaryDisabledExample)
+      , ("full width", "button--full-width.html"
+        , const buttonFullWidthExample)
+      ])
 
   -- Code block
 
-  , ("Code block", "default", "code-block.html", const codeBlock)
+  , ( "Code block"
+    , [ ("default", "code-block.html", const codeBlock)
+      ])
 
   -- Footer
 
-  , ("Footer", "default", "footer.html", const footerExample)
+  , ( "Footer"
+    , [ ("default", "footer.html", const footerExample)
+      ])
 
   -- Forms
 
-  , ("Form", "login", "form--login.html", const loginForm)
+  , ( "Form"
+    , [ ("login", "form--login.html", const loginForm)
+      ])
 
   -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
-  , ("Navigation", "default", "navigation.html", navigation)
+  , ( "Navigation"
+    , [ ("default", "navigation.html", navigation)
+      ])
 
   -- Tables
 
-  , ("Table", "default", "table--default.html", const tableDefaultExample)
-  , ("Table", "compact", "table--compact.html", const tableCompactExample)
-  , ("Table", "with column divider", "table--with-column-divider.html"
-    , const tableWithColumnDividerExample)
-  , ("Table", "with column divider, compact"
-    , "table--with-column-divider-compact.html"
-    , const tableWithColumnDividerCompactExample)
+  , ( "Table"
+    , [ ("default", "table--default.html", const tableDefaultExample)
+      , ("compact", "table--compact.html", const tableCompactExample)
+      , ("with column divider", "table--with-column-divider.html"
+        , const tableWithColumnDividerExample)
+      , ("with column divider, compact"
+        , "table--with-column-divider-compact.html"
+        , const tableWithColumnDividerCompactExample)
+      ])
   ]
 
 
