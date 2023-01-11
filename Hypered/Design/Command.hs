@@ -29,6 +29,7 @@ data Command =
   | GenerateBlockquoteDefault
   | GenerateBlockquotePullQuoteExample
   | GenerateBlockquoteWithOptionalPullQuoteExample
+
   | GenerateButtonPrimary
   | GenerateButtonPrimaryLarge
   | GenerateButtonPrimaryDisabled
@@ -36,6 +37,15 @@ data Command =
   | GenerateButtonSecondaryLarge
   | GenerateButtonSecondaryDisabled
   | GenerateButtonFullWidth
+
+  | GenerateButtonLinkPrimary
+  | GenerateButtonLinkPrimaryLarge
+  | GenerateButtonLinkPrimaryDisabled
+  | GenerateButtonLinkSecondary
+  | GenerateButtonLinkSecondaryLarge
+  | GenerateButtonLinkSecondaryDisabled
+  | GenerateButtonLinkFullWidth
+
   | GenerateFooter
   | GenerateTableDefault
   | GenerateTableCompact
@@ -187,6 +197,48 @@ parser =
           )
 
       <> A.command
+          "buttonlink--primary"
+          ( A.info (parserButtonLinkPrimary <**> A.helper)
+          $ A.progDesc "Generate a primary button component."
+          )
+
+      <> A.command
+          "buttonlink--primary-large"
+          ( A.info (parserButtonLinkPrimaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large primary button component."
+          )
+
+      <> A.command
+          "buttonlink--primary-disabled"
+          ( A.info (parserButtonLinkPrimaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled primary button component."
+          )
+
+      <> A.command
+          "buttonlink--secondary"
+          ( A.info (parserButtonLinkSecondary <**> A.helper)
+          $ A.progDesc "Generate a secondary button component."
+          )
+
+      <> A.command
+          "buttonlink--secondary-large"
+          ( A.info (parserButtonLinkSecondaryLarge <**> A.helper)
+          $ A.progDesc "Generate a secondary large button component."
+          )
+
+      <> A.command
+          "buttonlink--secondary-disabled"
+          ( A.info (parserButtonLinkSecondaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled secondary button component."
+          )
+
+      <> A.command
+          "buttonlink--full-width"
+          ( A.info (parserButtonLinkFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width button component."
+          )
+
+      <> A.command
           "footer"
           ( A.info (parserFooter <**> A.helper)
           $ A.progDesc "Generate a footer component."
@@ -325,6 +377,27 @@ parserButtonSecondaryDisabled = pure GenerateButtonSecondaryDisabled
 
 parserButtonFullWidth :: A.Parser Command
 parserButtonFullWidth = pure GenerateButtonFullWidth
+
+parserButtonLinkPrimary :: A.Parser Command
+parserButtonLinkPrimary = pure GenerateButtonLinkPrimary
+
+parserButtonLinkPrimaryLarge :: A.Parser Command
+parserButtonLinkPrimaryLarge = pure GenerateButtonLinkPrimaryLarge
+
+parserButtonLinkPrimaryDisabled :: A.Parser Command
+parserButtonLinkPrimaryDisabled = pure GenerateButtonLinkPrimaryDisabled
+
+parserButtonLinkSecondary :: A.Parser Command
+parserButtonLinkSecondary = pure GenerateButtonLinkSecondary
+
+parserButtonLinkSecondaryLarge :: A.Parser Command
+parserButtonLinkSecondaryLarge = pure GenerateButtonLinkSecondaryLarge
+
+parserButtonLinkSecondaryDisabled :: A.Parser Command
+parserButtonLinkSecondaryDisabled = pure GenerateButtonLinkSecondaryDisabled
+
+parserButtonLinkFullWidth :: A.Parser Command
+parserButtonLinkFullWidth = pure GenerateButtonLinkFullWidth
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter

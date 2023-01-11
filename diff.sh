@@ -26,6 +26,13 @@ for i in \
   button--secondary-large \
   button--secondary-disabled \
   button--full-width \
+  buttonlink--primary \
+  buttonlink--primary-large \
+  buttonlink--primary-disabled \
+  buttonlink--secondary \
+  buttonlink--secondary-large \
+  buttonlink--secondary-disabled \
+  buttonlink--full-width \
   footer \
   nav \
   table--default \

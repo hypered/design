@@ -30,6 +30,9 @@ import Hypered.Html
   , buttonPrimary, buttonPrimaryLarge, buttonPrimaryDisabled
   , buttonSecondary, buttonSecondaryLarge, buttonSecondaryDisabled
   , buttonFullWidth
+  , buttonLinkPrimary, buttonLinkPrimaryLarge, buttonLinkPrimaryDisabled
+  , buttonLinkSecondary, buttonLinkSecondaryLarge, buttonLinkSecondaryDisabled
+  , buttonLinkFullWidth
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -80,6 +83,20 @@ run Command.GenerateButtonSecondaryLarge = generateButtonSecondaryLarge
 run Command.GenerateButtonSecondaryDisabled = generateButtonSecondaryDisabled
 
 run Command.GenerateButtonFullWidth = generateButtonFullWidth
+
+run Command.GenerateButtonLinkPrimary = generateButtonLinkPrimary
+
+run Command.GenerateButtonLinkPrimaryLarge = generateButtonLinkPrimaryLarge
+
+run Command.GenerateButtonLinkPrimaryDisabled = generateButtonLinkPrimaryDisabled
+
+run Command.GenerateButtonLinkSecondary = generateButtonLinkSecondary
+
+run Command.GenerateButtonLinkSecondaryLarge = generateButtonLinkSecondaryLarge
+
+run Command.GenerateButtonLinkSecondaryDisabled = generateButtonLinkSecondaryDisabled
+
+run Command.GenerateButtonLinkFullWidth = generateButtonLinkFullWidth
 
 run Command.GenerateFooter = generateFooter
 
@@ -257,31 +274,38 @@ guideData =
         , const buttonFullWidthExample)
       ])
 
-  -- Code block
+  , ( "Button link"
+    , [ ("primary", "buttonlink--primary.html", const buttonLinkPrimaryExample)
+      , ("primary large", "buttonlink--primary-large.html"
+        , const buttonLinkPrimaryLargeExample)
+      , ("primary disabled", "buttonlink--primary-disabled.html"
+        , const buttonLinkPrimaryDisabledExample)
+      , ("secondary", "buttonlink--secondary.html"
+        , const buttonLinkSecondaryExample)
+      , ("secondary large", "buttonlink--secondary-large.html"
+        , const buttonLinkSecondaryLargeExample)
+      , ("secondary disabled", "buttonlink--secondary-disabled.html"
+        , const buttonLinkSecondaryDisabledExample)
+      , ("full width", "buttonlink--full-width.html"
+        , const buttonLinkFullWidthExample)
+      ])
 
   , ( "Code block"
     , [ ("default", "code-block.html", const codeBlock)
       ])
 
-  -- Footer
-
   , ( "Footer"
     , [ ("default", "footer.html", const footerExample)
       ])
-
-  -- Forms
 
   , ( "Form"
     , [ ("login", "form--login.html", const loginForm)
       ])
 
-  -- Horizontal navigation bar:
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
       ])
-
-  -- Tables
 
   , ( "Table"
     , [ ("default", "table--default.html", const tableDefaultExample)
@@ -357,6 +381,27 @@ generateButtonSecondaryDisabled = putStr $ renderHtml buttonSecondaryDisabledExa
 generateButtonFullWidth :: IO ()
 generateButtonFullWidth = putStr $ renderHtml buttonFullWidthExample
 
+generateButtonLinkPrimary :: IO ()
+generateButtonLinkPrimary = putStr $ renderHtml buttonLinkPrimaryExample
+
+generateButtonLinkPrimaryLarge :: IO ()
+generateButtonLinkPrimaryLarge = putStr $ renderHtml buttonLinkPrimaryLargeExample
+
+generateButtonLinkPrimaryDisabled :: IO ()
+generateButtonLinkPrimaryDisabled = putStr $ renderHtml buttonLinkPrimaryDisabledExample
+
+generateButtonLinkSecondary :: IO ()
+generateButtonLinkSecondary = putStr $ renderHtml buttonLinkSecondaryExample
+
+generateButtonLinkSecondaryLarge :: IO ()
+generateButtonLinkSecondaryLarge = putStr $ renderHtml buttonLinkSecondaryLargeExample
+
+generateButtonLinkSecondaryDisabled :: IO ()
+generateButtonLinkSecondaryDisabled = putStr $ renderHtml buttonLinkSecondaryDisabledExample
+
+generateButtonLinkFullWidth :: IO ()
+generateButtonLinkFullWidth = putStr $ renderHtml buttonLinkFullWidthExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -414,6 +459,8 @@ blockquoteWithOptionalPullQuoteExample = pullQuote
   \In consequat, urna vel volutpat dignissim, eros eros sodales quam, \
   \a suscipit felis eros non dolor."
 
+
+--------------------------------------------------------------------------------
 buttonPrimaryExample :: Html
 buttonPrimaryExample = buttonPrimary "Primary Button"
 
@@ -435,6 +482,31 @@ buttonSecondaryDisabledExample = buttonSecondaryDisabled "Secondary Disabled"
 buttonFullWidthExample :: Html
 buttonFullWidthExample = buttonFullWidth "Button Full Width"
 
+
+--------------------------------------------------------------------------------
+buttonLinkPrimaryExample :: Html
+buttonLinkPrimaryExample = buttonLinkPrimary "Primary Button"
+
+buttonLinkPrimaryLargeExample :: Html
+buttonLinkPrimaryLargeExample = buttonLinkPrimaryLarge "Primary Button"
+
+buttonLinkPrimaryDisabledExample :: Html
+buttonLinkPrimaryDisabledExample = buttonLinkPrimaryDisabled "Primary Disabled"
+
+buttonLinkSecondaryExample :: Html
+buttonLinkSecondaryExample = buttonLinkSecondary "Secondary Button"
+
+buttonLinkSecondaryLargeExample :: Html
+buttonLinkSecondaryLargeExample = buttonLinkSecondaryLarge "Secondary Button"
+
+buttonLinkSecondaryDisabledExample :: Html
+buttonLinkSecondaryDisabledExample = buttonLinkSecondaryDisabled "Secondary Disabled"
+
+buttonLinkFullWidthExample :: Html
+buttonLinkFullWidthExample = buttonLinkFullWidth "Button Full Width"
+
+
+--------------------------------------------------------------------------------
 footerExample :: Html
 footerExample = footer "© Hypered, 2019-2023."
 

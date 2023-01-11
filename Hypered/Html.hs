@@ -349,6 +349,38 @@ buttonFullWidth = H.button
   ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 w-100 pointer inline-flex button-reset ba bw1 relative"
   ! customAttribute "variant" "primary"
 
+
+--------------------------------------------------------------------------------
+buttonLinkPrimary :: Html -> Html
+buttonLinkPrimary = H.a
+  ! A.class_ "bg-black b--black white ph4 pv3 tc dib no-underline ba bw1"
+
+buttonLinkPrimaryLarge :: Html -> Html
+buttonLinkPrimaryLarge = H.a
+  ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
+
+buttonLinkPrimaryDisabled :: Html -> Html
+buttonLinkPrimaryDisabled = H.a
+  ! A.class_ "bg-black b--black white ph4 pv3 tc o-50 dib no-underline ba bw1"
+
+buttonLinkSecondary :: Html -> Html
+buttonLinkSecondary = H.a
+  ! A.class_ "bg-white b--black black ph4 pv3 tc dib no-underline ba bw1"
+
+buttonLinkSecondaryLarge :: Html -> Html
+buttonLinkSecondaryLarge = H.a
+  ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
+
+buttonLinkSecondaryDisabled :: Html -> Html
+buttonLinkSecondaryDisabled = H.a
+  ! A.class_ "bg-white b--black black ph4 pv3 tc o-50 dib no-underline ba bw1"
+
+buttonLinkFullWidth :: Html -> Html
+buttonLinkFullWidth = H.a
+  ! A.class_ "bg-black b--black white ph4 pv3 tc w-100 dib no-underline ba bw1"
+
+
+--------------------------------------------------------------------------------
 -- TODO When pretty-printing the HTML, the first line within the code element
 -- is indented, which is not correct.
 codeBlock :: Html
