@@ -38,8 +38,9 @@ export const Button = props => {
     "relative"
   );
 
+  const { fullWidth, ...props2 } = props;
   return (
-    <ButtonType className={buttonClassNames} {...props}>
+    <ButtonType className={buttonClassNames} {...props2}>
       {props.children}
     </ButtonType>
   );

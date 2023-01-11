@@ -27,8 +27,10 @@ import Hypered.Html
   , anchorBlue, anchorBlack
   , codeBlock, bannerGreen, bannerRed, bannerYellow
   , blockquote, pullQuote, pullQuote'
-  , buttonFullWidth, buttonPrimary, buttonPrimaryDisabled, buttonSecondary
-  , buttonSecondaryDisabled, defaultConfig, document
+  , buttonPrimary, buttonPrimaryLarge, buttonPrimaryDisabled
+  , buttonSecondary, buttonSecondaryLarge, buttonSecondaryDisabled
+  , buttonFullWidth
+  , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
@@ -67,9 +69,13 @@ run Command.GenerateBlockquoteWithOptionalPullQuoteExample =
 
 run Command.GenerateButtonPrimary = generateButtonPrimary
 
+run Command.GenerateButtonPrimaryLarge = generateButtonPrimaryLarge
+
 run Command.GenerateButtonPrimaryDisabled = generateButtonPrimaryDisabled
 
 run Command.GenerateButtonSecondary = generateButtonSecondary
+
+run Command.GenerateButtonSecondaryLarge = generateButtonSecondaryLarge
 
 run Command.GenerateButtonSecondaryDisabled = generateButtonSecondaryDisabled
 
@@ -237,10 +243,14 @@ guideData =
 
   , ( "Button"
     , [ ("primary", "button--primary.html", const buttonPrimaryExample)
+      , ("primary large", "button--primary-large.html"
+        , const buttonPrimaryLargeExample)
       , ("primary disabled", "button--primary-disabled.html"
         , const buttonPrimaryDisabledExample)
       , ("secondary", "button--secondary.html"
         , const buttonSecondaryExample)
+      , ("secondary large", "button--secondary-large.html"
+        , const buttonSecondaryLargeExample)
       , ("secondary disabled", "button--secondary-disabled.html"
         , const buttonSecondaryDisabledExample)
       , ("full width", "button--full-width.html"
@@ -329,11 +339,17 @@ generateBlockquoteWithOptionalPullQuoteExample =
 generateButtonPrimary :: IO ()
 generateButtonPrimary = putStr $ renderHtml buttonPrimaryExample
 
+generateButtonPrimaryLarge :: IO ()
+generateButtonPrimaryLarge = putStr $ renderHtml buttonPrimaryLargeExample
+
 generateButtonPrimaryDisabled :: IO ()
 generateButtonPrimaryDisabled = putStr $ renderHtml buttonPrimaryDisabledExample
 
 generateButtonSecondary :: IO ()
 generateButtonSecondary = putStr $ renderHtml buttonSecondaryExample
+
+generateButtonSecondaryLarge :: IO ()
+generateButtonSecondaryLarge = putStr $ renderHtml buttonSecondaryLargeExample
 
 generateButtonSecondaryDisabled :: IO ()
 generateButtonSecondaryDisabled = putStr $ renderHtml buttonSecondaryDisabledExample
@@ -401,17 +417,23 @@ blockquoteWithOptionalPullQuoteExample = pullQuote
 buttonPrimaryExample :: Html
 buttonPrimaryExample = buttonPrimary "Primary Button"
 
+buttonPrimaryLargeExample :: Html
+buttonPrimaryLargeExample = buttonPrimaryLarge "Primary Button"
+
 buttonPrimaryDisabledExample :: Html
 buttonPrimaryDisabledExample = buttonPrimaryDisabled "Primary Disabled"
 
 buttonSecondaryExample :: Html
 buttonSecondaryExample = buttonSecondary "Secondary Button"
 
+buttonSecondaryLargeExample :: Html
+buttonSecondaryLargeExample = buttonSecondaryLarge "Secondary Button"
+
 buttonSecondaryDisabledExample :: Html
 buttonSecondaryDisabledExample = buttonSecondaryDisabled "Secondary Disabled"
 
 buttonFullWidthExample :: Html
-buttonFullWidthExample = buttonFullWidth "Primary Button"
+buttonFullWidthExample = buttonFullWidth "Button Full Width"
 
 footerExample :: Html
 footerExample = footer "© Hypered, 2019-2023."

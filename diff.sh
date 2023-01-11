@@ -20,9 +20,12 @@ for i in \
   blockquote--pull-quote-example \
   blockquote--with-optional-pull-quote-example \
   button--primary \
+  button--primary-large \
   button--primary-disabled \
   button--secondary \
+  button--secondary-large \
   button--secondary-disabled \
+  button--full-width \
   footer \
   nav \
   table--default \

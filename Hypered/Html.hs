@@ -317,6 +317,11 @@ buttonPrimary = H.button
   ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 pointer inline-flex button-reset ba bw1 relative"
   ! customAttribute "variant" "primary"
 
+buttonPrimaryLarge :: Html -> Html
+buttonPrimaryLarge = H.button
+  ! A.class_ "bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "primary"
+
 buttonPrimaryDisabled :: Html -> Html
 buttonPrimaryDisabled = H.button
   ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 o-50 pointer inline-flex button-reset ba bw1 relative"
@@ -328,6 +333,11 @@ buttonSecondary = H.button
   ! A.class_ "bg-white hover-bg-light-gray b--black black ph4 pv3 pointer inline-flex button-reset ba bw1 relative"
   ! customAttribute "variant" "secondary"
 
+buttonSecondaryLarge :: Html -> Html
+buttonSecondaryLarge = H.button
+  ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "secondary"
+
 buttonSecondaryDisabled :: Html -> Html
 buttonSecondaryDisabled = H.button
   ! A.class_ "bg-white hover-bg-light-gray b--black black ph4 pv3 o-50 pointer inline-flex button-reset ba bw1 relative"
@@ -336,7 +346,8 @@ buttonSecondaryDisabled = H.button
 
 buttonFullWidth :: Html -> Html
 buttonFullWidth = H.button
-  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black w-100"
+  ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 w-100 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "primary"
 
 -- TODO When pretty-printing the HTML, the first line within the code element
 -- is indented, which is not correct.

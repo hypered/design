@@ -30,8 +30,10 @@ data Command =
   | GenerateBlockquotePullQuoteExample
   | GenerateBlockquoteWithOptionalPullQuoteExample
   | GenerateButtonPrimary
+  | GenerateButtonPrimaryLarge
   | GenerateButtonPrimaryDisabled
   | GenerateButtonSecondary
+  | GenerateButtonSecondaryLarge
   | GenerateButtonSecondaryDisabled
   | GenerateButtonFullWidth
   | GenerateFooter
@@ -149,6 +151,12 @@ parser =
           )
 
       <> A.command
+          "button--primary-large"
+          ( A.info (parserButtonPrimaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large primary button component."
+          )
+
+      <> A.command
           "button--primary-disabled"
           ( A.info (parserButtonPrimaryDisabled <**> A.helper)
           $ A.progDesc "Generate a disabled primary button component."
@@ -161,13 +169,19 @@ parser =
           )
 
       <> A.command
+          "button--secondary-large"
+          ( A.info (parserButtonSecondaryLarge <**> A.helper)
+          $ A.progDesc "Generate a secondary large button component."
+          )
+
+      <> A.command
           "button--secondary-disabled"
           ( A.info (parserButtonSecondaryDisabled <**> A.helper)
           $ A.progDesc "Generate a disabled secondary button component."
           )
 
       <> A.command
-          "button--full-with"
+          "button--full-width"
           ( A.info (parserButtonFullWidth <**> A.helper)
           $ A.progDesc "Generate a full-width button component."
           )
@@ -281,9 +295,6 @@ parserBannerRed = pure GenerateBannerRed
 parserBannerYellow :: A.Parser Command
 parserBannerYellow = pure GenerateBannerYellow
 
-parserButtonPrimary :: A.Parser Command
-parserButtonPrimary = pure GenerateButtonPrimary
-
 parserBlockquoteDefault :: A.Parser Command
 parserBlockquoteDefault = pure GenerateBlockquoteDefault
 
@@ -294,11 +305,20 @@ parserBlockquoteWithOptionalPullQuoteExample :: A.Parser Command
 parserBlockquoteWithOptionalPullQuoteExample =
   pure GenerateBlockquoteWithOptionalPullQuoteExample
 
+parserButtonPrimary :: A.Parser Command
+parserButtonPrimary = pure GenerateButtonPrimary
+
+parserButtonPrimaryLarge :: A.Parser Command
+parserButtonPrimaryLarge = pure GenerateButtonPrimaryLarge
+
 parserButtonPrimaryDisabled :: A.Parser Command
 parserButtonPrimaryDisabled = pure GenerateButtonPrimaryDisabled
 
 parserButtonSecondary :: A.Parser Command
 parserButtonSecondary = pure GenerateButtonSecondary
+
+parserButtonSecondaryLarge :: A.Parser Command
+parserButtonSecondaryLarge = pure GenerateButtonSecondaryLarge
 
 parserButtonSecondaryDisabled :: A.Parser Command
 parserButtonSecondaryDisabled = pure GenerateButtonSecondaryDisabled
