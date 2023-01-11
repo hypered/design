@@ -38,6 +38,7 @@ for i in \
   checkbox--default \
   checkbox--pill \
   codeblock--default \
+  codeblock--with-table \
   footer \
   nav \
   table--default \

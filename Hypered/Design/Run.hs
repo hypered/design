@@ -106,6 +106,8 @@ run Command.GenerateCheckboxPill = generateCheckboxPill
 
 run Command.GenerateCodeblock = generateCodeblock
 
+run Command.GenerateCodeblockWithTableExample = generateCodeblockWithTable
+
 run Command.GenerateFooter = generateFooter
 
 run Command.GenerateTableDefault = generateTableDefault
@@ -305,6 +307,7 @@ guideData =
 
   , ( "Code block"
     , [ ("default", "codeblock--default.html", const codeblockExample)
+      , ("with-table", "codeblock--with-table.html", const codeblockWithTableExample)
       ])
 
   , ( "Footer"
@@ -424,6 +427,9 @@ generateCheckboxPill = putStr $ renderHtml checkboxPillExample
 generateCodeblock :: IO ()
 generateCodeblock = putStr $ renderHtml codeblockExample
 
+generateCodeblockWithTable :: IO ()
+generateCodeblockWithTable = putStr $ renderHtml codeblockWithTableExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -542,6 +548,28 @@ codeblockExample = codeBlock
   "// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
+
+codeblockWithTableExample :: Html
+codeblockWithTableExample = codeBlock
+  "\n\
+  \// table examples from: https://ozh.github.io/ascii-tables/\n\
+  \\n\
+  \// example 1:\n\
+  \┌──────────────────────────────────┬─────────┬────────────────────────┬────────────────┐\n\
+  \│               Col1               │  Col2   │          Col3          │ Numeric Column │\n\
+  \├──────────────────────────────────┼─────────┼────────────────────────┼────────────────┤\n\
+  \│ Value 1                          │ Value 2 │ 123                    │           10.0 │\n\
+  \│ Separate                         │ cols    │ with a tab or 4 spaces │       -2,027.1 │\n\
+  \│ This is a row with only one cell │         │                        │                │\n\
+  \└──────────────────────────────────┴─────────┴────────────────────────┴────────────────┘\n\
+  \\n\
+  \// example 2:\n\
+  \\n\
+  \|               Col1               |  Col2   |          Col3          | Numeric Column |\n\
+  \|----------------------------------|---------|------------------------|----------------|\n\
+  \| Value 1                          | Value 2 | 123                    |           10.0 |\n\
+  \| Separate                         | cols    | with a tab or 4 spaces |       -2,027.1 |\n\
+  \| This is a row with only one cell |         |                        |                |\n"
 
 
 --------------------------------------------------------------------------------

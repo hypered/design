@@ -50,6 +50,7 @@ data Command =
   | GenerateCheckboxPill
 
   | GenerateCodeblock
+  | GenerateCodeblockWithTableExample
 
   | GenerateFooter
   | GenerateTableDefault
@@ -262,6 +263,12 @@ parser =
           )
 
       <> A.command
+          "codeblock--with-table"
+          ( A.info (parserCodeblockWithTable <**> A.helper)
+          $ A.progDesc "Generate a codeblock example with a table."
+          )
+
+      <> A.command
           "footer"
           ( A.info (parserFooter <**> A.helper)
           $ A.progDesc "Generate a footer component."
@@ -430,6 +437,9 @@ parserCheckboxPill = pure GenerateCheckboxPill
 
 parserCodeblock :: A.Parser Command
 parserCodeblock = pure GenerateCodeblock
+
+parserCodeblockWithTable :: A.Parser Command
+parserCodeblockWithTable = pure GenerateCodeblockWithTableExample
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
