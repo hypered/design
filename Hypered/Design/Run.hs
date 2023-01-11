@@ -151,10 +151,6 @@ generateGuide = do
             H.text $ cat <> ", " <> variant)
         guideData
 
-      H.li $ H.a ! A.href "navigation.html" $ "Navigation"
-
-      H.li $ H.a ! A.href "form--login.html" $ "Form, login"
-
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
@@ -179,22 +175,6 @@ generateGuide = do
     (\(cat, variant, href, f) ->
       generate href ("Hypered style guide - " <> cat) f)
     guideData
-
-  -- Horizontal navigation bar:
-  -- This is mostly header / nav / a, a, ...
-
-  generate "navigation.html" "Hypered style guide - Navigation" navigation
-
-  -- Forms
-
-  generate "form--login.html" "Hypered style guide - Form"
-    (const loginForm)
-
-  -- Footer
-
-  generate "footer.html" "Hypered style guide - Footer"
-    (const footerExample)
-
 
   -- Example usage
 
@@ -256,6 +236,18 @@ guideData =
   -- Code block
 
   , ("Code block", "default", "code-block.html", const codeBlock)
+
+  -- Footer
+
+  , ("Footer", "default", "footer.html", const footerExample)
+
+  -- Forms
+
+  , ("Form", "login", "form--login.html", const loginForm)
+
+  -- Horizontal navigation bar:
+  -- This is mostly header / nav / a, a, ...
+  , ("Navigation", "default", "navigation.html", navigation)
   ]
 
 
