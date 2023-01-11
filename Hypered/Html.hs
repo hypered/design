@@ -381,6 +381,20 @@ buttonLinkFullWidth = H.a
 
 
 --------------------------------------------------------------------------------
+checkboxDefault :: Text -> Html
+checkboxDefault content =
+  H.label ! A.class_ "flex items-center mb2 flex" $ do
+    H.input ! A.type_ "checkbox" ! A.class_ "hy-checkbox w1 h1" ! A.checked ""
+    H.div ! A.class_ "ml1" $ H.text content
+
+checkboxPill :: Text-> Html
+checkboxPill content =
+  H.label ! A.class_ "flex items-center mb2 flex" $ do
+    H.input ! A.type_ "checkbox" ! A.class_ "hy-checkbox w1 h1 br-pill" ! A.checked ""
+    H.div ! A.class_ "ml1" $ H.text content
+
+
+--------------------------------------------------------------------------------
 -- TODO When pretty-printing the HTML, the first line within the code element
 -- is indented, which is not correct.
 codeBlock :: Html

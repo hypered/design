@@ -46,6 +46,9 @@ data Command =
   | GenerateButtonLinkSecondaryDisabled
   | GenerateButtonLinkFullWidth
 
+  | GenerateCheckboxDefault
+  | GenerateCheckboxPill
+
   | GenerateFooter
   | GenerateTableDefault
   | GenerateTableCompact
@@ -239,6 +242,18 @@ parser =
           )
 
       <> A.command
+          "checkbox--default"
+          ( A.info (parserCheckboxDefault <**> A.helper)
+          $ A.progDesc "Generate a checkbox component."
+          )
+
+      <> A.command
+          "checkbox--pill"
+          ( A.info (parserCheckboxPill <**> A.helper)
+          $ A.progDesc "Generate a checkbox pill component."
+          )
+
+      <> A.command
           "footer"
           ( A.info (parserFooter <**> A.helper)
           $ A.progDesc "Generate a footer component."
@@ -398,6 +413,12 @@ parserButtonLinkSecondaryDisabled = pure GenerateButtonLinkSecondaryDisabled
 
 parserButtonLinkFullWidth :: A.Parser Command
 parserButtonLinkFullWidth = pure GenerateButtonLinkFullWidth
+
+parserCheckboxDefault :: A.Parser Command
+parserCheckboxDefault = pure GenerateCheckboxDefault
+
+parserCheckboxPill :: A.Parser Command
+parserCheckboxPill = pure GenerateCheckboxPill
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter

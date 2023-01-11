@@ -7,7 +7,9 @@ set -e
 
 function norm {
   # blaze-html renders hr as <hr> while the react code uses <hr />.
-  sed -e 's@<hr class="\(.*\)">@<hr class="\1" />@'
+  # Same for input.
+  sed -e 's@<hr class="\(.*\)">@<hr class="\1" />@' \
+    | sed -e 's@<input type="\(.*\)" class="\(.*\)" checked="\(.*\)">@<input type="\1" class="\2" checked="\3" />@'
 }
 
 for i in \
@@ -33,6 +35,8 @@ for i in \
   buttonlink--secondary-large \
   buttonlink--secondary-disabled \
   buttonlink--full-width \
+  checkbox--default \
+  checkbox--pill \
   footer \
   nav \
   table--default \

@@ -33,6 +33,7 @@ import Hypered.Html
   , buttonLinkPrimary, buttonLinkPrimaryLarge, buttonLinkPrimaryDisabled
   , buttonLinkSecondary, buttonLinkSecondaryLarge, buttonLinkSecondaryDisabled
   , buttonLinkFullWidth
+  , checkboxDefault, checkboxPill
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -97,6 +98,10 @@ run Command.GenerateButtonLinkSecondaryLarge = generateButtonLinkSecondaryLarge
 run Command.GenerateButtonLinkSecondaryDisabled = generateButtonLinkSecondaryDisabled
 
 run Command.GenerateButtonLinkFullWidth = generateButtonLinkFullWidth
+
+run Command.GenerateCheckboxDefault = generateCheckboxDefault
+
+run Command.GenerateCheckboxPill = generateCheckboxPill
 
 run Command.GenerateFooter = generateFooter
 
@@ -290,6 +295,11 @@ guideData =
         , const buttonLinkFullWidthExample)
       ])
 
+  , ( "Checkbox"
+    , [ ("default", "checkbox--default.html", const checkboxDefaultExample)
+      , ("pill", "checkbox--pill.html", const checkboxPillExample)
+      ])
+
   , ( "Code block"
     , [ ("default", "code-block.html", const codeBlock)
       ])
@@ -402,6 +412,12 @@ generateButtonLinkSecondaryDisabled = putStr $ renderHtml buttonLinkSecondaryDis
 generateButtonLinkFullWidth :: IO ()
 generateButtonLinkFullWidth = putStr $ renderHtml buttonLinkFullWidthExample
 
+generateCheckboxDefault :: IO ()
+generateCheckboxDefault = putStr $ renderHtml checkboxDefaultExample
+
+generateCheckboxPill :: IO ()
+generateCheckboxPill = putStr $ renderHtml checkboxPillExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -504,6 +520,14 @@ buttonLinkSecondaryDisabledExample = buttonLinkSecondaryDisabled "Secondary Disa
 
 buttonLinkFullWidthExample :: Html
 buttonLinkFullWidthExample = buttonLinkFullWidth "Button Full Width"
+
+
+--------------------------------------------------------------------------------
+checkboxDefaultExample :: Html
+checkboxDefaultExample = checkboxDefault "This is checked"
+
+checkboxPillExample :: Html
+checkboxPillExample = checkboxPill "This is checked"
 
 
 --------------------------------------------------------------------------------

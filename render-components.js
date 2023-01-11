@@ -168,8 +168,8 @@ case 'buttonlink--secondary-large':
   render(ButtonLink.secondaryLarge());
   break;
 
-case 'checkbox--checkbox-pill':
-  render(Checkbox.CheckboxPill());
+case 'checkbox--pill':
+  render(Checkbox.Pill());
   break;
 
 case 'checkbox--default':
@@ -425,7 +425,7 @@ case 'whitespace--negative-margins':
   break;
 
 default:
-  console.log('Unsupported argument.');
+  console.error('Unsupported argument: ', args[0]);
   process.exit(1);
   break;
 }

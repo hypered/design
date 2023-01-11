@@ -23,7 +23,6 @@ export const Checkbox = props => {
         checked={props.checked}
         onChange={props.onChange}
         defaultChecked={props.defaultChecked}
-        pill={props.pill}
         value={props.value}
       />
       <div className="ml1">{props.label}</div>

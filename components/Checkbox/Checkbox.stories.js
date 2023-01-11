@@ -6,35 +6,25 @@ export default {
 };
 
 export const Default = () => {
-  const [checked, setChecked] = useState(true);
-
-  function handleChecked(e) {
-    setChecked(e.target.checked);
-  }
+  const checked = true;
 
   return (
     <Checkbox
       type="checkbox"
-      checked={checked}
-      label={`This is ${checked ? "checked" : "unchecked"}`}
-      onChange={e => handleChecked(e)}
+      defaultChecked={checked}
+      label="This is checked"
     />
   );
 };
 
-export const CheckboxPill = () => {
-  const [checked, setChecked] = useState(true);
-
-  function handleChecked(e) {
-    setChecked(e.target.checked);
-  }
+export const Pill = () => {
+  const checked = true;
 
   return (
     <Checkbox
       type="checkbox"
-      checked={checked}
-      label={`This is ${checked ? "checked" : "false"}`}
-      onChange={e => handleChecked(e)}
+      defaultChecked={checked}
+      label="This is checked"
       pill={true}
     />
   );
