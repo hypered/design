@@ -53,16 +53,56 @@ data Command =
   | GenerateCodeblockWithTableExample
 
   | GenerateFooter
+
+  | GenerateNavigationBlock
+  | GenerateNavigationBlockUsageExample
+
+  | GenerateNavigation
+  | GenerateNavigationSpaceBetween
+
+  | GenerateRadioDefault
+  | GenerateRadioPillInline
+  | GenerateRadioCheckbox
+  | GenerateRadioCheckboxInline
+
+  | GenerateSidePanel
+  | GenerateSidePanelUsageExample
+
+  | GenerateSidebar
+  | GenerateSidebarUsageExample
+
+  | GenerateStatusCodeError400
+  | GenerateStatusCodeError404
+
   | GenerateTableDefault
   | GenerateTableCompact
   | GenerateTableWithColumnDivider
   | GenerateTableWithColumnDividerCompact
 
+  | GenerateTitleJumbo
+  | GenerateTitleSubtitleJumbo
+  | GenerateTitle
+  | GenerateTitleSubtitle
+  | GenerateTitleJumboUsageExample
+  | GenerateTitleUsageExample
+
+  | GenerateTypographyHeading1
+  | GenerateTypographyHeading2
+  | GenerateTypographyHeading3
+  | GenerateTypographyHeading4
+  | GenerateTypographyHeading5
+  | GenerateTypographyHeading6
+  | GenerateTypographyParagraph
+  | GenerateTypographyUsageExample
+
+  | GenerateWhitespaceAutoWidth
+  | GenerateWhitespaceNegativeMargins
+  | GenerateWhitespaceFullWidth
+  | GenerateWhitespaceExamples
+
     -- Stories from Storybook
 
   | GenerateFormLogin
-  | GenerateNavigation
-  | GenerateNavigationSpaceBetween
   | GenerateLayoutDefault
 
     -- Helpers to explore Storybook stories
@@ -299,6 +339,99 @@ parser =
           )
 
       <> A.command
+          "title--jumbo"
+          ( A.info (parserTitleJumbo <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "title--subtitle-jumbo"
+          ( A.info (parserTitleSubtitleJumbo <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "title--title"
+          ( A.info (parserTitle <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "title--subtitle"
+          ( A.info (parserTitleSubtitle <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "title--jumbo-usage"
+          ( A.info (parserTitleJumboUsageExample <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "title--title-usage"
+          ( A.info (parserTitleUsageExample <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+
+      <> A.command
+          "typography--heading-1"
+          ( A.info (parserTypographyHeading1 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--heading-2"
+          ( A.info (parserTypographyHeading2 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--heading-3"
+          ( A.info (parserTypographyHeading3 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--heading-4"
+          ( A.info (parserTypographyHeading4 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--heading-5"
+          ( A.info (parserTypographyHeading5 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--heading-6"
+          ( A.info (parserTypographyHeading6 <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--paragraph"
+          ( A.info (parserTypographyParagraph <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "typography--usage"
+          ( A.info (parserTypographyUsageExample <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+
+      <> A.command
+          "whitespace--auto-width"
+          ( A.info (parserWhitespaceAutoWidth <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "whitespace--negative-margins"
+          ( A.info (parserWhitespaceNegativeMargins <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "whitespace--full-width"
+          ( A.info (parserWhitespaceFullWidth <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+      <> A.command
+          "whitespace--examples"
+          ( A.info (parserWhitespaceExamples <**> A.helper)
+          $ A.progDesc "Generate a example."
+          )
+
+      <> A.command
           "form--login"
           ( A.info (parserFormLogin <**> A.helper)
           $ A.progDesc "Generate a login form example."
@@ -456,6 +589,60 @@ parserTableWithColumnDivider = pure GenerateTableWithColumnDivider
 parserTableWithColumnDividerCompact :: A.Parser Command
 parserTableWithColumnDividerCompact =
   pure GenerateTableWithColumnDividerCompact
+
+parserTitleJumbo :: A.Parser Command
+parserTitleJumbo = pure GenerateTitleJumbo
+
+parserTitleSubtitleJumbo :: A.Parser Command
+parserTitleSubtitleJumbo = pure GenerateTitleSubtitleJumbo
+
+parserTitle :: A.Parser Command
+parserTitle = pure GenerateTitle
+
+parserTitleSubtitle :: A.Parser Command
+parserTitleSubtitle = pure GenerateTitleSubtitle
+
+parserTitleJumboUsageExample :: A.Parser Command
+parserTitleJumboUsageExample = pure GenerateTitleJumboUsageExample
+
+parserTitleUsageExample :: A.Parser Command
+parserTitleUsageExample = pure GenerateTitleUsageExample
+
+parserTypographyHeading1 :: A.Parser Command
+parserTypographyHeading1 = pure GenerateTypographyHeading1
+
+parserTypographyHeading2 :: A.Parser Command
+parserTypographyHeading2 = pure GenerateTypographyHeading2
+
+parserTypographyHeading3 :: A.Parser Command
+parserTypographyHeading3 = pure GenerateTypographyHeading3
+
+parserTypographyHeading4 :: A.Parser Command
+parserTypographyHeading4 = pure GenerateTypographyHeading4
+
+parserTypographyHeading5 :: A.Parser Command
+parserTypographyHeading5 = pure GenerateTypographyHeading5
+
+parserTypographyHeading6 :: A.Parser Command
+parserTypographyHeading6 = pure GenerateTypographyHeading6
+
+parserTypographyParagraph :: A.Parser Command
+parserTypographyParagraph = pure GenerateTypographyParagraph
+
+parserTypographyUsageExample :: A.Parser Command
+parserTypographyUsageExample = pure GenerateTypographyUsageExample
+
+parserWhitespaceAutoWidth :: A.Parser Command
+parserWhitespaceAutoWidth = pure GenerateWhitespaceAutoWidth
+
+parserWhitespaceNegativeMargins :: A.Parser Command
+parserWhitespaceNegativeMargins = pure GenerateWhitespaceNegativeMargins
+
+parserWhitespaceFullWidth :: A.Parser Command
+parserWhitespaceFullWidth = pure GenerateWhitespaceFullWidth
+
+parserWhitespaceExamples :: A.Parser Command
+parserWhitespaceExamples = pure GenerateWhitespaceExamples
 
 parserFormLogin :: A.Parser Command
 parserFormLogin = pure GenerateFormLogin

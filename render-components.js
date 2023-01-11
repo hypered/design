@@ -352,27 +352,27 @@ case 'table--with-column-divider-compact':
   render(Table.WithColumnDividerCompact());
   break
 
-case 'title--jumbo-usage-example':
+case 'title--jumbo-usage':
   render(Title.JumboUsageExample());
   break;
 
-case 'title--subtitle-example':
+case 'title--subtitle':
   render(Title.SubtitleExample());
   break;
 
-case 'title--subtitle-jumbo-example':
+case 'title--subtitle-jumbo':
   render(Title.SubtitleJumboExample());
   break;
 
-case 'title--title-example':
+case 'title--title':
   render(Title.TitleExample());
   break;
 
-case 'title--title-jumbo-example':
+case 'title--jumbo':
   render(Title.TitleJumboExample());
   break;
 
-case 'title--usage-example':
+case 'title--title-usage':
   render(Title.UsageExample());
   break;
 
@@ -404,7 +404,7 @@ case 'typography--paragraph':
   render(Typography.Paragraph());
   break;
 
-case 'typography--usage-example':
+case 'typography--usage':
   render(Typography.UsageExample());
   break;
 

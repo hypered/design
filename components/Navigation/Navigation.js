@@ -6,8 +6,9 @@ export const NavLink = React.forwardRef(function NavLink(props, ref) {
     mr3: !props.lastItem,
   });
 
+  const { active, ...props2 } = props;
   return (
-    <a className={NavLinkClasses} {...props}>
+    <a className={NavLinkClasses} {...props2}>
       {props.children}
     </a>
   );

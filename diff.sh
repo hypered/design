@@ -45,12 +45,34 @@ for i in \
   table--compact \
   table--with-column-divider \
   table--with-column-divider-compact \
+  title--jumbo-usage \
+  title--subtitle \
+  title--subtitle-jumbo \
+  title--title \
+  title--jumbo \
+  title--title-usage \
+  typography--heading-1 \
+  typography--heading-2 \
+  typography--heading-3 \
+  typography--heading-4 \
+  typography--heading-5 \
+  typography--heading-6 \
+  typography--paragraph \
+  typography--usage \
+  whitespace--auto-width \
+  whitespace--examples \
+  whitespace--full-width \
+  whitespace--negative-margins \
   ; \
 do
   echo $i
+  # I don't know why single quotes are escaped differently.
+  hypered-design $i > aa
   hypered-design $i | \
-    node render-components pretty | \
-    norm > a
+    node render-components pretty \
+    | norm \
+    | sed -e 's@39;@x27;@' \
+    > a
   node render-components $i > b
   diff -u a b
 done

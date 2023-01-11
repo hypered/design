@@ -39,9 +39,24 @@ import Hypered.Html
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate', loginForm
+  , navigationBlockDefault, navigationBlockUsageExample
   , nav, navigationNoteed, navigationNoteed'
+  , radioDefaultExample, radioPillInlineExample
+  , radioCheckboxExample, radioCheckboxInlineExample
+  , sidePanelExample, sidePanelUsageExample
+  , sidebarExample, sidebarUsageExample
+  , statusCodeError400Example, statusCodeError404Example
   , tableDefault, tableCompact, tableWithColumnDivider
   , tableWithColumnDividerCompact
+  , titleJumboExample, titleSubtitleJumboExample, titleDefaultExample
+  , titleSubtitleDefaultExample, titleJumboUsageExample
+  , titleDefaultUsageExample
+  , typographyHeading1Example, typographyHeading2Example
+  , typographyHeading3Example, typographyHeading4Example
+  , typographyHeading5Example, typographyHeading6Example
+  , typographyParagraphExample, typographyUsageExample
+  , whitespaceAutoWidthExample, whitespaceNegativeMarginsExample
+  , whitespaceFullWidthExample, whitespaceExamples
   )
 
 
@@ -110,6 +125,35 @@ run Command.GenerateCodeblockWithTableExample = generateCodeblockWithTable
 
 run Command.GenerateFooter = generateFooter
 
+run Command.GenerateNavigationBlock = generateNavigationBlock
+
+run Command.GenerateNavigationBlockUsageExample =
+  generateNavigationBlockUsageExample
+
+run Command.GenerateNavigation = generateNavigation
+
+run Command.GenerateNavigationSpaceBetween = generateNavigationSpaceBetween
+
+run Command.GenerateRadioDefault = generateRadioDefault
+
+run Command.GenerateRadioPillInline = generateRadioPillInline
+
+run Command.GenerateRadioCheckbox = generateRadioCheckbox
+
+run Command.GenerateRadioCheckboxInline = generateRadioCheckboxInline
+
+run Command.GenerateSidePanel = generateSidePanel
+
+run Command.GenerateSidePanelUsageExample = generateSidePanelUsageExample
+
+run Command.GenerateSidebar = generateSidebar
+
+run Command.GenerateSidebarUsageExample = generateSidebarUsageExample
+
+run Command.GenerateStatusCodeError400 = generateStatusCodeError400
+
+run Command.GenerateStatusCodeError404 = generateStatusCodeError404
+
 run Command.GenerateTableDefault = generateTableDefault
 
 run Command.GenerateTableCompact = generateTableCompact
@@ -119,11 +163,43 @@ run Command.GenerateTableWithColumnDivider = generateTableWithColumnDivider
 run Command.GenerateTableWithColumnDividerCompact =
   generateTableWithColumnDividerCompact
 
+run Command.GenerateTitleJumbo = generateTitleJumbo
+
+run Command.GenerateTitleSubtitleJumbo = generateTitleSubtitleJumbo
+
+run Command.GenerateTitle = generateTitle
+
+run Command.GenerateTitleSubtitle = generateTitleSubtitle
+
+run Command.GenerateTitleJumboUsageExample = generateTitleJumboUsageExample
+
+run Command.GenerateTitleUsageExample = generateTitleUsageExample
+
+run Command.GenerateTypographyHeading1 = generateTypographyHeading1
+
+run Command.GenerateTypographyHeading2 = generateTypographyHeading2
+
+run Command.GenerateTypographyHeading3 = generateTypographyHeading3
+
+run Command.GenerateTypographyHeading4 = generateTypographyHeading4
+
+run Command.GenerateTypographyHeading5 = generateTypographyHeading5
+
+run Command.GenerateTypographyHeading6 = generateTypographyHeading6
+
+run Command.GenerateTypographyParagraph = generateTypographyParagraph
+
+run Command.GenerateTypographyUsageExample = generateTypographyUsageExample
+
+run Command.GenerateWhitespaceAutoWidth = generateWhitespaceAutoWidth
+
+run Command.GenerateWhitespaceNegativeMargins = generateWhitespaceNegativeMargins
+
+run Command.GenerateWhitespaceFullWidth = generateWhitespaceFullWidth
+
+run Command.GenerateWhitespaceExamples = generateWhitespaceExamples
+
 run Command.GenerateFormLogin = generateFormLogin
-
-run Command.GenerateNavigation = generateNavigation
-
-run Command.GenerateNavigationSpaceBetween = generateNavigationSpaceBetween
 
 run Command.GenerateLayoutDefault = generateLayoutDefault
 
@@ -433,6 +509,49 @@ generateCodeblockWithTable = putStr $ renderHtml codeblockWithTableExample
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
+generateNavigationBlock :: IO ()
+generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
+
+generateNavigationBlockUsageExample :: IO ()
+generateNavigationBlockUsageExample =
+  putStr $ renderHtml navigationBlockUsageExample
+
+generateNavigation :: IO ()
+generateNavigation = putStr $ renderHtml navigationNoteed
+
+generateNavigationSpaceBetween :: IO ()
+generateNavigationSpaceBetween = putStr $ renderHtml navigationNoteed'
+
+generateRadioDefault :: IO ()
+generateRadioDefault = putStr $ renderHtml radioDefaultExample
+
+generateRadioPillInline :: IO ()
+generateRadioPillInline = putStr $ renderHtml radioPillInlineExample
+
+generateRadioCheckbox :: IO ()
+generateRadioCheckbox = putStr $ renderHtml radioCheckboxExample
+
+generateRadioCheckboxInline :: IO ()
+generateRadioCheckboxInline = putStr $ renderHtml radioCheckboxInlineExample
+
+generateSidePanel :: IO ()
+generateSidePanel = putStr $ renderHtml sidePanelExample
+
+generateSidePanelUsageExample :: IO ()
+generateSidePanelUsageExample = putStr $ renderHtml sidePanelUsageExample
+
+generateSidebar :: IO ()
+generateSidebar = putStr $ renderHtml sidebarExample
+
+generateSidebarUsageExample :: IO ()
+generateSidebarUsageExample = putStr $ renderHtml sidebarUsageExample
+
+generateStatusCodeError400 :: IO ()
+generateStatusCodeError400 = putStr $ renderHtml statusCodeError400Example
+
+generateStatusCodeError404 :: IO ()
+generateStatusCodeError404 = putStr $ renderHtml statusCodeError404Example
+
 generateTableDefault :: IO ()
 generateTableDefault = putStr $ renderHtml tableDefaultExample
 
@@ -446,6 +565,60 @@ generateTableWithColumnDivider =
 generateTableWithColumnDividerCompact :: IO ()
 generateTableWithColumnDividerCompact =
   putStr $ renderHtml tableWithColumnDividerCompactExample
+
+generateTitleJumbo :: IO ()
+generateTitleJumbo = putStr $ renderHtml titleJumboExample
+
+generateTitleSubtitleJumbo :: IO ()
+generateTitleSubtitleJumbo = putStr $ renderHtml titleSubtitleJumboExample
+
+generateTitle :: IO ()
+generateTitle = putStr $ renderHtml titleDefaultExample
+
+generateTitleSubtitle :: IO ()
+generateTitleSubtitle = putStr $ renderHtml titleSubtitleDefaultExample
+
+generateTitleJumboUsageExample :: IO ()
+generateTitleJumboUsageExample = putStr $ renderHtml titleJumboUsageExample
+
+generateTitleUsageExample :: IO ()
+generateTitleUsageExample = putStr $ renderHtml titleDefaultUsageExample
+
+generateTypographyHeading1 :: IO ()
+generateTypographyHeading1 = putStr $ renderHtml typographyHeading1Example
+
+generateTypographyHeading2 :: IO ()
+generateTypographyHeading2 = putStr $ renderHtml typographyHeading2Example
+
+generateTypographyHeading3 :: IO ()
+generateTypographyHeading3 = putStr $ renderHtml typographyHeading3Example
+
+generateTypographyHeading4 :: IO ()
+generateTypographyHeading4 = putStr $ renderHtml typographyHeading4Example
+
+generateTypographyHeading5 :: IO ()
+generateTypographyHeading5 = putStr $ renderHtml typographyHeading5Example
+
+generateTypographyHeading6 :: IO ()
+generateTypographyHeading6 = putStr $ renderHtml typographyHeading6Example
+
+generateTypographyParagraph :: IO ()
+generateTypographyParagraph = putStr $ renderHtml typographyParagraphExample
+
+generateTypographyUsageExample :: IO ()
+generateTypographyUsageExample = putStr $ renderHtml typographyUsageExample
+
+generateWhitespaceAutoWidth :: IO ()
+generateWhitespaceAutoWidth = putStr $ renderHtml whitespaceAutoWidthExample
+
+generateWhitespaceNegativeMargins :: IO ()
+generateWhitespaceNegativeMargins = putStr $ renderHtml whitespaceNegativeMarginsExample
+
+generateWhitespaceFullWidth :: IO ()
+generateWhitespaceFullWidth = putStr $ renderHtml whitespaceFullWidthExample
+
+generateWhitespaceExamples :: IO ()
+generateWhitespaceExamples = putStr $ renderHtml whitespaceExamples
 
 
 ------------------------------------------------------------------------------
@@ -594,12 +767,6 @@ tableWithColumnDividerCompactExample = tableWithColumnDividerCompact
 
 generateFormLogin :: IO ()
 generateFormLogin = putStr (renderHtml loginForm)
-
-generateNavigation :: IO ()
-generateNavigation = putStr (renderHtml (navigationNoteed))
-
-generateNavigationSpaceBetween :: IO ()
-generateNavigationSpaceBetween = putStr (renderHtml (navigationNoteed'))
 
 generateLayoutDefault :: IO ()
 generateLayoutDefault = putStr (renderHtml (nav ""))

@@ -707,8 +707,8 @@ navigationSpaceBetween =
 
 
 ------------------------------------------------------------------------------
-radioDefault :: Html
-radioDefault =
+radioDefaultExample :: Html
+radioDefaultExample =
   H.div ! A.class_ "db" $ do
     H.label ! A.class_ "flex items-center mb2 flex" $ do
       H.input ! A.type_ "radio"
@@ -730,8 +730,8 @@ radioDefault =
               ! A.value "cherry"
       H.div ! A.class_ "ml1" $ "Cherry"
 
-radioPillInline :: Html
-radioPillInline =
+radioPillInlineExample :: Html
+radioPillInlineExample =
   H.div ! A.class_ "flex items-center" $ do
     H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
       H.input ! A.type_ "radio"
@@ -753,8 +753,8 @@ radioPillInline =
               ! A.value "cherry"
       H.div ! A.class_ "ml1" $ "Cherry"
 
-radioCheckbox :: Html
-radioCheckbox =
+radioCheckboxExample :: Html
+radioCheckboxExample =
   H.div ! A.class_ "db" $ do
     H.label ! A.class_ "flex items-center mb2 flex" $ do
       H.input ! A.type_ "radio"
@@ -776,8 +776,8 @@ radioCheckbox =
               ! A.value "cherry"
       H.div ! A.class_ "ml1" $ "Cherry"
 
-radioCheckboxInline :: Html
-radioCheckboxInline =
+radioCheckboxInlineExample :: Html
+radioCheckboxInlineExample =
   H.div ! A.class_ "flex items-center" $ do
     H.label ! A.class_ "flex items-center mr3 inline-flex" $ do
       H.input ! A.type_ "radio"
@@ -827,8 +827,8 @@ sidebarUsageExample = exampleSidebar
 
 
 ------------------------------------------------------------------------------
-statusCodeError400 :: Html
-statusCodeError400 =
+statusCodeError400Example :: Html
+statusCodeError400Example =
   H.div ! A.class_ "flex items-center justify-center vh-100 mw8 center pa4" $
     H.div $ do
       H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Status"
@@ -841,7 +841,7 @@ statusCodeError400 =
           H.div $
             H.div $ do
               H.p ! A.class_ "f5 lh-copy mv3" $
-                "Looks like the page you&#x27;re looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
+                "Looks like the page you're looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
               H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
                 H.li ! A.class_ "mv1" $
                   H.a ! A.class_ "no-underline hy-hover-blue"
@@ -864,8 +864,8 @@ statusCodeError400 =
                       ! A.href "haddock/"
                       $ "Haddock"
 
-statusCodeError404 :: Html
-statusCodeError404 =
+statusCodeError404Example :: Html
+statusCodeError404Example =
   H.div ! A.class_ "flex items-center justify-center vh-100 mw8 center pa4" $
     H.div $ do
       H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Status"
@@ -878,7 +878,7 @@ statusCodeError404 =
           H.div $
             H.div $ do
               H.p ! A.class_ "f5 lh-copy mv3" $
-                "Looks like the page you&#x27;re looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
+                "Looks like the page you're looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
               H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
                 H.li ! A.class_ "mv1" $
                   H.a ! A.class_ "no-underline hy-hover-blue"
@@ -1084,32 +1084,32 @@ titleDefaultUsageExample =
 
 
 --------------------------------------------------------------------------------
-typographyHeading1 :: Html
-typographyHeading1 =
+typographyHeading1Example :: Html
+typographyHeading1Example =
   H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Heading 1"
 
-typographyHeading2 :: Html
-typographyHeading2 =
+typographyHeading2Example :: Html
+typographyHeading2Example =
   H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Heading 2"
 
-typographyHeading3 :: Html
-typographyHeading3 =
+typographyHeading3Example :: Html
+typographyHeading3Example =
   H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Heading 3"
 
-typographyHeading4 :: Html
-typographyHeading4 =
+typographyHeading4Example :: Html
+typographyHeading4Example =
   H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Heading 4"
 
-typographyHeading5 :: Html
-typographyHeading5 =
+typographyHeading5Example :: Html
+typographyHeading5Example =
   H.h5 ! A.class_ "f5 lh-title mv2" $ "Heading 5"
 
-typographyHeading6 :: Html
-typographyHeading6 =
+typographyHeading6Example :: Html
+typographyHeading6Example =
   H.h6 ! A.class_ "f6 lh-title mv2 ttu" $ "Heading 6"
 
-typographyParagraph :: Html
-typographyParagraph =
+typographyParagraphExample :: Html
+typographyParagraphExample =
   H.p ! A.class_ "f5 lh-copy mv3" $
    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin malesuada est. Sed efficitur laoreet massa, eu dictum est luctus sit amet. Morbi elementum dapibus pellentesque. Sed varius nisi nisi, nec imperdiet nunc bibendum at. Maecenas bibendum, neque nec vehicula dignissim, sem dolor congue risus, ac consequat sapien nibh in felis. Suspendisse at est a nisl dictum condimentum. Suspendisse ut dolor vitae nisi dictum hendrerit a vel magna. Etiam porttitor lacus magna, non bibendum tellus lobortis sit amet. Duis quis lectus massa. Nam quis fringilla dui. Fusce felis leo, iaculis id dui eu, lacinia varius dolor. Praesent molestie rhoncus mi, ac malesuada neque placerat vitae. Aliquam placerat auctor pretium. Mauris egestas condimentum erat sit amet tempor. Quisque imperdiet, augue nec eleifend placerat, lacus tortor pellentesque metus, sit amet laoreet lectus enim et mauris. Vivamus sollicitudin a ex sit amet ullamcorper."
 
@@ -1130,8 +1130,8 @@ typographyUsageExample =
 
 
 --------------------------------------------------------------------------------
-whitespaceAutoWidth :: Html
-whitespaceAutoWidth =
+whitespaceAutoWidthExample :: Html
+whitespaceAutoWidthExample =
   H.div ! A.class_ "flex justify-center mb4" $
     H.div ! A.class_ "h5 w-auto self-center" $
       H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
@@ -1145,8 +1145,8 @@ whitespaceAutoWidth =
             ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
             $ "Hypered Design System"
 
-whitespaceNegativeMargins :: Html
-whitespaceNegativeMargins =
+whitespaceNegativeMarginsExample :: Html
+whitespaceNegativeMarginsExample =
   H.div ! A.class_ "nl4 nr4 mb4" $
     H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
       H.div ! A.class_ "flex flex-column justify-between pa4" $ do
@@ -1156,13 +1156,13 @@ whitespaceNegativeMargins =
           H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
             "Description"
           H.p ! A.class_ "f5 lh-copy mv1" $
-            "This box has negative margins and should extend beyond its parent&#x27;s container."
+            "This box has negative margins and should extend beyond its parent's container."
       H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
           ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
           $ "Hypered Design System"
 
-whitespaceFullWidth :: Html
-whitespaceFullWidth =
+whitespaceFullWidthExample :: Html
+whitespaceFullWidthExample =
   H.div ! A.class_ "w-100" $
     H.div ! A.class_ "bg-navy light-green flex justify-between h5" $ do
       H.div ! A.class_ "flex flex-column justify-between pa4" $ do
@@ -1171,7 +1171,7 @@ whitespaceFullWidth =
           H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
             "Description"
           H.p ! A.class_ "f5 lh-copy mv1" $
-            "This box takes up the full width of its parent&#x27;s container."
+            "This box takes up the full width of its parent's container."
       H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
           ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
           $ "Hypered Design System"
@@ -1218,7 +1218,7 @@ whitespaceExamples =
                   H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
                     "Description"
                   H.p ! A.class_ "f5 lh-copy mv1" $
-                    "This box has negative margins and should extend beyond its parent&#x27;s container."
+                    "This box has negative margins and should extend beyond its parent's container."
               H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
                   ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
                   $ "Hypered Design System"
@@ -1231,7 +1231,7 @@ whitespaceExamples =
                   H.p ! A.class_ "f7 b tracked lh-copy ttu mv1 o-50" $
                     "Description"
                   H.p ! A.class_ "f5 lh-copy mv1" $
-                    "This box takes up the full width of its parent&#x27;s container."
+                    "This box takes up the full width of its parent's container."
               H.b ! A.class_ "flex items-center justify-start pa3 bl f6"
                   ! A.style "writing-mode:vertical-lr;text-orientation:mixed"
                   $ "Hypered Design System"
