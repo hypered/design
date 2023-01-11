@@ -147,11 +147,14 @@ generateGuide = do
     H.ul $ do
       mapM_
         (\(cat, variants) ->
-          mapM_
-            (\(variant, href, f) ->
-              H.li $ H.a ! A.href (H.toValue href) $
-                H.text $ cat <> ", " <> variant)
-            variants)
+          H.li $ do
+            H.text cat
+            H.ul $
+              mapM_
+                (\(variant, href, f) ->
+                  H.li $ H.a ! A.href (H.toValue href) $
+                    H.text $ cat <> ", " <> variant)
+                variants)
         guideData
 
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
