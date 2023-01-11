@@ -8,7 +8,7 @@ import {
   H3,
   H4,
   P,
-  Code,
+  Codeblock,
   BlockQuote,
   PullQuote,
   Divider,
@@ -59,14 +59,14 @@ export const BlogPostLayout = props => (
 
         <H4>Some quotes</H4>
 
-        <Code>{`┌──────────────────────────────────┬─────────┬────────────────┐
+        <Codeblock>{`┌──────────────────────────────────┬─────────┬────────────────┐
 │               Col1               │  Col2   │ Numeric Column │
 ├──────────────────────────────────┼─────────┼────────────────┤
 │ Value 1                          │ Value 2 │           10.0 │
 │ Separate                         │ cols    │       -2,027.1 │
 │ This is a row with only one cell │         │                │
 └──────────────────────────────────┴─────────┴────────────────┘
-`}</Code>
+`}</Codeblock>
         <BlockQuote>
           To follow along, you can clone the Git repository and run each
           nix-build command as they appear at the top of each page.

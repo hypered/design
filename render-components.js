@@ -34,7 +34,7 @@ var BlockQuote = require("./components/BlockQuote/BlockQuote.stories");
 var Button = require("./components/Button/Button.stories");
 var ButtonLink = require("./components/ButtonLink/ButtonLink.stories");
 var Checkbox = require("./components/Checkbox/Checkbox.stories");
-var Code = require("./components/Code/Code.stories");
+var Codeblock = require("./components/Codeblock/Codeblock.stories");
 var colours = require("./components/Colours/Colours.stories");
 var Dropdown = require("./components/Dropdown/Dropdown.stories");
 var Footer = require("./components/Footer/Footer.stories");
@@ -176,20 +176,20 @@ case 'checkbox--default':
   render(Checkbox.Default());
   break;
 
-case 'code--code-block':
-  render(Code.CodeBlock());
+case 'codeblock--default':
+  render(Codeblock.Default());
   break;
 
-case 'code--editable':
-  render(Code.Editable());
+case 'codeblock--editable':
+  render(Codeblock.Editable());
   break;
 
-case 'code--with-table':
-  render(Code.WithTable());
+case 'codeblock--with-table':
+  render(Codeblock.WithTable());
   break;
 
-case 'code--with-toolbar':
-  render(Code.WithToolbar());
+case 'codeblock--with-toolbar':
+  render(Codeblock.WithToolbar());
   break;
 
 case 'colours--background':

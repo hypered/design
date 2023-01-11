@@ -22,7 +22,7 @@ const Button = () => (
   </div>
 );
 
-export const CodeBlock = () => (
+export const Default = () => (
   <Code>{`// this is a comment
 // this is another comment
 // this is a slightly longer comment

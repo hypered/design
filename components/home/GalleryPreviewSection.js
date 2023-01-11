@@ -10,7 +10,7 @@ import {
   BannerGreen,
   BannerYellow,
   BannerRed,
-  Code,
+  Codeblock,
   NavBlockWrapper,
   Table,
   TR,

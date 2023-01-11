@@ -13,7 +13,7 @@ import {
   Checkbox,
   Dropdown,
   Option,
-  Code,
+  Codeblock,
   NavBlockWrapper,
   Table,
   TR,
@@ -161,9 +161,9 @@ export const ComponentsSection = props => (
         href="../storybook/?path=/story/code-block--code-block"
       >
         <div className="w-100">
-          <Code>{`.tachyons {
+          <Codeblock>{`.tachyons {
   display: block;
-}`}</Code>
+}`}</Codeblock>
         </div>
       </Gallery>
 

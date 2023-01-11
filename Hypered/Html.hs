@@ -395,13 +395,14 @@ checkboxPill content =
 
 
 --------------------------------------------------------------------------------
--- TODO When pretty-printing the HTML, the first line within the code element
--- is indented, which is not correct.
-codeBlock :: Html
-codeBlock = H.pre ! A.class_ "pre overflow-auto" $ H.code $
-  "// this is a comment\n\
-  \// this is another comment\n\
-  \// this is a slightly longer comment\n"
+-- When pretty-printing the HTML with a H.code element, the first line
+-- within the code element is indented, which is not correct. Instead use
+-- H.preEscapedToHtml to force what we want.
+codeBlock :: Text -> Html
+codeBlock content = H.pre ! A.class_ "pre overflow-auto" $ do
+  H.preEscapedToHtml @Text "<code class=\"code\">"
+  H.text content
+  H.preEscapedToHtml @Text "</code>"
 
 headTitle :: Html
 headTitle = H.title "Hypered"

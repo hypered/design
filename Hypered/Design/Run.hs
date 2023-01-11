@@ -25,7 +25,7 @@ import           Text.Blaze.Html.Renderer.Text (renderHtml)
 import Hypered.Html
   ( Font(IbmPlex)
   , anchorBlue, anchorBlack
-  , codeBlock, bannerGreen, bannerRed, bannerYellow
+  , bannerGreen, bannerRed, bannerYellow
   , blockquote, pullQuote, pullQuote'
   , buttonPrimary, buttonPrimaryLarge, buttonPrimaryDisabled
   , buttonSecondary, buttonSecondaryLarge, buttonSecondaryDisabled
@@ -34,6 +34,7 @@ import Hypered.Html
   , buttonLinkSecondary, buttonLinkSecondaryLarge, buttonLinkSecondaryDisabled
   , buttonLinkFullWidth
   , checkboxDefault, checkboxPill
+  , codeBlock
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -102,6 +103,8 @@ run Command.GenerateButtonLinkFullWidth = generateButtonLinkFullWidth
 run Command.GenerateCheckboxDefault = generateCheckboxDefault
 
 run Command.GenerateCheckboxPill = generateCheckboxPill
+
+run Command.GenerateCodeblock = generateCodeblock
 
 run Command.GenerateFooter = generateFooter
 
@@ -301,7 +304,7 @@ guideData =
       ])
 
   , ( "Code block"
-    , [ ("default", "code-block.html", const codeBlock)
+    , [ ("default", "codeblock--default.html", const codeblockExample)
       ])
 
   , ( "Footer"
@@ -418,6 +421,9 @@ generateCheckboxDefault = putStr $ renderHtml checkboxDefaultExample
 generateCheckboxPill :: IO ()
 generateCheckboxPill = putStr $ renderHtml checkboxPillExample
 
+generateCodeblock :: IO ()
+generateCodeblock = putStr $ renderHtml codeblockExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -528,6 +534,14 @@ checkboxDefaultExample = checkboxDefault "This is checked"
 
 checkboxPillExample :: Html
 checkboxPillExample = checkboxPill "This is checked"
+
+
+--------------------------------------------------------------------------------
+codeblockExample :: Html
+codeblockExample = codeBlock
+  "// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
 
 
 --------------------------------------------------------------------------------

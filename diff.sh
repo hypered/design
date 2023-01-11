@@ -37,6 +37,7 @@ for i in \
   buttonlink--full-width \
   checkbox--default \
   checkbox--pill \
+  codeblock--default \
   footer \
   nav \
   table--default \

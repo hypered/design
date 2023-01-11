@@ -13,7 +13,7 @@ export * from "./Banner/Banner";
 export * from "./Checkbox/Checkbox";
 export * from "./Radio/Radio";
 export * from "./Dropdown/Dropdown";
-export * from "./Code/Code";
+export * from "./Codeblock/Codeblock";
 export * from "./Form/Form";
 export * from "./BlockQuote/BlockQuote";
 export * from "./List/List";
