@@ -319,16 +319,19 @@ buttonPrimary = H.button
 
 buttonPrimaryDisabled :: Html -> Html
 buttonPrimaryDisabled = H.button
-  ! A.class_ "button-reset ph4 pv3 bg-black white ba bw1 b--black o-50"
+  ! A.class_ "bg-black b--black white hover-light-green ph4 pv3 o-50 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "primary"
   ! A.disabled ""
 
 buttonSecondary :: Html -> Html
 buttonSecondary = H.button
-  ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black"
+  ! A.class_ "bg-white hover-bg-light-gray b--black black ph4 pv3 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "secondary"
 
 buttonSecondaryDisabled :: Html -> Html
 buttonSecondaryDisabled = H.button
-  ! A.class_ "button-reset ph4 pv3 bg-white black ba bw1 b--black o-50"
+  ! A.class_ "bg-white hover-bg-light-gray b--black black ph4 pv3 o-50 pointer inline-flex button-reset ba bw1 relative"
+  ! customAttribute "variant" "secondary"
   ! A.disabled ""
 
 buttonFullWidth :: Html -> Html

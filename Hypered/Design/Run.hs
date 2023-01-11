@@ -151,7 +151,7 @@ generateGuide = do
             H.text cat
             H.ul $
               mapM_
-                (\(variant, href, f) ->
+                (\(variant, href, _) ->
                   H.li $ H.a ! A.href (H.toValue href) $
                     H.text $ cat <> ", " <> variant)
                 variants)
@@ -180,7 +180,7 @@ generateGuide = do
   mapM_
     (\(cat, variants) ->
       mapM_
-        (\(variant, href, f) ->
+        (\(_, href, f) ->
           generate href ("Hypered style guide - " <> cat) f)
         variants)
     guideData
@@ -402,13 +402,13 @@ buttonPrimaryExample :: Html
 buttonPrimaryExample = buttonPrimary "Primary Button"
 
 buttonPrimaryDisabledExample :: Html
-buttonPrimaryDisabledExample = buttonPrimaryDisabled "Primary Button"
+buttonPrimaryDisabledExample = buttonPrimaryDisabled "Primary Disabled"
 
 buttonSecondaryExample :: Html
 buttonSecondaryExample = buttonSecondary "Secondary Button"
 
 buttonSecondaryDisabledExample :: Html
-buttonSecondaryDisabledExample = buttonSecondaryDisabled "Secondary Button"
+buttonSecondaryDisabledExample = buttonSecondaryDisabled "Secondary Disabled"
 
 buttonFullWidthExample :: Html
 buttonFullWidthExample = buttonFullWidth "Primary Button"

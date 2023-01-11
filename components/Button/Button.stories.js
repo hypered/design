@@ -18,7 +18,7 @@ export const primaryLarge = props => (
 );
 
 export const primaryDisabled = props => (
-  <Button variant="primary" size="normal" disabled="true">
+  <Button variant="primary" size="normal" disabled={true}>
     Primary Disabled
   </Button>
 );
@@ -36,8 +36,8 @@ export const secondaryLarge = props => (
 );
 
 export const secondaryDisabled = props => (
-  <Button variant="secondary" size="normal" disabled="true">
-    Secondary Disabled Button
+  <Button variant="secondary" size="normal" disabled={true}>
+    Secondary Disabled
   </Button>
 );
 

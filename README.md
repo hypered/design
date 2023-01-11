@@ -13,7 +13,8 @@ was the `Next.js` + Tachyons.
 - Pugs + ITCSS. This should be the reference implementation at some point,
   especially as it is created alongside a Figma file (which should be the
   source of truth).
-- `blaze-html` (Haskell)
+- `blaze-html` (Haskell). A script [`diff.sh`](diff.sh) ensures the generated
+  code is similar to the Next.js implementation.
 - static HTML snippets
 - Pandoc templates
 - Scripts to modify Haddock results

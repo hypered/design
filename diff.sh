@@ -20,8 +20,11 @@ for i in \
   blockquote--pull-quote-example \
   blockquote--with-optional-pull-quote-example \
   button--primary \
-  nav \
+  button--primary-disabled \
+  button--secondary \
+  button--secondary-disabled \
   footer \
+  nav \
   table--default \
   table--compact \
   table--with-column-divider \
@@ -35,3 +38,5 @@ do
   node render-components $i > b
   diff -u a b
 done
+
+rm a b
