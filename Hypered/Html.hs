@@ -412,6 +412,68 @@ codeBlock content = H.pre ! A.class_ "pre overflow-auto" $ do
   H.text content
   H.preEscapedToHtml @Text "</code>"
 
+
+--------------------------------------------------------------------------------
+colorText :: Html
+colorText = do
+  H.div ! A.class_ "hy-blue mb3" $ "Hypered"
+  H.div ! A.class_ "hy-red mb3" $ "Hypered"
+  H.div ! A.class_ "hy-green mb3" $ "Hypered"
+  H.div ! A.class_ "hy-yellow mb3" $ "Hypered"
+
+colorBackground :: Html
+colorBackground = do
+  H.div ! A.class_ "flex items-center mb3" $ do
+    H.div ! A.class_ "hy-bg-blue w2 h2 mr2" $ ""
+    H.div "Blue"
+  H.div ! A.class_ "flex items-center mb3" $ do
+    H.div ! A.class_ "hy-bg-red w2 h2 mr2" $ ""
+    H.div "Red"
+  H.div ! A.class_ "flex items-center mb3" $ do
+    H.div ! A.class_ "hy-bg-green w2 h2 mr2" $ ""
+    H.div "Green"
+  H.div ! A.class_ "flex items-center mb3" $ do
+    H.div ! A.class_ "hy-bg-yellow w2 h2 mr2" $ ""
+    H.div "Yellow"
+
+colorSamples :: Html
+colorSamples =
+  H.div ! A.class_ "pa4" $
+    H.div ! A.class_ "flex flex-wrap nl2 nr2 mw8" $
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $ do
+        H.div ! A.class_ "hy-bg-blue light-green aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-red light-yellow aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-green black aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-yellow hy-red aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-blue white aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-red white aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-green white aspect-ratio aspect-ratio--4x3 relative" $
+          card
+        H.div ! A.class_ "hy-bg-yellow white aspect-ratio aspect-ratio--4x3 relative" $
+          card
+ where
+  card =
+    H.div ! A.class_ "aspect-ratio--object flex items-stretch" $ do
+      H.div ! A.class_ "flex flex-column justify-between pa4 h-100" $ do
+        H.h2 ! A.class_ "f2 f1-m f1-l mv2 fw6 tracked-tight lh-title" $ do
+          "Samples"
+          H.span ! A.class_ "o-50" $ "↗"
+        H.p ! A.class_ "f6 f5-m f5-l lh-copy" $
+          "The user interface (UI), in the industrial design field of human-computer interaction, is the space where interactions between humans and machines occur."
+      H.div ! A.class_ "bl w4" $
+        H.div ! A.class_ "flex justify-between items-center pa3 h-100"
+              ! A.style "writing-mode:vertical-lr;text-orientation:mixed" $ do
+          H.div ! A.class_ "b" $ "Hypered Design System"
+          H.div $ "Volume 001"
+
+
+--------------------------------------------------------------------------------
 headTitle :: Html
 headTitle = H.title "Hypered"
 
@@ -512,7 +574,7 @@ exampleSidePanel = do
       H.header $
         navigationNoteedX
       -- H.main $
-      id $ -- TODO I think H.main should be present.
+      identity $ -- TODO I think H.main should be present.
         H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
           H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
             H.article $ do
