@@ -153,12 +153,6 @@ generateGuide = do
 
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
 
-      H.li $ H.a ! A.href "button--primary.html" $ "Button, primary"
-      H.li $ H.a ! A.href "button--primary-disabled.html" $ "Button, primary disabled"
-      H.li $ H.a ! A.href "button--secondary.html" $ "Button, secondary"
-      H.li $ H.a ! A.href "button--secondary-disabled.html" $ "Button, secondary disabled"
-      H.li $ H.a ! A.href "button--full-width.html" $ "Button, full width"
-
       H.li $ H.a ! A.href "code-block.html" $ "Code block"
 
       H.li $ H.a ! A.href "form--login.html" $ "Form, login"
@@ -192,19 +186,6 @@ generateGuide = do
   -- This is mostly header / nav / a, a, ...
 
   generate "navigation.html" "Hypered style guide - Navigation" navigation
-
-  -- Button
-
-  generate "button--primary.html" "Hypered style guide - Button"
-    (const buttonPrimaryExample)
-  generate "button--primary-disabled.html" "Hypered style guide - Button"
-    (const buttonPrimaryDisabledExample)
-  generate "button--secondary.html" "Hypered style guide - Button"
-    (const buttonSecondaryExample)
-  generate "button--secondary-disabled.html" "Hypered style guide - Button"
-    (const buttonSecondaryDisabledExample)
-  generate "button--full-width.html" "Hypered style guide - Button"
-    (const buttonFullWidthExample)
 
   -- Code block
 
@@ -270,6 +251,14 @@ guideData =
   , ("Block quote", "optional pull quote"
     , "blockquote--with-optional-pull-quote-example.html"
     , const blockquoteWithOptionalPullQuoteExample)
+
+  -- Button
+
+  , ("Button", "primary", "button--primary.html", const buttonPrimaryExample)
+  , ("Button", "primary disabled", "button--primary-disabled.html", const buttonPrimaryDisabledExample)
+  , ("Button", "secondary", "button--secondary.html", const buttonSecondaryExample)
+  , ("Button", "secondary disabled", "button--secondary-disabled.html", const buttonSecondaryDisabledExample)
+  , ("Button", "full width", "button--full-width.html", const buttonFullWidthExample)
   ]
 
 
