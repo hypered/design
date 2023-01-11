@@ -474,6 +474,357 @@ colorSamples =
 
 
 --------------------------------------------------------------------------------
+containerWithLabelDefault :: Html
+containerWithLabelDefault =
+  H.div ! A.class_ "pa6 mw7 center" $
+    H.div $ do
+      H.label ! A.class_ "dib bg-red white f6 mv0 pv1 ph2" $ "Warning!"
+      H.div ! A.class_ "ba b--red debug-grid-16" $
+        H.div ! A.class_ "aspect-ratio aspect-ratio--3x4 relative" $
+          H.div ! A.class_ "aspect-ratio--object pa4" $ do
+            H.h2 ! A.class_ "f-headline fw9 tracked-tight lh-title mv3" $ "Error 50x"
+            H.p ! A.class_ "f5 lh-copy mv3" $
+              "Looks like the page that you're looking for is not available. Please click here to return to the home page."
+
+
+--------------------------------------------------------------------------------
+dropdownDefault :: Html
+dropdownDefault =
+  H.select ! A.class_ "hy-dropdown br1 black ba b--black bw1 br0 pv2 f6" $ do
+    H.option ! A.value "" $ "Select from dropdown"
+    H.option ! A.value "apple" $ "Apple"
+    H.option ! A.value "banana" $ "Banana"
+    H.option ! A.value "cherry" $ "Cherry"
+
+
+--------------------------------------------------------------------------------
+footerDefault :: Html
+footerDefault = footer ""
+
+
+--------------------------------------------------------------------------------
+horizontalRuleDefault :: Html
+horizontalRuleDefault =
+  H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+
+horizontalRuleDivider :: Html
+horizontalRuleDivider =
+  H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+
+
+--------------------------------------------------------------------------------
+imageDefault :: Html
+imageDefault =
+  H.figure ! A.class_ "mv0" $
+    H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+
+imageNegativePull :: Html
+imageNegativePull =
+  H.figure ! A.class_ "mv0 nl4 nr4" $
+    H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+
+imageFullWidth :: Html
+imageFullWidth =
+  H.figure ! A.class_ "mv0 w-100 mh0" $
+    H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+
+imageWithCaption :: Html
+imageWithCaption =
+  H.figure ! A.class_ "mv0" $ do
+    H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+    H.figcaption ! A.class_ "f6 gray mv1 tc" $
+      "This is a placeholder image."
+
+imageExamples :: Html
+imageExamples =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+              "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      H.main $
+        H.article ! A.class_ "mw7 cf" $ do
+          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
+            "Using the Image component"
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "In this example we will be exploring different ways of using the Image component. There are three variations of the Image component namely; "
+            H.i "default"
+            ", "
+            H.i "negative pull"
+            ", and, "
+            H.i "full-width"
+            ". There is also an optional option should you need to add one."
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
+            "Default"
+          H.figure ! A.class_ "mv0" $ do
+            H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
+            "With Caption"
+          H.figure ! A.class_ "mv0" $ do
+            H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+            H.figcaption ! A.class_ "f6 gray mv1 tc" $
+              "This is an image with a caption."
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
+            "With Negative Pull"
+          H.figure ! A.class_ "mv0 nl4 nr4" $ do
+            H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+            H.figcaption ! A.class_ "f6 gray mv1 tc" $
+              "This is an image with negative margins applied to it."
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
+            "Full Width Image"
+          H.figure ! A.class_ "mv0 w-100 mh0" $ do
+            H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
+            H.figcaption ! A.class_ "f6 gray mv1 tc" $
+              "This is an image that takes up the whole width of its parent."
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $
+        "© Hypered, 2019-2023."
+
+
+--------------------------------------------------------------------------------
+inputTextExample :: Html
+inputTextExample =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ "Full Name"
+      H.input ! A.type_ "text"
+              ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+              ! A.placeholder "John Appleseed"
+              ! A.label "Full Name"
+      H.div ! A.class_ "mv1 h1 red fw5" $ mempty
+
+inputPasswordExample :: Html
+inputPasswordExample =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ "Password"
+      H.input ! A.type_ "password"
+              ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+              ! A.value "hello, world"
+              ! A.label "Password"
+      H.div ! A.class_ "mv1 h1 red fw5" $ mempty
+
+inputNumberExample :: Html
+inputNumberExample =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ "Quantity"
+      H.input ! A.type_ "number"
+              ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+              ! A.value "20"
+              ! A.label "Quantity"
+      H.div ! A.class_ "mv1 h1 red fw5" $ mempty
+
+inputWithMessageExample :: Html
+inputWithMessageExample =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ "Email Address"
+      H.input ! A.type_ "email"
+              ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+              ! A.value "john.appleseed@gma"
+              ! A.label "Email Address"
+              ! customAttribute "message" "Not a valid email."
+      H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
+
+inputUsage :: Html
+inputUsage =
+  H.div ! A.class_ "mw6 pa4" $ do
+    H.div ! A.class_ "mv3" $
+      H.div ! A.class_ "mb3" $ do
+        H.label ! A.class_ "db fw6 mv1" $ "Full Name"
+        H.input ! A.type_ "text"
+                ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                ! A.placeholder "John Appleseed"
+                ! A.label "Full Name"
+        H.div ! A.class_ "mv1 h1 red fw5" $ mempty
+    H.div ! A.class_ "mv3" $
+      H.div ! A.class_ "mb3" $ do
+        H.label ! A.class_ "db fw6 mv1" $ "Email Address"
+        H.input ! A.type_ "email"
+                ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                ! A.value "john.appleseed@gma"
+                ! A.label "Email Address"
+                ! customAttribute "message" "Not a valid email."
+        H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
+    H.div ! A.class_ "mv3" $
+      H.div ! A.class_ "mb3" $ do
+        H.label ! A.class_ "db fw6 mv1" $ "Password"
+        H.input ! A.type_ "password"
+                ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                ! A.value "hello, world"
+                ! A.label "Password"
+        H.div ! A.class_ "mv1 h1 red fw5" $ mempty
+
+
+--------------------------------------------------------------------------------
+layoutDefault :: Html
+layoutDefault =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+              "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      "Content goes here"
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
+
+layoutBlogList :: Html
+layoutBlogList =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+              "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      H.main $ do
+        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "The Hypered Publication"
+        H.ul ! A.class_ "list pl0 mw6 mt4" $ do
+          H.li ! A.class_ "pv3" $ do
+            H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            H.time ! A.datetime "2018-12-08" $ "2019-08-21"
+            H.p ! A.class_ "f5 lh-copy mv3" $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            H.a ! A.href "#" ! A.class_ "black b no-underline" $ "Continue reading..."
+          H.li ! A.class_ "pv3" $ do
+            H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Exposing a local server through HAProxy using a reverse SSH tunnel"
+            H.time ! A.datetime "2018-12-08" $ "2019-08-21"
+            H.p ! A.class_ "f5 lh-copy mv3" $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            H.a ! A.href "#" ! A.class_ "black b no-underline" $ "Continue reading..."
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
+
+layoutBlogPost :: Html
+layoutBlogPost =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+              "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      H.main $ do
+        H.article ! A.class_ "mw7 cf" $ do
+          H.div ! A.class_ "mb4" $ do
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Introduction"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
+          H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
+            H.li ! A.class_ "mv1" $ "a kernel (config.system.build.kernel)"
+            H.li ! A.class_ "mv1" $ "an initrd (config.system.build.initialRamdisk)"
+            H.li ! A.class_ "mv1" $ "a rootfs (config.system.build.squashfs)"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
+          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Sub-points"
+          H.ol ! A.class_ "hy-ff-tab-num mv3" $ do
+            H.li ! A.class_ "mv1" $ "Item one"
+            H.li ! A.class_ "mv1" $ "Item two"
+            H.li ! A.class_ "mv1" $ "Item three"
+          H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Some quotes"
+          H.pre ! A.class_ "pre overflow-auto" $
+            H.code ! A.class_ "code" $
+             "┌──────────────────────────────────┬─────────┬────────────────┐\n\
+             \│               Col1               │  Col2   │ Numeric Column │\n\
+             \├──────────────────────────────────┼─────────┼────────────────┤\n\
+             \│ Value 1                          │ Value 2 │           10.0 │\n\
+             \│ Separate                         │ cols    │       -2,027.1 │\n\
+             \│ This is a row with only one cell │         │                │\n\
+             \└──────────────────────────────────┴─────────┴────────────────┘\n"
+          H.blockquote ! A.class_ "db bl bw2 pv2 ph3 ml0 mv4 lh-copy" $
+            H.span ! A.class_ "i" $
+              "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
+          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Ending points"
+          H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
+            H.span ! A.class_ "i" $
+              "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        H.aside ! A.class_ "mt4" $
+          H.nav ! A.class_ "bg-near-white pa4 db w-100 mw8 br1" $
+            H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+              H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+                H.h3 ! A.class_ "f5 ttu mv1" $ "Column 1"
+                H.ul ! A.class_ "list pl0 mb3 mt0" $
+                  links
+              H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+                H.h3 ! A.class_ "f5 ttu mv1" $ "Column 2"
+                H.ul ! A.class_ "list pl0 mb3 mt0" $
+                  links
+              H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+                H.h3 ! A.class_ "f5 ttu mv1" $ "Column 3"
+                H.ul ! A.class_ "list pl0 mb3 mt0" $
+                  links
+              H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+                H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 1)"
+                H.ul ! A.class_ "list pl0 mb3 mt0" $
+                  links
+                H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 2)"
+                H.ul ! A.class_ "list pl0 mb3 mt0" $ do
+                  H.li $
+                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+                  H.li $
+                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+                  H.li $
+                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
+ where
+  links = do
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Four"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Five"
+
+layoutWithSidebar :: Html
+layoutWithSidebar =
+  layoutBlogPost
+
+
+--------------------------------------------------------------------------------
+listOrderedExample :: Html
+listOrderedExample =
+  H.ol ! A.class_ "hy-ff-tab-num mv3" $ do
+    H.li ! A.class_ "mv1" $ "Apple"
+    H.li ! A.class_ "mv1" $ "Banana"
+    H.li ! A.class_ "mv1" $ "Cherry"
+    H.li ! A.class_ "mv1" $ "Durian"
+
+listUnorderedExample :: Html
+listUnorderedExample =
+  H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
+    H.li ! A.class_ "mv1" $ "Apple"
+    H.li ! A.class_ "mv1" $ "Banana"
+    H.li ! A.class_ "mv1" $ "Cherry"
+    H.li ! A.class_ "mv1" $ "Durian"
+
+
+--------------------------------------------------------------------------------
+-- TODO Modal
+
+
+--------------------------------------------------------------------------------
 headTitle :: Html
 headTitle = H.title "Hypered"
 
