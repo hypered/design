@@ -153,10 +153,6 @@ generateGuide = do
 
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
 
-      H.li $ H.a ! A.href "banner--green.html" $ "Banner, green"
-      H.li $ H.a ! A.href "banner--yellow.html" $ "Banner, yellow"
-      H.li $ H.a ! A.href "banner--red.html" $ "Banner, red"
-
       H.li $ H.a ! A.href "button--primary.html" $ "Button, primary"
       H.li $ H.a ! A.href "button--primary-disabled.html" $ "Button, primary disabled"
       H.li $ H.a ! A.href "button--secondary.html" $ "Button, secondary"
@@ -196,15 +192,6 @@ generateGuide = do
   -- This is mostly header / nav / a, a, ...
 
   generate "navigation.html" "Hypered style guide - Navigation" navigation
-
-  -- Banner
-
-  generate "banner--green.html" "Hypered style guide - Banner"
-    (const bannerGreenExample)
-  generate "banner--red.html" "Hypered style guide - Banner"
-    (const bannerRedExample)
-  generate "banner--yellow.html" "Hypered style guide - Banner"
-    (const bannerYellowExample)
 
   -- Button
 
@@ -265,8 +252,24 @@ generateGuide = do
 guideData :: [(Text, Text, FilePath, FilePath -> Html)]
 guideData =
   [
-    -- Anchor
+  -- Anchor
     ("Anchor", "blue", "a--blue.html", const anchorBlueExample)
+  , ("Anchor", "black", "a--black.html", const anchorBlackExample)
+
+  -- Banner
+
+  , ("Banner", "green", "banner--green.html", const bannerGreenExample)
+  , ("Banner", "red", "banner--red.html", const bannerRedExample)
+  , ("Banner", "yellow", "banner--yellow.html", const bannerYellowExample)
+
+  -- Block quote
+  , ("Block quote", "default", "blockquote--default.html"
+    , const blockquoteDefault)
+  , ("Block quote", "pull quote", "blockquote--pull-quote-example.html"
+    , const blockquotePullQuoteExample)
+  , ("Block quote", "optional pull quote"
+    , "blockquote--with-optional-pull-quote-example.html"
+    , const blockquoteWithOptionalPullQuoteExample)
   ]
 
 
