@@ -9,7 +9,7 @@ function norm {
   # blaze-html renders hr as <hr> while the react code uses <hr />.
   # Same for input.
   sed -e 's@<hr class="\(.*\)">@<hr class="\1" />@' \
-    | sed -e 's@<input type="\(.*\)" class="\(.*\)" checked="\(.*\)">@<input type="\1" class="\2" checked="\3" />@'
+    | sed -e 's@<input \(.*\)">@<input \1" />@'
 }
 
 for i in \
@@ -41,6 +41,14 @@ for i in \
   codeblock--with-table \
   footer \
   nav \
+  radio--pill \
+  radio--pill-inline \
+  radio--checkbox \
+  radio--checkbox-inline \
+  sidepanel--default \
+  sidepanel--usage \
+  sidebar--default \
+  sidebar--usage \
   table--default \
   table--compact \
   table--with-column-divider \

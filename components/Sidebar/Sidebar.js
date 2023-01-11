@@ -13,7 +13,7 @@ export const SidebarLI = props => <li>{props.children}</li>;
 
 export const SidebarLink = props => (
   <Link href={props.href}>
-    <A color="black">{props.children}</A>
+    <A href={props.href} color="black">{props.children}</A>
   </Link>
 );
 

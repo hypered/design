@@ -315,6 +315,60 @@ parser =
           )
 
       <> A.command
+          "radio--pill"
+          ( A.info (parserRadioDefault <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "radio--pill-inline"
+          ( A.info (parserRadioPillInline <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "radio--checkbox"
+          ( A.info (parserRadioCheckbox <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "radio--checkbox-inline"
+          ( A.info (parserRadioCheckboxInline <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+
+      <> A.command
+          "sidepanel--default"
+          ( A.info (parserSidePanel <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "sidepanel--usage"
+          ( A.info (parserSidePanelUsageExample <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+
+      <> A.command
+          "sidebar--default"
+          ( A.info (parserSidebar <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "sidebar--usage"
+          ( A.info (parserSidebarUsageExample <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+
+      <> A.command
+          "status-code--error-400"
+          ( A.info (parserStatusCodeError400 <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+      <> A.command
+          "status-code--error-404"
+          ( A.info (parserStatusCodeError404 <**> A.helper)
+          $ A.progDesc "Generate a component."
+          )
+
+      <> A.command
           "table--default"
           ( A.info (parserTableDefault <**> A.helper)
           $ A.progDesc "Generate a table example."
@@ -576,6 +630,36 @@ parserCodeblockWithTable = pure GenerateCodeblockWithTableExample
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
+
+parserRadioDefault :: A.Parser Command
+parserRadioDefault = pure GenerateRadioDefault
+
+parserRadioPillInline :: A.Parser Command
+parserRadioPillInline = pure GenerateRadioPillInline
+
+parserRadioCheckbox :: A.Parser Command
+parserRadioCheckbox = pure GenerateRadioCheckbox
+
+parserRadioCheckboxInline :: A.Parser Command
+parserRadioCheckboxInline = pure GenerateRadioCheckboxInline
+
+parserSidePanel :: A.Parser Command
+parserSidePanel = pure GenerateSidePanel
+
+parserSidePanelUsageExample :: A.Parser Command
+parserSidePanelUsageExample = pure GenerateSidePanelUsageExample
+
+parserSidebar :: A.Parser Command
+parserSidebar = pure GenerateSidebar
+
+parserSidebarUsageExample :: A.Parser Command
+parserSidebarUsageExample = pure GenerateSidebarUsageExample
+
+parserStatusCodeError400 :: A.Parser Command
+parserStatusCodeError400 = pure GenerateStatusCodeError400
+
+parserStatusCodeError404 :: A.Parser Command
+parserStatusCodeError404 = pure GenerateStatusCodeError404
 
 parserTableDefault :: A.Parser Command
 parserTableDefault = pure GenerateTableDefault

@@ -187,6 +187,14 @@ navigationNoteed =
       H.a ! A.class_ "link black hover-blue mr3" ! A.href "#" $ "blog"
       H.a ! A.class_ "link black hover-blue" ! A.href "#" $ "not-os"
 
+navigationNoteedX :: Html
+navigationNoteedX =
+  nav $
+    H.div $ do
+      H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $ "noteed.com"
+      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+
 navigationReesd :: Html
 navigationReesd =
   nav $
@@ -421,7 +429,7 @@ sidebarLI content =
 
 sidebarLink :: Html -> H.AttributeValue -> Html
 sidebarLink content href =
-  H.a ! A.class_ "link black hover-blue" ! A.href href $ content
+  H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href href $ content
 
 sidebar :: [(Html, [(Html, H.AttributeValue)])] -> Html
 sidebar xs =
@@ -468,61 +476,66 @@ exampleResetForm = do
   -- footer "© Hypered, 2020-2023."
 
 exampleSidebar :: Html
-exampleSidebar = do
-  H.header $
-    navigationNoteed
-  H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
-    sidebar
-      [ ("Intro", [("not-os", "#")])
-      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
-      , ("Values", [("command-line", "#"), ("root-modules", "#")])
-      ]
-    H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
-      H.article $ do
-        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
-        H.p ! A.class_ "f5 lh-copy mv3" $ do
-          "not-os is a minimal OS based on the Linux kernel, coreutils,"
-          "runit, and Nix. It is also the build script, written in Nix"
-          "expressions, to build such OS."
-        H.p ! A.class_ "f5 lh-copy mv3" $ do
-          "This is a project of Michael Bishop (cleverca22 on GitHub, clever on"
-          "IRC). I modified it just a bit to make it possible to generate this"
-          "documentation."
-        H.p ! A.class_ "f5 lh-copy mv3" $ do
-          "As a build tool, not-os uses nixpkgs and in particular the"
-          H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
-          "to build the three main components of a Linux-based operating"
-          "system:"
-  footer "© Võ Minh Thu, 2017-2023."
+exampleSidebar =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        navigationNoteedX
+      H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
+        sidebar
+          [ ("Intro", [("not-os", "#")])
+          , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+          , ("Values", [("command-line", "#"), ("root-modules", "#")])
+          ]
+        H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
+          H.article $ do
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
+            H.p ! A.class_ "f5 lh-copy mv3" $ do
+              "not-os is a minimal OS based on the Linux kernel, coreutils, "
+              "runit, and Nix. It is also the build script, written in Nix "
+              "expressions, to build such OS."
+            H.p ! A.class_ "f5 lh-copy mv3" $ do
+              "This is a project of Michael Bishop (cleverca22 on GitHub, clever on "
+              "IRC). I modified it just a bit to make it possible to generate this "
+              "documentation."
+            H.p ! A.class_ "f5 lh-copy mv3" $ do
+              "As a build tool, not-os uses nixpkgs and in particular the "
+              H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
+              " to build the three main components of a Linux-based operating "
+              "system:"
+    footer "© Hypered, 2019-2023."
 
 exampleSidePanel :: Html
 exampleSidePanel = do
-  H.header $
-    navigationNoteed
-  H.main $ do
-    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
-      H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
-        H.article $ do
-          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
-            "If neither a list of attribute names or a command are given,"
-            "Waveguide instrospects the Nix expression and builds all the"
-            "found attributes."
-      H.aside ! A.class_ "w-100 w-20-m w-20-l ph3 mt0 mt5-m mt5-l" $
-        H.div ! A.class_ "nl3 nr3" $ do
-          H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
-          H.ul ! A.class_ "bg-near-white list pa3" $ do
-            H.li ! A.class_ "pv1 bb b--black-10" $
-              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #001"
-            H.li ! A.class_ "pv1 bb b--black-10" $
-              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #002"
-            H.li ! A.class_ "pv1 bb b--black-10" $
-              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #003"
-            H.li ! A.class_ "pv1 bb b--black-10" $
-              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #004"
-            H.li ! A.class_ "pv1 bb b--black-10" $
-              H.a ! A.class_ "link no-underline black blue-hover" $ "→ #005"
-  footer "© Võ Minh Thu, 2017-2023."
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        navigationNoteedX
+      -- H.main $
+      id $ -- TODO I think H.main should be present.
+        H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+          H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
+            H.article $ do
+              H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
+              H.p ! A.class_ "f5 lh-copy mv3" $ do
+                "If neither a list of attribute names or a command are given, "
+                "Waveguide instrospects the Nix expression and builds all the "
+                "found attributes."
+          H.aside ! A.class_ "order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2" $
+            H.div ! A.class_ "" $ do
+              H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
+              H.ul ! A.class_ "bg-near-white list pa3" $ do
+                H.li ! A.class_ "pv1 bb b--black-10" $
+                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
+                H.li ! A.class_ "pv1 bb b--black-10" $
+                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
+                H.li ! A.class_ "pv1 bb b--black-10" $
+                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
+                H.li ! A.class_ "pv1 bb b--black-10" $
+                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
+                H.li ! A.class_ "pv1 bb b--black-10" $
+                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
+    footer "© Hypered, 2019-2023."
 
 
 ------------------------------------------------------------------------------
@@ -803,11 +816,20 @@ radioCheckboxInlineExample =
 ------------------------------------------------------------------------------
 sidePanelExample :: Html
 sidePanelExample =
-    sidebar
-      [ ("Intro", [("not-os", "#")])
-      , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
-      , ("Values", [("command-line", "#"), ("root-modules", "#")])
-      ]
+  H.aside ! A.class_ "order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2" $
+    H.div ! A.class_ "" $ do
+      H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
+      H.ul ! A.class_ "bg-near-white list pa3" $ do
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
+        H.li ! A.class_ "pv1 bb b--black-10" $
+          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
 
 sidePanelUsageExample :: Html
 sidePanelUsageExample = exampleSidePanel

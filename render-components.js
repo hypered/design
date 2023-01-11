@@ -304,19 +304,19 @@ case 'navigation--navigation-space-between':
   render(Navigation.NavigationSpaceBetween());
   break;
 
-case 'radio--default':
+case 'radio--pill':
   render(Radio.Default());
   break;
 
-case 'radio--radio-checkbox':
+case 'radio--checkbox':
   render(Radio.RadioCheckbox());
   break;
 
-case 'radio--radio-checkbox-inline':
+case 'radio--checkbox-inline':
   render(Radio.RadioCheckboxInline());
   break;
 
-case 'radio--radio-pill-inline':
+case 'radio--pill-inline':
   render(Radio.RadioPillInline());
   break;
 
@@ -324,7 +324,7 @@ case 'sidebar--default':
   render(Sidebar.Default());
   break;
 
-case 'sidebar--usage-example':
+case 'sidebar--usage':
   render(Sidebar.UsageExample());
   break;
 
@@ -332,7 +332,7 @@ case 'sidepanel--default':
   render(SidePanel.Default());
   break;
 
-case 'sidepanel--usage-example':
+case 'sidepanel--usage':
   render(SidePanel.UsageExample());
   break;
 

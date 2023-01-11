@@ -11,12 +11,8 @@ const options = [
   { id: "cherry", name: "Cherry" },
 ];
 
-export const Default = ({ props }) => {
-  const [checked, setChecked] = useState("apple");
-
-  function handleChecked(e) {
-    setChecked(e.target.value);
-  }
+export const Default = () => {
+  const checked = "apple";
 
   return (
     <Radio>
@@ -25,10 +21,9 @@ export const Default = ({ props }) => {
           type="radio"
           pill
           key={option.id}
-          checked={checked === option.id}
+          defaultChecked={checked === option.id}
           label={option.name}
           value={option.id}
-          onChange={e => handleChecked(e)}
           name="fruits"
         />
       ))}
@@ -37,11 +32,7 @@ export const Default = ({ props }) => {
 };
 
 export const RadioPillInline = () => {
-  const [checked, setChecked] = useState("apple");
-
-  function handleChecked(e) {
-    setChecked(e.target.value);
-  }
+  const checked = "apple";
 
   return (
     <Radio inline>
@@ -51,10 +42,9 @@ export const RadioPillInline = () => {
           pill
           inline
           key={option.id}
-          checked={checked === option.id}
+          defaultChecked={checked === option.id}
           label={option.name}
           value={option.id}
-          onChange={e => handleChecked(e)}
           name="fruits"
         />
       ))}
@@ -63,11 +53,7 @@ export const RadioPillInline = () => {
 };
 
 export const RadioCheckbox = () => {
-  const [checked, setChecked] = useState("apple");
-
-  function handleChecked(e) {
-    setChecked(e.target.value);
-  }
+  const checked = "apple";
 
   return (
     <Radio>
@@ -75,10 +61,9 @@ export const RadioCheckbox = () => {
         <Checkbox
           type="radio"
           key={option.id}
-          checked={checked === option.id}
+          defaultChecked={checked === option.id}
           label={option.name}
           value={option.id}
-          onChange={e => handleChecked(e)}
           name="fruits"
         />
       ))}
@@ -87,11 +72,7 @@ export const RadioCheckbox = () => {
 };
 
 export const RadioCheckboxInline = () => {
-  const [checked, setChecked] = useState("apple");
-
-  function handleChecked(e) {
-    setChecked(e.target.value);
-  }
+  const checked = "apple";
 
   return (
     <Radio inline>
@@ -100,10 +81,9 @@ export const RadioCheckboxInline = () => {
           type="radio"
           inline
           key={option.id}
-          checked={checked === option.id}
+          defaultChecked={checked === option.id}
           label={option.name}
           value={option.id}
-          onChange={e => handleChecked(e)}
           name="fruits"
         />
       ))}
