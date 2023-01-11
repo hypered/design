@@ -153,8 +153,6 @@ generateGuide = do
 
       H.li $ H.a ! A.href "navigation.html" $ "Navigation"
 
-      H.li $ H.a ! A.href "code-block.html" $ "Code block"
-
       H.li $ H.a ! A.href "form--login.html" $ "Form, login"
 
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
@@ -186,11 +184,6 @@ generateGuide = do
   -- This is mostly header / nav / a, a, ...
 
   generate "navigation.html" "Hypered style guide - Navigation" navigation
-
-  -- Code block
-
-  generate "code-block.html" "Hypered style guide - Code block"
-    (const codeBlock)
 
   -- Forms
 
@@ -259,6 +252,10 @@ guideData =
   , ("Button", "secondary", "button--secondary.html", const buttonSecondaryExample)
   , ("Button", "secondary disabled", "button--secondary-disabled.html", const buttonSecondaryDisabledExample)
   , ("Button", "full width", "button--full-width.html", const buttonFullWidthExample)
+
+  -- Code block
+
+  , ("Code block", "default", "code-block.html", const codeBlock)
   ]
 
 
