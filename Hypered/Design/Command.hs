@@ -22,10 +22,11 @@ data Command =
 
   | GenerateAnchorBlue
   | GenerateAnchorBlack
-  | GenerateNav
+
   | GenerateBannerGreen
   | GenerateBannerRed
   | GenerateBannerYellow
+
   | GenerateBlockquoteDefault
   | GenerateBlockquotePullQuoteExample
   | GenerateBlockquoteWithOptionalPullQuoteExample
@@ -52,11 +53,47 @@ data Command =
   | GenerateCodeblock
   | GenerateCodeblockWithTableExample
 
+  | GenerateColorText
+  | GenerateColorBackground
+  | GenerateColorSamples
+
+  | GenerateContainerWithLabel
+
+  | GenerateDropdown
+
   | GenerateFooter
+
+  | GenerateFormLogin
+
+  | GenerateHorizontalRule
+  | GenerateHorizontalRuleDivider
+
+  | GenerateImage
+  | GenerateImageNegativePull
+  | GenerateImageFullWidth
+  | GenerateImageWithCaption
+  | GenerateImageExamples
+
+  | GenerateInputText
+  | GenerateInputPassword
+  | GenerateInputNumber
+  | GenerateInputWithMessage
+  | GenerateInputExample
+
+  | GenerateLayout
+  | GenerateLayoutBlogList
+  | GenerateLayoutBlogPost
+  | GenerateLayoutWithSidebar
+
+  | GenerateListOrdered
+  | GenerateListUnordered
+
+  -- TODO Modal.
 
   | GenerateNavigationBlock
   | GenerateNavigationBlockUsageExample
 
+  | GenerateNav
   | GenerateNavigation
   | GenerateNavigationSpaceBetween
 
@@ -102,7 +139,6 @@ data Command =
 
     -- Stories from Storybook
 
-  | GenerateFormLogin
   | GenerateLayoutDefault
 
     -- Helpers to explore Storybook stories
