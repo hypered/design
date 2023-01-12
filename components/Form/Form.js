@@ -5,7 +5,7 @@ export const LoginContent = () => (
     <Input
       type="email"
       label="Email"
-      placeholder="john@doe.com"
+      placeholder="alice@example.com"
       message="You have entered an invalid email"
     />
     <Input type="password" label="Password" placeholder="" />

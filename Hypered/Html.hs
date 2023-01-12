@@ -577,6 +577,87 @@ footerDefault :: Html
 footerDefault = footer ""
 
 
+------------------------------------------------------------------------------
+-- | Login form
+-- https://hypered.design/storybook/?path=/story/form--login
+-- TODO See below.
+loginFormTODO :: Html
+loginFormTODO = do
+  H.form ! A.class_ "bg-white mw6"
+         $ do
+    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+      H.h2 "Log in to your account"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Email"
+          H.input ! A.type_ "email"
+                  ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.placeholder "alice@example.com"
+                  ! A.label "Email"
+          H.div ! A.class_ "mv1 h1 red fw5" $
+            "You have entered an invalid email"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Password"
+                  ! A.for "password"
+          H.input ! A.type_ "password"
+                  ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
+                  ! A.placeholder ""
+                  ! A.label "Password"
+          H.div ! A.class_ "mv1 h1 red fw5" $ ""
+      H.a ! A.class_ "black no-underline hy-hover-blue"
+          ! A.href "#"
+          $ "Forgot Password"
+    H.div ! A.class_ "flex justify-between" $ do
+      H.button ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
+               ! customAttribute "variant" "secondary"
+               $ "Sign Up"
+      H.button ! A.class_ "bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
+               ! customAttribute "variant" "primary"
+               $ "Log In —>"
+
+-- TODO Check if it is used somewhere. This is also probably a correct form,
+-- while the one above is maybe not.
+loginForm :: Html
+loginForm = do
+  H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/a/login"
+         $ do
+    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+      H.h2 "Log in to Reesd"
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Username"
+                  ! A.for "username"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+                  ! A.label "username"
+                  ! A.name "username"
+                  ! A.id "username"
+                  ! A.type_ "text"
+                  ! A.placeholder ""
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
+      H.div ! A.class_ "mv3" $
+        H.div ! A.class_ "mb3" $ do
+          H.label ! A.class_ "db fw6 mv1" $ "Password"
+                  ! A.for "password"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+                  ! A.label "password"
+                  ! A.name "password"
+                  ! A.id "password"
+                  ! A.type_ "password"
+                  ! A.placeholder ""
+          -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
+      H.a ! A.class_ "black no-underline hy-hover-blue"
+          ! A.href "/reset"
+          $ "Reset password"
+    H.div ! A.class_ "flex justify-between" $ do
+      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
+          ! A.href "/register"
+          $ "Register"
+      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log in —>"
+
+
 --------------------------------------------------------------------------------
 horizontalRuleDefault :: Html
 horizontalRuleDefault =
@@ -1029,48 +1110,6 @@ exampleSidePanel = do
 ------------------------------------------------------------------------------
 -- Forms
 ------------------------------------------------------------------------------
-
-------------------------------------------------------------------------------
--- | Login form
--- https://hypered.github.io/design/storybook/?path=/story/form--login
-loginForm :: Html
-loginForm = do
-  H.form ! A.class_ "bg-white mw6"
-         ! A.method "POST"
-         ! A.action "/a/login"
-         $ do
-    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Log in to Reesd"
-      H.div ! A.class_ "mv3" $
-        H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Username"
-                  ! A.for "username"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.label "username"
-                  ! A.name "username"
-                  ! A.id "username"
-                  ! A.type_ "text"
-                  ! A.placeholder ""
-          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
-      H.div ! A.class_ "mv3" $
-        H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Password"
-                  ! A.for "password"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.label "password"
-                  ! A.name "password"
-                  ! A.id "password"
-                  ! A.type_ "password"
-                  ! A.placeholder ""
-          -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
-      H.a ! A.class_ "black no-underline hy-hover-blue"
-          ! A.href "/reset"
-          $ "Reset password"
-    H.div ! A.class_ "flex justify-between" $ do
-      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
-          ! A.href "/register"
-          $ "Register"
-      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log in —>"
 
 -- | Register form
 registerForm :: Html

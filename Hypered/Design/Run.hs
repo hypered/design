@@ -40,10 +40,11 @@ import Hypered.Html
   , colorText, colorBackground, colorSamples
   , containerWithLabelDefault
   , dropdownDefault
+  , loginFormTODO
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
-  , generate, generate', loginForm
+  , generate, generate'
   , navigationBlockDefault, navigationBlockUsageExample
   , nav, navigationNoteed, navigationNoteed'
   , radioDefaultExample, radioPillInlineExample
@@ -156,6 +157,8 @@ run Command.GenerateDropdown = generateDropdown
 
 run Command.GenerateFooter = generateFooter
 
+run Command.GenerateFormLogin = generateFormLogin
+
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
 run Command.GenerateNavigationBlockUsage = generateNavigationBlockUsage
@@ -228,8 +231,6 @@ run Command.GenerateWhitespaceNegativeMargins = generateWhitespaceNegativeMargin
 run Command.GenerateWhitespaceFullWidth = generateWhitespaceFullWidth
 
 run Command.GenerateWhitespaceExamples = generateWhitespaceExamples
-
-run Command.GenerateFormLogin = generateFormLogin
 
 run Command.GenerateLayoutDefault = generateLayoutDefault
 
@@ -421,7 +422,7 @@ guideData =
       ])
 
   , ( "Form"
-    , [ ("login", "form--login.html", const loginForm)
+    , [ ("login", "form--login.html", const loginFormTODO)
       ])
 
   -- This is mostly header / nav / a, a, ...
@@ -576,6 +577,9 @@ generateDropdown = putStr $ renderHtml dropdownDefaultExample
 
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
+
+generateFormLogin :: IO ()
+generateFormLogin = putStr $ renderHtml loginFormTODO
 
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
@@ -895,9 +899,6 @@ tableWithColumnDividerCompactExample = tableWithColumnDividerCompact
 
 ------------------------------------------------------------------------------
 -- Stories from Storybook
-
-generateFormLogin :: IO ()
-generateFormLogin = putStr (renderHtml loginForm)
 
 generateLayoutDefault :: IO ()
 generateLayoutDefault = putStr (renderHtml (nav ""))

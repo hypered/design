@@ -51,6 +51,7 @@ for i in \
   container-with-label--default \
   dropdown--default \
   footer--default \
+  form--login \
   nav \
   radio--pill \
   radio--pill-inline \
@@ -86,7 +87,6 @@ for i in \
 do
   echo $i
   # I don't know why single quotes are escaped differently.
-  hypered-design $i > aa
   hypered-design $i | \
     node render-components pretty \
     | norm \
