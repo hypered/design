@@ -783,9 +783,8 @@ inputWithMessageExample =
       H.label ! A.class_ "db fw6 mv1" $ "Email Address"
       H.input ! A.type_ "email"
               ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-              ! A.value "john.appleseed@gma"
+              ! A.value "alice@example.com"
               ! A.label "Email Address"
-              ! customAttribute "message" "Not a valid email."
       H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
 
 inputUsage :: Html
@@ -804,9 +803,8 @@ inputUsage =
         H.label ! A.class_ "db fw6 mv1" $ "Email Address"
         H.input ! A.type_ "email"
                 ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                ! A.value "john.appleseed@gma"
+                ! A.value "alice@example.com"
                 ! A.label "Email Address"
-                ! customAttribute "message" "Not a valid email."
         H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
     H.div ! A.class_ "mv3" $
       H.div ! A.class_ "mb3" $ do

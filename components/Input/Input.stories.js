@@ -20,7 +20,7 @@ export const WithMessage = () => (
   <Input
     type="email"
     label="Email Address"
-    value="john.appleseed@example.com"
+    value="alice@example.com"
     message="Not a valid email."
   />
 );
@@ -31,7 +31,7 @@ export const Usage = () => (
     <Input
       type="email"
       label="Email Address"
-      value="john.appleseed@example.com"
+      value="alice@example.com"
       message="Not a valid email."
     />
     <Input type="password" label="Password" value="hello, world" />

@@ -61,6 +61,11 @@ for i in \
   image--full-width \
   image--with-caption \
   image--examples \
+  input--text \
+  input--password \
+  input--number \
+  input--with-message \
+  input--usage \
   nav \
   radio--pill \
   radio--pill-inline \

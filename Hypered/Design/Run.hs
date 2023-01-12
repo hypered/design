@@ -44,6 +44,8 @@ import Hypered.Html
   , hrDefault, hrDivider
   , imageDefault, imageNegativePull, imageFullWidth, imageWithCaption
   , imageExamples
+  , inputTextExample, inputPasswordExample, inputNumberExample
+  , inputWithMessageExample, inputUsage
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -175,6 +177,16 @@ run Command.GenerateImageFullWidth = generateImageFullWidth
 run Command.GenerateImageWithCaption = generateImageWithCaption
 
 run Command.GenerateImageExamples = generateImageExamples
+
+run Command.GenerateInputText = generateInputText
+
+run Command.GenerateInputPassword = generateInputPassword
+
+run Command.GenerateInputNumber = generateInputNumber
+
+run Command.GenerateInputWithMessage = generateInputWithMessage
+
+run Command.GenerateInputUsage = generateInputUsage
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
@@ -619,6 +631,21 @@ generateImageWithCaption = putStr $ renderHtml imageWithCaptionExample
 generateImageExamples :: IO ()
 generateImageExamples = putStr $ renderHtml imageExamples
 
+generateInputText :: IO ()
+generateInputText = putStr $ renderHtml inputTextExample
+
+generateInputPassword :: IO ()
+generateInputPassword = putStr $ renderHtml inputPasswordExample
+
+generateInputNumber :: IO ()
+generateInputNumber = putStr $ renderHtml inputNumberExample
+
+generateInputWithMessage :: IO ()
+generateInputWithMessage = putStr $ renderHtml inputWithMessageExample
+
+generateInputUsage :: IO ()
+generateInputUsage = putStr $ renderHtml inputUsage
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
@@ -946,6 +973,23 @@ imageWithCaptionExample = imageWithCaption
 
 -- imageExamples :: Html
 -- imageExamples = imageExamples
+
+
+--------------------------------------------------------------------------------
+-- inputTextExample :: Html
+-- inputTextExample =
+
+-- inputPasswordExample :: Html
+-- inputPasswordExample =
+
+-- inputNumberExample :: Html
+-- inputNumberExample =
+
+-- inputWithMessageExample :: Html
+-- inputWithMessageExample =
+
+-- inputUsage :: Html
+-- inputUsage =
 
 
 --------------------------------------------------------------------------------

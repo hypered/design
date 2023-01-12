@@ -91,7 +91,7 @@ data Command =
   | GenerateInputPassword
   | GenerateInputNumber
   | GenerateInputWithMessage
-  | GenerateInput
+  | GenerateInputUsage
 
   | GenerateLayout
   | GenerateLayoutBlogList
@@ -486,6 +486,33 @@ parser =
               "Generate a page with variations of image components"
           )
 
+      -- Input
+      <> A.command
+          "input--text"
+          ( A.info (parserInputText <**> A.helper)
+          $ A.progDesc "Generate a text input example"
+          )
+      <> A.command
+          "input--password"
+          ( A.info (parserInputPassword <**> A.helper)
+          $ A.progDesc "Generate a password input example"
+          )
+      <> A.command
+          "input--number"
+          ( A.info (parserInputNumber <**> A.helper)
+          $ A.progDesc "Generate a number input example"
+          )
+      <> A.command
+          "input--with-message"
+          ( A.info (parserInputWithMessage <**> A.helper)
+          $ A.progDesc "Generate an email input example with an error message"
+          )
+      <> A.command
+          "input--usage"
+          ( A.info (parserInputUsage <**> A.helper)
+          $ A.progDesc "Generate an example page with multiple inputs"
+          )
+
       -- Layout
       <> A.command
           "layout--default"
@@ -699,6 +726,20 @@ parserGenerateTemplates = GenerateTemplates <$> A.switch
 
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper
+
+
+--------------------------------------------------------------------------------
+parserListCategories :: A.Parser Command
+parserListCategories = pure ListCategories
+
+parserListStories :: A.Parser Command
+parserListStories = pure ListStories
+
+parserJsImportStories :: A.Parser Command
+parserJsImportStories = pure JsImportStories
+
+parserJsStories :: A.Parser Command
+parserJsStories = pure JsStories
 
 
 --------------------------------------------------------------------------------
@@ -951,17 +992,20 @@ parserImageWithCaption = pure GenerateImageWithCaption
 parserImageExamples :: A.Parser Command
 parserImageExamples = pure GenerateImageExamples
 
+parserInputText :: A.Parser Command
+parserInputText = pure GenerateInputText
+
+parserInputPassword :: A.Parser Command
+parserInputPassword = pure GenerateInputPassword
+
+parserInputNumber :: A.Parser Command
+parserInputNumber = pure GenerateInputNumber
+
+parserInputWithMessage :: A.Parser Command
+parserInputWithMessage = pure GenerateInputWithMessage
+
+parserInputUsage :: A.Parser Command
+parserInputUsage = pure GenerateInputUsage
+
 parserLayoutDefault :: A.Parser Command
 parserLayoutDefault = pure GenerateLayoutDefault
-
-parserListCategories :: A.Parser Command
-parserListCategories = pure ListCategories
-
-parserListStories :: A.Parser Command
-parserListStories = pure ListStories
-
-parserJsImportStories :: A.Parser Command
-parserJsImportStories = pure JsImportStories
-
-parserJsStories :: A.Parser Command
-parserJsStories = pure JsStories
