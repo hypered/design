@@ -451,7 +451,20 @@ guideData =
 
   , ( "Code block"
     , [ ("default", "codeblock--default.html", const codeblockExample)
-      , ("with-table", "codeblock--with-table.html", const codeblockWithTableExample)
+      , ("with-table", "codeblock--with-table.html"
+        , const codeblockWithTableExample)
+      , ("editable", "codeblock--editable.html", const codeblockEditableExample)
+      , ("textarea", "codeblock--textarea.html", const codeblockTextAreaExample)
+      , ("editable with bottom button", "codeblock--editable-bottom-button.html"
+        , const codeblockEditableBottomButtonExample)
+      , ("editable with toolbar button"
+        , "codeblock--editable-toolbar-button.html"
+        , const codeblockEditableToolbarButtonExample)
+      , ("textarea with bottom button", "codeblock--textarea-bottom-button.html"
+        , const codeblockTextAreaBottomButtonExample)
+      , ("textarea with toolbar button"
+        , "codeblock--textarea-toolbar-button.html"
+        , const codeblockTextAreaToolbarButtonExample)
       ])
 
   , ( "Footer"

@@ -22,17 +22,28 @@
                 </a>
                 |
                 <code>
-                    codeblock--default.html
+                    codeblock--textarea-bottom-button.html
                 </code>
             </div>
-            <pre class="pre overflow-auto">
-                <code class="code">
-                    // this is a comment
+            <form>
+                <div class="flex flex-wrap items-center bt bb justify-between pv3 mh3">
+                    <div>
+                        show fetchgit:README.md
+                    </div>
+                </div>
+                <pre class="pv3 ph3 mv0 relative pre overflow-auto hy-editable" spellcheck="false">
+                    <textarea class="code db w-100 h5 input-reset bn pa0 ma0 outline-0">
+                        // This block of code can be edited.
+// this is a comment
 // this is another comment
 // this is a slightly longer comment
 
-                </code>
-            </pre>
+                    </textarea>
+                </pre>
+                <div class="bt pt3 mh3">
+                    <input type="submit" class="db button-reset bg-black pa3 white br2 bn" value="Submit">
+                </div>
+            </form>
         </div>
     </body>
 </html>
