@@ -47,6 +47,7 @@ import Hypered.Html
   , inputTextExample, inputPasswordExample, inputNumberExample
   , inputWithMessageExample, inputUsage
   , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
+  , listOrderedExample, listUnorderedExample
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -196,6 +197,10 @@ run Command.GenerateLayoutBlogList = generateLayoutBlogList
 run Command.GenerateLayoutBlogPost = generateLayoutBlogPost
 
 run Command.GenerateLayoutWithSidebar = generateLayoutWithSidebar
+
+run Command.GenerateListOrdered = generateListOrdered
+
+run Command.GenerateListUnordered = generateListUnordered
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
@@ -665,6 +670,12 @@ generateLayoutBlogPost = putStr $ renderHtml layoutBlogPostExample
 generateLayoutWithSidebar :: IO ()
 generateLayoutWithSidebar = putStr $ renderHtml layoutWithSidebarExample
 
+generateListOrdered :: IO ()
+generateListOrdered = putStr $ renderHtml listOrderedExample
+
+generateListUnordered :: IO ()
+generateListUnordered = putStr $ renderHtml listUnorderedExample
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
@@ -1023,6 +1034,14 @@ layoutBlogPostExample = layoutBlogPost
 
 layoutWithSidebarExample :: Html
 layoutWithSidebarExample = layoutWithSidebar
+
+
+--------------------------------------------------------------------------------
+-- listOrderedExample :: Html
+-- listOrderedExample =
+
+-- listUnorderedExample :: Html
+-- listUnorderedExample =
 
 
 --------------------------------------------------------------------------------

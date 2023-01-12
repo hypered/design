@@ -70,6 +70,8 @@ for i in \
   layout--blog-list \
   layout--blog-post \
   layout--with-sidebar \
+  list--ordered \
+  list--unordered \
   nav \
   radio--pill \
   radio--pill-inline \

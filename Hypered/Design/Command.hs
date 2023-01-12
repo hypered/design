@@ -531,6 +531,18 @@ parser =
           $ A.progDesc "Generate the layout with sidebar"
           )
 
+      -- List
+      <> A.command
+          "list--ordered"
+          ( A.info (parserListOrdered <**> A.helper)
+          $ A.progDesc "Generate an ordered list example"
+          )
+      <> A.command
+          "list--unordered"
+          ( A.info (parserListUnordered <**> A.helper)
+          $ A.progDesc "Generate an unordered list example"
+          )
+
       -- Navigation
       <> A.command
           "nav"
@@ -760,9 +772,6 @@ parserAnchorBlue = pure GenerateAnchorBlue
 parserAnchorBlack :: A.Parser Command
 parserAnchorBlack = pure GenerateAnchorBlack
 
-parserNav :: A.Parser Command
-parserNav = pure GenerateNav
-
 parserBannerGreen :: A.Parser Command
 parserBannerGreen = pure GenerateBannerGreen
 
@@ -976,6 +985,9 @@ parserWhitespaceExamples = pure GenerateWhitespaceExamples
 parserFormLogin :: A.Parser Command
 parserFormLogin = pure GenerateFormLogin
 
+parserNav :: A.Parser Command
+parserNav = pure GenerateNav
+
 parserNavigation :: A.Parser Command
 parserNavigation = pure GenerateNavigation
 
@@ -1029,3 +1041,9 @@ parserLayoutBlogPost = pure GenerateLayoutBlogPost
 
 parserLayoutWithSidebar :: A.Parser Command
 parserLayoutWithSidebar = pure GenerateLayoutWithSidebar
+
+parserListOrdered :: A.Parser Command
+parserListOrdered = pure GenerateListOrdered
+
+parserListUnordered :: A.Parser Command
+parserListUnordered = pure GenerateListUnordered

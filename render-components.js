@@ -296,11 +296,11 @@ case 'layout--with-sidebar':
   render(Layout.WithSidebar());
   break;
 
-case 'list--ordered-list':
+case 'list--ordered':
   render(List.OrderedList());
   break;
 
-case 'list--unordered-list':
+case 'list--unordered':
   render(List.UnorderedList());
   break;
 
