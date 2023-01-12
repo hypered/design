@@ -507,22 +507,29 @@ colorBackground = do
 colorSamples :: Html
 colorSamples =
   H.div ! A.class_ "pa4" $
-    H.div ! A.class_ "flex flex-wrap nl2 nr2 mw8" $
-      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $ do
+    H.div ! A.class_ "flex flex-wrap nl2 nr2 mw8" $ do
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-blue light-green aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-red light-yellow aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-green black aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-yellow hy-red aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-blue white aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-red white aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-green white aspect-ratio aspect-ratio--4x3 relative" $
           card
+      H.div ! A.class_ "w-100 w-50-l ph2 mb3" $
         H.div ! A.class_ "hy-bg-yellow white aspect-ratio aspect-ratio--4x3 relative" $
           card
  where
@@ -530,7 +537,7 @@ colorSamples =
     H.div ! A.class_ "aspect-ratio--object flex items-stretch" $ do
       H.div ! A.class_ "flex flex-column justify-between pa4 h-100" $ do
         H.h2 ! A.class_ "f2 f1-m f1-l mv2 fw6 tracked-tight lh-title" $ do
-          "Samples"
+          "Samples "
           H.span ! A.class_ "o-50" $ "↗"
         H.p ! A.class_ "f6 f5-m f5-l lh-copy" $
           "The user interface (UI), in the industrial design field of human-computer interaction, is the space where interactions between humans and machines occur."

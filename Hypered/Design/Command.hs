@@ -401,6 +401,23 @@ parser =
               \with a button in the toolbar"
           )
 
+      -- Color
+      <> A.command
+          "colour--text"
+          ( A.info (parserColorText <**> A.helper)
+          $ A.progDesc "Generate a text colour palette"
+          )
+      <> A.command
+          "colour--background"
+          ( A.info (parserColorBackground <**> A.helper)
+          $ A.progDesc "Generate a background colour palette"
+          )
+      <> A.command
+          "colour--samples"
+          ( A.info (parserColorSamples <**> A.helper)
+          $ A.progDesc "Generate a colour cards"
+          )
+
       -- Footer
       <> A.command
           "footer"
@@ -734,6 +751,15 @@ parserCodeblockTextAreaBottomButton =
 parserCodeblockTextAreaToolbarButton :: A.Parser Command
 parserCodeblockTextAreaToolbarButton =
   pure GenerateCodeblockTextAreaToolbarButton
+
+parserColorText :: A.Parser Command
+parserColorText = pure GenerateColorText
+
+parserColorBackground :: A.Parser Command
+parserColorBackground = pure GenerateColorBackground
+
+parserColorSamples :: A.Parser Command
+parserColorSamples = pure GenerateColorSamples
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter

@@ -45,6 +45,9 @@ for i in \
   codeblock--editable-toolbar-button \
   codeblock--textarea-bottom-button \
   codeblock--textarea-toolbar-button \
+  colour--text \
+  colour--background \
+  colour--samples \
   footer \
   nav \
   radio--pill \

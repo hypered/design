@@ -37,6 +37,7 @@ import Hypered.Html
   , codeblock, codeblockEditable, codeblockTextArea
   , codeblockEditableBottomButton, codeblockEditableToolbarButton
   , codeblockTextAreaBottomButton, codeblockTextAreaToolbarButton
+  , colorText, colorBackground, colorSamples
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -140,6 +141,12 @@ run Command.GenerateCodeblockTextAreaBottomButton =
 
 run Command.GenerateCodeblockTextAreaToolbarButton =
   generateCodeblockTextAreaToolbarButton
+
+run Command.GenerateColorText = generateColorText
+
+run Command.GenerateColorBackground = generateColorBackground
+
+run Command.GenerateColorSamples = generateColorSamples
 
 run Command.GenerateFooter = generateFooter
 
@@ -545,6 +552,15 @@ generateCodeblockTextAreaToolbarButton :: IO ()
 generateCodeblockTextAreaToolbarButton =
   putStr $ renderHtml codeblockTextAreaToolbarButtonExample
 
+generateColorText :: IO ()
+generateColorText = putStr $ renderHtml colorTextExample
+
+generateColorBackground :: IO ()
+generateColorBackground = putStr $ renderHtml colorBackgroundExample
+
+generateColorSamples :: IO ()
+generateColorSamples = putStr $ renderHtml colorSamplesExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -824,6 +840,17 @@ codeblockTextAreaToolbarButtonExample = codeblockTextAreaToolbarButton
   \// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
+
+
+--------------------------------------------------------------------------------
+colorTextExample :: Html
+colorTextExample = colorText
+
+colorBackgroundExample :: Html
+colorBackgroundExample = colorBackground
+
+colorSamplesExample :: Html
+colorSamplesExample = colorSamples
 
 
 --------------------------------------------------------------------------------

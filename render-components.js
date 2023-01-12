@@ -208,16 +208,16 @@ case 'codeblock--textarea-toolbar-button':
   render(Codeblock.TextareaToolbarButton());
   break;
 
-case 'colours--background':
+case 'colour--text':
+  render(colours.Text());
+  break;
+
+case 'colour--background':
   render(colours.Background());
   break;
 
-case 'colours--samples':
+case 'colour--samples':
   render(colours.Samples());
-  break;
-
-case 'colours--text':
-  render(colours.Text());
   break;
 
 case 'dropdown--default':
