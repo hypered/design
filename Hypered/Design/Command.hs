@@ -418,6 +418,13 @@ parser =
           $ A.progDesc "Generate a colour cards"
           )
 
+      -- Container with label
+      <> A.command
+          "container-with-label--default"
+          ( A.info (parserContainerWithLabel <**> A.helper)
+          $ A.progDesc "Generate a container with a label"
+          )
+
       -- Footer
       <> A.command
           "footer"
@@ -760,6 +767,9 @@ parserColorBackground = pure GenerateColorBackground
 
 parserColorSamples :: A.Parser Command
 parserColorSamples = pure GenerateColorSamples
+
+parserContainerWithLabel :: A.Parser Command
+parserContainerWithLabel = pure GenerateContainerWithLabel
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter

@@ -35,7 +35,8 @@ var Button = require("./components/Button/Button.stories");
 var ButtonLink = require("./components/ButtonLink/ButtonLink.stories");
 var Checkbox = require("./components/Checkbox/Checkbox.stories");
 var Codeblock = require("./components/Codeblock/Codeblock.stories");
-var colours = require("./components/Colours/Colours.stories");
+var Colours = require("./components/Colours/Colours.stories");
+var ContainerWithLabel = require("./components/ContainerWithLabel/ContainerWithLabel.stories");
 var Dropdown = require("./components/Dropdown/Dropdown.stories");
 var Footer = require("./components/Footer/Footer.stories");
 var Form = require("./components/Form/Form.stories");
@@ -209,15 +210,19 @@ case 'codeblock--textarea-toolbar-button':
   break;
 
 case 'colour--text':
-  render(colours.Text());
+  render(Colours.Text());
   break;
 
 case 'colour--background':
-  render(colours.Background());
+  render(Colours.Background());
   break;
 
 case 'colour--samples':
-  render(colours.Samples());
+  render(Colours.Samples());
+  break;
+
+case 'container-with-label--default':
+  render(ContainerWithLabel.Default());
   break;
 
 case 'dropdown--default':

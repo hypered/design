@@ -48,6 +48,7 @@ for i in \
   colour--text \
   colour--background \
   colour--samples \
+  container-with-label--default \
   footer \
   nav \
   radio--pill \
