@@ -119,7 +119,7 @@ export const Default = () => (
   </NavBlockWrapper>
 );
 
-export const UsageExample = () => (
+export const Usage = () => (
   <Layout>
     <div className="flex flex-wrap nl3 nr3">
       <Sidebar />

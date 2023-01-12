@@ -4,9 +4,11 @@ export default {
   title: "Sidebar",
 };
 
-export const Default = () => <Sidebar />;
+export const Default = () => (
+  <Sidebar />
+);
 
-export const UsageExample = () => (
+export const Usage = () => (
   <Layout>
     <main className="flex flex-wrap nl3 nr3">
       <Sidebar />

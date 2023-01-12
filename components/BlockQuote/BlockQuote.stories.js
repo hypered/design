@@ -21,7 +21,7 @@ export const PullQuoteExample = () => (
   </PullQuote>
 );
 
-export const WithOptionalPullQuoteExample = () => (
+export const WithOptionalPullQuote = () => (
   <PullQuote hideQuote>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consectetur
     tincidunt elit, et semper enim laoreet eu. In hac habitasse platea dictumst.

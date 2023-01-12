@@ -1452,7 +1452,7 @@ titleJumboExample :: Html
 titleJumboExample =
   H.h1 ! A.class_ "f1 f-subheadline-m f-subheadline-l tracked-tight mv2" $ do
     "Hypered "
-    H.span ! A.class_ "normal" $ "Design System"
+    H.span ! A.class_ "normal" $ "design system"
 
 titleSubtitleJumboExample :: Html
 titleSubtitleJumboExample =

@@ -4,17 +4,29 @@ export default {
   title: "Typography",
 };
 
-export const Heading1 = () => <H1>Heading 1</H1>;
+export const Heading1 = () => (
+  <H1>Heading 1</H1>
+);
 
-export const Heading2 = () => <H2>Heading 2</H2>;
+export const Heading2 = () => (
+  <H2>Heading 2</H2>
+);
 
-export const Heading3 = () => <H3>Heading 3</H3>;
+export const Heading3 = () => (
+  <H3>Heading 3</H3>
+);
 
-export const Heading4 = () => <H4>Heading 4</H4>;
+export const Heading4 = () => (
+  <H4>Heading 4</H4>
+);
 
-export const Heading5 = () => <H5>Heading 5</H5>;
+export const Heading5 = () => (
+  <H5>Heading 5</H5>
+);
 
-export const Heading6 = () => <H6>Heading 6</H6>;
+export const Heading6 = () => (
+  <H6>Heading 6</H6>
+);
 
 export const Paragraph = () => (
   <P>
@@ -34,7 +46,7 @@ export const Paragraph = () => (
   </P>
 );
 
-export const UsageExample = () => (
+export const Usage = () => (
   <article className="measure-wide">
     <H1>Design System Blog</H1>
     <P>This is an intro to using Hypered design system.</P>

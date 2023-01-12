@@ -36,7 +36,7 @@ export const Default = () => (
   </SidePanel>
 );
 
-export const UsageExample = () => (
+export const Usage = () => (
   <Layout>
     <div className="flex flex-wrap nl3 nr3">
       <main className="w-100 w-80-m w-80-l ph3">

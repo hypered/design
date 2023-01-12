@@ -82,10 +82,10 @@ run Command.GenerateBannerYellow = generateBannerYellow
 
 run Command.GenerateBlockquoteDefault = generateBlockquoteDefault
 
-run Command.GenerateBlockquotePullQuoteExample = generateBlockquotePullQuoteExample
+run Command.GenerateBlockquotePullQuote = generateBlockquotePullQuote
 
-run Command.GenerateBlockquoteWithOptionalPullQuoteExample =
-  generateBlockquoteWithOptionalPullQuoteExample
+run Command.GenerateBlockquoteWithOptionalPullQuote =
+  generateBlockquoteWithOptionalPullQuote
 
 run Command.GenerateButtonPrimary = generateButtonPrimary
 
@@ -445,11 +445,11 @@ generateBannerYellow = putStr $ renderHtml bannerYellowExample
 generateBlockquoteDefault :: IO ()
 generateBlockquoteDefault = putStr $ renderHtml blockquoteDefault
 
-generateBlockquotePullQuoteExample :: IO ()
-generateBlockquotePullQuoteExample = putStr $ renderHtml blockquotePullQuoteExample
+generateBlockquotePullQuote :: IO ()
+generateBlockquotePullQuote = putStr $ renderHtml blockquotePullQuoteExample
 
-generateBlockquoteWithOptionalPullQuoteExample :: IO ()
-generateBlockquoteWithOptionalPullQuoteExample =
+generateBlockquoteWithOptionalPullQuote :: IO ()
+generateBlockquoteWithOptionalPullQuote =
   putStr $ renderHtml blockquoteWithOptionalPullQuoteExample
 
 generateButtonPrimary :: IO ()

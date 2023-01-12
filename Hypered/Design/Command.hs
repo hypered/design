@@ -28,8 +28,8 @@ data Command =
   | GenerateBannerYellow
 
   | GenerateBlockquoteDefault
-  | GenerateBlockquotePullQuoteExample
-  | GenerateBlockquoteWithOptionalPullQuoteExample
+  | GenerateBlockquotePullQuote
+  | GenerateBlockquoteWithOptionalPullQuote
 
   | GenerateButtonPrimary
   | GenerateButtonPrimaryLarge
@@ -195,12 +195,6 @@ parser =
           )
 
       <> A.command
-          "nav"
-          ( A.info (parserNav <**> A.helper)
-          $ A.progDesc "Generate a nav component."
-          )
-
-      <> A.command
           "banner--green"
           ( A.info (parserBannerGreen <**> A.helper)
           $ A.progDesc "Generate a green banner component."
@@ -225,14 +219,14 @@ parser =
           )
 
       <> A.command
-          "blockquote--pull-quote-example"
-          ( A.info (parserBlockquotePullQuoteExample <**> A.helper)
+          "blockquote--pull-quote"
+          ( A.info (parserBlockquotePullQuote <**> A.helper)
           $ A.progDesc "Generate a pull quote component."
           )
 
       <> A.command
-          "blockquote--with-optional-pull-quote-example"
-          ( A.info (parserBlockquoteWithOptionalPullQuoteExample <**> A.helper)
+          "blockquote--with-optional-pull-quote"
+          ( A.info (parserBlockquoteWithOptionalPullQuote <**> A.helper)
           $ A.progDesc "Generate a pull quote component with no quote symbols."
           )
 
@@ -528,6 +522,12 @@ parser =
           )
 
       <> A.command
+          "nav"
+          ( A.info (parserNav <**> A.helper)
+          $ A.progDesc "Generate a nav component."
+          )
+
+      <> A.command
           "navigation--navigation"
           ( A.info (parserNavigation <**> A.helper)
           $ A.progDesc "Generate a navigation bar example."
@@ -603,12 +603,12 @@ parserBannerYellow = pure GenerateBannerYellow
 parserBlockquoteDefault :: A.Parser Command
 parserBlockquoteDefault = pure GenerateBlockquoteDefault
 
-parserBlockquotePullQuoteExample :: A.Parser Command
-parserBlockquotePullQuoteExample = pure GenerateBlockquotePullQuoteExample
+parserBlockquotePullQuote :: A.Parser Command
+parserBlockquotePullQuote = pure GenerateBlockquotePullQuote
 
-parserBlockquoteWithOptionalPullQuoteExample :: A.Parser Command
-parserBlockquoteWithOptionalPullQuoteExample =
-  pure GenerateBlockquoteWithOptionalPullQuoteExample
+parserBlockquoteWithOptionalPullQuote :: A.Parser Command
+parserBlockquoteWithOptionalPullQuote =
+  pure GenerateBlockquoteWithOptionalPullQuote
 
 parserButtonPrimary :: A.Parser Command
 parserButtonPrimary = pure GenerateButtonPrimary

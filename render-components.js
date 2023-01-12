@@ -104,12 +104,12 @@ case 'blockquote--default':
   render(BlockQuote.Default());
   break;
 
-case 'blockquote--pull-quote-example':
+case 'blockquote--pull-quote':
   render(BlockQuote.PullQuoteExample());
   break;
 
-case 'blockquote--with-optional-pull-quote-example':
-  render(BlockQuote.WithOptionalPullQuoteExample());
+case 'blockquote--with-optional-pull-quote':
+  render(BlockQuote.WithOptionalPullQuote());
   break;
 
 case 'button--full-width':
@@ -256,8 +256,8 @@ case 'input--text':
   render(Input.Text());
   break;
 
-case 'input--usage-example':
-  render(Input.UsageExample());
+case 'input--usage':
+  render(Input.Usage());
   break;
 
 case 'input--with-message':
@@ -292,8 +292,8 @@ case 'navblock--default':
   render(NavBlock.Default());
   break;
 
-case 'navblock--usage-example':
-  render(NavBlock.UsageExample());
+case 'navblock--usage':
+  render(NavBlock.Usage());
   break;
 
 case 'navigation--navigation':
@@ -325,7 +325,7 @@ case 'sidebar--default':
   break;
 
 case 'sidebar--usage':
-  render(Sidebar.UsageExample());
+  render(Sidebar.Usage());
   break;
 
 case 'sidepanel--default':
@@ -333,7 +333,7 @@ case 'sidepanel--default':
   break;
 
 case 'sidepanel--usage':
-  render(SidePanel.UsageExample());
+  render(SidePanel.Usage());
   break;
 
 case 'table--compact':
@@ -353,7 +353,7 @@ case 'table--with-column-divider-compact':
   break
 
 case 'title--jumbo-usage':
-  render(Title.JumboUsageExample());
+  render(Title.JumboUsage());
   break;
 
 case 'title--subtitle':
@@ -373,7 +373,7 @@ case 'title--jumbo':
   break;
 
 case 'title--title-usage':
-  render(Title.UsageExample());
+  render(Title.Usage());
   break;
 
 case 'typography--heading-1':
@@ -405,7 +405,7 @@ case 'typography--paragraph':
   break;
 
 case 'typography--usage':
-  render(Typography.UsageExample());
+  render(Typography.Usage());
   break;
 
 case 'whitespace--auto-width':

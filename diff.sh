@@ -19,8 +19,8 @@ for i in \
   banner--red \
   banner--yellow \
   blockquote--default \
-  blockquote--pull-quote-example \
-  blockquote--with-optional-pull-quote-example \
+  blockquote--pull-quote \
+  blockquote--with-optional-pull-quote \
   button--primary \
   button--primary-large \
   button--primary-disabled \

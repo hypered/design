@@ -13,7 +13,7 @@ export default {
 
 export const TitleJumboExample = () => (
   <TitleJumbo>
-    Hypered <span className="normal">Design System</span>
+    Hypered <span className="normal">design system</span>
   </TitleJumbo>
 );
 
@@ -21,11 +21,15 @@ export const SubtitleJumboExample = () => (
   <SubTitleJumbo>Introduction</SubTitleJumbo>
 );
 
-export const TitleExample = () => <Title>Introduction</Title>;
+export const TitleExample = () => (
+  <Title>Introduction</Title>
+);
 
-export const SubtitleExample = () => <SubTitle>Introduction</SubTitle>;
+export const SubtitleExample = () => (
+  <SubTitle>Introduction</SubTitle>
+);
 
-export const JumboUsageExample = () => (
+export const JumboUsage = () => (
   <div className="mw8 center">
     <header className="pv4 pv5-l">
       <TitleJumbo>Hypered</TitleJumbo>
@@ -70,7 +74,7 @@ export const JumboUsageExample = () => (
   </div>
 );
 
-export const UsageExample = () => (
+export const Usage = () => (
   <div className="mw8 center">
     <header className="pv4 pv5-l">
       <Title>Hypered</Title>
