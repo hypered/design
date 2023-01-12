@@ -891,6 +891,75 @@ parserDropdown = pure GenerateDropdown
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
 
+parserFormLogin :: A.Parser Command
+parserFormLogin = pure GenerateFormLogin
+
+parserHr :: A.Parser Command
+parserHr = pure GenerateHorizontalRule
+
+parserHrDivider :: A.Parser Command
+parserHrDivider = pure GenerateHorizontalRuleDivider
+
+parserImage :: A.Parser Command
+parserImage = pure GenerateImage
+
+parserImageNegativeMargins :: A.Parser Command
+parserImageNegativeMargins = pure GenerateImageNegativePull
+
+parserImageFullWidth :: A.Parser Command
+parserImageFullWidth = pure GenerateImageFullWidth
+
+parserImageWithCaption :: A.Parser Command
+parserImageWithCaption = pure GenerateImageWithCaption
+
+parserImageExamples :: A.Parser Command
+parserImageExamples = pure GenerateImageExamples
+
+parserInputText :: A.Parser Command
+parserInputText = pure GenerateInputText
+
+parserInputPassword :: A.Parser Command
+parserInputPassword = pure GenerateInputPassword
+
+parserInputNumber :: A.Parser Command
+parserInputNumber = pure GenerateInputNumber
+
+parserInputWithMessage :: A.Parser Command
+parserInputWithMessage = pure GenerateInputWithMessage
+
+parserInputUsage :: A.Parser Command
+parserInputUsage = pure GenerateInputUsage
+
+parserLayout :: A.Parser Command
+parserLayout = pure GenerateLayout
+
+parserLayoutBlogList :: A.Parser Command
+parserLayoutBlogList = pure GenerateLayoutBlogList
+
+parserLayoutBlogPost :: A.Parser Command
+parserLayoutBlogPost = pure GenerateLayoutBlogPost
+
+parserLayoutWithSidebar :: A.Parser Command
+parserLayoutWithSidebar = pure GenerateLayoutWithSidebar
+
+parserListOrdered :: A.Parser Command
+parserListOrdered = pure GenerateListOrdered
+
+parserListUnordered :: A.Parser Command
+parserListUnordered = pure GenerateListUnordered
+
+parserNavigationBlock :: A.Parser Command
+parserNavigationBlock = pure GenerateNavigationBlock
+
+parserNavigationBlockUsage :: A.Parser Command
+parserNavigationBlockUsage = pure GenerateNavigationBlockUsage
+
+parserNavigation :: A.Parser Command
+parserNavigation = pure GenerateNavigation
+
+parserNavigationSpaceBetween :: A.Parser Command
+parserNavigationSpaceBetween = pure GenerateNavigationSpaceBetween
+
 parserRadioDefault :: A.Parser Command
 parserRadioDefault = pure GenerateRadioDefault
 
@@ -987,72 +1056,3 @@ parserWhitespaceFullWidth = pure GenerateWhitespaceFullWidth
 
 parserWhitespaceExamples :: A.Parser Command
 parserWhitespaceExamples = pure GenerateWhitespaceExamples
-
-parserFormLogin :: A.Parser Command
-parserFormLogin = pure GenerateFormLogin
-
-parserNavigation :: A.Parser Command
-parserNavigation = pure GenerateNavigation
-
-parserNavigationSpaceBetween :: A.Parser Command
-parserNavigationSpaceBetween = pure GenerateNavigationSpaceBetween
-
-parserHr :: A.Parser Command
-parserHr = pure GenerateHorizontalRule
-
-parserHrDivider :: A.Parser Command
-parserHrDivider = pure GenerateHorizontalRuleDivider
-
-parserImage :: A.Parser Command
-parserImage = pure GenerateImage
-
-parserImageNegativeMargins :: A.Parser Command
-parserImageNegativeMargins = pure GenerateImageNegativePull
-
-parserImageFullWidth :: A.Parser Command
-parserImageFullWidth = pure GenerateImageFullWidth
-
-parserImageWithCaption :: A.Parser Command
-parserImageWithCaption = pure GenerateImageWithCaption
-
-parserImageExamples :: A.Parser Command
-parserImageExamples = pure GenerateImageExamples
-
-parserInputText :: A.Parser Command
-parserInputText = pure GenerateInputText
-
-parserInputPassword :: A.Parser Command
-parserInputPassword = pure GenerateInputPassword
-
-parserInputNumber :: A.Parser Command
-parserInputNumber = pure GenerateInputNumber
-
-parserInputWithMessage :: A.Parser Command
-parserInputWithMessage = pure GenerateInputWithMessage
-
-parserInputUsage :: A.Parser Command
-parserInputUsage = pure GenerateInputUsage
-
-parserLayout :: A.Parser Command
-parserLayout = pure GenerateLayout
-
-parserLayoutBlogList :: A.Parser Command
-parserLayoutBlogList = pure GenerateLayoutBlogList
-
-parserLayoutBlogPost :: A.Parser Command
-parserLayoutBlogPost = pure GenerateLayoutBlogPost
-
-parserLayoutWithSidebar :: A.Parser Command
-parserLayoutWithSidebar = pure GenerateLayoutWithSidebar
-
-parserListOrdered :: A.Parser Command
-parserListOrdered = pure GenerateListOrdered
-
-parserListUnordered :: A.Parser Command
-parserListUnordered = pure GenerateListUnordered
-
-parserNavigationBlock :: A.Parser Command
-parserNavigationBlock = pure GenerateNavigationBlock
-
-parserNavigationBlockUsage :: A.Parser Command
-parserNavigationBlockUsage = pure GenerateNavigationBlockUsage

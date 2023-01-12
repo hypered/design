@@ -7,23 +7,15 @@ module Hypered.Design.Run
 import           Data.List (nub, tail)
 import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
-import           Hypered.Html
-  ( footer, generateHtml, navigation, navigationTemplate, headTitle, partialHtml
-  , prettyHtml, wrap , wrapPost , Config(..), Font(Inter, Font)
-  )
-import           Hypered.Stories (stories)
-import           Protolude
-import           Text.Blaze.Html5 ((!), Html)
-import qualified Text.Blaze.Html5 as H
-import qualified Text.Blaze.Html5.Attributes as A
-import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
-import           Text.Blaze.Html.Renderer.Text (renderHtml)
-
-
-
-
 import Hypered.Html
   ( Font(IbmPlex)
+  , Font(Inter, Font)
+  , generate, generate'
+  , prettyHtml, wrap , wrapPost , Config(..)
+  , footer, generateHtml, navigation, navigationTemplate
+  , headTitle, partialHtml
+
+  -- For individual componenents
   , anchorBlue, anchorBlack
   , bannerGreen, bannerRed, bannerYellow
   , blockquote, pullQuote, pullQuote'
@@ -53,7 +45,6 @@ import Hypered.Html
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
-  , generate, generate'
   , radioDefaultExample, radioPillInlineExample
   , radioCheckboxExample, radioCheckboxInlineExample
   , sidePanelExample, sidePanelUsageExample
@@ -71,6 +62,13 @@ import Hypered.Html
   , whitespaceAutoWidthExample, whitespaceNegativeMarginsExample
   , whitespaceFullWidthExample, whitespaceExamples
   )
+import           Hypered.Stories (stories)
+import           Protolude
+import           Text.Blaze.Html5 ((!), Html)
+import qualified Text.Blaze.Html5 as H
+import qualified Text.Blaze.Html5.Attributes as A
+import qualified Text.Blaze.Html.Renderer.Pretty as Pretty (renderHtml)
+import           Text.Blaze.Html.Renderer.Text (renderHtml)
 
 
 --------------------------------------------------------------------------------

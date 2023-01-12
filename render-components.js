@@ -7,13 +7,13 @@
  *     npm install @babel/core @babel/register --save-dev
  *
  * The usage is similar to hypered-design:
- *     node render-components.js footer
+ *     node render-components.js footer--default
  *
  * In addition to component names, it also accepts 'pretty' as
  * argument. The intention is to use to normalize the output of
  * hypered-design, then be able to compare both programs:
  *
- *     hypered-design footer | node render-components.js pretty
+ *     hypered-design footer--default | node render-components.js pretty
  */
 
 // Use babel/register because the components are ES modules.
