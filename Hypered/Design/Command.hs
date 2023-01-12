@@ -543,6 +543,18 @@ parser =
           $ A.progDesc "Generate an unordered list example"
           )
 
+      -- Navigation block
+      <> A.command
+          "navigation-block--default"
+          ( A.info (parserNavigationBlock <**> A.helper)
+          $ A.progDesc "Generate a navigation block component"
+          )
+      <> A.command
+          "navigation-block--usage"
+          ( A.info (parserNavigationBlockUsage <**> A.helper)
+          $ A.progDesc "Generate a navigation block used in context"
+          )
+
       -- Navigation
       <> A.command
           "nav"
@@ -1047,3 +1059,9 @@ parserListOrdered = pure GenerateListOrdered
 
 parserListUnordered :: A.Parser Command
 parserListUnordered = pure GenerateListUnordered
+
+parserNavigationBlock :: A.Parser Command
+parserNavigationBlock = pure GenerateNavigationBlock
+
+parserNavigationBlockUsage :: A.Parser Command
+parserNavigationBlockUsage = pure GenerateNavigationBlockUsage

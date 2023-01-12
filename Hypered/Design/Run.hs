@@ -48,11 +48,11 @@ import Hypered.Html
   , inputWithMessageExample, inputUsage
   , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
   , listOrderedExample, listUnorderedExample
+  , navigationBlockDefault, navigationBlockUsage
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate'
-  , navigationBlockDefault, navigationBlockUsageExample
   , nav, navigationNoteed, navigationNoteed'
   , radioDefaultExample, radioPillInlineExample
   , radioCheckboxExample, radioCheckboxInlineExample
@@ -677,7 +677,7 @@ generateListUnordered :: IO ()
 generateListUnordered = putStr $ renderHtml listUnorderedExample
 
 generateNavigationBlock :: IO ()
-generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
+generateNavigationBlock = putStr $ renderHtml navigationBlockExample
 
 generateNavigationBlockUsage :: IO ()
 generateNavigationBlockUsage =
@@ -1042,6 +1042,14 @@ layoutWithSidebarExample = layoutWithSidebar
 
 -- listUnorderedExample :: Html
 -- listUnorderedExample =
+
+
+--------------------------------------------------------------------------------
+navigationBlockExample :: Html
+navigationBlockExample = navigationBlockDefault
+
+navigationBlockUsageExample :: Html
+navigationBlockUsageExample = navigationBlockUsage
 
 
 --------------------------------------------------------------------------------

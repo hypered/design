@@ -1043,6 +1043,88 @@ listUnorderedExample =
 -- TODO Modal
 
 
+------------------------------------------------------------------------------
+navigationBlockDefault :: Html
+navigationBlockDefault =
+  H.nav ! A.class_ "bg-near-white pa4 db w-100 mw8 br1" $
+    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 1"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 2"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 3"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 1)"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $
+          links
+        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 2)"
+        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item One"
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Two"
+          H.li $
+            H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Three"
+ where
+  links = do
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item One"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Two"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Three"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Four"
+    H.li $
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Five"
+
+navigationBlockUsage :: Html
+navigationBlockUsage =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        navigationNoteedX
+      H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
+        sidebar
+          [ ("Intro", [("not-os", "#")])
+          , ("Notes", [("Digital Ocean", "#"), ("TODO", "#")])
+          , ("Values", [("command-line", "#"), ("root-modules", "#")])
+          ]
+        H.main ! A.class_ "w-100 w-75-m w-75-l ph3" $
+          H.article $ do
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Heading 1"
+            H.p ! A.class_ "f5 lh-copy mv3" $
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu magna pharetra, ultricies nisi eget, aliquet nulla. Curabitur in ultricies diam. In auctor neque ante, at vulputate magna volutpat nec. Morbi pharetra metus vitae dignissim tincidunt. Nunc iaculis consectetur purus, quis egestas orci gravida pulvinar. Quisque sed malesuada arcu. Sed nisl mi, lobortis eget diam in, facilisis tincidunt mi. Sed et neque laoreet, placerat risus ac, volutpat ex. Suspendisse venenatis lectus id turpis congue, a interdum est viverra. Etiam et nunc et mauris mattis pulvinar. Aliquam mattis lacinia molestie. Maecenas molestie ornare sollicitudin."
+            H.p ! A.class_ "f5 lh-copy mv3" $
+              "Mauris pretium velit eget turpis rhoncus volutpat. Suspendisse sit amet egestas lorem. Cras posuere ac tortor vel interdum. Mauris ultrices euismod dui ac placerat. Aliquam aliquet erat id mauris placerat fermentum. Pellentesque ut sodales ipsum. Donec gravida, dui at tempus pretium, dolor urna aliquet est, mattis pellentesque odio elit a massa. Morbi ut efficitur tortor. Pellentesque ut dolor et augue mollis accumsan et sit amet urna. Mauris ac eros non mauris sodales posuere. Nunc a tortor eget quam laoreet suscipit. Phasellus sollicitudin suscipit libero."
+            H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $"Heading 2"
+            H.p ! A.class_ "f5 lh-copy mv3" $
+              "Praesent vel hendrerit risus, nec sagittis enim. Cras nec lobortis justo. Praesent accumsan turpis scelerisque, fermentum metus sed, volutpat lectus. Mauris tempus eget ex sit amet vestibulum. Aliquam ut enim commodo, gravida odio in, venenatis est. Maecenas iaculis blandit tincidunt. Aenean faucibus luctus tellus, eu aliquet justo sollicitudin a. Donec eu convallis urna, quis porta quam. Vivamus rutrum et odio in varius. Sed tristique auctor mi, non vehicula est vehicula ut. Aliquam vestibulum, odio id finibus euismod, mauris ipsum iaculis massa, vel feugiat turpis sapien nec orci."
+      navigationBlockDefault
+    footer "© Hypered, 2019-2023."
+
+------------------------------------------------------------------------------
+navigationDefault :: Html
+navigationDefault = navigationNoteed
+
+navigationSpaceBetween :: Html
+navigationSpaceBetween =
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $ do
+    H.div $
+      H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+        "noteed.com"
+    H.div $ do
+      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "black hy-hover-blue" ! A.href "#" $ "not-os"
+
+
 --------------------------------------------------------------------------------
 headTitle :: Html
 headTitle = H.title "Hypered"
@@ -1246,67 +1328,6 @@ resetForm = do
           ! A.href "/login"
           $ "Log in"
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Reset password —>"
-
-
-------------------------------------------------------------------------------
-navigationBlockDefault :: Html
-navigationBlockDefault =
-  H.nav ! A.class_ "bg-near-white pa4 db w-100 mw8 br1" $
-    H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
-      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 1"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $
-          links
-      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 2"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $
-          links
-      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 3"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $
-          links
-      H.div ! A.class_ "w-100 w-25-m w-25-l ph3" $ do
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 1)"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $
-          links
-        H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 2)"
-        H.ul ! A.class_ "list pl0 mb3 mt0" $ do
-          H.li $
-            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
-          H.li $
-            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
-          H.li $
-            H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
- where
-  links = do
-    H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
-    H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
-    H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
-    H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Four"
-    H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Five"
-
-navigationBlockUsageExample :: Html
-navigationBlockUsageExample = navigationBlockDefault
-
-
-------------------------------------------------------------------------------
-navigationDefault :: Html
-navigationDefault = navigationNoteed
-
-navigationSpaceBetween :: Html
-navigationSpaceBetween =
-  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $ do
-    H.div $
-      H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
-        "noteed.com"
-    H.div $ do
-      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
-      H.a ! A.class_ "black hy-hover-blue" ! A.href "#" $ "not-os"
 
 
 ------------------------------------------------------------------------------

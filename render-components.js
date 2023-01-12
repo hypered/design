@@ -304,11 +304,11 @@ case 'list--unordered':
   render(List.UnorderedList());
   break;
 
-case 'navblock--default':
+case 'navigation-block--default':
   render(NavBlock.Default());
   break;
 
-case 'navblock--usage':
+case 'navigation-block--usage':
   render(NavBlock.Usage());
   break;
 
