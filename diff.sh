@@ -50,7 +50,7 @@ for i in \
   colour--samples \
   container-with-label--default \
   dropdown--default \
-  footer \
+  footer--default \
   nav \
   radio--pill \
   radio--pill-inline \

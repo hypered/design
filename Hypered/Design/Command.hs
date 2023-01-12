@@ -434,7 +434,7 @@ parser =
 
       -- Footer
       <> A.command
-          "footer"
+          "footer--default"
           ( A.info (parserFooter <**> A.helper)
           $ A.progDesc "Generate a footer component"
           )
