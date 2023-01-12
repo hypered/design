@@ -52,6 +52,8 @@ for i in \
   dropdown--default \
   footer--default \
   form--login \
+  hr--default \
+  hr--divider \
   nav \
   radio--pill \
   radio--pill-inline \

@@ -659,12 +659,12 @@ loginForm = do
 
 
 --------------------------------------------------------------------------------
-horizontalRuleDefault :: Html
-horizontalRuleDefault =
+hrDefault :: Html
+hrDefault =
   H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
 
-horizontalRuleDivider :: Html
-horizontalRuleDivider =
+hrDivider :: Html
+hrDivider =
   H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
 
 

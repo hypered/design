@@ -41,6 +41,7 @@ import Hypered.Html
   , containerWithLabelDefault
   , dropdownDefault
   , loginFormTODO
+  , hrDefault, hrDivider
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -158,6 +159,10 @@ run Command.GenerateDropdown = generateDropdown
 run Command.GenerateFooter = generateFooter
 
 run Command.GenerateFormLogin = generateFormLogin
+
+run Command.GenerateHorizontalRule = generateHr
+
+run Command.GenerateHorizontalRuleDivider = generateHrDivider
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
@@ -581,6 +586,12 @@ generateFooter = putStr $ renderHtml footerExample
 generateFormLogin :: IO ()
 generateFormLogin = putStr $ renderHtml loginFormTODO
 
+generateHr :: IO ()
+generateHr = putStr $ renderHtml hrExample
+
+generateHrDivider :: IO ()
+generateHrDivider = putStr $ renderHtml hrDividerExample
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
@@ -884,6 +895,15 @@ dropdownDefaultExample = dropdownDefault
 footerExample :: Html
 footerExample = footer "© Hypered, 2019-2023."
 
+
+--------------------------------------------------------------------------------
+hrExample :: Html
+hrExample = hrDefault
+
+hrDividerExample :: Html
+hrDividerExample = hrDivider
+
+--------------------------------------------------------------------------------
 tableDefaultExample :: Html
 tableDefaultExample = tableDefault -- TODO Arguments.
 

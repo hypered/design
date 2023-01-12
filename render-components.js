@@ -236,8 +236,8 @@ case 'hr--default':
   render(HR.Default());
   break;
 
-case 'hr--h-r-divider':
-  render(HR.HRDivider());
+case 'hr--divider':
+  render(HR.DividerExample());
   break;
 
 case 'image--default':

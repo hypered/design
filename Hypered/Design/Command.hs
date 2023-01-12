@@ -446,6 +446,18 @@ parser =
           $ A.progDesc "Generate a login form example"
           )
 
+      -- Horizontal rule
+      <> A.command
+          "hr--default"
+          ( A.info (parserHr <**> A.helper)
+          $ A.progDesc "Generate an horizontal rule example"
+          )
+      <> A.command
+          "hr--divider"
+          ( A.info (parserHrDivider <**> A.helper)
+          $ A.progDesc "Generate an horizontal divider example"
+          )
+
       -- Layout
       <> A.command
           "layout--default"
@@ -889,6 +901,12 @@ parserNavigation = pure GenerateNavigation
 
 parserNavigationSpaceBetween :: A.Parser Command
 parserNavigationSpaceBetween = pure GenerateNavigationSpaceBetween
+
+parserHr :: A.Parser Command
+parserHr = pure GenerateHorizontalRule
+
+parserHrDivider :: A.Parser Command
+parserHrDivider = pure GenerateHorizontalRuleDivider
 
 parserLayoutDefault :: A.Parser Command
 parserLayoutDefault = pure GenerateLayoutDefault

@@ -4,6 +4,10 @@ export default {
   title: "Horizontal Rule",
 };
 
-export const Default = () => <HR />;
+export const Default = () => (
+  <HR />
+);
 
-export const HRDivider = () => <Divider />;
+export const DividerExample = () => (
+  <Divider />
+);
