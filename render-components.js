@@ -364,7 +364,7 @@ case 'title--subtitle-jumbo':
   render(Title.SubtitleJumboExample());
   break;
 
-case 'title--title':
+case 'title--default':
   render(Title.TitleExample());
   break;
 
@@ -372,7 +372,7 @@ case 'title--jumbo':
   render(Title.TitleJumboExample());
   break;
 
-case 'title--title-usage':
+case 'title--usage':
   render(Title.Usage());
   break;
 

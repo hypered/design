@@ -11,12 +11,19 @@ import           Protolude
 
 --------------------------------------------------------------------------------
 data Command =
-    GenerateTemplates Bool
+    GenerateGuide
+  | GenerateTemplates Bool
     -- ^ If True, use a prefix suitable for GitHub Pages (i.e. the /design
     -- prefix, since the static site is at hypered.github.io/design).
-  | GenerateGuide
   | Wrapper
     -- ^ The document wrapper. This should match `pages/_app.js`.
+
+    -- Helpers to explore Storybook stories
+
+  | ListCategories
+  | ListStories
+  | JsImportStories
+  | JsStories
 
     -- Individual components
 
@@ -51,7 +58,7 @@ data Command =
   | GenerateCheckboxPill
 
   | GenerateCodeblock
-  | GenerateCodeblockWithTableExample
+  | GenerateCodeblockWithTable
 
   | GenerateColorText
   | GenerateColorBackground
@@ -78,7 +85,7 @@ data Command =
   | GenerateInputPassword
   | GenerateInputNumber
   | GenerateInputWithMessage
-  | GenerateInputExample
+  | GenerateInput
 
   | GenerateLayout
   | GenerateLayoutBlogList
@@ -91,7 +98,7 @@ data Command =
   -- TODO Modal.
 
   | GenerateNavigationBlock
-  | GenerateNavigationBlockUsageExample
+  | GenerateNavigationBlockUsage
 
   | GenerateNav
   | GenerateNavigation
@@ -103,10 +110,10 @@ data Command =
   | GenerateRadioCheckboxInline
 
   | GenerateSidePanel
-  | GenerateSidePanelUsageExample
+  | GenerateSidePanelUsage
 
   | GenerateSidebar
-  | GenerateSidebarUsageExample
+  | GenerateSidebarUsage
 
   | GenerateStatusCodeError400
   | GenerateStatusCodeError404
@@ -120,8 +127,8 @@ data Command =
   | GenerateTitleSubtitleJumbo
   | GenerateTitle
   | GenerateTitleSubtitle
-  | GenerateTitleJumboUsageExample
-  | GenerateTitleUsageExample
+  | GenerateTitleJumboUsage
+  | GenerateTitleUsage
 
   | GenerateTypographyHeading1
   | GenerateTypographyHeading2
@@ -130,7 +137,7 @@ data Command =
   | GenerateTypographyHeading5
   | GenerateTypographyHeading6
   | GenerateTypographyParagraph
-  | GenerateTypographyUsageExample
+  | GenerateTypographyUsage
 
   | GenerateWhitespaceAutoWidth
   | GenerateWhitespaceNegativeMargins
@@ -140,13 +147,6 @@ data Command =
     -- Stories from Storybook
 
   | GenerateLayoutDefault
-
-    -- Helpers to explore Storybook stories
-
-  | ListCategories
-  | ListStories
-  | JsImportStories
-  | JsStories
   deriving (Eq, Show)
 
 
@@ -155,9 +155,12 @@ parserInfo :: A.ParserInfo Command
 parserInfo =
   A.info (parser <**> A.helper)
     $  A.fullDesc
-    <> A.header "hypered-design - The source of truth for the Hypered design system"
+    <> A.header "hypered-design - The source of truth for the Hypered design system."
     <> A.progDesc
-         "The Hypered design system."
+         "This is the Haskell implementation of the Hypered design system. \
+         \It is possible to generate static HTML pages or display individual \
+         \components (this is used to compare with the reference Next.js \
+         \implementation)."
 
 
 --------------------------------------------------------------------------------
@@ -165,15 +168,15 @@ parser :: A.Parser Command
 parser =
   A.subparser
       (  A.command
-          "generate-templates"
-          ( A.info (parserGenerateTemplates <**> A.helper)
-          $ A.progDesc "Generate HTML templates that can be used with Pandoc"
+          "generate-guide"
+          ( A.info (parserGenerateGuide <**> A.helper)
+          $ A.progDesc "Generate HTML pages to showcase the components"
           )
 
       <> A.command
-          "generate-guide"
-          ( A.info (parserGenerateGuide <**> A.helper)
-          $ A.progDesc "A dummy command"
+          "generate-templates"
+          ( A.info (parserGenerateTemplates <**> A.helper)
+          $ A.progDesc "Generate HTML templates that can be used with Pandoc"
           )
 
       <> A.command
@@ -181,407 +184,413 @@ parser =
           ( A.info (parserWrapper <**> A.helper)
           $ A.progDesc "Generate the document wrapper. This should match `pages/_app.js`."
           )
+     )
 
-      <> A.command
-          "a--blue"
-          ( A.info (parserAnchorBlue <**> A.helper)
-          $ A.progDesc "Generate a blue link component."
-          )
-
-      <> A.command
-          "a--black"
-          ( A.info (parserAnchorBlack <**> A.helper)
-          $ A.progDesc "Generate a black link component."
-          )
-
-      <> A.command
-          "banner--green"
-          ( A.info (parserBannerGreen <**> A.helper)
-          $ A.progDesc "Generate a green banner component."
-          )
-
-      <> A.command
-          "banner--red"
-          ( A.info (parserBannerRed <**> A.helper)
-          $ A.progDesc "Generate a red banner component."
-          )
-
-      <> A.command
-          "banner--yellow"
-          ( A.info (parserBannerYellow <**> A.helper)
-          $ A.progDesc "Generate a yellow banner component."
-          )
-
-      <> A.command
-          "blockquote--default"
-          ( A.info (parserBlockquoteDefault <**> A.helper)
-          $ A.progDesc "Generate a blockquote component."
-          )
-
-      <> A.command
-          "blockquote--pull-quote"
-          ( A.info (parserBlockquotePullQuote <**> A.helper)
-          $ A.progDesc "Generate a pull quote component."
-          )
-
-      <> A.command
-          "blockquote--with-optional-pull-quote"
-          ( A.info (parserBlockquoteWithOptionalPullQuote <**> A.helper)
-          $ A.progDesc "Generate a pull quote component with no quote symbols."
-          )
-
-      <> A.command
-          "button--primary"
-          ( A.info (parserButtonPrimary <**> A.helper)
-          $ A.progDesc "Generate a primary button component."
-          )
-
-      <> A.command
-          "button--primary-large"
-          ( A.info (parserButtonPrimaryLarge <**> A.helper)
-          $ A.progDesc "Generate a large primary button component."
-          )
-
-      <> A.command
-          "button--primary-disabled"
-          ( A.info (parserButtonPrimaryDisabled <**> A.helper)
-          $ A.progDesc "Generate a disabled primary button component."
-          )
-
-      <> A.command
-          "button--secondary"
-          ( A.info (parserButtonSecondary <**> A.helper)
-          $ A.progDesc "Generate a secondary button component."
-          )
-
-      <> A.command
-          "button--secondary-large"
-          ( A.info (parserButtonSecondaryLarge <**> A.helper)
-          $ A.progDesc "Generate a secondary large button component."
-          )
-
-      <> A.command
-          "button--secondary-disabled"
-          ( A.info (parserButtonSecondaryDisabled <**> A.helper)
-          $ A.progDesc "Generate a disabled secondary button component."
-          )
-
-      <> A.command
-          "button--full-width"
-          ( A.info (parserButtonFullWidth <**> A.helper)
-          $ A.progDesc "Generate a full-width button component."
-          )
-
-      <> A.command
-          "buttonlink--primary"
-          ( A.info (parserButtonLinkPrimary <**> A.helper)
-          $ A.progDesc "Generate a primary button component."
-          )
-
-      <> A.command
-          "buttonlink--primary-large"
-          ( A.info (parserButtonLinkPrimaryLarge <**> A.helper)
-          $ A.progDesc "Generate a large primary button component."
-          )
-
-      <> A.command
-          "buttonlink--primary-disabled"
-          ( A.info (parserButtonLinkPrimaryDisabled <**> A.helper)
-          $ A.progDesc "Generate a disabled primary button component."
-          )
-
-      <> A.command
-          "buttonlink--secondary"
-          ( A.info (parserButtonLinkSecondary <**> A.helper)
-          $ A.progDesc "Generate a secondary button component."
-          )
-
-      <> A.command
-          "buttonlink--secondary-large"
-          ( A.info (parserButtonLinkSecondaryLarge <**> A.helper)
-          $ A.progDesc "Generate a secondary large button component."
-          )
-
-      <> A.command
-          "buttonlink--secondary-disabled"
-          ( A.info (parserButtonLinkSecondaryDisabled <**> A.helper)
-          $ A.progDesc "Generate a disabled secondary button component."
-          )
-
-      <> A.command
-          "buttonlink--full-width"
-          ( A.info (parserButtonLinkFullWidth <**> A.helper)
-          $ A.progDesc "Generate a full-width button component."
-          )
-
-      <> A.command
-          "checkbox--default"
-          ( A.info (parserCheckboxDefault <**> A.helper)
-          $ A.progDesc "Generate a checkbox component."
-          )
-
-      <> A.command
-          "checkbox--pill"
-          ( A.info (parserCheckboxPill <**> A.helper)
-          $ A.progDesc "Generate a checkbox pill component."
-          )
-
-      <> A.command
-          "codeblock--default"
-          ( A.info (parserCodeblock <**> A.helper)
-          $ A.progDesc "Generate a codeblock component."
-          )
-
-      <> A.command
-          "codeblock--with-table"
-          ( A.info (parserCodeblockWithTable <**> A.helper)
-          $ A.progDesc "Generate a codeblock example with a table."
-          )
-
-      <> A.command
-          "footer"
-          ( A.info (parserFooter <**> A.helper)
-          $ A.progDesc "Generate a footer component."
-          )
-
-      <> A.command
-          "radio--pill"
-          ( A.info (parserRadioDefault <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "radio--pill-inline"
-          ( A.info (parserRadioPillInline <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "radio--checkbox"
-          ( A.info (parserRadioCheckbox <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "radio--checkbox-inline"
-          ( A.info (parserRadioCheckboxInline <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-
-      <> A.command
-          "sidepanel--default"
-          ( A.info (parserSidePanel <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "sidepanel--usage"
-          ( A.info (parserSidePanelUsageExample <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-
-      <> A.command
-          "sidebar--default"
-          ( A.info (parserSidebar <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "sidebar--usage"
-          ( A.info (parserSidebarUsageExample <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-
-      <> A.command
-          "status-code--error-400"
-          ( A.info (parserStatusCodeError400 <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-      <> A.command
-          "status-code--error-404"
-          ( A.info (parserStatusCodeError404 <**> A.helper)
-          $ A.progDesc "Generate a component."
-          )
-
-      <> A.command
-          "table--default"
-          ( A.info (parserTableDefault <**> A.helper)
-          $ A.progDesc "Generate a table example."
-          )
-
-      <> A.command
-          "table--compact"
-          ( A.info (parserTableCompact <**> A.helper)
-          $ A.progDesc "Generate a compact table example."
-          )
-
-      <> A.command
-          "table--with-column-divider"
-          ( A.info (parserTableWithColumnDivider <**> A.helper)
-          $ A.progDesc "Generate a table example, with column divider."
-          )
-
-      <> A.command
-          "table--with-column-divider-compact"
-          ( A.info (parserTableWithColumnDividerCompact <**> A.helper)
-          $ A.progDesc "Generate a compact table example, with column divider."
-          )
-
-      <> A.command
-          "title--jumbo"
-          ( A.info (parserTitleJumbo <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "title--subtitle-jumbo"
-          ( A.info (parserTitleSubtitleJumbo <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "title--title"
-          ( A.info (parserTitle <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "title--subtitle"
-          ( A.info (parserTitleSubtitle <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "title--jumbo-usage"
-          ( A.info (parserTitleJumboUsageExample <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "title--title-usage"
-          ( A.info (parserTitleUsageExample <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-
-      <> A.command
-          "typography--heading-1"
-          ( A.info (parserTypographyHeading1 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--heading-2"
-          ( A.info (parserTypographyHeading2 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--heading-3"
-          ( A.info (parserTypographyHeading3 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--heading-4"
-          ( A.info (parserTypographyHeading4 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--heading-5"
-          ( A.info (parserTypographyHeading5 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--heading-6"
-          ( A.info (parserTypographyHeading6 <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--paragraph"
-          ( A.info (parserTypographyParagraph <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "typography--usage"
-          ( A.info (parserTypographyUsageExample <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-
-      <> A.command
-          "whitespace--auto-width"
-          ( A.info (parserWhitespaceAutoWidth <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "whitespace--negative-margins"
-          ( A.info (parserWhitespaceNegativeMargins <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "whitespace--full-width"
-          ( A.info (parserWhitespaceFullWidth <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-      <> A.command
-          "whitespace--examples"
-          ( A.info (parserWhitespaceExamples <**> A.helper)
-          $ A.progDesc "Generate a example."
-          )
-
-      <> A.command
-          "form--login"
-          ( A.info (parserFormLogin <**> A.helper)
-          $ A.progDesc "Generate a login form example."
-          )
-
-      <> A.command
-          "nav"
-          ( A.info (parserNav <**> A.helper)
-          $ A.progDesc "Generate a nav component."
-          )
-
-      <> A.command
-          "navigation--navigation"
-          ( A.info (parserNavigation <**> A.helper)
-          $ A.progDesc "Generate a navigation bar example."
-          )
-
-      <> A.command
-          "navigation--navigation-space-between"
-          ( A.info (parserNavigationSpaceBetween <**> A.helper)
-          $ A.progDesc "Generate a navigation bar example."
-          )
-
-      <> A.command
-          "layout--default"
-          ( A.info (parserLayoutDefault <**> A.helper)
-          $ A.progDesc "Generate the default layout."
-          )
+  <|> A.subparser
+      (  A.commandGroup "Storybook"
 
       <> A.command
           "list-categories"
           ( A.info (parserListCategories <**> A.helper)
-          $ A.progDesc "List Storybook categories."
+          $ A.progDesc "List Storybook categories"
           )
 
       <> A.command
           "list-stories"
           ( A.info (parserListStories <**> A.helper)
-          $ A.progDesc "List Storybook stories."
+          $ A.progDesc "List Storybook stories"
           )
 
       <> A.command
           "js-import-stories"
           ( A.info (parserJsImportStories <**> A.helper)
-          $ A.progDesc "Generate JS code to import the Storybook stories."
+          $ A.progDesc "Generate JS code to import the Storybook stories"
           )
 
       <> A.command
           "js-stories"
           ( A.info (parserJsStories <**> A.helper)
-          $ A.progDesc "Generate JS code to render Storybook stories."
+          $ A.progDesc "Generate JS code to render Storybook stories"
+          )
+      )
+
+  <|> A.subparser
+      (  A.commandGroup "Components"
+
+      -- Anchor
+      <> A.command
+          "a--blue"
+          ( A.info (parserAnchorBlue <**> A.helper)
+          $ A.progDesc "Generate a blue link component"
+          )
+      <> A.command
+          "a--black"
+          ( A.info (parserAnchorBlack <**> A.helper)
+          $ A.progDesc "Generate a black link component"
+          )
+
+      -- Banner
+      <> A.command
+          "banner--green"
+          ( A.info (parserBannerGreen <**> A.helper)
+          $ A.progDesc "Generate a green banner component"
+          )
+      <> A.command
+          "banner--red"
+          ( A.info (parserBannerRed <**> A.helper)
+          $ A.progDesc "Generate a red banner component"
+          )
+      <> A.command
+          "banner--yellow"
+          ( A.info (parserBannerYellow <**> A.helper)
+          $ A.progDesc "Generate a yellow banner component"
+          )
+
+      -- Blockquote
+      <> A.command
+          "blockquote--default"
+          ( A.info (parserBlockquoteDefault <**> A.helper)
+          $ A.progDesc "Generate a blockquote component"
+          )
+      <> A.command
+          "blockquote--pull-quote"
+          ( A.info (parserBlockquotePullQuote <**> A.helper)
+          $ A.progDesc "Generate a pull quote component"
+          )
+      <> A.command
+          "blockquote--with-optional-pull-quote"
+          ( A.info (parserBlockquoteWithOptionalPullQuote <**> A.helper)
+          $ A.progDesc "Generate a pull quote component with no quote symbols"
+          )
+
+      -- Button
+      <> A.command
+          "button--primary"
+          ( A.info (parserButtonPrimary <**> A.helper)
+          $ A.progDesc "Generate a primary button component"
+          )
+      <> A.command
+          "button--primary-large"
+          ( A.info (parserButtonPrimaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large primary button component"
+          )
+      <> A.command
+          "button--primary-disabled"
+          ( A.info (parserButtonPrimaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled primary button component"
+          )
+      <> A.command
+          "button--secondary"
+          ( A.info (parserButtonSecondary <**> A.helper)
+          $ A.progDesc "Generate a secondary button component"
+          )
+      <> A.command
+          "button--secondary-large"
+          ( A.info (parserButtonSecondaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large secondary button component"
+          )
+      <> A.command
+          "button--secondary-disabled"
+          ( A.info (parserButtonSecondaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled secondary button component"
+          )
+      <> A.command
+          "button--full-width"
+          ( A.info (parserButtonFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width button component"
+          )
+
+      -- Buttonlink
+      <> A.command
+          "buttonlink--primary"
+          ( A.info (parserButtonLinkPrimary <**> A.helper)
+          $ A.progDesc "Generate a primary button component"
+          )
+      <> A.command
+          "buttonlink--primary-large"
+          ( A.info (parserButtonLinkPrimaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large primary button component"
+          )
+      <> A.command
+          "buttonlink--primary-disabled"
+          ( A.info (parserButtonLinkPrimaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled primary button component"
+          )
+      <> A.command
+          "buttonlink--secondary"
+          ( A.info (parserButtonLinkSecondary <**> A.helper)
+          $ A.progDesc "Generate a secondary button component"
+          )
+      <> A.command
+          "buttonlink--secondary-large"
+          ( A.info (parserButtonLinkSecondaryLarge <**> A.helper)
+          $ A.progDesc "Generate a large secondary button component"
+          )
+      <> A.command
+          "buttonlink--secondary-disabled"
+          ( A.info (parserButtonLinkSecondaryDisabled <**> A.helper)
+          $ A.progDesc "Generate a disabled secondary button component"
+          )
+      <> A.command
+          "buttonlink--full-width"
+          ( A.info (parserButtonLinkFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width button component"
+          )
+
+      -- Checkbox
+      <> A.command
+          "checkbox--default"
+          ( A.info (parserCheckboxDefault <**> A.helper)
+          $ A.progDesc "Generate a checkbox component"
+          )
+      <> A.command
+          "checkbox--pill"
+          ( A.info (parserCheckboxPill <**> A.helper)
+          $ A.progDesc "Generate a checkbox pill component"
+          )
+
+      -- Codeblock
+      <> A.command
+          "codeblock--default"
+          ( A.info (parserCodeblock <**> A.helper)
+          $ A.progDesc "Generate a codeblock component"
+          )
+      <> A.command
+          "codeblock--with-table"
+          ( A.info (parserCodeblockWithTable <**> A.helper)
+          $ A.progDesc "Generate a codeblock example with a table"
+          )
+
+      -- Footer
+      <> A.command
+          "footer"
+          ( A.info (parserFooter <**> A.helper)
+          $ A.progDesc "Generate a footer component"
+          )
+
+      -- Form
+      <> A.command
+          "form--login"
+          ( A.info (parserFormLogin <**> A.helper)
+          $ A.progDesc "Generate a login form example"
+          )
+
+      -- Layout
+      <> A.command
+          "layout--default"
+          ( A.info (parserLayoutDefault <**> A.helper)
+          $ A.progDesc "Generate the default layout"
+          )
+
+      -- Navigation
+      <> A.command
+          "nav"
+          ( A.info (parserNav <**> A.helper)
+          $ A.progDesc "Generate a nav component"
+          )
+      <> A.command
+          "navigation--navigation"
+          ( A.info (parserNavigation <**> A.helper)
+          $ A.progDesc "Generate a navigation bar example"
+          )
+      <> A.command
+          "navigation--navigation-space-between"
+          ( A.info (parserNavigationSpaceBetween <**> A.helper)
+          $ A.progDesc "Generate a navigation bar example"
+          )
+
+      -- Radio
+      <> A.command
+          "radio--pill"
+          ( A.info (parserRadioDefault <**> A.helper)
+          $ A.progDesc "Generate vertical pill radio components"
+          )
+      <> A.command
+          "radio--pill-inline"
+          ( A.info (parserRadioPillInline <**> A.helper)
+          $ A.progDesc "Generate horizontal pill radio components"
+          )
+      <> A.command
+          "radio--checkbox"
+          ( A.info (parserRadioCheckbox <**> A.helper)
+          $ A.progDesc "Generate vertical box radio components"
+          )
+      <> A.command
+          "radio--checkbox-inline"
+          ( A.info (parserRadioCheckboxInline <**> A.helper)
+          $ A.progDesc "Generate horizontal box radio components"
+          )
+
+      -- Side panel
+      <> A.command
+          "sidepanel--default"
+          ( A.info (parserSidePanel <**> A.helper)
+          $ A.progDesc "Generate a side panel component"
+          )
+      <> A.command
+          "sidepanel--usage"
+          ( A.info (parserSidePanelUsage <**> A.helper)
+          $ A.progDesc "Generate a page showin a side panel in context"
+          )
+
+      -- Sidebar
+      <> A.command
+          "sidebar--default"
+          ( A.info (parserSidebar <**> A.helper)
+          $ A.progDesc "Generate a sidebar component"
+          )
+      <> A.command
+          "sidebar--usage"
+          ( A.info (parserSidebarUsage <**> A.helper)
+          $ A.progDesc "Generate a page showing a sidebar in context"
+          )
+
+      -- Status code
+      <> A.command
+          "status-code--error-400"
+          ( A.info (parserStatusCodeError400 <**> A.helper)
+          $ A.progDesc "Generate a 400 error component"
+          )
+      <> A.command
+          "status-code--error-404"
+          ( A.info (parserStatusCodeError404 <**> A.helper)
+          $ A.progDesc "Generate a 404 error component"
+          )
+
+      -- Table
+      <> A.command
+          "table--default"
+          ( A.info (parserTableDefault <**> A.helper)
+          $ A.progDesc "Generate a table example"
+          )
+      <> A.command
+          "table--compact"
+          ( A.info (parserTableCompact <**> A.helper)
+          $ A.progDesc "Generate a compact table example"
+          )
+      <> A.command
+          "table--with-column-divider"
+          ( A.info (parserTableWithColumnDivider <**> A.helper)
+          $ A.progDesc "Generate a table example, with column divider"
+          )
+      <> A.command
+          "table--with-column-divider-compact"
+          ( A.info (parserTableWithColumnDividerCompact <**> A.helper)
+          $ A.progDesc "Generate a compact table example, with column divider"
+          )
+
+      -- Title
+      <> A.command
+          "title--default"
+          ( A.info (parserTitle <**> A.helper)
+          $ A.progDesc "Generate a title"
+          )
+      <> A.command
+          "title--subtitle"
+          ( A.info (parserTitleSubtitle <**> A.helper)
+          $ A.progDesc "Generate a subtitle"
+          )
+      <> A.command
+          "title--jumbo"
+          ( A.info (parserTitleJumbo <**> A.helper)
+          $ A.progDesc "Generate a jumbo title"
+          )
+      <> A.command
+          "title--subtitle-jumbo"
+          ( A.info (parserTitleSubtitleJumbo <**> A.helper)
+          $ A.progDesc "Generate a jumbo subtitle"
+          )
+      <> A.command
+          "title--usage"
+          ( A.info (parserTitleUsage <**> A.helper)
+          $ A.progDesc "Generate a page combining title elements"
+          )
+      <> A.command
+          "title--jumbo-usage"
+          ( A.info (parserTitleJumboUsage <**> A.helper)
+          $ A.progDesc "Generate a page combining jumbo elements"
+          )
+
+      -- Typography
+      <> A.command
+          "typography--heading-1"
+          ( A.info (parserTypographyHeading1 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 1"
+          )
+      <> A.command
+          "typography--heading-2"
+          ( A.info (parserTypographyHeading2 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 2"
+          )
+      <> A.command
+          "typography--heading-3"
+          ( A.info (parserTypographyHeading3 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 3"
+          )
+      <> A.command
+          "typography--heading-4"
+          ( A.info (parserTypographyHeading4 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 4"
+          )
+      <> A.command
+          "typography--heading-5"
+          ( A.info (parserTypographyHeading5 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 5"
+          )
+      <> A.command
+          "typography--heading-6"
+          ( A.info (parserTypographyHeading6 <**> A.helper)
+          $ A.progDesc "Generate a heading of level 6"
+          )
+      <> A.command
+          "typography--paragraph"
+          ( A.info (parserTypographyParagraph <**> A.helper)
+          $ A.progDesc "Generate a paragraph"
+          )
+      <> A.command
+          "typography--usage"
+          ( A.info (parserTypographyUsage <**> A.helper)
+          $ A.progDesc "Generate a page with variations of typography elements"
+          )
+
+      -- Whitespace
+      <> A.command
+          "whitespace--auto-width"
+          ( A.info (parserWhitespaceAutoWidth <**> A.helper)
+          $ A.progDesc "Generate a whitespace component with auto-width"
+          )
+      <> A.command
+          "whitespace--negative-margins"
+          ( A.info (parserWhitespaceNegativeMargins <**> A.helper)
+          $ A.progDesc "Generate a negative margins whitespace component"
+          )
+      <> A.command
+          "whitespace--full-width"
+          ( A.info (parserWhitespaceFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width whitespace component"
+          )
+      <> A.command
+          "whitespace--examples"
+          ( A.info (parserWhitespaceExamples <**> A.helper)
+          $ A.progDesc
+              "Generate a page with variations of whitespace components"
           )
       )
 
 
 --------------------------------------------------------------------------------
+parserGenerateGuide :: A.Parser Command
+parserGenerateGuide = pure GenerateGuide
+
 parserGenerateTemplates :: A.Parser Command
 parserGenerateTemplates = GenerateTemplates <$> A.switch
   (A.long "docs" <> A.help "Use a prefix suitable for GitHub Pages.")
 
-parserGenerateGuide :: A.Parser Command
-parserGenerateGuide = pure GenerateGuide
-
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper
 
+
+--------------------------------------------------------------------------------
 parserAnchorBlue :: A.Parser Command
 parserAnchorBlue = pure GenerateAnchorBlue
 
@@ -662,7 +671,7 @@ parserCodeblock :: A.Parser Command
 parserCodeblock = pure GenerateCodeblock
 
 parserCodeblockWithTable :: A.Parser Command
-parserCodeblockWithTable = pure GenerateCodeblockWithTableExample
+parserCodeblockWithTable = pure GenerateCodeblockWithTable
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
@@ -682,14 +691,14 @@ parserRadioCheckboxInline = pure GenerateRadioCheckboxInline
 parserSidePanel :: A.Parser Command
 parserSidePanel = pure GenerateSidePanel
 
-parserSidePanelUsageExample :: A.Parser Command
-parserSidePanelUsageExample = pure GenerateSidePanelUsageExample
+parserSidePanelUsage :: A.Parser Command
+parserSidePanelUsage = pure GenerateSidePanelUsage
 
 parserSidebar :: A.Parser Command
 parserSidebar = pure GenerateSidebar
 
-parserSidebarUsageExample :: A.Parser Command
-parserSidebarUsageExample = pure GenerateSidebarUsageExample
+parserSidebarUsage :: A.Parser Command
+parserSidebarUsage = pure GenerateSidebarUsage
 
 parserStatusCodeError400 :: A.Parser Command
 parserStatusCodeError400 = pure GenerateStatusCodeError400
@@ -722,11 +731,11 @@ parserTitle = pure GenerateTitle
 parserTitleSubtitle :: A.Parser Command
 parserTitleSubtitle = pure GenerateTitleSubtitle
 
-parserTitleJumboUsageExample :: A.Parser Command
-parserTitleJumboUsageExample = pure GenerateTitleJumboUsageExample
+parserTitleJumboUsage :: A.Parser Command
+parserTitleJumboUsage = pure GenerateTitleJumboUsage
 
-parserTitleUsageExample :: A.Parser Command
-parserTitleUsageExample = pure GenerateTitleUsageExample
+parserTitleUsage :: A.Parser Command
+parserTitleUsage = pure GenerateTitleUsage
 
 parserTypographyHeading1 :: A.Parser Command
 parserTypographyHeading1 = pure GenerateTypographyHeading1
@@ -749,8 +758,8 @@ parserTypographyHeading6 = pure GenerateTypographyHeading6
 parserTypographyParagraph :: A.Parser Command
 parserTypographyParagraph = pure GenerateTypographyParagraph
 
-parserTypographyUsageExample :: A.Parser Command
-parserTypographyUsageExample = pure GenerateTypographyUsageExample
+parserTypographyUsage :: A.Parser Command
+parserTypographyUsage = pure GenerateTypographyUsage
 
 parserWhitespaceAutoWidth :: A.Parser Command
 parserWhitespaceAutoWidth = pure GenerateWhitespaceAutoWidth

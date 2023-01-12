@@ -53,12 +53,12 @@ for i in \
   table--compact \
   table--with-column-divider \
   table--with-column-divider-compact \
-  title--jumbo-usage \
+  title--default \
   title--subtitle \
-  title--subtitle-jumbo \
-  title--title \
   title--jumbo \
-  title--title-usage \
+  title--subtitle-jumbo \
+  title--usage \
+  title--jumbo-usage \
   typography--heading-1 \
   typography--heading-2 \
   typography--heading-3 \

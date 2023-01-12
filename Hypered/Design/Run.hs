@@ -121,14 +121,13 @@ run Command.GenerateCheckboxPill = generateCheckboxPill
 
 run Command.GenerateCodeblock = generateCodeblock
 
-run Command.GenerateCodeblockWithTableExample = generateCodeblockWithTable
+run Command.GenerateCodeblockWithTable = generateCodeblockWithTable
 
 run Command.GenerateFooter = generateFooter
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
-run Command.GenerateNavigationBlockUsageExample =
-  generateNavigationBlockUsageExample
+run Command.GenerateNavigationBlockUsage = generateNavigationBlockUsage
 
 run Command.GenerateNavigation = generateNavigation
 
@@ -144,11 +143,11 @@ run Command.GenerateRadioCheckboxInline = generateRadioCheckboxInline
 
 run Command.GenerateSidePanel = generateSidePanel
 
-run Command.GenerateSidePanelUsageExample = generateSidePanelUsageExample
+run Command.GenerateSidePanelUsage = generateSidePanelUsage
 
 run Command.GenerateSidebar = generateSidebar
 
-run Command.GenerateSidebarUsageExample = generateSidebarUsageExample
+run Command.GenerateSidebarUsage = generateSidebarUsage
 
 run Command.GenerateStatusCodeError400 = generateStatusCodeError400
 
@@ -171,9 +170,9 @@ run Command.GenerateTitle = generateTitle
 
 run Command.GenerateTitleSubtitle = generateTitleSubtitle
 
-run Command.GenerateTitleJumboUsageExample = generateTitleJumboUsageExample
+run Command.GenerateTitleJumboUsage = generateTitleJumboUsage
 
-run Command.GenerateTitleUsageExample = generateTitleUsageExample
+run Command.GenerateTitleUsage = generateTitleUsage
 
 run Command.GenerateTypographyHeading1 = generateTypographyHeading1
 
@@ -189,7 +188,7 @@ run Command.GenerateTypographyHeading6 = generateTypographyHeading6
 
 run Command.GenerateTypographyParagraph = generateTypographyParagraph
 
-run Command.GenerateTypographyUsageExample = generateTypographyUsageExample
+run Command.GenerateTypographyUsage = generateTypographyUsage
 
 run Command.GenerateWhitespaceAutoWidth = generateWhitespaceAutoWidth
 
@@ -512,8 +511,8 @@ generateFooter = putStr $ renderHtml footerExample
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
-generateNavigationBlockUsageExample :: IO ()
-generateNavigationBlockUsageExample =
+generateNavigationBlockUsage :: IO ()
+generateNavigationBlockUsage =
   putStr $ renderHtml navigationBlockUsageExample
 
 generateNavigation :: IO ()
@@ -537,14 +536,14 @@ generateRadioCheckboxInline = putStr $ renderHtml radioCheckboxInlineExample
 generateSidePanel :: IO ()
 generateSidePanel = putStr $ renderHtml sidePanelExample
 
-generateSidePanelUsageExample :: IO ()
-generateSidePanelUsageExample = putStr $ renderHtml sidePanelUsageExample
+generateSidePanelUsage :: IO ()
+generateSidePanelUsage = putStr $ renderHtml sidePanelUsageExample
 
 generateSidebar :: IO ()
 generateSidebar = putStr $ renderHtml sidebarExample
 
-generateSidebarUsageExample :: IO ()
-generateSidebarUsageExample = putStr $ renderHtml sidebarUsageExample
+generateSidebarUsage :: IO ()
+generateSidebarUsage = putStr $ renderHtml sidebarUsageExample
 
 generateStatusCodeError400 :: IO ()
 generateStatusCodeError400 = putStr $ renderHtml statusCodeError400Example
@@ -578,11 +577,11 @@ generateTitle = putStr $ renderHtml titleDefaultExample
 generateTitleSubtitle :: IO ()
 generateTitleSubtitle = putStr $ renderHtml titleSubtitleDefaultExample
 
-generateTitleJumboUsageExample :: IO ()
-generateTitleJumboUsageExample = putStr $ renderHtml titleJumboUsageExample
+generateTitleJumboUsage :: IO ()
+generateTitleJumboUsage = putStr $ renderHtml titleJumboUsageExample
 
-generateTitleUsageExample :: IO ()
-generateTitleUsageExample = putStr $ renderHtml titleDefaultUsageExample
+generateTitleUsage :: IO ()
+generateTitleUsage = putStr $ renderHtml titleDefaultUsageExample
 
 generateTypographyHeading1 :: IO ()
 generateTypographyHeading1 = putStr $ renderHtml typographyHeading1Example
@@ -605,8 +604,8 @@ generateTypographyHeading6 = putStr $ renderHtml typographyHeading6Example
 generateTypographyParagraph :: IO ()
 generateTypographyParagraph = putStr $ renderHtml typographyParagraphExample
 
-generateTypographyUsageExample :: IO ()
-generateTypographyUsageExample = putStr $ renderHtml typographyUsageExample
+generateTypographyUsage :: IO ()
+generateTypographyUsage = putStr $ renderHtml typographyUsageExample
 
 generateWhitespaceAutoWidth :: IO ()
 generateWhitespaceAutoWidth = putStr $ renderHtml whitespaceAutoWidthExample
