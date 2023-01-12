@@ -34,7 +34,9 @@ import Hypered.Html
   , buttonLinkSecondary, buttonLinkSecondaryLarge, buttonLinkSecondaryDisabled
   , buttonLinkFullWidth
   , checkboxDefault, checkboxPill
-  , codeBlock
+  , codeblock, codeblockEditable, codeblockTextArea
+  , codeblockEditableBottomButton, codeblockEditableToolbarButton
+  , codeblockTextAreaBottomButton, codeblockTextAreaToolbarButton
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -122,6 +124,22 @@ run Command.GenerateCheckboxPill = generateCheckboxPill
 run Command.GenerateCodeblock = generateCodeblock
 
 run Command.GenerateCodeblockWithTable = generateCodeblockWithTable
+
+run Command.GenerateCodeblockEditable = generateCodeblockEditable
+
+run Command.GenerateCodeblockTextArea = generateCodeblockTextArea
+
+run Command.GenerateCodeblockEditableBottomButton =
+  generateCodeblockEditableBottomButton
+
+run Command.GenerateCodeblockEditableToolbarButton =
+  generateCodeblockEditableToolbarButton
+
+run Command.GenerateCodeblockTextAreaBottomButton =
+  generateCodeblockTextAreaBottomButton
+
+run Command.GenerateCodeblockTextAreaToolbarButton =
+  generateCodeblockTextAreaToolbarButton
 
 run Command.GenerateFooter = generateFooter
 
@@ -505,6 +523,28 @@ generateCodeblock = putStr $ renderHtml codeblockExample
 generateCodeblockWithTable :: IO ()
 generateCodeblockWithTable = putStr $ renderHtml codeblockWithTableExample
 
+generateCodeblockEditable :: IO ()
+generateCodeblockEditable = putStr $ renderHtml codeblockEditableExample
+
+generateCodeblockTextArea :: IO ()
+generateCodeblockTextArea = putStr $ renderHtml codeblockTextAreaExample
+
+generateCodeblockEditableBottomButton :: IO ()
+generateCodeblockEditableBottomButton =
+  putStr $ renderHtml codeblockEditableBottomButtonExample
+
+generateCodeblockEditableToolbarButton :: IO ()
+generateCodeblockEditableToolbarButton =
+  putStr $ renderHtml codeblockEditableToolbarButtonExample
+
+generateCodeblockTextAreaBottomButton :: IO ()
+generateCodeblockTextAreaBottomButton =
+  putStr $ renderHtml codeblockTextAreaBottomButtonExample
+
+generateCodeblockTextAreaToolbarButton :: IO ()
+generateCodeblockTextAreaToolbarButton =
+  putStr $ renderHtml codeblockTextAreaToolbarButtonExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -716,13 +756,13 @@ checkboxPillExample = checkboxPill "This is checked"
 
 --------------------------------------------------------------------------------
 codeblockExample :: Html
-codeblockExample = codeBlock
+codeblockExample = codeblock
   "// this is a comment\n\
   \// this is another comment\n\
   \// this is a slightly longer comment\n"
 
 codeblockWithTableExample :: Html
-codeblockWithTableExample = codeBlock
+codeblockWithTableExample = codeblock
   "\n\
   \// table examples from: https://ozh.github.io/ascii-tables/\n\
   \\n\
@@ -742,6 +782,48 @@ codeblockWithTableExample = codeBlock
   \| Value 1                          | Value 2 | 123                    |           10.0 |\n\
   \| Separate                         | cols    | with a tab or 4 spaces |       -2,027.1 |\n\
   \| This is a row with only one cell |         |                        |                |\n"
+
+codeblockEditableExample :: Html
+codeblockEditableExample = codeblockEditable
+  "// This block of code can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
+
+codeblockTextAreaExample :: Html
+codeblockTextAreaExample = codeblockTextArea
+  "// This is an example of a block of code that can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
+
+codeblockEditableBottomButtonExample :: Html
+codeblockEditableBottomButtonExample = codeblockEditableBottomButton
+  "// This block of code can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
+
+codeblockEditableToolbarButtonExample :: Html
+codeblockEditableToolbarButtonExample = codeblockEditableToolbarButton
+  "// This block of code can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
+
+codeblockTextAreaBottomButtonExample :: Html
+codeblockTextAreaBottomButtonExample = codeblockTextAreaBottomButton
+  "// This block of code can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
+
+codeblockTextAreaToolbarButtonExample :: Html
+codeblockTextAreaToolbarButtonExample = codeblockTextAreaToolbarButton
+  "// This block of code can be edited.\n\
+  \// this is a comment\n\
+  \// this is another comment\n\
+  \// this is a slightly longer comment\n"
 
 
 --------------------------------------------------------------------------------

@@ -54,27 +54,24 @@ export const WithTable = () => (
 
 export const Editable = () => (
   <Code editable>{`// This block of code can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
 `}</Code>
 );
 
-export const TextArea = () => (
+export const Textarea = () => (
   <EditableTextArea>{`// This is an example of a block of code that can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
 `}</EditableTextArea>
 );
 
-export const ContentEditableWithBottomButton = () => (
+export const EditableBottomButton = () => (
   <EditableForm>
     <CodeToolbar title="show fetchgit:README.md" />
     <Code editable>{`// This block of code can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
@@ -83,11 +80,10 @@ export const ContentEditableWithBottomButton = () => (
   </EditableForm>
 );
 
-export const ContentEditableWithToolbarButton = () => (
+export const EditableToolbarButton = () => (
   <EditableForm>
     <CodeToolbarWithButton title="show fetchgit:README.md" label="Save" />
     <Code editable>{`// This block of code can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
@@ -95,11 +91,10 @@ export const ContentEditableWithToolbarButton = () => (
   </EditableForm>
 );
 
-export const TextAreaWithBottomButton = () => (
+export const TextareaBottomButton = () => (
   <EditableForm>
     <CodeToolbar title="show fetchgit:README.md" label="Save" />
     <EditableTextArea>{`// This block of code can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment
@@ -108,11 +103,10 @@ export const TextAreaWithBottomButton = () => (
   </EditableForm>
 );
 
-export const TextAreaWithToolbarButton = () => (
+export const TextareaToolbarButton = () => (
   <EditableForm>
     <CodeToolbarWithButton title="show fetchgit:README.md" label="Save" />
     <EditableTextArea>{`// This block of code can be edited.
-
 // this is a comment
 // this is another comment
 // this is a slightly longer comment

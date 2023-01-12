@@ -43,8 +43,8 @@ const CodeToolbarWithButton = ({ title, label }) => (
     <div>
       <input
         type="submit"
-        value={label}
         className="button-reset bg-black ph3 pv2 white br2 bn"
+        value={label}
         onClick={e => e.preventDefault()}
       />
     </div>

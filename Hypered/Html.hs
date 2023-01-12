@@ -404,13 +404,81 @@ checkboxPill content =
 
 --------------------------------------------------------------------------------
 -- When pretty-printing the HTML with a H.code element, the first line
--- within the code element is indented, which is not correct. Instead use
--- H.preEscapedToHtml to force what we want.
-codeBlock :: Text -> Html
-codeBlock content = H.pre ! A.class_ "pre overflow-auto" $ do
-  H.preEscapedToHtml @Text "<code class=\"code\">"
-  H.text content
-  H.preEscapedToHtml @Text "</code>"
+-- within the code element is indented, which is not correct. Using the
+-- non-pretty-printing renderer is advised.
+codeblock :: Text -> Html
+codeblock content = H.pre ! A.class_ "pre overflow-auto" $
+  H.code ! A.class_ "code" $
+    H.text content
+
+codeblockEditable :: Text -> Html
+codeblockEditable content =
+  H.pre ! A.class_ "pre hy-editable pv3 ph3 mv0 overflow-auto"
+        ! A.contenteditable "true"
+        ! A.spellcheck "false" $
+    H.code ! A.class_ "code" $
+      H.text content
+
+codeblockTextArea :: Text -> Html
+codeblockTextArea content =
+  H.pre ! A.class_ "pv3 ph3 mv0 relative pre overflow-auto hy-editable"
+        ! A.spellcheck "false" $
+    H.textarea ! A.class_ "code db w-100 h5 input-reset bn pa0 ma0 outline-0" $
+      H.text content
+
+codeblockEditableBottomButton :: Text -> Html
+codeblockEditableBottomButton content = H.form $ do
+  H.div ! A.class_ "flex flex-wrap items-center bt bb justify-between pv3 mh3" $
+    H.div "show fetchgit:README.md"
+  H.pre ! A.class_ "pre hy-editable pv3 ph3 mv0 overflow-auto"
+        ! A.contenteditable "true"
+        ! A.spellcheck "false" $
+    H.code ! A.class_ "code" $
+      H.text content
+  H.div ! A.class_ "bt pt3 mh3" $
+    H.input ! A.type_ "submit"
+            ! A.class_ "db button-reset bg-black pa3 white br2 bn"
+            ! A.value "Submit"
+
+codeblockEditableToolbarButton :: Text -> Html
+codeblockEditableToolbarButton content = H.form $ do
+  H.div ! A.class_ "flex flex-wrap items-center bt bb justify-between pv2 mh3" $ do
+    H.div "show fetchgit:README.md"
+    H.div $
+      H.input ! A.type_ "submit"
+              ! A.class_ "button-reset bg-black ph3 pv2 white br2 bn"
+              ! A.value "Save"
+  H.pre ! A.class_ "pre hy-editable pv3 ph3 mv0 overflow-auto"
+        ! A.contenteditable "true"
+        ! A.spellcheck "false" $
+    H.code ! A.class_ "code" $
+      H.text content
+
+codeblockTextAreaBottomButton :: Text -> Html
+codeblockTextAreaBottomButton content = H.form $ do
+  H.div ! A.class_ "flex flex-wrap items-center bt bb justify-between pv3 mh3" $
+    H.div "show fetchgit:README.md"
+  H.pre ! A.class_ "pv3 ph3 mv0 relative pre overflow-auto hy-editable"
+        ! A.spellcheck "false" $
+    H.textarea ! A.class_ "code db w-100 h5 input-reset bn pa0 ma0 outline-0" $
+      H.text content
+  H.div ! A.class_ "bt pt3 mh3" $
+    H.input ! A.type_ "submit"
+            ! A.class_ "db button-reset bg-black pa3 white br2 bn"
+            ! A.value "Submit"
+
+codeblockTextAreaToolbarButton :: Text -> Html
+codeblockTextAreaToolbarButton content = H.form $ do
+  H.div ! A.class_ "flex flex-wrap items-center bt bb justify-between pv2 mh3" $ do
+    H.div "show fetchgit:README.md"
+    H.div $
+      H.input ! A.type_ "submit"
+              ! A.class_ "button-reset bg-black ph3 pv2 white br2 bn"
+              ! A.value "Save"
+  H.pre ! A.class_ "pv3 ph3 mv0 relative pre overflow-auto hy-editable"
+        ! A.spellcheck "false" $
+    H.textarea ! A.class_ "code db w-100 h5 input-reset bn pa0 ma0 outline-0" $
+      H.text content
 
 
 --------------------------------------------------------------------------------

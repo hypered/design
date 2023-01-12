@@ -59,6 +59,12 @@ data Command =
 
   | GenerateCodeblock
   | GenerateCodeblockWithTable
+  | GenerateCodeblockEditable
+  | GenerateCodeblockTextArea
+  | GenerateCodeblockEditableBottomButton
+  | GenerateCodeblockEditableToolbarButton
+  | GenerateCodeblockTextAreaBottomButton
+  | GenerateCodeblockTextAreaToolbarButton
 
   | GenerateColorText
   | GenerateColorBackground
@@ -359,6 +365,40 @@ parser =
           "codeblock--with-table"
           ( A.info (parserCodeblockWithTable <**> A.helper)
           $ A.progDesc "Generate a codeblock example with a table"
+          )
+      <> A.command
+          "codeblock--editable"
+          ( A.info (parserCodeblockEditable <**> A.helper)
+          $ A.progDesc "Generate a content-editable codeblock component"
+          )
+      <> A.command
+          "codeblock--textarea"
+          ( A.info (parserCodeblockTextArea <**> A.helper)
+          $ A.progDesc "Generate a textarea codeblock component"
+          )
+      <> A.command
+          "codeblock--editable-bottom-button"
+          ( A.info (parserCodeblockEditableBottomButton <**> A.helper)
+          $ A.progDesc "Generate a content-editable codeblock component, \
+              \with a button at the bottom"
+          )
+      <> A.command
+          "codeblock--editable-toolbar-button"
+          ( A.info (parserCodeblockEditableToolbarButton <**> A.helper)
+          $ A.progDesc "Generate a content-editable codeblock component, \
+              \with a button in the toolbar"
+          )
+      <> A.command
+          "codeblock--textarea-bottom-button"
+          ( A.info (parserCodeblockTextAreaBottomButton <**> A.helper)
+          $ A.progDesc "Generate a textarea codeblock component, \
+              \with a button at the bottom"
+          )
+      <> A.command
+          "codeblock--textarea-toolbar-button"
+          ( A.info (parserCodeblockTextAreaToolbarButton <**> A.helper)
+          $ A.progDesc "Generate a textarea codeblock component, \
+              \with a button in the toolbar"
           )
 
       -- Footer
@@ -672,6 +712,28 @@ parserCodeblock = pure GenerateCodeblock
 
 parserCodeblockWithTable :: A.Parser Command
 parserCodeblockWithTable = pure GenerateCodeblockWithTable
+
+parserCodeblockEditable :: A.Parser Command
+parserCodeblockEditable = pure GenerateCodeblockEditable
+
+parserCodeblockTextArea :: A.Parser Command
+parserCodeblockTextArea = pure GenerateCodeblockTextArea
+
+parserCodeblockEditableBottomButton :: A.Parser Command
+parserCodeblockEditableBottomButton =
+  pure GenerateCodeblockEditableBottomButton
+
+parserCodeblockEditableToolbarButton :: A.Parser Command
+parserCodeblockEditableToolbarButton =
+  pure GenerateCodeblockEditableToolbarButton
+
+parserCodeblockTextAreaBottomButton :: A.Parser Command
+parserCodeblockTextAreaBottomButton =
+  pure GenerateCodeblockTextAreaBottomButton
+
+parserCodeblockTextAreaToolbarButton :: A.Parser Command
+parserCodeblockTextAreaToolbarButton =
+  pure GenerateCodeblockTextAreaToolbarButton
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter

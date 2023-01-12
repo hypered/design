@@ -39,6 +39,12 @@ for i in \
   checkbox--pill \
   codeblock--default \
   codeblock--with-table \
+  codeblock--editable \
+  codeblock--textarea \
+  codeblock--editable-bottom-button \
+  codeblock--editable-toolbar-button \
+  codeblock--textarea-bottom-button \
+  codeblock--textarea-toolbar-button \
   footer \
   nav \
   radio--pill \

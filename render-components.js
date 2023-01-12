@@ -180,16 +180,32 @@ case 'codeblock--default':
   render(Codeblock.Default());
   break;
 
-case 'codeblock--editable':
-  render(Codeblock.Editable());
-  break;
-
 case 'codeblock--with-table':
   render(Codeblock.WithTable());
   break;
 
-case 'codeblock--with-toolbar':
-  render(Codeblock.WithToolbar());
+case 'codeblock--editable':
+  render(Codeblock.Editable());
+  break;
+
+case 'codeblock--textarea':
+  render(Codeblock.Textarea());
+  break;
+
+case 'codeblock--editable-bottom-button':
+  render(Codeblock.EditableBottomButton());
+  break;
+
+case 'codeblock--editable-toolbar-button':
+  render(Codeblock.EditableToolbarButton());
+  break;
+
+case 'codeblock--textarea-bottom-button':
+  render(Codeblock.TextareaBottomButton());
+  break;
+
+case 'codeblock--textarea-toolbar-button':
+  render(Codeblock.TextareaToolbarButton());
   break;
 
 case 'colours--background':
