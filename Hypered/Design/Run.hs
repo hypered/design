@@ -46,6 +46,7 @@ import Hypered.Html
   , imageExamples
   , inputTextExample, inputPasswordExample, inputNumberExample
   , inputWithMessageExample, inputUsage
+  , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -188,6 +189,14 @@ run Command.GenerateInputWithMessage = generateInputWithMessage
 
 run Command.GenerateInputUsage = generateInputUsage
 
+run Command.GenerateLayout = generateLayout
+
+run Command.GenerateLayoutBlogList = generateLayoutBlogList
+
+run Command.GenerateLayoutBlogPost = generateLayoutBlogPost
+
+run Command.GenerateLayoutWithSidebar = generateLayoutWithSidebar
+
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
 run Command.GenerateNavigationBlockUsage = generateNavigationBlockUsage
@@ -260,8 +269,6 @@ run Command.GenerateWhitespaceNegativeMargins = generateWhitespaceNegativeMargin
 run Command.GenerateWhitespaceFullWidth = generateWhitespaceFullWidth
 
 run Command.GenerateWhitespaceExamples = generateWhitespaceExamples
-
-run Command.GenerateLayoutDefault = generateLayoutDefault
 
 run Command.ListCategories = listCategories
 
@@ -646,6 +653,18 @@ generateInputWithMessage = putStr $ renderHtml inputWithMessageExample
 generateInputUsage :: IO ()
 generateInputUsage = putStr $ renderHtml inputUsage
 
+generateLayout :: IO ()
+generateLayout = putStr $ renderHtml layoutExample
+
+generateLayoutBlogList :: IO ()
+generateLayoutBlogList = putStr $ renderHtml layoutBlogListExample
+
+generateLayoutBlogPost :: IO ()
+generateLayoutBlogPost = putStr $ renderHtml layoutBlogPostExample
+
+generateLayoutWithSidebar :: IO ()
+generateLayoutWithSidebar = putStr $ renderHtml layoutWithSidebarExample
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
@@ -992,6 +1011,20 @@ imageWithCaptionExample = imageWithCaption
 -- inputUsage =
 
 
+------------------------------------------------------------------------------
+layoutExample :: Html
+layoutExample = layoutDefault
+
+layoutBlogListExample :: Html
+layoutBlogListExample = layoutBlogList
+
+layoutBlogPostExample :: Html
+layoutBlogPostExample = layoutBlogPost
+
+layoutWithSidebarExample :: Html
+layoutWithSidebarExample = layoutWithSidebar
+
+
 --------------------------------------------------------------------------------
 tableDefaultExample :: Html
 tableDefaultExample = tableDefault -- TODO Arguments.
@@ -1004,13 +1037,6 @@ tableWithColumnDividerExample = tableWithColumnDivider
 
 tableWithColumnDividerCompactExample :: Html
 tableWithColumnDividerCompactExample = tableWithColumnDividerCompact
-
-
-------------------------------------------------------------------------------
--- Stories from Storybook
-
-generateLayoutDefault :: IO ()
-generateLayoutDefault = putStr (renderHtml (nav ""))
 
 
 ------------------------------------------------------------------------------

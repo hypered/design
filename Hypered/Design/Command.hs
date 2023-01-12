@@ -149,10 +149,6 @@ data Command =
   | GenerateWhitespaceNegativeMargins
   | GenerateWhitespaceFullWidth
   | GenerateWhitespaceExamples
-
-    -- Stories from Storybook
-
-  | GenerateLayoutDefault
   deriving (Eq, Show)
 
 
@@ -516,8 +512,23 @@ parser =
       -- Layout
       <> A.command
           "layout--default"
-          ( A.info (parserLayoutDefault <**> A.helper)
+          ( A.info (parserLayout <**> A.helper)
           $ A.progDesc "Generate the default layout"
+          )
+      <> A.command
+          "layout--blog-list"
+          ( A.info (parserLayoutBlogList <**> A.helper)
+          $ A.progDesc "Generate the blog list layout"
+          )
+      <> A.command
+          "layout--blog-post"
+          ( A.info (parserLayoutBlogPost <**> A.helper)
+          $ A.progDesc "Generate the blog post layout"
+          )
+      <> A.command
+          "layout--with-sidebar"
+          ( A.info (parserLayoutWithSidebar <**> A.helper)
+          $ A.progDesc "Generate the layout with sidebar"
           )
 
       -- Navigation
@@ -1007,5 +1018,14 @@ parserInputWithMessage = pure GenerateInputWithMessage
 parserInputUsage :: A.Parser Command
 parserInputUsage = pure GenerateInputUsage
 
-parserLayoutDefault :: A.Parser Command
-parserLayoutDefault = pure GenerateLayoutDefault
+parserLayout :: A.Parser Command
+parserLayout = pure GenerateLayout
+
+parserLayoutBlogList :: A.Parser Command
+parserLayoutBlogList = pure GenerateLayoutBlogList
+
+parserLayoutBlogPost :: A.Parser Command
+parserLayoutBlogPost = pure GenerateLayoutBlogPost
+
+parserLayoutWithSidebar :: A.Parser Command
+parserLayoutWithSidebar = pure GenerateLayoutWithSidebar

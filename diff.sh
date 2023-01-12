@@ -66,6 +66,10 @@ for i in \
   input--number \
   input--with-message \
   input--usage \
+  layout--default \
+  layout--blog-list \
+  layout--blog-post \
+  layout--with-sidebar \
   nav \
   radio--pill \
   radio--pill-inline \

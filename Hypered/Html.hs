@@ -930,31 +930,96 @@ layoutBlogPost =
                 H.h3 ! A.class_ "f5 ttu mv1" $ "Column 4 (Section 2)"
                 H.ul ! A.class_ "list pl0 mb3 mt0" $ do
                   H.li $
-                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+                    H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item One"
                   H.li $
-                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+                    H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Two"
                   H.li $
-                    H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+                    H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Three"
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
  where
   links = do
     H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item One"
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item One"
     H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Two"
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Two"
     H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Three"
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Three"
     H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Four"
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Four"
     H.li $
-      H.a ! A.class_ "black no-underline hy-hover-blue" $ "Item Five"
+      H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Item Five"
 
 layoutWithSidebar :: Html
 layoutWithSidebar =
-  layoutBlogPost
-
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $ "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      H.main ! A.class_ "flex flex-wrap nl3 nr3" $ do
+        H.aside ! A.class_ "order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2" $
+          H.nav $ do
+            H.h3 ! A.class_ "f5 ttu mv1" $ "Intro"
+            H.ul ! A.class_ "list pl0 mb3 mt0" $
+              H.li $
+                H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "not-os"
+            H.h3 ! A.class_ "f5 ttu mv1" $ "Notes"
+            H.ul ! A.class_ "list pl0 mb3 mt0" $ do
+              H.li $
+                H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Digital Ocean"
+              H.li $
+                H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "TODO"
+            H.h3 ! A.class_ "f5 ttu mv1" $ "Values"
+            H.ul ! A.class_ "list pl0 mb3 mt0" $ do
+              H.li $
+                H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "command-line"
+              H.li $
+                H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "root-modules"
+        H.article ! A.class_ "order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3 cf" $ do
+          H.div ! A.class_ "mb4" $ do
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Introduction"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
+          H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
+            H.li ! A.class_ "mv1" $ "a kernel (config.system.build.kernel)"
+            H.li ! A.class_ "mv1" $ "an initrd (config.system.build.initialRamdisk)"
+            H.li ! A.class_ "mv1" $ "a rootfs (config.system.build.squashfs)"
+          H.p ! A.class_ "f5 lh-copy mv3" $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
+          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Sub-points"
+          H.ol ! A.class_ "hy-ff-tab-num mv3" $ do
+            H.li ! A.class_ "mv1" $ "Item one"
+            H.li ! A.class_ "mv1" $ "Item two"
+            H.li ! A.class_ "mv1" $ "Item three"
+          H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Some quotes"
+          H.blockquote ! A.class_ "db bl bw2 pv2 ph3 ml0 mv4 lh-copy" $
+            H.span ! A.class_ "i" $ "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
+          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Ending points"
+          H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
+            H.span ! A.class_ "i" $ "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
+          H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        H.aside ! A.class_ "order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2" $
+          H.div ! A.class_ "" $ do
+            H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
+            H.ul ! A.class_ "bg-near-white list pa3" $ do
+              H.li ! A.class_ "pv1 bb b--black-10" $
+                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
+              H.li ! A.class_ "pv1 bb b--black-10" $
+                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
+              H.li ! A.class_ "pv1 bb b--black-10" $
+                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
+              H.li ! A.class_ "pv1 bb b--black-10" $
+                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
+              H.li ! A.class_ "pv1 bb b--black-10" $
+                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
 
 --------------------------------------------------------------------------------
 listOrderedExample :: Html
