@@ -244,20 +244,20 @@ case 'image--default':
   render(Image.Default());
   break;
 
-case 'image--examples':
-  render(Image.Examples());
+case 'image--negative-margins':
+  render(Image.NegativePull());
   break;
 
 case 'image--full-width':
   render(Image.FullWidth());
   break;
 
-case 'image--negative-pull':
-  render(Image.NegativePull());
-  break;
-
 case 'image--with-caption':
   render(Image.WithCaption());
+  break;
+
+case 'image--examples':
+  render(Image.Examples());
   break;
 
 case 'input--number':

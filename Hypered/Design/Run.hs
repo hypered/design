@@ -42,6 +42,8 @@ import Hypered.Html
   , dropdownDefault
   , loginFormTODO
   , hrDefault, hrDivider
+  , imageDefault, imageNegativePull, imageFullWidth, imageWithCaption
+  , imageExamples
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -163,6 +165,16 @@ run Command.GenerateFormLogin = generateFormLogin
 run Command.GenerateHorizontalRule = generateHr
 
 run Command.GenerateHorizontalRuleDivider = generateHrDivider
+
+run Command.GenerateImage = generateImage
+
+run Command.GenerateImageNegativePull = generateImageNegativePull
+
+run Command.GenerateImageFullWidth = generateImageFullWidth
+
+run Command.GenerateImageWithCaption = generateImageWithCaption
+
+run Command.GenerateImageExamples = generateImageExamples
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
@@ -592,6 +604,21 @@ generateHr = putStr $ renderHtml hrExample
 generateHrDivider :: IO ()
 generateHrDivider = putStr $ renderHtml hrDividerExample
 
+generateImage :: IO ()
+generateImage = putStr $ renderHtml imageExample
+
+generateImageNegativePull :: IO ()
+generateImageNegativePull = putStr $ renderHtml imageNegativePullExample
+
+generateImageFullWidth :: IO ()
+generateImageFullWidth = putStr $ renderHtml imageFullWidthExample
+
+generateImageWithCaption :: IO ()
+generateImageWithCaption = putStr $ renderHtml imageWithCaptionExample
+
+generateImageExamples :: IO ()
+generateImageExamples = putStr $ renderHtml imageExamples
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockDefault
 
@@ -902,6 +929,24 @@ hrExample = hrDefault
 
 hrDividerExample :: Html
 hrDividerExample = hrDivider
+
+
+--------------------------------------------------------------------------------
+imageExample :: Html
+imageExample = imageDefault
+
+imageNegativePullExample :: Html
+imageNegativePullExample = imageNegativePull
+
+imageFullWidthExample :: Html
+imageFullWidthExample = imageFullWidth
+
+imageWithCaptionExample :: Html
+imageWithCaptionExample = imageWithCaption
+
+-- imageExamples :: Html
+-- imageExamples = imageExamples
+
 
 --------------------------------------------------------------------------------
 tableDefaultExample :: Html

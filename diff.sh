@@ -8,8 +8,10 @@ set -e
 function norm {
   # blaze-html renders hr as <hr> while the react code uses <hr />.
   # Same for input.
+  # Same for img.
   sed -e 's@<hr class="\(.*\)">@<hr class="\1" />@' \
-    | sed -e 's@<input \(.*\)">@<input \1" />@'
+    | sed -e 's@<input \(.*\)">@<input \1" />@' \
+    | sed -e 's@<img \(.*\)">@<img \1" />@'
 }
 
 for i in \
@@ -54,6 +56,11 @@ for i in \
   form--login \
   hr--default \
   hr--divider \
+  image--default \
+  image--negative-margins \
+  image--full-width \
+  image--with-caption \
+  image--examples \
   nav \
   radio--pill \
   radio--pill-inline \

@@ -458,6 +458,34 @@ parser =
           $ A.progDesc "Generate an horizontal divider example"
           )
 
+      -- Image
+      <> A.command
+          "image--default"
+          ( A.info (parserImage <**> A.helper)
+          $ A.progDesc "Generate an horizontal rule example"
+          )
+      <> A.command
+          "image--negative-margins"
+          ( A.info (parserImageNegativeMargins <**> A.helper)
+          $ A.progDesc "Generate a negative margins image component"
+          )
+      <> A.command
+          "image--full-width"
+          ( A.info (parserImageFullWidth <**> A.helper)
+          $ A.progDesc "Generate a full-width image component"
+          )
+      <> A.command
+          "image--with-caption"
+          ( A.info (parserImageWithCaption <**> A.helper)
+          $ A.progDesc "Generate a image component with caption"
+          )
+      <> A.command
+          "image--examples"
+          ( A.info (parserImageExamples <**> A.helper)
+          $ A.progDesc
+              "Generate a page with variations of image components"
+          )
+
       -- Layout
       <> A.command
           "layout--default"
@@ -907,6 +935,21 @@ parserHr = pure GenerateHorizontalRule
 
 parserHrDivider :: A.Parser Command
 parserHrDivider = pure GenerateHorizontalRuleDivider
+
+parserImage :: A.Parser Command
+parserImage = pure GenerateImage
+
+parserImageNegativeMargins :: A.Parser Command
+parserImageNegativeMargins = pure GenerateImageNegativePull
+
+parserImageFullWidth :: A.Parser Command
+parserImageFullWidth = pure GenerateImageFullWidth
+
+parserImageWithCaption :: A.Parser Command
+parserImageWithCaption = pure GenerateImageWithCaption
+
+parserImageExamples :: A.Parser Command
+parserImageExamples = pure GenerateImageExamples
 
 parserLayoutDefault :: A.Parser Command
 parserLayoutDefault = pure GenerateLayoutDefault
