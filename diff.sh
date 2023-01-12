@@ -76,7 +76,8 @@ for i in \
   list--unordered \
   navigation-block--default \
   navigation-block--usage \
-  nav \
+  navigation--default \
+  navigation--space-between \
   radio--pill \
   radio--pill-inline \
   radio--checkbox \

@@ -106,7 +106,6 @@ data Command =
   | GenerateNavigationBlock
   | GenerateNavigationBlockUsage
 
-  | GenerateNav
   | GenerateNavigation
   | GenerateNavigationSpaceBetween
 
@@ -557,17 +556,12 @@ parser =
 
       -- Navigation
       <> A.command
-          "nav"
-          ( A.info (parserNav <**> A.helper)
-          $ A.progDesc "Generate a nav component"
-          )
-      <> A.command
-          "navigation--navigation"
+          "navigation--default"
           ( A.info (parserNavigation <**> A.helper)
           $ A.progDesc "Generate a navigation bar example"
           )
       <> A.command
-          "navigation--navigation-space-between"
+          "navigation--space-between"
           ( A.info (parserNavigationSpaceBetween <**> A.helper)
           $ A.progDesc "Generate a navigation bar example"
           )
@@ -996,9 +990,6 @@ parserWhitespaceExamples = pure GenerateWhitespaceExamples
 
 parserFormLogin :: A.Parser Command
 parserFormLogin = pure GenerateFormLogin
-
-parserNav :: A.Parser Command
-parserNav = pure GenerateNav
 
 parserNavigation :: A.Parser Command
 parserNavigation = pure GenerateNavigation

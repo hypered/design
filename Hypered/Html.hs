@@ -1110,9 +1110,15 @@ navigationBlockUsage =
       navigationBlockDefault
     footer "© Hypered, 2019-2023."
 
+
 ------------------------------------------------------------------------------
 navigationDefault :: Html
-navigationDefault = navigationNoteed
+navigationDefault =
+  nav $
+    H.div $ do
+      H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $ "noteed.com"
+      H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+      H.a ! A.class_ "black hy-hover-blue" ! A.href "#" $ "not-os"
 
 navigationSpaceBetween :: Html
 navigationSpaceBetween =

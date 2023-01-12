@@ -49,11 +49,11 @@ import Hypered.Html
   , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
   , listOrderedExample, listUnorderedExample
   , navigationBlockDefault, navigationBlockUsage
+  , navigationDefault, navigationSpaceBetween
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
   , generate, generate'
-  , nav, navigationNoteed, navigationNoteed'
   , radioDefaultExample, radioPillInlineExample
   , radioCheckboxExample, radioCheckboxInlineExample
   , sidePanelExample, sidePanelUsageExample
@@ -84,8 +84,6 @@ run Command.Wrapper = generateWrapper
 run Command.GenerateAnchorBlue = generateAnchorBlue
 
 run Command.GenerateAnchorBlack = generateAnchorBlack
-
-run Command.GenerateNav = generateNav
 
 run Command.GenerateBannerGreen = generateBannerGreen
 
@@ -502,9 +500,6 @@ generateAnchorBlue = putStr $ renderHtml anchorBlueExample
 generateAnchorBlack :: IO ()
 generateAnchorBlack = putStr $ renderHtml anchorBlackExample
 
-generateNav :: IO ()
-generateNav = putStr $ renderHtml (nav "")
-
 generateBannerGreen :: IO ()
 generateBannerGreen = putStr $ renderHtml bannerGreenExample
 
@@ -684,10 +679,11 @@ generateNavigationBlockUsage =
   putStr $ renderHtml navigationBlockUsageExample
 
 generateNavigation :: IO ()
-generateNavigation = putStr $ renderHtml navigationNoteed
+generateNavigation = putStr $ renderHtml navigationExample
 
 generateNavigationSpaceBetween :: IO ()
-generateNavigationSpaceBetween = putStr $ renderHtml navigationNoteed'
+generateNavigationSpaceBetween =
+  putStr $ renderHtml navigationSpaceBetweenExample
 
 generateRadioDefault :: IO ()
 generateRadioDefault = putStr $ renderHtml radioDefaultExample
@@ -1050,6 +1046,14 @@ navigationBlockExample = navigationBlockDefault
 
 navigationBlockUsageExample :: Html
 navigationBlockUsageExample = navigationBlockUsage
+
+
+--------------------------------------------------------------------------------
+navigationExample :: Html
+navigationExample = navigationDefault
+
+navigationSpaceBetweenExample :: Html
+navigationSpaceBetweenExample = navigationSpaceBetween
 
 
 --------------------------------------------------------------------------------
