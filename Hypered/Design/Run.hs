@@ -39,6 +39,7 @@ import Hypered.Html
   , codeblockTextAreaBottomButton, codeblockTextAreaToolbarButton
   , colorText, colorBackground, colorSamples
   , containerWithLabelDefault
+  , dropdownDefault
   , defaultConfig, document
   , exampleLoginForm, exampleRegisterForm, exampleResetForm
   , exampleSidebar, exampleSidePanel
@@ -150,6 +151,8 @@ run Command.GenerateColorBackground = generateColorBackground
 run Command.GenerateColorSamples = generateColorSamples
 
 run Command.GenerateContainerWithLabel = generateContainerWithLabelDefault
+
+run Command.GenerateDropdown = generateDropdown
 
 run Command.GenerateFooter = generateFooter
 
@@ -568,6 +571,9 @@ generateContainerWithLabelDefault :: IO ()
 generateContainerWithLabelDefault =
   putStr $ renderHtml containerWithLabelDefaultExample
 
+generateDropdown :: IO ()
+generateDropdown = putStr $ renderHtml dropdownDefaultExample
+
 generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
@@ -863,6 +869,11 @@ colorSamplesExample = colorSamples
 --------------------------------------------------------------------------------
 containerWithLabelDefaultExample :: Html
 containerWithLabelDefaultExample = containerWithLabelDefault
+
+
+--------------------------------------------------------------------------------
+dropdownDefaultExample :: Html
+dropdownDefaultExample = dropdownDefault
 
 
 --------------------------------------------------------------------------------

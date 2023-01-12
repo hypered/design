@@ -6,14 +6,8 @@ export default {
 };
 
 export const Default = () => {
-  const [value, setValue] = useState();
-
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
   return (
-    <Dropdown value={value} onChange={handleChange}>
+    <Dropdown>
       <Option value="" defaultValue>
         Select from dropdown
       </Option>

@@ -425,6 +425,13 @@ parser =
           $ A.progDesc "Generate a container with a label"
           )
 
+      -- Dropdown
+      <> A.command
+          "dropdown--default"
+          ( A.info (parserDropdown <**> A.helper)
+          $ A.progDesc "Generate a dropdown component"
+          )
+
       -- Footer
       <> A.command
           "footer"
@@ -770,6 +777,9 @@ parserColorSamples = pure GenerateColorSamples
 
 parserContainerWithLabel :: A.Parser Command
 parserContainerWithLabel = pure GenerateContainerWithLabel
+
+parserDropdown :: A.Parser Command
+parserDropdown = pure GenerateDropdown
 
 parserFooter :: A.Parser Command
 parserFooter = pure GenerateFooter
