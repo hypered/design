@@ -549,6 +549,11 @@ guideData =
         , const radioCheckboxInlineExample)
       ])
 
+  , ( "Side panel"
+    , [ ("default", "side-panel--default.html", const sidePanelExample)
+      , ("usage", "side-panel--usage.html", const sidePanelUsageExample)
+      ])
+
   , ( "Table"
     , [ ("default", "table--default.html", const tableDefaultExample)
       , ("compact", "table--compact.html", const tableCompactExample)
