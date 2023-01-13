@@ -490,6 +490,11 @@ guideData =
     , [ ("login", "form--login.html", const loginFormTODO)
       ])
 
+  , ( "Horizontal rule"
+    , [ ("default", "hr--default.html", const hrExample)
+      , ("divider", "hr--divider.html", const hrDividerExample)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
