@@ -467,6 +467,12 @@ guideData =
         , const codeblockTextAreaToolbarButtonExample)
       ])
 
+  , ( "Colour"
+    , [ ("text", "colour--text.html", const colorTextExample)
+      , ("background", "colour--background.html", const colorBackgroundExample)
+      , ("smaples", "colour--samples.html", const colorSamplesExample)
+      ])
+
   , ( "Footer"
     , [ ("default", "footer.html", const footerExample)
       ])
