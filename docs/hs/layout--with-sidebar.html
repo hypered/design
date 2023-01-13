@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Hypered style guide - Layout
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url(../static/css/inter.css);
+            @import url(../static/css/tachyons.min.v4.11.1.css);
+            @import url(../static/css/style.css);
+            @import url(../static/css/styles.css);
+        </style>
+    </head>
+    <body class="hy-inter">
+        <div class="flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy">
+            <div>
+                <a href="../hs/">
+                    back to list
+                </a>
+                |
+                <code>
+                    layout--with-sidebar.html
+                </code>
+            </div>
+            <div class="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
+                <div>
+                    <header>
+                        <nav class="flex justify-between align-items-center lh-copy mb4 pv3">
+                            <div>
+                                <a class="black hy-hover-blue underline mr3" href="#">
+                                    noteed.com
+                                </a>
+                                <a class="black hy-hover-blue mr3" href="#">
+                                    blog
+                                </a>
+                                <a class="black hy-hover-blue mr3" href="#">
+                                    not-os
+                                </a>
+                            </div>
+                        </nav>
+                    </header>
+                    <main class="flex flex-wrap nl3 nr3">
+                        <aside class="order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2">
+                            <nav>
+                                <h3 class="f5 ttu mv1">
+                                    Intro
+                                </h3>
+                                <ul class="list pl0 mb3 mt0">
+                                    <li>
+                                        <a class="black no-underline hy-hover-blue" href="#">
+                                            not-os
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3 class="f5 ttu mv1">
+                                    Notes
+                                </h3>
+                                <ul class="list pl0 mb3 mt0">
+                                    <li>
+                                        <a class="black no-underline hy-hover-blue" href="#">
+                                            Digital Ocean
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="black no-underline hy-hover-blue" href="#">
+                                            TODO
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h3 class="f5 ttu mv1">
+                                    Values
+                                </h3>
+                                <ul class="list pl0 mb3 mt0">
+                                    <li>
+                                        <a class="black no-underline hy-hover-blue" href="#">
+                                            command-line
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="black no-underline hy-hover-blue" href="#">
+                                            root-modules
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </aside>
+                        <article class="order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3 cf">
+                            <div class="mb4">
+                                <h1 class="f1 lh-title mv2 tracked-tight">
+                                    Starting with NixOps (and thus Nix and NixOS)
+                                </h1>
+                                <hr class="mt3 pb3 bt-0 bl-0 br-0 bb b--black">
+                            </div>
+                            <h2 class="f2 lh-title mv2 tracked-tight">
+                                Introduction
+                            </h2>
+                            <p class="f5 lh-copy mv3">
+                                Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!
+                            </p>
+                            <ul class="hy-ff-tab-num mv3">
+                                <li class="mv1">
+                                    a kernel (config.system.build.kernel)
+                                </li>
+                                <li class="mv1">
+                                    an initrd (config.system.build.initialRamdisk)
+                                </li>
+                                <li class="mv1">
+                                    a rootfs (config.system.build.squashfs)
+                                </li>
+                            </ul>
+                            <p class="f5 lh-copy mv3">
+                                This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation.
+                            </p>
+                            <h3 class="f3 lh-title mv2 tracked-tight">
+                                Sub-points
+                            </h3>
+                            <ol class="hy-ff-tab-num mv3">
+                                <li class="mv1">
+                                    Item one
+                                </li>
+                                <li class="mv1">
+                                    Item two
+                                </li>
+                                <li class="mv1">
+                                    Item three
+                                </li>
+                            </ol>
+                            <h4 class="f4 lh-title mv2 tracked-tight">
+                                Some quotes
+                            </h4>
+                            <blockquote class="db bl bw2 pv2 ph3 ml0 mv4 lh-copy">
+                                <span class="i">
+                                    To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page.
+                                </span>
+                            </blockquote>
+                            <h3 class="f3 lh-title mv2 tracked-tight">
+                                Ending points
+                            </h3>
+                            <blockquote class="pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy">
+                                <span class="i">
+                                    To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page.
+                                </span>
+                            </blockquote>
+                            <p class="f5 lh-copy mv3">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                        </article>
+                        <aside class="order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2">
+                            <div class="">
+                                <h3 class="f5 lh-title mv2">
+                                    Latest Runs
+                                </h3>
+                                <ul class="bg-near-white list pa3">
+                                    <li class="pv1 bb b--black-10">
+                                        <a class="black no-underline hy-hover-blue">
+                                            → #001
+                                        </a>
+                                    </li>
+                                    <li class="pv1 bb b--black-10">
+                                        <a class="black no-underline hy-hover-blue">
+                                            → #002
+                                        </a>
+                                    </li>
+                                    <li class="pv1 bb b--black-10">
+                                        <a class="black no-underline hy-hover-blue">
+                                            → #003
+                                        </a>
+                                    </li>
+                                    <li class="pv1 bb b--black-10">
+                                        <a class="black no-underline hy-hover-blue">
+                                            → #004
+                                        </a>
+                                    </li>
+                                    <li class="pv1 bb b--black-10">
+                                        <a class="black no-underline hy-hover-blue">
+                                            → #005
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </aside>
+                    </main>
+                </div>
+                <footer>
+                    <hr class="bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black">
+                    <p class="inline-flex lh-copy">
+                        © Hypered, 2019-2023.
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>

@@ -514,6 +514,13 @@ guideData =
       , ("usage", "input--usage.html", const inputUsage)
       ])
 
+  , ( "Layout"
+    , [ ("default", "layout--default.html", const layoutExample)
+      , ("blog list", "layout--blog-list.html", const layoutBlogListExample)
+      , ("blog post", "layout--blog-post.html", const layoutBlogPostExample)
+      , ("with sidebar", "layout--with-sidebar.html", const layoutWithSidebarExample)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
