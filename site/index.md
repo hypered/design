@@ -37,8 +37,8 @@ the ITCSS approach. Only a single page exists for now.
 The main usage of the design system is within applications written in Haskell.
 Examples generated with the Haskell code are also available:
 
-- [Haskell examples](hs/) - Overtime, everything that exist in the original
-  implementation should exist here too.
+- [Haskell examples](hs/) - Everything that exist in the original
+  implementation also exist here.
 
 ## See also
 
