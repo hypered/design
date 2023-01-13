@@ -22,14 +22,20 @@ was the `Next.js` + Tachyons.
 - EPUB (see [README](/epub/README.md))
 - ...
 
-The main site built with Next.js is visible at
-[hypered.github.io/design](https://hypered.github.io/design/). It
-also contains a [component
-explorer](https://hypered.github.io/design/storybook/) based on
+The original site built with Next.js is visible at
+[js.hypered.design](https://js.hypered.design). It also contains a
+[component explorer](https://js.hypered.design/storybook/) based on
 [Storybook](https://storybook.js.org/).
 
-The same components, but rendered using `blaze-html`, are visible at
-[hypered.github.io/design/hs/](https://hypered.github.io/design/hs/).
+Other build results from this repository are visible at
+[hypered./design](https://hypered.design). In particular, the same components,
+but rendered using `blaze-html`, are visible at
+[hypered./design/hs/](https://hypered.design/hs/).
+
+Note: there are two sites: the main one is built using Nix and hosted on a VM;
+the second one is hosted on GitHub Pages out of the `docs/` directory (which is
+is populated manually).
+
 
 # Static website
 
