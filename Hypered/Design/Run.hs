@@ -541,6 +541,14 @@ guideData =
         , const navigationSpaceBetweenExample)
       ])
 
+  , ( "Radio"
+    , [ ("pill", "radio--pill.html", const radioDefaultExample)
+      , ("checkbox", "radio--checkbox.html", const radioCheckboxExample)
+      , ("pill-inline", "radio--pill-inline.html", const radioPillInlineExample)
+      , ("checkbox-inline", "radio--checkbox-inline.html"
+        , const radioCheckboxInlineExample)
+      ])
+
   , ( "Table"
     , [ ("default", "table--default.html", const tableDefaultExample)
       , ("compact", "table--compact.html", const tableCompactExample)
