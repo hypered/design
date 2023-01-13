@@ -24,8 +24,8 @@ library
                        text
   exposed-modules:     Hypered.Design.Command,
                        Hypered.Design.Run,
-                       Hypered.Html,
-                       Hypered.Stories
+                       Hypered.Design.Stories,
+                       Hypered.Html
   ghc-options:         -Wall
 
 executable hypered-design

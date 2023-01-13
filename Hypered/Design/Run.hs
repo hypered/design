@@ -7,6 +7,7 @@ module Hypered.Design.Run
 import           Data.List (nub, tail)
 import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
+import           Hypered.Design.Stories (stories)
 import Hypered.Html
   ( Font(IbmPlex)
   , Font(Inter, Font)
@@ -63,7 +64,6 @@ import Hypered.Html
   , whitespaceAutoWidthExample, whitespaceNegativeMarginsExample
   , whitespaceFullWidthExample, whitespaceExamples
   )
-import           Hypered.Stories (stories)
 import           Protolude
 import           Text.Blaze.Html5 ((!), Html)
 import qualified Text.Blaze.Html5 as H
