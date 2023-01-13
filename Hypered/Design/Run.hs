@@ -483,7 +483,7 @@ guideData =
       ])
 
   , ( "Footer"
-    , [ ("default", "footer.html", const footerExample)
+    , [ ("default", "footer--default.html", const footerExample)
       ])
 
   , ( "Form"
