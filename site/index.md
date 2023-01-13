@@ -20,7 +20,7 @@ re-usable snippets of HTML show-cased in Storybook. Two pages to introduce the
 design system were also created, with the addition of an error page. The CSS
 part was done using Tachyons.
 
-That work generates file in the `docs/` directory of the repository, which is
+That work generates files in the `docs/` directory of the repository, which is
 exposed using GitHub Pages at [js.hypered.design](https://js.hypered.design).
 
 - [Landing page](https://js.hypered.design/landing/) - An initial landing page
