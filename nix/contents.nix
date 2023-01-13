@@ -16,7 +16,7 @@ in {
     hypered-design = nix-filter {
       root = ../.;
       include = with nix-filter; [
-        "design-system.cabal"
+        "hypered-design.cabal"
         (and "bin" (or_ (matchExt "hs") isDirectory))
         (and "Hypered" (or_ (matchExt "hs") isDirectory))
         "LICENSE"
