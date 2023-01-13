@@ -495,6 +495,16 @@ guideData =
       , ("divider", "hr--divider.html", const hrDividerExample)
       ])
 
+  , ( "Image"
+    , [ ("default", "image--default.html", const imageExample)
+      , ("negative pull", "image--negative-pull.html"
+        , const imageNegativePullExample)
+      , ("full width", "image--full-width.html", const imageFullWidthExample)
+      , ("with caption", "image--with-caption.html"
+        , const imageWithCaptionExample)
+      , ("examples", "image--examples.html", const imageExamples)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
