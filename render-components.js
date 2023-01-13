@@ -40,11 +40,13 @@ var Image = require("./components/Image/Image.stories");
 var Input = require("./components/Input/Input.stories");
 var Layout = require("./components/Layout/Layout.stories");
 var List = require("./components/List/List.stories");
+var Modal = require("./components/Modal/Modal.stories");
 var NavBlock = require("./components/NavBlock/NavBlock.stories");
 var Navigation = require("./components/Navigation/Navigation.stories");
 var Radio = require("./components/Radio/Radio.stories");
 var Sidebar = require("./components/Sidebar/Sidebar.stories");
 var SidePanel = require("./components/SidePanel/SidePanel.stories");
+var StatusCode = require("./components/StatusCode/StatusCode.stories");
 var Table = require("./components/Table/Table.stories");
 var Title = require("./components/Title/Title.stories");
 var Typography = require("./components/Typography/Typography.stories");
@@ -292,6 +294,18 @@ case 'list--unordered':
   render(List.UnorderedList());
   break;
 
+case 'modal--modal-with-button-label':
+  render(Modal.ModalWithButtonLabel());
+  break;
+
+case 'modal--modal-with-text-content':
+  render(Modal.ModalWithTextContent());
+  break;
+
+case 'modal--modal-with-text-label':
+  render(Modal.ModalWithTextLabel());
+  break;
+
 case 'navigation-block--default':
   render(NavBlock.Default());
   break;
@@ -338,6 +352,14 @@ case 'sidepanel--default':
 
 case 'sidepanel--usage':
   render(SidePanel.Usage());
+  break;
+
+case 'statuscode--error-400':
+  render(StatusCode.Error400());
+  break;
+
+case 'statuscode--error-404':
+  render(StatusCode.Error404());
   break;
 
 case 'table--compact':

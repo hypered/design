@@ -11,6 +11,14 @@ export default {
   title: "Title",
 };
 
+export const TitleExample = () => (
+  <Title>Introduction</Title>
+);
+
+export const SubtitleExample = () => (
+  <SubTitle>Introduction</SubTitle>
+);
+
 export const TitleJumboExample = () => (
   <TitleJumbo>
     Hypered <span className="normal">design system</span>
@@ -19,14 +27,6 @@ export const TitleJumboExample = () => (
 
 export const SubtitleJumboExample = () => (
   <SubTitleJumbo>Introduction</SubTitleJumbo>
-);
-
-export const TitleExample = () => (
-  <Title>Introduction</Title>
-);
-
-export const SubtitleExample = () => (
-  <SubTitle>Introduction</SubTitle>
 );
 
 export const JumboUsage = () => (
