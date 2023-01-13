@@ -505,6 +505,15 @@ guideData =
       , ("examples", "image--examples.html", const imageExamples)
       ])
 
+  , ( "Input"
+    , [ ("text", "input--text.html", const inputTextExample)
+      , ("password", "input--password.html", const inputPasswordExample)
+      , ("number", "input--number.html", const inputNumberExample)
+      , ("with message", "input--with-message.html"
+        , const inputWithMessageExample)
+      , ("usage", "input--usage.html", const inputUsage)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
