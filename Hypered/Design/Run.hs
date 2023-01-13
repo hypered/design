@@ -554,6 +554,11 @@ guideData =
       , ("usage", "side-panel--usage.html", const sidePanelUsageExample)
       ])
 
+  , ( "Sidebar"
+    , [ ("default", "sidebar--default.html", const sidebarExample)
+      , ("usage", "sidebar--usage.html", const sidebarUsageExample)
+      ])
+
   , ( "Table"
     , [ ("default", "table--default.html", const tableDefaultExample)
       , ("compact", "table--compact.html", const tableCompactExample)
