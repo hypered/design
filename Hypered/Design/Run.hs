@@ -7,6 +7,7 @@ module Hypered.Design.Run
 import           Data.List (nub, tail)
 import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
+import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories (stories)
 import Hypered.Html
   ( Font(IbmPlex)
@@ -79,6 +80,8 @@ run (Command.GenerateTemplates forGitHubPages) = generateTemplates forGitHubPage
 run Command.GenerateGuide = generateGuide
 
 run Command.Wrapper = generateWrapper
+
+run (Command.Serve conf) = Server.run conf
 
 run Command.GenerateAnchorBlue = generateAnchorBlue
 

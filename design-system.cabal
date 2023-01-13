@@ -12,18 +12,33 @@ build-type:          Simple
 
 library
   default-extensions:
-                       TypeApplications
-  build-depends:       base == 4.*,
-                       blaze-builder,
-                       blaze-html,
-                       blaze-markup,
-                       directory,
-                       filepath,
-                       optparse-applicative,
-                       protolude,
-                       text
+    OverloadedStrings
+    RecordWildCards
+    TypeApplications
+    TypeOperators
+  build-depends:
+      base == 4.*
+    , blaze-builder
+    , blaze-html
+    , blaze-markup
+    , commence-core
+    , directory
+    , exceptions
+    , filepath
+    , http-types
+    , optparse-applicative
+    , protolude
+    , servant
+    , servant-blaze
+    , servant-server
+    , systemd
+    , text
+    , wai
+    , wai-app-static
+    , warp
   exposed-modules:     Hypered.Design.Command,
                        Hypered.Design.Run,
+                       Hypered.Design.Server,
                        Hypered.Design.Stories,
                        Hypered.Html
   ghc-options:         -Wall

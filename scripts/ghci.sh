@@ -5,5 +5,8 @@ ghc --interactive \
   -ibin/ \
   -isrc/ \
   -XNoImplicitPrelude \
+  -XOverloadedStrings \
+  -XRecordWildCards \
   -XTypeApplications \
+  -XTypeOperators \
   bin/hypered-design.hs

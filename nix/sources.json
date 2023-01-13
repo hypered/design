@@ -1,4 +1,16 @@
 {
+    "commence": {
+        "branch": "main",
+        "description": "Building blocks to prototype classical three-tier web applications with Servant and STM",
+        "homepage": null,
+        "owner": "hypered",
+        "repo": "commence",
+        "rev": "9896c3278020ddb9f4c60fb3dc748ad4dfe7fce6",
+        "sha256": "0582jr141fqrbjsng2aq49247k7acgqnvs2kg0avkln983y51ap8",
+        "type": "tarball",
+        "url": "https://github.com/hypered/commence/archive/9896c3278020ddb9f4c60fb3dc748ad4dfe7fce6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "gitignore": {
         "branch": "master",
         "description": "Nix function for filtering local git sources",
