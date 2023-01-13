@@ -478,6 +478,10 @@ guideData =
         , const containerWithLabelDefaultExample)
       ])
 
+  , ( "Dropdown"
+    , [ ("default", "dropdown--default.html", const dropdownDefaultExample)
+      ])
+
   , ( "Footer"
     , [ ("default", "footer.html", const footerExample)
       ])
