@@ -473,6 +473,11 @@ guideData =
       , ("smaples", "colour--samples.html", const colorSamplesExample)
       ])
 
+  , ( "Container with label"
+    , [ ("default", "container-with-label--default.html"
+        , const containerWithLabelDefaultExample)
+      ])
+
   , ( "Footer"
     , [ ("default", "footer.html", const footerExample)
       ])
