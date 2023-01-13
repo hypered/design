@@ -559,6 +559,13 @@ guideData =
       , ("usage", "sidebar--usage.html", const sidebarUsageExample)
       ])
 
+  , ( "Status code"
+    , [ ("error-400", "status-code--error-400.html"
+        , const statusCodeError400Example)
+      , ("error-404", "status-code--error-404.html"
+        , const statusCodeError404Example)
+      ])
+
   , ( "Table"
     , [ ("default", "table--default.html", const tableDefaultExample)
       , ("compact", "table--compact.html", const tableCompactExample)
