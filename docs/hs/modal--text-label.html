@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Hypered style guide - Modal
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url(../static/css/inter.css);
+            @import url(../static/css/tachyons.min.v4.11.1.css);
+            @import url(../static/css/style.css);
+            @import url(../static/css/styles.css);
+        </style>
+    </head>
+    <body class="hy-inter">
+        <div class="flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy">
+            <div>
+                <a href="../hs/">
+                    back to list
+                </a>
+                |
+                <code>
+                    modal--text-label.html
+                </code>
+            </div>
+            <label as="label" for="modal">
+                Click on this text to open a modal
+            </label>
+            <input type="checkbox" class="modal-state" id="modal">
+            <div class="modal items-center justify-center h-100 absolute absolute--fill z-1">
+                <div class="bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75">
+                    <form>
+                        <div class="flex items-center justify-between ba b--black bw1 pa3 b">
+                            <div>
+                                <h4 class="f4 lh-title mv2 tracked-tight">
+                                    Log in to your account
+                                </h4>
+                            </div>
+                            <label for="modal" class="w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer">
+                                <img src="img/close.svg">
+                            </label>
+                        </div>
+                        <div class="bg-white modal-body bl br b--black bw1 pa3 overflow-y-scroll">
+                            <div class="mv3">
+                                <div class="mb3">
+                                    <label class="db fw6 mv1">
+                                        Email
+                                    </label>
+                                    <input type="email" class="input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box" placeholder="alice@example.com" label="Email">
+                                    <div class="mv1 h1 red fw5">
+                                        You have entered an invalid email
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mv3">
+                                <div class="mb3">
+                                    <label class="db fw6 mv1">
+                                        Password
+                                    </label>
+                                    <input type="password" class="input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box" placeholder="" label="Password">
+                                    <div class="mv1 h1 red fw5">
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="black no-underline hy-hover-blue" href="#">
+                                Forgot Password
+                            </a>
+                        </div>
+                        <div class="bg-blue flex justify-between">
+                            <label class="bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" as="label" for="modal" variant="secondary">
+                                Sign Up
+                            </label>
+                            <label class="bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" as="label" for="modal" variant="primary">
+                                Log In —&gt;
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <label class="bg-black-50 fixed absolute--fill z-1" for="modal">
+                </label>
+            </div>
+        </div>
+    </body>
+</html>

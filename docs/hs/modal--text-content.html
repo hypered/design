@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Hypered style guide - Modal
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            @import url(../static/css/inter.css);
+            @import url(../static/css/tachyons.min.v4.11.1.css);
+            @import url(../static/css/style.css);
+            @import url(../static/css/styles.css);
+        </style>
+    </head>
+    <body class="hy-inter">
+        <div class="flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy">
+            <div>
+                <a href="../hs/">
+                    back to list
+                </a>
+                |
+                <code>
+                    modal--text-content.html
+                </code>
+            </div>
+            <label class="bg-black b--black white hover-light-green ph4 pv3 pointer inline-flex button-reset ba bw1 relative" as="label" for="modal" variant="primary">
+                Open Modal
+            </label>
+            <input type="checkbox" class="modal-state" id="modal">
+            <div class="modal items-center justify-center h-100 absolute absolute--fill z-1">
+                <div class="bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75">
+                    <div class="flex items-center justify-between ba b--black bw1 pa3 b">
+                        <div>
+                            <h4 class="f4 lh-title mv2 tracked-tight">
+                                Terms and Conditions
+                            </h4>
+                        </div>
+                        <label for="modal" class="w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer">
+                            <img src="img/close.svg">
+                        </label>
+                    </div>
+                    <div class="bg-white modal-body bl br b--black bw1 pa3 overflow-y-scroll">
+                        <article>
+                            <h4>
+                                1. YOUR AGREEMENT
+                            </h4>
+                            <p>
+                                By using this Site, you agree to be bound by, and to comply with, these Terms and Conditions. If you do not agree to these Terms and Conditions, please do not use this site. PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will become effective immediately. Please review these Terms and Conditions periodically. Your continued use of the Site following the posting of changes and/or modifications will constitute your acceptance of the revised Terms and Conditions and the reasonableness of these standards for notice of changes. For your information, this page was last updated as of the date at the top of these terms and conditions.
+                            </p>
+                            <h4>
+                                2. PRIVACY
+                            </h4>
+                            <p>
+                                Please review our Privacy Policy, which also governs your visit to this Site, to understand our practices.
+                            </p>
+                            <h4>
+                                3. LINKED SITES
+                            </h4>
+                            <p>
+                                This Site may contain links to other independent third-party Web sites (&quot;Linked Sites&quot;). These Linked Sites are provided solely as a convenience to our visitors. Such Linked Sites are not under our control, and we are not responsible for and does not endorse the content of such Linked Sites, including any information or materials contained on such Linked Sites. You will need to make your own independent judgment regarding your interaction with these Linked Sites.
+                            </p>
+                            <h4>
+                                4. FORWARD LOOKING STATEMENTS
+                            </h4>
+                            <p>
+                                All materials reproduced on this site speak as of the original date of publication or filing. The fact that a document is available on this site does not mean that the information contained in such document has not been modified or superseded by events or by a subsequent document or filing. We have no duty or policy to update any information or statements contained on this site and, therefore, such information or statements should not be relied upon as being current as of the date you access this site.
+                            </p>
+                            <h4>
+                                5. DISCLAIMER OF WARRANTIES AND LIMITATION OF LIABILITY
+                            </h4>
+                            <p>
+                                A. THIS SITE MAY CONTAIN INACCURACIES AND TYPOGRAPHICAL ERRORS. WE DOES NOT WARRANT THE ACCURACY OR COMPLETENESS OF THE MATERIALS OR THE RELIABILITY OF ANY ADVICE, OPINION, STATEMENT OR OTHER INFORMATION DISPLAYED OR DISTRIBUTED THROUGH THE SITE. YOU EXPRESSLY UNDERSTAND AND AGREE THAT: (i) YOUR USE OF THE SITE, INCLUDING ANY RELIANCE ON ANY SUCH OPINION, ADVICE, STATEMENT, MEMORANDUM, OR INFORMATION CONTAINED HEREIN, SHALL BE AT YOUR SOLE RISK; (ii) THE SITE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS; (iii) EXCEPT AS EXPRESSLY PROVIDED HEREIN WE DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, WORKMANLIKE EFFORT, TITLE AND NON-INFRINGEMENT; (iv) WE MAKE NO WARRANTY WITH RESPECT TO THE RESULTS THAT MAY BE OBTAINED FROM THIS SITE, THE PRODUCTS OR SERVICES ADVERTISED OR OFFERED OR MERCHANTS INVOLVED; (v) ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SITE IS DONE AT YOUR OWN DISCRETION AND RISK; and (vi) YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR FOR ANY LOSS OF DATA THAT RESULTS FROM THE DOWNLOAD OF ANY SUCH MATERIAL. B. YOU UNDERSTAND AND AGREE THAT UNDER NO CIRCUMSTANCES, INCLUDING, BUT NOT LIMITED TO, NEGLIGENCE, SHALL WE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE OR CONSEQUENTIAL DAMAGES THAT RESULT FROM THE USE OF, OR THE INABILITY TO USE, ANY OF OUR SITES OR MATERIALS OR FUNCTIONS ON ANY SUCH SITE, EVEN IF WE HAVE BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THE FOREGOING LIMITATIONS SHALL APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY.
+                            </p>
+                        </article>
+                    </div>
+                    <div class="bg-blue flex justify-between">
+                        <label class="bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" as="label" for="modal" variant="secondary">
+                            Dismiss
+                        </label>
+                        <label class="bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" as="label" for="modal" variant="primary">
+                            Accept and Continue —&gt;
+                        </label>
+                    </div>
+                </div>
+                <label class="bg-black-50 fixed absolute--fill z-1" for="modal">
+                </label>
+            </div>
+        </div>
+    </body>
+</html>

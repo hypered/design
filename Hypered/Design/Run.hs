@@ -533,7 +533,14 @@ guideData =
       , ("unordered", "list--unordered.html", const listUnorderedExample)
       ])
 
-  -- TODO Modal
+  , ( "Modal"
+    , [ ("text-content", "modal--text-content.html"
+        , const modalTextContentExample)
+      , ("button-label", "modal--button-label.html"
+        , const modalButtonLabelExample)
+      , ("text-label", "modal--text-label.html"
+        , const modalTextLabelExample)
+      ])
 
   , ( "Navigation block"
     , [ ("default", "navigation-block--default.html"
