@@ -86,6 +86,8 @@ for i in \
   sidepanel--usage \
   sidebar--default \
   sidebar--usage \
+  status-code--error-400 \
+  status-code--error-404 \
   table--default \
   table--compact \
   table--with-column-divider \

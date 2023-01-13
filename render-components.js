@@ -354,11 +354,11 @@ case 'sidepanel--usage':
   render(SidePanel.Usage());
   break;
 
-case 'statuscode--error-400':
+case 'status-code--error-400':
   render(StatusCode.Error400());
   break;
 
-case 'statuscode--error-404':
+case 'status-code--error-404':
   render(StatusCode.Error404());
   break;
 
