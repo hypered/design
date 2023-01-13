@@ -526,6 +526,15 @@ guideData =
       , ("unordered", "list--unordered.html", const listUnorderedExample)
       ])
 
+  -- TODO Modal
+
+  , ( "Navigation block"
+    , [ ("default", "navigation-block--default.html"
+        , const navigationBlockExample)
+      , ("usage", "navigation-block--usage.html"
+        , const navigationBlockUsageExample)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
