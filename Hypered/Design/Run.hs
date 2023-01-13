@@ -521,6 +521,11 @@ guideData =
       , ("with sidebar", "layout--with-sidebar.html", const layoutWithSidebarExample)
       ])
 
+  , ( "List"
+    , [ ("ordered", "list--ordered.html", const listOrderedExample)
+      , ("unordered", "list--unordered.html", const listUnorderedExample)
+      ])
+
   -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
     , [ ("default", "navigation.html", navigation)
