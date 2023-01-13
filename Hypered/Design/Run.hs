@@ -585,6 +585,25 @@ guideData =
       , ("usage", "title--usage.html", const titleDefaultUsageExample)
       , ("jumbo-usage", "title--jumbo-usage.html", const titleJumboUsageExample)
       ])
+
+  , ( "Typography"
+    , [ ("heading 1", "typography--heading-1.html"
+        , const typographyHeading1Example)
+      , ("heading 2", "typography--heading-2.html"
+        , const typographyHeading2Example)
+      , ("heading 3", "typography--heading-3.html"
+        , const typographyHeading3Example)
+      , ("heading 4", "typography--heading-4.html"
+        , const typographyHeading4Example)
+      , ("heading 5", "typography--heading-5.html"
+        , const typographyHeading5Example)
+      , ("heading 6", "typography--heading-6.html"
+        , const typographyHeading6Example)
+      , ("paragraph", "typography--paragraph.html"
+        , const typographyParagraphExample)
+      , ("usage", "typography--usage.html"
+        , const typographyUsageExample)
+      ])
   ]
 
 
