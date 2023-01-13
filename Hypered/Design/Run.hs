@@ -604,6 +604,17 @@ guideData =
       , ("usage", "typography--usage.html"
         , const typographyUsageExample)
       ])
+
+  , ( "Whitespace"
+    , [ ("auto width", "whitespace--auto-width.html"
+        , const whitespaceAutoWidthExample)
+      , ("negative margins", "whitespace--negative-margins.html"
+        , const whitespaceNegativeMarginsExample)
+      , ("full width", "whitespace--full-width.html"
+        , const whitespaceFullWidthExample)
+      , ("examples", "whitespace--examples.html"
+        , const whitespaceExamples)
+      ])
   ]
 
 
