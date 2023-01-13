@@ -40,6 +40,7 @@ import Hypered.Html
   , inputWithMessageExample, inputUsage
   , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
   , listOrderedExample, listUnorderedExample
+  , modalTextContent, modalButtonLabel, modalTextLabel
   , navigationBlockDefault, navigationBlockUsage
   , navigationDefault, navigationSpaceBetween
   , defaultConfig, document
@@ -197,6 +198,12 @@ run Command.GenerateLayoutWithSidebar = generateLayoutWithSidebar
 run Command.GenerateListOrdered = generateListOrdered
 
 run Command.GenerateListUnordered = generateListUnordered
+
+run Command.GenerateModalTextContent = generateModalTextContent
+
+run Command.GenerateModalButtonLabel = generateModalButtonLabel
+
+run Command.GenerateModalTextLabel = generateModalTextLabel
 
 run Command.GenerateNavigationBlock = generateNavigationBlock
 
@@ -808,6 +815,15 @@ generateListOrdered = putStr $ renderHtml listOrderedExample
 generateListUnordered :: IO ()
 generateListUnordered = putStr $ renderHtml listUnorderedExample
 
+generateModalTextContent :: IO ()
+generateModalTextContent = putStr $ renderHtml modalTextContentExample
+
+generateModalButtonLabel :: IO ()
+generateModalButtonLabel = putStr $ renderHtml modalButtonLabelExample
+
+generateModalTextLabel :: IO ()
+generateModalTextLabel = putStr $ renderHtml modalTextLabelExample
+
 generateNavigationBlock :: IO ()
 generateNavigationBlock = putStr $ renderHtml navigationBlockExample
 
@@ -1175,6 +1191,17 @@ layoutWithSidebarExample = layoutWithSidebar
 
 -- listUnorderedExample :: Html
 -- listUnorderedExample =
+
+
+--------------------------------------------------------------------------------
+modalTextContentExample :: Html
+modalTextContentExample = modalTextContent
+
+modalButtonLabelExample :: Html
+modalButtonLabelExample = modalButtonLabel
+
+modalTextLabelExample :: Html
+modalTextLabelExample = modalTextLabel
 
 
 --------------------------------------------------------------------------------

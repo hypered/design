@@ -2,8 +2,6 @@
 
 # Check that components rendered with either React or Haskell are the same.
 # Run this script within the `nix-shell default.nix -A shell` shell.
-#
-# TODO Modal.
 
 set -e
 
@@ -74,6 +72,9 @@ for i in \
   layout--with-sidebar \
   list--ordered \
   list--unordered \
+  modal--text-content \
+  modal--button-label \
+  modal--text-label \
   navigation-block--default \
   navigation-block--usage \
   navigation--default \

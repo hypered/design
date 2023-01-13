@@ -294,15 +294,15 @@ case 'list--unordered':
   render(List.UnorderedList());
   break;
 
-case 'modal--modal-with-button-label':
+case 'modal--button-label':
   render(Modal.ModalWithButtonLabel());
   break;
 
-case 'modal--modal-with-text-content':
+case 'modal--text-content':
   render(Modal.ModalWithTextContent());
   break;
 
-case 'modal--modal-with-text-label':
+case 'modal--text-label':
   render(Modal.ModalWithTextLabel());
   break;
 

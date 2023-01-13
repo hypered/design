@@ -82,7 +82,7 @@ const TC = () => (
     <h4>3. LINKED SITES</h4>
     <p>
       This Site may contain links to other independent third-party Web sites
-      ("Linked Sites”). These Linked Sites are provided solely as a convenience
+      ("Linked Sites"). These Linked Sites are provided solely as a convenience
       to our visitors. Such Linked Sites are not under our control, and we are
       not responsible for and does not endorse the content of such Linked Sites,
       including any information or materials contained on such Linked Sites. You
