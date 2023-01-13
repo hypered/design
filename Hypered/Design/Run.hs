@@ -575,6 +575,16 @@ guideData =
         , "table--with-column-divider-compact.html"
         , const tableWithColumnDividerCompactExample)
       ])
+
+  , ( "Title"
+    , [ ("default", "title--default.html", const titleDefaultExample)
+      , ("subtitle", "title--subtitle.html", const titleSubtitleDefaultExample)
+      , ("jumbo", "title--jumbo.html", const titleJumboExample)
+      , ("subtitle-jumbo", "title--subtitle-jumbo.html"
+        , const titleSubtitleJumboExample)
+      , ("usage", "title--usage.html", const titleDefaultUsageExample)
+      , ("jumbo-usage", "title--jumbo-usage.html", const titleJumboUsageExample)
+      ])
   ]
 
 
