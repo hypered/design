@@ -535,9 +535,10 @@ guideData =
         , const navigationBlockUsageExample)
       ])
 
-  -- This is mostly header / nav / a, a, ...
   , ( "Navigation"
-    , [ ("default", "navigation.html", navigation)
+    , [ ("default", "navigation--default.html", const navigationExample)
+      , ("space between", "navigation--space-between.html"
+        , const navigationSpaceBetweenExample)
       ])
 
   , ( "Table"
