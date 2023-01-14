@@ -10,7 +10,6 @@ import {
   H3,
   H4,
   P,
-  Codeblock,
   BlockQuote,
   PullQuote,
   Divider,

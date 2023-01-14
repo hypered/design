@@ -36,5 +36,6 @@ export * from "./home/HomeLayout";
 
 export * from "./Layout/Layout";
 export * from "./Layout/BlogListLayout";
-export * from "./Layout/BlogPostLayout";
+export * from "./Layout/BlogPost1Layout";
+export * from "./Layout/BlogPost2Layout";
 export * from "./Layout/WithSidebarLayout";

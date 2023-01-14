@@ -29,7 +29,7 @@ function Layout(props) {
         </header>
         {props.children}
       </div>
-      <Footer></Footer>
+      <Footer copyright={props.copyright}></Footer>
     </div>
   );
 }

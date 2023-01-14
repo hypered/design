@@ -19,7 +19,7 @@ import {
   SidebarLink,
 } from "../../components";
 
-export const BlogPostLayout = props => (
+export const BlogPost2Layout = props => (
   <Layout>
     <main>
       <article className="mw7 cf">
