@@ -580,20 +580,22 @@ footerDefault = footer ""
 ------------------------------------------------------------------------------
 -- | Login form
 -- https://hypered.design/storybook/?path=/story/form--login
--- TODO See below.
-loginFormTODO :: Html
-loginFormTODO = do
+loginForm :: Html
+loginForm = do
   H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/echo/login"
          $ do
     H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Log in to your account"
+      H.h2 "Log in to Appname"
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Email"
-          H.input ! A.type_ "email"
+          H.label ! A.class_ "db fw6 mv1" $ "Username"
+                  ! A.for "username"
+          H.input ! A.type_ "text"
                   ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                  ! A.placeholder "alice@example.com"
-                  ! A.label "Email"
+                  ! A.name "username"
+                  ! A.id "username"
           H.div ! A.class_ "mv1 h1 red fw5" $
             "You have entered an invalid email"
       H.div ! A.class_ "mv3" $
@@ -603,26 +605,27 @@ loginFormTODO = do
           H.input ! A.type_ "password"
                   ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                   ! A.placeholder ""
-                  ! A.label "Password"
+                  ! A.name "password"
+                  ! A.id "password"
           H.div ! A.class_ "mv1 h1 red fw5" $ ""
       H.a ! A.class_ "black no-underline hy-hover-blue"
           ! A.href "#"
-          $ "Forgot Password"
+          $ "Reset password"
     H.div ! A.class_ "flex justify-between" $ do
       H.button ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                ! customAttribute "variant" "secondary"
-               $ "Sign Up"
+               $ "Register"
       H.button ! A.class_ "bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                ! customAttribute "variant" "primary"
-               $ "Log In —>"
+               $ "Log in —>"
 
 -- TODO Check if it is used somewhere. This is also probably a correct form,
 -- while the one above is maybe not.
-loginForm :: Html
-loginForm = do
+loginFormReesd :: Html
+loginFormReesd = do
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"
-         ! A.action "/a/login"
+         ! A.action "/echo/login"
          $ do
     H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
       H.h2 "Log in to Reesd"
@@ -631,7 +634,6 @@ loginForm = do
           H.label ! A.class_ "db fw6 mv1" $ "Username"
                   ! A.for "username"
           H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.label "username"
                   ! A.name "username"
                   ! A.id "username"
                   ! A.type_ "text"
@@ -642,7 +644,6 @@ loginForm = do
           H.label ! A.class_ "db fw6 mv1" $ "Password"
                   ! A.for "password"
           H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.label "password"
                   ! A.name "password"
                   ! A.id "password"
                   ! A.type_ "password"

@@ -3,30 +3,37 @@ import { Input, Button, A } from "../../components";
 export const LoginContent = () => (
   <>
     <Input
-      type="email"
-      label="Email"
-      placeholder="alice@example.com"
+      label="Username"
+      type="text"
+      name="username"
+      id="username"
       message="You have entered an invalid email"
     />
-    <Input type="password" label="Password" placeholder="" />
+    <Input
+      label="Password"
+      type="password"
+      placeholder=""
+      name="password"
+      id="password"
+    />
     <A color="black" href="#">
-      Forgot Password
+      Reset password
     </A>
   </>
 );
 
 export const LoginForm = () => (
-  <form className="bg-white mw6" onSubmit={e => e.preventDefault()}>
+  <form className="bg-white mw6" method="POST" action="/echo/login">
     <div className="pa4 bt br bl b--black bw1">
-      <h2>Log in to your account</h2>
+      <h2>Log in to Appname</h2>
       <LoginContent />
     </div>
     <div className="flex justify-between">
       <Button variant="secondary" size="large">
-        Sign Up
+        Register
       </Button>
       <Button variant="primary" size="large">
-        Log In —>
+        Log in —>
       </Button>
     </div>
   </form>

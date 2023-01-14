@@ -12,12 +12,17 @@ build-type:          Simple
 
 library
   default-extensions:
+    DeriveAnyClass
+    DeriveGeneric
+    DerivingStrategies
+    NoImplicitPrelude
     OverloadedStrings
     RecordWildCards
     TypeApplications
     TypeOperators
   build-depends:
-      base == 4.*
+      aeson
+    , base == 4.*
     , blaze-builder
     , blaze-html
     , blaze-markup
@@ -25,6 +30,7 @@ library
     , directory
     , exceptions
     , filepath
+    , http-api-data
     , http-types
     , optparse-applicative
     , protolude

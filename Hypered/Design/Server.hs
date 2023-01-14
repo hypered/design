@@ -11,6 +11,7 @@ import           Control.Monad.Catch            ( MonadCatch
                                                 , MonadMask
                                                 , MonadThrow
                                                 )
+import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
@@ -22,6 +23,7 @@ import qualified Servant.Server                as Server
 import           System.FilePath                ( (</>) )
 import qualified System.Systemd.Daemon         as SD
 import           Text.Blaze.Html5               ( Html )
+import qualified Text.Blaze.Html5              as H
 import           WaiAppStatic.Storage.Filesystem
                                                 ( defaultWebAppSettings )
 import           WaiAppStatic.Storage.Filesystem.Extended
@@ -33,6 +35,9 @@ import           WaiAppStatic.Types             ( ss404Handler
                                                 , ssMaxAge
                                                 , MaxAge(NoMaxAge)
                                                 )
+import           Web.FormUrlEncoded             ( FromForm(..)
+                                                , parseUnique
+                                                )
 
 
 --------------------------------------------------------------------------------
@@ -40,6 +45,9 @@ import           WaiAppStatic.Types             ( ss404Handler
 -- Only the /echo routes will be exposed through Nginx at first.
 type App =    "" :> Raw
          :<|> "echo" :> Get '[HTML] Html
+         :<|> "echo" :> "login"
+              :> ReqBody '[FormUrlEncoded] Login
+              :> Post '[HTML] EchoPage
          :<|> Raw -- Fallback handler for the static files, in particular the
                   -- documentation.
 
@@ -48,7 +56,8 @@ type App =    "" :> Raw
 type Runtime = ()
 
 newtype AppM a = AppM { runAppM :: ReaderT Runtime (ExceptT Errs.RuntimeErr IO) a }
-  deriving ( Functor
+  deriving newtype
+           ( Functor
            , Applicative
            , Monad
            , MonadIO
@@ -70,6 +79,7 @@ serverT
 serverT root =
   showHomePage root
     :<|> showEchoIndex
+    :<|> echoLogin
     :<|> serveDocumentation root
 
 
@@ -170,3 +180,28 @@ custom404 _request sendResponse = sendResponse $ Wai.responseLBS
   [("Content-Type", "text/html; charset=UTF-8")]
   (renderMarkup $ H.toMarkup Pages.NotFoundPage)
 -}
+
+
+--------------------------------------------------------------------------------
+-- | Represents the input data to log in a user.
+data Login = Login
+  { _loginUsername :: Text
+  , _loginPassword :: Text
+  }
+  deriving (Eq, Show, Generic)
+  deriving anyclass (ToJSON, FromJSON)
+
+instance FromForm Login where
+  fromForm f = Login <$> parseUnique "username" f <*> parseUnique "password" f
+
+data EchoPage = EchoPage
+  { _echoPageContent     :: Text
+    -- ^ Text, displayed as code.
+  }
+
+instance H.ToMarkup EchoPage where
+  toMarkup EchoPage {..} =
+    H.pre . H.code $ H.text _echoPageContent
+
+echoLogin :: ServerC m => Login -> m EchoPage
+echoLogin = pure . EchoPage . show

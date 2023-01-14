@@ -1,7 +1,7 @@
 import React from "react";
 
 function Input(props) {
-  const { message, ...props2 } = props;
+  const { label, message, ...props2 } = props;
   return (
     <div className="mv3">
       <div className="mb3">

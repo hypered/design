@@ -34,7 +34,7 @@ import Hypered.Html
   , colorText, colorBackground, colorSamples
   , containerWithLabelDefault
   , dropdownDefault
-  , loginFormTODO
+  , loginForm, loginFormReesd
   , hrDefault, hrDivider
   , imageDefault, imageNegativePull, imageFullWidth, imageWithCaption
   , imageExamples
@@ -331,6 +331,8 @@ generateGuide = do
 
   generate' "index.html" "Hypered style guide" conf $ \_ -> do
     H.h1 "Components and examples"
+
+    H.h2 "Components"
     H.ul $ do
       mapM_
         (\(cat, variants) ->
@@ -344,6 +346,8 @@ generateGuide = do
                 variants)
         guideData
 
+    H.h2 "Examples"
+    H.ul $ do
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
@@ -497,7 +501,8 @@ guideData =
       ])
 
   , ( "Form"
-    , [ ("login", "form--login.html", const loginFormTODO)
+    , [ ("login", "form--login.html", const loginForm)
+      , ("login (IBM Plex)", "form--login-reesd.html", const loginFormReesd)
       ])
 
   , ( "Horizontal rule"
@@ -769,7 +774,7 @@ generateFooter :: IO ()
 generateFooter = putStr $ renderHtml footerExample
 
 generateFormLogin :: IO ()
-generateFormLogin = putStr $ renderHtml loginFormTODO
+generateFormLogin = putStr $ renderHtml loginForm
 
 generateHr :: IO ()
 generateHr = putStr $ renderHtml hrExample

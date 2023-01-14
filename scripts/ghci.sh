@@ -4,6 +4,9 @@
 ghc --interactive \
   -ibin/ \
   -isrc/ \
+  -XDeriveAnyClass \
+  -XDeriveGeneric \
+  -XDerivingStrategies \
   -XNoImplicitPrelude \
   -XOverloadedStrings \
   -XRecordWildCards \
