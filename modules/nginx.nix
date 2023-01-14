@@ -16,6 +16,7 @@ in
         "/" = {
           alias = site + "/";
         };
+        "/echo".proxyPass = "http://127.0.0.1:8999";
         "/hs/" = {
           alias = hs + "/hs/";
         };

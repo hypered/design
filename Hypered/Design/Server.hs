@@ -11,15 +11,17 @@ import           Control.Monad.Catch            ( MonadCatch
                                                 , MonadMask
                                                 , MonadThrow
                                                 )
+import qualified Hypered.Design.Command        as Command
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
 import qualified Network.Wai.Handler.Warp      as Warp
 import           Protolude               hiding ( Handler )
-import qualified Hypered.Design.Command        as Command
 import           Servant                 hiding ( serve )
+import           Servant.HTML.Blaze             ( HTML )
 import qualified Servant.Server                as Server
 import           System.FilePath                ( (</>) )
 import qualified System.Systemd.Daemon         as SD
+import           Text.Blaze.Html5               ( Html )
 import           WaiAppStatic.Storage.Filesystem
                                                 ( defaultWebAppSettings )
 import           WaiAppStatic.Storage.Filesystem.Extended
@@ -34,8 +36,10 @@ import           WaiAppStatic.Types             ( ss404Handler
 
 
 --------------------------------------------------------------------------------
--- | This is the main Servant API definition for Refli.
+-- | This is the main Servant API definition for the design server.
+-- Only the /echo routes will be exposed through Nginx at first.
 type App =    "" :> Raw
+         :<|> "echo" :> Get '[HTML] Html
          :<|> Raw -- Fallback handler for the static files, in particular the
                   -- documentation.
 
@@ -65,6 +69,7 @@ serverT
   -> ServerT App m
 serverT root =
   showHomePage root
+    :<|> showEchoIndex
     :<|> serveDocumentation root
 
 
@@ -141,6 +146,10 @@ showHomePage root = Tagged $ \_ res -> res $
     (root </> "index.html")
     Nothing
 
+
+--------------------------------------------------------------------------------
+showEchoIndex :: forall m . ServerC m => m Html
+showEchoIndex = pure "Echo."
 
 --------------------------------------------------------------------------------
 -- | Serve the static files for the documentation. This also provides a custom
