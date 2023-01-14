@@ -1,8 +1,8 @@
 cabal-version:       2.2
-name:                design-system
+name:                hypered-design
 version:             0.0.0
 synopsis:            Design system for Hypered.
-description:         Design system for Hypered.
+description:         A design system for Hypered projects.
 category:            System
 license:             BSD-2-Clause
 license-file:        LICENSE
@@ -54,7 +54,7 @@ executable hypered-design
   main-is:             hypered-design.hs
   build-depends:       base == 4.*,
                        blaze-html,
-                       design-system,
+                       hypered-design,
                        optparse-applicative,
                        protolude,
                        text

@@ -29,7 +29,7 @@ in rec
     ${pkgs.bash}/bin/bash ${replace-md-links} $out
 
     #cp -r --no-preserve=mode \
-    #  ${haddock}/share/doc/design-system-0.0.0/html \
+    #  ${haddock}/share/doc/hypered-design-0.0.0/html \
     #  $out/haddock
   '';
 

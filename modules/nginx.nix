@@ -21,7 +21,7 @@ in
           alias = hs + "/hs/";
         };
         "/haddock/" = {
-          alias = haddock + "/share/doc/design-system-0.0.0/html/";
+          alias = haddock + "/share/doc/hypered-design-0.0.0/html/";
         };
         "/static/" = {
           alias = static + "/";
