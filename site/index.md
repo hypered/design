@@ -21,7 +21,7 @@ design system were also created, with the addition of an error page. The CSS
 part was done using Tachyons.
 
 That work generates files in the `docs/` directory of the repository, which is
-exposed using GitHub Pages at [js.hypered.design](https://js.hypered.design).
+exposed using GitHub Pages at `js.hypered.design`.
 
 - [Landing page](https://js.hypered.design/landing/) - An initial landing page
   for the design system itself.
@@ -46,7 +46,7 @@ The rest is built using Nix and served from a VM at this domain
 The main usage of the design system is within applications written in Haskell.
 Examples generated with the Haskell code are also available:
 
-- [Haskell examples](hs/) - Everything that exist in the original
+- [Haskell implementation](hs/) - Everything that exist in the original
   implementation also exist here.
 
 ## See also
