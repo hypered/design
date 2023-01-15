@@ -68,7 +68,8 @@ for i in \
   input--usage \
   layout--default \
   layout--blog-list \
-  layout--blog-post \
+  layout--blog-post-1 \
+  layout--blog-post-2 \
   layout--with-sidebar \
   list--ordered \
   list--unordered \

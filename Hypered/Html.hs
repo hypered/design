@@ -752,7 +752,6 @@ inputTextExample =
       H.input ! A.type_ "text"
               ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
               ! A.placeholder "John Appleseed"
-              ! A.label "Full Name"
       H.div ! A.class_ "mv1 h1 red fw5" $ mempty
 
 inputPasswordExample :: Html
@@ -763,7 +762,6 @@ inputPasswordExample =
       H.input ! A.type_ "password"
               ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
               ! A.value "hello, world"
-              ! A.label "Password"
       H.div ! A.class_ "mv1 h1 red fw5" $ mempty
 
 inputNumberExample :: Html
@@ -774,7 +772,6 @@ inputNumberExample =
       H.input ! A.type_ "number"
               ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
               ! A.value "20"
-              ! A.label "Quantity"
       H.div ! A.class_ "mv1 h1 red fw5" $ mempty
 
 inputWithMessageExample :: Html
@@ -785,7 +782,6 @@ inputWithMessageExample =
       H.input ! A.type_ "email"
               ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
               ! A.value "alice@example.com"
-              ! A.label "Email Address"
       H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
 
 inputUsage :: Html
@@ -797,7 +793,6 @@ inputUsage =
         H.input ! A.type_ "text"
                 ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                 ! A.placeholder "John Appleseed"
-                ! A.label "Full Name"
         H.div ! A.class_ "mv1 h1 red fw5" $ mempty
     H.div ! A.class_ "mv3" $
       H.div ! A.class_ "mb3" $ do
@@ -805,7 +800,6 @@ inputUsage =
         H.input ! A.type_ "email"
                 ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                 ! A.value "alice@example.com"
-                ! A.label "Email Address"
         H.div ! A.class_ "mv1 h1 red fw5" $ "Not a valid email."
     H.div ! A.class_ "mv3" $
       H.div ! A.class_ "mb3" $ do
@@ -813,7 +807,6 @@ inputUsage =
         H.input ! A.type_ "password"
                 ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                 ! A.value "hello, world"
-                ! A.label "Password"
         H.div ! A.class_ "mv1 h1 red fw5" $ mempty
 
 
@@ -862,8 +855,49 @@ layoutBlogList =
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
 
-layoutBlogPost :: Html
-layoutBlogPost =
+layoutBlogPost1 :: Html
+layoutBlogPost1 =
+  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $ do
+            H.a ! A.class_ "black hy-hover-blue underline mr3" ! A.href "#" $
+              "noteed.com"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
+            H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
+      H.main $ do
+        H.article ! A.class_ "mw7 cf" $ do
+          H.div ! A.class_ "mb4" $ do
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
+              "Static binaries"
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "If you consider adopting a programming language, consider one where you can create statically-linked executables. This makes things so much easier."
+          H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
+            "E.g., compared to Docker"
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "With a statically-linked binary, provisioning a program on a remote host is just uploading it. With Docker, you need to install and maintain docker-engine. Ideally you should have a nice way to provision the remote host with Docker, but then, why not use that nice way to provision other stuff directly ?"
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "Docker is much more than packaging, but it seems a lot of people use it for that purpose."
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "By the way, statically-linked executables make building Docker images a breeze."
+          H.p ! A.class_ "f5 lh-copy mv3" $
+            "If you use Docker to deploy, you probably want a private registry, which is another piece to maintain. Static binaries are trivial to host on a static site. Or to mirror. And so on. Simplicity goes a long way."
+          H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "See also: "
+            H.a ! A.class_ "no-underline hy-hover-blue" ! A.href "#" $ "In praise of simplicity"
+          H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+          H.p ! A.class_ "f5 lh-copy mv3" $ do
+            "Related: "
+            H.a ! A.class_ "no-underline hy-hover-blue" ! A.href "#" $ "Learn packaging"
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Võ Minh Thu, 2017-2023."
+
+layoutBlogPost2 :: Html
+layoutBlogPost2 =
   H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
     H.div $ do
       H.header $
@@ -1090,6 +1124,15 @@ modalButtonLabel = do
           ! A.for "modal"
           ! customAttribute "variant" "primary"
           $ "Open Modal"
+  modalContent
+
+modalTextLabel :: Html
+modalTextLabel = do
+  H.label ! customAttribute "as" "label" ! A.for "modal" $ "Click on this text to open a modal"
+  modalContent
+
+modalContent :: Html
+modalContent = do
   H.input ! A.type_ "checkbox" ! A.class_ "modal-state" ! A.id "modal"
   H.div ! A.class_ "modal items-center justify-center h-100 absolute absolute--fill z-1" $ do
     H.div ! A.class_ "bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75" $ do
@@ -1102,11 +1145,11 @@ modalButtonLabel = do
         H.div ! A.class_ "bg-white modal-body bl br b--black bw1 pa3 overflow-y-scroll" $ do
           H.div ! A.class_ "mv3" $
             H.div ! A.class_ "mb3" $ do
-              H.label ! A.class_ "db fw6 mv1" $ "Email"
-              H.input ! A.type_ "email"
+              H.label ! A.class_ "db fw6 mv1" $ "Username"
+              H.input ! A.type_ "text"
                       ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                      ! A.placeholder "alice@example.com"
-                      ! A.label "Email"
+                      ! A.name "username"
+                      ! A.id "username"
               H.div ! A.class_ "mv1 h1 red fw5" $ "You have entered an invalid email"
           H.div ! A.class_ "mv3" $
             H.div ! A.class_ "mb3" $ do
@@ -1114,61 +1157,16 @@ modalButtonLabel = do
               H.input ! A.type_ "password"
                       ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                       ! A.placeholder ""
-                      ! A.label "Password"
+                      ! A.name "password"
+                      ! A.id "password"
               H.div ! A.class_ "mv1 h1 red fw5" $ mempty
-          H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Forgot Password"
+          H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Reset password"
         H.div ! A.class_ "bg-blue flex justify-between" $ do
           H.label ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                   ! customAttribute "as" "label"
                   ! A.for "modal"
                   ! customAttribute "variant" "secondary"
                   $ "Sign Up"
-          H.label ! A.class_ "bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
-                  ! customAttribute "as" "label"
-                  ! A.for "modal"
-                  ! customAttribute "variant" "primary"
-                  $ "Log In —>"
-    H.label ! A.class_ "bg-black-50 fixed absolute--fill z-1"
-            ! A.for "modal"
-            $ mempty
-
-modalTextLabel :: Html
-modalTextLabel = do
-  H.label ! customAttribute "as" "label" ! A.for "modal" $ "Click on this text to open a modal"
-  H.input ! A.type_ "checkbox" ! A.class_ "modal-state" ! A.id "modal"
-  H.div ! A.class_ "modal items-center justify-center h-100 absolute absolute--fill z-1" $ do
-    H.div ! A.class_ "bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75" $
-      H.form $ do
-        H.div ! A.class_ "flex items-center justify-between ba b--black bw1 pa3 b" $ do
-          H.div $
-            H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $
-              "Log in to your account"
-          H.label ! A.for "modal" ! A.class_ "w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer" $
-            H.img ! A.src "img/close.svg"
-        H.div ! A.class_ "bg-white modal-body bl br b--black bw1 pa3 overflow-y-scroll" $ do
-          H.div ! A.class_ "mv3" $
-            H.div ! A.class_ "mb3" $ do
-              H.label ! A.class_ "db fw6 mv1" $ "Email"
-              H.input ! A.type_ "email"
-                      ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                      ! A.placeholder "alice@example.com"
-                      ! A.label "Email"
-              H.div ! A.class_ "mv1 h1 red fw5" $ "You have entered an invalid email"
-          H.div ! A.class_ "mv3" $
-            H.div ! A.class_ "mb3" $ do
-              H.label ! A.class_ "db fw6 mv1" $ "Password"
-              H.input ! A.type_ "password"
-                      ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
-                      ! A.placeholder ""
-                      ! A.label "Password"
-              H.div ! A.class_ "mv1 h1 red fw5" $ mempty
-          H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "Forgot Password"
-        H.div ! A.class_ "bg-blue flex justify-between" $ do
-          H.label ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
-              ! customAttribute "as" "label"
-              ! A.for "modal"
-              ! customAttribute "variant" "secondary"
-              $ "Sign Up"
           H.label ! A.class_ "bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                   ! customAttribute "as" "label"
                   ! A.for "modal"

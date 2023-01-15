@@ -40,7 +40,8 @@ import Hypered.Html
   , imageExamples
   , inputTextExample, inputPasswordExample, inputNumberExample
   , inputWithMessageExample, inputUsage
-  , layoutDefault, layoutBlogList, layoutBlogPost, layoutWithSidebar
+  , layoutDefault, layoutBlogList, layoutBlogPost1, layoutBlogPost2
+  , layoutWithSidebar
   , listOrderedExample, listUnorderedExample
   , modalTextContent, modalButtonLabel, modalTextLabel
   , navigationBlockDefault, navigationBlockUsage
@@ -194,7 +195,9 @@ run Command.GenerateLayout = generateLayout
 
 run Command.GenerateLayoutBlogList = generateLayoutBlogList
 
-run Command.GenerateLayoutBlogPost = generateLayoutBlogPost
+run Command.GenerateLayoutBlogPost1 = generateLayoutBlogPost1
+
+run Command.GenerateLayoutBlogPost2 = generateLayoutBlogPost2
 
 run Command.GenerateLayoutWithSidebar = generateLayoutWithSidebar
 
@@ -532,7 +535,10 @@ guideData =
   , ( "Layout"
     , [ ("default", "layout--default.html", const layoutExample)
       , ("blog list", "layout--blog-list.html", const layoutBlogListExample)
-      , ("blog post", "layout--blog-post.html", const layoutBlogPostExample)
+      , ("blog post 1", "layout--blog-post-1.html"
+        , const layoutBlogPost1Example)
+      , ("blog post 2", "layout--blog-post-2.html"
+        , const layoutBlogPost2Example)
       , ("with sidebar", "layout--with-sidebar.html", const layoutWithSidebarExample)
       ])
 
@@ -818,8 +824,11 @@ generateLayout = putStr $ renderHtml layoutExample
 generateLayoutBlogList :: IO ()
 generateLayoutBlogList = putStr $ renderHtml layoutBlogListExample
 
-generateLayoutBlogPost :: IO ()
-generateLayoutBlogPost = putStr $ renderHtml layoutBlogPostExample
+generateLayoutBlogPost1 :: IO ()
+generateLayoutBlogPost1 = putStr $ renderHtml layoutBlogPost1Example
+
+generateLayoutBlogPost2 :: IO ()
+generateLayoutBlogPost2 = putStr $ renderHtml layoutBlogPost2Example
 
 generateLayoutWithSidebar :: IO ()
 generateLayoutWithSidebar = putStr $ renderHtml layoutWithSidebarExample
@@ -1193,8 +1202,11 @@ layoutExample = layoutDefault
 layoutBlogListExample :: Html
 layoutBlogListExample = layoutBlogList
 
-layoutBlogPostExample :: Html
-layoutBlogPostExample = layoutBlogPost
+layoutBlogPost1Example :: Html
+layoutBlogPost1Example = layoutBlogPost1
+
+layoutBlogPost2Example :: Html
+layoutBlogPost2Example = layoutBlogPost2
 
 layoutWithSidebarExample :: Html
 layoutWithSidebarExample = layoutWithSidebar

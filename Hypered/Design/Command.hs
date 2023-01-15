@@ -99,7 +99,8 @@ data Command =
 
   | GenerateLayout
   | GenerateLayoutBlogList
-  | GenerateLayoutBlogPost
+  | GenerateLayoutBlogPost1
+  | GenerateLayoutBlogPost2
   | GenerateLayoutWithSidebar
 
   | GenerateListOrdered
@@ -539,8 +540,13 @@ parser =
           $ A.progDesc "Generate the blog list layout"
           )
       <> A.command
-          "layout--blog-post"
-          ( A.info (parserLayoutBlogPost <**> A.helper)
+          "layout--blog-post-1"
+          ( A.info (parserLayoutBlogPost1 <**> A.helper)
+          $ A.progDesc "Generate the blog post layout"
+          )
+      <> A.command
+          "layout--blog-post-2"
+          ( A.info (parserLayoutBlogPost2 <**> A.helper)
           $ A.progDesc "Generate the blog post layout"
           )
       <> A.command
@@ -989,8 +995,11 @@ parserLayout = pure GenerateLayout
 parserLayoutBlogList :: A.Parser Command
 parserLayoutBlogList = pure GenerateLayoutBlogList
 
-parserLayoutBlogPost :: A.Parser Command
-parserLayoutBlogPost = pure GenerateLayoutBlogPost
+parserLayoutBlogPost1 :: A.Parser Command
+parserLayoutBlogPost1 = pure GenerateLayoutBlogPost1
+
+parserLayoutBlogPost2 :: A.Parser Command
+parserLayoutBlogPost2 = pure GenerateLayoutBlogPost2
 
 parserLayoutWithSidebar :: A.Parser Command
 parserLayoutWithSidebar = pure GenerateLayoutWithSidebar

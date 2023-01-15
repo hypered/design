@@ -274,8 +274,12 @@ case 'layout--blog-list':
   render(Layout.BlogList());
   break;
 
-case 'layout--blog-post':
-  render(Layout.BlogPost());
+case 'layout--blog-post-1':
+  render(Layout.BlogPost1());
+  break;
+
+case 'layout--blog-post-2':
+  render(Layout.BlogPost2());
   break;
 
 case 'layout--default':
