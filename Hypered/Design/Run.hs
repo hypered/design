@@ -354,6 +354,7 @@ generateGuide = do
       H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
       H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
       H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
+      H.li $ H.a ! A.href "example--blog-post.html" $ "Example, blog post"
 
       H.li $ H.a ! A.href "example--template.html" $ "Example, template"
 
@@ -367,6 +368,8 @@ generateGuide = do
         "Example, sidebar (IBM Plex)"
       H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
         "Example, side panel (IBM Plex)"
+      H.li $ H.a ! A.href "example--blog-post-ibm-plex.html" $
+        "Example, blog post (IBM Plex)"
 
       H.li $ H.a ! A.href "example--template-ibm-plex.html" $
         "Example, template (IBM Plex)"
@@ -381,28 +384,40 @@ generateGuide = do
 
   -- Example usage
 
-  generate' "example--login-form.html" "Hypered style guide - Login Form Example"
+  generate' "example--login-form.html"
+    "Hypered style guide - Login form eExample"
     conf (const exampleLoginForm)
-  generate' "example--sidebar.html" "Hypered style guide - Sidebar Example"
+  generate' "example--sidebar.html"
+    "Hypered style guide - Sidebar example"
     conf (const exampleSidebar)
-  generate' "example--side-panel.html" "Hypered style guide - Side panel Example"
+  generate' "example--side-panel.html"
+    "Hypered style guide - Side panel example"
     conf (const exampleSidePanel)
+  generate' "example--blog-post.html"
+    "Hypered style guide - Blog post example"
+    conf (const layoutBlogPost1Example)
 
   -- Example usage using IBM Plex
 
   let conf' = conf { cFont = IbmPlex }
-  generate' "example--login-form-ibm-plex.html" "Hypered style guide - Login Form Example"
+  generate' "example--login-form-ibm-plex.html"
+    "Hypered style guide - Login form example"
     conf' (const exampleLoginForm)
   generate' "example--register-form-ibm-plex.html"
-    "Hypered style guide - Register Form Example"
+    "Hypered style guide - Register form example"
     conf' (const exampleRegisterForm)
   generate' "example--reset-form-ibm-plex.html"
-    "Hypered style guide - Reset Form Example"
+    "Hypered style guide - Reset form example"
     conf' (const exampleResetForm)
-  generate' "example--sidebar-ibm-plex.html" "Hypered style guide - Sidebar Example"
+  generate' "example--sidebar-ibm-plex.html"
+    "Hypered style guide - Sidebar example"
     conf' (const exampleSidebar)
-  generate' "example--side-panel-ibm-plex.html" "Hypered style guide - Side panel Example"
+  generate' "example--side-panel-ibm-plex.html"
+    "Hypered style guide - Side panel example"
     conf' (const exampleSidePanel)
+  generate' "example--blog-post-ibm-plex.html"
+    "Hypered style guide - Blog post example"
+    conf (const layoutBlogPost1Example)
 
 
 ------------------------------------------------------------------------------

@@ -9,6 +9,7 @@ import {
   Button,
   ButtonLink,
   Banner,
+  Code,
   Radio,
   Checkbox,
   Dropdown,
@@ -160,9 +161,9 @@ export const ComponentsSection = props => (
         href="../storybook/?path=/story/code-block--code-block"
       >
         <div className="w-100">
-          <Codeblock>{`.tachyons {
+          <Code>{`.tachyons {
   display: block;
-}`}</Codeblock>
+}`}</Code>
         </div>
       </Gallery>
 
