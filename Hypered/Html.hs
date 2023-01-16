@@ -126,8 +126,15 @@ document Config{..} path title body = do
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
-      H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $
-        body
+      body
+
+
+-- | This is the div around the main content and footer. It is not part of the
+-- `document` function above because within the Storybook examples, it is part
+-- of the examples.
+wrapper :: Html -> Html
+wrapper =
+  H.div ! A.class_ "flex flex-column justify-between min-vh-100 mw8 center pa3 pa4-ns lh-copy"
 
 
 ------------------------------------------------------------------------------
@@ -694,7 +701,7 @@ imageWithCaption =
 
 imageExamples :: Html
 imageExamples =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -813,7 +820,7 @@ inputUsage =
 --------------------------------------------------------------------------------
 layoutDefault :: Html
 layoutDefault =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -829,7 +836,7 @@ layoutDefault =
 
 layoutBlogList :: Html
 layoutBlogList =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -857,7 +864,7 @@ layoutBlogList =
 
 layoutBlogPost1 :: Html
 layoutBlogPost1 =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -898,7 +905,7 @@ layoutBlogPost1 =
 
 layoutBlogPost2 :: Html
 layoutBlogPost2 =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -988,7 +995,7 @@ layoutBlogPost2 =
 
 layoutWithSidebar :: Html
 layoutWithSidebar =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
@@ -1221,7 +1228,7 @@ navigationBlockDefault =
 
 navigationBlockUsage :: Html
 navigationBlockUsage =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         navigationNoteedX
@@ -1331,7 +1338,7 @@ exampleResetForm = do
 
 exampleSidebar :: Html
 exampleSidebar =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         navigationNoteedX
@@ -1361,7 +1368,7 @@ exampleSidebar =
 
 exampleSidePanel :: Html
 exampleSidePanel = do
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         navigationNoteedX
@@ -1951,7 +1958,7 @@ whitespaceFullWidthExample =
 
 whitespaceExamples :: Html
 whitespaceExamples =
-  H.div ! A.class_ "flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy" $ do
+  wrapper $ do
     H.div $ do
       H.header $
         H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $

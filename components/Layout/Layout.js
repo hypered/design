@@ -4,7 +4,7 @@ import { Nav, NavLink, Footer } from "../../components";
 
 function BareLayout(props) {
   return (
-    <div className="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
+    <div className="flex flex-column justify-between min-vh-100 mw8 center pa3 pa4-ns lh-copy">
       <div>
         {props.children}
       </div>
@@ -14,7 +14,7 @@ function BareLayout(props) {
 
 function Layout(props) {
   return (
-    <div className="flex flex-column justify-between hy-min-height-vh-100 mw8 center pa4 lh-copy">
+    <div className="flex flex-column justify-between min-vh-100 mw8 center pa3 pa4-ns lh-copy">
       <div>
         <header>
           <Nav>

@@ -332,47 +332,48 @@ generateGuide :: IO ()
 generateGuide = do
   let conf = defaultConfig { cAddWrapper = False }
 
-  generate' "index.html" "Hypered style guide" conf $ \_ -> do
-    H.h1 "Components and examples"
+  generate' "index.html" "Hypered style guide" conf $ \_ ->
+    H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $ do
+      H.h1 "Components and examples"
 
-    H.h2 "Components"
-    H.ul $ do
-      mapM_
-        (\(cat, variants) ->
-          H.li $ do
-            H.text cat
-            H.ul $
-              mapM_
-                (\(variant, href, _) ->
-                  H.li $ H.a ! A.href (H.toValue href) $
-                    H.text $ cat <> ", " <> variant)
-                variants)
-        guideData
+      H.h2 "Components"
+      H.ul $ do
+        mapM_
+          (\(cat, variants) ->
+            H.li $ do
+              H.text cat
+              H.ul $
+                mapM_
+                  (\(variant, href, _) ->
+                    H.li $ H.a ! A.href (H.toValue href) $
+                      H.text $ cat <> ", " <> variant)
+                  variants)
+          guideData
 
-    H.h2 "Examples"
-    H.ul $ do
-      H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
-      H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
-      H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
-      H.li $ H.a ! A.href "example--blog-post.html" $ "Example, blog post"
+      H.h2 "Examples"
+      H.ul $ do
+        H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
+        H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
+        H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
+        H.li $ H.a ! A.href "example--blog-post.html" $ "Example, blog post"
 
-      H.li $ H.a ! A.href "example--template.html" $ "Example, template"
+        H.li $ H.a ! A.href "example--template.html" $ "Example, template"
 
-      H.li $ H.a ! A.href "example--login-form-ibm-plex.html" $
-        "Example, login form (IBM Plex)"
-      H.li $ H.a ! A.href "example--register-form-ibm-plex.html" $
-        "Example, register form (IBM Plex)"
-      H.li $ H.a ! A.href "example--reset-form-ibm-plex.html" $
-        "Example, reset form (IBM Plex)"
-      H.li $ H.a ! A.href "example--sidebar-ibm-plex.html" $
-        "Example, sidebar (IBM Plex)"
-      H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
-        "Example, side panel (IBM Plex)"
-      H.li $ H.a ! A.href "example--blog-post-ibm-plex.html" $
-        "Example, blog post (IBM Plex)"
+        H.li $ H.a ! A.href "example--login-form-ibm-plex.html" $
+          "Example, login form (IBM Plex)"
+        H.li $ H.a ! A.href "example--register-form-ibm-plex.html" $
+          "Example, register form (IBM Plex)"
+        H.li $ H.a ! A.href "example--reset-form-ibm-plex.html" $
+          "Example, reset form (IBM Plex)"
+        H.li $ H.a ! A.href "example--sidebar-ibm-plex.html" $
+          "Example, sidebar (IBM Plex)"
+        H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
+          "Example, side panel (IBM Plex)"
+        H.li $ H.a ! A.href "example--blog-post-ibm-plex.html" $
+          "Example, blog post (IBM Plex)"
 
-      H.li $ H.a ! A.href "example--template-ibm-plex.html" $
-        "Example, template (IBM Plex)"
+        H.li $ H.a ! A.href "example--template-ibm-plex.html" $
+          "Example, template (IBM Plex)"
 
   mapM_
     (\(cat, variants) ->
@@ -417,7 +418,7 @@ generateGuide = do
     conf' (const exampleSidePanel)
   generate' "example--blog-post-ibm-plex.html"
     "Hypered style guide - Blog post example"
-    conf (const layoutBlogPost1Example)
+    conf' (const layoutBlogPost1Example)
 
 
 ------------------------------------------------------------------------------
@@ -666,9 +667,10 @@ guideData =
 generateWrapper :: IO ()
 generateWrapper = do
   putStr (Pretty.renderHtml
-    ( document defaultConfig "wrapper.html" "Hypered design system"
-      ( H.preEscapedToHtml @Text "<!-- CONTENT MARKER -->"
-    )))
+    ( document defaultConfig "wrapper.html" "Hypered design system" $
+        H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $
+          H.preEscapedToHtml @Text "<!-- CONTENT MARKER -->"
+    ))
 
 
 ------------------------------------------------------------------------------
