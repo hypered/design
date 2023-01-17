@@ -14,12 +14,12 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'IBM Plex', sans-serif;
   }
 
   @supports (font-variation-settings: normal) {
     html {
-      font-family: 'Inter var', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'IBM Plex', sans-serif;
     }
   }
 
@@ -43,10 +43,17 @@ export default class MyApp extends App {
             type="image/png"
             href={`${process.env.BACKEND_URL}/static/img/favicon.png`}
           />
-          <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
           <link
             rel="stylesheet"
-            href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"
+            href={`${process.env.BACKEND_URL}/static/css/ibm-plex.css`}
+          />
+          <link
+            rel="stylesheet"
+            href={`${process.env.BACKEND_URL}/static/css/tachyons.min.v4.11.1.css`}
+          />
+          <link
+            rel="stylesheet"
+            href={`${process.env.BACKEND_URL}/static/css/style.css`}
           />
           <link
             rel="stylesheet"

@@ -89,7 +89,7 @@ data Config = Config
 defaultConfig :: Config
 defaultConfig = Config
   { cStaticPath = "../static"
-  , cFont = Inter
+  , cFont = IbmPlex
   , cAddWrapper = True
   }
 

@@ -10,8 +10,7 @@ import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories (stories)
 import Hypered.Html
-  ( Font(IbmPlex)
-  , Font(Inter, Font)
+  ( Font(IbmPlex, Inter, Font)
   , generate, generate'
   , prettyHtml, wrap , wrapPost , Config(..)
   , footer, generateHtml, navigation, navigationTemplate
@@ -299,7 +298,7 @@ generateTemplates forGitHubPages = do
   let config = if forGitHubPages
                then
                  -- Used to generate HTML for GitHub Pages
-                 Config "/static" Inter False
+                 Config "/static" IbmPlex False
                else
                  -- Used to generate the template.
                  Config "$prefix$/static" (Font "$font$") False
@@ -359,21 +358,21 @@ generateGuide = do
 
         H.li $ H.a ! A.href "example--template.html" $ "Example, template"
 
-        H.li $ H.a ! A.href "example--login-form-ibm-plex.html" $
-          "Example, login form (IBM Plex)"
-        H.li $ H.a ! A.href "example--register-form-ibm-plex.html" $
-          "Example, register form (IBM Plex)"
-        H.li $ H.a ! A.href "example--reset-form-ibm-plex.html" $
-          "Example, reset form (IBM Plex)"
-        H.li $ H.a ! A.href "example--sidebar-ibm-plex.html" $
-          "Example, sidebar (IBM Plex)"
-        H.li $ H.a ! A.href "example--side-panel-ibm-plex.html" $
-          "Example, side panel (IBM Plex)"
-        H.li $ H.a ! A.href "example--blog-post-ibm-plex.html" $
-          "Example, blog post (IBM Plex)"
+        H.li $ H.a ! A.href "example--login-form-inter.html" $
+          "Example, login form (Inter)"
+        H.li $ H.a ! A.href "example--register-form-inter.html" $
+          "Example, register form (Inter)"
+        H.li $ H.a ! A.href "example--reset-form-inter.html" $
+          "Example, reset form (Inter)"
+        H.li $ H.a ! A.href "example--sidebar-inter.html" $
+          "Example, sidebar (Inter)"
+        H.li $ H.a ! A.href "example--side-panel-inter.html" $
+          "Example, side panel (Inter)"
+        H.li $ H.a ! A.href "example--blog-post-inter.html" $
+          "Example, blog post (Inter)"
 
-        H.li $ H.a ! A.href "example--template-ibm-plex.html" $
-          "Example, template (IBM Plex)"
+        H.li $ H.a ! A.href "example--template-inter.html" $
+          "Example, template (Inter)"
 
   mapM_
     (\(cat, variants) ->
@@ -398,25 +397,25 @@ generateGuide = do
     "Hypered style guide - Blog post example"
     conf (const layoutBlogPost1Example)
 
-  -- Example usage using IBM Plex
+  -- Example usage using Inter
 
-  let conf' = conf { cFont = IbmPlex }
-  generate' "example--login-form-ibm-plex.html"
+  let conf' = conf { cFont = Inter }
+  generate' "example--login-form-inter.html"
     "Hypered style guide - Login form example"
     conf' (const exampleLoginForm)
-  generate' "example--register-form-ibm-plex.html"
+  generate' "example--register-form-inter.html"
     "Hypered style guide - Register form example"
     conf' (const exampleRegisterForm)
-  generate' "example--reset-form-ibm-plex.html"
+  generate' "example--reset-form-inter.html"
     "Hypered style guide - Reset form example"
     conf' (const exampleResetForm)
-  generate' "example--sidebar-ibm-plex.html"
+  generate' "example--sidebar-inter.html"
     "Hypered style guide - Sidebar example"
     conf' (const exampleSidebar)
-  generate' "example--side-panel-ibm-plex.html"
+  generate' "example--side-panel-inter.html"
     "Hypered style guide - Side panel example"
     conf' (const exampleSidePanel)
-  generate' "example--blog-post-ibm-plex.html"
+  generate' "example--blog-post-inter.html"
     "Hypered style guide - Blog post example"
     conf' (const layoutBlogPost1Example)
 
@@ -521,7 +520,7 @@ guideData =
 
   , ( "Form"
     , [ ("login", "form--login.html", const loginForm)
-      , ("login (IBM Plex)", "form--login-reesd.html", const loginFormReesd)
+      , ("login (Reesd)", "form--login-reesd.html", const loginFormReesd)
       ])
 
   , ( "Horizontal rule"
