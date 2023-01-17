@@ -1,1 +1,34 @@
-html{--unit:.25rem;overflow-y:scroll}.hy-ibm-plex{font-family:"IBM Plex Sans",sans-serif;-webkit-font-smoothing:antialiased}a{color:blue;text-decoration:none}.main-mw{max-width:calc(var(--unit) * 320)}.poster ul.ep-nav a{opacity:0.10}.poster ul.ep-nav a:hover{opacity:1.00}pre{line-height:1.0}code{font-size:0.85em}
+html {
+  --unit: .25rem;
+  overflow-y:scroll;
+}
+
+.hy-ibm-plex {
+  font-family: "IBM Plex Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color:blue;
+  text-decoration:none;
+}
+
+.main-mw {
+  max-width: calc(var(--unit) * 320);
+}
+
+.poster ul.ep-nav a {
+  opacity: 0.10;
+}
+
+.poster ul.ep-nav a:hover {
+  opacity: 1.00;
+}
+
+pre{
+  line-height: 1.0;
+}
+
+code{
+  font-size: 0.85em;
+}
