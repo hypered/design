@@ -1,0 +1,34 @@
+$g-placeholder-color: #FFFF00;
+$g-placeholder-unit: 1rem !default;
+
+
+// Same as spacers, but visible as yellow rectangles.
+
+.u-placeholder-xs,
+.u-placeholder-s,
+.u-placeholder,
+.u-placeholder-l,
+.u-placeholder-xl {
+  width: 100%;
+  background-color: $g-placeholder-color;
+}
+
+.u-placeholder-xs {
+  height: calc($g-spacer-unit / 2) !important;
+}
+
+.u-placeholder-s {
+  height: calc($g-spacer-unit) !important;
+}
+
+.u-placeholder {
+  height: calc($g-spacer-unit * 2) !important;
+}
+
+.u-placeholder-l {
+  height: calc($g-spacer-unit * 3) !important;
+}
+
+.u-placeholder-xl {
+  height: calc($g-spacer-unit * 4) !important;
+}
