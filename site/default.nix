@@ -4,7 +4,7 @@
 let
   pkgs = import nixpkgs {};
   inherit (import ../.) to-prefixed-html replace-md-links;
-  to-html = src: to-prefixed-html "" "inter" src;
+  to-html = src: to-prefixed-html "" "ibm-plex" src;
   binaries = (import ../.).binaries;
   # TODO We need to update our change-haddock.sh script to use
   # this more recent derivation.
