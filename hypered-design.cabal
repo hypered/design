@@ -44,6 +44,7 @@ library
     , warp
   exposed-modules:     Hypered.Design.Command,
                        Hypered.Design.Examples,
+                       Hypered.Design.Guide,
                        Hypered.Design.Run,
                        Hypered.Design.Server,
                        Hypered.Design.Stories,
