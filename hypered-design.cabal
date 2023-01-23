@@ -46,6 +46,7 @@ library
                        Hypered.Design.Run,
                        Hypered.Design.Server,
                        Hypered.Design.Stories,
+                       Hypered.Design.Templates,
                        Hypered.Html
   ghc-options:         -Wall
 
