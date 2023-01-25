@@ -18,9 +18,9 @@
   font-size: 3rem;
   line-height: 1.25;
   letter-spacing: -0.05em;
-  margin: 7.5rem 0 2rem; // Vertical margin is temporary, for the
-                         // static-binaries.html example, until
-                         // the navigation is added.
+  margin: 3.35rem 0 2rem; // Vertical margin works with c-toolbar and
+                          // u-spacer-top-l for the
+                          // static-binaries.pug example.
 }
 
 .c-content h2 {
