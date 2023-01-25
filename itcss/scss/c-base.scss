@@ -1,0 +1,36 @@
+// A subset of c-content whithout sizing information (margins, line-height,
+// ...). In other words, this sets a font, and basic colours.
+
+.c-base h1,
+.c-base h2 {
+  color: $color-heading;
+}
+
+.c-base h1,
+.c-base h2 {
+  font-family: $g-headings-font-family;
+}
+
+.c-base p {
+  color: $color-body;
+}
+
+.c-base a {
+  color: $color-link;
+}
+
+.c-base hr {
+  color: $color-body;
+  background-color: $color-body;
+}
+
+.c-base p,
+.c-base a {
+  font-family: $g-base-font-family;
+}
+
+.c-base hr {
+  border: none;
+  height: .125rem;
+  margin: 2.125rem 0;
+}
