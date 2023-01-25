@@ -1,9 +1,7 @@
-{ nixpkgs ? <nixpkgs>
+{ nixpkgs ? import <nixpkgs> {}
 }:
 
-let
-  pkgs = import nixpkgs {};
-
+let pkgs = nixpkgs;
 in rec
 {
   brochure = pkgs.stdenvNoCC.mkDerivation {

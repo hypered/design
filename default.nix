@@ -40,6 +40,9 @@ in rec
   # on websites using this design system.
   static = (import site/default.nix {}).static;
 
+  # An example PDF brochure created with LaTeX.
+  brochure = (import brochure/default.nix { inherit nixpkgs; }).brochure;
+
   # A shell to try out our binaries
   # Run with nix-shell default.nix -A shell
   shell = nixpkgs.mkShell {
