@@ -1,0 +1,79 @@
+doctype html
+
+html
+  head
+    link(rel="stylesheet" href="/static/css/main.css")
+  body
+    .o-container--small.c-display
+      h1 Horizontal toolbars
+
+      p Classes to create an horizontal toolbar.
+
+      hr
+
+      p
+        | A simple
+        |
+        code p
+        |
+        | paragraph.
+      p Item 1
+
+      p
+        | The simplest toolbar, with a single element. This
+        | should match the above paragraph, but with additional
+        | vertical spacing (I don't know why; this is probably because we're in c-display).
+      .c-toolbar
+        .c-toolbar__left
+          .c-toolbar__item
+            p Item 1
+
+      p
+        | The same toolbar, but using a link instead of a paragraph.
+        | The vertical spacing is gone.
+      .c-toolbar
+        .c-toolbar__left
+          .c-toolbar__item
+            a Item 1
+
+      p
+        | A toolbar with a left item and a right item.
+      .c-toolbar
+        .c-toolbar__left
+          .c-toolbar__item
+            p Item 1
+        .c-toolbar__right
+          .c-toolbar__item
+            p Item 2
+
+      p
+        | A toolbar with two left items.
+      .c-toolbar
+        .c-toolbar__left
+          .c-toolbar__item
+            p Item 1
+          .c-toolbar__item
+            p Item 2
+
+      p
+        | A toolbar with two right items. An (empty) c-toolbar__left is optional.
+      .c-toolbar
+        .c-toolbar__right
+          .c-toolbar__item
+            p Item 1
+          .c-toolbar__item
+            p Item 2
+
+      p
+        | A toolbar with two left items, and two right items.
+      .c-toolbar
+        .c-toolbar__left
+          .c-toolbar__item
+            p Item 1
+          .c-toolbar__item
+            p Item 2
+        .c-toolbar__right
+          .c-toolbar__item
+            p Item 3
+          .c-toolbar__item
+            p Item 4

@@ -1,0 +1,23 @@
+.c-toolbar {
+  width: 100%;
+  display: flex;
+}
+
+.c-toolbar__left,
+.c-toolbar__right {
+  display: flex;
+  flex: 1 0 auto;
+}
+
+.c-toolbar__left {
+  .c-toolbar__item:not(:first-child) {
+    margin-left: 1rem;
+  }
+}
+
+.c-toolbar__right {
+  justify-content: flex-end;
+  .c-toolbar__item:not(:first-child) {
+    margin-left: 1rem;
+  }
+}
