@@ -3,8 +3,15 @@ $o-container-max-width-medium: 72rem;
 $o-container-max-width: 130rem;
 
 .o-container--small {
-  margin: 0 9.75rem;
+  margin: 0 5%;
   max-width: $o-container-max-width-small;
+  @media (min-width: 600px) {
+    margin: 0 17.33%; // 17.33% is 9.75rem / 900px, if 1rem is 16px,
+                      // making a nice progression between 600px and 900px.
+  }
+  @media (min-width: 900px) {
+    margin: 0 9.75rem;
+  }
 }
 
 .o-container--medium {
