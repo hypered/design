@@ -1,14 +1,19 @@
-.c-display h1,
-.c-display h2 {
+// Typographic style for web "pages" (i.e. mostly textual content, as opposed
+// to web "applications").
+// Once applied by using the c-content class, elements such as h1 or p are
+// styled without additional classes.
+
+.c-content h1,
+.c-content h2 {
   color: $color-heading;
 }
 
-.c-display h1,
-.c-display h2 {
+.c-content h1,
+.c-content h2 {
   font-family: $g-headings-font-family;
 }
 
-.c-display h1 {
+.c-content h1 {
   font-weight: 600;
   font-size: 3rem;
   line-height: 1.25;
@@ -18,7 +23,7 @@
                          // the navigation is added.
 }
 
-.c-display h2 {
+.c-content h2 {
   font-weight: 600;
   font-size: 2.25rem;
   line-height: 1.25;
@@ -26,32 +31,32 @@
   margin: 2.25rem 0 1.5rem;
 }
 
-.c-display p {
+.c-content p {
   color: $color-body;
 }
 
-.c-display a {
+.c-content a {
   color: $color-link;
 }
 
-.c-display hr {
+.c-content hr {
   color: $color-body;
   background-color: $color-body;
 }
 
-.c-display p,
-.c-display a {
+.c-content p,
+.c-content a {
   font-family: $g-base-font-family;
 }
 
-.c-display p {
+.c-content p {
   font-weight: 400;
   font-size: 1rem;
   line-height: 1.5;
   margin: 1rem 0;
 }
 
-.c-display hr {
+.c-content hr {
   width: 8rem;
   border: none;
   height: .125rem;
