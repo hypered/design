@@ -7,7 +7,7 @@ in rec
   brochure = pkgs.stdenvNoCC.mkDerivation {
     name = "brochure";
     src = ./.;
- 
+
     buildInputs = [
       pkgs.biber
       (pkgs.texlive.combine {
@@ -39,7 +39,7 @@ in rec
           ;
       })
     ];
- 
+
     buildPhase = ''
       pdflatex template
       biber template
@@ -47,7 +47,7 @@ in rec
       pdflatex template
       pdflatex template
     '';
- 
+
     installPhase = ''
       mkdir -p $out
       cp template.pdf $out/
