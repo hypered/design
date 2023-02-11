@@ -61,7 +61,12 @@ generateGuide = do
 
       H.h2 "Examples"
       H.ul $ do
-        H.li $ H.a ! A.href "example--login-form.html" $ "Example, login form"
+        H.li $ H.a ! A.href "example--login-form.html" $
+          "Example, login form"
+        H.li $ H.a ! A.href "example--register-form.html" $
+          "Example, register form"
+        H.li $ H.a ! A.href "example--reset-form.html" $
+          "Example, reset form"
         H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
         H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
         H.li $ H.a ! A.href "example--blog-post.html" $ "Example, blog post"
@@ -84,6 +89,8 @@ generateGuide = do
         H.li $ H.a ! A.href "example--template-inter.html" $
           "Example, template (Inter)"
 
+  -- Components
+
   mapM_
     (\(cat, variants) ->
       mapM_
@@ -97,6 +104,12 @@ generateGuide = do
   generate' "example--login-form.html"
     "Hypered style guide - Login form eExample"
     conf (const exampleLoginForm)
+  generate' "example--register-form.html"
+    "Hypered style guide - Register form example"
+    conf (const exampleRegisterForm)
+  generate' "example--reset-form.html"
+    "Hypered style guide - Reset form example"
+    conf (const exampleResetForm)
   generate' "example--sidebar.html"
     "Hypered style guide - Sidebar example"
     conf (const exampleSidebar)
