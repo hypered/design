@@ -231,13 +231,12 @@ navigationTemplate =
 
 -- | Content wrapper, for a blog post, at the same level as navigation and
 -- footer.
-wrapPost :: Html -> Html -> Html
+wrapPost :: Text -> Html -> Html
 wrapPost title content =
   H.main $
     H.article ! A.class_ "mw7" $ do
       H.div ! A.class_ "mb4" $ do
-        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
-          title
+        h1 title
         -- TODO
         -- The example /storybook/iframe.html?id=layouts--blog-post has this rule:
         --   H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
@@ -565,7 +564,7 @@ containerWithLabelDefault =
         H.div ! A.class_ "aspect-ratio aspect-ratio--3x4 relative" $
           H.div ! A.class_ "aspect-ratio--object pa4" $ do
             H.h2 ! A.class_ "f-headline fw9 tracked-tight lh-title mv3" $ "Error 50x"
-            H.p ! A.class_ "f5 lh-copy mv3" $
+            p $
               "Looks like the page that you're looking for is not available. Please click here to return to the home page."
 
 
@@ -616,7 +615,7 @@ loginForm = do
                   ! A.id "password"
           H.div ! A.class_ "mv1 h1 red fw5" $ ""
       formLink "#" "Reset password"
-    H.div ! A.class_ "flex justify-between" $ do
+    formButtons $ do
       H.button ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                ! customAttribute "variant" "secondary"
                $ "Register"
@@ -654,17 +653,30 @@ loginFormReesd = do
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
       formLink "/reset" "Reset password"
-    H.div ! A.class_ "flex justify-between" $ do
-      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
-          ! A.href "/register"
-          $ "Register"
-      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log in —>"
+    formButtons $ do
+      formButtonLink "/register" "Register"
+      formButton "Log in —>"
+
+formButtons :: Html -> Html
+formButtons content =
+  H.div ! A.class_ "flex justify-between" $ content
 
 formLink :: H.AttributeValue-> Text -> Html
 formLink href content =
   H.a ! A.class_ "black no-underline hy-hover-blue"
       ! A.href href
       $ H.text content
+
+formButtonLink :: H.AttributeValue -> Text -> Html
+formButtonLink href content =
+  H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
+      ! A.href href
+      $ H.text content
+
+formButton :: Text -> Html
+formButton content =
+  H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $
+    H.text content
 
 
 --------------------------------------------------------------------------------
@@ -713,9 +725,8 @@ imageExamples =
             H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
       H.main $
         H.article ! A.class_ "mw7 cf" $ do
-          H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
-            "Using the Image component"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
+          h1 "Using the Image component"
+          p $ do
             "In this example we will be exploring different ways of using the Image component. There are three variations of the Image component namely; "
             H.i "default"
             ", "
@@ -723,24 +734,20 @@ imageExamples =
             ", and, "
             H.i "full-width"
             ". There is also an optional option should you need to add one."
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
-            "Default"
+          h2 "Default"
           H.figure ! A.class_ "mv0" $ do
             H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
-            "With Caption"
+          h2 "With Caption"
           H.figure ! A.class_ "mv0" $ do
             H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
             H.figcaption ! A.class_ "f6 gray mv1 tc" $
               "This is an image with a caption."
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
-            "With Negative Pull"
+          h2 "With Negative Pull"
           H.figure ! A.class_ "mv0 nl4 nr4" $ do
             H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
             H.figcaption ! A.class_ "f6 gray mv1 tc" $
               "This is an image with negative margins applied to it."
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
-            "Full Width Image"
+          h2 "Full Width Image"
           H.figure ! A.class_ "mv0 w-100 mh0" $ do
             H.img ! A.class_ "img v-top" ! A.src "img/placeholder.svg"
             H.figcaption ! A.class_ "f6 gray mv1 tc" $
@@ -847,17 +854,17 @@ layoutBlogList =
             H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "blog"
             H.a ! A.class_ "black hy-hover-blue mr3" ! A.href "#" $ "not-os"
       H.main $ do
-        H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "The Hypered Publication"
+        h1 "The Hypered Publication"
         H.ul ! A.class_ "list pl0 mw6 mt4" $ do
           H.li ! A.class_ "pv3" $ do
-            H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            h3 "Starting with NixOps (and thus Nix and NixOS)"
             H.time ! A.datetime "2018-12-08" $ "2019-08-21"
-            H.p ! A.class_ "f5 lh-copy mv3" $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            p $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             H.a ! A.href "#" ! A.class_ "black b no-underline" $ "Continue reading..."
           H.li ! A.class_ "pv3" $ do
-            H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Exposing a local server through HAProxy using a reverse SSH tunnel"
+            h3 "Exposing a local server through HAProxy using a reverse SSH tunnel"
             H.time ! A.datetime "2018-12-08" $ "2019-08-21"
-            H.p ! A.class_ "f5 lh-copy mv3" $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            p $ "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
             H.a ! A.href "#" ! A.class_ "black b no-underline" $ "Continue reading..."
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
@@ -877,27 +884,25 @@ layoutBlogPost1 =
       H.main $ do
         H.article ! A.class_ "mw7 cf" $ do
           H.div ! A.class_ "mb4" $ do
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
-              "Static binaries"
-          H.p ! A.class_ "f5 lh-copy mv3" $
+            h1 "Static binaries"
+          p $
             "If you consider adopting a programming language, consider one where you can create statically-linked executables. This makes things so much easier."
           H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $
-            "E.g., compared to Docker"
-          H.p ! A.class_ "f5 lh-copy mv3" $
+          h2 "E.g., compared to Docker"
+          p $
             "With a statically-linked binary, provisioning a program on a remote host is just uploading it. With Docker, you need to install and maintain docker-engine. Ideally you should have a nice way to provision the remote host with Docker, but then, why not use that nice way to provision other stuff directly ?"
-          H.p ! A.class_ "f5 lh-copy mv3" $
+          p $
             "Docker is much more than packaging, but it seems a lot of people use it for that purpose."
-          H.p ! A.class_ "f5 lh-copy mv3" $
+          p $
             "By the way, statically-linked executables make building Docker images a breeze."
-          H.p ! A.class_ "f5 lh-copy mv3" $
+          p $
             "If you use Docker to deploy, you probably want a private registry, which is another piece to maintain. Static binaries are trivial to host on a static site. Or to mirror. And so on. Simplicity goes a long way."
           H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
+          p $ do
             "See also: "
             H.a ! A.class_ "no-underline hy-hover-blue" ! A.href "#" $ "In praise of simplicity"
           H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
-          H.p ! A.class_ "f5 lh-copy mv3" $ do
+          p $ do
             "Related: "
             H.a ! A.class_ "no-underline hy-hover-blue" ! A.href "#" $ "Learn packaging"
     H.footer $ do
@@ -918,21 +923,21 @@ layoutBlogPost2 =
       H.main $ do
         H.article ! A.class_ "mw7 cf" $ do
           H.div ! A.class_ "mb4" $ do
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            h1 "Starting with NixOps (and thus Nix and NixOS)"
             H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Introduction"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
+          h2 "Introduction"
+          p $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
           H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
             H.li ! A.class_ "mv1" $ "a kernel (config.system.build.kernel)"
             H.li ! A.class_ "mv1" $ "an initrd (config.system.build.initialRamdisk)"
             H.li ! A.class_ "mv1" $ "a rootfs (config.system.build.squashfs)"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
-          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Sub-points"
+          p $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
+          h3 "Sub-points"
           H.ol ! A.class_ "hy-ff-tab-num mv3" $ do
             H.li ! A.class_ "mv1" $ "Item one"
             H.li ! A.class_ "mv1" $ "Item two"
             H.li ! A.class_ "mv1" $ "Item three"
-          H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Some quotes"
+          h4 "Some quotes"
           H.pre ! A.class_ "pre overflow-auto" $
             H.code ! A.class_ "code" $
              "┌──────────────────────────────────┬─────────┬────────────────┐\n\
@@ -945,11 +950,11 @@ layoutBlogPost2 =
           H.blockquote ! A.class_ "db bl bw2 pv2 ph3 ml0 mv4 lh-copy" $
             H.span ! A.class_ "i" $
               "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
-          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Ending points"
+          h3 "Ending points"
           H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
             H.span ! A.class_ "i" $
               "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
-          H.p ! A.class_ "f5 lh-copy mv3" $
+          p $
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         H.aside ! A.class_ "mt4" $
           H.nav ! A.class_ "bg-near-white pa4 db w-100 mw8 br1" $
@@ -1025,27 +1030,27 @@ layoutWithSidebar =
                 H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href "#" $ "root-modules"
         H.article ! A.class_ "order-0 order-1-m order-1-l w-100 m-60-m w-60-l ph3 cf" $ do
           H.div ! A.class_ "mb4" $ do
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Starting with NixOps (and thus Nix and NixOS)"
+            h1 "Starting with NixOps (and thus Nix and NixOS)"
             H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
-          H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Introduction"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
+          h2 "Introduction"
+          p $ "Given the three above derivations, it is possible to generate the appropriate qemu-kvm invocation as a script, runvm. runvm is the main entry point to start playing and understanding not-os. Follow the link, and enjoy!"
           H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
             H.li ! A.class_ "mv1" $ "a kernel (config.system.build.kernel)"
             H.li ! A.class_ "mv1" $ "an initrd (config.system.build.initialRamdisk)"
             H.li ! A.class_ "mv1" $ "a rootfs (config.system.build.squashfs)"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
-          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Sub-points"
+          p $ "This is a project of Michael Bishop (cleverca22 on GitHub, clever on IRC). I modified it just a bit to make it possible to generate this documentation."
+          h3 "Sub-points"
           H.ol ! A.class_ "hy-ff-tab-num mv3" $ do
             H.li ! A.class_ "mv1" $ "Item one"
             H.li ! A.class_ "mv1" $ "Item two"
             H.li ! A.class_ "mv1" $ "Item three"
-          H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Some quotes"
+          h4 "Some quotes"
           H.blockquote ! A.class_ "db bl bw2 pv2 ph3 ml0 mv4 lh-copy" $
             H.span ! A.class_ "i" $ "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
-          H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Ending points"
+          h3 "Ending points"
           H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
             H.span ! A.class_ "i" $ "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
-          H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          p $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
         sidePanelExample
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
@@ -1082,7 +1087,7 @@ modalTextContent = do
     H.div ! A.class_ "bg-white relative z-2 mw6-m mw6-l center w-100 w-75-m w-50-l mh-75" $ do
       H.div ! A.class_ "flex items-center justify-between ba b--black bw1 pa3 b" $ do
         H.div $
-          H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $
+          h4
             "Terms and Conditions"
         H.label ! A.for "modal" ! A.class_ "w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer" $
           H.img ! A.src "img/close.svg"
@@ -1134,7 +1139,7 @@ modalContent = do
       H.form $ do
         H.div ! A.class_ "flex items-center justify-between ba b--black bw1 pa3 b" $ do
           H.div $
-            H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Log in to your account"
+            h4 "Log in to your account"
           H.label ! A.for "modal" ! A.class_ "w2 h2 bg-white hover-bg-black-10 br1 flex items-center justify-center pointer" $
             H.img ! A.src "img/close.svg"
         H.div ! A.class_ "bg-white modal-body bl br b--black bw1 pa3 overflow-y-scroll" $ do
@@ -1228,13 +1233,13 @@ navigationBlockUsage =
           ]
         H.main ! A.class_ "w-100 w-75-m w-75-l ph3" $
           H.article $ do
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Heading 1"
-            H.p ! A.class_ "f5 lh-copy mv3" $
+            h1 "Heading 1"
+            p
               "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu magna pharetra, ultricies nisi eget, aliquet nulla. Curabitur in ultricies diam. In auctor neque ante, at vulputate magna volutpat nec. Morbi pharetra metus vitae dignissim tincidunt. Nunc iaculis consectetur purus, quis egestas orci gravida pulvinar. Quisque sed malesuada arcu. Sed nisl mi, lobortis eget diam in, facilisis tincidunt mi. Sed et neque laoreet, placerat risus ac, volutpat ex. Suspendisse venenatis lectus id turpis congue, a interdum est viverra. Etiam et nunc et mauris mattis pulvinar. Aliquam mattis lacinia molestie. Maecenas molestie ornare sollicitudin."
-            H.p ! A.class_ "f5 lh-copy mv3" $
+            p
               "Mauris pretium velit eget turpis rhoncus volutpat. Suspendisse sit amet egestas lorem. Cras posuere ac tortor vel interdum. Mauris ultrices euismod dui ac placerat. Aliquam aliquet erat id mauris placerat fermentum. Pellentesque ut sodales ipsum. Donec gravida, dui at tempus pretium, dolor urna aliquet est, mattis pellentesque odio elit a massa. Morbi ut efficitur tortor. Pellentesque ut dolor et augue mollis accumsan et sit amet urna. Mauris ac eros non mauris sodales posuere. Nunc a tortor eget quam laoreet suscipit. Phasellus sollicitudin suscipit libero."
-            H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $"Heading 2"
-            H.p ! A.class_ "f5 lh-copy mv3" $
+            h2 "Heading 2"
+            p
               "Praesent vel hendrerit risus, nec sagittis enim. Cras nec lobortis justo. Praesent accumsan turpis scelerisque, fermentum metus sed, volutpat lectus. Mauris tempus eget ex sit amet vestibulum. Aliquam ut enim commodo, gravida odio in, venenatis est. Maecenas iaculis blandit tincidunt. Aenean faucibus luctus tellus, eu aliquet justo sollicitudin a. Donec eu convallis urna, quis porta quam. Vivamus rutrum et odio in varius. Sed tristique auctor mi, non vehicula est vehicula ut. Aliquam vestibulum, odio id finibus euismod, mauris ipsum iaculis massa, vel feugiat turpis sapien nec orci."
       navigationBlockDefault
     footer "© Hypered, 2019-2023."
@@ -1355,16 +1360,16 @@ exampleSidebar =
           ]
         H.section ! A.class_ "order-0 order-1-m order-1-l w-100 w-75-m w-75-l ph3" $
           H.article $ do
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "not-os"
-            H.p ! A.class_ "f5 lh-copy mv3" $ do
+            h1 "not-os"
+            p $ do
               "not-os is a minimal OS based on the Linux kernel, coreutils, "
               "runit, and Nix. It is also the build script, written in Nix "
               "expressions, to build such OS."
-            H.p ! A.class_ "f5 lh-copy mv3" $ do
+            p $ do
               "This is a project of Michael Bishop (cleverca22 on GitHub, clever on "
               "IRC). I modified it just a bit to make it possible to generate this "
               "documentation."
-            H.p ! A.class_ "f5 lh-copy mv3" $ do
+            p $ do
               "As a build tool, not-os uses nixpkgs and in particular the "
               H.a ! A.href "https://nixos.wiki/wiki/NixOS_Modules" $ "NixOS module system"
               " to build the three main components of a Linux-based operating "
@@ -1382,8 +1387,8 @@ exampleSidePanel = do
         H.div ! A.class_ "flex flex-wrap nl3 nr3" $ do
           H.main ! A.class_ "w-100 w-80-m w-80-l ph3" $
             H.article $ do
-              H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Waveguide"
-              H.p ! A.class_ "f5 lh-copy mv3" $ do
+              h1 "Waveguide"
+              p $ do
                 "If neither a list of attribute names or a command are given, "
                 "Waveguide instrospects the Nix expression and builds all the "
                 "found attributes."
@@ -1440,11 +1445,9 @@ registerForm = do
                   ! A.type_ "password"
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
-    H.div ! A.class_ "flex justify-between" $ do
-      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
-          ! A.href "/login"
-          $ "Log in"
-      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Register —>"
+    formButtons $ do
+      formButtonLink "/login" "Log in"
+      formButton "Register —>"
 
 -- | Reset form
 resetForm :: Html
@@ -1466,11 +1469,9 @@ resetForm = do
                   ! A.type_ "email"
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
-    H.div ! A.class_ "flex justify-between" $ do
-      H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
-          ! A.href "/login"
-          $ "Log in"
-      H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Reset password —>"
+    formButtons $ do
+      formButtonLink "/login" "Log in"
+      formButton "Reset password —>"
 
 
 ------------------------------------------------------------------------------
@@ -1613,7 +1614,7 @@ statusCodeError400Example =
                $ "400 Bad Gateway"
           H.div $
             H.div $ do
-              H.p ! A.class_ "f5 lh-copy mv3" $
+              p $
                 "Looks like the page you're looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
               H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
                 H.li ! A.class_ "mv1" $
@@ -1650,7 +1651,7 @@ statusCodeError404Example =
                $ "404 Not Found"
           H.div $
             H.div $ do
-              H.p ! A.class_ "f5 lh-copy mv3" $
+              p $
                 "Looks like the page you're looking for is unavailable. You can click here to return to the home page, or visit any of the links below:"
               H.ul ! A.class_ "hy-ff-tab-num mv3" $ do
                 H.li ! A.class_ "mv1" $
@@ -1812,24 +1813,24 @@ titleJumboUsageExample =
         "Hypered"
       H.h2 ! A.class_ "f1 tracked-tight mv2" $
         "Software development, defined"
-      H.p ! A.class_ "f5 lh-copy mv3" $
+      p $
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non."
     H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
     H.section ! A.class_ "pv4 pv5-l" $ do
       H.h2 ! A.class_ "f1 tracked-tight mv2" $ "Introduction"
-      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
+      p $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
     H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
     H.section ! A.class_ "pv4 pv5-l" $
       H.div ! A.class_ "flex flex-wrap nl3 nr3 tc" $ do
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f1 tracked-tight mv2" $ "23,000"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "downloads"
+          p $ "downloads"
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f1 tracked-tight mv2" $ "3.2kb"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "gzipped"
+          p $ "gzipped"
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f1 tracked-tight mv2" $ "626"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "stars on GitHub"
+          p $ "stars on GitHub"
 
 titleDefaultUsageExample :: Html
 titleDefaultUsageExample =
@@ -1837,66 +1838,88 @@ titleDefaultUsageExample =
     H.header ! A.class_ "pv4 pv5-l" $ do
       H.h1 ! A.class_ "f1 f1-l tracked-tight mv2" $ "Hypered"
       H.h2 ! A.class_ "f2 tracked-tight mv2" $ "Software development, defined"
-      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non."
+      p $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non."
     H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
     H.section ! A.class_ "pv4 pv5-l" $ do
       H.h2 ! A.class_ "f2 tracked-tight mv2" $ "Introduction"
-      H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
+      p $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent convallis mollis nulla, molestie tempor velit consequat non. Integer quam ligula, consequat eget semper in, sodales nec mauris. Sed ultrices enim quis eros lobortis, semper condimentum eros sodales. Morbi iaculis lectus id dui convallis feugiat."
     H.hr ! A.class_ "mt3 pb3 bt-0 bl-0 br-0 bb b--black"
     H.section ! A.class_ "pv4 pv5-l" $
       H.div ! A.class_ "flex flex-wrap nl3 nr3 tc" $ do
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f2 tracked-tight mv2" $ "23,000"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "downloads"
+          p $ "downloads"
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f2 tracked-tight mv2" $ "3.2kb"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "gzipped"
+          p $ "gzipped"
         H.div ! A.class_ "w-100 w-third-l ph3" $ do
           H.h2 ! A.class_ "f2 tracked-tight mv2" $ "626"
-          H.p ! A.class_ "f5 lh-copy mv3" $ "stars on GitHub"
+          p $ "stars on GitHub"
+
+
+--------------------------------------------------------------------------------
+h1 :: Text -> Html
+h1 content =
+  H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ H.text content
+
+h2 :: Text -> Html
+h2 content =
+  H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ H.text content
+
+h3 :: Text -> Html
+h3 content =
+  H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ H.text content
+
+h4 :: Text -> Html
+h4 content =
+  H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ H.text content
+
+h5 :: Text -> Html
+h5 content =
+  H.h5 ! A.class_ "f5 lh-title mv2" $ H.text content
+
+h6 :: Text -> Html
+h6 content =
+  H.h6 ! A.class_ "f6 lh-title mv2 ttu" $ H.text content
+
+p :: Html -> Html
+p content =
+  H.p ! A.class_ "f5 lh-copy mv3" $ content
 
 
 --------------------------------------------------------------------------------
 typographyHeading1Example :: Html
-typographyHeading1Example =
-  H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Heading 1"
+typographyHeading1Example = h1 "Heading 1"
 
 typographyHeading2Example :: Html
-typographyHeading2Example =
-  H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Heading 2"
+typographyHeading2Example = h2 "Heading 2"
 
 typographyHeading3Example :: Html
-typographyHeading3Example =
-  H.h3 ! A.class_ "f3 lh-title mv2 tracked-tight" $ "Heading 3"
+typographyHeading3Example = h3 "Heading 3"
 
 typographyHeading4Example :: Html
-typographyHeading4Example =
-  H.h4 ! A.class_ "f4 lh-title mv2 tracked-tight" $ "Heading 4"
+typographyHeading4Example = h4 "Heading 4"
 
 typographyHeading5Example :: Html
-typographyHeading5Example =
-  H.h5 ! A.class_ "f5 lh-title mv2" $ "Heading 5"
+typographyHeading5Example = h5 "Heading 5"
 
 typographyHeading6Example :: Html
-typographyHeading6Example =
-  H.h6 ! A.class_ "f6 lh-title mv2 ttu" $ "Heading 6"
+typographyHeading6Example = h6 "Heading 6"
 
 typographyParagraphExample :: Html
 typographyParagraphExample =
-  H.p ! A.class_ "f5 lh-copy mv3" $
+  p $
    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sollicitudin malesuada est. Sed efficitur laoreet massa, eu dictum est luctus sit amet. Morbi elementum dapibus pellentesque. Sed varius nisi nisi, nec imperdiet nunc bibendum at. Maecenas bibendum, neque nec vehicula dignissim, sem dolor congue risus, ac consequat sapien nibh in felis. Suspendisse at est a nisl dictum condimentum. Suspendisse ut dolor vitae nisi dictum hendrerit a vel magna. Etiam porttitor lacus magna, non bibendum tellus lobortis sit amet. Duis quis lectus massa. Nam quis fringilla dui. Fusce felis leo, iaculis id dui eu, lacinia varius dolor. Praesent molestie rhoncus mi, ac malesuada neque placerat vitae. Aliquam placerat auctor pretium. Mauris egestas condimentum erat sit amet tempor. Quisque imperdiet, augue nec eleifend placerat, lacus tortor pellentesque metus, sit amet laoreet lectus enim et mauris. Vivamus sollicitudin a ex sit amet ullamcorper."
 
 typographyUsageExample :: Html
 typographyUsageExample =
   H.article ! A.class_ "measure-wide" $ do
-    H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $
-      "Design System Blog"
-    H.p ! A.class_ "f5 lh-copy mv3" $
-      "This is an intro to using Hypered design system."
-    H.h2 ! A.class_ "f2 lh-title mv2 tracked-tight" $ "Components"
-    H.p ! A.class_ "f5 lh-copy mv3" $
+    h1 "Design System Blog"
+    p "This is an intro to using Hypered design system."
+    h2 "Components"
+    p
       "Hypered design system comprises of components that quickly help you get started with your projects."
-    H.p ! A.class_ "f5 lh-copy mv3" $ do
+    p $ do
       "The components in this design system are built with "
       H.a ! A.class_ "hy-blue no-underline hy-hover-blue" ! A.href "#" $ "Tachyons"
       "."
