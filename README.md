@@ -160,7 +160,7 @@ To build and serve the Haskell-based site locally:
 
 ```
 $ scripts/build-haskell-guide.sh
-$ nix-shell -p busybox --run "httpd -f -p 9000 -h storybook-static/"
+$ nix-shell -p busybox --run "httpd -f -p 9000 -h generated/"
 ```
 
 The visit e.g. [127.0.0.1:9000/pretty/](http://127.0.0.1:9000/pretty/).

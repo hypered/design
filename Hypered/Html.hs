@@ -1310,31 +1310,37 @@ sidebar xs =
 
 exampleLoginForm :: Html
 exampleLoginForm = do
-  H.header $
-    navigationReesd
-  H.p "Reesd is in private alpha. New registrations are currently disabled."
-  loginForm
-  -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2023."
+  wrapper $ do
+    H.div $ do
+      H.header $
+        navigationReesd
+      H.p "Reesd is in private alpha. New registrations are currently disabled."
+      loginForm
+    -- There could be a footer, but on simple forms, I think I prefer without.
+    -- footer "© Hypered, 2020-2023."
 
 exampleRegisterForm :: Html
 exampleRegisterForm = do
-  H.header $
-    navigationReesd
-  H.p "Reesd is in private alpha. New registrations are currently disabled."
-  registerForm
-  -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2023."
+  wrapper $ do
+    H.div $ do
+      H.header $
+        navigationReesd
+      H.p "Reesd is in private alpha. New registrations are currently disabled."
+      registerForm
+    -- There could be a footer, but on simple forms, I think I prefer without.
+    -- footer "© Hypered, 2020-2023."
 
 exampleResetForm :: Html
 exampleResetForm = do
-  H.header $
-    navigationReesd
-  H.p "Enter a verified email address and we'll send a password reset link\
-    \ to that address."
-  resetForm
-  -- There could be a footer, but on simple forms, I think I prefer without.
-  -- footer "© Hypered, 2020-2023."
+  wrapper $ do
+    H.div $ do
+      H.header $
+        navigationReesd
+      H.p "Enter a verified email address and we'll send a password reset link\
+        \ to that address."
+      resetForm
+    -- There could be a footer, but on simple forms, I think I prefer without.
+    -- footer "© Hypered, 2020-2023."
 
 exampleSidebar :: Html
 exampleSidebar =
