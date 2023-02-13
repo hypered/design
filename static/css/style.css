@@ -32,3 +32,35 @@ pre{
 code{
   font-size: 0.85em;
 }
+
+/* Leader lines. Code from
+ * https://markentier.tech/posts/2021/03/responsive-toc-leader-lines-with-css/
+ */
+.leader-line {
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-template-areas: "a b";
+  align-items: end;
+  gap: 0 .25rem;
+}
+
+.leader-line-a {
+  grid-area: a;
+  position: relative;
+  overflow: hidden;
+}
+
+.leader-line-a::after {
+  position: absolute;
+  padding-left: .25ch;
+  content: " . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . ";
+  text-align: right;
+}
+
+.leader-line-b {
+  grid-area: b;
+}

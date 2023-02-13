@@ -2105,20 +2105,34 @@ whitespaceExamples =
 -- TODO Move this to Refli.
 homePageRefli :: Html
 homePageRefli =
+  pageRefli "Bienvenue" $ do
+    H.p $ do
+      "Refli explore le calcul de la paie en Belgique."
+    describeFormRefli
+    H.p H.br
+
+pageRefli :: Text -> Html -> Html
+pageRefli title content = do
   H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $ do
     H.div $ do
       H.header $
-        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
-          H.div $
-            H.a ! A.class_ "link mr3 black hover-blue" ! A.href "/" $ "Refli"
+        navigationRefli
       H.main $
         H.article ! A.class_ "mw7" $ do
           H.div ! A.class_ "mb4" $
-            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Bienvenue"
-          H.p $ do
-            "Refli explore le calcul de la paie en Belgique."
-          describeFormRefli
-          H.p H.br
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ H.text title
+          content
+    navigationBlockRefli
+    footerRefli
+
+navigationRefli :: Html
+navigationRefli =
+  H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+    H.div $
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "/" $ "Refli"
+
+navigationBlockRefli :: Html
+navigationBlockRefli = do
     H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb1 w4 bw1 b--black"
     H.div ! A.class_ "mv5 flex-ns" $ do
       H.section ! A.class_ "w-60-ns pr4 mb5" $ do
@@ -2149,6 +2163,8 @@ homePageRefli =
           H.li ! A.class_ "mr4" $
             H.a ! A.href "/documentation/contributions" $ "Contributions personnelles"
 
+footerRefli :: Html
+footerRefli =
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt1 pb4 w4 bw1 b--black"
       H.div $
