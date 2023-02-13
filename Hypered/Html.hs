@@ -615,9 +615,7 @@ loginForm = do
                   ! A.name "password"
                   ! A.id "password"
           H.div ! A.class_ "mv1 h1 red fw5" $ ""
-      H.a ! A.class_ "black no-underline hy-hover-blue"
-          ! A.href "#"
-          $ "Reset password"
+      formLink "#" "Reset password"
     H.div ! A.class_ "flex justify-between" $ do
       H.button ! A.class_ "bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative"
                ! customAttribute "variant" "secondary"
@@ -626,8 +624,7 @@ loginForm = do
                ! customAttribute "variant" "primary"
                $ "Log in —>"
 
--- TODO Check if it is used somewhere. This is also probably a correct form,
--- while the one above is maybe not.
+-- This is a slightly more compact form than above.
 loginFormReesd :: Html
 loginFormReesd = do
   H.form ! A.class_ "bg-white mw6"
@@ -656,14 +653,18 @@ loginFormReesd = do
                   ! A.type_ "password"
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
-      H.a ! A.class_ "black no-underline hy-hover-blue"
-          ! A.href "/reset"
-          $ "Reset password"
+      formLink "/reset" "Reset password"
     H.div ! A.class_ "flex justify-between" $ do
       H.a ! A.class_ "bg-white b--black black ph3 pb4 pt3 tl w-100 dib no-underline ba bw1"
           ! A.href "/register"
           $ "Register"
       H.button ! A.class_ "bg-black b--black white ph3 pb4 pt3 tl w-100 button-reset ba bw1" $ "Log in —>"
+
+formLink :: H.AttributeValue-> Text -> Html
+formLink href content =
+  H.a ! A.class_ "black no-underline hy-hover-blue"
+      ! A.href href
+      $ H.text content
 
 
 --------------------------------------------------------------------------------
@@ -1049,16 +1050,13 @@ layoutWithSidebar =
           H.div ! A.class_ "" $ do
             H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
             H.ul ! A.class_ "bg-near-white list pa3" $ do
-              H.li ! A.class_ "pv1 bb b--black-10" $
-                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
-              H.li ! A.class_ "pv1 bb b--black-10" $
-                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
-              H.li ! A.class_ "pv1 bb b--black-10" $
-                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
-              H.li ! A.class_ "pv1 bb b--black-10" $
-                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
-              H.li ! A.class_ "pv1 bb b--black-10" $
-                H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
+              mapM_ ((H.li ! A.class_ "pv1 bb b--black-10") . sidePanelLink "#")
+                [ "→ #001"
+                , "→ #002"
+                , "→ #003"
+                , "→ #004"
+                , "→ #005"
+                ]
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
@@ -1288,11 +1286,11 @@ sidebarLI :: Html -> Html
 sidebarLI content =
   H.li content
 
-sidebarLink :: Html -> H.AttributeValue -> Html
-sidebarLink content href =
-  H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href href $ content
+sidebarLink :: H.AttributeValue -> Text -> Html
+sidebarLink href content =
+  H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href href $ H.text content
 
-sidebar :: [(Html, [(Html, H.AttributeValue)])] -> Html
+sidebar :: [(Html, [(Text, H.AttributeValue)])] -> Html
 sidebar xs =
   H.aside ! A.class_ "order-2 order-0-m order-0-l w-100 w-20-m w-20-l ph3 mt2" $
     H.nav $ do
@@ -1306,7 +1304,7 @@ sidebar xs =
       mapM_ g links
   g (name, href) =
     sidebarLI $
-      sidebarLink name href
+      sidebarLink href name
 
 exampleLoginForm :: Html
 exampleLoginForm = do
@@ -1316,6 +1314,17 @@ exampleLoginForm = do
         navigationReesd
       H.p "Reesd is in private alpha. New registrations are currently disabled."
       loginForm
+    -- There could be a footer, but on simple forms, I think I prefer without.
+    -- footer "© Hypered, 2020-2023."
+
+exampleLoginFormReesd :: Html
+exampleLoginFormReesd = do
+  wrapper $ do
+    H.div $ do
+      H.header $
+        navigationReesd
+      H.p "Reesd is in private alpha. New registrations are currently disabled."
+      loginFormReesd
     -- There could be a footer, but on simple forms, I think I prefer without.
     -- footer "© Hypered, 2020-2023."
 
@@ -1392,17 +1401,18 @@ exampleSidePanel = do
             H.div ! A.class_ "" $ do
               H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
               H.ul ! A.class_ "bg-near-white list pa3" $ do
-                H.li ! A.class_ "pv1 bb b--black-10" $
-                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
-                H.li ! A.class_ "pv1 bb b--black-10" $
-                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
-                H.li ! A.class_ "pv1 bb b--black-10" $
-                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
-                H.li ! A.class_ "pv1 bb b--black-10" $
-                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
-                H.li ! A.class_ "pv1 bb b--black-10" $
-                  H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
+                mapM_ ((H.li ! A.class_ "pv1 bb b--black-10") . sidePanelLink "#")
+                  [ "→ #001"
+                  , "→ #002"
+                  , "→ #003"
+                  , "→ #004"
+                  , "→ #005"
+                  ]
     footer "© Hypered, 2019-2023."
+
+sidePanelLink :: H.AttributeValue -> Text -> Html
+sidePanelLink href content =
+  H.a ! A.class_ "black no-underline hy-hover-blue" ! A.href href $ H.text content
 
 
 ------------------------------------------------------------------------------
@@ -1584,16 +1594,13 @@ sidePanelExample =
     H.div ! A.class_ "" $ do
       H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
       H.ul ! A.class_ "bg-near-white list pa3" $ do
-        H.li ! A.class_ "pv1 bb b--black-10" $
-          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #001"
-        H.li ! A.class_ "pv1 bb b--black-10" $
-          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #002"
-        H.li ! A.class_ "pv1 bb b--black-10" $
-          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #003"
-        H.li ! A.class_ "pv1 bb b--black-10" $
-          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #004"
-        H.li ! A.class_ "pv1 bb b--black-10" $
-          H.a ! A.class_ "black no-underline hy-hover-blue" $ "→ #005"
+        mapM_ ((H.li ! A.class_ "pv1 bb b--black-10") . sidePanelLink "#")
+          [ "→ #001"
+          , "→ #002"
+          , "→ #003"
+          , "→ #004"
+          , "→ #005"
+          ]
 
 sidePanelUsageExample :: Html
 sidePanelUsageExample = exampleSidePanel

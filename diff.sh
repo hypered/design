@@ -120,9 +120,9 @@ do
     node render-components pretty \
     | norm \
     | sed -e 's@39;@x27;@' \
-    > a
-  node render-components $i > b
-  diff -u a b
+    > component-hs.html
+  node render-components $i > component-js.html
+  diff -u component-hs.html component-js.html
 done
 
-rm a b
+rm component-hs.html component-js.html

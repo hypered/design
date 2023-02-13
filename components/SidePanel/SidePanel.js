@@ -15,7 +15,7 @@ export const SidePanelLI = props => (
 
 export const SidePanelLink = props => (
   <Link href={props.href}>
-    <A color="black">&rarr; {props.children}</A>
+    <A href={props.href} color="black">&rarr; {props.children}</A>
   </Link>
 );
 
