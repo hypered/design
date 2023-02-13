@@ -11,7 +11,7 @@ import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories         ( stories )
 import           Hypered.Design.Templates       ( generateTemplates )
 import           Hypered.Html
-  ( defaultConfig, document
+  ( defaultConfig, documentFile
 
   , loginForm
   , imageExamples
@@ -265,7 +265,7 @@ run Command.JsStories = jsStories
 generateWrapper :: IO ()
 generateWrapper = do
   putStr (Pretty.renderHtml
-    ( document defaultConfig "wrapper.html" "Hypered design system" $
+    ( documentFile defaultConfig "wrapper.html" "Hypered design system" $
         H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $
           H.preEscapedToHtml @Text "<!-- CONTENT MARKER -->"
     ))

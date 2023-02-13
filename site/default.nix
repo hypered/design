@@ -72,6 +72,13 @@ in rec
     cp docs/hs/example--template-ibm-plex.html $out/hs/
   '';
 
+  # all + static, to serve locally with scripts/ghcid.sh
+  html.all-with-static = pkgs.runCommand "all-with-static" {} ''
+    mkdir $out
+    cp -r ${html.all}/* $out/
+    ln -s ${static} $out/static
+  '';
+
   static = pkgs.runCommand "static" {} ''
     mkdir $out
 

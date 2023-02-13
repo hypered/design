@@ -36,13 +36,13 @@ generateHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 generateHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    T.hPutStr h . renderHtml $ document config path title body
+    T.hPutStr h . renderHtml $ documentFile config path title body
 
 prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 prettyHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
   withFile (base </> path) WriteMode $ \h ->
-    hPutStr h . Pretty.renderHtml $ document config path title body'
+    hPutStr h . Pretty.renderHtml $ documentFile config path title body'
   where body' = do
           if cAddWrapper config
             then H.div $ do
@@ -106,8 +106,9 @@ mkRelativize path = relativize
 -- | This is the main wrapper. This is exposed as
 --   $ nix-shell --run "runghc bin/hypered-guide.hs wrapper"
 -- and should match the content of `pages/_app.js`.
-document :: Config -> FilePath -> Text -> Html -> Html
-document Config{..} path title body = do
+-- Use this to generate files on disk. Otherwise, see `document` below.
+documentFile :: Config -> FilePath -> Text -> Html -> Html
+documentFile Config{..} path title body = do
   let depth = length (splitPath path) - 1
       relativize = (joinPath (replicate depth "..") </>)
   H.docType
@@ -126,6 +127,28 @@ document Config{..} path title body = do
           ]
 
     H.body ! A.class_ (H.toValue (fontClass cFont)) $
+      body
+
+-- | Same a `documentFile`, but assume to be served with an available @/static@,
+-- and use IBM Plex. I.e. use this from e.g. Servant.
+document :: Text -> Html -> Html
+document title body = do
+  H.docType
+  H.html $ do
+    H.head $ do
+      H.meta ! A.charset "utf-8"
+      H.title (H.toHtml title)
+      H.meta ! A.name "viewport"
+             ! A.content "width=device-width, initial-scale=1.0"
+      H.style $ do
+        mapM_ (\a -> H.toHtml ("@import url(" <> a <> ");"))
+          [ "/static" </> fontCss IbmPlex
+          , "/static" </> "css/tachyons.min.v4.11.1.css"
+          , "/static" </> "css/style.css"
+          , "/static" </> "css/styles.css"
+          ]
+
+    H.body ! A.class_ (H.toValue (fontClass IbmPlex)) $
       body
 
 
@@ -636,7 +659,7 @@ formPost :: H.AttributeValue -> Html -> Html
 formPost href content =
   H.form ! A.class_ "bg-white mw6"
          ! A.method "POST"
-         ! A.action "/echo/login"
+         ! A.action href
          $ content
 
 formBody :: Text -> Html -> Html
@@ -2076,3 +2099,67 @@ whitespaceExamples =
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
+
+
+--------------------------------------------------------------------------------
+-- TODO Move this to Refli.
+homePageRefli :: Html
+homePageRefli =
+  H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $ do
+    H.div $ do
+      H.header $
+        H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
+          H.div $
+            H.a ! A.class_ "link mr3 black hover-blue" ! A.href "/" $ "Refli"
+      H.main $
+        H.article ! A.class_ "mw7" $ do
+          H.div ! A.class_ "mb4" $
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ "Bienvenue"
+          H.p $ do
+            "Refli explore le calcul de la paie en Belgique."
+          describeFormRefli
+          H.p H.br
+    H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb1 w4 bw1 b--black"
+    H.div ! A.class_ "mv5 flex-ns" $ do
+      H.section ! A.class_ "w-60-ns pr4 mb5" $ do
+        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
+          "Refli"
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/about" $ "A propos"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/changelog" $ "Changelog"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/contact" $ "Contact"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/disclaimer" $ "Disclaimer"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/documentation" $ "Documentation"
+      H.section ! A.class_ "w-50-ns pr4 mb5" $ do
+        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
+          "Précompte professionnel"
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/documentation/withholding-tax" $
+              "Barème I"
+      H.section ! A.class_ "w-50-ns pr4 mb5" $ do
+        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
+          "Contributions à la sécurité sociale"
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/documentation/contributions" $ "Contributions personnelles"
+
+    H.footer $ do
+      H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt1 pb4 w4 bw1 b--black"
+      H.div $
+        H.a ! A.href "https://github.com/hypered/refli.be/blob/main/pages/index.md" $
+          "Editer cette page"
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered SRL, 2023."
+
+describeFormRefli :: Html
+describeFormRefli = do
+  formPost "/a/describe" $ do
+    formBody "Calcul de salaire" $
+      formFieldTextSmall "monthly-gross-salary" "Salaire mensuel brut" Nothing
+    formButtons $ do
+      formButton "Calculer →"

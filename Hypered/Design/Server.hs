@@ -13,6 +13,7 @@ import           Control.Monad.Catch            ( MonadCatch
                                                 )
 import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
+import qualified Hypered.Html                  as Hy
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
 import qualified Network.Wai.Handler.Warp      as Warp
@@ -41,18 +42,6 @@ import           Web.FormUrlEncoded             ( FromForm(..)
 
 
 --------------------------------------------------------------------------------
--- | This is the main Servant API definition for the design server.
--- Only the /echo routes will be exposed through Nginx at first.
-type App =    "" :> Raw
-         :<|> "echo" :> Get '[HTML] Html
-         :<|> "echo" :> "login"
-              :> ReqBody '[FormUrlEncoded] Login
-              :> Post '[HTML] EchoPage
-         :<|> Raw -- Fallback handler for the static files, in particular the
-                  -- documentation.
-
-
---------------------------------------------------------------------------------
 type Runtime = ()
 
 newtype AppM a = AppM { runAppM :: ReaderT Runtime (ExceptT Errs.RuntimeErr IO) a }
@@ -69,6 +58,23 @@ newtype AppM a = AppM { runAppM :: ReaderT Runtime (ExceptT Errs.RuntimeErr IO) 
            )
 
 
+
+--------------------------------------------------------------------------------
+-- | This is the main Servant API definition for the design server.
+-- Only the /echo routes will be exposed through Nginx at first.
+type App =    "" :> Raw
+         :<|> "echo" :> Get '[HTML] Html
+         :<|> "echo" :> "login"
+              :> ReqBody '[FormUrlEncoded] Login
+              :> Post '[HTML] EchoPage
+
+              -- Call here the page you want to work on.
+         :<|> "edit" :> Get '[HTML] Html
+
+         :<|> Raw -- Fallback handler for the static files, in particular the
+                  -- documentation.
+
+
 --------------------------------------------------------------------------------
 -- | This is the main Servant server definition, corresponding to @App@.
 serverT
@@ -80,6 +86,7 @@ serverT root =
   showHomePage root
     :<|> showEchoIndex
     :<|> echoLogin
+    :<|> edit -- Call here the page you want to work on.
     :<|> serveDocumentation root
 
 
@@ -205,3 +212,6 @@ instance H.ToMarkup EchoPage where
 
 echoLogin :: ServerC m => Login -> m EchoPage
 echoLogin = pure . EchoPage . show
+
+edit :: ServerC m => m Html
+edit = pure $ Hy.document "Refli" Hy.homePageRefli
