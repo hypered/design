@@ -588,12 +588,8 @@ footerDefault = footer ""
 -- https://hypered.design/storybook/?path=/story/form--login
 loginForm :: Html
 loginForm = do
-  H.form ! A.class_ "bg-white mw6"
-         ! A.method "POST"
-         ! A.action "/echo/login"
-         $ do
-    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Log in to Appname"
+  formPost "/echo/login" $ do
+    formBody "Log in to Appname" $ do
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Username"
@@ -626,12 +622,8 @@ loginForm = do
 -- This is a slightly more compact form than above.
 loginFormReesd :: Html
 loginFormReesd = do
-  H.form ! A.class_ "bg-white mw6"
-         ! A.method "POST"
-         ! A.action "/echo/login"
-         $ do
-    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Log in to Reesd"
+  formPost "/echo/login" $ do
+    formBody "Log in to Reesd" $ do
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Username"
@@ -656,6 +648,19 @@ loginFormReesd = do
     formButtons $ do
       formButtonLink "/register" "Register"
       formButton "Log in —>"
+
+formPost :: H.AttributeValue -> Html -> Html
+formPost href content =
+  H.form ! A.class_ "bg-white mw6"
+         ! A.method "POST"
+         ! A.action "/echo/login"
+         $ content
+
+formBody :: Text -> Html -> Html
+formBody title content =
+  H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
+    H.h2 $ H.text title
+    content
 
 formButtons :: Html -> Html
 formButtons content =
@@ -1407,12 +1412,8 @@ sidePanelLink href content =
 -- | Register form
 registerForm :: Html
 registerForm = do
-  H.form ! A.class_ "bg-white mw6"
-         ! A.method "POST"
-         ! A.action "/a/register"
-         $ do
-    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Register for Reesd"
+  formPost "/a/register" $ do
+    formBody "Register for Reesd" $ do
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Username"
@@ -1452,12 +1453,8 @@ registerForm = do
 -- | Reset form
 resetForm :: Html
 resetForm = do
-  H.form ! A.class_ "bg-white mw6"
-         ! A.method "POST"
-         ! A.action "/a/reset"
-         $ do
-    H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
-      H.h2 "Reset password for Reesd"
+  formPost "/a/reset" $ do
+    formBody "Reset password for Reesd" $
       H.div ! A.class_ "mv3" $
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Email address"
