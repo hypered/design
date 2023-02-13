@@ -624,26 +624,9 @@ loginFormReesd :: Html
 loginFormReesd = do
   formPost "/echo/login" $ do
     formBody "Log in to Reesd" $ do
-      H.div ! A.class_ "mv3" $
-        H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Username"
-                  ! A.for "username"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.name "username"
-                  ! A.id "username"
-                  ! A.type_ "text"
-                  ! A.placeholder ""
-          -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
-      H.div ! A.class_ "mv3" $
-        H.div ! A.class_ "mb3" $ do
-          H.label ! A.class_ "db fw6 mv1" $ "Password"
-                  ! A.for "password"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
-                  ! A.name "password"
-                  ! A.id "password"
-                  ! A.type_ "password"
-                  ! A.placeholder ""
-          -- H.div ! A.class_ "mv1 h1 red fw5" $ ""
+      formFieldTextSmall "username" "Username" Nothing
+        -- Just "You have entered an invalid email"
+      formFieldPasswordSmall "password" "Password" Nothing
       formLink "/reset" "Reset password"
     formButtons $ do
       formButtonLink "/register" "Register"
@@ -661,6 +644,46 @@ formBody title content =
   H.div ! A.class_ "pa4 bt br bl b--black bw1" $ do
     H.h2 $ H.text title
     content
+
+formFieldTextSmall :: H.AttributeValue -> Text -> Maybe Text -> Html
+formFieldTextSmall id label merror =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ H.text label
+              ! A.for id
+      H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+              ! A.name id
+              ! A.id id
+              ! A.type_ "text"
+              ! A.placeholder ""
+      maybe mempty ((H.div ! A.class_ "mv1 h1 red fw5") . H.text) merror
+
+formFieldPasswordSmall :: H.AttributeValue -> Text -> Maybe Text -> Html
+formFieldPasswordSmall id label merror =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ H.text label
+              ! A.for id
+      H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+              ! A.name id
+              ! A.id id
+              ! A.type_ "password"
+              ! A.placeholder ""
+      maybe mempty ((H.div ! A.class_ "mv1 h1 red fw5") . H.text) merror
+
+formFieldEmailSmall :: H.AttributeValue -> Text -> Maybe Text -> Html
+formFieldEmailSmall id label merror =
+  H.div ! A.class_ "mv3" $
+    H.div ! A.class_ "mb3" $ do
+      H.label ! A.class_ "db fw6 mv1" $ H.text label
+              ! A.for id
+      H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+              ! A.label id
+              ! A.name id
+              ! A.id id
+              ! A.type_ "email"
+              ! A.placeholder ""
+      maybe mempty ((H.div ! A.class_ "mv1 h1 red fw5") . H.text) merror
 
 formButtons :: Html -> Html
 formButtons content =
@@ -1351,6 +1374,18 @@ exampleResetForm = do
     -- There could be a footer, but on simple forms, I think I prefer without.
     -- footer "© Hypered, 2020-2023."
 
+exampleResetFormReesd :: Html
+exampleResetFormReesd = do
+  wrapper $ do
+    H.div $ do
+      H.header $
+        navigationReesd
+      H.p "Enter a verified email address and we'll send a password reset link\
+        \ to that address."
+      resetFormReesd
+    -- There could be a footer, but on simple forms, I think I prefer without.
+    -- footer "© Hypered, 2020-2023."
+
 exampleSidebar :: Html
 exampleSidebar =
   wrapper $ do
@@ -1459,13 +1494,23 @@ resetForm = do
         H.div ! A.class_ "mb3" $ do
           H.label ! A.class_ "db fw6 mv1" $ "Email address"
                   ! A.for "email"
-          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv2 ph2 w-100 outline-0 border-box"
+          H.input ! A.class_ "input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box"
                   ! A.label "email"
                   ! A.name "email"
                   ! A.id "email"
                   ! A.type_ "email"
                   ! A.placeholder ""
           -- H.div ! A.class_ "mv1 h1 red fw5" $ You have entered an invalid email
+    formButtons $ do
+      formButtonLink "/login" "Log in"
+      formButton "Reset password —>"
+
+-- | Reset form
+resetFormReesd :: Html
+resetFormReesd = do
+  formPost "/a/reset" $ do
+    formBody "Reset password for Reesd" $
+      formFieldEmailSmall "email" "Email address" Nothing
     formButtons $ do
       formButtonLink "/login" "Log in"
       formButton "Reset password —>"

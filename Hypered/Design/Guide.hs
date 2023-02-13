@@ -14,6 +14,7 @@ import           Hypered.Html
   , inputWithMessageExample, inputUsage
   , listOrderedExample, listUnorderedExample
   , exampleLoginForm, exampleLoginFormReesd, exampleRegisterForm, exampleResetForm
+  , exampleResetFormReesd
   , exampleSidebar, exampleSidePanel
   , radioDefaultExample, radioPillInlineExample
   , radioCheckboxExample, radioCheckboxInlineExample
@@ -69,6 +70,8 @@ generateGuide = do
           "Example, register form"
         H.li $ H.a ! A.href "example--reset-form.html" $
           "Example, reset form"
+        H.li $ H.a ! A.href "example--reset-form-reesd.html" $
+          "Example, reset form (Reesd)"
         H.li $ H.a ! A.href "example--sidebar.html" $ "Example, sidebar"
         H.li $ H.a ! A.href "example--side-panel.html" $ "Example, side panel"
         H.li $ H.a ! A.href "example--blog-post.html" $ "Example, blog post"
@@ -115,6 +118,9 @@ generateGuide = do
   generate' "example--reset-form.html"
     "Hypered style guide - Reset form example"
     conf (const exampleResetForm)
+  generate' "example--reset-form-reesd.html"
+    "Hypered style guide - Reset form example (Reesd)"
+    conf (const exampleResetFormReesd)
   generate' "example--sidebar.html"
     "Hypered style guide - Sidebar example"
     conf (const exampleSidebar)
