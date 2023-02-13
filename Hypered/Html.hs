@@ -1046,17 +1046,7 @@ layoutWithSidebar =
           H.blockquote ! A.class_ "pull-quote relative db pv3 ph4 f4 ml0 mv4 lh-copy" $
             H.span ! A.class_ "i" $ "To follow along, you can clone the Git repository and run each nix-build command as they appear at the top of each page."
           H.p ! A.class_ "f5 lh-copy mv3" $ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        H.aside ! A.class_ "order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2" $
-          H.div ! A.class_ "" $ do
-            H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
-            H.ul ! A.class_ "bg-near-white list pa3" $ do
-              mapM_ ((H.li ! A.class_ "pv1 bb b--black-10") . sidePanelLink "#")
-                [ "→ #001"
-                , "→ #002"
-                , "→ #003"
-                , "→ #004"
-                , "→ #005"
-                ]
+        sidePanelExample
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt4 pb4 w4 bw1 b--black"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered, 2019-2023."
@@ -1397,17 +1387,7 @@ exampleSidePanel = do
                 "If neither a list of attribute names or a command are given, "
                 "Waveguide instrospects the Nix expression and builds all the "
                 "found attributes."
-          H.aside ! A.class_ "order-1 order-2-m order-2-l w-100 w-20-m w-20-l ph3 mt2" $
-            H.div ! A.class_ "" $ do
-              H.h3 ! A.class_ "f5 lh-title mv2" $ "Latest Runs"
-              H.ul ! A.class_ "bg-near-white list pa3" $ do
-                mapM_ ((H.li ! A.class_ "pv1 bb b--black-10") . sidePanelLink "#")
-                  [ "→ #001"
-                  , "→ #002"
-                  , "→ #003"
-                  , "→ #004"
-                  , "→ #005"
-                  ]
+          sidePanelExample
     footer "© Hypered, 2019-2023."
 
 sidePanelLink :: H.AttributeValue -> Text -> Html
