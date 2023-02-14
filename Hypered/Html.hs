@@ -2167,9 +2167,6 @@ footerRefli :: Html
 footerRefli =
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt1 pb4 w4 bw1 b--black"
-      H.div $
-        H.a ! A.href "https://github.com/hypered/refli.be/blob/main/pages/index.md" $
-          "Editer cette page"
       H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered SRL, 2023."
 
 describeFormRefli :: Html
