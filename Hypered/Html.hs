@@ -2109,6 +2109,8 @@ homePageRefli =
     H.p $ do
       "Refli explore le calcul de la paie en Belgique."
     describeFormRefli
+    H.p $
+       H.a ! A.href "/describe" $ "→ Voir des exemples de calculs."
     H.p H.br
 
 pageRefli :: Text -> Html -> Html
