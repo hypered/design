@@ -151,6 +151,27 @@ document title body = do
     H.body ! A.class_ (H.toValue (fontClass IbmPlex)) $
       body
 
+-- | Same a `document`, but accept additional content to insert in the @head@ element.
+document' :: Text -> [Html] -> Html -> Html
+document' title additional body = do
+  H.docType
+  H.html $ do
+    H.head $ do
+      H.meta ! A.charset "utf-8"
+      H.title (H.toHtml title)
+      H.meta ! A.name "viewport"
+             ! A.content "width=device-width, initial-scale=1.0"
+      H.style $ do
+        mapM_ (\a -> H.toHtml ("@import url(" <> a <> ");"))
+          [ "/static" </> fontCss IbmPlex
+          , "/static" </> "css/tachyons.min.v4.11.1.css"
+          , "/static" </> "css/style.css"
+          , "/static" </> "css/styles.css"
+          ]
+      sequence_ additional
+
+    H.body ! A.class_ (H.toValue (fontClass IbmPlex)) $
+      body
 
 -- | This is the div around the main content and footer. It is not part of the
 -- `document` function above because within the Storybook examples, it is part
