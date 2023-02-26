@@ -2131,7 +2131,7 @@ homePageRefli =
       "Refli explore le calcul de la paie en Belgique."
     describeFormRefli
     H.p $
-       H.a ! A.href "/describe" $ "→ Voir des exemples de calculs."
+       H.a ! A.href "/fr/describe" $ "→ Voir des exemples de calculs."
     H.p H.br
 
 pageRefli :: Text -> Html -> Html
@@ -2152,7 +2152,7 @@ navigationRefli :: Html
 navigationRefli =
   H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
     H.div $
-      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "/" $ "Refli"
+      H.a ! A.class_ "link mr3 black hover-blue" ! A.href "/fr" $ "Refli"
 
 navigationBlockRefli :: Html
 navigationBlockRefli = do
@@ -2163,28 +2163,28 @@ navigationBlockRefli = do
           "Refli"
         H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/about" $ "A propos"
+            H.a ! A.href "/fr/about" $ "A propos"
           H.li ! A.class_ "mr4" $
             H.a ! A.href "/changelog" $ "Changelog"
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/contact" $ "Contact"
+            H.a ! A.href "/fr/contact" $ "Contact"
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/disclaimer" $ "Disclaimer"
+            H.a ! A.href "/fr/disclaimer" $ "Disclaimer"
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/documentation" $ "Documentation"
+            H.a ! A.href "/fr/documentation" $ "Documentation"
       H.section ! A.class_ "w-50-ns pr4 mb5" $ do
         H.h1 ! A.class_ "f5 ttu lh-title mb3" $
           "Précompte professionnel"
         H.ul ! A.class_ "list pa0 ma0 lh-copy" $
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/documentation/withholding-tax" $
-              "Barème I"
+            H.a ! A.href "/fr/documentation/withholding-tax" $
+              "Barème"
       H.section ! A.class_ "w-50-ns pr4 mb5" $ do
         H.h1 ! A.class_ "f5 ttu lh-title mb3" $
           "Contributions à la sécurité sociale"
         H.ul ! A.class_ "list pa0 ma0 lh-copy" $
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/documentation/contributions" $ "Contributions personnelles"
+            H.a ! A.href "/fr/documentation/contributions" $ "Contributions personnelles"
 
 footerRefli :: Html
 footerRefli =
