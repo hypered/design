@@ -2184,7 +2184,8 @@ navigationBlockRefli = do
           "Contributions à la sécurité sociale"
         H.ul ! A.class_ "list pa0 ma0 lh-copy" $
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/fr/documentation/contributions" $ "Contributions personnelles"
+            H.a ! A.href "/fr/documentation/computation#cotisations-personnelles" $
+              "Contributions personnelles"
 
 footerRefli :: Html
 footerRefli =
