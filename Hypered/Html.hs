@@ -2182,10 +2182,13 @@ navigationBlockRefli = do
       H.section ! A.class_ "w-50-ns pr4 mb5" $ do
         H.h1 ! A.class_ "f5 ttu lh-title mb3" $
           "Contributions à la sécurité sociale"
-        H.ul ! A.class_ "list pa0 ma0 lh-copy" $
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
           H.li ! A.class_ "mr4" $
             H.a ! A.href "/fr/documentation/computation#cotisations-personnelles" $
-              "Contributions personnelles"
+              "Cotisations personnelles"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation#bonus-à-lemploi" $
+              "Bonus à l'emploi"
 
 footerRefli :: Html
 footerRefli =
