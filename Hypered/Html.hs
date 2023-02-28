@@ -2189,6 +2189,9 @@ navigationBlockRefli = do
           H.li ! A.class_ "mr4" $
             H.a ! A.href "/fr/documentation/computation#bonus-à-lemploi" $
               "Bonus à l'emploi"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation#cotisation-spéciale" $
+              "Cotisation spéciale"
 
 footerRefli :: Html
 footerRefli =
