@@ -1,0 +1,16 @@
+{
+  "name": "hypered-design-d3",
+  "version": "1.0.0",
+  "description": "A design system for Hypered projects.",
+  "repository": "github:hypered/design",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "BSD2",
+  "dependencies": {
+    "d3-node": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-file": "^0.4.0"
+  },
+  "devDependencies": {}
+}

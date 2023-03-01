@@ -1,4 +1,5 @@
 .next
+d3/dist
 generated
 itcss/dist
 node_modules
