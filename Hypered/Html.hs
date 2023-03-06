@@ -2125,7 +2125,7 @@ whitespaceExamples =
 --------------------------------------------------------------------------------
 -- TODO Move this to Refli.
 homePageRefli :: Html
-homePageRefli =
+homePageRefli = do
   pageRefli "Bienvenue" $ do
     H.p $ do
       "Refli explore le calcul de la paie en Belgique."
@@ -2133,6 +2133,8 @@ homePageRefli =
     H.p $
        H.a ! A.href "/fr/describe" $ "→ Voir des exemples de calculs."
     H.p H.br
+  H.preEscapedToMarkup @Text
+    "\n<!-- POKE k/98vRMnMyPsAY582jPTj4STOb2DWle0NO -->\n"
 
 pageRefli :: Text -> Html -> Html
 pageRefli title content = do
