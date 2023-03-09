@@ -14,3 +14,8 @@ The result is in the `dist/` directory.
 
 Each graph should be a JS file in the `graphs/` directory, exporting a `draw()`
 function.
+
+# Acknowledgement
+
+The color parlette is Shibuya from
+https://studioyorktown.github.io/coloryorktownhall/.
