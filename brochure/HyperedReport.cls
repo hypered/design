@@ -32,7 +32,7 @@
 %----------------------------------------------------------------------------------------
 
 \usepackage{graphicx} % Required for including images
-\graphicspath{{Images/}{./}} % Specifies where to look for included images (trailing slash required)
+\graphicspath{{images/}{./}} % Specifies where to look for included images (trailing slash required)
 
 \usepackage{fontsize} % Allows changing the default font size to an arbitrary value
 \changefontsize[15pt]{10pt} % Change the default font size and baselineskip
@@ -330,9 +330,9 @@
 	\vfill % Automatic vertical whitespace
 	
 	\expandafter\ifstrequal\expandafter{#1}{black}{ % White circles and logo on black background
-		\includegraphics[width=0.73\linewidth]{Circles-White.pdf} \hfill \includegraphics[width=2cm]{Logo-White.pdf} \hspace{-\rightmarginwidth+\leftmarginwidth} % Circles and logo (black)
+		\includegraphics[width=0.73\linewidth]{circles-white.pdf} \hfill \includegraphics[width=2cm]{logo-white.pdf} \hspace{-\rightmarginwidth+\leftmarginwidth} % Circles and logo (black)
 	}{ % Black circles and logo on white background
-		\includegraphics[width=0.73\linewidth]{Circles-Black.pdf} \hfill \includegraphics[width=2cm]{Logo-Black.pdf} \hspace{-\rightmarginwidth+\leftmarginwidth} % Circles and logo (white)
+		\includegraphics[width=0.73\linewidth]{circles-black.pdf} \hfill \includegraphics[width=2cm]{logo-black.pdf} \hspace{-\rightmarginwidth+\leftmarginwidth} % Circles and logo (white)
 	}
 	
 	\vspace{-\footskip} % Pull the circles to the footer 
@@ -368,7 +368,7 @@
 	~\vfill % Automatic vertical whitespace
 	
 	\begin{fullwidth} % Span the full width of the page (i.e. use the right margin)
-		\raisebox{6pt}{\fontsize{8pt}{8pt}\selectfont Refli is a Hypered project} \hfill \includegraphics[width=2cm]{Logo-Black.pdf}\hspace{1cm}\raisebox{-0.45cm}{\includegraphics[width=4.5cm]{Logo-hypered.pdf}}
+		\raisebox{6pt}{\fontsize{8pt}{8pt}\selectfont Refli is a Hypered project} \hfill \includegraphics[width=2cm]{logo-black.pdf}\hspace{1cm}\raisebox{-0.45cm}{\includegraphics[width=4.5cm]{logo-hypered.pdf}}
 	\end{fullwidth}
 	
 	\vspace{-\footskip-10pt} % Pull the text to the footer
@@ -385,7 +385,7 @@
 	
 	\minipage[t]{0.45\linewidth}
 		\vspace{0pt} % Hack required to get correct vertical alignment in minipages
-		\includegraphics[width=2cm]{Logo-Black.pdf}
+		\includegraphics[width=2cm]{logo-black.pdf}
 		
 		\vspace{10pt} % Vertical whitespace
 		
@@ -394,7 +394,7 @@
 	\hfill
 	\minipage[t]{0.5\linewidth}
 		\vspace{0pt} % Hack required to get correct vertical alignment in minipages
-		\includegraphics[width=4.5cm]{Logo-hypered.pdf}
+		\includegraphics[width=4.5cm]{logo-hypered.pdf}
 		
 		\fontsize{8pt}{12pt}\selectfont
 		Hypered SRL\\
