@@ -41,16 +41,18 @@ in rec
     ];
 
     buildPhase = ''
-      pdflatex template
-      biber template
-      makeglossaries template
-      pdflatex template
-      pdflatex template
+      TEX_FILENAME="example-full"
+
+      pdflatex "$TEX_FILENAME"
+      biber "$TEX_FILENAME"
+      makeglossaries "$TEX_FILENAME"
+      pdflatex "$TEX_FILENAME"
+      pdflatex "$TEX_FILENAME"
     '';
 
     installPhase = ''
       mkdir -p $out
-      cp template.pdf $out/
+      cp example-full.pdf $out/
     '';
   };
 }

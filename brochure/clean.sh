@@ -1,16 +1,16 @@
 #! /usr/bin/env bash
 
 rm -f \
-  template.aux \
-  template.bbl \
-  template.bcf \
-  template.blg \
-  template.glg \
-  template.glo \
-  template.gls \
-  template.ist \
-  template.log \
-  template.out \
-  template.run.xml \
-  template.toc \
+  example-full.aux \
+  example-full.bbl \
+  example-full.bcf \
+  example-full.blg \
+  example-full.glg \
+  example-full.glo \
+  example-full.gls \
+  example-full.ist \
+  example-full.log \
+  example-full.out \
+  example-full.run.xml \
+  example-full.toc \
   texput.log

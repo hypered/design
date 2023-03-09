@@ -3,8 +3,10 @@
 
 set -e
 
-pdflatex template
-biber template
-makeglossaries template
-pdflatex template
-pdflatex template
+TEX_FILENAME="example-full"
+
+pdflatex "${TEX_FILENAME}"
+biber "${TEX_FILENAME}"
+makeglossaries "${TEX_FILENAME}"
+pdflatex "${TEX_FILENAME}"
+pdflatex "${TEX_FILENAME}"
