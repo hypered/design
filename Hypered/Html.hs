@@ -2176,24 +2176,69 @@ navigationBlockRefli = do
             H.a ! A.href "/fr/documentation" $ "Documentation"
       H.section ! A.class_ "w-50-ns pr4 mb5" $ do
         H.h1 ! A.class_ "f5 ttu lh-title mb3" $
-          "Précompte professionnel"
-        H.ul ! A.class_ "list pa0 ma0 lh-copy" $
-          H.li ! A.class_ "mr4" $
-            H.a ! A.href "/fr/documentation/computation#frais-professionnels-forfaitaires" $
-              "Frais professionnels forfaitaires"
-      H.section ! A.class_ "w-50-ns pr4 mb5" $ do
-        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
           "Contributions à la sécurité sociale"
         H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/fr/documentation/computation#cotisations-personnelles" $
+            H.a ! A.href "/fr/documentation/computation/contribution#cotisations-personnelles" $
               "Cotisations personnelles"
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/fr/documentation/computation#bonus-à-lemploi" $
+            H.a ! A.href "/fr/documentation/computation/contribution#bonus-à-lemploi" $
               "Bonus à l'emploi"
           H.li ! A.class_ "mr4" $
-            H.a ! A.href "/fr/documentation/computation#cotisation-spéciale" $
+            H.a ! A.href "/fr/documentation/computation/contribution#cotisation-spéciale" $
               "Cotisation spéciale"
+      H.section ! A.class_ "w-80-ns pr4 mb5" $ do
+        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
+          "Précompte professionnel"
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#frais-professionnels-forfaitaires" $
+              "Frais professionnels forfaitaires"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#barème-de-base" $
+              "Barème de base"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réductions-pour-enfants-à-charge" $
+              "Réductions pour enfants à charge"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-bénéficiaire-isolé" $
+              "Réduction pour bénéficiaire isolé"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-bénéficiaire-isolé-avec-enfants-à-charge" $
+              "Réduction pour bénéficiaire isolé avec enfants à charge"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-bénéficiaire-avec-handicap" $
+              "Réduction pour bénéficiaire avec handicap"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-conjoint-sans-revenu-avec-handicap" $
+              "Réduction pour conjoint sans revenu avec handicap"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-conjoint-avec-revenu-limité" $
+              "Réduction pour conjoint avec revenu limité"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-conjoint-avec-pension-limitée" $
+              "Réduction pour conjoint avec pension limitée"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-personnes-à-charge-de-65-ans-situation-de-dépendance" $
+              "Réduction pour personnes à charge de 65+ ans, situation de dépendance"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-personnes-à-charge-de-65-ans-mesure-transitoire" $
+              "Réduction pour personnes à charge de 65+ ans, mesure transitoire"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-autres-personnes" $
+              "Réduction pour autres personnes"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/tax#réduction-pour-bonus-à-lemploi" $
+              "Réduction pour bonus à l’emploi"
+        H.h1 ! A.class_ "f5 ttu lh-title mb3" $
+          "Méthode d'arrondi"
+        H.ul ! A.class_ "list pa0 ma0 lh-copy" $ do
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/rounding" $
+              "Arrondi"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/documentation/computation/rounding#détails-du-précompte-professionnel" $
+              "Détails du précompte professionnel"
 
 footerRefli :: Html
 footerRefli =
