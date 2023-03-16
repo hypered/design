@@ -3,6 +3,7 @@ let
   site = (import ../.).site;
   hs = (import ../.).hs;
   haddock = (import ../.).haddock;
+  brochure = (import ../.).brochure;
   static = (import ../.).static;
 in
 {
@@ -22,6 +23,9 @@ in
         };
         "/haddock/" = {
           alias = haddock + "/share/doc/hypered-design-0.0.0/html/";
+        };
+        "/pdf/brochure/" = {
+          alias = brochure + "/";
         };
         "/static/" = {
           alias = static + "/";

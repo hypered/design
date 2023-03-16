@@ -49,6 +49,11 @@ Examples generated with the Haskell code are also available:
 - [Haskell implementation](hs/) - Everything that exist in the original
   implementation also exist here.
 
+An example PDF brochure created with LaTeX:
+
+- [Full example](pdf/brochure/example-full.pdf) - This is an example grouping
+  all the features of the custom LaTeX class.
+
 ## See also
 
 Another attempt at creating a Pandoc template is visible at
