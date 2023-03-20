@@ -18,7 +18,7 @@ in {
       include = with nix-filter; [
         "hypered-design.cabal"
         (and "bin" (or_ (matchExt "hs") isDirectory))
-        (and "Hypered" (or_ (matchExt "hs") isDirectory))
+        (and "src" (or_ (matchExt "hs") isDirectory))
         "LICENSE"
       ];
     };

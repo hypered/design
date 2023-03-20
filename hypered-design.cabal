@@ -11,6 +11,7 @@ maintainer:          thu@hypered.io
 build-type:          Simple
 
 library
+  hs-source-dirs: src
   default-extensions:
     DeriveAnyClass
     DeriveGeneric
