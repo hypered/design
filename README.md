@@ -179,10 +179,32 @@ $ node render-components footer
 ```
 
 
-## Comparing Haskell and Node outputs
+## Haskell code
 
-In addition of component names, the above script can process its stdin with
-'pretty' to normalize some input HTML.
+There are two parts to the Haskell code, found in `bin/` and `src/`.
+
+One is the `Hypered.Html` module, that is meant to be re-used across Hypered
+projects to benefit from the Haskell implementation of the design system.
+
+The other is `Hypered.Design` which is the code behind the `hypered-design`
+command-line tool. That tool can generate the design system website (i.e. the
+"guide") at `hypered.design`, HTML templates for Pandoc, or show individual
+component code (that can be compared with the `./diff.sh` script against the
+Next.js implementation).
+
+The `hypered-design` program has also a `serve` subcommand that is uses as a
+backend on `hypered.design`. It currently serves a echo handler for the login
+form and is meant to evolve to serve e.g. HTML fragments that can be used with
+something like htmx.
+
+It can also be used locally to work on a page that is automatically refreshed
+in a browser.
+
+
+### Comparing Haskell and Node outputs
+
+In addition of component names, the `render-components` script can process its
+stdin with 'pretty' to normalize some input HTML.
 
 In the example below, we can verify the footer component is the same in Haskell
 and Node.
