@@ -12,4 +12,5 @@ ghc --interactive \
   -XRecordWildCards \
   -XTypeApplications \
   -XTypeOperators \
+  -Wall \
   bin/hypered-design.hs

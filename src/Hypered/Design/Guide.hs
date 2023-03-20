@@ -2,10 +2,11 @@ module Hypered.Design.Guide
   ( generateGuide
   ) where
 
-
+import           Hypered.Design.Examples
+import           Hypered.Design.IO
+  ( generate, generate' )
 import           Hypered.Html
   ( Font(Inter)
-  , generate, generate'
   , Config(..)
   , defaultConfig
   , loginForm, loginFormReesd
@@ -31,11 +32,11 @@ import           Hypered.Html
   , whitespaceAutoWidthExample, whitespaceNegativeMarginsExample
   , whitespaceFullWidthExample, whitespaceExamples
   )
-import           Hypered.Design.Examples
 import           Protolude
 import           Text.Blaze.Html5               ( (!), Html )
 import qualified Text.Blaze.Html5              as H
 import qualified Text.Blaze.Html5.Attributes   as A
+
 
 ------------------------------------------------------------------------------
 generateGuide :: IO ()

@@ -2,11 +2,13 @@ module Hypered.Design.Templates
   ( generateTemplates
   ) where
 
+import           Hypered.Design.IO
+  ( prettyHtml, partialHtml, generateHtml )
 import           Hypered.Html
   ( Font(IbmPlex, Font)
-  , prettyHtml, wrap , wrapPost , Config(..)
-  , footer, generateHtml, navigation, navigationTemplate
-  , headTitle, partialHtml
+  , wrap , wrapPost , Config(..)
+  , footer, navigation, navigationTemplate
+  , headTitle
   )
 import           Protolude
 import qualified Text.Blaze.Html5 as H
