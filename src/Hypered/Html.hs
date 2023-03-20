@@ -38,6 +38,8 @@ generateHtml config base path title body = do
   withFile (base </> path) WriteMode $ \h ->
     T.hPutStr h . renderHtml $ documentFile config path title body
 
+-- The result of this function is used to populate the static pages at
+-- hypered.design/hs.
 prettyHtml :: Config -> FilePath -> FilePath -> Text -> Html -> IO ()
 prettyHtml config base path title body = do
   createDirectoryIfMissing True (takeDirectory (base </> path))
@@ -106,7 +108,8 @@ mkRelativize path = relativize
 -- | This is the main wrapper. This is exposed as
 --   $ nix-shell --run "runghc bin/hypered-guide.hs wrapper"
 -- and should match the content of `pages/_app.js`.
--- Use this to generate files on disk. Otherwise, see `document` below.
+-- Use this to generate files on disk for the design system. Otherwise, see
+-- `document` below.
 documentFile :: Config -> FilePath -> Text -> Html -> Html
 documentFile Config{..} path title body = do
   let depth = length (splitPath path) - 1
@@ -132,24 +135,7 @@ documentFile Config{..} path title body = do
 -- | Same a `documentFile`, but assume to be served with an available @/static@,
 -- and use IBM Plex. I.e. use this from e.g. Servant.
 document :: Text -> Html -> Html
-document title body = do
-  H.docType
-  H.html $ do
-    H.head $ do
-      H.meta ! A.charset "utf-8"
-      H.title (H.toHtml title)
-      H.meta ! A.name "viewport"
-             ! A.content "width=device-width, initial-scale=1.0"
-      H.style $ do
-        mapM_ (\a -> H.toHtml ("@import url(" <> a <> ");"))
-          [ "/static" </> fontCss IbmPlex
-          , "/static" </> "css/tachyons.min.v4.11.1.css"
-          , "/static" </> "css/style.css"
-          , "/static" </> "css/styles.css"
-          ]
-
-    H.body ! A.class_ (H.toValue (fontClass IbmPlex)) $
-      body
+document title body = document' title [] body
 
 -- | Same a `document`, but accept additional content to insert in the @head@ element.
 document' :: Text -> [Html] -> Html -> Html
