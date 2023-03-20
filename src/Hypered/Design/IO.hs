@@ -51,13 +51,8 @@ prettyHtml config base path title body = do
     hPutStr h . Pretty.renderHtml $ documentFile config path title body'
   where body' = do
           if cAddWrapper config
-            then H.div $ do
-                   H.a ! A.href "../hs/"
-                       $ "back to list"
-                   "|"
-                   H.code $ H.toHtml path
-            else return ()
-          body
+            then H.div ! A.class_ "pa3 pa4-ns" $ body
+            else body
 
 -- | Same as prettyHtml but doesn't wrap the content to create a full
 -- standalone HTML document.
