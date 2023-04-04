@@ -1,4 +1,4 @@
-$g-spacer-unit: 1rem !default;
+$g-spacer-unit: 1.6rem !default;
 
 
 .u-spacer-top-xs {
@@ -15,7 +15,7 @@ $g-spacer-unit: 1rem !default;
 
 .u-spacer-top-l {
   // margin-top: $g-spacer-unit * 3 !important;
-  margin-top: 3.15rem !important; // This lets the navbar in static-binaries.pug
+  margin-top: 5.04rem !important; // This lets the navbar in static-binaries.pug
                                   // match the Figma design...
 }
 
