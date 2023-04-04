@@ -38,6 +38,7 @@ function watch() {
   bs.init({
     server: 'dist',
     browser: [], // Don't automatically open a browser.
+    port: 3002,
   });
 
   gulp.watch('static/**/*', assets);
