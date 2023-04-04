@@ -2083,6 +2083,21 @@ pageRefli title content = do
     navigationBlockRefli
     footerRefli
 
+-- | Same as `pageRefli` but without showing the title on the page.
+pageRefli' :: Text -> Html -> Html
+pageRefli' title content = do
+  H.div ! A.class_ "flex flex-column justify-between min-height-vh-100 mw8 center pa3 pa4-ns lh-copy" $ do
+    H.div $ do
+      H.header $
+        navigationRefli
+      H.main $
+        H.article ! A.class_ "mw7" $ do
+          H.div ! A.class_ "mb4" $
+            H.h1 ! A.class_ "f1 lh-title mv2 tracked-tight" $ H.text title
+          content
+    navigationBlockRefli
+    footerRefli
+
 navigationRefli :: Html
 navigationRefli =
   H.nav ! A.class_ "flex justify-between align-items-center lh-copy mb4 pv3" $
