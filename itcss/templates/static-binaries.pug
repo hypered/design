@@ -6,30 +6,4 @@ block body
       include includes/main-navbar
 
   .o-container--small.c-content
-    h1 Static binaries
-
-    p If you consider adopting a programming language, consider one where you can create statically-linked executables. This makes things so much easier.
-
-    hr
-
-    h2 E.g., compared to Docker
-
-    p With a statically-linked binary, provisioning a program on a remote host is just uploading it. With Docker, you need to install and maintain docker-engine. Ideally you should have a nice way to provision the remote host with Docker, but then, why not use that nice way to provision other stuff directly ?
-
-    p Docker is much more than packaging, but it seems a lot of people use it for that purpose.
-
-    p By the way, statically-linked executables make building Docker images a breeze.
-
-    p If you use Docker to deploy, you probably want a private registry, which is another piece to maintain. Static binaries are trivial to host on a static site. Or to mirror. And so on. Simplicity goes a long way.
-
-    hr.u-spacer-bottom-m
-
-    p See also: <a>In praise of simplicity</a>
-
-    hr.u-spacer-bottom-m
-
-    p Related: <a>Learn packaging</a>
-
-    hr.u-spacer-top-l.u-spacer-bottom-l
-
-    p.u-spacer-bottom-m © Võ Minh Thu, 2017-2023.
+    include contents/static-binaries.pug
