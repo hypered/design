@@ -1,8 +1,11 @@
-doctype html
+extends layouts/document
 
-html
-  head
-    link(rel="stylesheet" href="/static/css/main.css")
-  body
-    .c-content
-      h1 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus in odio orci. Vestibulum dignissim malesuada molestie.
+block body
+  .o-container--small.c-content
+    h1 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+    p Slowly creating an ITCSS implementation of <a href=https://hypered.design>hypered.design</a>.
+
+    ul
+      li: a(href="examples/static-binaries.html") Static binaries
+      li: a(href="examples/static-binaries-toolbar.html") Static binaries, with toolbar
