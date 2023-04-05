@@ -44,3 +44,15 @@ https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/
 
 I think the original Next.js-based design keeps the default rem size, i.e.
 16px.
+
+# Notes
+
+Here are some notes about how the SCSS are written. This is may be trivial for
+a web designer but anyway.
+
+- We set 1rem to be 10px, and the default font size to be 1.6rem, i.e. 16px.
+  See [Dimensions](#Dimensions) above.
+- When comparing Figma to the implemented SCSS, 1px maps to 1px.
+- Something like a `.c-navbar` has a specified height, so that even if it's
+  empty, it takes the right space. This is easier to visualize a page
+  organization.
