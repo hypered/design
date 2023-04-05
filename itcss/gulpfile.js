@@ -28,7 +28,7 @@ function styles() {
 
 // Build the Pug templates to HTML
 function templates() {
-  return gulp.src('templates/*.pug')
+  return gulp.src('templates/**/*.pug')
     .pipe(pug())
     .pipe(gulp.dest('dist'))
 }
@@ -43,7 +43,7 @@ function watch() {
 
   gulp.watch('static/**/*', assets);
   gulp.watch('scss/**/*.scss', styles);
-  gulp.watch('templates/*.pug', templates);
+  gulp.watch('templates/**/*.pug', templates);
   gulp.watch('dist/*.html').on('change', bs.reload);
 }
 
