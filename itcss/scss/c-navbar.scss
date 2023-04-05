@@ -1,4 +1,8 @@
 .c-navbar {
-  padding-top: 5.04rem;
-  height: 9rem;
+  height: 5.16rem;
+}
+
+// Add additional room above a navigation bar when used at the top of a page.
+.c-navbar--main {
+  margin-top: 3.86rem;
 }

@@ -1,6 +1,9 @@
 .c-toolbar {
   width: 100%;
   display: flex;
+  padding-top: 1.2rem; // This is used to vertically center the links within the
+                       // navbar. This will have to be revisited when the navbar
+                       // is using ul/li/a with proper classes on the ul/li.
 }
 
 .c-toolbar__left,
