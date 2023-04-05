@@ -36,9 +36,9 @@ There is an attempt at creating an implementation of the design system using
 the ITCSS approach. Only a single page exists for now. This is also manually
 created within the `docs/` directory.
 
-- [ITCSS example page](https://js.hypered.design/static-binaries.html) - This
-  page should match an [existing
-  page](https://noteed.com/notes/static-binaries.html).
+- [ITCSS example page](https://js.hypered.design/examples/static-binaries.html)
+  - This page should match an [existing
+    page](https://noteed.com/notes/static-binaries.html).
 
 The rest is built using Nix and served from a VM at this domain
 ([hypered.design](https://hypered.design)).

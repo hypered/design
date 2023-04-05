@@ -27,8 +27,8 @@ For development, another script is available:
 $ ./serve.sh
 ```
 
-You can then visit `http://127.0.0.1:3000` or
-`http://127.0.0.1:3000/static-binaries.html`.
+You can then visit `http://127.0.0.1:3002` or
+`http://127.0.0.1:3002/examples/static-binaries.html`.
 
 # Dimensions
 
