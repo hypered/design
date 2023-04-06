@@ -350,3 +350,5 @@ The resulting PDF file is then `result/example.pdf`.
   - Dribbble: [rinxols](https://dribbble.com/rinxols)
 - The LaTeX implementation of the brochure design was done by Vel from
   [LaTeXTypesetting.com](https://latextypesetting.com).
+- The [GOV.UK design system](https://github.com/alphagov/govuk-design-system)
+  inspires parts of this work (e.g. the two thirds / one third columns).
