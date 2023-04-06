@@ -16,3 +16,49 @@
 
 @import "u-spacer";
 @import "u-placeholder";
+
+
+
+// Working, but not yet ok code follows.
+
+// The width here is 128 (the width of my screen) - 15.6 - 15.6 (left and right
+// margins). The goal is that the left border of the title and paragraph in the
+// example page are perfectly aligned with the static-binaries example.
+// I guess this breaks the gutter calculation and this should be the other way
+// around, i.e. 960.
+$page-width: 968px !default;
+$gutter: 30px !default;
+$gutter-half: calc($gutter / 2);
+
+// I guess I should instead use (or combine with) what I already have in
+// o-container.
+.width-container {
+  max-width: $page-width;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.grid-row {
+  // clearfix.
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  margin-right: - ($gutter-half);
+  margin-left: - ($gutter-half);
+}
+
+.grid-column-two-thirds {
+  width: 100%;
+  padding: 0 $gutter-half;
+  width: calc(200% / 3);
+  float: left;
+}
+
+.grid-column-one-third {
+  width: 100%;
+  padding: 0 $gutter-half;
+  width: calc(100% / 3);
+  float: left;
+}
