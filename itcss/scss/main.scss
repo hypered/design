@@ -21,12 +21,10 @@
 
 // Working, but not yet ok code follows.
 
-// The width here is 128 (the width of my screen) - 15.6 - 15.6 (left and right
-// margins). The goal is that the left border of the title and paragraph in the
+// The width here is 128 (the width of my screen) - 16 - 16 (left and right
+// margins) so the left border of the title and paragraph in the
 // example page are perfectly aligned with the static-binaries example.
-// I guess this breaks the gutter calculation and this should be the other way
-// around, i.e. 960.
-$page-width: 968px !default;
+$page-width: 960px !default;
 $gutter: 30px !default;
 $gutter-half: calc($gutter / 2);
 
