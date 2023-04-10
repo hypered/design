@@ -1,0 +1,35 @@
+extends ../layouts/document
+
+block body
+  style.
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px; /* Add gap between grid items */
+      padding: 0; /* Remove default padding */
+      list-style-type: none; /* Remove default list item bullet points */
+    }
+
+    li {
+    }
+    img {
+      max-width: 100%; /* Ensure image does not overflow its container */
+      height: auto; /* Maintain aspect ratio */
+    }
+  header
+    .o-container--small.c-base
+      include ../includes/main-navbar
+  .width-container
+    ul
+      li
+        img(src="/static/images/yellow.jpg", alt="")
+      li
+        img(src="/static/images/yellow.jpg", alt="")
+      li
+        img(src="/static/images/yellow.jpg", alt="")
+      li
+        img(src="/static/images/yellow.jpg", alt="")
+      li
+        img(src="/static/images/yellow.jpg", alt="")
+      li
+        img(src="/static/images/yellow.jpg", alt="")
