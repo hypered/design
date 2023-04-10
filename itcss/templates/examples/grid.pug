@@ -1,0 +1,33 @@
+extends ../layouts/document
+
+block body
+  style.
+    .the-container {
+      max-width: 960px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .the-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      margin-right: -15px;
+      margin-left: -15px;
+    }
+
+    .the-main-content, .the-sidebar {
+      padding: 0 15px;
+    }
+  header
+    .o-container--small.c-base
+      include ../includes/main-navbar
+  .the-container
+    .the-row
+      .the-main-content
+        .c-content
+          h1 Two-thirds column
+          p This is a paragraph inside a two-thirds wide column.
+      .the-sidebar
+        .c-content
+          h2 One-third column
+          p This is a paragraph inside a one-third wide column.
