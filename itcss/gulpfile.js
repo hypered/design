@@ -19,7 +19,8 @@ function styles() {
     .pipe(sass({
       includePaths: ['scss/'],
       errLogToConsole: true,
-      outputStyle: 'compressed',
+      outputStyle: 'expanded', // Or compressed, but we can have PurgeCSS
+	                       // and CSSNano afterwards anyway.
       onError: bs.notify
     }))
     .pipe(gulp.dest('dist/static/css'))

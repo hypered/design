@@ -45,6 +45,21 @@ https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/
 I think the original Next.js-based design keeps the default rem size, i.e.
 16px.
 
+# PostCSS
+
+PostCSS can be used to drive PurgeCSS and CSSNano. The resulting `main.min.css`
+is not yet used.
+
+```
+$ npm install postcss postcss-cli @fullhuman/postcss-purgecss cssnano
+$ node_modules/.bin/postcss dist/static/css/main.css -o dist/static/css/main.min.css
+```
+
+It is possible to modify the configuration file to take e.g. a single HTML file
+into account, or remove the CSSNano step. In that case, the generated CSS is
+easily diffable against the original `main.css` file (unless SASS output style
+is set to `compressed` instead of `expanded`).
+
 # Notes
 
 Here are some notes about how the SCSS are written. This is may be trivial for
