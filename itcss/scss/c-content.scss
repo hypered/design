@@ -22,8 +22,8 @@
 }
 
 .c-content h2 {
-  font-weight: 600;
   font-size: 3.6rem;
+  font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.05em;
   margin: 3.6rem 0 2.4rem;
@@ -35,11 +35,6 @@
 
 .c-content a {
   color: $color-link;
-}
-
-.c-content hr {
-  color: $color-body;
-  background-color: $color-body;
 }
 
 .c-content p,
@@ -55,6 +50,8 @@
 }
 
 .c-content hr {
+  color: $color-body;
+  background-color: $color-body;
   width: 12.8rem;
   border: none;
   height: .2rem;
