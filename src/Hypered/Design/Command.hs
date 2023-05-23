@@ -16,6 +16,9 @@ data Command =
   | GenerateTemplates Bool
     -- ^ If True, use a prefix suitable for GitHub Pages (i.e. the /design
     -- prefix, since the static site is at hypered.github.io/design).
+  | GenerateFluidClamps
+    -- ^ This is similar to https://utopia.fyi/space/calculator but allowing a
+    -- rem to be 10px.
   | Wrapper
     -- ^ The document wrapper. This should match `pages/_app.js`.
   | Serve ServerConf
@@ -192,6 +195,12 @@ parser =
           "generate-templates"
           ( A.info (parserGenerateTemplates <**> A.helper)
           $ A.progDesc "Generate HTML templates that can be used with Pandoc"
+          )
+
+      <> A.command
+          "generate-fluid-clamps"
+          ( A.info (parserGenerateFluidClamps <**> A.helper)
+          $ A.progDesc "Generate CSS variables for fluid spaces"
           )
 
       <> A.command
@@ -794,6 +803,9 @@ parserGenerateGuide = pure GenerateGuide
 parserGenerateTemplates :: A.Parser Command
 parserGenerateTemplates = GenerateTemplates <$> A.switch
   (A.long "docs" <> A.help "Use a prefix suitable for GitHub Pages.")
+
+parserGenerateFluidClamps :: A.Parser Command
+parserGenerateFluidClamps = pure GenerateFluidClamps
 
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper

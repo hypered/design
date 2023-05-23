@@ -6,6 +6,7 @@ import           Data.List (nub, tail)
 import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
 import           Hypered.Design.Examples
+import           Hypered.Design.Fluid           ( properties )
 import           Hypered.Design.Guide           ( generateGuide )
 import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories         ( stories )
@@ -46,6 +47,8 @@ run :: Command.Command -> IO ()
 run (Command.GenerateTemplates forGitHubPages) = generateTemplates forGitHubPages
 
 run Command.GenerateGuide = generateGuide
+
+run Command.GenerateFluidClamps = putStrLn $ properties 10.0
 
 run Command.Wrapper = generateWrapper
 
