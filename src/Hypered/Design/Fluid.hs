@@ -23,14 +23,7 @@
 module Hypered.Design.Fluid
   ( everything
   , properties
-  , step_5
-  , step_4
-  , step_3
-  , step_2
-  , step_1
-  , step_0
-  , step_minus1
-  , step_minus2
+  , stepsC
   , space_3xs
   , space_2xs
   , space_xs
@@ -63,16 +56,7 @@ import Text.Printf (printf)
 everything :: Text
 everything =
   ":root {\n"
-    <> generateVWBasedValues 10.0
-        [ ("step-5", step_5)
-        , ("step-4", step_4)
-        , ("step-3", step_3)
-        , ("step-2", step_2)
-        , ("step-1", step_1)
-        , ("step-0", step_0)
-        , ("step--1", step_minus1)
-        , ("step--2", step_minus2)
-        ]
+    <> generateSteps 10.0 stepsC
     <> "}\n\n"
     <> ":root {\n"
     <> properties 10.0
@@ -110,16 +94,18 @@ properties' remInPx = generateVWBasedValues remInPx
 -- A type scale that is closer to what is used in the existing design is
 -- 16px (instead of 20) using a perfect four (1.3333).
 
-step_5, step_4, step_3, step_2, step_1, step_0, step_minus1, step_minus2 :: Parameters
-
-step_5 = addStep minorThird perfectFour step_4
-step_4 = addStep minorThird perfectFour step_3
-step_3 = addStep minorThird perfectFour step_2
-step_2 = addStep minorThird perfectFour step_1
-step_1 = addStep minorThird perfectFour step_0
-step_0 = Parameters 320 1480 16 20
-step_minus1 = subStep minorThird perfectFour step_0
-step_minus2 = subStep minorThird perfectFour step_minus1
+-- Quite large font.
+stepsC :: Steps
+stepsC = Steps {..}
+ where
+  step5 = addStep minorThird perfectFour step4
+  step4 = addStep minorThird perfectFour step3
+  step3 = addStep minorThird perfectFour step2
+  step2 = addStep minorThird perfectFour step1
+  step1 = addStep minorThird perfectFour step0
+  step0 = Parameters 320 1480 16 20
+  stepMinus1 = subStep minorThird perfectFour step0
+  stepMinus2 = subStep minorThird perfectFour stepMinus1
 
 addStep :: Double -> Double -> Parameters -> Parameters
 addStep atMin atMax params@Parameters {..} =
@@ -148,7 +134,7 @@ space_3xs, space_2xs, space_xs, space_s, space_m, space_l, space_xl, space_2xl, 
 space_3xs = mulStep 0.25 space_s
 space_2xs = mulStep 0.5 space_s
 space_xs = mulStep 0.75 space_s
-space_s = step_0
+space_s = step0 stepsC
 space_m = mulStep 1.5 space_s
 space_l = mulStep 2.0 space_s
 space_xl = mulStep 3.0 space_s
@@ -217,6 +203,31 @@ space_eccentric_large, space_eccentric_medium, space_eccentric_small :: Paramete
 space_eccentric_large = Parameters (960 {- large -} + 18 + 18) 1240 18 160
 space_eccentric_medium = space_eccentric_large { minWidth = 680 {- medium -} }
 space_eccentric_small = space_eccentric_large { minWidth = 560 {- medium -} }
+
+--------------------------------------------------------------------------------
+-- | Different font sizes corresponding to h5 to two levels below p.
+data Steps = Steps
+  { step5 :: Parameters
+  , step4 :: Parameters
+  , step3 :: Parameters
+  , step2 :: Parameters
+  , step1 :: Parameters
+  , step0 :: Parameters
+  , stepMinus1 :: Parameters
+  , stepMinus2 :: Parameters
+  }
+
+generateSteps :: Double -> Steps -> Text
+generateSteps remInPx Steps {..} = generateVWBasedValues remInPx
+  [ ("step-5", step5)
+  , ("step-4", step4)
+  , ("step-3", step3)
+  , ("step-2", step2)
+  , ("step-1", step1)
+  , ("step-0", step0)
+  , ("step--1", stepMinus1)
+  , ("step--2", stepMinus2)
+  ]
 
 --------------------------------------------------------------------------------
 -- | The values we want to interpolate, and at which viewport widths the minimum
