@@ -56,7 +56,10 @@ import Text.Printf (printf)
 everything :: Text
 everything =
   ":root {\n"
-    <> generateSteps 10.0 stepsC
+    <> generateSteps "step-b" 10.0 stepsB
+    <> "}\n\n"
+    <> ":root {\n"
+    <> generateSteps "step-c" 10.0 stepsC
     <> "}\n\n"
     <> ":root {\n"
     <> properties 10.0
@@ -91,19 +94,24 @@ properties' remInPx = generateVWBasedValues remInPx
 
 --------------------------------------------------------------------------------
 -- Type scale
--- A type scale that is closer to what is used in the existing design is
--- 16px (instead of 20) using a perfect four (1.3333).
+
+-- Normal font, similar to the existing design.
+stepsB :: Steps
+stepsB = makeSteps $ Parameters 320 1480 16 16
 
 -- Quite large font.
 stepsC :: Steps
-stepsC = Steps {..}
+stepsC = makeSteps $ Parameters 320 1480 16 20
+
+makeSteps :: Parameters -> Steps
+makeSteps params = Steps {..}
  where
   step5 = addStep minorThird perfectFour step4
   step4 = addStep minorThird perfectFour step3
   step3 = addStep minorThird perfectFour step2
   step2 = addStep minorThird perfectFour step1
   step1 = addStep minorThird perfectFour step0
-  step0 = Parameters 320 1480 16 20
+  step0 = params
   stepMinus1 = subStep minorThird perfectFour step0
   stepMinus2 = subStep minorThird perfectFour stepMinus1
 
@@ -217,16 +225,16 @@ data Steps = Steps
   , stepMinus2 :: Parameters
   }
 
-generateSteps :: Double -> Steps -> Text
-generateSteps remInPx Steps {..} = generateVWBasedValues remInPx
-  [ ("step-5", step5)
-  , ("step-4", step4)
-  , ("step-3", step3)
-  , ("step-2", step2)
-  , ("step-1", step1)
-  , ("step-0", step0)
-  , ("step--1", stepMinus1)
-  , ("step--2", stepMinus2)
+generateSteps :: Text -> Double -> Steps -> Text
+generateSteps name remInPx Steps {..} = generateVWBasedValues remInPx
+  [ (name <> "-5", step5)
+  , (name <> "-4", step4)
+  , (name <> "-3", step3)
+  , (name <> "-2", step2)
+  , (name <> "-1", step1)
+  , (name <> "-0", step0)
+  , (name <> "--1", stepMinus1)
+  , (name <> "--2", stepMinus2)
   ]
 
 --------------------------------------------------------------------------------
