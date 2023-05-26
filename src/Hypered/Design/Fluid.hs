@@ -56,6 +56,9 @@ import Text.Printf (printf)
 everything :: Text
 everything =
   ":root {\n"
+    <> generateSteps "step-a" 10.0 stepsA
+    <> "}\n\n"
+    <> ":root {\n"
     <> generateSteps "step-b" 10.0 stepsB
     <> "}\n\n"
     <> ":root {\n"
@@ -95,7 +98,11 @@ properties' remInPx = generateVWBasedValues remInPx
 --------------------------------------------------------------------------------
 -- Type scale
 
--- Normal font, similar to the existing design.
+-- Smaller headings for the application context, similar to the existing design.
+stepsA :: Steps
+stepsA = makeSteps' majorSecond majorSecond $ Parameters 320 1480 16 16
+
+-- Normal font for the content context, similar to the existing design.
 stepsB :: Steps
 stepsB = makeSteps $ Parameters 320 1480 16 16
 
@@ -104,16 +111,19 @@ stepsC :: Steps
 stepsC = makeSteps $ Parameters 320 1480 16 20
 
 makeSteps :: Parameters -> Steps
-makeSteps params = Steps {..}
+makeSteps = makeSteps' minorThird perfectFour
+
+makeSteps' :: Double -> Double -> Parameters -> Steps
+makeSteps' scaleMin scaleMax params = Steps {..}
  where
-  step5 = addStep minorThird perfectFour step4
-  step4 = addStep minorThird perfectFour step3
-  step3 = addStep minorThird perfectFour step2
-  step2 = addStep minorThird perfectFour step1
-  step1 = addStep minorThird perfectFour step0
+  step5 = addStep scaleMin scaleMax step4
+  step4 = addStep scaleMin scaleMax step3
+  step3 = addStep scaleMin scaleMax step2
+  step2 = addStep scaleMin scaleMax step1
+  step1 = addStep scaleMin scaleMax step0
   step0 = params
-  stepMinus1 = subStep minorThird perfectFour step0
-  stepMinus2 = subStep minorThird perfectFour stepMinus1
+  stepMinus1 = subStep scaleMin scaleMax step0
+  stepMinus2 = subStep scaleMin scaleMax stepMinus1
 
 addStep :: Double -> Double -> Parameters -> Parameters
 addStep atMin atMax params@Parameters {..} =
@@ -128,6 +138,9 @@ subStep atMin atMax params@Parameters {..} =
     { minValue = minValue / atMin
     , maxValue = maxValue / atMax
     }
+
+majorSecond :: Double
+majorSecond = 1.125
 
 minorThird :: Double
 minorThird = 1.2
