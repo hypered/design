@@ -336,6 +336,20 @@ $ nix-build
 The resulting PDF file is then `result/example.pdf`.
 
 
+## Screenshots
+
+To create a higher resolution screenshot, in Firefox:
+
+```
+> :screenshot --dpr 4 --fullpage
+```
+
+I don't see a way to specify the viewport dimensions, which may be necessary
+for e.g. `height: 100vh`. But I can make the developer tools a separate window
+(on a different workspace), put the page in fullscreen, and take the screenshot
+and it works.
+
+
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
