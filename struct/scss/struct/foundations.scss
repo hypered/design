@@ -1,0 +1,18 @@
+// This defines a CSS Reset, the box-sizing, and a rem to be 10px.
+// See foundations.pug.
+
+@import "reset";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}

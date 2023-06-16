@@ -1,0 +1,286 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+    body
+        .u-container.flow.limit-p
+            h1 Static binaries
+            p If you consider adopting a programming language, consider one where you can create statically-linked executables. This makes things so much easier.
+
+            hr
+
+            h2 E.g., compared to Docker
+
+            p With a statically-linked binary, provisioning a program on a remote host is just uploading it. With Docker, you need to install and maintain docker-engine. Ideally you should have a nice way to provision the remote host with Docker, but then, why not use that nice way to provision other stuff directly ?
+
+            p Docker is much more than packaging, but it seems a lot of people use it for that purpose.
+
+            p By the way, statically-linked executables make building Docker images a breeze.
+
+            p If you use Docker to deploy, you probably want a private registry, which is another piece to maintain. Static binaries are trivial to host on a static site. Or to mirror. And so on. Simplicity goes a long way.
+
+            hr.u-spacer-bottom-xxl
+
+            p See also: <a>In praise of simplicity</a>
+
+            hr.u-spacer-bottom-xxl
+
+            p Related: <a>Learn packaging</a>
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Box
+            .box.max-64rem.u-flow-c-0
+                form.c-text.flow
+                    h4 Gross monthly salary
+                    div
+                        input.c-input
+                    button.c-button.c-button--primary(type="submit")
+                        span Compute
+                        svg(width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+                            <path d="M12.2929 5.29289C12.6834 4.90237 13.3166 4.90237 13.7071 5.29289L19.7071 11.2929C19.8946 11.4804 20 11.7348 20 12C20 12.2652 19.8946 12.5196 19.7071 12.7071L13.7071 18.7071C13.3166 19.0976 12.6834 19.0976 12.2929 18.7071C11.9024 18.3166 11.9024 17.6834 12.2929 17.2929L16.5858 13L5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11L16.5858 11L12.2929 6.70711C11.9024 6.31658 11.9024 5.68342 12.2929 5.29289Z" fill="#595959"/>
+
+        hr.hr-full
+
+        .u-container
+            .switcher.switch-at-60rem
+                .flow
+                    h1 Compute a gross-to-net salary conversion
+                    p Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions.
+                .box
+                    form.c-text.flow
+                        h4 Gross monthly salary
+                        div
+                            input.c-input
+                        button.c-button.c-button--primary(type="submit")
+                            span Compute
+                            svg(width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+                                <path d="M12.2929 5.29289C12.6834 4.90237 13.3166 4.90237 13.7071 5.29289L19.7071 11.2929C19.8946 11.4804 20 11.7348 20 12C20 12.2652 19.8946 12.5196 19.7071 12.7071L13.7071 18.7071C13.3166 19.0976 12.6834 19.0976 12.2929 18.7071C11.9024 18.3166 11.9024 17.6834 12.2929 17.2929L16.5858 13L5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11L16.5858 11L12.2929 6.70711C11.9024 6.31658 11.9024 5.68342 12.2929 5.29289Z" fill="#595959"/>
+
+        hr.hr-full
+
+        header
+            .u-container
+                .u-bar
+                    .u-bar__left
+                        a(href="#")
+                            img(src="/static/images/logo.svg" alt="Refli")
+                    .u-bar__right
+                        ul
+                            li
+                                a(href="#") Playground
+                            li
+                                a(href="#") Documentation
+
+        hr.hr-full
+
+        .u-container
+            .with-sidebar
+                .main
+                    p Xxx.
+                .sidebar
+                    div(style='width: 8em;')
+                        p Xxx.
+            .u-grid
+                div(style='height: 1em; background-color: red;')
+                div(style='height: 1em; background-color: blue;')
+
+        hr.hr-full
+
+        .u-container.c-text.flow
+            h1 I am a heading
+            h2 I am a heading
+            h3 I am a heading
+            h4 I am a heading
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            p
+                small Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        hr.hr-full
+
+        .u-container.c-content.flow
+            h1 I am a heading
+            h2 I am a heading
+            h3 I am a heading
+            h4 I am a heading
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            p
+                small Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow
+                h1 Type scale D
+                p This type scale keeps the same proportion w.r.t. to the viewport width.
+            .u-step-d-5 I am a heading
+
+        hr.hr-full
+
+        .u-container
+            .switcher
+                div
+                    .c-text.flow
+                        h1 Type scale A
+                        p This is the <code>.c-text</code> type scale.
+                    .label-step.u-flow-c-0 xxrem/xxpx
+                    .u-step-a-5 Step 5
+                    .label-step xxrem/xxpx
+                    .u-step-a-4 Step 4
+                    .label-step xxrem/xxpx
+                    .u-step-a-3 Step 3
+                    .label-step xxrem/xxpx
+                    .u-step-a-2 Step 2
+                    .label-step xxrem/xxpx
+                    .u-step-a-1 Step 1
+                    .label-step xxrem/xxpx
+                    .u-step-a-0 Step 0
+                    .label-step xxrem/xxpx
+                    .u-step-a--1 Step -1
+                    .label-step xxrem/xxpx
+                    .u-step-a--2 Step -2
+
+                div
+                    .c-text.flow
+                        h1 Type scale B
+                        p This is the <code>.c-content</code> type scale.
+                    .label-step.u-flow-c-0 xxrem/xxpx
+                    .u-step-b-5 Step 5
+                    .label-step xxrem/xxpx
+                    .u-step-b-4 Step 4
+                    .label-step xxrem/xxpx
+                    .u-step-b-3 Step 3
+                    .label-step xxrem/xxpx
+                    .u-step-b-2 Step 2
+                    .label-step xxrem/xxpx
+                    .u-step-b-1 Step 1
+                    .label-step xxrem/xxpx
+                    .u-step-b-0 Step 0
+                    .label-step xxrem/xxpx
+                    .u-step-b--1 Step -1
+                    .label-step xxrem/xxpx
+                    .u-step-b--2 Step -2
+
+                div
+                    .c-text.flow
+                        h1 Type scale C
+                        p This is the default type scale.
+                    .label-step.u-flow-c-0 xxrem/xxpx
+                    .u-step-c-5 Step 5
+                    .label-step xxrem/xxpx
+                    h1 Step 4
+                    .label-step xxrem/xxpx
+                    h2 Step 3
+                    .label-step xxrem/xxpx
+                    h3 Step 2
+                    .label-step xxrem/xxpx
+                    h4 Step 1
+                    .label-step xxrem/xxpx
+                    p Step 0
+                    .label-step xxrem/xxpx
+                    .u-step-c--1 Step -1
+                    .label-step xxrem/xxpx
+                    .u-step-c--2 Step -2
+
+        hr.hr-full
+
+        .u-container
+            .switcher
+                div
+                    .c-text
+                        .u-step-c-3 Lorem ipsum dolor sit amet consectetur adipisicing elit sed do.
+                div
+                    .c-text
+                        p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 u-flow-c-4
+                p This demonstrates the u-flow-c-4 utility that should match a h1 heading in a flow or flow-all.
+            .switcher
+                .flow-all
+                    h1 Step C 4
+                .flow.u-flow-c-4
+                    h1 Step C 4
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Spacing
+                p TODO This needs some automated code generation (to generate the right values as above).
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Placeholders
+                p Bordered placeholders to visualize layouts.
+            style.
+              .b-120x60 {
+                width: 120px;
+                height: 60px;
+                border: 2px solid black;
+              }
+              .b-120x60:before {
+                content: '120x60';
+              }
+              .b-240x60 {
+                width: 240px;
+                height: 60px;
+                border: 2px solid black;
+              }
+              .b-240x60:before {
+                content: '240x60';
+              }
+              .b-l-s {
+                width: var(--space-l);
+                height: var(--space-s);
+                border: 2px solid black;
+              }
+              .b-l-s:before {
+                content: 'l-s';
+              }
+              .b-xl-xl {
+                width: var(--space-xl);
+                height: var(--space-xl);
+                border: 2px solid black;
+              }
+              .b-xl-xl:before {
+                content: 'xl-xl';
+              }
+            .b-120x60
+            .b-l-s
+            .b-xl-xl
+            .u-bar
+                .b-120x60
+                .b-240x60
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Grid
+                p The grid has 12 columns. The outer gaps are not part of the grid; they come from the surrounding <code>.u-container</code>.
+        .u-container.debug-gap-color.u-flow-c-0
+            .full-height.u-grid.debug-column-color
+                span Col. 1
+                span Col. 2
+                span Col. 3
+                span Col. 4
+                span Col. 5
+                span Col. 6
+                span Col. 7
+                span Col. 8
+                span Col. 9
+                span Col. 10
+                span Col. 11
+                span Col. 12
