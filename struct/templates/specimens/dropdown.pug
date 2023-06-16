@@ -1,0 +1,26 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Dropdown
+                p An implementation of a pure CSS, clickable dropdown. From <a href="https://stackoverflow.com/questions/44832572/pure-css-clickable-dropdown">Stack Overflow</a>.
+
+                p It works by creating a focusable div, with CSS rules to show a list of links when focused. There is anoter focusable element that can "steal" the focus, when a second click arises. Some limitations: Using tab to select it doesn't work (if we allow that with e.g. `tabindex=1`, then a second tab closes it without moving to the next focusable element (Documentations here). The menu doesn't close when hitting Escape. It's possible to slect part of the text (Playground here, maybe it is solvable by better dimensioning the link within the div). If the link goes within the page, the dropdown stays open.
+
+            hr
+
+            .u-bar__right
+                include ../includes/main-header--page-struct
+            hr
+
+        .u-container
+            .c-text.flow-all
+                p In action: <a href="refli-index-struct.html">Refli homepage</a>.
+                p In action: <a href="refli-index-struct-constant.html">Refli homepage (constant ratio)</a>.
