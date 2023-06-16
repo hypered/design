@@ -8,9 +8,12 @@ Yet another approach to a design system.
   class, ...
 
 We re-use the `gulpfile.js` from `../itcss/` to build the SCSS and Pug
-templates.
+templates. (So the structure of this directory is similar too.)
 
 ```
 $ ./build.sh
 $ ls dist/
 ```
+
+In addition of a main CSS file, we can use specific files in "Specimens" to
+demonstrate specific things (e.g. only the Reset CSS).

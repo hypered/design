@@ -15,7 +15,7 @@ function assets() {
 
 // Build the SCSS files to CSS
 function styles() {
-  return gulp.src('scss/main.scss')
+  return gulp.src('scss/**/*.scss')
     .pipe(sass({
       includePaths: ['scss/'],
       errLogToConsole: true,
