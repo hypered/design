@@ -65,6 +65,9 @@ everything =
     <> generateSteps "step-c" 10.0 stepsC
     <> "}\n\n"
     <> ":root {\n"
+    <> generateSteps "step-d" 10.0 stepsD
+    <> "}\n\n"
+    <> ":root {\n"
     <> properties 10.0
     <> "}\n\n"
     <> ":root {\n"
@@ -109,6 +112,11 @@ stepsB = makeSteps $ Parameters 320 1480 16 16
 -- Quite large font.
 stepsC :: Steps
 stepsC = makeSteps $ Parameters 320 1480 16 20
+
+-- Proportions remain the same (i.e. 10 * (1480 / 320) = 46.25).
+-- This is quite big on large viewports, and quite tiny on small viewports.
+stepsD :: Steps
+stepsD = makeSteps $ Parameters 320 1480 10 46.25
 
 makeSteps :: Parameters -> Steps
 makeSteps = makeSteps' minorThird perfectFour
