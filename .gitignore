@@ -5,6 +5,7 @@ itcss/dist
 node_modules
 out
 storybook-static
+struct/dist
 result
 _site
 .*.swp
