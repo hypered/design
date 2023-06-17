@@ -1,0 +1,28 @@
+
+// Show a label with break points in the upper right corner of the screen.
+
+$g-bp1: 400px;
+$g-bp2: 700px;
+$g-bp3: 900px;
+$g-bp4: 1200px;
+
+.mq {
+  position: fixed;
+  top: 0.2rem;
+  right: 2.4rem;
+}
+.mq:after {
+  content: ' default';
+}
+@each $bp in [$g-bp1, $g-bp2, $g-bp3, $g-bp4] {
+  @media (min-width: $bp) {
+    .mq:after {
+      content: ' #{$bp}+';
+    }
+  }
+}
+@media (min-width: 900px) {
+  .mq {
+    right: 3.2rem;
+  }
+}

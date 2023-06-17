@@ -1,0 +1,59 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/reset.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/debug.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 Media queries
+ 
+                p This design system uses <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">media queries</a>, to change the active CSS styles. As the reference link shows, there are a lot of properties that can be queried to test whether or not a rule should apply (for instance changing the text size).
+
+                p The main property we're interested in is the viewport width. By default, without explicit media query, we'll design for very small screens. As soon as the width of the viewport reaches some specified higher values, we'll adapt the CSS rules using the <code>min-width</code> media query. (This corresponds to a "mobile first" approach. An alternative would be to consider larges screens as default, and use <code>max-width</code> to progressively change the CSS rules as the screen size goes smaller.)
+
+                p Typically, a design will use "break points": specific thresholds below or above which the design should be adapted. I don't know yet how to properly decide what values we should use, and I'll simply use what Mono (a design company) choosed for the Smart cooperative.
+
+                p To work with media queries, we provide some helper CSS classes. They serve as both a way to learn about them, and to make it easier to "see" when their effects kick-in. The idea is to show, (fixed) at the top of the screen, a label with the active break point.
+
+                pre
+                  code.
+                    .mq {
+                      position: fixed;
+                      top: 0.2rem;
+                      right: 2.4rem;
+                    }
+                    .mq:after {
+                      content: ' default';
+                    }
+                p With the above code, any element with the class "mq" will appear at the top right corner of the screen, with the string " default" appending it to it. One way to use it is with this little snippet of HTML:
+                pre
+                  code
+                    = '<span class=".mq">MQ:</span>'
+                span.mq MQ:
+                p Then, for each break point we're interested in, we can add a media query to change the appended text. For instance if our first break point is at 400px, we can add:
+                pre
+                  code.
+                    @media (min-width: 400px) {
+                      .mq:after {
+                        content: ' 400px+';
+                      }
+                    }
+ 
+                hr
+ 
+                h2 Example
+ 
+                p This page contains the above snippet of HTML (and similar CSS classes to the one shown here), so you should see something like "MQ: 1200px+" at the top right corner of the screen.
+ 
+                p To see the label content change, you can change the size of your browser window, or use its "responsive design mode" (normally accessible using the ctrl-shit-m shortcut or from the developer tools, itself accessible using the ctrl-shit-i or F12 shortcuts).
+ 
+                p Finally, you can open this page in different devices (e.g. on a desktop computer and on a smartphone)
+ 
+                hr.u-spacer-bottom-m
+ 
+                p Related: <a href="dimensions.html">Dimensions</a>
