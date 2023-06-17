@@ -1,0 +1,21 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/reset.css")
+        style.
+          *, *:before, *:after {border-sizing: border-box;}
+          html {font-size: 62.5%;}
+          body {font-size: 1.6rem;}
+          * {outline: dashed blue;}
+          html {outline: dashed red;}
+          body {outline: dashed pink;}
+          div {outline: solid lightgrey; width: 60%; max-width: 64rem; min-width: 16rem;}
+          @media (max-width: 56rem) {
+            div {width: 90%;}
+          }
+    body
+        div
+            h1 Purus maecenas
+            p Risus viverra. Viverra turpis at viverra nisi, et ac est leo dui. Dui, senectus scelerisque vitae nunc non. Nibh viverra vel faucibus suspendisse blandit consequat. Nibh egestas eu.

@@ -1,0 +1,143 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/reset.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 Foundations
+
+                p Creating a design system can be a daunting task, especially if like me, you're not a designer or a frontend developer. Here I try to explain a possible approach (for the <i>implementation</i> part). I have a software development background and I like to write code in small pieces.
+
+                p I think the best approach is to first use a design software such as Figma then to implement the result using HTML and CSS. (I also recommand to defer adding JavaScript or similar as late as possible). In this page, we see how we can start playing around with HTML and CSS, and we see some CSS rules that will serve as a foundation to build upon: outlines (for debugging and exploring), media queries (using a `div` width as example, and reset (we include in that section box-sizing and redefining what a rem is).
+
+                h2 Frames
+
+                p First, here is how our work can be presented: in the very page you're reading, we embed <i>another</i> complete page. This is convenient to show what we're talking about. Below the embedded page, we also give a link that allows the page to be opened on its own.
+
+                style.
+                  .wrrrap {
+                    width: 964px;
+                    margin: 1.4em auto 0 0;
+                  }
+                  iframe {
+                    border: 2px solid #DDD;
+                  }
+                // width: dimensions we want within the iframe plus the border
+                // around the iframe.
+                .wrrrap
+                  iframe(width=964, height=604, src="/index.html")
+                a(href="/index.html") View example page
+
+                p Note: most links, when followed, replace the current page in the browser. If you want to keep the current page in its own tab, and open a link in a new tab, you can do so by holding the Control (<code>Ctrl</code>) key and left-clicking the link. (You can also right-click the link and select "Open in a new tab", but holding Control is slightly faster.)
+
+                p Note: notice that you can interact with the embedded page as usual, including following the links that appear within it.
+
+                h2 A blank page
+
+                p Let's start with a minimal blank HTML page. To avoid using too much vertical space, especially as there isn't much too see, we reduce the height of the embedded page:
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-blank.html")
+                a(href="frames/foundations-blank.html") View example page
+
+                p Note: you can also right-click the embedded page. In the appearing menu, there is "This frame". You can see you can open the content of the frame that way, but you can also view the source code of the page ("View frame source"). This should open a new tab with some source code similar to the following (maybe there additional white lines; this doens't matter):
+
+                pre
+                    code
+                      // TODO Embed this automatically ?
+                      // This requires npm install jstransformer-escape-html
+                      :escape-html
+                        <!DOCTYPE html>
+                        <html dir="ltr" lang="en">
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                        </head>
+                        <body>
+                        </body>
+                        </html>
+
+                h2 Default CSS
+
+                p Before we write some CSS, we want to add some content to the page.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-base-content.html")
+                a(href="frames/foundations-base-content.html") View example page
+
+                p We have added a title and a paragraph. While we don't have added CSS yet, they are displayed differently: the title uses a bigger font size than the paragraph. This is because the browser has its own default style sheet (which can be customized by user settings). We can also notice that the text is left aligned, and doesn't touch the border of the frame. (Again this depends on the default browser style, so you mileage may vary.)
+
+                p Another interesting thing to see is how the text of the paragraph and the title will adapt to the page size. Try opening that frame within its own tab, then resize your browser window. We can see that by default, the text will try to extend as far to the right as possible, until it reaches the browser edge. I.e. the <code>p</code> element (and the <code>div</code> around it) tries to fill the whole width of the page.
+
+                h2 Outlines
+
+                p Weirdly enough, the first bit of CSS that I'll show is something that should almost never be used, except for debugging (or exploring, like here): <code>outlines</code>.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-base-outline.html")
+                a(href="frames/foundations-base-outline.html") View example page
+
+                p The <code>outline</code> CSS property lets us see the border of each element of the web page. Here we are using dashed blue lines around all (the <code>*</code> wildcard) elements, except for the <code>html</code> and the <code>div</code> elements.
+
+                p In particular, we can see the dashed outlines of the <code>h1</code> and <code>p</code> elements superimposed on top of the <code>div</code> that encloses them. We can also see (part of) the <code>html</code> outline as a horizontal dashed red line below that <code>div</code>.
+
+                p Note: you can try adding <code>outline-offset: -2px;</code> to the CSS to make the outline appear 2px within the element. This is particular will better show the <code>html</code> element's outline.
+
+                p Note how the outlines of <code>h1</code> and <code>p</code> (in dashed blue) coincide with the outline of <code>div</code> (in solid light grey), but how they don't coincide with the outline of <code>html</code> (as we said earlier: the text doesn't touch the frame border).
+
+                p Note: the correct way to add a border to an element using CSS is to use the <code>border</code> property (or one of its variants). What makes <code>outline</code> interesting is that its own stroke width doesn't affect how the browser computes an element's width and height: i.e. adding or removing an outline will not shift a design around.
+
+                h2 Containers
+
+                p One of the first thing we want to manage when designin a web page is how text and other components are allowed to flow on the page and in particular how much horizontal space they can take. For instance, it is generally assumed that it is easier to follow paragraphs of text when their lines are about 70 or 80 characters wide. (TODO check.)
+
+                p Here we will instruct the bowser, using CSS, to reduce the width of the `div` element.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-base-container-1.html")
+                a(href="frames/foundations-base-container-1.html") View example page
+
+                p We have reduced the width of the `div` element in a rather crude way: not matter what, it is set to be 60% of the width of the frame. Again, try to open the page in its own tab, and resize your browser to see how the `div` width reacts.
+
+                p Note: we have added a specific color (pink) to the outline of the `body` element. Otherwise it would use the rule matching `*` and would be dashed blue. Previously, it was hidden by the `div`, but now we can see it as it uses the full width of the frame, while the `div` occupies less.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-base-container-2.html")
+                a(href="frames/foundations-base-container-2.html") View example page
+
+                p We are using two additional properties, `max-width` and `min-width`. They both further constraint the width of the `div` element if 60% of the page width becomes too big or too small. In some way, we're saying "from a design point of view, we want our content to fill 60% of the width of the screen, except when the user has a "very" big or a very "small" browser window".
+
+                p We will make our CSS rules affecting the width of the `div` a bit more complicated. This time, we'll change the 60% rule to 90%, but only when the frame is smaller than 35rem.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-base-container-3.html")
+                a(href="frames/foundations-base-container-3.html") View example page
+
+                p Again, be sure to play with the example page on its own tab. Its behavior is almost the same as before, except that as you make the browser window smaller, at some point, the `div` will suddenly grow to occupy 90% of the width. (Then as it gets even smaller, we'll reach again the `min-width` rule stating that it should be at least 10rem wide.)
+
+                p Note: in the example above, we wrote the CSS rules using a "desktop first" approach: by default, we assumed a desktop browser expanded to cover the whole screen and as we reduce its size, we introduced sort of an exception (using the `@media` "at-rule"). An alternative is to design for mobile devices (and thus small screens) first: write the default CSS rules assuming small screens, and use `@media` rules to carve exceptions for bigger screens. In that case, we would use the `min-width` media feature instead of `max-width` as we did.
+
+                h2 Reset (and a bit more)
+
+                p Recall how we said earlier that a browser has a set of default styles that it applies to web pages. There is a practice to "reset" those styles before "designing" new ones in place. This helps getting a precise control across browsers, which might use different defaults. Here is what this might look like:
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-reset.html")
+                a(href="frames/foundations-reset.html") View example page
+
+                p We have applied a popular CSS Reset, the venerable <a href="https://meyerweb.com/eric/tools/css/reset/">Eric A. Meyer's Reset CSS v2</a>, dating back to 2011. I don't know how much such an approach is still important nowadays, or how it differs from other resets, but I'll cargo cult and use it.
+
+                p We can observe how this affects our example page. The title and the paragraph text have the same size (instead of using a bigger font for the title), and margins disappear. Interestingly, we also see that the outlines of the title and the paragraph are now one against the other, but don't overlap as they do with the parent element (the <code>div</code>), which itself overlaps with its own parents (the <code>body</code> and the <code>html</code>).
+
+                p Note that we still have our own rules; the width of the `div` is still changing according to the browser width.
+
+                p Something else for which I don't have much opinion but I'll replicate, is to redefine the `rem` unit to be 10px, instead of the usual 16px. Because of that, we'll specify the font-size to be 62.5% (of 16px, i.e. 10px). 10px for a default font size is mall. So in `body`, we redefine the font-size to be 1.6rem, i.e. back at 16px. There is a <a href="https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/">blog post</a> explaining the approach.
+
+                p Note that we have adapted the min-width and max-width values, since they were expressed in rem.
+
+                p There is one final piece to how we "reset" how we want to work with CSS: the box-sizing, which we set to `border-box`. TODO This is not visible in the above example.
