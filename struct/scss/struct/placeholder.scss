@@ -1,0 +1,35 @@
+// Similar to spacers, but visible as yellow rectangles. (Spacers use margins
+// and padding and have no explicit height, while here a height is specified
+// instead so they can be used on their own.)
+
+$g-placeholder-color: #FFFF00;
+$g-placeholder-unit: 0.8rem !default; // Same as g-spacer-unit.
+
+.u-placeholder-xs,
+.u-placeholder-s,
+.u-placeholder,
+.u-placeholder-l,
+.u-placeholder-xl {
+  width: 100%;
+  background-color: $g-placeholder-color;
+}
+
+.u-placeholder-xs {
+  height: ($g-placeholder-unit / 2) !important;
+}
+
+.u-placeholder-s {
+  height: ($g-placeholder-unit) !important;
+}
+
+.u-placeholder {
+  height: ($g-placeholder-unit * 2) !important;
+}
+
+.u-placeholder-l {
+  height: ($g-placeholder-unit * 3) !important;
+}
+
+.u-placeholder-xl {
+  height: ($g-placeholder-unit * 4) !important;
+}

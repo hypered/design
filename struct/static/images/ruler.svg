@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2560 100" width="2560" height="100">
+  <defs>
+    <g id="lines">
+      <line x1="10" y1="0" x2="10" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="20" y1="0" x2="20" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="30" y1="0" x2="30" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="40" y1="0" x2="40" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="50" y1="0" x2="50" y2="10" stroke="#DDD" stroke-width="1" />
+      <line x1="60" y1="0" x2="60" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="70" y1="0" x2="70" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="80" y1="0" x2="80" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="90" y1="0" x2="90" y2="6" stroke="#DDD" stroke-width="1" />
+      <line x1="100" y1="0" x2="100" y2="10" stroke="black" stroke-width="1" />
+    </g>
+  </defs>
+
+  <g font-family="'DejaVu Sans Mono', monospace" font-size="12">
+    <use href="#lines" x="0" y="0"/><text x="102" y="17">100</text>
+    <use href="#lines" x="100" y="0"/><text x="202" y="17">200</text>
+    <use href="#lines" x="200" y="0"/><text x="302" y="17">300</text>
+    <use href="#lines" x="300" y="0"/><text x="402" y="17">400</text>
+    <use href="#lines" x="400" y="0"/><text x="502" y="17">500</text>
+    <use href="#lines" x="500" y="0"/><text x="602" y="17">600</text>
+    <use href="#lines" x="600" y="0"/><text x="702" y="17">700</text>
+    <use href="#lines" x="700" y="0"/><text x="802" y="17">800</text>
+    <use href="#lines" x="800" y="0"/><text x="902" y="17">900</text>
+    <use href="#lines" x="900" y="0"/><text x="1002" y="17">1000</text>
+
+    <use href="#lines" x="1000" y="0"/><text x="1102" y="17">1100</text>
+    <use href="#lines" x="1100" y="0"/><text x="1202" y="17">1200</text>
+    <use href="#lines" x="1200" y="0"/><text x="1302" y="17">1300</text>
+    <use href="#lines" x="1300" y="0"/><text x="1402" y="17">1400</text>
+    <use href="#lines" x="1400" y="0"/><text x="1502" y="17">1500</text>
+    <use href="#lines" x="1500" y="0"/><text x="1602" y="17">1600</text>
+    <use href="#lines" x="1600" y="0"/><text x="1702" y="17">1700</text>
+    <use href="#lines" x="1700" y="0"/><text x="1802" y="17">1800</text>
+    <use href="#lines" x="1800" y="0"/><text x="1902" y="17">1900</text>
+    <use href="#lines" x="1900" y="0"/><text x="2002" y="17">2000</text>
+
+    <use href="#lines" x="2000" y="0"/><text x="2102" y="17">2100</text>
+    <use href="#lines" x="2100" y="0"/><text x="2202" y="17">2200</text>
+    <use href="#lines" x="2200" y="0"/><text x="2302" y="17">2300</text>
+    <use href="#lines" x="2300" y="0"/><text x="2402" y="17">2400</text>
+    <use href="#lines" x="2400" y="0"/><text x="2502" y="17">2500</text>
+    <use href="#lines" x="2500" y="0"/><text x="2602" y="17">2600</text>
+  </g>
+  <line x1="0" y1="0" x2="0" y2="10" stroke="black" stroke-width="1" />
+  <line x1="0" y1="1" x2="2560" y2="1" stroke="black" stroke-width="2" />
+</svg>

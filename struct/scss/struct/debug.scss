@@ -26,3 +26,13 @@ $g-bp4: 1200px;
     right: 3.2rem;
   }
 }
+
+// Add a SVG background image representing a horizontal ruler.
+.bg-dimensions {
+  background: no-repeat url("/static/images/ruler.svg");
+}
+
+// Add a SVG background image representing gray diagonal bands.
+.bg-bands {
+  background: no-repeat url("/static/images/2560x1440-bands.svg");
+}

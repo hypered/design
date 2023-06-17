@@ -104,7 +104,8 @@ p small {font-size: var(--step-c--1); line-height: 1.5em;}
 .limit-p p {max-width: 42em;}
 .c-text a {color: blue; text-decoration: none;}
 .c-content a {color: blue; text-decoration: none;}
-code {background-color: #f2f2f2;}
+pre {font-size: 1.4rem; padding: 0.8rem 1.2rem; background-color: #f2f2f2;}
+code {background-color: #f2f2f2; font-family: 'DejaVu Sans Mono'; font-size: 95%;}
 hr {
   font-size: var(--step-c-4); /* like h1, for flow spacing */
   color: black;
@@ -193,6 +194,9 @@ hr {
 }
 
 .paragraph-70ch p {
+  max-width: 70ch;
+}
+.limit-70ch {
   max-width: 70ch;
 }
 

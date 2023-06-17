@@ -1,0 +1,57 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/reset.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/debug.css")
+        link(rel="stylesheet", href="/static/css/struct/placeholder.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 Dimensions
+
+                script.
+                  function displayViewportDimensions() {
+                    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+                    const height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+                    document.getElementById('dimensions').innerHTML = `${width}px × ${height}px`;
+                  }
+                  window.addEventListener('resize', displayViewportDimensions);
+                  window.addEventListener('DOMContentLoaded', displayViewportDimensions);
+                style.
+                  .viewport {
+                    position: fixed;
+                    top: 0.2rem;
+                    right: 14rem;
+                  }
+                span#dimensions.viewport
+                span.mq MQ:
+
+                p This page shows the current break point and the current viewport dimensions (in the upper right corner of the screen). It also has some content to better visualize how much space some things take.
+
+                p For instance, by comparing the rendering of this page on a smartphone and within a browser in "Responsive design mode", we noticed some differences. It turned out that the smartphone's browser was configured to scale text content at 110%.
+
+                p The following rule should go against the edge of the screen.
+
+        .u-placeholder-l.bg-dimensions
+ 
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                p The following rule should take only a portion of the page (the same has a typical blog post content).
+                .u-placeholder-l.bg-dimensions.limit-70ch
+ 
+                p We also show a code block with a monospace font.
+                pre.limit-70ch
+                  code.
+                            10        20        30        40        50
+                    1234567890
+                              1234567890
+                                        1234567890
+                                                  1234567890
+                                                            1234567890
+                hr.u-spacer-bottom-m
+ 
+                p Related: <a href="media-queries.html">Media queries</a>
