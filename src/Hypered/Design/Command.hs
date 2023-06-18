@@ -815,7 +815,7 @@ parserServe = do
   _serverPort <- abs <$> A.option
     A.auto
     (A.long "port" <> A.value 9000 <> A.metavar "PORT" <> A.help
-      "Port to run the HTTP server on."
+      "Port to run the HTTP server on (default: 9000)."
     )
   _serverStaticDir <- A.strOption
     (  A.long "static-dir"
@@ -823,7 +823,7 @@ parserServe = do
     <> A.metavar "DIR"
     <> A.help
          "A directory served as static assets, in particular HTML \
-            \documentation."
+            \documentation (default: ./_site)."
     )
   pure $ Serve $ ServerConf { .. }
 
