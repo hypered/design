@@ -51,6 +51,12 @@ $ gulp
 Note: instead of using `npm install` initially, it seems we could use
 https://www.npmjs.com/package/add-dependency.
 
+Building the static site is also possible as an Nix attribute:
+
+```
+$ nix-build -A site
+```
+
 # Dimensions
 
 In the Smart design system done by Mono, it seems the convention is to use 1rem
