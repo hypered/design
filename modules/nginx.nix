@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   site = (import ../.).site;
+  itcss = (import ../itcss {}).site;
   hs = (import ../.).hs;
   haddock = (import ../.).haddock;
   brochure = (import ../.).brochure;
@@ -18,6 +19,9 @@ in
           alias = site + "/";
         };
         "/echo".proxyPass = "http://127.0.0.1:8999";
+        "/examples/" = {
+          alias = itcss + "/examples/";
+        };
         "/hs/" = {
           alias = hs + "/hs/";
         };
@@ -29,6 +33,9 @@ in
         };
         "/static/" = {
           alias = static + "/";
+        };
+        "/static/css/itcss/" = {
+          alias = itcss + "/static/css/itcss/";
         };
       };
     };

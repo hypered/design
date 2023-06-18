@@ -32,14 +32,6 @@ exposed using GitHub Pages at `js.hypered.design`.
 - [Components (Storybook)](https://js.hypered.design/storybook/) - A
   Storybook-based page to explore all the components.
 
-There is an attempt at creating an implementation of the design system using
-the ITCSS approach. Only a single page exists for now. This is also manually
-created within the `docs/` directory.
-
-- [ITCSS example page](https://js.hypered.design/examples/static-binaries.html)
-  - This page should match an [existing
-    page](https://noteed.com/notes/static-binaries.html).
-
 The rest is built using Nix and served from a VM at this domain
 ([hypered.design](https://hypered.design)).
 
@@ -48,6 +40,13 @@ Examples generated with the Haskell code are also available:
 
 - [Haskell implementation](hs/) - Everything that exist in the original
   implementation also exist here.
+
+There is an attempt at creating an implementation of the design system using
+the ITCSS approach.
+
+- [ITCSS example page](https://hypered.design/examples/static-binaries.html)
+  - This page should match an [existing
+    page](https://noteed.com/notes/static-binaries.html).
 
 An example PDF brochure created with LaTeX:
 
