@@ -18,9 +18,9 @@ function assets() {
 const segments = process.cwd().split('/');
 const dir = segments[segments.length - 1];
 console.log(dir)
-var scss_sources = 'scss/main.scss'; // for itcss/
+var scss_sources = 'scss/**/main.scss'; // for itcss/
 if (dir == 'struct') {
-  scss_sources = 'scss/**/*.scss'      // for struct/
+  scss_sources = 'scss/**/*.scss'          // for struct/
 }
 
 // Build the SCSS files to CSS
