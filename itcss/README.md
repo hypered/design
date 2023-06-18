@@ -9,26 +9,47 @@ To have a quick feedback loop during development, a Gulp file is provided. It
 automatically rebuilds CSS from SCSS files and Pug templates upon changes, and
 serves the result.
 
+# Using `node_modules`
+
 A `package.json` file is provided to install the required dependencies. Once
 the dependencies are installed, it is possible to build or serve everything
-with the `build.sh` and `serve.sh` scripts.
+with `gulp`.
 
 ```
 $ nix-shell -p nodejs
 $ npm install
-$ ./build.sh
+$ ./node_modules/gulp/bin/gulp.js build
 ```
 
 The resulting files are in the `dist/` directory.
 
-For development, another script is available:
+To run the development server:
 
 ```
-$ ./serve.sh
+$ ./node_modules/gulp/bin/gulp.js
 ```
 
 You can then visit `http://127.0.0.1:3002` or
 `http://127.0.0.1:3002/examples/static-binaries.html`.
+
+# Using Nix
+
+Instead of running `npm install` and getting a `node_modules/` directory, we
+can have a Nix shell populated by node2nix.
+
+The script `node2nix.sh` is used to (re-)generate the necessary files in
+`nix/node/`.
+
+Building or serving are then just:
+
+```
+$ nix-shell
+$ gulp build
+$ gulp
+```
+
+Note: instead of using `npm install` initially, it seems we could use
+https://www.npmjs.com/package/add-dependency.
 
 # Dimensions
 

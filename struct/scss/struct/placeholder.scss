@@ -15,7 +15,7 @@ $g-placeholder-unit: 0.8rem !default; // Same as g-spacer-unit.
 }
 
 .u-placeholder-xs {
-  height: ($g-placeholder-unit / 2) !important;
+  height: calc($g-placeholder-unit / 2) !important;
 }
 
 .u-placeholder-s {

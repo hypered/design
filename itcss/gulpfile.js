@@ -13,9 +13,19 @@ function assets() {
     .pipe(gulp.dest('dist/static/'))
 }
 
+// Define the .css files we want. They're not the same in the
+// itcss/ directory or struct/ directory.
+const segments = process.cwd().split('/');
+const dir = segments[segments.length - 1];
+console.log(dir)
+var scss_sources = 'scss/main.scss'; // for itcss/
+if (dir == 'struct') {
+  scss_sources = 'scss/**/*.scss'      // for struct/
+}
+
 // Build the SCSS files to CSS
 function styles() {
-  return gulp.src('scss/**/*.scss')
+  return gulp.src(scss_sources)
     .pipe(sass({
       includePaths: ['scss/'],
       errLogToConsole: true,

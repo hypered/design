@@ -1,7 +1,7 @@
 Yet another approach to a design system.
 
-- The initial work was done with Tahyons and Next.js (and Storybook to show
-  expose the components and examples).
+- The initial work was done with Tachyons and Next.js (and Storybook to expose
+  the components and examples).
 - A second approach uses ITCSS and BEM, similarly to the Mono company (in the
   `../itcss/` directory).
 - Here we follow ideas from `utopia.fyi`, `every-layout.dev`, the `.flow`
@@ -11,7 +11,8 @@ We re-use the `gulpfile.js` from `../itcss/` to build the SCSS and Pug
 templates. (So the structure of this directory is similar too.)
 
 ```
-$ ./build.sh
+$ nix-shell ../itcss/shell.nix
+$ gulp build
 $ ls dist/
 ```
 
