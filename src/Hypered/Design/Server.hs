@@ -13,6 +13,7 @@ import           Control.Monad.Catch            ( MonadCatch
                                                 )
 import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
+import qualified Hypered.Design.Fluid          as Fluid
 import qualified Hypered.Html                  as Hy
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
@@ -228,9 +229,12 @@ showTypeScaleGenerate = pure $ do
     H.head $ do
       H.meta ! A.charset "utf-8"
       H.meta ! A.name "viewport" ! A.content "width=device-width, initial-scale=1"
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/reset.css"
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
       H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/scale.css"
+      -- Normally we link the stylesheet "/static/css/struct/scale.css"
+      -- but the point of this page is to generate (alternatives of) it.
+      H.style . H.text $ Fluid.everything
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
     H.body $ do
         classes "u-container" $ do
           classes "c-text flow-all" $ do

@@ -1,0 +1,378 @@
+body {font-family: 'IBM Plex Sans';}
+
+.u-container {
+  min-width: calc(24rem - 2 * var(--grid-gutter));
+  max-width: var(--grid-max-width);
+  padding-inline: var(--grid-gutter);
+  margin-inline: auto;
+}
+
+.u-container-vertical {
+  padding-block: var(--grid-gutter);
+}
+
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+/* */
+h1, h2, h3, h4 {font-weight: 600;}
+h1 {letter-spacing: -0.24rem;}
+h2 {letter-spacing: -0.16rem;}
+h3 {letter-spacing: -0.08rem;}
+h1 {font-size: var(--step-c-4);}
+h2 {font-size: var(--step-c-3);}
+h3 {font-size: var(--step-c-2);}
+h4 {font-size: var(--step-c-1);}
+p {font-size: var(--step-c-0); line-height: 1.5em;}
+p small {font-size: var(--step-c--1); line-height: 1.5em;}
+.limit-p p {max-width: 42em;}
+.c-text a {color: blue; text-decoration: none;}
+.c-content a {color: blue; text-decoration: none;}
+pre {font-size: 1.4rem; padding: 0.8rem 1.2rem; background-color: #f2f2f2;}
+code {background-color: #f2f2f2; font-family: 'DejaVu Sans Mono'; font-size: 95%;}
+hr {
+  font-size: var(--step-c-4); /* like h1, for flow spacing */
+  color: black;
+  background-color: black;
+  width: 12.8rem;
+  border: none;
+  height: .2rem;
+  margin: 3.4rem 0;
+}
+.hr-full {
+  width: 100%;
+}
+.c-text h1 {font-size: var(--step-a-4);}
+.c-text h2 {font-size: var(--step-a-3);}
+.c-text h3 {font-size: var(--step-a-2);}
+.c-text h4 {font-size: var(--step-a-1);}
+.c-text p {font-size: var(--step-a-0); line-height: 1.5em;}
+.c-text p small {font-size: var(--step-a--1); line-height: 1.5em;}
+.c-text h1 {letter-spacing: 0rem;}
+.c-text h2 {letter-spacing: 0rem;}
+.c-text h3 {letter-spacing: 0rem;}
+.c-content h1 {font-size: var(--step-b-4);}
+.c-content h2 {font-size: var(--step-b-3);}
+.c-content h3 {font-size: var(--step-b-2);}
+.c-content h4 {font-size: var(--step-b-1);}
+.c-content p {font-size: var(--step-b-0); line-height: 1.5em;}
+.c-content p small {font-size: var(--step-b--1); line-height: 1.5em;}
+.c-content ul li {line-height: 1.5em;}
+.u-step-a-5, .u-step-a-4, .u-step-a-3, .u-step-a-2, .u-step-a-1 {font-weight: 600;}
+.u-step-a-5 {font-size: var(--step-a-5);}
+.u-step-a-4 {font-size: var(--step-a-4);}
+.u-step-a-3 {font-size: var(--step-a-3);}
+.u-step-a-2 {font-size: var(--step-a-2);}
+.u-step-a-1 {font-size: var(--step-a-1);}
+.u-step-a-0 {font-size: var(--step-a-0);}
+.u-step-a--1 {font-size: var(--step-a--1);}
+.u-step-a--2 {font-size: var(--step-a--2);}
+.u-step-b-5, .u-step-b-4, .u-step-b-3, .u-step-b-2, .u-step-b-1 {font-weight: 600;}
+.u-step-b-5 {font-size: var(--step-b-5);}
+.u-step-b-4 {font-size: var(--step-b-4);}
+.u-step-b-3 {font-size: var(--step-b-3);}
+.u-step-b-2 {font-size: var(--step-b-2);}
+.u-step-b-1 {font-size: var(--step-b-1);}
+.u-step-b-0 {font-size: var(--step-b-0);}
+.u-step-b--1 {font-size: var(--step-b--1);}
+.u-step-b--2 {font-size: var(--step-b--2);}
+.u-step-c-5, .u-step-c-4, .u-step-c-3, .u-step-c-2, .u-step-c-1 {font-weight: 600;}
+.u-step-c-5 {font-size: var(--step-c-5);}
+.u-step-c-4 {font-size: var(--step-c-4);}
+.u-step-c-3 {font-size: var(--step-c-3);}
+.u-step-c-2 {font-size: var(--step-c-2);}
+.u-step-c-1 {font-size: var(--step-c-1);}
+.u-step-c-0 {font-size: var(--step-c-0);}
+.u-step-c--1 {font-size: var(--step-c--1);}
+.u-step-c--2 {font-size: var(--step-c--2);}
+.u-step-d-5 {font-size: var(--step-d-5);}
+.u-step-d-4 {font-size: var(--step-d-4);}
+.u-step-d-3 {font-size: var(--step-d-3);}
+.u-step-d-2 {font-size: var(--step-d-2);}
+.u-step-d-1 {font-size: var(--step-d-1);}
+.u-step-d-0 {font-size: var(--step-d-0);}
+.label-step {font-size: 1.4rem; color: grey;}
+.debug-gap-color {background: #eed9eb;}
+.debug-column-color > span {font-size: 1.4rem; font-family: monospace; background: white;}
+.full-height {
+  height: 100vh;
+}
+.flow {
+  --flow-space: 1.4em;
+}
+.flow > * + * {
+  margin-top: var(--flow-space);
+}
+.flow-all > * {
+  --flow-space: 1.4em;
+  margin-top: var(--flow-space);
+}
+// Similar to the margin added by `flow` for a h1 heading at scale C.
+// `flow` sets the margin to be 1.4em, while here we're not using ems,
+// but it seems to work.
+.u-flow-c-4 {
+  margin-top: calc(var(--step-c-4) * 1.4);
+}
+.u-flow-c-0 {
+  margin-top: calc(var(--step-c-0) * 1.4);
+}
+
+.paragraph-70ch p {
+  max-width: 70ch;
+}
+.limit-70ch {
+  max-width: 70ch;
+}
+
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+
+.with-sidebar .sidebar {
+  flex-grow: 1;
+}
+
+.with-sidebar .main {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+.switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.switcher > * {
+  --measure: 80ch;
+  flex-basis: calc((var(--measure) - 100%) * 999);
+  flex-grow: 1;
+}
+
+.switch-at-60rem > * {
+  --measure: 60rem;
+  flex-basis: calc((var(--measure) - 100%) * 999);
+}
+
+
+/* Top-level wrapper to push the footer at the bottom of the viewport.
+   This is useful when there is not enough content to push the footer
+   down the page.
+   This should be used on the main div, or directly on the body (and
+   should directly enclose the footer).
+
+   This could be extended to vertically center some main content:
+   https://github.com/aprietof/every-layout/blob/master/layouts.css#L156-L185
+*/
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.cover > footer {
+  margin-top: auto;
+}
+
+
+/* Similar to Panel in Mono's work ? */
+.box {
+  padding: var(--space-s);
+  border: 2px solid black;
+}
+// Tachyons would call this mw8 or something.
+// Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
+// instead of some specific value (like o-containers).
+.max-64rem {
+  max-width: 64rem;
+}
+
+
+
+.u-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.u-bar__left {
+}
+.u-bar__right {
+  ul li {
+    display: inline;
+  }
+  ul > * + * {
+    margin-left: var(--space-s);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Menu items (dropdowns and links)
+   -------------------------------------------------------------------------- */
+
+/* The menu-item container div. This can contain a dropdown button,
+   or a simple link.*/
+.menu-item {
+  display: inline-block;
+  position: relative;
+}
+
+/* Style similarly either a dropdown button or a simple link.
+   The dropdown case accomodate more left padding for a small down
+   arrow. */
+.menu-dropdown {
+  padding: 12px var(--space-xs) 12px calc(var(--space-xs) + 12px);
+  color: black;
+  cursor: pointer;
+}
+.menu-link {
+  padding: 12px var(--space-xs);
+  color: black;
+  cursor: pointer;
+}
+
+/* Add a small down arrow to the dropdown button. */
+.menu-dropdown:before {
+  pointer-events: none;
+  content: ' ';
+  position: absolute;
+  left: 1.4rem;
+  top: 0.7rem;
+  width: 0;
+  height: 0;
+  border-width: 1rem;
+  border: 0.5rem solid black;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+/* Style the dropdown content. */
+.menu-item .menu-dropdown-content {
+  position: absolute;
+  top: 0;
+  background-color: white;
+  min-width: 20ch;
+  border: 2px solid #dddddd;
+  z-index: 100000;
+  visibility: hidden;
+  opacity: 0;
+}
+.menu-item a {
+  color: black;
+  text-decoration: none;
+}
+.menu-dropdown-content a {
+  padding: 12px 16px;
+  display: block;
+}
+.menu-dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+
+/* Show the dropdown content when focused. */
+.menu-item:focus .menu-dropdown-content {
+  transform: translateY(40px);
+  visibility: visible;
+  opacity: 1;
+}
+.menu-link:hover, .menu-dropdown:hover, .menu-item:focus .menu-dropdown {
+  background-color: #f9f9f9;
+}
+
+/* Mask to close the dropdown by stealing the focus when clicked. */
+.menu-item .menu-mask {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+}
+.menu-item:focus .menu-mask {
+  display: inline-block;
+  margin-top: -16px;
+  height: 50px;
+  background-color: red;
+  opacity: var(--menu-mask-opacity, 0);
+}
+
+/* Show the menu mask (to make sure it has the same size as the dropdown
+   button. (Add this to .menu-mask.) */
+.menu-mask--debug {
+  --menu-mask-opacity: 0.8;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.c-button {
+  appearance: none;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+// Button label
+.c-button span {
+  white-space: nowrap;
+}
+
+// Button icon
+.c-button svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+// Primary button variant
+.c-button--primary {
+  background: #000;
+  color: #fff;
+
+  svg * {
+    fill: currentColor;
+  }
+
+  &:hover {
+    background: #aaa;
+    border-color: #aaa;
+  }
+
+  &:active {
+    background: #999;
+    border-color: #999;
+  }
+}
+
+// Input field
+.c-input {
+  appearance: none;
+  height: 3.6rem;
+  width: calc(100% - 2px);
+  padding: 0.8rem;
+  background: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  font-size: inherit;
+  &:focus {
+    outline: 0;
+    border-color: blue;
+    box-shadow: inset 0 0 0 0.1rem blue;
+  }
+}
