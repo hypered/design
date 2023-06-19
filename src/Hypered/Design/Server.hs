@@ -70,7 +70,7 @@ type App =    "" :> Raw
               :> ReqBody '[FormUrlEncoded] Login
               :> Post '[HTML] EchoPage
 
-         :<|> "fluid" :> "type" :> Get '[HTML] Html
+         :<|> "fluid" :> "type" :> "a" :> Get '[HTML] Html
 
               -- Call here the page you want to work on.
          :<|> "edit" :> Get '[HTML] Html
@@ -90,7 +90,7 @@ serverT root =
   showHomePage root
     :<|> showEchoIndex
     :<|> echoLogin
-    :<|> showTypeScaleGenerate
+    :<|> showTypeScaleA
     :<|> edit -- Call here the page you want to work on.
     :<|> serveDocumentation root
 
@@ -222,38 +222,49 @@ edit :: ServerC m => m Html
 edit = pure $ Hy.document "Refli" Hy.homePageRefli
 
 --------------------------------------------------------------------------------
-showTypeScaleGenerate :: ServerC m => m Html
-showTypeScaleGenerate = pure $ do
+showTypeScaleA :: ServerC m => m Html
+showTypeScaleA = pure $ do
   H.docType
   H.html ! A.dir "ltr" ! A.lang "en" $ do
-    H.head $ do
-      H.meta ! A.charset "utf-8"
-      H.meta ! A.name "viewport" ! A.content "width=device-width, initial-scale=1"
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
-      -- Normally we link the stylesheet "/static/css/struct/scale.css"
-      -- but the point of this page is to generate (alternatives of) it.
-      H.style . H.text $ Fluid.everything
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
+    head'
     H.body $ do
         classes "u-container" $ do
           classes "c-text flow-all" $ do
-            H.h1 "Type scale"
+            H.h1 "Type scale A"
             H.p $ do
               "This page shows the type scale, from "
               H.code "h1"
               " to "
               H.code "p"
-              ", for the parameters XXX."
+              ", for the "
+              H.code ".c-text"
+              " (application) context."
 
           classes "c-text flow-all" $ do
-            H.h1 "I am a heading"
-            H.h2 "I am a heading"
-            H.h3 "I am a heading"
-            H.h4 "I am a heading"
-            H.p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            H.h1 $ H.text heading
+            H.h2 $ H.text heading
+            H.h3 $ H.text heading
+            H.h4 $ H.text heading
+            H.p $ H.text lorem
             H.p $
-              H.small "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              H.small $ H.text lorem
+
+head' :: Html
+head' = H.head $ do
+  H.meta ! A.charset "utf-8"
+  H.meta ! A.name "viewport" ! A.content "width=device-width, initial-scale=1"
+  H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
+  H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
+  -- Normally we link the stylesheet "/static/css/struct/scale.css"
+  -- but the point of this page is to generate (alternatives of) it.
+  H.style . H.text $ Fluid.everything
+  H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
+
+heading :: Text
+heading = "I am a heading"
+
+lorem :: Text
+lorem = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 
 classes :: Text -> Html -> Html
 classes xs = H.div ! A.class_ xs'
