@@ -24,7 +24,7 @@ module Hypered.Design.Fluid
   ( generate
   , settings
   , properties
-  , stepsC
+  , scaleC
   , space_3xs
   , space_2xs
   , space_xs
@@ -57,16 +57,16 @@ import Text.Printf (printf)
 generate :: Settings -> Text
 generate Settings {..} =
   ":root {\n"
-    <> generateSteps "step-a" 10.0 sStepsA
+    <> generateSteps "step-a" 10.0 (makeSteps sScaleA)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-b" 10.0 sStepsB
+    <> generateSteps "step-b" 10.0 (makeSteps sScaleB)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-c" 10.0 sStepsC
+    <> generateSteps "step-c" 10.0 (makeSteps sScaleC)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-d" 10.0 sStepsD
+    <> generateSteps "step-d" 10.0 (makeSteps sScaleD)
     <> "}\n\n"
     <> ":root {\n"
     <> properties 10.0
@@ -81,10 +81,10 @@ generate Settings {..} =
 -- The settings as used in Struct.
 settings :: Settings
 settings = Settings
-  { sStepsA = stepsA
-  , sStepsB = stepsB
-  , sStepsC = stepsC
-  , sStepsD = stepsD
+  { sScaleA = scaleA
+  , sScaleB = scaleB
+  , sScaleC = scaleC
+  , sScaleD = scaleD
   }
 
 properties :: Double -> Text
@@ -112,27 +112,25 @@ properties' remInPx = generateVWBasedValues remInPx
 -- Type scale
 
 -- Smaller headings for the application context, similar to the existing design.
-stepsA :: Steps
-stepsA = makeSteps' majorSecond majorSecond $ Parameters 320 1480 16 16
+scaleA :: Scale
+scaleA = Scale majorSecond majorSecond $ Parameters 320 1480 16 16
 
 -- Normal font for the content context, similar to the existing design.
-stepsB :: Steps
-stepsB = makeSteps $ Parameters 320 1480 16 16
+scaleB :: Scale
+scaleB = Scale minorThird perfectFour $ Parameters 320 1480 16 16
 
 -- Quite large font.
-stepsC :: Steps
-stepsC = makeSteps $ Parameters 320 1480 16 20
+scaleC :: Scale
+scaleC = Scale minorThird perfectFour $ Parameters 320 1480 16 20
 
 -- Proportions remain the same (i.e. 10 * (1480 / 320) = 46.25).
 -- This is quite big on large viewports, and quite tiny on small viewports.
-stepsD :: Steps
-stepsD = makeSteps $ Parameters 320 1480 10 46.25
+scaleD :: Scale
+scaleD = Scale minorThird perfectFour $ Parameters 320 1480 10 46.25
 
-makeSteps :: Parameters -> Steps
-makeSteps = makeSteps' minorThird perfectFour
-
-makeSteps' :: Double -> Double -> Parameters -> Steps
-makeSteps' scaleMin scaleMax params = Steps {..}
+makeSteps :: Scale -> Steps
+makeSteps Scale {msScaleMin=scaleMin, msScaleMax=scaleMax, msParameters=params} =
+  Steps {..}
  where
   step5 = addStep scaleMin scaleMax step4
   step4 = addStep scaleMin scaleMax step3
@@ -173,7 +171,7 @@ space_3xs, space_2xs, space_xs, space_s, space_m, space_l, space_xl, space_2xl, 
 space_3xs = mulStep 0.25 space_s
 space_2xs = mulStep 0.5 space_s
 space_xs = mulStep 0.75 space_s
-space_s = step0 stepsC
+space_s = step0 $ makeSteps scaleC
 space_m = mulStep 1.5 space_s
 space_l = mulStep 2.0 space_s
 space_xl = mulStep 3.0 space_s
@@ -245,10 +243,17 @@ space_eccentric_small = space_eccentric_large { minWidth = 560 {- medium -} }
 
 --------------------------------------------------------------------------------
 data Settings = Settings
-  { sStepsA :: Steps
-  , sStepsB :: Steps
-  , sStepsC :: Steps
-  , sStepsD :: Steps
+  { sScaleA :: Scale
+  , sScaleB :: Scale
+  , sScaleC :: Scale
+  , sScaleD :: Scale
+  }
+  deriving Show
+
+data Scale = Scale
+  { msScaleMin :: Double
+  , msScaleMax :: Double
+  , msParameters :: Parameters
   }
   deriving Show
 
