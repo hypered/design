@@ -27,6 +27,7 @@ import qualified System.Systemd.Daemon         as SD
 import           Text.Blaze.Html5               ( Html, (!) )
 import qualified Text.Blaze.Html5              as H
 import qualified Text.Blaze.Html5.Attributes   as A
+import           Text.Pretty.Simple             ( pShowNoColor )
 import           WaiAppStatic.Storage.Filesystem
                                                 ( defaultWebAppSettings )
 import           WaiAppStatic.Storage.Filesystem.Extended
@@ -71,6 +72,7 @@ type App =    "" :> Raw
               :> Post '[HTML] EchoPage
 
          :<|> "fluid" :> "type" :> "a" :> Get '[HTML] Html
+         :<|> "settings" :> Get '[HTML] Html
 
               -- Call here the page you want to work on.
          :<|> "edit" :> Get '[HTML] Html
@@ -91,6 +93,7 @@ serverT root =
     :<|> showEchoIndex
     :<|> echoLogin
     :<|> showTypeScaleA
+    :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
     :<|> serveDocumentation root
 
@@ -270,3 +273,17 @@ classes :: Text -> Html -> Html
 classes xs = H.div ! A.class_ xs'
  where
   xs' = H.toValue xs
+
+--------------------------------------------------------------------------------
+showSettings :: ServerC m => m Html
+showSettings = pure $ do
+  H.docType
+  H.html ! A.dir "ltr" ! A.lang "en" $ do
+    head'
+    H.body $ do
+        classes "u-container" $ do
+          classes "c-text flow-all" $ do
+            H.h1 "Settings"
+            H.p $ do
+              "This page shows the current settings."
+            H.pre . H.code . H.lazyText . pShowNoColor $ Fluid.settings

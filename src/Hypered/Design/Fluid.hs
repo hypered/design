@@ -22,6 +22,7 @@
 -- 40px.
 module Hypered.Design.Fluid
   ( everything
+  , settings
   , properties
   , stepsC
   , space_3xs
@@ -76,6 +77,13 @@ everything =
         ]
     <> "}\n\n"
     <> grid
+
+settings :: Settings
+settings = Settings
+  { sStepsA = stepsA
+  , sStepsB = stepsB
+  , sStepsC = stepsC
+  }
 
 properties :: Double -> Text
 properties remInPx = generateVWBasedValues remInPx
@@ -234,6 +242,13 @@ space_eccentric_medium = space_eccentric_large { minWidth = 680 {- medium -} }
 space_eccentric_small = space_eccentric_large { minWidth = 560 {- medium -} }
 
 --------------------------------------------------------------------------------
+data Settings = Settings
+  { sStepsA :: Steps
+  , sStepsB :: Steps
+  , sStepsC :: Steps
+  }
+  deriving Show
+
 -- | Different font sizes corresponding to h5 to two levels below p.
 data Steps = Steps
   { step5 :: Parameters
@@ -245,6 +260,7 @@ data Steps = Steps
   , stepMinus1 :: Parameters
   , stepMinus2 :: Parameters
   }
+  deriving Show
 
 generateSteps :: Text -> Double -> Steps -> Text
 generateSteps name remInPx Steps {..} = generateVWBasedValues remInPx
