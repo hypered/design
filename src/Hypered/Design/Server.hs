@@ -226,31 +226,36 @@ edit = pure $ Hy.document "Refli" Hy.homePageRefli
 
 --------------------------------------------------------------------------------
 showTypeScaleA :: ServerC m => m Html
-showTypeScaleA = pure $ do
+showTypeScaleA = pure $
+  document $
+    classes "u-container" $ do
+      classes "c-text flow-all" $ do
+        H.h1 "Type scale A"
+        H.p $ do
+          "This page shows the type scale, from "
+          H.code "h1"
+          " to "
+          H.code "p"
+          ", for the "
+          H.code ".c-text"
+          " (application) context."
+
+      classes "c-text flow-all" $ do
+        H.h1 $ H.text heading
+        H.h2 $ H.text heading
+        H.h3 $ H.text heading
+        H.h4 $ H.text heading
+        H.p $ H.text lorem
+        H.p $
+          H.small $ H.text lorem
+
+document :: Html -> Html
+document content = do
   H.docType
   H.html ! A.dir "ltr" ! A.lang "en" $ do
     head'
-    H.body $ do
-        classes "u-container" $ do
-          classes "c-text flow-all" $ do
-            H.h1 "Type scale A"
-            H.p $ do
-              "This page shows the type scale, from "
-              H.code "h1"
-              " to "
-              H.code "p"
-              ", for the "
-              H.code ".c-text"
-              " (application) context."
-
-          classes "c-text flow-all" $ do
-            H.h1 $ H.text heading
-            H.h2 $ H.text heading
-            H.h3 $ H.text heading
-            H.h4 $ H.text heading
-            H.p $ H.text lorem
-            H.p $
-              H.small $ H.text lorem
+    H.body
+      content
 
 head' :: Html
 head' = H.head $ do
@@ -260,7 +265,7 @@ head' = H.head $ do
   H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
   -- Normally we link the stylesheet "/static/css/struct/scale.css"
   -- but the point of this page is to generate (alternatives of) it.
-  H.style . H.text $ Fluid.everything
+  H.style . H.text $ Fluid.generate Fluid.settings
   H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
 
 heading :: Text
@@ -276,14 +281,11 @@ classes xs = H.div ! A.class_ xs'
 
 --------------------------------------------------------------------------------
 showSettings :: ServerC m => m Html
-showSettings = pure $ do
-  H.docType
-  H.html ! A.dir "ltr" ! A.lang "en" $ do
-    head'
-    H.body $ do
-        classes "u-container" $ do
-          classes "c-text flow-all" $ do
-            H.h1 "Settings"
-            H.p $ do
-              "This page shows the current settings."
-            H.pre . H.code . H.lazyText . pShowNoColor $ Fluid.settings
+showSettings = pure $
+  document $
+    classes "u-container" $ do
+      classes "c-text flow-all" $ do
+        H.h1 "Settings"
+        H.p $ do
+          "This page shows the current settings."
+        H.pre . H.code . H.lazyText . pShowNoColor $ Fluid.settings

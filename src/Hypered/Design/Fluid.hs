@@ -21,7 +21,7 @@
 -- 12 columns). With the above numbers, their width starts at 24px and end at
 -- 40px.
 module Hypered.Design.Fluid
-  ( everything
+  ( generate
   , settings
   , properties
   , stepsC
@@ -54,19 +54,19 @@ import Protolude
 import Text.Printf (printf)
 
 --------------------------------------------------------------------------------
-everything :: Text
-everything =
+generate :: Settings -> Text
+generate Settings {..} =
   ":root {\n"
-    <> generateSteps "step-a" 10.0 stepsA
+    <> generateSteps "step-a" 10.0 sStepsA
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-b" 10.0 stepsB
+    <> generateSteps "step-b" 10.0 sStepsB
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-c" 10.0 stepsC
+    <> generateSteps "step-c" 10.0 sStepsC
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-d" 10.0 stepsD
+    <> generateSteps "step-d" 10.0 sStepsD
     <> "}\n\n"
     <> ":root {\n"
     <> properties 10.0
@@ -78,11 +78,13 @@ everything =
     <> "}\n\n"
     <> grid
 
+-- The settings as used in Struct.
 settings :: Settings
 settings = Settings
   { sStepsA = stepsA
   , sStepsB = stepsB
   , sStepsC = stepsC
+  , sStepsD = stepsD
   }
 
 properties :: Double -> Text
@@ -246,6 +248,7 @@ data Settings = Settings
   { sStepsA :: Steps
   , sStepsB :: Steps
   , sStepsC :: Steps
+  , sStepsD :: Steps
   }
   deriving Show
 
