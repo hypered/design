@@ -9,6 +9,7 @@ let
   # TODO We need to update our change-haddock.sh script to use
   # this more recent derivation.
   haddock = (import ../.).haddock;
+  struct = (import ../itcss {}).struct;
 
 in rec
 {
@@ -76,7 +77,9 @@ in rec
   html.all-with-static = pkgs.runCommand "all-with-static" {} ''
     mkdir $out
     cp -r ${html.all}/* $out/
-    ln -s ${static} $out/static
+    cp -r --no-preserve=mode ${static} $out/static
+    cp -r ${struct}/static/css/struct $out/static/css/struct
+    cp -r ${struct}/static/fonts/* $out/static/fonts/
   '';
 
   static = pkgs.runCommand "static" {} ''

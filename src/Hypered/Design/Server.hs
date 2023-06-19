@@ -23,8 +23,9 @@ import           Servant.HTML.Blaze             ( HTML )
 import qualified Servant.Server                as Server
 import           System.FilePath                ( (</>) )
 import qualified System.Systemd.Daemon         as SD
-import           Text.Blaze.Html5               ( Html )
+import           Text.Blaze.Html5               ( Html, (!) )
 import qualified Text.Blaze.Html5              as H
+import qualified Text.Blaze.Html5.Attributes   as A
 import           WaiAppStatic.Storage.Filesystem
                                                 ( defaultWebAppSettings )
 import           WaiAppStatic.Storage.Filesystem.Extended
@@ -68,6 +69,8 @@ type App =    "" :> Raw
               :> ReqBody '[FormUrlEncoded] Login
               :> Post '[HTML] EchoPage
 
+         :<|> "fluid" :> "type" :> Get '[HTML] Html
+
               -- Call here the page you want to work on.
          :<|> "edit" :> Get '[HTML] Html
 
@@ -86,6 +89,7 @@ serverT root =
   showHomePage root
     :<|> showEchoIndex
     :<|> echoLogin
+    :<|> showTypeScaleGenerate
     :<|> edit -- Call here the page you want to work on.
     :<|> serveDocumentation root
 
@@ -215,3 +219,39 @@ echoLogin = pure . EchoPage . show
 
 edit :: ServerC m => m Html
 edit = pure $ Hy.document "Refli" Hy.homePageRefli
+
+--------------------------------------------------------------------------------
+showTypeScaleGenerate :: ServerC m => m Html
+showTypeScaleGenerate = pure $ do
+  H.docType
+  H.html ! A.dir "ltr" ! A.lang "en" $ do
+    H.head $ do
+      H.meta ! A.charset "utf-8"
+      H.meta ! A.name "viewport" ! A.content "width=device-width, initial-scale=1"
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/reset.css"
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/scale.css"
+    H.body $ do
+        classes "u-container" $ do
+          classes "c-text flow-all" $ do
+            H.h1 "Type scale"
+            H.p $ do
+              "This page shows the type scale, from "
+              H.code "h1"
+              " to "
+              H.code "p"
+              ", for the parameters XXX."
+
+          classes "c-text flow-all" $ do
+            H.h1 "I am a heading"
+            H.h2 "I am a heading"
+            H.h3 "I am a heading"
+            H.h4 "I am a heading"
+            H.p "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            H.p $
+              H.small "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+classes :: Text -> Html -> Html
+classes xs = H.div ! A.class_ xs'
+ where
+  xs' = H.toValue xs
