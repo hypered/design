@@ -72,6 +72,7 @@ type App =    "" :> Raw
               :> Post '[HTML] EchoPage
 
          :<|> "fluid" :> "type" :> "a" :> Get '[HTML] Html
+         :<|> "fluid" :> "type" :> "a" :> "measures" :> Get '[HTML] Html
          :<|> "settings" :> Get '[HTML] Html
 
               -- Call here the page you want to work on.
@@ -93,6 +94,7 @@ serverT root =
     :<|> showEchoIndex
     :<|> echoLogin
     :<|> showTypeScaleA
+    :<|> showTypeScaleAMeasures Fluid.settings
     :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
     :<|> serveDocumentation root
@@ -248,6 +250,35 @@ showTypeScaleA = pure $
         H.p $ H.text lorem
         H.p $
           H.small $ H.text lorem
+
+showTypeScaleAMeasures :: ServerC m => Fluid.Settings -> m Html
+showTypeScaleAMeasures Fluid.Settings {..} = pure $
+  document $
+    classes "u-container" $ do
+      H.div $ do
+        classes "c-text flow-all" $ do
+          H.h1 "Type scale A"
+          H.p $ do
+            "This is the "
+            H.code ".c-text"
+            " type scale."
+        let stepsA = Fluid.makeSteps sScaleA
+        classes "label-step u-flow-c-0" "xxrem/xxpx"
+        classes "u-step-a-5" "Step 5"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a-4" "Step 4"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a-3" "Step 3"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a-2" "Step 2"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a-1" "Step 1"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a-0" "Step 0"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a--1" "Step -1"
+        classes "label-step" "xxrem/xxpx"
+        classes "u-step-a--2" "Step -2"
 
 document :: Html -> Html
 document content = do

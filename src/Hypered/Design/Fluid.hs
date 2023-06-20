@@ -23,6 +23,9 @@
 module Hypered.Design.Fluid
   ( generate
   , settings
+  , Settings(..)
+  , Steps(..)
+  , makeSteps
   , properties
   , scaleC
   , space_3xs
