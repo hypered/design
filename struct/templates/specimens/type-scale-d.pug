@@ -1,0 +1,26 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Type scale D
+                p This type scale keeps the same proportion w.r.t. to the viewport width.
+
+            script.
+              function displayFontSize() {
+                const el = document.getElementById('heading');
+                const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                document.getElementById('scale').innerHTML = `${style}`;
+              }
+              window.addEventListener('resize', displayFontSize);
+              window.addEventListener('DOMContentLoaded', displayFontSize);
+
+            .label-step.u-flow-c-0(id='scale') xxpx
+            .u-step-d-5(id='heading') I am a heading

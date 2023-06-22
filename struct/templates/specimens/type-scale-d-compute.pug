@@ -1,0 +1,103 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Type scale
+                p This page allows to change the parameters of the type scale. Initial values are the type scale D.
+
+            style.
+              :root {
+                /* We use similar notation to utopia.fyi but using 1rem=10px. */
+
+                --f-min-w: 320.0;
+                --f-max-w: 1480.0;
+
+                --f-0-min: 10;
+                --f-0-max: 46.25;
+
+                --factor-min: 1.2; /* Minor third */
+                --factor-max: 1.333; /* Perfect four */
+                /* TODO Those should be the same for the type scale D.
+                   The u-container padding should
+                   be substracted from --f-w and 100vw. */
+
+                --to-rem: 0.1;
+
+                --f--min-w: -1 * var(--f-min-w);
+                --f-w: var(--f-max-w) - var(--f-min-w);
+
+                --f-1-min: var(--f-0-min) * var(--factor-min);
+                --f-2-min: var(--f-1-min) * var(--factor-min);
+                --f-3-min: var(--f-2-min) * var(--factor-min);
+                --f-4-min: var(--f-3-min) * var(--factor-min);
+                --f-5-min: var(--f-4-min) * var(--factor-min);
+
+                --f-1-max: var(--f-0-max) * var(--factor-max);
+                --f-2-max: var(--f-1-max) * var(--factor-max);
+                --f-3-max: var(--f-2-max) * var(--factor-max);
+                --f-4-max: var(--f-3-max) * var(--factor-max);
+                --f-5-max: var(--f-4-max) * var(--factor-max);
+
+                --f-5-slope: calc(
+                  (var(--f-5-max) - var(--f-5-min)) /
+                  (var(--f-w))
+                );
+                --f-5-y-intersection: calc(
+                  (var(--f--min-w) * var(--f-5-slope) + var(--f-5-min))
+                );
+
+                --step-5: clamp(
+                  var(--f-5-min) * var(--to-rem) * 1rem,
+                  var(--f-5-y-intersection) * var(--to-rem) * 1rem + var(--f-5-slope) * 100vw,
+                  var(--f-5-max) * var(--to-rem) * 1rem
+                );
+              }
+              .u-step-d-5-compute {
+                font-size: var(--step-5);
+              }
+
+            div
+              <label for="factorMin">Factor min:</label>
+              <select id="factorMin">
+                <option value="1.2">Minor third</option>
+                <option value="1.333">Perfect four</option>
+              </select>
+            div
+              <label for="factorMax">Factor max:</label>
+              <select id="factorMax">
+                <option value="1.2">Minor third</option>
+                <option value="1.333">Perfect four</option>
+              </select>
+
+            script.
+              function displayFontSize() {
+                const el = document.getElementById('heading');
+                const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                document.getElementById('scale').innerHTML = `${style}`;
+              }
+              window.addEventListener('resize', displayFontSize);
+              window.addEventListener('DOMContentLoaded', displayFontSize);
+
+              function mkChangeProperty(name) {
+                return (event) => {
+                  const value = event.target.value;
+                  document.documentElement.style.setProperty(name, value);
+                };
+              };
+
+              const factorMin = document.getElementById('factorMin');
+              factorMin.addEventListener('change', mkChangeProperty('--factor-min'));
+
+              const factorMax = document.getElementById('factorMax');
+              factorMax.addEventListener('change', mkChangeProperty('--factor-max'));
+
+            .label-step.u-flow-c-0(id='scale') xxpx
+            .u-step-d-5-compute(id='heading') I am a heading
