@@ -65,6 +65,8 @@ html(dir="ltr", lang="en")
               }
 
             div
+              <button id="resetToTypeScaleD">Reset to type scale D</button>
+            div
               <label for="widthMin">Width min:</label>
               <input id="widthMin" value="320"/>
             div
@@ -122,6 +124,25 @@ html(dir="ltr", lang="en")
 
               const factorMax = document.getElementById('factorMax');
               factorMax.addEventListener('change', mkChangeProperty('--factor-max'));
+
+              function setTypeScaleD () {
+                function setProperty (name, variable, value) {
+                  document.documentElement.style.setProperty(name, value);
+                  variable.value = value;
+                };
+
+                setProperty('--f-min-w', widthMin, '320');
+                setProperty('--f-max-w', widthMax, '1480');
+                setProperty('--f-0-min', fontSizeMin, '10');
+                setProperty('--f-0-max', fontSizeMax, '46.25');
+                setProperty('--factor-min', factorMin, '1.2');
+                setProperty('--factor-max', factorMax, '1.333');
+              };
+
+              const resetToTypeScaleD = document.getElementById('resetToTypeScaleD');
+              resetToTypeScaleD.addEventListener('click', setTypeScaleD);
+
+              setTypeScaleD();
 
             .label-step.u-flow-c-0(id='scale') xxpx
             .u-step-d-5-compute(id='heading') I am a heading
