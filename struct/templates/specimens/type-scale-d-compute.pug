@@ -65,6 +65,18 @@ html(dir="ltr", lang="en")
               }
 
             div
+              <label for="widthMin">Width min:</label>
+              <input id="widthMin" value="320"/>
+            div
+              <label for="widthMax">Width max:</label>
+              <input id="widthMax" value="1480"/>
+            div
+              <label for="fontSizeMin">Font size min:</label>
+              <input id="fontSizeMin" value="10"/>
+            div
+              <label for="fontSizeMax">Font size max:</label>
+              <input id="fontSizeMax" value="46.25"/>
+            div
               <label for="factorMin">Factor min:</label>
               <select id="factorMin">
                 <option value="1.2">Minor third</option>
@@ -92,6 +104,18 @@ html(dir="ltr", lang="en")
                   document.documentElement.style.setProperty(name, value);
                 };
               };
+
+              const widthMin = document.getElementById('widthMin');
+              widthMin.addEventListener('change', mkChangeProperty('--f-min-w'));
+
+              const widthMax = document.getElementById('widthMax');
+              widthMax.addEventListener('change', mkChangeProperty('--f-max-w'));
+
+              const fontSizeMin = document.getElementById('fontSizeMin');
+              fontSizeMin.addEventListener('change', mkChangeProperty('--f-0-min'));
+
+              const fontSizeMax = document.getElementById('fontSizeMax');
+              fontSizeMax.addEventListener('change', mkChangeProperty('--f-0-max'));
 
               const factorMin = document.getElementById('factorMin');
               factorMin.addEventListener('change', mkChangeProperty('--factor-min'));
