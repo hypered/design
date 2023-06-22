@@ -46,21 +46,92 @@ html(dir="ltr", lang="en")
                 --f-4-max: var(--f-3-max) * var(--factor-max);
                 --f-5-max: var(--f-4-max) * var(--factor-max);
 
-                --f-5-slope: calc(
-                  (var(--f-5-max) - var(--f-5-min)) /
-                  (var(--f-w))
+                --f-0-slope: calc(
+                  (var(--f-0-max) - var(--f-0-min)) / (var(--f-w))
                 );
-                --f-5-y-intersection: calc(
+                --f-1-slope: calc(
+                  (var(--f-1-max) - var(--f-1-min)) / (var(--f-w))
+                );
+                --f-2-slope: calc(
+                  (var(--f-2-max) - var(--f-2-min)) / (var(--f-w))
+                );
+                --f-3-slope: calc(
+                  (var(--f-3-max) - var(--f-3-min)) / (var(--f-w))
+                );
+                --f-4-slope: calc(
+                  (var(--f-4-max) - var(--f-4-min)) / (var(--f-w))
+                );
+                --f-5-slope: calc(
+                  (var(--f-5-max) - var(--f-5-min)) / (var(--f-w))
+                );
+
+                --f-0-y-intersect: calc(
+                  (var(--f--min-w) * var(--f-0-slope) + var(--f-0-min))
+                );
+                --f-1-y-intersect: calc(
+                  (var(--f--min-w) * var(--f-1-slope) + var(--f-1-min))
+                );
+                --f-2-y-intersect: calc(
+                  (var(--f--min-w) * var(--f-2-slope) + var(--f-2-min))
+                );
+                --f-3-y-intersect: calc(
+                  (var(--f--min-w) * var(--f-3-slope) + var(--f-3-min))
+                );
+                --f-4-y-intersect: calc(
+                  (var(--f--min-w) * var(--f-4-slope) + var(--f-4-min))
+                );
+                --f-5-y-intersect: calc(
                   (var(--f--min-w) * var(--f-5-slope) + var(--f-5-min))
                 );
 
+                --step-0: clamp(
+                  var(--f-0-min) * var(--to-rem) * 1rem,
+                  var(--f-0-y-intersect) * var(--to-rem) * 1rem + var(--f-0-slope) * 100vw,
+                  var(--f-0-max) * var(--to-rem) * 1rem
+                );
+                --step-1: clamp(
+                  var(--f-1-min) * var(--to-rem) * 1rem,
+                  var(--f-1-y-intersect) * var(--to-rem) * 1rem + var(--f-1-slope) * 100vw,
+                  var(--f-1-max) * var(--to-rem) * 1rem
+                );
+                --step-2: clamp(
+                  var(--f-2-min) * var(--to-rem) * 1rem,
+                  var(--f-2-y-intersect) * var(--to-rem) * 1rem + var(--f-2-slope) * 100vw,
+                  var(--f-2-max) * var(--to-rem) * 1rem
+                );
+                --step-3: clamp(
+                  var(--f-3-min) * var(--to-rem) * 1rem,
+                  var(--f-3-y-intersect) * var(--to-rem) * 1rem + var(--f-3-slope) * 100vw,
+                  var(--f-3-max) * var(--to-rem) * 1rem
+                );
+                --step-4: clamp(
+                  var(--f-4-min) * var(--to-rem) * 1rem,
+                  var(--f-4-y-intersect) * var(--to-rem) * 1rem + var(--f-4-slope) * 100vw,
+                  var(--f-4-max) * var(--to-rem) * 1rem
+                );
                 --step-5: clamp(
                   var(--f-5-min) * var(--to-rem) * 1rem,
-                  var(--f-5-y-intersection) * var(--to-rem) * 1rem + var(--f-5-slope) * 100vw,
+                  var(--f-5-y-intersect) * var(--to-rem) * 1rem + var(--f-5-slope) * 100vw,
                   var(--f-5-max) * var(--to-rem) * 1rem
                 );
               }
-              .u-step-d-5-compute {
+
+              .u-step-0 {
+                font-size: var(--step-0);
+              }
+              .u-step-1 {
+                font-size: var(--step-1);
+              }
+              .u-step-2 {
+                font-size: var(--step-2);
+              }
+              .u-step-3 {
+                font-size: var(--step-3);
+              }
+              .u-step-4 {
+                font-size: var(--step-4);
+              }
+              .u-step-5 {
                 font-size: var(--step-5);
               }
 
@@ -92,13 +163,22 @@ html(dir="ltr", lang="en")
               </select>
 
             script.
-              function displayFontSize() {
-                const el = document.getElementById('heading');
-                const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
-                document.getElementById('scale').innerHTML = `${style}`;
+              function updateLabels() {
+                function updateLabel(heading, label) {
+                  const el = document.getElementById(heading);
+                  const style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+                  document.getElementById(label).innerHTML = `${style}`;
+                };
+
+                updateLabel('paragraph', 'label-0');
+                updateLabel('heading-1', 'label-1');
+                updateLabel('heading-2', 'label-2');
+                updateLabel('heading-3', 'label-3');
+                updateLabel('heading-4', 'label-4');
+                updateLabel('heading-5', 'label-5');
               }
-              window.addEventListener('resize', displayFontSize);
-              window.addEventListener('DOMContentLoaded', displayFontSize);
+              window.addEventListener('resize', updateLabels);
+              window.addEventListener('DOMContentLoaded', updateLabels);
 
               function mkChangeProperty(name) {
                 return (event) => {
@@ -144,5 +224,15 @@ html(dir="ltr", lang="en")
 
               setTypeScaleD();
 
-            .label-step.u-flow-c-0(id='scale') xxpx
-            .u-step-d-5-compute(id='heading') I am a heading
+            .label-step.u-flow-c-0(id='label-5') xxpx
+            .u-step-5(id='heading-5') I am a heading
+            .label-step(id='label-4') xxpx
+            .u-step-4(id='heading-4') I am a heading
+            .label-step(id='label-3') xxpx
+            .u-step-3(id='heading-3') I am a heading
+            .label-step(id='label-2') xxpx
+            .u-step-2(id='heading-2') I am a heading
+            .label-step(id='label-1') xxpx
+            .u-step-1(id='heading-1') I am a heading
+            .label-step(id='label-0') xxpx
+            .u-step-0(id='paragraph') I am a paragraph.
