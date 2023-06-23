@@ -136,6 +136,12 @@ html(dir="ltr", lang="en")
               }
 
             div
+              <button id="resetToTypeScaleA">Reset to type scale A</button>
+            div
+              <button id="resetToTypeScaleB">Reset to type scale B</button>
+            div
+              <button id="resetToTypeScaleC">Reset to type scale C</button>
+            div
               <button id="resetToTypeScaleD">Reset to type scale D</button>
             div
               <label for="widthMin">Width min:</label>
@@ -152,12 +158,14 @@ html(dir="ltr", lang="en")
             div
               <label for="factorMin">Factor min:</label>
               <select id="factorMin">
+                <option value="1.125">Major second</option>
                 <option value="1.2">Minor third</option>
                 <option value="1.333">Perfect four</option>
               </select>
             div
               <label for="factorMax">Factor max:</label>
               <select id="factorMax">
+                <option value="1.125">Major second</option>
                 <option value="1.2">Minor third</option>
                 <option value="1.333">Perfect four</option>
               </select>
@@ -205,19 +213,44 @@ html(dir="ltr", lang="en")
               const factorMax = document.getElementById('factorMax');
               factorMax.addEventListener('change', mkChangeProperty('--factor-max'));
 
-              function setTypeScaleD () {
+              function setTypeScale (widthMin_, widthMax_, fontSizeMin_, fontSizeMax_, factorMin_, factorMax_) {
                 function setProperty (name, variable, value) {
                   document.documentElement.style.setProperty(name, value);
                   variable.value = value;
                 };
 
-                setProperty('--f-min-w', widthMin, '320');
-                setProperty('--f-max-w', widthMax, '1480');
-                setProperty('--f-0-min', fontSizeMin, '10');
-                setProperty('--f-0-max', fontSizeMax, '46.25');
-                setProperty('--factor-min', factorMin, '1.2');
-                setProperty('--factor-max', factorMax, '1.333');
+                setProperty('--f-min-w', widthMin, widthMin_);
+                setProperty('--f-max-w', widthMax, widthMax_);
+                setProperty('--f-0-min', fontSizeMin, fontSizeMin_);
+                setProperty('--f-0-max', fontSizeMax, fontSizeMax_);
+                setProperty('--factor-min', factorMin, factorMin_);
+                setProperty('--factor-max', factorMax, factorMax_);
               };
+
+              function setTypeScaleA () {
+                setTypeScale('320', '1480', '16', '16', '1.125', '1.125');
+              };
+
+              function setTypeScaleB () {
+                setTypeScale('320', '1480', '16', '16', '1.2', '1.333');
+              };
+
+              function setTypeScaleC () {
+                setTypeScale('320', '1480', '16', '20', '1.2', '1.333');
+              };
+
+              function setTypeScaleD () {
+                setTypeScale('320', '1480', '10', '46.25', '1.2', '1.333');
+              };
+
+              const resetToTypeScaleA = document.getElementById('resetToTypeScaleA');
+              resetToTypeScaleA.addEventListener('click', setTypeScaleA);
+
+              const resetToTypeScaleB = document.getElementById('resetToTypeScaleB');
+              resetToTypeScaleB.addEventListener('click', setTypeScaleB);
+
+              const resetToTypeScaleC = document.getElementById('resetToTypeScaleC');
+              resetToTypeScaleC.addEventListener('click', setTypeScaleC);
 
               const resetToTypeScaleD = document.getElementById('resetToTypeScaleD');
               resetToTypeScaleD.addEventListener('click', setTypeScaleD);
