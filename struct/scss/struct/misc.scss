@@ -8,6 +8,10 @@ body {font-family: 'IBM Plex Sans';}
 }
 
 .u-container-vertical {
+  /* TODO I'd like the padding-top to be the same as the flow-all for a c-text h1.
+     I.e. using flow-all or using u-container-vertical should be the same.
+     In addition, a c-text h1 could also match the position of the Refli logo
+     in the navigation bar. */
   padding-block: var(--grid-gutter);
 }
 
