@@ -242,6 +242,13 @@ html(dir="ltr", lang="en")
               .b-240x60:before {
                 content: '240x60';
               }
+              .b-x60 {
+                height: 60px;
+                border: 2px solid black;
+              }
+              .b-x60:before {
+                content: '*x60';
+              }
               .b-l-s {
                 width: var(--space-l);
                 height: var(--space-s);
@@ -263,6 +270,15 @@ html(dir="ltr", lang="en")
               }
               .limit-42em {
                 width: 42em;
+              }
+              p.lorem-1 {
+                text-overflow: '.'; /* When used on one line, we get to specify this. */
+                white-space: nowrap;
+                overflow: hidden;
+                max-height: 6em;
+              }
+              p.lorem-1:before {
+                content: 'Feugiat sodales purus aenean mattis at risus nec pretium sagittis faucibus imperdiet commodo proin accumsan quis placerat sed leo phasellus tristique augue odio et fringilla cursus id euismod eu aliquet quam tempor iaculis urna amet et commodo arcu porta lectus a netus dolor sociis nunc tempor venenatis hac suscipit dolor scelerisque tellus donec urna pulvinar sagittis proin nec magna at faucibus porta enim euismod lacus lacus dictum eget mattis tristique massa eleifend nunc nunc non gravida arcu';
               }
               .lorem p, p.lorem {
                 text-overflow: ellipsis;
@@ -293,22 +309,89 @@ html(dir="ltr", lang="en")
               p.lorem:nth-of-type(3n)::before {
                 content: 'Elit rhoncus tempor eget justo, molestie. Risus hac posuere non. Tempus, risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet. Massa diam augue quisque. Sed est magna risus id leo semper pulvinar tortor. Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra.';
               }
+            .b-x60
+            .b-240x60
             .b-120x60
-            .b-l-s
             .b-xl-xl
-            .u-bar
-                .b-120x60
-                .b-240x60
-            .c-text.flow
+            .b-l-s
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 The Lorem CSS helper
+                p When working with layouting CSS-based primitives and thus with HTML, it's useful to be able to add some content easily in addition of placeholders. The <code>.lorem</code> class can be used for that (either on h1, ... and p elements, or on an enclosing div).
+                p.lorem-1
+            .c-text.flow-all
                 h1.lorem
                 p.lorem
                 p.lorem.limit-42em
                 p.lorem.limit-40ch
-            .c-text.flow.lorem
+            .c-text.flow-all.lorem
                 h1
                 p
                 p.limit-42em
                 p.limit-40ch
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Box
+            .box
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 u-bar
+            .u-bar
+                .b-120x60
+                .b-x60
+            .u-bar
+                .b-120x60
+                .b-240x60
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Switcher
+            .box
+                .switcher
+                    .b-120x60
+                    .b-x60
+            .box
+                .switcher
+                    .b-120x60
+                    .b-240x60
+            .box
+                .switcher
+                    .box
+                    .box
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Sidebar
+            .box
+                .with-sidebar
+                    .main
+                        .b-x60
+                    .sidebar
+                        .b-240x60
+
+        hr.hr-full
+
+        .u-container
+            .c-text.flow-all
+                h1 Cover
+            .box
+                .cover
+                    .b-120x60
+                    footer
+                        .b-x60
 
         hr.hr-full
 
