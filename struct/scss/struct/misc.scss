@@ -231,8 +231,6 @@ hr {
 .u-bar__right {
   ul li {
     display: inline;
-  }
-  ul > * + * {
     margin-left: var(--space-s);
   }
 }
@@ -252,11 +250,13 @@ hr {
    The dropdown case accomodate more left padding for a small down
    arrow. */
 .menu-dropdown {
+  display: inline-block;
   padding: 12px var(--space-xs) 12px calc(var(--space-xs) + 12px);
   color: black;
   cursor: pointer;
 }
 .menu-link {
+  display: inline-block;
   padding: 12px var(--space-xs);
   color: black;
   cursor: pointer;
@@ -268,7 +268,7 @@ hr {
   content: ' ';
   position: absolute;
   left: 1.4rem;
-  top: 0.7rem;
+  top: 1.9rem;
   width: 0;
   height: 0;
   border-width: 1rem;
