@@ -18,6 +18,9 @@ body {font-family: 'IBM Plex Sans';}
   padding-inline: var(--grid-gutter);
   margin-inline: auto;
 }
+.bordered {
+  border: 2px solid black;
+}
 
 .u-container-vertical {
   /* TODO I'd like the padding-top to be the same as the flow-all for a c-text h1.
@@ -25,6 +28,9 @@ body {font-family: 'IBM Plex Sans';}
      In addition, a c-text h1 could also match the position of the Refli logo
      in the navigation bar. */
   padding-block: var(--grid-gutter);
+}
+.u-container-top {
+  padding-block-start: var(--grid-gutter);
 }
 
 .u-grid {
@@ -128,6 +134,9 @@ hr {
 .flow > * + * {
   margin-top: var(--flow-space);
 }
+.flow input {
+  margin-top: calc(var(--flow-space) / 2);
+}
 .flow-all > * {
   --flow-space: 1.4em;
   margin-top: var(--flow-space);
@@ -209,7 +218,7 @@ hr {
 
 /* Similar to Panel in Mono's work ? */
 .box {
-  padding: var(--space-s);
+  padding: var(--grid-gutter);
   border: 2px solid black;
 }
 // Tachyons would call this mw8 or something.
