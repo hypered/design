@@ -120,6 +120,10 @@ hr {
   --flow-space: 1.4em;
   margin-top: var(--flow-space);
 }
+.flow-all > *:last-child {
+  --flow-space: 1.4em;
+  margin-bottom: var(--flow-space);
+}
 // Similar to the margin added by `flow` for a h1 heading at scale C.
 // `flow` sets the margin to be 1.4em, while here we're not using ems,
 // but it seems to work.
