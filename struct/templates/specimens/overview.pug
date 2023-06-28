@@ -135,11 +135,18 @@ html(dir="ltr", lang="en")
                         a(href="#")
                             img(src="/static/images/logo.svg" alt="Refli")
                     .u-bar__right
+                        include ../includes/main-header--page-struct
+        header
+            .u-container
+                .u-bar
+                    .u-bar__left
+                        .b-120x60
+                    .u-bar__right
                         ul
                             li
-                                a(href="#") Playground
+                                .i-120x60
                             li
-                                a(href="#") Documentation
+                                .i-120x60
 
         hr.hr-full
 
@@ -264,7 +271,16 @@ html(dir="ltr", lang="en")
                 border: 2px solid black;
               }
               .b-120x60:before {
-                content: '120x60';
+                content: 'b120x60';
+              }
+              .i-120x60 {
+                width: 120px;
+                height: 60px;
+                border: 2px solid black;
+                display: inline-block;
+              }
+              .i-120x60:before {
+                content: 'i120x60';
               }
               .b-240x60 {
                 width: 240px;
