@@ -1,5 +1,17 @@
 body {font-family: 'IBM Plex Sans';}
 
+/* Used to display layouting primitives. This adds some padding so that the
+   borders of other (displayed) layout primitives and placeholders don't touch
+   each others.
+ */
+.wrapper {
+  padding: calc(var(--grid-gutter) / 2);
+  border: 2px dashed purple;
+}
+.wrapper + .wrapper {
+  margin-top: calc(var(--grid-gutter) / 2);
+}
+
 .u-container {
   min-width: calc(24rem - 2 * var(--grid-gutter));
   max-width: var(--grid-max-width);
@@ -145,7 +157,7 @@ hr {
 .with-sidebar {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--s1);
+  gap: var(--space-m);
 }
 
 .with-sidebar .sidebar {
