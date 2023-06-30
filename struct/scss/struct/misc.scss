@@ -55,6 +55,7 @@ h4 {font-size: var(--step-c-1);}
 p {font-size: var(--step-c-0); line-height: 1.5em;}
 p small {font-size: var(--step-c--1); line-height: 1.5em;}
 .limit-p p {max-width: 42em;}
+.mute {color: #666;}
 .c-text a {color: blue; text-decoration: none;}
 .c-content a {color: blue; text-decoration: none;}
 pre {font-size: 1.4rem; padding: 0.8rem 1.2rem; background-color: #f2f2f2;}
@@ -80,6 +81,7 @@ hr {
 .c-text h1 {letter-spacing: 0rem;}
 .c-text h2 {letter-spacing: 0rem;}
 .c-text h3 {letter-spacing: 0rem;}
+.c-text label {font-weight: 600;}
 .c-content h1 {font-size: var(--step-b-4);}
 .c-content h2 {font-size: var(--step-b-3);}
 .c-content h3 {font-size: var(--step-b-2);}
@@ -148,6 +150,9 @@ hr {
 .flow-all > *:last-child {
   --flow-space: 1.4em;
   margin-bottom: var(--flow-space);
+}
+.flow-all input {
+  margin-top: calc(var(--flow-space) / 2);
 }
 // Similar to the margin added by `flow` for a h1 heading at scale C.
 // `flow` sets the margin to be 1.4em, while here we're not using ems,
@@ -237,6 +242,13 @@ hr {
 .box {
   padding: var(--grid-gutter);
   border: 2px solid black;
+}
+.inset {
+  padding: var(--grid-gutter);
+}
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 // Tachyons would call this mw8 or something.
 // Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
