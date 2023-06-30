@@ -361,6 +361,17 @@ for e.g. `height: 100vh`. But I can make the developer tools a separate window
 and it works.
 
 
+## Chromium scale factor
+
+Using a T480 2560x1440 laptop screen, Firefox displays 1280x720 on the
+Dimensions page (when in full screen). To achieve the same result with
+Chromium, the following can be used:
+
+```
+$ chromium --force-device-scale-factor=2 http://127.0.0.1:3002/notes/dimensions.html
+```
+
+
 ## Elsewhere
 
 - The [IBM design system](https://www.carbondesignsystem.com/) is open source.
