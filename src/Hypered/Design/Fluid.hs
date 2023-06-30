@@ -28,6 +28,7 @@ module Hypered.Design.Fluid
   , makeSteps
   , properties
   , scaleC
+  , scaleD
   , space_3xs
   , space_2xs
   , space_xs
@@ -50,6 +51,7 @@ module Hypered.Design.Fluid
   , space_eccentric_small
   , generateVWBasedValue
   , generateVWBasedValues
+  , computeValue
   ) where
 
 import Data.Text (pack)
@@ -319,3 +321,19 @@ generateVWBasedValues remInPx paramss =
   unlines $ map f paramss
  where
   f (name, params) = "  --" <> name <> ": " <> generateVWBasedValue remInPx params
+
+-- | Compute a font size (in rem) for a particular viewport width.
+-- E.g.:
+--     Fluid.computeValue 10 (Fluid.step5 (Fluid.makeSteps Fluid.scaleD)) 1280
+-- I.e. simulate the evaluation of the above generated CSS formula.
+computeValue :: Double -> Parameters -> Double -> Double
+computeValue remInPx Parameters {..} width =
+  clamp
+    (toRem minValue)
+    (toRem yIntersection + toRem (slope * width))
+    (toRem maxValue)
+ where
+  clamp a b c = b -- min (max a b) c
+  slope = (maxValue - minValue) / (maxWidth - minWidth)
+  yIntersection = (-minWidth) * slope + minValue
+  toRem = (/ remInPx)
