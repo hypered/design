@@ -6,6 +6,7 @@ html(dir="ltr", lang="en")
         link(rel="stylesheet", href="/static/css/struct/foundations.css")
         link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
         link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/placeholders.css")
         link(rel="stylesheet", href="/static/css/struct/misc.css")
     body
         .u-container.c-text.flow-all
@@ -293,54 +294,6 @@ html(dir="ltr", lang="en")
                 h1 Placeholders
                 p Bordered placeholders to visualize layouts.
             style.
-              .b-128x64 {
-                width: 128px;
-                height: 64px;
-                border: 2px solid black;
-              }
-              .b-128x64:before {
-                content: 'b128x64';
-              }
-              .i-128x64 {
-                width: 128px;
-                height: 64px;
-                border: 2px solid black;
-                display: inline-block;
-              }
-              .i-128x64:before {
-                content: 'i128x64';
-              }
-              .b-256x64 {
-                width: 256px;
-                height: 64px;
-                border: 2px solid black;
-              }
-              .b-256x64:before {
-                content: '256x64';
-              }
-              .b-x64 {
-                height: 64px;
-                border: 2px solid black;
-              }
-              .b-x64:before {
-                content: '*x64';
-              }
-              .b-l-s {
-                width: var(--space-l);
-                height: var(--space-s);
-                border: 2px solid black;
-              }
-              .b-l-s:before {
-                content: 'l-s';
-              }
-              .b-xl-xl {
-                width: var(--space-xl);
-                height: var(--space-xl);
-                border: 2px solid black;
-              }
-              .b-xl-xl:before {
-                content: 'xl-xl';
-              }
               .limit-40ch {
                 width: 40ch;
               }

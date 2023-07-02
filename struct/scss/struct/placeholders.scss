@@ -33,3 +33,53 @@ $g-placeholder-unit: 0.8rem !default; // Same as g-spacer-unit.
 .u-placeholder-xl {
   height: ($g-placeholder-unit * 4) !important;
 }
+
+// Different div dimensions to visualize layouts.
+.b-128x64 {
+  width: 128px;
+  height: 64px;
+  border: 2px solid black;
+}
+.b-128x64:before {
+  content: 'b128x64';
+}
+.i-128x64 {
+  width: 128px;
+  height: 64px;
+  border: 2px solid black;
+  display: inline-block;
+}
+.i-128x64:before {
+  content: 'i128x64';
+}
+.b-256x64 {
+  width: 256px;
+  height: 64px;
+  border: 2px solid black;
+}
+.b-256x64:before {
+  content: '256x64';
+}
+.b-x64 {
+  height: 64px;
+  border: 2px solid black;
+}
+.b-x64:before {
+  content: '*x64';
+}
+.b-l-s {
+  width: var(--space-l);
+  height: var(--space-s);
+  border: 2px solid black;
+}
+.b-l-s:before {
+  content: 'l-s';
+}
+.b-xl-xl {
+  width: var(--space-xl);
+  height: var(--space-xl);
+  border: 2px solid black;
+}
+.b-xl-xl:before {
+  content: 'xl-xl';
+}
