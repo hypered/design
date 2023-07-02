@@ -1,0 +1,94 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/placeholders.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Flexbox
+                p This page shows minimalist flex box examples. Look at its source code (written in Pug, and using simple CSS-based <a href="placeholders.html">placeholders</a>).
+
+                p For reference, here are unconstrained (non-flex) *x64 and 128x64 placeholders.
+                .b-x64
+                .b-128x64
+
+                p Adding display: flex to a parent div, by default makes its children as small as possible. Contrast that behavior with the above *x64, that expands as much as possible.
+                style.
+                  .f-1 {
+                    display: flex;
+                  }
+                .f-1
+                    .b-x64
+
+                p We can control the sizing of the children with flex-basis. Here we assign it the same width as a .b-128x64 placeholder.
+                style.
+                  .f-2 {
+                    display: flex;
+                  }
+                  .f-2 > * {
+                    flex-basis: 128px;
+                  }
+                .f-2
+                    .b-x64
+
+                p In addition of flex-basis, we can request its width to expand or contract depending on the available width (in the parent).
+                style.
+                  .f-3 {
+                    display: flex;
+                  }
+                  .f-3 > * {
+                    flex-basis: 128px;
+                    flex-grow: 1;
+                  }
+                .f-3
+                    .b-x64
+
+                p In the example below, consider removing the flex-wrap: wrap rule, or the flex-shrink: 0 rule (or both), or adding flex-grow: 1. (A reference 128x64 div is shown first.)
+                style.
+                  .f-4 {
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                  }
+                  .f-4 > * {
+                    flex-basis: 128px;
+                    flex-shrink: 0;
+                  }
+                .b-128x64
+                .f-4
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+
+                p If we want to stretch rows to fill the available width, while having all items have the same width, it is possible to use a grid layout instead of flexbox. (A reference 128x64 div is shown first.)
+                style.
+                  .g-1 {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fill,minmax(128px, 1fr));
+                    gap: 8px;
+                  }
+                .b-128x64
+                .g-1
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
+                    .b-x64
