@@ -1,0 +1,26 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/lorem.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Lorem ipsum
+                p When working with layouting CSS-based primitives and thus with HTML, it's useful to be able to add some content easily in addition of placeholders. The <code>.lorem</code> class can be used for that (either on h1, ... and p elements, or on an enclosing div).
+                p.lorem-1
+            .c-text.flow-all
+                h1.lorem
+                p.lorem
+                p.lorem.limit-42em
+                p.lorem.limit-40ch
+            .c-text.flow-all.lorem
+                h1
+                p
+                p.limit-42em
+                p.limit-40ch

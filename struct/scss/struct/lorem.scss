@@ -1,0 +1,40 @@
+// Add lorem ipsum content to some markup.
+
+p.lorem-1 {
+  text-overflow: '.'; /* When used on one line, we get to specify this. */
+  white-space: nowrap;
+  overflow: hidden;
+  max-height: 6em;
+}
+p.lorem-1:before {
+  content: 'Feugiat sodales purus aenean mattis at risus nec pretium sagittis faucibus imperdiet commodo proin accumsan quis placerat sed leo phasellus tristique augue odio et fringilla cursus id euismod eu aliquet quam tempor iaculis urna amet et commodo arcu porta lectus a netus dolor sociis nunc tempor venenatis hac suscipit dolor scelerisque tellus donec urna pulvinar sagittis proin nec magna at faucibus porta enim euismod lacus lacus dictum eget mattis tristique massa eleifend nunc nunc non gravida arcu';
+}
+.lorem p, p.lorem {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 6em;
+}
+.lorem h1:nth-of-type(3n+1)::before {
+  content: 'Nisl vitae vitae in at';
+}
+.lorem p:nth-of-type(3n+1)::before {
+  content: 'Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam. Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc tempor. Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec urna pulvinar sagittis proin. Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis tristique massa eleifend. Sed nunc, nunc non gravida arcu.';
+}
+.lorem p:nth-of-type(3n+2)::before {
+  content: 'Odio eget condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu risus scelerisque scelerisque in.';
+}
+.lorem p:nth-of-type(3n)::before {
+  content: 'Elit rhoncus tempor eget justo, molestie. Risus hac posuere non. Tempus, risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet. Massa diam augue quisque. Sed est magna risus id leo semper pulvinar tortor. Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra.';
+}
+h1.lorem:nth-of-type(3n+1)::before {
+  content: 'Nisl vitae vitae in at';
+}
+p.lorem:nth-of-type(3n+1)::before {
+  content: 'Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam. Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc tempor. Tortor venenatis, hac suscipit dolor scelerisque. Aenean tellus donec urna pulvinar sagittis proin. Mi nec magna at faucibus porta. Ac enim euismod lacus, lacus dictum eget. Integer mattis tristique massa eleifend. Sed nunc, nunc non gravida arcu.';
+}
+p.lorem:nth-of-type(3n+2)::before {
+  content: 'Odio eget condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu risus scelerisque scelerisque in.';
+}
+p.lorem:nth-of-type(3n)::before {
+  content: 'Elit rhoncus tempor eget justo, molestie. Risus hac posuere non. Tempus, risus mauris nibh risus elementum accumsan, phasellus. Facilisi ullamcorper maecenas vestibulum feugiat laoreet aliquet. Massa diam augue quisque. Sed est magna risus id leo semper pulvinar tortor. Quis diam, nulla viverra nulla aliquet adipiscing nunc viverra.';
+}
