@@ -1,0 +1,32 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+        link(rel="stylesheet", href="/static/css/struct/tachyons.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Tachyons
+                p This page uses Tachyons and reproduces an <a href="https://js.hypered.design/storybook/iframe.html?id=form--login&viewMode=story">example form</a> from the original, Tachyons-based, design. The h2 has no Tachyons-specific classes and is different, and the reset link is blue. The rest looks similar.
+
+                <form class="bg-white mw6" method="POST" action="/echo/login">
+                  <div class="pa4 bt br bl b--black bw1">
+                    <h2>Log in to Appname</h2>
+                    <div class="mv3">
+                      <div class="mb3"><label class="db fw6 mv1">Username</label><input type="text" class="input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box" name="username" id="username" />
+                        <div class="mv1 h1 red fw5">You have entered an invalid email</div>
+                      </div>
+                    </div>
+                    <div class="mv3">
+                      <div class="mb3"><label class="db fw6 mv1">Password</label><input type="password" class="input-reset bl-0 bt-0 br-0 bb bg-near-white pv3 ph2 w-100 outline-0 border-box" placeholder="" name="password" id="password" />
+                        <div class="mv1 h1 red fw5"></div>
+                      </div>
+                    </div><a class="black no-underline hy-hover-blue" href="#">Reset password</a>
+                  </div>
+                  <div class="flex justify-between"><button class="bg-white hover-bg-light-gray b--black black ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" variant="secondary">Register</button><button class="bg-black b--black white hover-light-green ph3 pb4 pt3 tl w-100 pointer inline-flex button-reset ba bw1 relative" variant="primary">Log in —&gt;</button></div>
+                </form>
