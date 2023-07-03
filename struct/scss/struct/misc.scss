@@ -143,7 +143,7 @@ hr {
   margin-top: var(--flow-space);
 }
 .flow input {
-  margin-top: calc(var(--flow-space) / 2);
+  margin-top: calc(var(--flow-space) / 4);
 }
 .flow-all > * {
   --flow-space: 1.4em;
@@ -154,7 +154,7 @@ hr {
   margin-bottom: var(--flow-space);
 }
 .flow-all input {
-  margin-top: calc(var(--flow-space) / 2);
+  margin-top: calc(var(--flow-space) / 4);
 }
 // Similar to the margin added by `flow` for a h1 heading at scale C.
 // `flow` sets the margin to be 1.4em, while here we're not using ems,
