@@ -62,22 +62,22 @@ import Text.Printf (printf)
 generate :: Settings -> Text
 generate Settings {..} =
   ":root {\n"
-    <> generateSteps "step-a" 10.0 (makeSteps sScaleA)
+    <> generateSteps "step-a" 16.0 (makeSteps sScaleA)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-b" 10.0 (makeSteps sScaleB)
+    <> generateSteps "step-b" 16.0 (makeSteps sScaleB)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-c" 10.0 (makeSteps sScaleC)
+    <> generateSteps "step-c" 16.0 (makeSteps sScaleC)
     <> "}\n\n"
     <> ":root {\n"
-    <> generateSteps "step-d" 10.0 (makeSteps sScaleD)
+    <> generateSteps "step-d" 16.0 (makeSteps sScaleD)
     <> "}\n\n"
     <> ":root {\n"
-    <> properties 10.0
+    <> properties 16.0
     <> "}\n\n"
     <> ":root {\n"
-    <> generateVWBasedValues 10.0
+    <> generateVWBasedValues 16.0
         [ ("space-m-l", space_m_l)
         ]
     <> "}\n\n"

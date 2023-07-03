@@ -137,7 +137,7 @@ html(dir="ltr", lang="en")
 
                 p Note that we still have our own rules; the width of the `div` is still changing according to the browser width.
 
-                p Something else for which I don't have much opinion but I'll replicate, is to redefine the `rem` unit to be 10px, instead of the usual 16px. Because of that, we'll specify the font-size to be 62.5% (of 16px, i.e. 10px). 10px for a default font size is mall. So in `body`, we redefine the font-size to be 1.6rem, i.e. back at 16px. There is a <a href="https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/">blog post</a> explaining the approach.
+                p Something else for which I don't have much opinion but I'll replicate, is to redefine the `rem` unit to be 10px, instead of the usual 16px. Because of that, we'll specify the font-size to be 62.5% (of 16px, i.e. 10px). 10px for a default font size is mall. So in `body`, we redefine the font-size to be 1.6rem, i.e. back at 16px. There is a <a href="https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/">blog post</a> explaining the approach. (TODO No longer true: we keep the default 16px, in particular to potentially be able to re-use our existing Tachyons-based work.)
 
                 p Note that we have adapted the min-width and max-width values, since they were expressed in rem.
 

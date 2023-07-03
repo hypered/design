@@ -13,7 +13,7 @@ body {font-family: 'IBM Plex Sans';}
 }
 
 .u-container {
-  min-width: calc(24rem - 2 * var(--grid-gutter));
+  min-width: calc(15.1rem - 2 * var(--grid-gutter));
   max-width: var(--grid-max-width);
   padding-inline: var(--grid-gutter);
   margin-inline: auto;
@@ -45,9 +45,9 @@ body {font-family: 'IBM Plex Sans';}
 
 /* */
 h1, h2, h3, h4 {font-weight: 600;}
-h1 {letter-spacing: -0.24rem;}
-h2 {letter-spacing: -0.16rem;}
-h3 {letter-spacing: -0.08rem;}
+h1 {letter-spacing: -0.15rem;}
+h2 {letter-spacing: -0.1rem;}
+h3 {letter-spacing: -0.05rem;}
 h1 {font-size: var(--step-c-4);}
 h2 {font-size: var(--step-c-3);}
 h3 {font-size: var(--step-c-2);}
@@ -60,16 +60,16 @@ p small {font-size: var(--step-c--1); line-height: 1.5em;}
 .mute {color: #666;}
 .c-text a {color: blue; text-decoration: none;}
 .c-content a {color: blue; text-decoration: none;}
-pre {font-size: 1.4rem; padding: 0.8rem 1.2rem; background-color: #f2f2f2;}
+pre {font-size: 0.875rem; padding: 0.5rem 0.75rem; background-color: #f2f2f2;}
 code {background-color: #f2f2f2; font-family: 'DejaVu Sans Mono'; font-size: 95%;}
 hr {
   font-size: var(--step-c-4); /* like h1, for flow spacing */
   color: black;
   background-color: black;
-  width: 12.8rem;
+  width: 8rem;
   border: none;
-  height: .2rem;
-  margin: 3.4rem 0;
+  height: 0.125rem;
+  margin: 2.125rem 0;
 }
 .hr-full {
   width: 100%;
@@ -130,9 +130,9 @@ hr {
 .u-step-d-2 {font-size: var(--step-d-2);}
 .u-step-d-1 {font-size: var(--step-d-1);}
 .u-step-d-0 {font-size: var(--step-d-0);}
-.label-step {font-size: 1.4rem; color: grey;}
+.label-step {font-size: 0.875rem; color: grey;}
 .debug-gap-color {background: #eed9eb;}
-.debug-column-color > span {font-size: 1.4rem; font-family: monospace; background: white;}
+.debug-column-color > span {font-size: 0.875rem; font-family: monospace; background: white;}
 .full-height {
   height: 100vh;
 }
@@ -225,10 +225,10 @@ hr {
 // Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
 // instead of some specific value (like o-containers).
 .max-64rem {
-  max-width: 64rem;
+  max-width: 40rem;
 }
 .max-48rem {
-  max-width: 48rem;
+  max-width: 30rem;
 }
 
 
@@ -279,12 +279,12 @@ hr {
   pointer-events: none;
   content: ' ';
   position: absolute;
-  left: 1.1rem;
-  top: 1.9rem;
+  left: 0.7rem;
+  top: 1.1875rem;
   width: 0;
   height: 0;
-  border-width: 1rem;
-  border: 0.5rem solid black;
+  border-width: 0.625rem;
+  border: 0.3125rem solid black;
   border-bottom-color: transparent;
   border-left-color: transparent;
   border-right-color: transparent;
@@ -358,8 +358,8 @@ hr {
   appearance: none;
   cursor: pointer;
   border: 2px solid black;
-  padding: 1rem 2rem;
-  font-size: 1.6rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -368,7 +368,7 @@ hr {
 }
 
 .c-button--tall {
-  padding: 1rem 2rem 3rem;
+  padding: 0.625rem 1.25rem 1.875rem;
   justify-content: left;
   vertical-align: top;
 }
@@ -380,8 +380,8 @@ hr {
 
 // Button icon
 .c-button svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.125rem;
+  height: 1.125rem;
 }
 
 // Primary button variant
@@ -427,9 +427,9 @@ hr {
 // Input field
 .c-input {
   appearance: none;
-  height: 3.6rem;
+  height: 2.25rem;
   width: calc(100% - 2px);
-  padding: 0.8rem;
+  padding: 0.5rem;
   background: #f4f4f4;
   border: 1px solid #f4f4f4;
   border-bottom: 1px solid #ddd;
@@ -437,6 +437,6 @@ hr {
   &:focus {
     outline: 0;
     border-color: blue;
-    box-shadow: inset 0 0 0 0.1rem blue;
+    box-shadow: inset 0 0 0 0.0625rem blue;
   }
 }
