@@ -190,37 +190,6 @@ hr {
   min-inline-size: 50%;
 }
 
-.switcher {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-m);
-}
-
-.switcher > * {
-  --measure: 80ch;
-  flex-basis: calc((var(--measure) - 100%) * 999);
-  flex-grow: 1;
-}
-
-.switch-at-60rem > * {
-  --measure: 60rem;
-  flex-basis: calc((var(--measure) - 100%) * 999);
-}
-
-.switcher-0px {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse; // We want the last button horizontally (right hand) be the first vertically.
-  gap: 4px 0px; // We want a small gap vertically.
-}
-
-.switcher-0px > * {
-  --measure: 40ch;
-  flex-basis: calc((var(--measure) - 100%) * 999);
-  flex-grow: 1;
-}
-
-
 /* Top-level wrapper to push the footer at the bottom of the viewport.
    This is useful when there is not enough content to push the footer
    down the page.
