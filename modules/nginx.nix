@@ -2,6 +2,7 @@
 let
   site = (import ../.).site;
   itcss = (import ../itcss {}).site;
+  struct = (import ../itcss {}).struct;
   hs = (import ../.).hs;
   haddock = (import ../.).haddock;
   brochure = (import ../.).brochure;
@@ -36,6 +37,22 @@ in
         };
         "/static/css/itcss/" = {
           alias = itcss + "/static/css/itcss/";
+        };
+
+        "=/struct.html" = {
+          alias = struct + "/struct.html";
+        };
+        "/notes/" = {
+          alias = struct + "/notes/";
+        };
+        "/specimens/" = {
+          alias = struct + "/specimens/";
+        };
+        "/prototypes/" = {
+          alias = struct + "/prototypes/";
+        };
+        "/static/css/struct/" = {
+          alias = struct + "/static/css/struct/";
         };
       };
     };

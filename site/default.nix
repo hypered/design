@@ -83,8 +83,16 @@ in rec
   '';
 
   static = pkgs.runCommand "static" {} ''
-    mkdir $out
+    mkdir -p out/{css,fonts,images,img}
 
-    cp -r ${../static}/* $out/
+    cp -r ${../static}/css/* out/css/
+    cp -r ${../static}/fonts/* out/fonts/
+    cp -r ${../static}/img/* out/img/
+
+    cp -r ${struct}/static/css/* out/css/
+    cp -r ${struct}/static/fonts/* out/fonts/
+    cp -r ${struct}/static/images/* out/images/
+
+    cp -r out $out
   '';
 }

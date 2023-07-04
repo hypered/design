@@ -34,6 +34,7 @@ library
     , http-api-data
     , http-types
     , optparse-applicative
+    , pretty-simple
     , protolude
     , servant
     , servant-blaze
