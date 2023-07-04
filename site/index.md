@@ -48,6 +48,10 @@ the ITCSS approach.
   - This page should match an [existing
     page](https://noteed.com/notes/static-binaries.html).
 
+And there is another implementation, using a "fluid" approach.
+
+- [Struct](/struct.html)
+
 An example PDF brochure created with LaTeX:
 
 - [Full example](pdf/brochure/example-full.pdf) - This is an example grouping
