@@ -1,36 +1,17 @@
-doctype html
-html(dir="ltr", lang="en")
-    head
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/static/css/struct.css")
-    body.u-container-vertical.cover
-        header
-            .u-container
-                .u-bar
-                    .u-bar__left
-                        a(href="/prototypes/refli-index-struct-constant.html")
-                            img(src="/static/images/logo.svg" alt="Refli")
-                    .u-bar__right
-                        include ../includes/main-header--page-struct
-        main
-            .u-container
-                .switcher.switch-at-60rem.u-flow-c-4
-                    .flow
-                        h1 Compute a gross-to-net salary conversion
-                        p Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions.
-                    .box
-                        form.c-text.flow
-                            h4 Salary computation
-                            div
-                                label Gross monthly salary
-                                input.c-input
-                            button.c-button.c-button--primary(type="submit")
-                                span Compute
-                                svg(width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
-                                    <path d="M12.2929 5.29289C12.6834 4.90237 13.3166 4.90237 13.7071 5.29289L19.7071 11.2929C19.8946 11.4804 20 11.7348 20 12C20 12.2652 19.8946 12.5196 19.7071 12.7071L13.7071 18.7071C13.3166 19.0976 12.6834 19.0976 12.2929 18.7071C11.9024 18.3166 11.9024 17.6834 12.2929 17.2929L16.5858 13L5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11L16.5858 11L12.2929 6.70711C11.9024 6.31658 11.9024 5.68342 12.2929 5.29289Z" fill="#595959"/>
+extends ../layouts/refli
 
-        footer
-            .u-container
-                hr
-                span © Hypered SRL, 2023.
+block content
+    .switcher.switch-at-60rem.u-flow-c-4
+        .flow
+            h1 Compute a gross-to-net salary conversion
+            p Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions.
+        .box
+            form.c-text.flow
+                h4 Salary computation
+                div
+                    label Gross monthly salary
+                    input.c-input
+                button.c-button.c-button--primary(type="submit")
+                    span Compute
+                    svg(width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg")
+                        <path d="M12.2929 5.29289C12.6834 4.90237 13.3166 4.90237 13.7071 5.29289L19.7071 11.2929C19.8946 11.4804 20 11.7348 20 12C20 12.2652 19.8946 12.5196 19.7071 12.7071L13.7071 18.7071C13.3166 19.0976 12.6834 19.0976 12.2929 18.7071C11.9024 18.3166 11.9024 17.6834 12.2929 17.2929L16.5858 13L5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11L16.5858 11L12.2929 6.70711C11.9024 6.31658 11.9024 5.68342 12.2929 5.29289Z" fill="#595959"/>

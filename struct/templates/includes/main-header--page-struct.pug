@@ -1,6 +1,10 @@
 // A variant of the main header for the web site (page) using scss/struct.
 ul
     li
+        .menu-item
+            a(href="#").menu-link Documentation
+
+    li
         .menu-item(tabindex="-1")
             i.menu-mask(tabindex="-1")
             a.menu-dropdown Playground
@@ -11,4 +15,7 @@ ul
 
     li
         .menu-item
-            a(href="#").menu-link Documentation
+            a(href="#").menu-link Login
+    li
+        .menu-item
+            a(href="#").menu-link Sign up
