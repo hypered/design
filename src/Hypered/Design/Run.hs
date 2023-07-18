@@ -11,7 +11,7 @@ import           Hypered.Design.Guide           ( generateGuide )
 import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories         ( stories )
 import           Hypered.Design.Templates       ( generateTemplates )
-import           Hypered.Html
+import           Hypered.Html.Tachyons
   ( defaultConfig, documentFile
 
   , loginForm

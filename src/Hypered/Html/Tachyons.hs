@@ -1,7 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE RecordWildCards #-}
--- | Define HTML code for the Hypered design system.
-module Hypered.Html where
+-- | Define HTML code for the Tachyons-based Hypered design system.
+module Hypered.Html.Tachyons where
 
 import Protolude
 import System.FilePath (joinPath, splitPath, (</>))

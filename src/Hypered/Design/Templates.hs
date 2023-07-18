@@ -4,7 +4,7 @@ module Hypered.Design.Templates
 
 import           Hypered.Design.IO
   ( prettyHtml, partialHtml, generateHtml )
-import           Hypered.Html
+import           Hypered.Html.Tachyons
   ( Font(IbmPlex, Font)
   , wrap , wrapPost , Config(..)
   , footer, navigation, navigationTemplate

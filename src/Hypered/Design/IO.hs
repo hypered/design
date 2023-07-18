@@ -2,7 +2,7 @@
 -- result is used as a static site at hypered.design.
 module Hypered.Design.IO where
 
-import           Hypered.Html
+import Hypered.Html.Tachyons
   ( Config(..)
   , defaultConfig
   , documentFile

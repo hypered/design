@@ -1,6 +1,6 @@
 module Hypered.Design.Examples where
 
-import           Hypered.Html
+import Hypered.Html.Tachyons
   ( footer
 
   -- For individual componenents

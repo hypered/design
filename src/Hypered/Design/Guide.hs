@@ -5,7 +5,7 @@ module Hypered.Design.Guide
 import           Hypered.Design.Examples
 import           Hypered.Design.IO
   ( generate, generate' )
-import           Hypered.Html
+import           Hypered.Html.Tachyons
   ( Font(Inter)
   , Config(..)
   , defaultConfig

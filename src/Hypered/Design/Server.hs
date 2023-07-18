@@ -14,7 +14,7 @@ import           Control.Monad.Catch            ( MonadCatch
 import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Fluid          as Fluid
-import qualified Hypered.Html                  as Hy
+import qualified Hypered.Html.Tachyons         as Hy
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
 import qualified Network.Wai.Handler.Warp      as Warp
