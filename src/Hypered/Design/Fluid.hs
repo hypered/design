@@ -326,6 +326,7 @@ generateVWBasedValues remInPx paramss =
 -- E.g.:
 --     Fluid.computeValue 10 (Fluid.step5 (Fluid.makeSteps Fluid.scaleD)) 1280
 -- I.e. simulate the evaluation of the above generated CSS formula.
+-- TODO I'm not sure this is correct. Write some example tests.
 computeValue :: Double -> Parameters -> Double -> Double
 computeValue remInPx Parameters {..} width =
   clamp
@@ -333,7 +334,7 @@ computeValue remInPx Parameters {..} width =
     (toRem yIntersection + toRem (slope * width))
     (toRem maxValue)
  where
-  clamp a b c = b -- min (max a b) c
+  clamp a b c = min (max a b) c
   slope = (maxValue - minValue) / (maxWidth - minWidth)
   yIntersection = (-minWidth) * slope + minValue
   toRem = (/ remInPx)
