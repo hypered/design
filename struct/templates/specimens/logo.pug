@@ -1,0 +1,21 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Logo
+                p The Refli logo was created by Marina. It's almost IBM Plex Sans Bold, 32px, with a -2.5% letter spacing. We see here first the SVG logo, then a <code>span</code> element with CSS-styled text. (In the case of the SVG Refli logo, some adjustments were manually done.)
+
+                style.
+                  .logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
+
+                img(src="/static/images/logo.svg" alt="The Refli logo")
+                div
+                    span.logo refli
+                img(src="/static/images/prototype.svg" alt="The Prototype logo")
+                div
+                    span.logo prototype
