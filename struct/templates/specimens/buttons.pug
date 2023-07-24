@@ -32,8 +32,24 @@ html(dir="ltr", lang="en")
                     width: 1.125rem;
                     height: 1.125rem;
                   }
+                  button.x-button svg * {
+                    fill: currentColor;
+                  }
                   button.x-button span + svg {margin-left: 0.4rem;}
                 div
                     button.x-button
                         span Log in
                         +arrow-right
+
+                p Styling links as buttons.
+                div
+                    a.c-button.c-button--primary(href='#')
+                        span Login
+                        +arrow-right
+                div
+                    a.c-button.c-button--secondary(href='#')
+                        span Register
+                        +arrow-right
+                div
+                    a.c-button.c-button--secondary.c-button--tall(href="signup")
+                        span Register

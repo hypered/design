@@ -368,6 +368,16 @@ hr {
   display: inline-flex;
 }
 
+a.c-button--primary {
+  color: white;
+  text-decoration: none;
+}
+
+a.c-button--secondary {
+  color: black;
+  text-decoration: none;
+}
+
 .c-button--tall {
   padding: 0.625rem 1.25rem 1.875rem;
   justify-content: left;
