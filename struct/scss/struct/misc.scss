@@ -385,6 +385,11 @@ hr {
   height: 1.125rem;
 }
 
+// Space between label and icon
+.c-button span + svg {
+  margin-left: 0.4rem;
+}
+
 // Primary button variant
 .c-button--primary {
   background: #000;
@@ -405,6 +410,14 @@ hr {
   }
 }
 
+.c-button--primary-push {
+  &:active {
+    transform: translateY(2px);
+    background: #999;
+    border-color: #999;
+  }
+}
+
 // Secondary button variant
 .c-button--secondary {
   background: #fff;
@@ -421,6 +434,14 @@ hr {
 
   &:active {
     background: #999;
+    border-color: #000;
+  }
+}
+
+.c-button--secondary-push {
+  &:active {
+    transform: translateY(2px);
+    background: #ddd;
     border-color: #000;
   }
 }

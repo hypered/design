@@ -1,0 +1,39 @@
+include ../includes/mixins/icons.pug
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+    body
+        .u-container.u-container-vertical
+            .c-text.flow
+                h1 Button
+                p This page xxxs.
+                div
+                    button.c-button.c-button--primary(type="submit")
+                        span Log in
+                        +arrow-right
+
+                div
+                    button.c-button.c-button--primary.c-button--primary-push(type="submit")
+                        span Log in
+                        +arrow-right
+
+                style.
+                  button.x-button {display: inline-flex; text-align: center; align-items: center;}
+                  button.x-button span {white-space: nowrap;}
+                  button.x-button svg {
+                    width: 1.125rem;
+                    height: 1.125rem;
+                  }
+                  button.x-button span + svg {margin-left: 0.4rem;}
+                div
+                    button.x-button
+                        span Log in
+                        +arrow-right
