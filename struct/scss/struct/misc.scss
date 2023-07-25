@@ -225,6 +225,9 @@ hr {
 // Tachyons would call this mw8 or something.
 // Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
 // instead of some specific value (like o-containers).
+.max-50rem {
+  max-width: 50rem;
+}
 .max-64rem {
   max-width: 40rem;
 }
