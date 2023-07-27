@@ -1,0 +1,31 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 Fonts
+                p We now start building on top of our <a href="foundations.html">foundations</a>. Before we talk about layouts (how we organize broadly a page) and components (various elements composing a page, such as buttons or menus), we want to start by styling text.
+
+                p But even before we can do that, we have to choose a font, load it, then make sure some of our HTML elements use it. This is the purpose of this page.
+
+                p We ended the previous page with the following frame:
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/foundations-reset.html")
+                a(href="frames/foundations-reset.html") View example page
+
+                p Recall how both the title and the paragraph, once we "reset" the default browser styles, now look the same. In my browser, when I "inspect" the title or the paragraph, I can see that the font is "DejaVu Serif."
+
+                p Below, we add some CSS rules to use "IBM Plex Sans" instead.
+
+                .wrrrap
+                  iframe(width=964, height=164, src="frames/fonts-1.html")
+                a(href="frames/fonts-1.html") View example page

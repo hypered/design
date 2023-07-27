@@ -475,3 +475,12 @@ a.c-button--secondary {
     box-shadow: inset 0 0 0 0.0625rem blue;
   }
 }
+
+// Style iframes in the notes.
+.wrrrap {
+  width: 964px;
+  margin: 1.4em auto 0 0;
+}
+.wrrrap iframe {
+  border: 2px solid #DDD;
+}
