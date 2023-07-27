@@ -3,11 +3,11 @@
    each others.
  */
 .wrapper {
-  padding: calc(var(--grid-gutter) / 2);
-  border: 2px dashed purple;
+  padding: calc(var(--grid-gutter) / 3);
+  outline: 2px dashed purple;
 }
 .wrapper + .wrapper {
-  margin-top: calc(var(--grid-gutter) / 2);
+  margin-top: calc(var(--grid-gutter) / 3);
 }
 
 .u-container {
