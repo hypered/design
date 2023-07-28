@@ -14,6 +14,7 @@ import           Control.Monad.Catch            ( MonadCatch
 import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Fluid          as Fluid
+import qualified Hypered.Html.Struct           as Struct
 import qualified Hypered.Html.Tachyons         as Hy
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
@@ -78,6 +79,8 @@ type App =    "" :> Raw
               -- Call here the page you want to work on.
          :<|> "edit" :> Get '[HTML] Html
 
+         :<|> "specimens" :> "navigation" :> Get '[HTML] Html
+
          :<|> Raw -- Fallback handler for the static files, in particular the
                   -- documentation.
 
@@ -97,6 +100,7 @@ serverT root =
     :<|> showTypeScaleAMeasures Fluid.settings
     :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
+    :<|> pure Struct.specimenNavigation
     :<|> serveDocumentation root
 
 

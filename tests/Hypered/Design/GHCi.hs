@@ -14,6 +14,7 @@ module Hypered.Design.GHCi (
 
 import Protolude
 import Hypered.Design.Fluid qualified as Fluid
+import Hypered.Html.Struct qualified as Struct
 
 -- This import is present to set -interactive-print in ghci.conf.
 import Text.Pretty.Simple qualified
