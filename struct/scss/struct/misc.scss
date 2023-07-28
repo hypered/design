@@ -10,29 +10,12 @@
   margin-top: calc(var(--grid-gutter) / 3);
 }
 
-.u-container {
-  min-width: calc(15.1rem - 2 * var(--grid-gutter));
-  max-width: var(--grid-max-width);
-  padding-inline: var(--grid-gutter);
-  margin-inline: auto;
-}
 .bordered {
   border: 2px solid black;
 }
 .bordered-3 {
   border: 2px solid black;
   border-bottom: none;
-}
-
-.u-container-vertical {
-  /* TODO I'd like the padding-top to be the same as the flow-all for a c-text h1.
-     I.e. using flow-all or using u-container-vertical should be the same.
-     In addition, a c-text h1 could also match the position of the Refli logo
-     in the navigation bar. */
-  padding-block: var(--grid-gutter);
-}
-.u-container-top {
-  padding-block-start: var(--grid-gutter);
 }
 
 .u-grid {
@@ -209,15 +192,6 @@ hr {
   margin-top: auto;
 }
 
-
-/* Similar to Panel in Mono's work ? */
-.box {
-  padding: var(--grid-gutter);
-  border: 2px solid black;
-}
-.inset {
-  padding: var(--grid-gutter);
-}
 .center {
   margin-left: auto;
   margin-right: auto;
@@ -233,22 +207,6 @@ hr {
 }
 .max-48rem {
   max-width: 30rem;
-}
-
-
-
-.u-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.u-bar__left {
-}
-.u-bar__right {
-  ul li {
-    display: inline;
-    margin-left: var(--space-s);
-  }
 }
 
 /* -----------------------------------------------------------------------------
