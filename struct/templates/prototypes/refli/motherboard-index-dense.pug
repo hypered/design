@@ -1,0 +1,91 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Lex Iterata
+                p Attempt at presenting a better Belgian official journal ELI index.
+
+            style.
+              .entry {
+                display: flex;
+                gap: 1em;
+                justify-content: flex-start;
+                padding-right: 0.5em;
+              }
+              .entry:hover {background-color: #F5F5F5;}
+              .entry + .entry {margin-top: 1em;}
+              .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
+              .grow {flex-grow: 1;}
+              .second-line {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
+              .second-line span {margin-left: 4em;}
+              .second-line p + p {margin-top: -0.3em;}
+            .c-text
+              .entry
+                div.num
+                  p 1.
+                div.grow
+                  p 19 JANVIER 2022. - Loi portant le livre 2, titre 3, "Les relations patrimoniales des couples" et le livre 4 "Les successions, donations et testaments" du Code civil (1)
+                  .second-line
+                    p
+                      small
+                        | Publié le 14-03-2022
+                        | SERVICE PUBLIC FEDERAL JUSTICE
+                    p
+                      small
+                        span <a href=#>Moniteur</a>
+                        span <a href=#>Justel</a>
+
+              .entry
+                div.num
+                  p 2.
+                div.grow
+                  p 19 JANVIER 2022. - CODE CIVIL - LIVRE 2, Titre 3 : " Les relations patrimoniales des couples "
+                  .second-line
+                    p
+                      small
+                        | Publié le 14-03-2022
+                        | JUSTICE
+                    p
+                      small
+                        span Moniteur
+                        span <a href=#>Justel</a>
+
+              .entry
+                div.num
+                  p 3.
+                div.grow
+                  p 19 JANVIER 2022. - CODE CIVIL - LIVRE 4 : " Les successions, donations et testaments "
+                  .second-line
+                    p
+                      small
+                        | Publié le 14-03-2022
+                        | JUSTICE
+                    p
+                      small
+                        span Moniteur
+                        span <a href=#>Justel</a>
+
+              .entry
+                div.num
+                  p 4.
+                div.grow
+                  p 21 JANVIER 2022. - Loi portant des dispositions fiscales diverses (1)
+                  .second-line
+                    p
+                      small
+                        | Publié le 28-01-2022
+                        | SERVICE PUBLIC FEDERAL FINANCES
+                    p
+                      small
+                        span <a href=#>Moniteur</a>
+                        span <a href=#>Justel</a>

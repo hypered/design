@@ -1,0 +1,32 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Lex Iterata
+                p Attempt at presenting a better Belgian official journal ELI index.
+
+            style.
+              .custom p.first-line span { display: inline-block; width: 3em; text-align: right; margin-right: 1em;}
+              .custom p.second-line { margin-left: 4em; color: #444;}
+              .custom p.second-line small span { margin-left: 4em;}
+            .c-text.custom
+                p.first-line
+                  span 1.
+                  | 7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE.
+                p.second-line
+                  small
+                    | Publié le 07-02-1831
+                    span Moniteur
+                    span <a href=#>Justel</a>
+                    span Source: -
+
