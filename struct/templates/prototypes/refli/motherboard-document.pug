@@ -1,0 +1,99 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Lex Iterata
+                p Attempt at presenting a better Belgian official document (actually, a Justel one). Note: we replaced manually the quotation marks with guillemets, as in the PDF, and used italics in some places, as in the PDF. The dash after the date in the title is replaced by an em dash. The collapsible preamble and signature blocks are exclusive (as they use focus, instead of e.g. checkboxes).
+
+            style.
+              h1.title {text-indent: 1.8em; text-align: justify;}
+              .legislation p {text-indent: 1em;}
+              .legislation p.first {text-indent: 3em;}
+              .legislation p.second {text-indent: 3em; margin-top: 0;}
+              .article {color: #666;}
+              .article:after {
+                content: '\00a0\00a0';
+              }
+              i {font-style: italic;}
+              .menu-item .menu-dropdown-content-2 {
+                display: none;
+              }
+              /* Show the dropdown content when focused. */
+              .menu-item:focus .menu-dropdown-content-2 {
+                display: block;
+                padding-left: 2em;
+                border-left: 4px solid #DFDFDF;
+              }
+
+            .c-text.flow-all.limit-42em.legislation
+                h1.title 15 JUILLET 2016. — Arrêté royal modifiant l'arrêté royal du 19 décembre 1967 portant règlement général en exécution de l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants
+
+                .menu-item(tabindex="-1")
+                    i.menu-mask(tabindex="-1")
+                    a.menu-dropdown Préambule
+                    .menu-dropdown-content-2
+
+                        p.first PHILIPPE, Roi des Belges,
+                        p.second A tous, présents et à venir, Salut.
+                        p Vu l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants, l'article 10, § 2, modifié en dernier lieu par la loi du 23 décembre 2009, et l'article 15, § 4, modifié en dernier lieu par la loi du 22 novembre 2013 ;
+                        p Vu l'arrêté royal du 19 décembre 1967 portant règlement général en exécution de l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants ;
+                        p Vu l'avis de l'Inspecteur des Finances, donné le 15 juin 2016 ;
+                        p Vu l'accord de Notre Ministre du Budget, donné le 17 juin 2016 ;
+                        p Vu l'avis n° 59.668/1 du Conseil d'Etat, donné le 30 juin 2016, en application de l'article 84, § 1er, alinéa 1er, 3°, des lois coordonnées sur le Conseil d'Etat ;
+                        p Vu l'urgence ;
+                        p Considérant que les modifications proposées - qui ne sont que la suite logique de la modification de l'article 10, § 1er, de l'arrêté royal n° 38 du 27 juillet 1967 - doivent entrer en vigueur à la même date que celle à laquelle l'arrêté royal n° 38 précité est modifié, à savoir le 1er juillet 2016 ;
+                        p Sur la proposition de la Ministre des Affaires sociales et du Ministre des Indépendants,
+                        p Nous avons arrêté et arrêtons :
+
+                p
+                    span.article
+                        | Article 1er.
+                    | Dans l'article 9, alinéa 1er, de l'arrêté royal du 19 décembre 1967 portant règlement général en exécution de l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants, modifié en dernier lieu par l'arrêté royal du 6 avril 2010, les mots « au plus tard le jour du début » sont remplacés par les mots « avant le début ».
+
+                p
+                    span.article
+                        | Art. 2.
+                    | Dans l'article 10, § 1er, du même arrêté, modifié en dernier lieu par l'arrêté royal du 24 janvier 2014, les mots « au plus tard le jour du début » sont remplacés par les mots « avant le début ».
+
+                p
+                    span.article
+                        | Art. 3.
+                    | Dans l'article 44, § 2, du même arrêté, modifié en dernier lieu par l'arrêté royal du 6 avril 2010, les mots « au plus tard le jour du début » sont remplacés par les mots « avant le début ».
+
+                p
+                    span.article
+                        | Art. 4.
+                    | Dans l'article 44<i>bis</i>, § 2, alinéa 1 et 2, du même arrêté, modifié en dernier lieu par l'arrêté royal du 6 avril 2010, les mots « au plus tard le jour du début » sont remplacés chaque fois par les mots « avant le début ».
+
+                p
+                    span.article
+                        | Art. 5.
+                    | Le présent arrêté entre en vigueur le jour de sa publication au <i>Moniteur belge</i>.
+
+                p
+                    span.article
+                        | Art. 6.
+                    | Le ministre qui a les Indépendants dans ses attributions, est chargé de l'exécution du présent arrêté.
+
+                .menu-item(tabindex="-1")
+                    i.menu-mask(tabindex="-1")
+                    a.menu-dropdown Signature
+                    .menu-dropdown-content-2
+
+                        p.first Donné à Bruxelles, le 15 juillet 2016.
+                        p PHILIPPE
+                        p Par le Roi :
+                        p La Ministre des Affaires sociales,
+                        p Maggie DE BLOCK
+                        p Le Ministre des Indépendants,
+                        p Willy BORSUS
