@@ -4,6 +4,7 @@
 // added benefit of restricting its maximum horizontal dimension.
 
 .u-container {
+  width: 100%;
   min-width: calc(15.1rem - 2 * var(--grid-gutter));
   max-width: var(--grid-max-width);
   padding-inline: var(--grid-gutter);
