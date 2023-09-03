@@ -9,11 +9,19 @@ html(dir="ltr", lang="en")
         link(rel="stylesheet", href="/static/css/struct/scale.css")
         link(rel="stylesheet", href="/static/css/struct/layouts.css")
         link(rel="stylesheet", href="/static/css/struct/misc.css")
-    body
+    body.u-container-vertical.cover
+        header
+            .u-container
+                .c-text
+                    style.
+                      .logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
+                      .logo a {color: black;}
+
+                    div
+                        span.logo
+                            a(href="motherboard-index.html") Lex Iterata
+
         .u-container
-            .c-text.flow-all
-                h1 Lex Iterata
-                p Attempt at presenting a better Belgian official journal ELI index.
 
             style.
               .entry {
@@ -82,3 +90,11 @@ html(dir="ltr", lang="en")
                         span <a href=#>Justel</a>
                     p
                       small SERVICE PUBLIC FEDERAL FINANCES
+
+        footer
+            .u-container
+                hr
+                .c-text.flow
+                    p
+                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more.</a>
+                    p © Hypered SRL, 2023.

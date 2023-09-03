@@ -22,21 +22,22 @@ html(dir="ltr", lang="en")
                             a(href="motherboard-index.html") Lex Iterata
 
         .u-container
+            style.
+              .custom { margin-top: 2em; /* TODO Replace with a spacer utility. */}
+              .custom p.first-line span { display: inline-block; width: 3em; text-align: right; margin-right: 1em;}
+              .custom p.second-line { margin-left: 4em; color: #444;}
+              .custom p.second-line small span { margin-left: 4em;}
 
-            .c-text.flow-all
-                p Lex Iterata is a sub-site of Refli offering the content of the <a href="https://www.ejustice.just.fgov.be/">official Belgian journal</a> both in human-readable form, and as structured data.
-                p There are currently five types of documents:
-                ul
-                    li
-                        a(href="motherboard-index-1.html") Constitution
-                    li
-                        a(href="motherboard-index-2.html") Law
-                    li
-                        a() Decree
-                    li
-                        a() Ordinance
-                    li
-                        a() Order
+            .c-text.custom
+                p.first-line
+                  span 1.
+                  | 7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE.
+                p.second-line
+                  small
+                    | Publié le 07-02-1831
+                    span Moniteur
+                    span <a href=#>Justel</a>
+                    span Source: -
 
         footer
             .u-container
