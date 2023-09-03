@@ -9,11 +9,18 @@ html(dir="ltr", lang="en")
         link(rel="stylesheet", href="/static/css/struct/scale.css")
         link(rel="stylesheet", href="/static/css/struct/layouts.css")
         link(rel="stylesheet", href="/static/css/struct/misc.css")
-    body
+    body.u-container-vertical.cover
+        header
+            .u-container
+                .c-text
+                    style.
+                      .logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
+                      .logo a {color: black;}
+
+                    div
+                        span.logo
+                            a(href="motherboard-index.html") Lex Iterata
         .u-container
-            .c-text.flow-all
-                h1 Lex Iterata
-                p Attempt at presenting a better Belgian official journal ELI index.
 
             style.
               .entry {
@@ -23,7 +30,7 @@ html(dir="ltr", lang="en")
                 padding-right: 0.5em;
               }
               .entry:hover {background-color: #F5F5F5;}
-              .entry + .entry {margin-top: 1em;}
+              .entry {margin-top: 1em;}
               .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
               .grow {flex-grow: 1;}
               .second-line {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
@@ -89,3 +96,11 @@ html(dir="ltr", lang="en")
                       small
                         span <a href=#>Moniteur</a>
                         span <a href=#>Justel</a>
+
+        footer
+            .u-container
+                hr
+                .c-text.flow
+                    p
+                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more.</a>
+                    p © Hypered SRL, 2023.

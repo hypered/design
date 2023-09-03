@@ -148,6 +148,15 @@ let
         sha512 = "SFKX67auSNoVR38N3L+nvsPjOE0bybKTYbkf5tRvushrAPQ9V75huw0ZxBkKVeRU9kqH3d6HA4xTckbwZ4ixmA==";
       };
     };
+    "ansi-cyan-0.1.1" = {
+      name = "ansi-cyan";
+      packageName = "ansi-cyan";
+      version = "0.1.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ansi-cyan/-/ansi-cyan-0.1.1.tgz";
+        sha512 = "eCjan3AVo/SxZ0/MyIYRtkpxIu/H3xZN7URr1vXVrISxeyz8fUFz0FJziamK4sS8I+t35y4rHg1b2PklyBe/7A==";
+      };
+    };
     "ansi-gray-0.1.1" = {
       name = "ansi-gray";
       packageName = "ansi-gray";
@@ -155,6 +164,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/ansi-gray/-/ansi-gray-0.1.1.tgz";
         sha512 = "HrgGIZUl8h2EHuZaU9hTR/cU5nhKxpVE1V6kdGsQ8e4zirElJ5fvtfc8N7Q1oq1aatO275i8pUFUCpNWCAnVWw==";
+      };
+    };
+    "ansi-red-0.1.1" = {
+      name = "ansi-red";
+      packageName = "ansi-red";
+      version = "0.1.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/ansi-red/-/ansi-red-0.1.1.tgz";
+        sha512 = "ewaIr5y+9CUTGFwZfpECUbFlGcC0GCw1oqR9RI6h1gQCd9Aj2GxSckCnPsVJnmfMZbwFYE+leZGASgkWl06Jow==";
       };
     };
     "ansi-regex-2.1.1" = {
@@ -238,6 +256,15 @@ let
         sha512 = "Xg+9RwCg/0p32teKdGMPTPnVXKD0w3DfHnFTficozsAgsvq2XenPJq/MYpzzQ/v8zrOyJn6Ds39VA4JIDwFfqw==";
       };
     };
+    "arr-diff-1.1.0" = {
+      name = "arr-diff";
+      packageName = "arr-diff";
+      version = "1.1.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/arr-diff/-/arr-diff-1.1.0.tgz";
+        sha512 = "OQwDZUqYaQwyyhDJHThmzId8daf4/RFNLaeh3AevmSeZ5Y7ug4Ga/yKc6l6kTZOBW781rCj103ZuTh8GAsB3+Q==";
+      };
+    };
     "arr-diff-4.0.0" = {
       name = "arr-diff";
       packageName = "arr-diff";
@@ -274,6 +301,15 @@ let
         sha512 = "tVqVTHt+Q5Xb09qRkbu+DidW1yYzz5izWS2Xm2yFm7qJnmUfz4HPzNxbHkdRJbz2lrqI7S+z17xNYdFcBBO8Hw==";
       };
     };
+    "arr-union-2.1.0" = {
+      name = "arr-union";
+      packageName = "arr-union";
+      version = "2.1.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/arr-union/-/arr-union-2.1.0.tgz";
+        sha512 = "t5db90jq+qdgk8aFnxEkjqta0B/GHrM1pxzuuZz2zWsOXc5nKu3t+76s/PQBA8FTcM/ipspIH9jWG4OxCBc2eA==";
+      };
+    };
     "arr-union-3.1.0" = {
       name = "arr-union";
       packageName = "arr-union";
@@ -308,6 +344,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/array-last/-/array-last-1.3.0.tgz";
         sha512 = "eOCut5rXlI6aCOS7Z7kCplKRKyiFQ6dHFBem4PwlwKeNFk2/XxTrhRh5T9PyaEWGy/NHTZWbY+nsZlNFJu9rYg==";
+      };
+    };
+    "array-slice-0.2.3" = {
+      name = "array-slice";
+      packageName = "array-slice";
+      version = "0.2.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/array-slice/-/array-slice-0.2.3.tgz";
+        sha512 = "rlVfZW/1Ph2SNySXwR9QYkChp8EkOEiTMO5Vwx60usw04i4nWemkm9RXmQqgkQFaLHsqLuADvjp6IfgL9l2M8Q==";
       };
     };
     "array-slice-1.1.0" = {
@@ -1543,6 +1588,15 @@ let
         sha512 = "fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==";
       };
     };
+    "extend-shallow-1.1.4" = {
+      name = "extend-shallow";
+      packageName = "extend-shallow";
+      version = "1.1.4";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/extend-shallow/-/extend-shallow-1.1.4.tgz";
+        sha512 = "L7AGmkO6jhDkEBBGWlLtftA80Xq8DipnrRPr0pyi7GQLXkaq9JYA4xF4z6qnadIC6euiTDKco0cGSU9muw+WTw==";
+      };
+    };
     "extend-shallow-2.0.1" = {
       name = "extend-shallow";
       packageName = "extend-shallow";
@@ -1964,6 +2018,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/gulp-cli/-/gulp-cli-2.3.0.tgz";
         sha512 = "zzGBl5fHo0EKSXsHzjspp3y5CONegCm8ErO5Qh0UzFzk2y4tMvzLWhoDokADbarfZRL2pGpRp7yt6gfJX4ph7A==";
+      };
+    };
+    "gulp-data-1.3.1" = {
+      name = "gulp-data";
+      packageName = "gulp-data";
+      version = "1.3.1";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/gulp-data/-/gulp-data-1.3.1.tgz";
+        sha512 = "fvpQJvgVyhkwRcFP3Y9QUS9sWvIFsAlJDinQjhLuknmHZz52jH0gHmTujYBFjr9aTlTHlrAayY5m1d0tA1HzGQ==";
       };
     };
     "gulp-pug-5.0.0" = {
@@ -2621,6 +2684,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/just-debounce/-/just-debounce-1.1.0.tgz";
         sha512 = "qpcRocdkUmf+UTNBYx5w6dexX5J31AKK1OmPwH630a83DdVVUIngk55RSAiIGpQyoH0dlr872VHfPjnQnK1qDQ==";
+      };
+    };
+    "kind-of-1.1.0" = {
+      name = "kind-of";
+      packageName = "kind-of";
+      version = "1.1.0";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/kind-of/-/kind-of-1.1.0.tgz";
+        sha512 = "aUH6ElPnMGon2/YkxRIigV32MOpTVcoXQ1Oo8aYn40s+sJ3j+0gFZsT8HKDcxNy7Fi9zuquWtGaGAahOdv5p/g==";
       };
     };
     "kind-of-3.2.2" = {
@@ -3368,6 +3440,15 @@ let
       src = fetchurl {
         url = "https://registry.npmjs.org/pinkie-promise/-/pinkie-promise-2.0.1.tgz";
         sha1 = "2135d6dfa7a358c069ac9b178776288228450ffa";
+      };
+    };
+    "plugin-error-0.1.2" = {
+      name = "plugin-error";
+      packageName = "plugin-error";
+      version = "0.1.2";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/plugin-error/-/plugin-error-0.1.2.tgz";
+        sha512 = "WzZHcm4+GO34sjFMxQMqZbsz3xiNEgonCskQ9v+IroMmYgk/tas8dG+Hr2D6IbRPybZ12oWpzE/w3cGJ6FJzOw==";
       };
     };
     "plugin-error-1.0.1" = {
@@ -4963,6 +5044,15 @@ let
         sha1 = "450d4dc9fa70de732762fbd2d4a28981419a0ccf";
       };
     };
+    "util-extend-1.0.3" = {
+      name = "util-extend";
+      packageName = "util-extend";
+      version = "1.0.3";
+      src = fetchurl {
+        url = "https://registry.npmjs.org/util-extend/-/util-extend-1.0.3.tgz";
+        sha512 = "mLs5zAK+ctllYBj+iAQvlDCwoxU/WDOUaJkcFudeiAX6OajC6BKXJUa9a+tbtkC11dz2Ufb7h0lyvIOVn4LADA==";
+      };
+    };
     "utils-merge-1.0.1" = {
       name = "utils-merge";
       packageName = "utils-merge";
@@ -5247,7 +5337,9 @@ let
       sources."accepts-1.3.8"
       sources."acorn-7.4.1"
       sources."ansi-colors-1.1.0"
+      sources."ansi-cyan-0.1.1"
       sources."ansi-gray-0.1.1"
+      sources."ansi-red-0.1.1"
       sources."ansi-regex-2.1.1"
       sources."ansi-styles-2.2.1"
       sources."ansi-wrap-0.1.0"
@@ -5586,6 +5678,16 @@ let
           sources."y18n-3.2.2"
           sources."yargs-7.1.2"
           sources."yargs-parser-5.0.1"
+        ];
+      })
+      (sources."gulp-data-1.3.1" // {
+        dependencies = [
+          sources."arr-diff-1.1.0"
+          sources."arr-union-2.1.0"
+          sources."array-slice-0.2.3"
+          sources."extend-shallow-1.1.4"
+          sources."kind-of-1.1.0"
+          sources."plugin-error-0.1.2"
         ];
       })
       (sources."gulp-pug-5.0.0" // {
@@ -6047,6 +6149,7 @@ let
       sources."urix-0.1.0"
       sources."use-3.1.1"
       sources."util-deprecate-1.0.2"
+      sources."util-extend-1.0.3"
       sources."utils-merge-1.0.1"
       sources."v8flags-3.2.0"
       sources."validate-npm-package-license-3.0.4"

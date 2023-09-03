@@ -3,6 +3,7 @@
 
 const bs = require('browser-sync').create();
 const gulp = require('gulp');
+const data = require('gulp-data');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
 
@@ -40,6 +41,7 @@ function styles() {
 // Build the Pug templates to HTML
 function templates() {
   return gulp.src('templates/**/*.pug')
+    .pipe(data(function (file) { return { require: require }; }))
     .pipe(pug())
     .pipe(gulp.dest('dist'))
 }

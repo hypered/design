@@ -1,0 +1,72 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body.u-container-vertical.cover
+        header
+            .u-container
+                .c-text
+                    style.
+                      .logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
+                      .logo a {color: black;}
+
+                    div
+                        span.logo
+                            a(href="motherboard-index.html") Lex Iterata
+        .u-container
+
+            // TODO I guess 'require' notion of CWD is somewhere in the Nix store.
+            - var entries = require("/home/thu/projects/design/struct/data/lex/law/2022.json")
+
+            style.
+              .entry {
+                display: flex;
+                gap: 1em;
+                justify-content: flex-start;
+                padding-right: 0.5em;
+              }
+              .entry:hover {background-color: #F5F5F5;}
+              .entry {margin-top: 1em;}
+              .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
+              .grow {flex-grow: 1;}
+              .second-line {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
+              .second-line span {margin-left: 4em;}
+              .second-line p + p {margin-top: -0.3em;}
+            .c-text
+              each entry, index in entries
+                .entry
+                  div.num
+                    p= index + 1 + '.'
+                  div.grow
+                    p= entry['title-fr']
+                    .second-line
+                      p
+                        small
+                          | Publié le
+                          |
+                          = entry['publication-date']
+                          |
+                          |
+                          = entry['source']
+                      p
+                        small
+                          if entry['journal']
+                            span <a href="#{entry['journal']}">Moniteur</a>
+                          else
+                            span Moniteur
+                          span <a href="#{entry['justel']}">Justel</a>
+
+        footer
+            .u-container
+                hr
+                .c-text.flow
+                    p
+                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more.</a>
+                    p © Hypered SRL, 2023.
