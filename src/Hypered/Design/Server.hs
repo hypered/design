@@ -80,6 +80,8 @@ type App =    "" :> Raw
          :<|> "edit" :> Get '[HTML] Html
 
          :<|> "specimens" :> "navigation" :> Get '[HTML] Html
+         :<|> "prototypes" :> "refli" :> "motherboard-index-1" :> Get '[HTML] Html
+         :<|> "prototypes" :> "refli" :> "motherboard-index-dense" :> Get '[HTML] Html
 
          :<|> Raw -- Fallback handler for the static files, in particular the
                   -- documentation.
@@ -101,6 +103,8 @@ serverT root =
     :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
     :<|> pure Struct.specimenNavigation
+    :<|> pure Struct.prototypeMotherboardIndex1
+    :<|> pure Struct.prototypeMotherboardIndexDense
     :<|> serveDocumentation root
 
 
