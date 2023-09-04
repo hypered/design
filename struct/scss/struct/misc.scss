@@ -442,3 +442,8 @@ a.c-button--secondary {
 .wrrrap iframe {
   border: 2px solid #DDD;
 }
+
+// Textual "logo" (instead of a SVG).
+// See https://hypered.design/specimens/logo.html.
+.logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
+.logo a {color: black;}

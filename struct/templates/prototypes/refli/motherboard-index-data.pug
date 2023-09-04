@@ -13,14 +13,15 @@ html(dir="ltr", lang="en")
         header
             .u-container
                 .c-text
-                    style.
-                      .logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
-                      .logo a {color: black;}
-
                     div
                         span.logo
                             a(href="motherboard-index.html") Lex Iterata
         .u-container
+
+            style.
+              .breadcrumb { color: #555; }
+            p
+                small.breadcrumb Loi / 2022
 
             // TODO I guess 'require' notion of CWD is somewhere in the Nix store.
             - var entries = require("/home/thu/projects/design/struct/data/lex/law/2022.json")
