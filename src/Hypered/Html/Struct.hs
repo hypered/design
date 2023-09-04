@@ -91,7 +91,7 @@ data Entry = Entry
 
 prototypeMotherboardIndex :: Bool -> Text -> [Entry] -> Html
 prototypeMotherboardIndex dense breadcrumb entries = do
-  let entries' = zip [1..] entries
+  let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
     H.head $ do
@@ -117,48 +117,48 @@ prototypeMotherboardIndex dense breadcrumb entries = do
                 H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
 
             if dense
-            then
-              div "c-text" $
-                forM_ entries' $ \(i, Entry {..}) ->
-                  div "mb-entry" $ do
-                    div "mb-num" $
-                      H.p . H.text $ show i <> "."
-                    div "mb-grow" $ do
-                      H.p $ H.text entryTitle
-                      div "mb-second-line mb-second-line--dense" $ do
-                        H.p $
-                          H.small $ do
-                            H.text $ "Publié le " <> entryPublicationDate
-                            " "
-                            H.text entrySource
-                        H.p $
-                          H.small $ do
-                            H.span $
-                              maybe
-                                "Moniteur"
-                                (\lnk -> H.a ! A.href (H.toValue lnk) $ "Moniteur")
-                                entryJournalLink
-                            H.span $ H.a ! A.href (H.toValue entryJustelLink) $ "Justel"
-            else
-              div "c-text limit-42em" $
-                forM_ entries' $ \(i, Entry {..}) ->
-                  div "mb-entry" $ do
-                    div "mb-num" $
-                      H.p . H.text $ show i <> "."
-                    H.div $ do
-                      H.p $ H.text entryTitle
-                      div "mb-second-line" $ do
-                        H.p $
-                          H.small $ do
-                            H.text $ "Publié le " <> entryPublicationDate
-                            H.span $
-                              maybe
-                                "Moniteur"
-                                (\lnk -> H.a ! A.href (H.toValue lnk) $ "Moniteur")
-                                entryJournalLink
-                            H.span $ H.a ! A.href (H.toValue entryJustelLink) $ "Justel"
-                        H.p $
-                          H.small ""
+              then
+                div "c-text" $
+                  forM_ entries' $ \(i, Entry {..}) ->
+                    div "mb-entry" $ do
+                      div "mb-num" $
+                        H.p . H.text $ show i <> "."
+                      div "mb-grow" $ do
+                        H.p $ H.text entryTitle
+                        div "mb-second-line mb-second-line--dense" $ do
+                          H.p $
+                            H.small $ do
+                              H.text $ "Publié le " <> entryPublicationDate
+                              " "
+                              H.text entrySource
+                          H.p $
+                            H.small $ do
+                              H.span $
+                                maybe
+                                  "Moniteur"
+                                  (\lnk -> H.a ! A.href (H.toValue lnk) $ "Moniteur")
+                                  entryJournalLink
+                              H.span $ H.a ! A.href (H.toValue entryJustelLink) $ "Justel"
+              else
+                div "c-text limit-42em" $
+                  forM_ entries' $ \(i, Entry {..}) ->
+                    div "mb-entry" $ do
+                      div "mb-num" $
+                        H.p . H.text $ show i <> "."
+                      H.div $ do
+                        H.p $ H.text entryTitle
+                        div "mb-second-line" $ do
+                          H.p $
+                            H.small $ do
+                              H.text $ "Publié le " <> entryPublicationDate
+                              H.span $
+                                maybe
+                                  "Moniteur"
+                                  (\lnk -> H.a ! A.href (H.toValue lnk) $ "Moniteur")
+                                  entryJournalLink
+                              H.span $ H.a ! A.href (H.toValue entryJustelLink) $ "Justel"
+                          H.p $
+                            H.small ""
 
         H.footer $
             div "u-container" $ do
