@@ -20,8 +20,9 @@ html(dir="ltr", lang="en")
             p
                 small.breadcrumb Loi / 2022
 
-            // TODO I guess 'require' notion of CWD is somewhere in the Nix store.
-            - var entries = require("/home/thu/projects/design/struct/data/lex/law/2022.json")
+            // Given from the root of the project. See the definition of `require`
+            // in the gulpfile.
+            - var entries = require("./data/lex/law/2022.json")
 
             style.
               .entry {

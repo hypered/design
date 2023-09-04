@@ -2,6 +2,7 @@
 // them, and serve the result.
 
 const bs = require('browser-sync').create();
+const path = require('path');
 const gulp = require('gulp');
 const data = require('gulp-data');
 const pug = require('gulp-pug');
@@ -39,9 +40,12 @@ function styles() {
 }
 
 // Build the Pug templates to HTML
+const cwd = process.cwd();
 function templates() {
   return gulp.src('templates/**/*.pug')
-    .pipe(data(function (file) { return { require: require }; }))
+    .pipe(data(function (file) {
+      return { require: function (p) { return require(path.join(cwd, p)); } };
+    }))
     .pipe(pug())
     .pipe(gulp.dest('dist'))
 }
