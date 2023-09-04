@@ -31,7 +31,8 @@ specimenNavigation = do
 -- Prototype: motherboard-index-1.
 -- TODO Move to Hypered.Design.Struct.Prototypes
 prototypeMotherboardIndex1 :: Html
-prototypeMotherboardIndex1 = prototypeMotherboardIndex False "Constitution / 1831" [entry]
+prototypeMotherboardIndex1 =
+  prototypeMotherboardIndex "/lex" False "Constitution / 1831" [entry]
  where
   entry = Entry {..}
   entryTitle = "7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE."
@@ -43,8 +44,8 @@ prototypeMotherboardIndex1 = prototypeMotherboardIndex False "Constitution / 183
 
 -- Prototype: motherboard-index-dense.
 prototypeMotherboardIndexDense :: Html
-prototypeMotherboardIndexDense = prototypeMotherboardIndex True "Loi / 2022"
-  [entry1, entry2, entry3, entry4]
+prototypeMotherboardIndexDense =
+  prototypeMotherboardIndex "/lex" True "Loi / 2022" [entry1, entry2, entry3, entry4]
  where
   entry1 = Entry
     { entryTitle = "19 JANVIER 2022. - Loi portant le livre 2, titre 3, \"Les relations patrimoniales des couples\" et le livre 4 \"Les successions, donations et testaments\" du Code civil (1)"
@@ -89,8 +90,8 @@ data Entry = Entry
   , entryJustelLink :: Text
   }
 
-prototypeMotherboardIndex :: Bool -> Text -> [Entry] -> Html
-prototypeMotherboardIndex dense breadcrumb entries = do
+prototypeMotherboardIndex :: Text -> Bool -> Text -> [Entry] -> Html
+prototypeMotherboardIndex homepage dense breadcrumb entries = do
   let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
@@ -110,7 +111,7 @@ prototypeMotherboardIndex dense breadcrumb entries = do
                 div "c-text" $
                     H.div $
                         H.span ! A.class_ "logo" $
-                            H.a ! A.href "/lex" $ "Lex Iterata"
+                            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
 
         div "u-container" $ do
             H.p $
@@ -167,7 +168,7 @@ prototypeMotherboardIndex dense breadcrumb entries = do
                     H.p $
                         H.small $ do
                           "Lex Iterata is a Refli experiment. "
-                          H.a ! A.href "/lex" $ "Read more."
+                          H.a ! A.href (H.toValue homepage) $ "Read more."
                     H.p "© Hypered SRL, 2023."
 
 div :: H.AttributeValue -> Html -> Html
