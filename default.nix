@@ -39,6 +39,8 @@ in rec
   # This is the static directory, usually hosted as /static
   # on websites using this design system.
   static = (import site/default.nix {}).static;
+  # all + static, to serve locally with scripts/ghcid.sh
+  all-with-static = (import site/default.nix {}).html.all-with-static;
 
   # An example PDF brochure created with LaTeX.
   brochure = (import brochure/default.nix { inherit nixpkgs; }).brochure;
