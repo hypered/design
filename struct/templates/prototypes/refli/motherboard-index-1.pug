@@ -18,22 +18,38 @@ html(dir="ltr", lang="en")
                             a(href="motherboard-index.html") Lex Iterata
 
         .u-container
-            style.
-              .custom { margin-top: 2em; /* TODO Replace with a spacer utility. */}
-              .custom p.first-line span { display: inline-block; width: 3em; text-align: right; margin-right: 1em;}
-              .custom p.second-line { margin-left: 4em; color: #444;}
-              .custom p.second-line small span { margin-left: 4em;}
+            p
+                small.breadcrumb Constitution / 1831
 
-            .c-text.custom
-                p.first-line
-                  span 1.
-                  | 7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE.
-                p.second-line
-                  small
-                    | Publié le 07-02-1831
-                    span Moniteur
-                    span <a href=#>Justel</a>
-                    span Source: -
+            style.
+              .entry {
+                display: flex;
+                gap: 1em;
+                justify-content: flex-start;
+                padding-right: 0.5em;
+              }
+              .entry:hover {background-color: #F5F5F5;}
+              .entry {margin-top: 1em;}
+              .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
+              .grow {flex-grow: 1;}
+              .second-line {color: #555; margin-top: 0.5em;}
+              .second-line--dense {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
+              .second-line span {margin-left: 4em;}
+              .second-line p + p {margin-top: -0.3em;}
+            .c-text.limit-42em
+              .entry
+                div.num
+                  p 1.
+                div
+                  p 7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE.
+                  .second-line
+                    p
+                      small
+                        | Publié le 07-02-1831
+                        span Moniteur
+                        span <a href=#>Justel</a>
+                    p
+                      small
 
         footer
             .u-container

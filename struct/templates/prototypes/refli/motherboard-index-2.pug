@@ -18,16 +18,22 @@ html(dir="ltr", lang="en")
                             a(href="motherboard-index.html") Lex Iterata
 
         .u-container
+            p
+                small.breadcrumb Loi / 2022
 
             style.
               .entry {
                 display: flex;
                 gap: 1em;
                 justify-content: flex-start;
+                padding-right: 0.5em;
               }
+              .entry:hover {background-color: #F5F5F5;}
               .entry {margin-top: 1em;}
               .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
+              .grow {flex-grow: 1;}
               .second-line {color: #555; margin-top: 0.5em;}
+              .second-line--dense {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
               .second-line span {margin-left: 4em;}
               .second-line p + p {margin-top: -0.3em;}
             .c-text.limit-42em
