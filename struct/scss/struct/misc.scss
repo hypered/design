@@ -451,3 +451,19 @@ a.c-button--secondary {
 
 // Used for simple / bread / crumbs.
 .breadcrumb { color: #555; }
+
+// Specific rules for the Motherboard listings.
+.mb-entry {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-start;
+  padding-right: 0.5em;
+}
+.mb-entry:hover {background-color: #F5F5F5;}
+.mb-entry {margin-top: 1em;}
+.mb-num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
+.mb-grow {flex-grow: 1;}
+.mb-second-line {color: #555; margin-top: 0.5em;}
+.mb-second-line--dense {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
+.mb-second-line span {margin-left: 4em;}
+.mb-second-line p + p {margin-top: -0.3em;}

@@ -25,29 +25,14 @@ html(dir="ltr", lang="en")
             // in the gulpfile.
             - var entries = require("./data/lex/law/2022.json")
 
-            style.
-              .entry {
-                display: flex;
-                gap: 1em;
-                justify-content: flex-start;
-                padding-right: 0.5em;
-              }
-              .entry:hover {background-color: #F5F5F5;}
-              .entry {margin-top: 1em;}
-              .num {width: 3em; text-align: right; flex-grow: 0; flex-shrink: 0;}
-              .grow {flex-grow: 1;}
-              .second-line {color: #555; margin-top: 0.5em;}
-              .second-line--dense {color: #555; margin-top: 0em; display: flex; justify-content: space-between;}
-              .second-line span {margin-left: 4em;}
-              .second-line p + p {margin-top: -0.3em;}
             .c-text
               each entry, index in entries
-                .entry
-                  div.num
+                .mb-entry
+                  div.mb-num
                     p= index + 1 + '.'
-                  div.grow
+                  div.mb-grow
                     p= entry['title-fr']
-                    .second-line.second-line--dense
+                    .mb-second-line.mb-second-line--dense
                       p
                         small
                           | Publié le
