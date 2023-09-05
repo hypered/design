@@ -1,38 +1,87 @@
 -- | Alternative to Hypered.Html.Tachyons, using the struct.css CSS instead.
-module Hypered.Html.Struct where
+module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
+import Hypered.Html.Helpers
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
--- Specimen: navigation.
--- TODO Move to Hypered.Design.Struct.Specimens.
-specimenNavigation :: Html
-specimenNavigation = do
+--------------------------------------------------------------------------------
+-- Prototype: motherboard-index.
+-- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.
+prototypeMotherboardHomepage :: Text -> Html
+prototypeMotherboardHomepage homepage = do
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
     H.head $ do
-      H.meta ! A.charset "utf-8"
-      H.meta ! A.name "viewport"
-             ! A.content "width=device-width, initial-scale=1.0"
-      H.title "TODO" -- Not present in Pug.
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.css"
-    H.body ! A.class_ "u-container-vertical" $
-      H.header $
-        div "u-container" $
-          div "u-bar" $ do
-            div "u-bar__left" $
-              H.a ! A.href "#" $
-                H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
-            div "u-bar__right" $
-              mainHeaderPageStruct
+        H.meta ! A.charset "utf-8"
+        H.meta ! A.name "viewport"
+               ! A.content "width=device-width, initial-scale=1"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/fonts.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/scale.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/layouts.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
+    H.body ! A.class_ "u-container-vertical cover" $ do
+        H.header $
+            div "u-container" $
+                div "c-text" $
+                    H.div $
+                        H.span ! A.class_ "logo" $
+                            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
 
+        div "u-container" $ do
+          div "switcher" $ do
+            div "flow-all" $
+              H.p $ do
+                "Lex Iterata collects and transforms the content of the "
+                H.a ! A.href "https://www.ejustice.just.fgov.be/" $
+                  "Belgian Official Journal"
+                ", presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption."
+
+            H.div $ pure ()
+
+          div "c-text flow-all limit-42em" $ do
+            H.p $ do
+              "Lex Iterata is continually evolving. At present, we provide access to collections of documents under the "
+              H.a ! A.href "https://www.ejustice.just.fgov.be/eli/" $ "ELI (European Legislation Identifier) scheme"
+              ". Both user-friendly web pages and structured JSON indices are available for your convenience."
+            H.p "The ELI framework as used in Belgium encompasses five distinct document categories:"
+            H.ul $ do
+              H.li $
+                H.a ! A.href "/fr/lex/constitution/1831" $ "Constitution"
+              H.li $
+                H.a ! A.href "/fr/lex/law/1833" $ "Law"
+              H.li $
+                H.a ! A.href "/fr/lex/decree/1972" $ "Decree"
+              H.li $
+                H.a ! A.href "/fr/lex/ordinance/1932" $ "Ordinance"
+              H.li $
+                H.a ! A.href "/fr/lex/order/1831" $ "Order"
+            H.p "For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents."
+
+        H.footer $
+          div "u-container" $ do
+            H.hr
+            div "c-text flow" $ do
+              H.p $
+                H.small $ do
+                  "Lex Iterata is a Refli experiment. "
+                  H.a ! A.href "/fr/lex" $ "Read more"
+                  " or go "
+                  H.a ! A.href (H.toValue homepage) $ "back to Refli"
+                  "."
+              H.p "© Hypered SRL, 2023."
+
+--------------------------------------------------------------------------------
 -- Prototype: motherboard-index-1.
--- TODO Move to Hypered.Design.Struct.Prototypes
+-- See https://hypered.design/prototypes/refli/motherboard-index-1.html.
 prototypeMotherboardIndex1 :: Html
 prototypeMotherboardIndex1 =
-  prototypeMotherboardIndex "/lex" False "Constitution / 1831" [entry]
+  prototypeMotherboardIndex
+    "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
  where
   entry = Entry {..}
   entryTitle = "7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE."
@@ -42,10 +91,13 @@ prototypeMotherboardIndex1 =
   entryJustelLink =
     "https://www.ejustice.just.fgov.be/eli/constitution/1831/02/07/1831020701/justel"
 
+--------------------------------------------------------------------------------
 -- Prototype: motherboard-index-dense.
+-- See https://hypered.design/prototypes/refli/motherboard-index-dense.html.
 prototypeMotherboardIndexDense :: Html
 prototypeMotherboardIndexDense =
-  prototypeMotherboardIndex "/lex" True "Loi / 2022" [entry1, entry2, entry3, entry4]
+  prototypeMotherboardIndex
+    "/lex" "law/2022" "loi/2022" True "Loi / 2022" [entry1, entry2, entry3, entry4]
  where
   entry1 = Entry
     { entryTitle = "19 JANVIER 2022. - Loi portant le livre 2, titre 3, \"Les relations patrimoniales des couples\" et le livre 4 \"Les successions, donations et testaments\" du Code civil (1)"
@@ -90,8 +142,9 @@ data Entry = Entry
   , entryJustelLink :: Text
   }
 
-prototypeMotherboardIndex :: Text -> Bool -> Text -> [Entry] -> Html
-prototypeMotherboardIndex homepage dense breadcrumb entries = do
+--------------------------------------------------------------------------------
+prototypeMotherboardIndex :: Text -> Text -> Text -> Bool -> Text -> [Entry] -> Html
+prototypeMotherboardIndex homepage fragment fragmentFr dense breadcrumb entries = do
   let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
@@ -162,18 +215,24 @@ prototypeMotherboardIndex homepage dense breadcrumb entries = do
                             H.small ""
 
         H.footer $
-            div "u-container" $ do
-                H.hr
-                div "c-text flow" $ do
-                    H.p $
-                        H.small $ do
-                          "Lex Iterata is a Refli experiment. "
-                          H.a ! A.href (H.toValue homepage) $ "Read more."
-                    H.p "© Hypered SRL, 2023."
-
-div :: H.AttributeValue -> Html -> Html
-div cls = H.div ! A.class_ cls
-
--- include ../includes/main-header--page-struct
-mainHeaderPageStruct :: Html
-mainHeaderPageStruct = H.p "TODO"
+          div "u-container" $ do
+            H.hr
+            div "c-text flow" $ do
+              H.p $
+                H.small $ do
+                  "View this page in "
+                  H.a ! A.href (H.toValue $ "/lex/" <> fragment) $ "JSON format"
+                  "."
+              H.p $
+                H.small $ do
+                  "View the "
+                  H.a ! A.href (H.toValue $ "https://www.ejustice.just.fgov.be/eli/" <> fragmentFr) $ "original page"
+                  " on the Belgian Official Journal."
+              H.p $
+                H.small $ do
+                  "Lex Iterata is a Refli experiment. "
+                  H.a ! A.href "/fr/lex" $ "Read more"
+                  " or go "
+                  H.a ! A.href (H.toValue homepage) $ "back to Refli"
+                  "."
+              H.p "© Hypered SRL, 2023."

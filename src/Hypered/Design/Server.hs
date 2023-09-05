@@ -14,7 +14,8 @@ import           Control.Monad.Catch            ( MonadCatch
 import           Data.Aeson
 import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Fluid          as Fluid
-import qualified Hypered.Html.Struct           as Struct
+import qualified Hypered.Html.Struct.Prototypes.Motherboard.Indices as Motherboard
+import qualified Hypered.Html.Struct.Specimens as Specimens
 import qualified Hypered.Html.Tachyons         as Hy
 import qualified Network.HTTP.Types.Status     as Status
 import qualified Network.Wai                   as Wai
@@ -80,6 +81,7 @@ type App =    "" :> Raw
          :<|> "edit" :> Get '[HTML] Html
 
          :<|> "specimens" :> "navigation" :> Get '[HTML] Html
+         :<|> "prototypes" :> "refli" :> "motherboard-index" :> Get '[HTML] Html
          :<|> "prototypes" :> "refli" :> "motherboard-index-1" :> Get '[HTML] Html
          :<|> "prototypes" :> "refli" :> "motherboard-index-dense" :> Get '[HTML] Html
 
@@ -102,9 +104,11 @@ serverT root =
     :<|> showTypeScaleAMeasures Fluid.settings
     :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
-    :<|> pure Struct.specimenNavigation
-    :<|> pure Struct.prototypeMotherboardIndex1
-    :<|> pure Struct.prototypeMotherboardIndexDense
+    :<|> pure Specimens.specimenNavigation
+    :<|> pure (Motherboard.prototypeMotherboardHomepage
+           "/prototypes/refli/motherboard-index")
+    :<|> pure Motherboard.prototypeMotherboardIndex1
+    :<|> pure Motherboard.prototypeMotherboardIndexDense
     :<|> serveDocumentation root
 
 
