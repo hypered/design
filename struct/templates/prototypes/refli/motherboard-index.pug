@@ -18,26 +18,33 @@ html(dir="ltr", lang="en")
                             a(href="motherboard-index.html") Lex Iterata
 
         .u-container
+            .switcher
+                .flow-all
+                    p Lex Iterata collects and transforms the content of the <a href="https://www.ejustice.just.fgov.be/">Belgian Official Journal</a>, presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption.
 
-            .c-text.flow-all
-                p Lex Iterata is a sub-site of Refli offering the content of the <a href="https://www.ejustice.just.fgov.be/">official Belgian journal</a> both in human-readable form, and as structured data.
-                p There are currently five types of documents:
+                div
+                    // empty
+
+            .c-text.flow-all.limit-42em
+                p Lex Iterata is continually evolving. At present, we provide access to collections of documents under the <a href="https://www.ejustice.just.fgov.be/eli/">ELI (European Legislation Identifier) scheme</a>. Both user-friendly web pages and structured JSON indices are available for your convenience.
+                p The ELI framework as used in Belgium encompasses five distinct document categories:
                 ul
                     li
                         a(href="motherboard-index-1.html") Constitution
                     li
                         a(href="motherboard-index-2.html") Law
                     li
-                        a() Decree
+                        a(href="#") Decree
                     li
-                        a() Ordinance
+                        a(href="#") Ordinance
                     li
-                        a() Order
+                        a(href="#") Order
+                p For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents.
 
         footer
             .u-container
                 hr
                 .c-text.flow
                     p
-                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more.</a>
+                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more</a> or go <a href="/prototypes/refli/index-constant.html">back to Refli</a>.
                     p © Hypered SRL, 2023.
