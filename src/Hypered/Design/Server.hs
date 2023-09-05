@@ -106,6 +106,7 @@ serverT root =
     :<|> edit -- Call here the page you want to work on.
     :<|> pure Specimens.specimenNavigation
     :<|> pure (Motherboard.prototypeMotherboardHomepage
+           "/specimens/navigation"
            "/prototypes/refli/motherboard-index")
     :<|> pure Motherboard.prototypeMotherboardIndex1
     :<|> pure Motherboard.prototypeMotherboardIndexDense

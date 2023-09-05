@@ -10,8 +10,8 @@ import qualified Text.Blaze.Html5.Attributes as A
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index.
 -- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.
-prototypeMotherboardHomepage :: Text -> Html
-prototypeMotherboardHomepage homepage = do
+prototypeMotherboardHomepage :: Text -> Text -> Html
+prototypeMotherboardHomepage refliHomepage homepage = do
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
     H.head $ do
@@ -69,9 +69,9 @@ prototypeMotherboardHomepage homepage = do
               H.p $
                 H.small $ do
                   "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href "/fr/lex" $ "Read more"
+                  H.a ! A.href (H.toValue homepage) $ "Read more"
                   " or go "
-                  H.a ! A.href (H.toValue homepage) $ "back to Refli"
+                  H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
               H.p "© Hypered SRL, 2023."
 
@@ -81,6 +81,7 @@ prototypeMotherboardHomepage homepage = do
 prototypeMotherboardIndex1 :: Html
 prototypeMotherboardIndex1 =
   prototypeMotherboardIndex
+    "/specimens/navigation"
     "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
  where
   entry = Entry {..}
@@ -97,6 +98,7 @@ prototypeMotherboardIndex1 =
 prototypeMotherboardIndexDense :: Html
 prototypeMotherboardIndexDense =
   prototypeMotherboardIndex
+    "/specimens/navigation"
     "/lex" "law/2022" "loi/2022" True "Loi / 2022" [entry1, entry2, entry3, entry4]
  where
   entry1 = Entry
@@ -143,8 +145,8 @@ data Entry = Entry
   }
 
 --------------------------------------------------------------------------------
-prototypeMotherboardIndex :: Text -> Text -> Text -> Bool -> Text -> [Entry] -> Html
-prototypeMotherboardIndex homepage fragment fragmentFr dense breadcrumb entries = do
+prototypeMotherboardIndex :: Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> Html
+prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense breadcrumb entries = do
   let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
@@ -231,8 +233,8 @@ prototypeMotherboardIndex homepage fragment fragmentFr dense breadcrumb entries 
               H.p $
                 H.small $ do
                   "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href "/fr/lex" $ "Read more"
+                  H.a ! A.href (H.toValue homepage) $ "Read more"
                   " or go "
-                  H.a ! A.href (H.toValue homepage) $ "back to Refli"
+                  H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
               H.p "© Hypered SRL, 2023."
