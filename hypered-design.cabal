@@ -54,6 +54,7 @@ library
                        Hypered.Design.Stories,
                        Hypered.Design.Templates,
                        Hypered.Html.Helpers,
+                       Hypered.Html.Struct.Prototypes.Motherboard.Documents,
                        Hypered.Html.Struct.Prototypes.Motherboard.Indices,
                        Hypered.Html.Struct.Specimens,
                        Hypered.Html.Tachyons
