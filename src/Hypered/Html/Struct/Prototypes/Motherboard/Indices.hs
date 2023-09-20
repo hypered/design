@@ -1,4 +1,3 @@
--- | Alternative to Hypered.Html.Tachyons, using the struct.css CSS instead.
 module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
 import Hypered.Html.Helpers
@@ -137,7 +136,8 @@ prototypeMotherboardIndexDense =
     }
 
 data Entry = Entry
-  { entryTitle :: Text
+  { entryId :: Text
+  , entryTitle :: Text
   , entryPublicationDate :: Text
   , entrySource :: Text
   , entryJournalLink :: Maybe Text
@@ -189,6 +189,8 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
                               H.text entrySource
                           H.p $
                             H.small $ do
+                              H.span $ H.a ! A.href (H.toValue $ "/fr/lex/" <> entryId) $
+                                "View"
                               H.span $
                                 maybe
                                   "Moniteur"
