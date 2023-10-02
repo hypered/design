@@ -11,6 +11,7 @@ import qualified Text.Blaze.Html5.Attributes as A
 data Document = Document
   { documentId :: Text
   , documentUrl :: Text
+  , documentFullTitle :: Text
   , documentSource :: Text
   , documentPublicationDate :: Text
   , documentNumber :: Text
@@ -20,6 +21,9 @@ data Document = Document
   , documentStartDates :: [(Text, Text)]
   , documentModifies :: [Text]
   , documentLegislativeLinks :: [Text]
+  , documentBlocks :: [(Text, Text)]
+    -- ^ TODO Probably change this to Html so there is a bit more control
+    -- offered to the caller.
   }
 
 --------------------------------------------------------------------------------
@@ -49,7 +53,7 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
             H.p $
                 H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
             div "c-text flow-all limit-42em legislation" $ do
-                H.h1 ! A.class_ "mb-title" $ "15 JUILLET 2016. — Arrêté royal modifiant l'arrêté royal du 19 décembre 1967 portant règlement général en exécution de l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants"
+                H.h1 ! A.class_ "mb-title" $ H.text documentFullTitle
 
                 H.div $
                     H.dl ! A.class_ "mb-pairs" $ do
@@ -89,6 +93,7 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                           mapM_
                             (\lnk -> H.a ! A.href (H.toValue lnk) $ H.text (f lnk))
                             documentLegislativeLinks
+                mapM_ showBlock documentBlocks
 
         H.footer $
           div "u-container" $ do
@@ -112,3 +117,8 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                   H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
               H.p "© Hypered SRL, 2023."
+
+showBlock (level, content) =
+  H.p $ do
+      H.span ! A.class_ "article" $ H.text level
+      H.text content
