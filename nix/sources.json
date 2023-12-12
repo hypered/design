@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "hypered",
         "repo": "commence",
-        "rev": "9896c3278020ddb9f4c60fb3dc748ad4dfe7fce6",
-        "sha256": "0582jr141fqrbjsng2aq49247k7acgqnvs2kg0avkln983y51ap8",
+        "rev": "af29a16f0942f3f78d88285d78abc2b510e14cf4",
+        "sha256": "0ncqy8hvqcnbwazim42zsl96c217zlywx1l1n8ysiznp5s5aqzmi",
         "type": "tarball",
-        "url": "https://github.com/hypered/commence/archive/9896c3278020ddb9f4c60fb3dc748ad4dfe7fce6.tar.gz",
+        "url": "https://github.com/hypered/commence/archive/af29a16f0942f3f78d88285d78abc2b510e14cf4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "gitignore": {
