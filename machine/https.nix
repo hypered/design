@@ -1,3 +1,4 @@
+# This is imported in hypered-infrastructure/host-2.hypered.co/.
 { pkgs, ... }:
 {
   services.nginx = {

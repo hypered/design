@@ -21,10 +21,14 @@ data Document = Document
   , documentStartDates :: [(Text, Text)]
   , documentModifies :: [Text]
   , documentLegislativeLinks :: [Text]
-  , documentBlocks :: [(Text, Text)]
+  , documentBlocks :: [Block]
     -- ^ TODO Probably change this to Html so there is a bit more control
     -- offered to the caller.
   }
+
+data Block =
+    Pair Text Text
+  | Indent Text
 
 --------------------------------------------------------------------------------
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
@@ -118,7 +122,11 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                   "."
               H.p "© Hypered SRL, 2023."
 
-showBlock (level, content) =
+showBlock (Pair level content) =
   H.p $ do
-      H.span ! A.class_ "article" $ H.text level
-      H.text content
+    H.span ! A.class_ "article" $ H.text level
+    H.text content
+
+showBlock (Indent content) =
+  H.p $ do
+    H.text content
