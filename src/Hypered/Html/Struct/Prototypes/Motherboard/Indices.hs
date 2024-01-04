@@ -72,7 +72,7 @@ prototypeMotherboardHomepage refliHomepage homepage = do
                   " or go "
                   H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
-              H.p "© Hypered SRL, 2023."
+              H.p $ H.text copyrightLine
 
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index-1.
@@ -82,6 +82,7 @@ prototypeMotherboardIndex1 =
   prototypeMotherboardIndex
     "/specimens/navigation"
     "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
+    [1000, 2000] -- TODO Better example years
  where
   entry = Entry {..}
   entryTitle = "7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE."
@@ -99,6 +100,7 @@ prototypeMotherboardIndexDense =
   prototypeMotherboardIndex
     "/specimens/navigation"
     "/lex" "law/2022" "loi/2022" True "Loi / 2022" [entry1, entry2, entry3, entry4]
+    [1000, 2000] -- TODO Better example years
  where
   entry1 = Entry
     { entryTitle = "19 JANVIER 2022. - Loi portant le livre 2, titre 3, \"Les relations patrimoniales des couples\" et le livre 4 \"Les successions, donations et testaments\" du Code civil (1)"
@@ -145,8 +147,8 @@ data Entry = Entry
   }
 
 --------------------------------------------------------------------------------
-prototypeMotherboardIndex :: Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> Html
-prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense breadcrumb entries = do
+prototypeMotherboardIndex :: Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> [Int] -> Html
+prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense breadcrumb entries years = do
   let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
@@ -218,6 +220,18 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
                           H.p $
                             H.small ""
 
+            H.br
+            H.br
+            H.p $ do
+                H.small ! A.class_ "breadcrumb" $ H.text "Autres années:"
+                H.small $
+                  mapM_
+                    (\year -> do
+                      H.text " "
+                      H.a ! A.href (H.toValue @Text $ show year) $ H.text (show year)
+                    )
+                    years
+
         H.footer $
           div "u-container" $ do
             H.hr
@@ -239,4 +253,7 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
                   " or go "
                   H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
-              H.p "© Hypered SRL, 2023."
+              H.p $ H.text copyrightLine
+
+copyrightLine :: Text
+copyrightLine = "© Hypered SRL, 2023-2024."

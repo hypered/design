@@ -6,6 +6,7 @@ import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
+import Text.HTML.TagSoup (innerText, Tag(..), (~==))
 
 --------------------------------------------------------------------------------
 data Document = Document
@@ -29,6 +30,8 @@ data Document = Document
 data Block =
     Pair Text Text
   | Indent Text
+  | Table [[(Int, [Tag Text])]] -- TODO Remove dependency on TagSoup.
+  | Monospace [Tag Text]
 
 --------------------------------------------------------------------------------
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
@@ -120,8 +123,9 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                   " or go "
                   H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
-              H.p "© Hypered SRL, 2023."
+              H.p "© Hypered SRL, 2023-2024."
 
+showBlock :: Block -> Html
 showBlock (Pair level content) =
   H.p $ do
     H.span ! A.class_ "article" $ H.text level
@@ -130,3 +134,46 @@ showBlock (Pair level content) =
 showBlock (Indent content) =
   H.p $ do
     H.text content
+
+showBlock (Table xs) = formatTable xs
+
+showBlock (Monospace xs) = formatMonospace xs
+
+formatTable :: [[(Int, [Tag Text])]] -> Html
+formatTable [] = H.table mempty
+formatTable xs = H.table $
+  mapM_ formatRow xs
+
+formatRow :: [(Int, [Tag Text])] -> Html
+formatRow cs = H.tr $ mapM_ formatCell cs
+
+formatCell :: (Int, [Tag Text]) -> Html
+formatCell (1, ts) = H.td . H.text $ innerText ts
+formatCell (n, ts) = H.td ! A.colspan (H.toValue @Text $ show n) $ H.text $ innerText ts
+
+formatMonospace :: [Tag Text] -> Html
+formatMonospace xs =
+  H.pre $
+    H.code $
+      mapM_ (H.text . f) xs'
+ where
+  xs' = dropWhile (~== (TagOpen @Text "br" [])) xs
+  f (TagOpen "a" _) = ""
+  f (TagClose "a") = ""
+  f (TagOpen "b" _) = ""
+  f (TagClose "b") = ""
+  f (TagOpen "br" _) = "\n"
+  f (TagOpen "font" _) = ""
+  f (TagClose "font") = ""
+  f (TagOpen "sup" _) = ""
+  f (TagClose "sup") = ""
+  -- The th tr table are specifically for
+  -- https://www.ejustice.just.fgov.be/eli/arrete/1996/01/31/1996035268/justel
+  -- where the </font> tag is missing.
+  f (TagClose "th") = ""
+  f (TagClose "tr") = ""
+  f (TagClose "table") = ""
+  f (TagText s) = T.map g s
+  f x = panic $ "formatMonospace: unexpected value: " <> show x
+  g '\160' = ' '
+  g c = c
