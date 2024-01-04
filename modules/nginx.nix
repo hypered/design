@@ -7,6 +7,9 @@ let
   haddock = (import ../.).haddock;
   brochure = (import ../.).brochure;
   static = (import ../.).static;
+
+  nginx-bits = import ../../nginx-bits;
+  inherit (nginx-bits) blackhole-locations;
 in
 {
   services.nginx = {
@@ -15,7 +18,7 @@ in
     additionalModules = [];
     recommendedGzipSettings = true;
     virtualHosts."hypered.design" = {
-      locations = {
+      locations = blackhole-locations // {
         "/" = {
           alias = site + "/";
         };
