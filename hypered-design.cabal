@@ -40,6 +40,7 @@ library
     , servant-blaze
     , servant-server
     , systemd
+    , tagsoup
     , text
     , wai
     , wai-app-static
