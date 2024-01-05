@@ -2122,6 +2122,8 @@ navigationBlockRefli = do
             H.a ! A.href "/fr/disclaimer" $ "Disclaimer"
           H.li ! A.class_ "mr4" $
             H.a ! A.href "/fr/documentation" $ "Documentation"
+          H.li ! A.class_ "mr4" $
+            H.a ! A.href "/fr/lex" $ "Lex Iterata"
       H.section ! A.class_ "w-50-ns pr4 mb5" $ do
         H.h1 ! A.class_ "f5 ttu lh-title mb3" $
           "Contributions à la sécurité sociale"
@@ -2192,7 +2194,7 @@ footerRefli :: Html
 footerRefli =
     H.footer $ do
       H.hr ! A.class_ "bt bb-0 br-0 bl-0 mh0 mt1 pb4 w4 bw1 b--black"
-      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered SRL, 2023."
+      H.p ! A.class_ "inline-flex lh-copy" $ "© Hypered SRL, 2023-2024."
 
 describeFormRefli :: Html
 describeFormRefli = do

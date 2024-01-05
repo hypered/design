@@ -50,15 +50,15 @@ prototypeMotherboardHomepage refliHomepage homepage = do
             H.p "The ELI framework as used in Belgium encompasses five distinct document categories:"
             H.ul $ do
               H.li $
-                H.a ! A.href "/fr/lex/constitution/1831" $ "Constitution"
+                H.a ! A.href "/fr/lex/constitution/1994" $ "Constitution"
               H.li $
-                H.a ! A.href "/fr/lex/law/1833" $ "Law"
+                H.a ! A.href "/fr/lex/law/2023" $ "Law"
               H.li $
-                H.a ! A.href "/fr/lex/decree/1972" $ "Decree"
+                H.a ! A.href "/fr/lex/decree/2023" $ "Decree"
               H.li $
-                H.a ! A.href "/fr/lex/ordinance/1932" $ "Ordinance"
+                H.a ! A.href "/fr/lex/ordinance/2023" $ "Ordinance"
               H.li $
-                H.a ! A.href "/fr/lex/order/1831" $ "Order"
+                H.a ! A.href "/fr/lex/order/2023" $ "Order"
             H.p "For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents."
 
         H.footer $
