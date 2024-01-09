@@ -19,7 +19,7 @@ templates. (So the structure of this directory is similar too.)
 
 ```
 $ nix-shell ../itcss/shell.nix
-$ gulp build
+$ gulp build --gulpfile ../itcss/gulpfile.js --cwd .
 $ ls dist/
 ```
 
