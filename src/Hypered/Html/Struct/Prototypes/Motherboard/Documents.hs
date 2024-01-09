@@ -43,6 +43,14 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
         H.meta ! A.name "viewport"
                ! A.content "width=device-width, initial-scale=1"
         H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
+        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Regular.woff2"
+               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Medium.woff2"
+               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-SemiBold.woff2"
+               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Bold.woff2"
+               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
         H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
         H.header $

@@ -15,6 +15,7 @@ module Hypered.Design.GHCi (
 import Protolude
 import Hypered.Design.Fluid qualified as Fluid
 import Hypered.Html.Struct.Specimens qualified as Specimens
+import Hypered.Html.Struct.Prototypes.Motherboard.Documents qualified as Motherboard
 import Hypered.Html.Struct.Prototypes.Motherboard.Indices qualified as Motherboard
 
 -- This import is present to set -interactive-print in ghci.conf.
