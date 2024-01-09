@@ -7,6 +7,8 @@ const gulp = require('gulp');
 const data = require('gulp-data');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass')(require('sass'));
+const nanocss = require('gulp-cssnano');
+// const rename = require('gulp-rename');
 
 
 // Copy the static files
@@ -39,6 +41,14 @@ function styles() {
     .pipe(bs.stream())
 }
 
+// Minify the CSS files
+function styles_min() {
+  return gulp.src('dist/static/css/struct.css')
+    .pipe(nanocss()) // Minify the CSS using NanoCSS
+    // .pipe(rename('struct.min.css')) # TODO This crashes.
+    .pipe(gulp.dest('dist/static/css/min'))
+}
+
 // Build the Pug templates to HTML
 const cwd = process.cwd();
 function templates() {
@@ -59,7 +69,7 @@ function watch() {
   });
 
   gulp.watch('static/**/*', assets);
-  gulp.watch('scss/**/*.scss', styles);
+  gulp.watch('scss/**/*.scss', gulp.series(styles, styles_min));
   gulp.watch('templates/**/*.pug', templates);
   gulp.watch('dist/*.html').on('change', bs.reload);
 }
@@ -70,6 +80,6 @@ exports.styles = styles;
 exports.templates = templates;
 exports.watch = watch;
 
-exports.build = gulp.parallel(assets, styles, templates);
+exports.build = gulp.parallel(assets, gulp.series(styles, styles_min), templates);
 exports.serve = gulp.series(exports.build, watch);
 exports.default = exports.serve;

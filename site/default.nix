@@ -79,6 +79,7 @@ in rec
     cp -r ${html.all}/* $out/
     cp -r --no-preserve=mode ${static} $out/static
     cp -r ${struct}/static/css/struct $out/static/css/struct
+    cp -r ${struct}/static/css/min/struct.css $out/static/css/struct.min.css
     cp -r ${struct}/static/fonts/* $out/static/fonts/
   '';
 
@@ -90,6 +91,7 @@ in rec
     cp -r ${../static}/img/* out/img/
 
     cp -r ${struct}/static/css/* out/css/
+    cp -r ${struct}/static/css/min/struct.css out/css/struct.min.css
     cp -r ${struct}/static/fonts/* out/fonts/
     cp -r ${struct}/static/images/* out/images/
 
