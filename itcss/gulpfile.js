@@ -23,8 +23,10 @@ const segments = process.cwd().split('/');
 const dir = segments[segments.length - 1];
 console.log(dir)
 var scss_sources = 'scss/**/main.scss'; // for itcss/
+var minified_source = 'dist/static/css/itcss/main.css'
 if (dir == 'struct') {
-  scss_sources = 'scss/**/*.scss'          // for struct/
+  scss_sources = 'scss/**/*.scss';      // for struct/
+  minified_source = 'dist/static/css/struct.css';
 }
 
 // Build the SCSS files to CSS
@@ -43,7 +45,7 @@ function styles() {
 
 // Minify the CSS files
 function styles_min() {
-  return gulp.src('dist/static/css/struct.css')
+  return gulp.src(minified_source)
     .pipe(nanocss()) // Minify the CSS using NanoCSS
     // .pipe(rename('struct.min.css')) # TODO This crashes.
     .pipe(gulp.dest('dist/static/css/min'))

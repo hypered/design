@@ -17,12 +17,8 @@ prototypeMotherboardHomepage refliHomepage homepage = do
         H.meta ! A.charset "utf-8"
         H.meta ! A.name "viewport"
                ! A.content "width=device-width, initial-scale=1"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/fonts.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/scale.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/layouts.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
+        H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
         H.header $
             div "u-container" $
@@ -156,12 +152,8 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
         H.meta ! A.charset "utf-8"
         H.meta ! A.name "viewport"
                ! A.content "width=device-width, initial-scale=1"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/foundations.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/ibm-plex.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/fonts.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/scale.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/layouts.css"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct/misc.css"
+        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
+        H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
         H.header $
             div "u-container" $
