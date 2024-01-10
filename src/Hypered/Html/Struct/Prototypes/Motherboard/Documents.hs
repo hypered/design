@@ -37,7 +37,8 @@ data Block =
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
 prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = do
   H.docType
-  H.html $ do -- TODO html(dir="ltr", lang="en")
+  -- TODO Actually write the page in French.
+  H.html ! A.dir "ltr" ! A.lang "fr" $ do
     H.head $ do
         H.meta ! A.charset "utf-8"
         H.meta ! A.name "viewport"
@@ -45,13 +46,19 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
         H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
         H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Regular.woff2"
                ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+               ! H.customAttribute "crossorigin" "crossorigin"
         H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Medium.woff2"
                ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+               ! H.customAttribute "crossorigin" "crossorigin"
         H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-SemiBold.woff2"
                ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
+               ! H.customAttribute "crossorigin" "crossorigin"
         H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Bold.woff2"
                ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
-        H.title "Lex Iterata"
+               ! H.customAttribute "crossorigin" "crossorigin"
+        H.meta ! A.name "description"
+               ! A.content (H.toValue $ documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.")
+        H.title "Refli - Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
         H.header $
             div "u-container" $
@@ -123,7 +130,7 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
               H.p $
                 H.small $ do
                   "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href (H.toValue homepage) $ "Read more"
+                  H.a ! A.href (H.toValue homepage) $ "Read more about Lex Iterata"
                   " or go "
                   H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
                   "."
