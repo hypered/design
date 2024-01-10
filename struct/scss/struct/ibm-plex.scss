@@ -36,3 +36,49 @@
     url('/static/fonts/IBMPlexSans-Bold.woff2') format('woff2'),
     url('/static/fonts/IBMPlexSans-Bold.woff') format('woff');
 }
+
+// Font fallbacks. The goal is to avoid FOUT (flash of unstyled text)
+// to improve CLS (cumulative layout shift) as measured by PageSpeed
+// Insight. We use the metrics from
+// https://github.com/khempenius/font-fallbacks-dataset.
+// (They are the same for regular, medium, semi-bold, and bold.)
+
+@font-face {
+  font-family: "Fallback for IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Arial");
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0.0%;
+}
+
+@font-face {
+  font-family: "Fallback for IBM Plex Sans";
+  font-style: normal;
+  font-weight: 500;
+  src: local("Arial");
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0.0%;
+}
+
+@font-face {
+  font-family: "Fallback for IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Arial");
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0.0%;
+}
+
+@font-face {
+  font-family: "Fallback for IBM Plex Sans";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Arial");
+  ascent-override: 102.5%;
+  descent-override: 27.5%;
+  line-gap-override: 0.0%;
+}
