@@ -42,6 +42,8 @@
 // Insight. We use the metrics from
 // https://github.com/khempenius/font-fallbacks-dataset.
 // (They are the same for regular, medium, semi-bold, and bold.)
+// TODO I don't think this works. I should prepare a page with only
+// the fallback to try to better understand the behavior.
 
 @font-face {
   font-family: "Fallback for IBM Plex Sans";
