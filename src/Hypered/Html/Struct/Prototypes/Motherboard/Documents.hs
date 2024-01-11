@@ -58,7 +58,7 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                ! H.customAttribute "crossorigin" "crossorigin"
         H.meta ! A.name "description"
                ! A.content (H.toValue $ documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.")
-        H.title "Refli - Lex Iterata"
+        H.title $ H.text documentFullTitle
     H.body ! A.class_ "u-container-vertical cover" $ do
         H.header $
             div "u-container" $
