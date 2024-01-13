@@ -1,0 +1,150 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+        link(rel="canonical", href="https://refli.be/fr/blog/2024/01/12/introducing-refli")
+        title Introducing Refli
+    body.u-container-vertical
+        header
+            .u-container
+                .u-bar
+                    .u-bar__left
+                        a(href="/prototypes/refli/index-constant.html")
+                            img(src="/static/images/logo.svg" alt="Refli")
+                    .u-bar__right
+                        // empty
+
+        .u-container
+            .c-content.flow-all.limit-42em
+                h1 Introducing Refli
+                small.breadcrumb 2024-01-12
+            .switcher
+                .flow-all
+                    p Works on Refli have been ongoing for almost a year now and it's long overdue that we write a first blog post to introduce the vision behind it.
+
+                div
+                    // empty
+
+            .c-content.flow-all.limit-42em
+                p First here is our current mission statement:
+
+                style.
+                  .quote {border-left: 2px solid #e4e4e4; padding-left: 1em;}
+                p.quote Refli's mission is to make payroll calculation rules in Belgium accessible, by providing documentation, data, and calculation tools all on one platform. Our goal is to be useful to a wide audience, including students, payroll professionals and software developers alike.
+                p.quote We believe that even the most complex concepts can be made understandable, and we're committed to breaking down barriers in payroll calculation.
+
+                p Because we want to ground our work in a solid underpinning, we envision to form Refli around a core made of three layers, from the Belgian legislative texts up to complete and precise computations. We can depict how each layer depends on previous layers as shown in the following diagram:
+
+                style.
+                  svg { display: block; margin: auto; }
+                include ../../../static/images/introducing-layers.svg
+
+                h2 Legislative texts
+
+                p Starting from the bottom of the above schema, the first layer is a set of legislative texts (e.g. laws or orders). This is the layer that has received the most attention yet. The official version of these texts are published as PDFs (the "paper" version, sometimes also called "images") on the <a href="https://www.ejustice.just.fgov.be">Official Belgian Journal web site</a> (maintained by the PFS Justice).
+
+                p In addition of those PDFs, the PFS Justice makes available three other representations: an HTML version of those PDFs, but also PDFs and their HTML counterparts of "consolidated" texts. The consolidated texts are offered in a separate part of their web site called <a href="https://www.ejustice.just.fgov.be/cgi_loi/loi.pl">Justel</a>. (HTML is the main computer code used to describe web pages.)
+
+                p To create the first layer within the core of Refli, we currently process the consolidated HTML version of the legislative texts. Within Refli, we call that first layer <a href="https://refli.be/fr/lex">Lex Iterata</a>.
+
+                p Iterata is a latin word that means "repeated". It also looks like the word "iterated". We want to convey that we present legislative texts "again", in a novel way, and that we intend to build the rest of Refli progressively on top of it.
+
+                p The processing of the consolidated texts entails recovering the high-level structure (headings, articles, paragraphs, ...) of the texts themselves and some metadata (for instance a link to the original PDF or its page number within it). We also recover some lower-level structure such as article numbers (whether they use roman or arabic numbers, numeral adverbs (e.g. bis, ter, quater, ...), number seprators (sometimes dots, sometimes forward slashes, ...)). We then store the recovered structured content in a relational database for further processing or querying.
+
+                p In other words, Lex Iterata offers the consolidated texts of the Official Belgian Journal in a new HTML form but we want to go a bit further by leveraging our structured representation.
+
+                p To better see the various forms that the legislative texts can take, here are some links for an example text, as offered by the PFS Justice:
+
+                style.
+                   ul { list-style: disc; }
+                   ul { padding-left: 3rem; }
+                ul
+                  li
+                    a(href="https://www.ejustice.just.fgov.be/mopdf/2023/12/27_2.pdf#Page266") The official PDF "image"
+                  li
+                    a(href="https://www.ejustice.just.fgov.be/eli/arrete/2023/12/17/2023206853/moniteur") Its HTML version
+                  li
+                    a(href="https://www.ejustice.just.fgov.be/img_l/pdf/2023/12/17/2023206853_F.pdf") Its consolidated PDF version
+                  li
+                    a(href="https://www.ejustice.just.fgov.be/eli/arrete/2023/12/17/2023206853/justel") Its consolidated HTML version
+
+                p And here is a link for the same text, as offered by Lex Iterata:
+
+                ul
+                  li
+                    a(href="https://refli.be/fr/lex/2023206853") A new consolidated HTML version
+
+            style.
+              .details { border: 2px solid #e4e4e4; padding: 1em; }
+            .c-content.flow-all.limit-42em.details
+                p For the reader with a technical background or simply more curious about our work, we describe some additional representations we make available. Feel free to skip this section.
+
+                p In addition of the HTML representation, here are some other links for the same text that Lex Iterata also offers:
+
+                ul
+                  li
+                    a(href="https://refli.be/lex/2023206853") A structured representation as JSON
+                  li
+                    a(href="https://raw.githubusercontent.com/hypered/iterata-md/main/texts/2023/20/2023206853.md") A Markdown representation
+                  li
+                    a(href="https://github.com/hypered/iterata-md/blob/main/texts/2023/20/2023206853.md") The Markdown representation rendered by GitHub
+
+                p The JSON reprentation is a technical representation for software developers (and more precisely, for the software they might create) that is easier for machines to process than an HTML page.
+
+                p The Markdown representation is a simple textual format that is popular with software developers. It is designed to be simple to write (for humans) and can be processed (by machines). For instance, the last link above shows how GitHub (a popular service to host source code and other text formats) can render it. (Note that the block enclosed between the lines `---` at the top of the Markdown file are an addition to the Markdown format; it is yet another textual format similar to JSON, called YAML.)
+
+                p Since we talk a lot about various formats, you might want to see some HTML. You can do so directly in your web browser by right clicking on a page and choosing "View Page Source". A keyboard shortcut to do the same operation is normally `Ctrl-u`. (For instance, you can do this on one of the above links pointing to some HTML representation.)
+
+                p A nice side effect of offering a Markdown representation of the legislative texts is that it makes it easier to see how they evolve. On <a href="https://github.com/hypered/iterata-md/commit/b38d0897ac3395161a13adcd386d1d50c9053dde">this GitHub page</a> you can see how two versions of the same texts have been changed. Again, such kind of change visualisation is very popular with software developers.
+
+                p For convenience, we also store the original HTML pages of the PFS Justice, and we can see <a href="https://github.com/hypered/iterata-src/commit/e66fbef1c87168dd9673984348665cad8b6e6f6c">the corresponding page</a> for the same conceptual changes.
+
+            .c-content.flow-all.limit-42em
+                p This work is really just a start and there are a lot of ways we can build upon what we have today:
+
+                ul
+                  li In the future, we would like to extend our work with other sources of official records (e.g. enterprise data from the national bank, case laws, ...).
+                  li We can improve the processing we do to recover even more fine-grained structure. For instance we could identify dates or turn references appearing within the texts into links to the referenced texts.
+                  li We can offer a more direct access to the underlying structured data that we recover. The JSON representation above is an example but we could also offer for instance a copy of our relational database.
+                  li We have to build a search interface. We could extend it with newer ways to query them (e.g. using a vector database and a LLM).
+
+                h2 Data
+
+                p The second layer in our schema is about data, i.e. values that are meaningful and that could change later. Values can be "simple" such as numbers or words but can be richer, such as lists or tables.
+
+                p The example legislative text above is a perfect example of such data as it defines the (new) values of two fractions described and used in <a href="https://refli.be/fr/lex/1967072702">another legislative text</a> for the year 2024.
+
+                p While the first layer takes a life on its own as Lex Iterata, this second layer on its own is quite conceptual. Within Refli, we can see that layer taking shape as some of the tables appearing in our documentation of the gross to net computation, for instance about the <a href="https://refli.be/fr/documentation/computation/contribution">social security contributions</a>.
+
+                p Unlike Lex Iterata which embodies very clearly the first layer of our schema, this one has not yet a clear delineation within Refli, but this is something that we want to emphasize.
+
+                h2 Computations
+
+                style.
+                  em { font-style: italic; }
+                p The third layer is the computational core of Refli. This is where Refli stops being about information and data, and starts becoming an online computer software. It aims to simplify the <em>application</em> of legal rules when those rules can be followed by a computer, and bring this simplification to a broad range of public.
+
+                p Currently, Refli offers a single computation: given a gross salary amount, what should be the corresponding net amount. Here is an <a href="https://refli.be/fr/describe/3600.00?details">example for a gross amount of 3600EUR</a>.
+
+                h2 A beginning
+
+                p The three layers described above form the conceptual basis of Refli. Each of them can be extended significantly with its own set of richer features but more importantly Refli itself should grow.
+
+                p On top of those layers we have to build additional features (such as user accounts for individuals or companies, search interface, saving results or offering them as PDFs, managing multiple computations over time, ...).
+
+                p Depending on interests and feedbacks, we might want to focus on different things in the future. For instance this could be Lex Iterata (i.e. legislative texts), or on some other core aspect of Refli. For instance we can offer the raw computational capabilities of Refli over a network API, or instead turn it into a user-facing standalone product.
+
+                p We have a software developer profile but we are not specialized in human resources management, salaries or legal topics. You may have your own ideas about how we might improve Refli. For instance, maybe you're a teacher or a student and we could improve our gross to net computation to make it more useful for your own usage. If what we're building is of interest to you, <a href="https://refli.be/fr/contact">please reach out</a>, we'd love to talk to you.
+
+        footer
+            .u-container
+                hr
+                .c-content.flow
+                    p © Hypered SRL, 2023-2024.
