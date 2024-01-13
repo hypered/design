@@ -27,20 +27,15 @@ html(dir="ltr", lang="en")
                 small.breadcrumb 2024-01-12
             .switcher
                 .flow-all
-                    p Works on Refli have been ongoing for almost a year now and it's long overdue that we write a first blog post to introduce the vision behind it.
+                    p Nearly a year into its development, it's about time we introduced Refli. This blog post is our first step in sharing the concept and vision behind our project focused on simplifying Belgian payroll calculations.
 
                 div
                     // empty
 
             .c-content.flow-all.limit-42em
-                p First here is our current mission statement:
+                p Refli is primarily focused on making Belgian payroll calculations clearer and more accessible. Our work is designed to serve a wide audience, including students, payroll professionals, and developers, by providing essential tools and information in a single, unified and comprehensive platform.
 
-                style.
-                  .quote {border-left: 2px solid #e4e4e4; padding-left: 1em;}
-                p.quote Refli's mission is to make payroll calculation rules in Belgium accessible, by providing documentation, data, and calculation tools all on one platform. Our goal is to be useful to a wide audience, including students, payroll professionals and software developers alike.
-                p.quote We believe that even the most complex concepts can be made understandable, and we're committed to breaking down barriers in payroll calculation.
-
-                p Because we want to ground our work in a solid underpinning, we envision to form Refli around a core made of three layers, from the Belgian legislative texts up to complete and precise computations. We can depict how each layer depends on previous layers as shown in the following diagram:
+                p To establish a solid foundation for Refli, we've developed it around a three-layered core. It starts with the Belgian legislative texts and progresses to detailed, precise computations. This layered approach is visualized in the following diagram, showing how each layer builds upon the previous one:
 
                 style.
                   svg { display: block; margin: auto; }
@@ -50,13 +45,13 @@ html(dir="ltr", lang="en")
 
                 p Starting from the bottom of the above schema, the first layer is a set of legislative texts (e.g. laws or orders). This is the layer that has received the most attention yet. The official version of these texts are published as PDFs (the "paper" version, sometimes also called "images") on the <a href="https://www.ejustice.just.fgov.be">Official Belgian Journal web site</a> (maintained by the PFS Justice).
 
-                p In addition of those PDFs, the PFS Justice makes available three other representations: an HTML version of those PDFs, but also PDFs and their HTML counterparts of "consolidated" texts. The consolidated texts are offered in a separate part of their web site called <a href="https://www.ejustice.just.fgov.be/cgi_loi/loi.pl">Justel</a>. (HTML is the main computer code used to describe web pages.)
+                p In addition to those PDFs, the PFS Justice also makes available three other representations: an HTML version of those PDFs, but also PDFs and their HTML counterparts of "consolidated" texts. The consolidated texts are offered in a separate part of their web site called <a href="https://www.ejustice.just.fgov.be/cgi_loi/loi.pl">Justel</a>. (HTML is the main computer code used to describe web pages.)
 
                 p To create the first layer within the core of Refli, we currently process the consolidated HTML version of the legislative texts. Within Refli, we call that first layer <a href="https://refli.be/fr/lex">Lex Iterata</a>.
 
-                p Iterata is a latin word that means "repeated". It also looks like the word "iterated". We want to convey that we present legislative texts "again", in a novel way, and that we intend to build the rest of Refli progressively on top of it.
+                p Iterata is a Latin word that means "repeated". It also looks like the word "iterated". We want to convey that we present legislative texts "again", in a novel way, and that we intend to build the rest of Refli progressively on top of it.
 
-                p The processing of the consolidated texts entails recovering the high-level structure (headings, articles, paragraphs, ...) of the texts themselves and some metadata (for instance a link to the original PDF or its page number within it). We also recover some lower-level structure such as article numbers (whether they use roman or arabic numbers, numeral adverbs (e.g. bis, ter, quater, ...), number seprators (sometimes dots, sometimes forward slashes, ...)). We then store the recovered structured content in a relational database for further processing or querying.
+                p The processing of the consolidated texts entails recovering the high-level structure (headings, articles, paragraphs, ...) of the texts themselves and some metadata (for instance a link to the original PDF or its page number within it). We also recover some lower-level structure such as article numbers (whether they use roman or arabic numbers, numeral adverbs (e.g. bis, ter, quater, ...), number separators (sometimes dots, sometimes forward slashes, ...)). This structured content is then stored in a relational database for further processing and querying.
 
                 p In other words, Lex Iterata offers the consolidated texts of the Official Belgian Journal in a new HTML form but we want to go a bit further by leveraging our structured representation.
 
