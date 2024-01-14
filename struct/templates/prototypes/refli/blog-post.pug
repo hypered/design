@@ -33,7 +33,7 @@ html(dir="ltr", lang="en")
                     // empty
 
             .c-content.flow-all.limit-42em
-                p Refli is primarily focused on making Belgian payroll calculations clearer and more accessible. Our work is designed to serve a wide audience, including students, payroll professionals, and developers, by providing essential tools and information in a single, unified and comprehensive platform.
+                p Refli is primarily dedicated to making Belgian payroll calculations clearer and more accessible. Our work is designed to serve a wide audience, including students, payroll professionals, and developers, by providing essential tools and information in a single, unified and comprehensive platform.
 
                 p To establish a solid foundation for Refli, we build it around a three-layer core. It starts with the Belgian legislative texts and progresses to detailed, precise computations. This layered approach is visualized in the diagram below, which shows how each layer builds on the previous one:
 
@@ -43,11 +43,11 @@ html(dir="ltr", lang="en")
 
                 h2 Legislative texts
 
-                p Starting from the bottom of the above schema, the first layer is a set of legislative texts (e.g. laws or orders). This is the layer that has received the most attention so far. The official version of these texts is published as PDFs (the "paper" version, sometimes also called "images") on the <a href="https://www.ejustice.just.fgov.be">Belgian Official Journal website</a> (maintained by the PFS Justice).
+                p Starting from the bottom of the above schema, the first layer is a set of legislative texts (e.g. laws or orders). The official version of these texts is published as PDFs (the "paper" version, sometimes also called "images") on the <a href="https://www.ejustice.just.fgov.be">Belgian Official Journal website</a> (maintained by the FPS Justice).
 
-                p In addition to these PDFs, the PFS Justice also provides three other representations: an HTML version of these PDFs, but also PDFs and their HTML counterparts of "consolidated" texts. The consolidated texts are offered in a separate part of their website called <a href="https://www.ejustice.just.fgov.be/cgi_loi/loi.pl">Justel</a>. (HTML is the main computer code used to describe web pages.)
+                p In addition to these PDFs, the FPS Justice also provides three other representations: an HTML version of these PDFs, but also PDFs and their HTML counterparts of "consolidated" texts. The consolidated texts are offered in a separate part of their website called <a href="https://www.ejustice.just.fgov.be/cgi_loi/loi.pl">Justel</a>. (HTML is the primary computer code used to create web pages. It is interpreted by web browsers such as Firefox, Chrome, and Safari to display content on the web.)
 
-                p To create the first layer within the core of Refli, we currently process the consolidated HTML version of the legislative texts. Within Refli, we call this first layer <a href="https://refli.be/fr/lex">Lex Iterata</a>.
+                p To create this first layer, we process the consolidated HTML version of the legislative texts. This has been the main focus of our efforts so far, and has received the most development time compared to the other layers. In Refli, we call this first layer <a href="https://refli.be/fr/lex">Lex Iterata</a>.
 
                 p Iterata is a Latin word meaning "repeated". It also looks like the word "iterated". We want to convey that we are presenting legislative texts "again", in a novel way, and that we intend to build the rest of Refli progressively on top of it.
 
@@ -55,7 +55,7 @@ html(dir="ltr", lang="en")
 
                 p In other words, Lex Iterata offers the consolidated texts of the Belgian Official Journal in a new HTML form but we want to go a bit further by leveraging our structured representation.
 
-                p To better see the different forms that the legislative texts can take, here are some links to a sample text offered by the PFS Justice:
+                p To better see the different forms that the legislative texts can take, here are some links to a sample text offered by the FPS Justice:
 
                 style.
                    ul { list-style: disc; }
@@ -79,9 +79,9 @@ html(dir="ltr", lang="en")
             style.
               .details { border: 2px solid #e4e4e4; padding: 1em; }
             .c-content.flow-all.limit-42em.details
-                p For the reader with a technical background or simply more curious about our work, we describe some additional representations we make available. Feel free to skip this section.
+                p For readers with a technical background or those who are just curious, we delve into some additional representations we provide. Feel free to skip this section if you prefer.
 
-                p In addition to the HTML representation, here are some other links for the same text that Lex Iterata also offers:
+                p Besides our own HTML representation, Lex Iterata offers additional formats for the same text:
 
                 ul
                   li
@@ -93,19 +93,22 @@ html(dir="ltr", lang="en")
 
                 p The JSON representation is a technical representation for software developers (and, more specifically, the software they might create) that is easier for machines to process than an HTML page.
 
-                p The Markdown representation is a simple text format that is popular with software developers. It is designed to be easy to write (for humans) and easy to process (for machines). For example, the last link above shows how GitHub (a popular service for hosting source code and other text formats) can render it. (Note that the block enclosed between the lines `---` at the top of the Markdown file is an addition to the Markdown format; it is yet another text format similar to JSON, called YAML.)
+                p The Markdown representation is a simple text format that is popular with software developers. It is designed to be easy to write (for humans) and easy to process (for machines). For example, the last link above shows how GitHub (a popular service for hosting source code and other text formats) can render it.
 
-                p Since we are talking a lot about different formats, you may want to look at some HTML. You can do this directly in your web browser by right-clicking on a page and selecting "View Page Source". A keyboard shortcut for the same operation is usually `Ctrl-u`. (For instance, you can do this on any of the links above that point to an HTML representation.)
+                p Note that the block enclosed between the lines <code>---</code> at the top of the Markdown file is an addition to the Markdown format; it is yet another text format similar to JSON, called YAML. In the GitHub rendering above, this corresponds to the table displayed above the text itself.
+
+                p Since we are talking a lot about different formats, you may want to take a look at some HTML. You can do this directly in your web browser by right-clicking on a page and selecting "View Page Source". A keyboard shortcut for the same operation is usually <code>Ctrl-u</code>. For instance, you can do this on any of the links above that point to an HTML representation.
 
                 p A nice side effect of providing a Markdown representation of the legislative texts is that it makes it easier to see how they evolve. On <a href="https://github.com/hypered/iterata-md/commit/b38d0897ac3395161a13adcd386d1d50c9053dde">this GitHub page</a> you can see how two versions of the same texts have been changed. This kind of change visualisation is also very popular with software developers.
 
-                p For convenience, we also keep the original HTML pages of the PFS Justice on GitHub, and we can see <a href="https://github.com/hypered/iterata-src/commit/e66fbef1c87168dd9673984348665cad8b6e6f6c">the corresponding page</a> for the same conceptual changes.
+                p For convenience, we also keep the original HTML pages of the FPS Justice on GitHub, and we can see <a href="https://github.com/hypered/iterata-src/commit/e66fbef1c87168dd9673984348665cad8b6e6f6c">the corresponding page</a> for the same conceptual changes. Because of the lighter nature of Markdown compared to HTML, we can see that the changes are easier to grasp in the former case.
 
             .c-content.flow-all.limit-42em
                 p This work is really just a start, and there are many ways to build on what we have today:
 
                 ul
-                  li In the future, we would like to expand our work with other sources of official records (e.g. business data from the national bank, case law, ...).
+                  li Currently, we have processed more than 202,000 documents. In the future, we would like to expand our work with other sources of official records (e.g. business data from the national bank, case law, ...).
+                  li We need to expose additional information that the FPS Justice provides, such as links to errata or archived (previous) versions of a text.
                   li We can improve the processing we do to recover even more fine-grained structure. For example, we could identify dates or turn references that appear in the texts into links to the referenced texts.
                   li We can offer a more direct access to the underlying structured data that we are recovering. The JSON representation above is an example, but we could also provide, say, a copy of our relational database.
                   li We need to build a search interface. We could extend it with newer ways of querying our data (e.g. using a vector database or an LLM).
@@ -136,7 +139,7 @@ html(dir="ltr", lang="en")
 
                 p Depending on interests and feedback, we may want to focus on different things in the future. For example, this could be Lex Iterata (i.e. legislative texts), or on some other core aspect of Refli. For instance, we can offer the raw computational capabilities of Refli via a network API, or instead turn it into a user-facing standalone product.
 
-                p We have a software developer profile, but we are not specialized in HR, payroll or legal issues. You may have your own ideas on how we can improve Refli. For example, maybe you're a teacher or a student and we could improve our gross-to-net computation to make it more useful for your own use. If you are interested in what we are building, <a href="https://refli.be/fr/contact">please contact us</a>, we'd love to talk to you.
+                p Our expertise is in software development, but we don't have any formal training in HR, payroll, or legal issues. Maybe you're a teacher or a student and we could improve our gross-to-net computation to make it more useful for you. Or maybe you use the Belgian Official Journal every day and have completely different suggestions. Your ideas are important for us to improve Refli. If you are interested in what we are building, <a href="https://refli.be/fr/contact">please contact us</a>, we'd love to talk to you.
 
         footer
             .u-container
