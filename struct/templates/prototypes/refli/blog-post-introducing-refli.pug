@@ -19,9 +19,8 @@ block content
 
         p To establish a solid foundation for Refli, we build it around a three-layer core. It starts with the Belgian legislative texts and progresses to detailed, precise computations. This layered approach is visualized in the diagram below, which shows how each layer builds on the previous one:
 
-        style.
-          svg { display: block; margin: auto; }
-        include ../../../static/images/introducing-layers.svg
+        .blog-post-centered-svg
+          include ../../../static/images/introducing-layers.svg
 
         h2 Legislative texts
 
@@ -39,9 +38,6 @@ block content
 
         p To better see the different forms that the legislative texts can take, here are some links to a sample text offered by the FPS Justice:
 
-        style.
-           ul { list-style: disc; }
-           ul { padding-left: 3rem; }
         ul
           li
             a(href="https://www.ejustice.just.fgov.be/mopdf/2023/12/27_2.pdf#Page266") The official PDF "image"
@@ -58,9 +54,7 @@ block content
           li
             a(href="https://refli.be/fr/lex/2023206853") A new consolidated HTML version
 
-    style.
-      .details { border: 2px solid #e4e4e4; padding: 1em; }
-    .c-content.flow-all.limit-42em.details
+    .c-content.flow-all.limit-42em.blog-post-details
         p For readers with a technical background or those who are just curious, we delve into some additional representations we provide. Feel free to skip this section if you prefer.
 
         p Besides our own HTML representation, Lex Iterata offers additional formats for the same text:
@@ -107,8 +101,6 @@ block content
 
         h2 Computations
 
-        style.
-          em { font-style: italic; }
         p The third layer is the computational core of Refli. This is where Refli stops being about information and data, and starts becoming an online computer software. Its goal is to simplify the <em>application</em> of legal rules, when those rules can be followed by a computer, and to make that simplification available to a broad range of public.
 
         p Currently, Refli offers a single computation: given a gross salary amount, what should be the corresponding net amount. Here is an <a href="https://refli.be/fr/describe/3600.00?details">example for a gross amount of 3600EUR</a>.

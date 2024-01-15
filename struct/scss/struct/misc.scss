@@ -35,6 +35,7 @@ h3 {font-size: var(--step-c-2);}
 h4 {font-size: var(--step-c-1);}
 p {font-size: var(--step-c-0); line-height: 1.5em;}
 p small {font-size: var(--step-c--1); line-height: 1.5em;}
+em {font-style: italic;}
 .limit-p p {max-width: 42em;}
 .limit-40ch {max-width: 40ch;}
 .limit-42em {max-width: 42em;}
@@ -65,12 +66,15 @@ hr {
 .c-text h2 {letter-spacing: 0rem;}
 .c-text h3 {letter-spacing: 0rem;}
 .c-text label {font-weight: 600;}
+.c-text ul {list-style: disc; padding-left: 3rem;}
+.c-text ul li {line-height: 1.5em;}
 .c-content h1 {font-size: var(--step-b-4);}
 .c-content h2 {font-size: var(--step-b-3);}
 .c-content h3 {font-size: var(--step-b-2);}
 .c-content h4 {font-size: var(--step-b-1);}
 .c-content p {font-size: var(--step-b-0); line-height: 1.5em;}
 .c-content p small {font-size: var(--step-b--1); line-height: 1.5em;}
+.c-content ul {list-style: disc; padding-left: 3rem;}
 .c-content ul li {line-height: 1.5em;}
 .type-scale-d h1 {font-size: var(--step-d-4);}
 .type-scale-d h2 {font-size: var(--step-d-3);}
@@ -502,3 +506,7 @@ i.mb-i {font-style: italic;}
 .mb-pairs dd {
   grid-column-start: span 1;
 }
+
+// Specific rules for blog posts.
+.blog-post-details {border: 2px solid #e4e4e4; padding: 1em;}
+.blog-post-centered-svg svg {display: block; margin: auto;}
