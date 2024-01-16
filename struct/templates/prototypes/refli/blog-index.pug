@@ -1,0 +1,21 @@
+extends ../../layouts/refli/blog-post
+include ../../includes/mixins/icons.pug
+
+block title
+    title Découvrons Refli
+
+block content
+    .c-content.flow-all.limit-42em
+        h1 Blog
+
+
+    .c-content.flow-all.limit-42em
+        h2 Introducing Refli
+        small.breadcrumb 2024-01-12
+
+    .flow-all.limit-42em
+        p Nearly a year into its development, it's about time we introduced Refli. This blog post is our first step to share the concept and vision behind our project, which is focused on simplifying Belgian payroll calculations.
+
+        a.c-button.c-button--primary(href='blog-post-introducing-refli.html')
+            span Read more
+            +arrow-right
