@@ -78,6 +78,9 @@ hr {
   list-style: disc;
   padding-left: 3rem;
   &.no-disc {list-style: none; padding-left: 0;}
+  &.horizontal > li {display: inline-block;}
+  &.horizontal > *:not(:last-child) {margin-right: 1em;}
+
 }
 .c-content ul li {line-height: 1.5em;}
 .type-scale-d h1 {font-size: var(--step-d-4);}
