@@ -58,6 +58,8 @@ library
                        Hypered.Html.Helpers,
                        Hypered.Html.Struct.Prototypes.Motherboard.Documents,
                        Hypered.Html.Struct.Prototypes.Motherboard.Indices,
+                       Hypered.Html.Struct.Prototypes.Refli.Common,
+                       Hypered.Html.Struct.Prototypes.Refli.LandingPage,
                        Hypered.Html.Struct.Specimens,
                        Hypered.Html.Tachyons
   ghc-options:         -Wall
