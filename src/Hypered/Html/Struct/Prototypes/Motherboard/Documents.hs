@@ -2,6 +2,7 @@ module Hypered.Html.Struct.Prototypes.Motherboard.Documents where
 
 import qualified Data.Text as T
 import Hypered.Html.Helpers
+import Hypered.Html.Struct.Prototypes.Refli.Common as Struct
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -36,36 +37,14 @@ data Block =
 --------------------------------------------------------------------------------
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
 prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = do
-  H.docType
   -- TODO Actually write the page in French.
-  H.html ! A.dir "ltr" ! A.lang "fr" $ do
-    H.head $ do
-        H.meta ! A.charset "utf-8"
-        H.meta ! A.name "viewport"
-               ! A.content "width=device-width, initial-scale=1"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
-        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Regular.woff2"
-               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
-               ! H.customAttribute "crossorigin" "crossorigin"
-        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Medium.woff2"
-               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
-               ! H.customAttribute "crossorigin" "crossorigin"
-        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-SemiBold.woff2"
-               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
-               ! H.customAttribute "crossorigin" "crossorigin"
-        H.link ! A.rel "preload" ! A.href "/static/fonts/IBMPlexSans-Bold.woff2"
-               ! H.customAttribute "as" "font" ! A.type_ "font/woff2"
-               ! H.customAttribute "crossorigin" "crossorigin"
-        H.meta ! A.name "description"
-               ! A.content (H.toValue $ documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.")
-        H.title $ H.text documentFullTitle
+  Struct.refliDocument
+    False
+    "fr"
+    documentFullTitle
+    (documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.") $
     H.body ! A.class_ "u-container-vertical cover" $ do
-        H.header $
-            div "u-container" $
-                div "c-text" $
-                    H.div $
-                        H.span ! A.class_ "logo" $
-                            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
+        motherboardHeader homepage
 
         div "u-container" $ do
             H.p $
@@ -113,28 +92,7 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                             documentLegislativeLinks
                 mapM_ showBlock documentBlocks
 
-        H.footer $
-          div "u-container" $ do
-            H.hr
-            div "c-text flow" $ do
-              H.p $
-                H.small $ do
-                  "View this page in "
-                  H.a ! A.href (H.toValue $ "/lex/" <> documentId) $ "JSON format"
-                  "."
-              H.p $
-                H.small $ do
-                  "View the "
-                  H.a ! A.href (H.toValue $ documentUrl) $ "original page"
-                  " on the Belgian Official Journal."
-              H.p $
-                H.small $ do
-                  "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href (H.toValue homepage) $ "Read more about Lex Iterata"
-                  " or go "
-                  H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
-                  "."
-              H.p "© Hypered SRL, 2023-2024."
+        motherboardDocumentFooter documentId documentUrl homepage refliHomepage
 
 showBlock :: Block -> Html
 showBlock (Pair level content) =
@@ -188,3 +146,38 @@ formatMonospace xs =
   f x = panic $ "formatMonospace: unexpected value: " <> show x
   g '\160' = ' '
   g c = c
+
+--------------------------------------------------------------------------------
+motherboardHeader :: Text -> Html
+motherboardHeader homepage =
+  H.header $
+    div "u-container" $
+      div "c-text" $
+        H.div $
+          H.span ! A.class_ "logo" $
+            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
+
+motherboardDocumentFooter :: Text -> Text -> Text -> Text -> Html
+motherboardDocumentFooter documentId documentUrl homepage refliHomepage =
+  H.footer $
+    div "u-container" $ do
+      H.hr
+      div "c-text flow" $ do
+        H.p $
+          H.small $ do
+            "View this page in "
+            H.a ! A.href (H.toValue $ "/lex/" <> documentId) $ "JSON format"
+            "."
+        H.p $
+          H.small $ do
+            "View the "
+            H.a ! A.href (H.toValue $ documentUrl) $ "original page"
+            " on the Belgian Official Journal."
+        H.p $
+          H.small $ do
+            "Lex Iterata is a Refli experiment. "
+            H.a ! A.href (H.toValue homepage) $ "Read more about Lex Iterata"
+            " or go "
+            H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
+            "."
+        H.p "© Hypered SRL, 2023-2024."

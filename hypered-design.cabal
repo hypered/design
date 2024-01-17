@@ -54,6 +54,7 @@ library
                        Hypered.Design.Server,
                        Hypered.Design.Stories,
                        Hypered.Design.Templates,
+                       Hypered.Html.Common,
                        Hypered.Html.Helpers,
                        Hypered.Html.Struct.Prototypes.Motherboard.Documents,
                        Hypered.Html.Struct.Prototypes.Motherboard.Indices,
