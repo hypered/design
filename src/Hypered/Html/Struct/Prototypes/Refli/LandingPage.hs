@@ -70,6 +70,15 @@ prototypeRefliPage header content =
     H.footer $
       div "u-container" $ do
         H.hr
+        div "switcher" $
+          div "c-content flow" $
+            H.ul ! A.class_ "no-disc horizontal" $ do
+              H.li $
+                H.a ! A.href "/en" $ "EN" -- TODO append the rest of the URL.
+              H.li $
+                H.a ! A.href "/fr" $ "FR"
+              H.li $
+                H.a ! A.href "/nl" $ "NL"
 
         div "flow u-flow-c-4" $
           H.span "© Hypered SRL, 2023-2024."
