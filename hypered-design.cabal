@@ -27,6 +27,7 @@ library
     , blaze-builder
     , blaze-html
     , blaze-markup
+    , blaze-svg
     , commence-core
     , directory
     , exceptions
