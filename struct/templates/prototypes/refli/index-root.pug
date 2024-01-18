@@ -1,0 +1,26 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct.css")
+    body.u-container-vertical.cover
+        header
+            .u-container
+                .u-bar
+                    .u-bar__left
+                        a(href="#")
+                            img(src="/static/images/logo.svg" alt="Refli")
+                    .u-bar__right
+                        include ../../includes/main-header--page-struct
+        main
+            .u-container
+                .flow-all.limit-42em
+                    p Refli is available in <a href="/en">English</a>.
+                    p Refli est disponible en <a href="/fr">Français</a>.
+                    p Refli is beschikbaar in het <a href=/"nl">Nederlands</a>.
+
+        footer
+            .u-container
+                hr
+                span © Hypered SRL, 2023-2024.

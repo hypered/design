@@ -34,6 +34,30 @@ data DescribeFormPageTexts = DescribeFormPageTexts
   }
 
 -- Move elsewhere.
+prototypeRefliRootPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> Html
+prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts {..} = do
+  refliDocument
+    autoreload mainHeaderLanguage "Refli" landingPageDescription $
+      prototypeRefliPage
+        mainHeaderLanguage
+        ""
+        (prototypeRefliMainHeader mhTexts) $ do
+          -- TODO body.u-container-vertical.cover
+          div "flow-all limit-42em" $ do
+            H.p $ do
+              "Refli is available in "
+              H.a ! A.href "/en" $ "English"
+              "."
+            H.p $ do
+              "Refli est disponible en "
+              H.a ! A.href "/fr" $ "Français"
+              "."
+            H.p $ do
+              "Refli is beschikbaar in het "
+              H.a ! A.href "/nl" $ "Nederlands"
+              "."
+
+-- Move elsewhere.
 prototypeRefliDescribeFormPage :: Bool -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> Html
 prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} = do
   refliDocument
