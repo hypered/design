@@ -52,6 +52,7 @@ data MainHeaderTexts = MainHeaderTexts
   , mainHeaderLinkDocumentation :: Text
   }
 
+prototypeRefliPage :: Html -> Html -> Html
 prototypeRefliPage header content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
@@ -83,11 +84,13 @@ prototypeRefliPage header content =
         div "flow u-flow-c-4" $
           H.span "© Hypered SRL, 2023-2024."
 
-prototypeRefliMainHeader MainHeaderTexts {..} =
+prototypeRefliMainHeader :: MainHeaderTexts -> Html
+prototypeRefliMainHeader MainHeaderTexts {..} = do
+  let linkBlog = mainHeaderLanguage <> "/blog"
   H.ul $ do
     H.li $
       div "menu-item" $
-        H.a ! A.href "/prototypes/refli/blog-index.html" ! A.class_ "menu-link" $
+        H.a ! A.href (H.toValue linkBlog) ! A.class_ "menu-link" $
           H.text mainHeaderLinkBlog
 
     H.li $
