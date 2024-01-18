@@ -26,35 +26,41 @@ data LandingPageTexts = LandingPageTexts
 
 data DescribeFormPageTexts = DescribeFormPageTexts
   { describeFormPageLanguage :: Text
+  , describeFormPageTitle :: Text
+  , describeFormPageDescription :: Text
+  , describeFormPageFormTitle :: Text
+  , describeFormPageFormFieldLabel :: Text
+  , describeFormPageFormSubmit :: Text
   }
 
 -- Move elsewhere.
 prototypeRefliDescribeFormPage :: Bool -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> Html
 prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} = do
   refliDocument
-    autoreload mainHeaderLanguage "Gross-to-net conversion" "" $ -- TODO Translation and description.
+    autoreload mainHeaderLanguage describeFormPageTitle describeFormPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
         (prototypeRefliMainHeader mhTexts) $ do
           div "switcher switch-at-60rem u-flow-c-4 u-space-after-c-4" $ do
             div "flow" $ do
-              H.h1 "Compute a gross-to-net salary conversion"
-              H.p "Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions."
+              H.h1 $ H.text describeFormPageTitle
+              H.p $ H.text describeFormPageDescription
             div "box" $
               H.form ! A.class_ "c-text flow"
                      ! A.method "POST"
                      ! A.action "/a/describe" $ do
-                H.h4 "Salary computation"
+                H.h4 $ H.text describeFormPageFormTitle
                 H.div $ do
-                  H.label ! A.for "monthly-gross-salary" $ "Gross monthly salary"
+                  H.label ! A.for "monthly-gross-salary" $
+                    H.text describeFormPageFormFieldLabel
                   H.input ! A.class_ "c-input"
                           ! A.name "monthly-gross-salary"
                           ! A.id "monthly-gross-salary"
                           ! A.type_ "text"
                           ! A.placeholder ""
                 H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
-                  H.span "Compute"
+                  H.span $ H.text describeFormPageFormSubmit
                   arrowRight
 
 -- Move elsewhere.
