@@ -166,7 +166,22 @@ prototypeRefliPage lang url header content =
       div "u-container" $ do
         H.hr
         div "switcher" $
-          div "c-content flow" $
+          div "c-content flow" $ do
+            H.h4 "Refli"
+            H.ul ! A.class_ "no-disc" $ do
+              H.li $
+                H.a ! A.href "/fr/about" $ "About"
+              H.li $
+                H.a ! A.href "/changelog" $ "Changelog"
+              H.li $
+                H.a ! A.href "/fr/contact" $ "Contact"
+              H.li $
+                H.a ! A.href "/fr/disclaimer" $ "Disclaimer"
+              H.li $
+                H.a ! A.href "/fr/documentation" $ "Documentation"
+              H.li $
+                H.a ! A.href "/fr/lex" $ "Lex Iterata" -- TODO Translate.
+            H.hr
             H.ul ! A.class_ "no-disc horizontal" $ do
               H.li $
                 H.a ! A.href (H.toValue $ "/en" <> url) $ "EN"
