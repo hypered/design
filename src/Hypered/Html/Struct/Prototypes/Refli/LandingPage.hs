@@ -30,19 +30,21 @@ data BlogPostPageTexts = BlogPostPageTexts
 
 -- Move elsewhere.
 prototypeRefliBlogPostPage :: Bool -> MainHeaderTexts -> BlogPostPageTexts -> Text -> Html
-prototypeRefliBlogPostPage autoreload mhTexts BlogPostPageTexts {..} virtual = do
+prototypeRefliBlogPostPage autoreload mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual = do
   refliDocument
     autoreload blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
       prototypeRefliPage
+        mainHeaderLanguage
         (prototypeRefliMainHeader mhTexts) $
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
 
 prototypeRefliLandingPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> Html
-prototypeRefliLandingPage autoreload mhTexts texts@LandingPageTexts {..} = do
+prototypeRefliLandingPage autoreload mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} = do
   refliDocument
     autoreload landingPageLanguage landingPageTitle landingPageDescription $
       prototypeRefliPage
+        mainHeaderLanguage
         (prototypeRefliMainHeader mhTexts) $
           refliLandingPageContent texts
 
@@ -69,14 +71,14 @@ data MainHeaderTexts = MainHeaderTexts
   , mainHeaderLinkDocumentation :: Text
   }
 
-prototypeRefliPage :: Html -> Html -> Html
-prototypeRefliPage header content =
+prototypeRefliPage :: Text -> Html -> Html -> Html
+prototypeRefliPage lang header content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
       div "u-container" $
         div "u-bar" $ do
           div "u-bar__left" $
-            H.a ! A.href "/prototypes/refli/index-constant.html" $
+            H.a ! A.href (H.toValue $ "/" <> lang) $
               H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
           div "u-bar__right" $
             header
@@ -115,9 +117,10 @@ prototypeRefliMainHeader MainHeaderTexts {..} = do
         H.i ! A.class_ "menu-mask" ! A.tabindex "-1" $ mempty
         H.a ! A.class_ "menu-dropdown" $ H.text mainHeaderLinkPlayground
         div "menu-dropdown-content" $
-          H.a ! A.href "/prototypes/refli/describe.html" $
+          H.a ! A.href "/fr/describe" $ -- TODO Translate.
             H.text mainHeaderLinkComputeSalaries
 
     H.li $
       div "menu-item" $
-        H.a ! A.href "#" ! A.class_ "menu-link" $ H.text mainHeaderLinkDocumentation
+        H.a ! A.href "/fr/documentation" ! A.class_ "menu-link" $ -- TODO Translate.
+          H.text mainHeaderLinkDocumentation
