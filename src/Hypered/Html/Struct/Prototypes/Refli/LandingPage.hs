@@ -29,22 +29,24 @@ data BlogPostPageTexts = BlogPostPageTexts
   }
 
 -- Move elsewhere.
-prototypeRefliBlogPostPage :: Bool -> MainHeaderTexts -> BlogPostPageTexts -> Text -> Html
-prototypeRefliBlogPostPage autoreload mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual = do
+prototypeRefliBlogPostPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Text -> Html
+prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual = do
   refliDocument
     autoreload blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
+        url
         (prototypeRefliMainHeader mhTexts) $
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
 
-prototypeRefliLandingPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> Html
-prototypeRefliLandingPage autoreload mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} = do
+prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> Html
+prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} = do
   refliDocument
     autoreload landingPageLanguage landingPageTitle landingPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
+        url
         (prototypeRefliMainHeader mhTexts) $
           refliLandingPageContent texts
 
@@ -71,8 +73,8 @@ data MainHeaderTexts = MainHeaderTexts
   , mainHeaderLinkDocumentation :: Text
   }
 
-prototypeRefliPage :: Text -> Html -> Html -> Html
-prototypeRefliPage lang header content =
+prototypeRefliPage :: Text -> Text -> Html -> Html -> Html
+prototypeRefliPage lang url header content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
       div "u-container" $
@@ -94,11 +96,11 @@ prototypeRefliPage lang header content =
           div "c-content flow" $
             H.ul ! A.class_ "no-disc horizontal" $ do
               H.li $
-                H.a ! A.href "/en" $ "EN" -- TODO append the rest of the URL.
+                H.a ! A.href (H.toValue $ "/en" <> url) $ "EN"
               H.li $
-                H.a ! A.href "/fr" $ "FR"
+                H.a ! A.href (H.toValue $ "/fr" <> url) $ "FR"
               H.li $
-                H.a ! A.href "/nl" $ "NL"
+                H.a ! A.href (H.toValue $ "/nl" <> url) $ "NL"
 
         div "flow u-flow-c-4" $
           H.span "© Hypered SRL, 2023-2024."
