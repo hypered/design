@@ -77,7 +77,7 @@ prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPost
 
           div "c-content flow-all limit-42em" $ do
             H.h2 $ H.text blogPostPageTitle
-            H.small ! A.class_ "breadcrumb" $ "2024-01-18"
+            H.small ! A.class_ "breadcrumb" $ "2024-01-19"
 
           div "flow-all limit-42em" $ do
             H.p $ H.text blogPostPageDescription
@@ -85,7 +85,7 @@ prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPost
             H.a ! A.class_ "c-button c-button--primary"
                 ! A.href
                   (H.toValue $ "/" <> mainHeaderLanguage
-                    <> "/blog/2024/01/18/introducing-refli") $ do
+                    <> "/blog/2024/01/19/introducing-refli") $ do
                 H.span $ H.text blogPostReadMore
                 arrowRight
 
