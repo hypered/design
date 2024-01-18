@@ -192,7 +192,7 @@ prototypeRefliMainHeader MainHeaderTexts {..} = do
         H.i ! A.class_ "menu-mask" ! A.tabindex "-1" $ mempty
         H.a ! A.class_ "menu-dropdown" $ H.text mainHeaderLinkPlayground
         div "menu-dropdown-content" $
-          H.a ! A.href "/fr/describe" $ -- TODO Translate.
+          H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/describe") $
             H.text mainHeaderLinkComputeSalaries
 
     H.li $
