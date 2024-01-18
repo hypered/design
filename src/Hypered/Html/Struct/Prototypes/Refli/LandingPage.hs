@@ -21,6 +21,23 @@ data LandingPageTexts = LandingPageTexts
   , landingPageParagraph2 :: Text
   }
 
+-- Move elsewhere.
+data BlogPostPageTexts = BlogPostPageTexts
+  { blogPostPageLanguage :: Text
+  , blogPostPageTitle :: Text
+  , blogPostPageDescription :: Text
+  }
+
+-- Move elsewhere.
+prototypeRefliBlogPostPage :: Bool -> MainHeaderTexts -> BlogPostPageTexts -> Text -> Html
+prototypeRefliBlogPostPage autoreload mhTexts BlogPostPageTexts {..} virtual = do
+  refliDocument
+    autoreload blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
+      prototypeRefliPage
+        (prototypeRefliMainHeader mhTexts) $
+          H.preEscapedText $
+            "\n<!--# include virtual=\"" <> virtual <> "\" -->"
+
 prototypeRefliLandingPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> Html
 prototypeRefliLandingPage autoreload mhTexts texts@LandingPageTexts {..} = do
   refliDocument
@@ -86,7 +103,7 @@ prototypeRefliPage header content =
 
 prototypeRefliMainHeader :: MainHeaderTexts -> Html
 prototypeRefliMainHeader MainHeaderTexts {..} = do
-  let linkBlog = mainHeaderLanguage <> "/blog"
+  let linkBlog = "/" <> mainHeaderLanguage <> "/blog"
   H.ul $ do
     H.li $
       div "menu-item" $
