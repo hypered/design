@@ -273,6 +273,10 @@ hr {
   z-index: 100000;
   visibility: hidden;
   opacity: 0;
+  // Delay when disappearing is necessary otherwise the click on a link
+  // isn't registered on Chrome.
+  // It's ugly when clicking outside and waiting for it to close though.
+  transition: 0s 0.2s ease-out;
 }
 .menu-item a {
   color: black;
@@ -291,6 +295,8 @@ hr {
   transform: translateY(40px);
   visibility: visible;
   opacity: 1;
+  // Disable the above delay (make it instant) when appearing.
+  transition: 0s 0s ease-out;
 }
 .menu-link:hover, .menu-dropdown:hover, .menu-item:focus .menu-dropdown {
   background-color: #f9f9f9;
@@ -303,7 +309,7 @@ hr {
   right: 0;
   bottom: 0;
   left: 0;
-  opacity: 1;
+  opacity: 0;
   cursor: pointer;
   z-index: 10;
   display: none;
@@ -315,6 +321,13 @@ hr {
   background-color: red;
   opacity: var(--menu-mask-opacity, 0);
 }
+// Original code has this. Keep it around for a while if we need to
+// debug again.
+//.menu-item .menu-mask:focus .menu-dropdown-content {
+//  outline: none;
+//  visibility: hidden;
+//  opacity: 0;
+//}
 
 /* Show the menu mask (to make sure it has the same size as the dropdown
    button. (Add this to .menu-mask.) */
