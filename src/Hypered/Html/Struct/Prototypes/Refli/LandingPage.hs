@@ -34,14 +34,15 @@ data DescribeFormPageTexts = DescribeFormPageTexts
   }
 
 -- Move elsewhere.
-prototypeRefliRootPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> Html
-prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts {..} = do
+prototypeRefliRootPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> Html
+prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts {..} nbTexts = do
   refliDocument
     autoreload mainHeaderLanguage "Refli" landingPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         ""
-        (prototypeRefliMainHeader mhTexts) $ do
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
           -- TODO body.u-container-vertical.cover
           div "flow-all limit-42em" $ do
             H.p $ do
@@ -58,14 +59,15 @@ prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts 
               "."
 
 -- Move elsewhere.
-prototypeRefliDescribeFormPage :: Bool -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> Html
-prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} = do
+prototypeRefliDescribeFormPage :: Bool -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> NavigationBlockTexts -> Html
+prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} nbTexts = do
   refliDocument
     autoreload mainHeaderLanguage describeFormPageTitle describeFormPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts) $ do
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
           div "switcher switch-at-60rem u-flow-c-4 u-space-after-c-4" $ do
             div "flow" $ do
               H.h1 $ H.text describeFormPageTitle
@@ -88,14 +90,15 @@ prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} Descr
                   arrowRight
 
 -- Move elsewhere.
-prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Html
-prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} = do
+prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
+prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} nbTexts = do
   refliDocument
     autoreload mainHeaderLanguage "Blog" "" $ -- TODO Description.
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts) $ do
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
           div "c-content flow-all limit-42em" $
             H.h1 "Blog"
 
@@ -126,25 +129,27 @@ data BlogPostPageTexts = BlogPostPageTexts
   }
 
 -- Move elsewhere.
-prototypeRefliBlogPostPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Text -> Html
-prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual = do
+prototypeRefliBlogPostPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Text -> NavigationBlockTexts -> Html
+prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual nbTexts = do
   refliDocument
     autoreload blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts) $
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
 
-prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> Html
-prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} = do
+prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> Html
+prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts = do
   refliDocument
     autoreload landingPageLanguage landingPageTitle landingPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts) $
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
           refliLandingPageContent texts
 
 refliLandingPageContent :: LandingPageTexts -> Html
@@ -170,8 +175,13 @@ data MainHeaderTexts = MainHeaderTexts
   , mainHeaderLinkDocumentation :: Text
   }
 
-prototypeRefliPage :: Text -> Text -> Html -> Html -> Html
-prototypeRefliPage lang url header content =
+data NavigationBlockTexts = NavigationBlockTexts
+  { navigationBlockLanguage :: Text
+  , navigationBlockDocumentation :: Text
+  }
+
+prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
+prototypeRefliPage lang url header NavigationBlockTexts {..} content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
       div "u-container" $
@@ -194,15 +204,18 @@ prototypeRefliPage lang url header content =
             H.h4 "Refli"
             H.ul ! A.class_ "no-disc" $ do
               H.li $
-                H.a ! A.href "/fr/about" $ "About"
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/about") $ "About"
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/blog") $ "Blog"
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/documentation") $
+                  H.text navigationBlockDocumentation
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/contact") $ "Contact"
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/disclaimer") $ "Disclaimer"
               H.li $
                 H.a ! A.href "/changelog" $ "Changelog"
-              H.li $
-                H.a ! A.href "/fr/contact" $ "Contact"
-              H.li $
-                H.a ! A.href "/fr/disclaimer" $ "Disclaimer"
-              H.li $
-                H.a ! A.href "/fr/documentation" $ "Documentation"
               H.li $
                 H.a ! A.href "/fr/lex" $ "Lex Iterata" -- TODO Translate.
             H.hr
@@ -236,5 +249,6 @@ prototypeRefliMainHeader MainHeaderTexts {..} = do
 
     H.li $
       div "menu-item" $
-        H.a ! A.href "/fr/documentation" ! A.class_ "menu-link" $ -- TODO Translate.
+        H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/documentation")
+            ! A.class_ "menu-link" $
           H.text mainHeaderLinkDocumentation
