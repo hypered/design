@@ -36,6 +36,7 @@ library
     , http-types
     , optparse-applicative
     , pretty-simple
+    , pandoc
     , protolude
     , servant
     , servant-blaze
