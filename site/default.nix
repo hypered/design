@@ -69,14 +69,23 @@ in rec
       -M font="ibm-plex" \
       ${../pandoc/lua.md}
 
+    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+      --standalone \
+      --template ${../pandoc/struct.html} \
+      --output docs/hs/example--template-struct.html \
+      -M prefix="" \
+      ${../pandoc/struct.md}
+
     cp docs/hs/example--template.html $out/hs/
     cp docs/hs/example--template-ibm-plex.html $out/hs/
+    cp docs/hs/example--template-struct.html $out/hs/
   '';
 
   # all + static, to serve locally with scripts/ghcid.sh
   html.all-with-static = pkgs.runCommand "all-with-static" {} ''
     mkdir $out
     cp -r ${html.all}/* $out/
+    cp -r ${html.hs}/* $out/
     cp -r --no-preserve=mode ${static} $out/static
     cp -r ${struct}/static/css/struct $out/static/css/struct
     cp -r ${struct}/static/css/min/struct.css $out/static/css/struct.min.css
