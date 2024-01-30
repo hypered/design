@@ -156,7 +156,7 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
           refliLandingPageContent texts cfTexts
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
-refliLandingPageContent LandingPageTexts {..} LandingPageCaptureFormTexts {..} = do
+refliLandingPageContent LandingPageTexts {..} cfTexts = do
   H.style
     ".u-step-d-3 {\
     \  letter-spacing: 0;\
@@ -167,17 +167,31 @@ refliLandingPageContent LandingPageTexts {..} LandingPageCaptureFormTexts {..} =
     div "flow-all" $ do
       H.p $ H.text landingPageParagraph1
       H.p $ H.text landingPageParagraph2
-      div "box u-flow-c-4" $
-        H.form ! A.class_ "c-text flow" $ do
-          H.h4 $ H.text landingPageCaptureFormTitle
-          H.div $ do
-            H.label $ H.text landingPageCaptureFormFieldLabel
-            H.input ! A.class_ "c-input"
-          H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
-            H.span $ H.text landingPageCaptureFormSubmit
-            arrowRight
-          H.p $ H.text landingPageCaptureFormPrivacyNotice
+      emailCaptureForm cfTexts
     H.div mempty
+
+emailCaptureForm :: LandingPageCaptureFormTexts -> Html
+emailCaptureForm LandingPageCaptureFormTexts {..} =
+  div "box u-flow-c-4" $
+    H.form ! A.class_ "c-text flow"
+           ! A.method "POST"
+           ! A.action "/a/subscribe" $ do
+      H.h4 $ H.text landingPageCaptureFormTitle
+      H.div $ do
+        H.label $ H.text landingPageCaptureFormFieldLabel
+        H.input ! A.class_ "c-input"
+                ! A.name "email-address"
+                ! A.id "email-address"
+                ! A.type_ "text"
+                ! A.placeholder ""
+        H.input ! A.type_ "hidden"
+                ! A.name "current-language"
+                ! A.id "current-language"
+                ! A.value (H.toValue landingPageCaptureFormLanguage)
+      H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
+        H.span $ H.text landingPageCaptureFormSubmit
+        arrowRight
+      H.p $ H.text landingPageCaptureFormPrivacyNotice
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
