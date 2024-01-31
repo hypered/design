@@ -26,6 +26,14 @@ data LandingPageCaptureFormTexts = LandingPageCaptureFormTexts
   , landingPageCaptureFormPrivacyNotice :: Text
   }
 
+data MessageSubscribeSuccessTexts = MessageSubscribeSuccessTexts
+  { messageSubscribeSuccessLanguage :: Text
+  , messageSubscribeSuccessTitle :: Text
+  , messageSubscribeSuccessParagraph1 :: Text
+  , messageSubscribeSuccessParagraph2 :: Text
+  , messageSubscribeSuccessParagraph3 :: Text
+  }
+
 data DescribeFormPageTexts = DescribeFormPageTexts
   { describeFormPageLanguage :: Text
   , describeFormPageTitle :: Text
@@ -192,6 +200,24 @@ emailCaptureForm LandingPageCaptureFormTexts {..} =
         H.span $ H.text landingPageCaptureFormSubmit
         arrowRight
       H.p $ H.text landingPageCaptureFormPrivacyNotice
+
+prototypeRefliMessageSubscribeSuccess :: Bool -> Text -> MainHeaderTexts -> MessageSubscribeSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..} MessageSubscribeSuccessTexts {..} nbTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "Refli" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+            div "u-container u-container-vertical" $
+              div "c-text flow" $ do
+                H.h2 $ H.text messageSubscribeSuccessTitle
+                div "box c-text flow" $ do
+                  H.p $ H.text messageSubscribeSuccessParagraph1
+                  H.p $ H.preEscapedToMarkup messageSubscribeSuccessParagraph2
+                  H.p $ H.text messageSubscribeSuccessParagraph3
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
