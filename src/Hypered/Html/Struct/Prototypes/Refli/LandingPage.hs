@@ -202,7 +202,7 @@ emailCaptureForm LandingPageCaptureFormTexts {..} =
       H.p $ H.text landingPageCaptureFormPrivacyNotice
 
 prototypeRefliMessageSubscribeSuccess :: Bool -> Text -> MainHeaderTexts -> MessageSubscribeSuccessTexts -> NavigationBlockTexts -> Html
-prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..} MessageSubscribeSuccessTexts {..} nbTexts = do
+prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
   refliDocument
     autoreload mainHeaderLanguage "Refli" "" $
       prototypeRefliPage
@@ -210,14 +210,18 @@ prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..
         url
         (prototypeRefliMainHeader mhTexts)
         nbTexts $
-          div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
-            div "u-container u-container-vertical" $
-              div "c-text flow" $ do
-                H.h2 $ H.text messageSubscribeSuccessTitle
-                div "box c-text flow" $ do
-                  H.p $ H.text messageSubscribeSuccessParagraph1
-                  H.p $ H.preEscapedToMarkup messageSubscribeSuccessParagraph2
-                  H.p $ H.text messageSubscribeSuccessParagraph3
+          messageSubscribeSuccess texts
+
+messageSubscribeSuccess :: MessageSubscribeSuccessTexts -> Html
+messageSubscribeSuccess MessageSubscribeSuccessTexts {..} =
+  div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+    div "u-container u-container-vertical" $
+      div "c-text flow" $ do
+        H.h2 $ H.text messageSubscribeSuccessTitle
+        div "box c-text flow" $ do
+          H.p $ H.text messageSubscribeSuccessParagraph1
+          H.p $ H.preEscapedToMarkup messageSubscribeSuccessParagraph2
+          H.p $ H.text messageSubscribeSuccessParagraph3
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
