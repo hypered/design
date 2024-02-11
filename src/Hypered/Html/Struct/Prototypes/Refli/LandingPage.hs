@@ -1,6 +1,6 @@
 module Hypered.Html.Struct.Prototypes.Refli.LandingPage where
 
-import Data.Text.Lazy qualified as TL
+import qualified Data.Text.Lazy as TL
 import Hypered.Html.Helpers
 import Hypered.Html.Struct.Prototypes.Refli.Common as Struct
 import Protolude hiding (div)
@@ -194,6 +194,17 @@ prototypeRefliFooPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts fTexts
         nbTexts $
           refliFooPageContent fTexts
 
+prototypeRefliRunPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html
+prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "Run" "Run commands using the Refli CLI." $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          refliRunPageContent
+
 prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
 prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
   refliDocument
@@ -209,6 +220,11 @@ refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
     fooForm fTexts
+
+refliRunPageContent :: Html
+refliRunPageContent =
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+    runForm
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
 refliLandingPageContent LandingPageTexts {..} cfTexts = do
@@ -245,6 +261,24 @@ fooForm FooFormTexts {..} =
                 ! A.value (H.toValue fooFormLanguage)
       H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
         H.span $ H.text fooFormSubmit
+        arrowRight
+
+runForm :: Html
+runForm =
+  div "box u-flow-c-4" $
+    H.form ! A.class_ "c-text flow"
+           ! A.method "POST"
+           ! A.action "/internal/a/run" $ do
+      H.h4 $ H.text "Command-line interface"
+      H.div $ do
+        H.label $ H.text "Command"
+        H.input ! A.class_ "c-input"
+                ! A.name "command"
+                ! A.id "command"
+                ! A.type_ "text"
+                ! A.placeholder ""
+      H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
+        H.span $ H.text "Run"
         arrowRight
 
 emailCaptureForm :: LandingPageCaptureFormTexts -> Html
