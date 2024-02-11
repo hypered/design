@@ -346,6 +346,24 @@ messageFooSuccess MessageFooSuccessTexts {..} =
         div "box c-text flow" $ do
           H.p $ H.text messageFooSuccessParagraph1
 
+prototypeRefliMessageRunResult :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Text -> Text -> Html
+prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTexts cmd content = do
+  refliDocument
+    autoreload mainHeaderLanguage "Run" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
+          div "u-space-after-c-4" $
+            div "u-container-vertical" $
+              div "c-text flow" $ do
+                H.h4 $ "Command-line interface"
+                H.pre $
+                  H.code $ do
+                    let content' = "$ refli " <> cmd <> "\n" <> content
+                    H.text content'
+
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
   { mainHeaderLanguage :: Text
