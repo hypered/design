@@ -1,5 +1,6 @@
 module Hypered.Html.Struct.Prototypes.Refli.LandingPage where
 
+import Data.Text.Lazy qualified as TL
 import Hypered.Html.Helpers
 import Hypered.Html.Struct.Prototypes.Refli.Common as Struct
 import Protolude hiding (div)
@@ -24,6 +25,19 @@ data LandingPageCaptureFormTexts = LandingPageCaptureFormTexts
   , landingPageCaptureFormFieldLabel :: Text
   , landingPageCaptureFormSubmit :: Text
   , landingPageCaptureFormPrivacyNotice :: Text
+  }
+
+data FooFormTexts = FooFormTexts
+  { fooFormLanguage :: Text
+  , fooFormTitle :: Text
+  , fooFormFieldLabel :: Text
+  , fooFormSubmit :: Text
+  }
+
+data MessageFooSuccessTexts = MessageFooSuccessTexts
+  { messageFooSuccessLanguage :: Text
+  , messageFooSuccessTitle :: Text
+  , messageFooSuccessParagraph1 :: Text
   }
 
 data MessageSubscribeSuccessTexts = MessageSubscribeSuccessTexts
@@ -99,6 +113,23 @@ prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} Descr
                   H.span $ H.text describeFormPageFormSubmit
                   arrowRight
 
+prototypeRefliEchoPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> TL.Text -> Html
+prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+  refliDocument
+    autoreload mainHeaderLanguage "Echo" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
+          div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+            div "box u-flow-c-4" $
+              div "c-text flow" $ do
+                H.h4 $ "Echo"
+                H.pre $
+                  H.code $
+                    H.lazyText content
+
 -- Move elsewhere.
 prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
 prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} nbTexts = do
@@ -152,6 +183,17 @@ prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostP
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
 
+prototypeRefliFooPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> FooFormTexts -> Html
+prototypeRefliFooPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts fTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "" "" $ -- TODO page title, description, ...
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          refliFooPageContent fTexts
+
 prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
 prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
   refliDocument
@@ -162,6 +204,11 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         (prototypeRefliMainHeader mhTexts)
         nbTexts $
           refliLandingPageContent texts cfTexts
+
+refliFooPageContent :: FooFormTexts -> Html
+refliFooPageContent fTexts =
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+    fooForm fTexts
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
 refliLandingPageContent LandingPageTexts {..} cfTexts = do
@@ -177,6 +224,28 @@ refliLandingPageContent LandingPageTexts {..} cfTexts = do
       H.p $ H.text landingPageParagraph2
       emailCaptureForm cfTexts
     H.div mempty
+
+fooForm :: FooFormTexts -> Html
+fooForm FooFormTexts {..} =
+  div "box u-flow-c-4" $
+    H.form ! A.class_ "c-text flow"
+           ! A.method "POST"
+           ! A.action "/echo/foo" $ do
+      H.h4 $ H.text fooFormTitle
+      H.div $ do
+        H.label $ H.text fooFormFieldLabel
+        H.input ! A.class_ "c-input"
+                ! A.name "text-input"
+                ! A.id "text-input"
+                ! A.type_ "text"
+                ! A.placeholder ""
+        H.input ! A.type_ "hidden"
+                ! A.name "current-language"
+                ! A.id "current-language"
+                ! A.value (H.toValue fooFormLanguage)
+      H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
+        H.span $ H.text fooFormSubmit
+        arrowRight
 
 emailCaptureForm :: LandingPageCaptureFormTexts -> Html
 emailCaptureForm LandingPageCaptureFormTexts {..} =
@@ -212,6 +281,17 @@ prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..
         nbTexts $
           messageSubscribeSuccess texts
 
+prototypeRefliMessageFooSuccess :: Bool -> Text -> MainHeaderTexts -> MessageFooSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageFooSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "Refli" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          messageFooSuccess texts
+
 messageSubscribeSuccess :: MessageSubscribeSuccessTexts -> Html
 messageSubscribeSuccess MessageSubscribeSuccessTexts {..} =
   div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
@@ -222,6 +302,15 @@ messageSubscribeSuccess MessageSubscribeSuccessTexts {..} =
           H.p $ H.text messageSubscribeSuccessParagraph1
           H.p $ H.preEscapedToMarkup messageSubscribeSuccessParagraph2
           H.p $ H.text messageSubscribeSuccessParagraph3
+
+messageFooSuccess :: MessageFooSuccessTexts -> Html
+messageFooSuccess MessageFooSuccessTexts {..} =
+  div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+    div "u-container u-container-vertical" $
+      div "c-text flow" $ do
+        H.h2 $ H.text messageFooSuccessTitle
+        div "box c-text flow" $ do
+          H.p $ H.text messageFooSuccessParagraph1
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
