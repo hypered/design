@@ -1,0 +1,91 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Key values
+                p This page shows various ways to display key value pairs. The vertical border between the two columns is not exactly the same... The hovering effect works only on the left column for the definition list case, instead of both columns.
+
+            .c-text.flow-all
+                style.
+                  table.pairs {
+                    table-layout: fixed;
+                    width: 100%;
+                  }
+                  table.pairs tr td:first-child {
+                    font-weight: 500;
+                    width: calc(33.3333%);
+                    padding: 0.5em 0.5em 0.5em 0;
+                  }
+                  table.pairs tr td:last-child {
+                    width: calc(66.6667%);
+                  }
+                  table.pairs tr {
+                    /* Take some space, even without .pairs--border-bottom. */
+                    border-bottom: 1px solid #fff;
+                  }
+                  table.pairs.pairs--border-bottom tr {
+                    border-bottom: 1px solid #ddd;
+                  }
+                  table.pairs tr:hover {
+                    background-color: #efefef;
+                  }
+                mixin table-content
+                    tr
+                        td Key
+                        td Value
+                    tr
+                        td A
+                        td B
+                    tr
+                        td This page shows various ways to display key value pairs.
+                        td This page shows various ways to display key value pairs.
+                    tr
+                        td Source
+                        td SECURITE SOCIALE
+                .flow.limit-42em
+                    h3 Table
+                    table.pairs
+                        +table-content
+                    h3 Table
+                    table.pairs.pairs--border-bottom
+                        +table-content
+
+                style.
+                  dl.pairs {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+                  }
+                  dl.pairs dt {
+                    grid-column-start: 1;
+                    /* I should separate layouting and styling. */
+                    font-weight: 500;
+                    padding: 0.5em 0.5em 0.5em 0;
+                  }
+                  dl.pairs dd {
+                    grid-column-start: span 2;
+                  }
+                  dl.pairs dt:hover + dd,
+                  dl.pairs dt:hover {
+                    background-color: #efefef;
+                  }
+                .flow.limit-42em
+                    h3 Definition list
+                    dl.pairs
+                        dt Key
+                        dd Value
+                        dt A
+                        dd B
+                        dt This page shows various ways to display key value pairs.
+                        dd This page shows various ways to display key value pairs.
+                        dt Source
+                        dd SECURITE SOCIALE
