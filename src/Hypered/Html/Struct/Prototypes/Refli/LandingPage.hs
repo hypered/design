@@ -221,6 +221,17 @@ prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
         nbTexts $
           refliRunPageContent
 
+prototypeRefliCapturePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
+prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cfTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "" "" $ -- TODO page title, description, ...
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          refliCapturePageContent cfTexts
+
 prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
 prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
   refliDocument
@@ -241,6 +252,11 @@ refliRunPageContent :: Html
 refliRunPageContent =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
     runForm
+
+refliCapturePageContent :: LandingPageCaptureFormTexts -> Html
+refliCapturePageContent cfTexts =
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+    emailCaptureForm cfTexts
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
 refliLandingPageContent LandingPageTexts {..} cfTexts = do
