@@ -130,6 +130,22 @@ prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts conte
                   H.code $
                     H.lazyText content
 
+-- Similar to the echo page, but for Forming forms.
+prototypeRefliSubmitPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+  refliDocument
+    autoreload mainHeaderLanguage "Echo" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $ do
+          div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+            div "box u-flow-c-4" $
+              div "c-text flow" $ do
+                H.h4 $ "Submittal"
+                content
+
 -- Move elsewhere.
 prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
 prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} nbTexts = do
