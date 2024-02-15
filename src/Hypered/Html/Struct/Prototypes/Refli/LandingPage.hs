@@ -145,6 +145,7 @@ prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts con
             content
 
 -- Use this "standard small" boxing function in other functions in this file.
+standardSmallBox :: Html -> Html
 standardSmallBox content =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
     div "box u-flow-c-4" $

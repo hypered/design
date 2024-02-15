@@ -1,15 +1,12 @@
 module Hypered.Html.Struct.Prototypes.Refli.Common where
 
-import qualified Data.Text as T
 import Hypered.Html.Common (
   autoReload,
  )
-import Hypered.Html.Helpers
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
-import Text.HTML.TagSoup (innerText, Tag(..), (~==))
 
 --------------------------------------------------------------------------------
 refliDocument :: Bool -> Text -> Text -> Text -> Html -> Html
