@@ -139,12 +139,38 @@ prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts con
         mainHeaderLanguage
         url
         (prototypeRefliMainHeader mhTexts)
-        nbTexts $ do
-          div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
-            div "box u-flow-c-4" $
-              div "c-text flow" $ do
-                H.h4 $ "Submittal"
-                content
+        nbTexts $
+          standardSmallBox $ do
+            H.h4 $ "Submittal"
+            content
+
+-- Use this "standard small" boxing function in other functions in this file.
+standardSmallBox content =
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+    div "box u-flow-c-4" $
+      div "c-text flow" $
+        content
+
+standardSmallForm :: Text -> Html -> Html
+standardSmallForm action content =
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+    div "box u-flow-c-4" $
+      H.form ! A.class_ "c-text flow"
+             ! A.method "POST"
+             ! A.action (H.toValue action) $
+        content
+
+-- Use this "base" page in the other functions in this file.
+prototypeRefliBasePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliBasePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+  refliDocument
+    autoreload mainHeaderLanguage "" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          content
 
 -- Move elsewhere.
 prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
