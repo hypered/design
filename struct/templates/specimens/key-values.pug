@@ -16,29 +16,6 @@ html(dir="ltr", lang="en")
                 p This page shows various ways to display key value pairs. The vertical border between the two columns is not exactly the same... The hovering effect works only on the left column for the definition list case, instead of both columns.
 
             .c-text.flow-all
-                style.
-                  table.pairs {
-                    table-layout: fixed;
-                    width: 100%;
-                  }
-                  table.pairs tr td:first-child {
-                    font-weight: 500;
-                    width: calc(33.3333%);
-                    padding: 0.5em 0.5em 0.5em 0;
-                  }
-                  table.pairs tr td:last-child {
-                    width: calc(66.6667%);
-                  }
-                  table.pairs tr {
-                    /* Take some space, even without .pairs--border-bottom. */
-                    border-bottom: 1px solid #fff;
-                  }
-                  table.pairs.pairs--border-bottom tr {
-                    border-bottom: 1px solid #ddd;
-                  }
-                  table.pairs tr:hover {
-                    background-color: #efefef;
-                  }
                 mixin table-content
                     tr
                         td Key
