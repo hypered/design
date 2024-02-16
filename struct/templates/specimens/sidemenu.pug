@@ -1,0 +1,55 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/misc.css")
+
+    style.
+    body.u-container-vertical.cover
+        header
+            .u-container
+                .u-bar
+                    .u-bar__left
+                        a(href="#")
+                            img(src="/static/images/logo.svg" alt="Refli")
+                    .u-bar__right
+                        include ../includes/main-header--page-struct
+
+        style.
+          .with-sidebar { flex: 1 1 100%; }
+          .sidebar {
+            width: 16em;
+            background: #f6f6f6;
+            background: linear-gradient(
+              180deg,
+              rgba(246,246,246,1) 0%,
+              rgba(246,246,246,1) 94%,
+              rgba(255,255,255,1) 100%);
+            border-top-left-radius: 1em; border-bottom-left-radius: 1em;
+          }
+        .with-sidebar.u-flow-c-0
+            .sidebar
+                .u-container
+                  .c-text.flow-all
+                      ul
+                          li Xxx
+                          li Xxx
+                          li Xxx
+                          li Xxx
+                          li Xxx
+                          li Xxx
+            .main
+                .c-text.flow
+                    h1 Yyy
+                    p Yyy yyy.
+
+        footer
+            .u-container
+                hr
+                span © Hypered SRL, 2023-2024.
