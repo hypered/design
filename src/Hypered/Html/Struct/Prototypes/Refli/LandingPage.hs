@@ -122,13 +122,11 @@ prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts conte
         url
         (prototypeRefliMainHeader mhTexts)
         nbTexts $ do
-          div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
-            div "box u-flow-c-4" $
-              div "c-text flow" $ do
-                H.h4 $ "Echo"
-                H.pre $
-                  H.code $
-                    H.lazyText content
+          standardSmallBox $ do
+            H.h4 $ "Echo"
+            H.pre $
+              H.code $
+                H.lazyText content
 
 -- Similar to the echo page, but for Forming forms.
 prototypeRefliSubmitPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
@@ -144,7 +142,6 @@ prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts con
             H.h4 $ "Submittal"
             content
 
--- Use this "standard small" boxing function in other functions in this file.
 standardSmallBox :: Html -> Html
 standardSmallBox content =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
@@ -152,6 +149,7 @@ standardSmallBox content =
       div "c-text flow" $
         content
 
+-- Use this "standard small" form function in other functions in this file.
 standardSmallForm :: Text -> Html -> Html
 standardSmallForm action content =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
