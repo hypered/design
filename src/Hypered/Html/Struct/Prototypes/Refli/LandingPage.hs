@@ -268,6 +268,17 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         nbTexts $
           refliLandingPageContent texts cfTexts
 
+prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html
+prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
+  refliDocument
+    autoreload "xx" "" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          loginForm
+
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
@@ -420,6 +431,30 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
                   H.code $ do
                     let content' = "$ refli " <> cmd <> "\n" <> content
                     H.text content'
+
+loginForm :: Html
+loginForm = do
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+    H.form $ do
+      div "u-container u-container-vertical bordered-3" $
+        div "c-text flow" $ do
+          H.h2 $ H.text "Log in to Refli"
+          H.div $ do
+            H.label $ H.text "Username"
+            H.input ! A.class_ "c-input"
+          H.div $ do
+            H.label $ H.text "Password"
+            H.input ! A.class_ "c-input"
+          H.div $
+            H.a ! A.href "reset.html" $ H.text "Reset password"
+      div "switcher-0px" $ do
+        H.button ! A.class_ "c-button c-button--primary c-button--tall"
+                 ! A.type_ "submit" $ do
+          H.span $ H.text "Log in"
+          arrowRight
+        H.a ! A.class_ "c-button c-button--secondary c-button--tall"
+            ! A.href "signup.html" $
+          H.span $ H.text "Sign up"
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
