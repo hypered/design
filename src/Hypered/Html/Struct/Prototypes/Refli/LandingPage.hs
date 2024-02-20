@@ -278,8 +278,8 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         nbTexts $
           refliLandingPageContent texts cfTexts
 
-prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Html
-prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts = do
+prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Text -> Html
+prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts action = do
   refliDocument
     autoreload "xx" "" "" $
       prototypeRefliPage
@@ -287,7 +287,7 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
         url
         (prototypeRefliMainHeader mhTexts)
         nbTexts $
-          loginForm lfTexts
+          loginForm lfTexts action
 
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
@@ -442,19 +442,32 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
                     let content' = "$ refli " <> cmd <> "\n" <> content
                     H.text content'
 
-loginForm :: LoginFormTexts -> Html
-loginForm LoginFormTexts {..} = do
+loginForm :: LoginFormTexts -> Text -> Html
+loginForm LoginFormTexts {..} action = do
   div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
-    H.form $ do
+    H.form ! A.method "POST"
+           ! A.action (H.toValue action) $ do
       div "u-container u-container-vertical bordered-3" $
         div "c-text flow" $ do
           H.h2 $ H.text loginFormTitle
           H.div $ do
-            H.label $ H.text loginFormFieldLabel1
-            H.input ! A.class_ "c-input"
+            H.label ! A.for "email" $ H.text loginFormFieldLabel1
+            H.input ! A.type_ "text"
+                    ! A.class_ "c-input"
+                    ! A.placeholder ""
+                    ! A.name "email"
+                    ! A.id "email"
           H.div $ do
-            H.label $ H.text loginFormFieldLabel2
-            H.input ! A.class_ "c-input"
+            H.label ! A.for "password" $ H.text loginFormFieldLabel2
+            H.input ! A.type_ "password"
+                    ! A.class_ "c-input"
+                    ! A.placeholder ""
+                    ! A.name "password"
+                    ! A.id "password"
+          H.input ! A.type_ "hidden"
+                  ! A.name "current-language"
+                  ! A.id "current-language"
+                  ! A.value (H.toValue loginFormLanguage)
           H.div $
             H.a ! A.href "reset.html" $ H.text loginFormLink1
       div "switcher-0px" $ do
