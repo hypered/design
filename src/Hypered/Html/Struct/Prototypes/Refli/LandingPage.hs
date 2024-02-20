@@ -48,6 +48,16 @@ data MessageSubscribeSuccessTexts = MessageSubscribeSuccessTexts
   , messageSubscribeSuccessParagraph3 :: Text
   }
 
+data LoginFormTexts = LoginFormTexts
+  { loginFormLanguage :: Text
+  , loginFormTitle :: Text
+  , loginFormFieldLabel1 :: Text
+  , loginFormFieldLabel2 :: Text
+  , loginFormLink1 :: Text
+  , loginFormLink2 :: Text
+  , loginFormSubmit :: Text
+  }
+
 data DescribeFormPageTexts = DescribeFormPageTexts
   { describeFormPageLanguage :: Text
   , describeFormPageTitle :: Text
@@ -268,8 +278,8 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         nbTexts $
           refliLandingPageContent texts cfTexts
 
-prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html
-prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
+prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Html
+prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts = do
   refliDocument
     autoreload "xx" "" "" $
       prototypeRefliPage
@@ -277,7 +287,7 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
         url
         (prototypeRefliMainHeader mhTexts)
         nbTexts $
-          loginForm
+          loginForm lfTexts
 
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
@@ -432,29 +442,29 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
                     let content' = "$ refli " <> cmd <> "\n" <> content
                     H.text content'
 
-loginForm :: Html
-loginForm = do
+loginForm :: LoginFormTexts -> Html
+loginForm LoginFormTexts {..} = do
   div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
     H.form $ do
       div "u-container u-container-vertical bordered-3" $
         div "c-text flow" $ do
-          H.h2 $ H.text "Log in to Refli"
+          H.h2 $ H.text loginFormTitle
           H.div $ do
-            H.label $ H.text "Username"
+            H.label $ H.text loginFormFieldLabel1
             H.input ! A.class_ "c-input"
           H.div $ do
-            H.label $ H.text "Password"
+            H.label $ H.text loginFormFieldLabel2
             H.input ! A.class_ "c-input"
           H.div $
-            H.a ! A.href "reset.html" $ H.text "Reset password"
+            H.a ! A.href "reset.html" $ H.text loginFormLink1
       div "switcher-0px" $ do
         H.button ! A.class_ "c-button c-button--primary c-button--tall"
                  ! A.type_ "submit" $ do
-          H.span $ H.text "Log in"
+          H.span $ H.text loginFormSubmit
           arrowRight
         H.a ! A.class_ "c-button c-button--secondary c-button--tall"
             ! A.href "signup.html" $
-          H.span $ H.text "Sign up"
+          H.span $ H.text loginFormLink2
 
 --------------------------------------------------------------------------------
 data MainHeaderTexts = MainHeaderTexts
