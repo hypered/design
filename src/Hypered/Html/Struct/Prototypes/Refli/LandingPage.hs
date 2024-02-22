@@ -48,6 +48,15 @@ data MessageSubscribeSuccessTexts = MessageSubscribeSuccessTexts
   , messageSubscribeSuccessParagraph3 :: Text
   }
 
+data SignupFormTexts = SignupFormTexts
+  { signupFormLanguage :: Text
+  , signupFormTitle :: Text
+  , signupFormFieldLabel1 :: Text
+  , signupFormFieldLabel2 :: Text
+  , signupFormLink :: Text
+  , signupFormSubmit :: Text
+  }
+
 data LoginFormTexts = LoginFormTexts
   { loginFormLanguage :: Text
   , loginFormTitle :: Text
@@ -278,6 +287,17 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         nbTexts $
           refliLandingPageContent texts cfTexts
 
+prototypeRefliSignupPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> SignupFormTexts -> Text -> Html
+prototypeRefliSignupPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts sfTexts action = do
+  refliDocument
+    autoreload "xx" "" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          signupForm sfTexts action
+
 prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Text -> Html
 prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts action = do
   refliDocument
@@ -367,7 +387,7 @@ emailCaptureForm LandingPageCaptureFormTexts {..} =
            ! A.action "/a/subscribe" $ do
       H.h4 $ H.text landingPageCaptureFormTitle
       H.div $ do
-        H.label $ H.text landingPageCaptureFormFieldLabel
+        H.label ! A.for "email-address" $ H.text landingPageCaptureFormFieldLabel
         H.input ! A.class_ "c-input"
                 ! A.name "email-address"
                 ! A.id "email-address"
@@ -442,6 +462,41 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
                     let content' = "$ refli " <> cmd <> "\n" <> content
                     H.text content'
 
+signupForm :: SignupFormTexts -> Text -> Html
+signupForm SignupFormTexts {..} action = do
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+    H.form ! A.method "POST"
+           ! A.action (H.toValue action) $ do
+      div "u-container u-container-vertical bordered-3" $
+        div "c-text flow" $ do
+          H.h2 $ H.text signupFormTitle
+          H.div $ do
+            H.label ! A.for "email-address" $ H.text signupFormFieldLabel1
+            H.input ! A.type_ "text"
+                    ! A.class_ "c-input"
+                    ! A.placeholder ""
+                    ! A.name "email-address"
+                    ! A.id "email-address"
+          H.div $ do
+            H.label ! A.for "password" $ H.text signupFormFieldLabel2
+            H.input ! A.type_ "password"
+                    ! A.class_ "c-input"
+                    ! A.placeholder ""
+                    ! A.name "password"
+                    ! A.id "password"
+          H.input ! A.type_ "hidden"
+                  ! A.name "current-language"
+                  ! A.id "current-language"
+                  ! A.value (H.toValue signupFormLanguage)
+      div "switcher-0px" $ do
+        H.button ! A.class_ "c-button c-button--primary c-button--tall"
+                 ! A.type_ "submit" $ do
+          H.span $ H.text signupFormSubmit
+          arrowRight
+        H.a ! A.class_ "c-button c-button--secondary c-button--tall"
+            ! A.href "signup.html" $
+          H.span $ H.text signupFormLink
+
 loginForm :: LoginFormTexts -> Text -> Html
 loginForm LoginFormTexts {..} action = do
   div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
@@ -451,12 +506,12 @@ loginForm LoginFormTexts {..} action = do
         div "c-text flow" $ do
           H.h2 $ H.text loginFormTitle
           H.div $ do
-            H.label ! A.for "email" $ H.text loginFormFieldLabel1
+            H.label ! A.for "email-address" $ H.text loginFormFieldLabel1
             H.input ! A.type_ "text"
                     ! A.class_ "c-input"
                     ! A.placeholder ""
-                    ! A.name "email"
-                    ! A.id "email"
+                    ! A.name "email-address"
+                    ! A.id "email-address"
           H.div $ do
             H.label ! A.for "password" $ H.text loginFormFieldLabel2
             H.input ! A.type_ "password"
