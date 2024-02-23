@@ -57,6 +57,14 @@ data SignupFormTexts = SignupFormTexts
   , signupFormSubmit :: Text
   }
 
+data ResetPasswordFormTexts = ResetPasswordFormTexts
+  { resetPasswordFormLanguage :: Text
+  , resetPasswordFormTitle :: Text
+  , resetPasswordFormFieldLabel :: Text
+  , resetPasswordFormLink :: Text
+  , resetPasswordFormSubmit :: Text
+  }
+
 data LoginFormTexts = LoginFormTexts
   { loginFormLanguage :: Text
   , loginFormTitle :: Text
@@ -265,8 +273,8 @@ prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
         nbTexts $
           refliRunPageContent
 
-prototypeRefliCapturePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
-prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cfTexts = do
+prototypeRefliCapturePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Text -> Html
+prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cfTexts action = do
   refliDocument
     autoreload mainHeaderLanguage "" "" $ -- TODO page title, description, ...
       prototypeRefliPage
@@ -274,7 +282,7 @@ prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cf
         url
         (prototypeRefliMainHeader mhTexts)
         nbTexts $
-          refliCapturePageContent cfTexts
+          refliCapturePageContent cfTexts action
 
 prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
 prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
@@ -298,6 +306,17 @@ prototypeRefliSignupPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts sfT
         nbTexts $
           signupForm sfTexts action
 
+prototypeRefliResetPasswordPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> ResetPasswordFormTexts -> Text -> Html
+prototypeRefliResetPasswordPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts rpfTexts action = do
+  refliDocument
+    autoreload "xx" "" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          resetPasswordForm rpfTexts action
+
 prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Text -> Html
 prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts action = do
   refliDocument
@@ -319,10 +338,10 @@ refliRunPageContent =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
     runForm
 
-refliCapturePageContent :: LandingPageCaptureFormTexts -> Html
-refliCapturePageContent cfTexts =
+refliCapturePageContent :: LandingPageCaptureFormTexts -> Text -> Html
+refliCapturePageContent cfTexts action =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
-    emailCaptureForm cfTexts
+    emailCaptureForm cfTexts action
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
 refliLandingPageContent LandingPageTexts {..} cfTexts = do
@@ -336,7 +355,7 @@ refliLandingPageContent LandingPageTexts {..} cfTexts = do
     div "flow-all" $ do
       H.p $ H.text landingPageParagraph1
       H.p $ H.text landingPageParagraph2
-      emailCaptureForm cfTexts
+      emailCaptureForm cfTexts "/a/subscribe"
     H.div mempty
 
 fooForm :: FooFormTexts -> Html
@@ -379,12 +398,12 @@ runForm =
         H.span $ H.text "Run"
         arrowRight
 
-emailCaptureForm :: LandingPageCaptureFormTexts -> Html
-emailCaptureForm LandingPageCaptureFormTexts {..} =
+emailCaptureForm :: LandingPageCaptureFormTexts -> Text -> Html
+emailCaptureForm LandingPageCaptureFormTexts {..} action =
   div "box u-flow-c-4" $
     H.form ! A.class_ "c-text flow"
            ! A.method "POST"
-           ! A.action "/a/subscribe" $ do
+           ! A.action (H.toValue action) $ do
       H.h4 $ H.text landingPageCaptureFormTitle
       H.div $ do
         H.label ! A.for "email-address" $ H.text landingPageCaptureFormFieldLabel
@@ -496,6 +515,34 @@ signupForm SignupFormTexts {..} action = do
         H.a ! A.class_ "c-button c-button--secondary c-button--tall"
             ! A.href "signup.html" $
           H.span $ H.text signupFormLink
+
+resetPasswordForm :: ResetPasswordFormTexts -> Text -> Html
+resetPasswordForm ResetPasswordFormTexts {..} action = do
+  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+    H.form ! A.method "POST"
+           ! A.action (H.toValue action) $ do
+      div "u-container u-container-vertical bordered-3" $
+        div "c-text flow" $ do
+          H.h2 $ H.text resetPasswordFormTitle
+          H.div $ do
+            H.label ! A.for "email-address" $ H.text resetPasswordFormFieldLabel
+            H.input ! A.type_ "text"
+                    ! A.class_ "c-input"
+                    ! A.placeholder ""
+                    ! A.name "email-address"
+                    ! A.id "email-address"
+          H.input ! A.type_ "hidden"
+                  ! A.name "current-language"
+                  ! A.id "current-language"
+                  ! A.value (H.toValue resetPasswordFormLanguage)
+      div "switcher-0px" $ do
+        H.button ! A.class_ "c-button c-button--primary c-button--tall"
+                 ! A.type_ "submit" $ do
+          H.span $ H.text resetPasswordFormSubmit
+          arrowRight
+        H.a ! A.class_ "c-button c-button--secondary c-button--tall"
+            ! A.href "resetPassword.html" $
+          H.span $ H.text resetPasswordFormLink
 
 loginForm :: LoginFormTexts -> Text -> Html
 loginForm LoginFormTexts {..} action = do
