@@ -334,6 +334,50 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
         nbTexts $
           loginForm lfTexts action
 
+-- HTTP status code page.
+prototypeRefliError500PageEn :: Bool -> Html
+prototypeRefliError500PageEn autoreload = do
+  prototypeRefliError500PageLang autoreload $
+    H.p $ H.text messageEn
+
+prototypeRefliError500PageFr :: Bool -> Html
+prototypeRefliError500PageFr autoreload = do
+  prototypeRefliError500PageLang autoreload $
+    H.p $ H.text messageFr
+
+prototypeRefliError500PageNl :: Bool -> Html
+prototypeRefliError500PageNl autoreload = do
+  prototypeRefliError500PageLang autoreload $
+    H.p $ H.text messageNl
+
+prototypeRefliError500Page :: Bool -> Html
+prototypeRefliError500Page autoreload = do
+  prototypeRefliError500PageLang autoreload $ do
+    H.p $ H.text messageEn
+    H.p $ H.text messageFr
+    H.p $ H.text messageNl
+
+prototypeRefliError500PageLang :: Bool -> Html -> Html
+prototypeRefliError500PageLang autoreload content = do
+  refliDocument
+    autoreload "en" "" "" $ -- TODO page title, description, ...
+      prototypeRefliCenterPage
+        "en" $
+            div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+              div "u-container u-container-vertical" $
+                div "c-text .flow" $
+                  div "box c-text flow" $ do
+                    H.a ! A.href "/" $
+                        H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
+                    H.h2 $ H.text "500 Internal Server Error"
+                    content
+
+messageEn = "EN: Our server experienced an unexpected condition. Please try to refresh the page or come back later. We apologize for any inconvenience."
+
+messageFr = "FR: Notre serveur a rencontré une situation inattendue. Veuillez rafraîchir la page ou revenir plus tard. Nous vous prions de nous excuser pour la gêne occasionnée."
+
+messageNl = "NL: Onze server ondervond een onverwachte omstandigheid. Probeer de pagina te vernieuwen of kom later terug. Onze excuses voor het ongemak."
+
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
   div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
@@ -693,3 +737,13 @@ prototypeRefliMainHeader MainHeaderTexts {..} = do
         H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/documentation")
             ! A.class_ "menu-link" $
           H.text mainHeaderLinkDocumentation
+
+prototypeRefliCenterPage :: Text -> Html -> Html
+prototypeRefliCenterPage lang content =
+  H.body ! A.class_ "u-container-vertical" $ do
+    H.header mempty
+
+    H.main ! A.class_ "center" $
+      content
+
+    H.footer mempty
