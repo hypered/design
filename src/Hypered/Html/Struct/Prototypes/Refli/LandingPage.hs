@@ -57,6 +57,12 @@ data SignupFormTexts = SignupFormTexts
   , signupFormSubmit :: Text
   }
 
+data MessageSignupSuccessTexts = MessageSignupSuccessTexts
+  { messageSignupSuccessLanguage :: Text
+  , messageSignupSuccessTitle :: Text
+  , messageSignupSuccessParagraph1 :: Text
+  }
+
 data ResetPasswordFormTexts = ResetPasswordFormTexts
   { resetPasswordFormLanguage :: Text
   , resetPasswordFormTitle :: Text
@@ -443,13 +449,24 @@ prototypeRefliMessageFooSuccess autoreload url mhTexts@MainHeaderTexts {..} text
         nbTexts $
           messageFooSuccess texts
 
+prototypeRefliMessageSignupSuccess :: Bool -> Text -> MainHeaderTexts -> MessageSignupSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageSignupSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
+  refliDocument
+    autoreload mainHeaderLanguage "Refli" "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader mhTexts)
+        nbTexts $
+          messageSignupSuccess texts
+
 messageSubscribeSuccess :: MessageSubscribeSuccessTexts -> Html
 messageSubscribeSuccess MessageSubscribeSuccessTexts {..} =
   div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
     div "u-container u-container-vertical" $
-      div "c-text flow" $ do
-        H.h2 $ H.text messageSubscribeSuccessTitle
+      div "c-text flow" $
         div "box c-text flow" $ do
+          H.h2 $ H.text messageSubscribeSuccessTitle
           H.p $ H.text messageSubscribeSuccessParagraph1
           H.p $ H.preEscapedToMarkup messageSubscribeSuccessParagraph2
           H.p $ H.text messageSubscribeSuccessParagraph3
@@ -458,10 +475,19 @@ messageFooSuccess :: MessageFooSuccessTexts -> Html
 messageFooSuccess MessageFooSuccessTexts {..} =
   div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
     div "u-container u-container-vertical" $
-      div "c-text flow" $ do
-        H.h2 $ H.text messageFooSuccessTitle
+      div "c-text flow" $
         div "box c-text flow" $ do
+          H.h2 $ H.text messageFooSuccessTitle
           H.p $ H.text messageFooSuccessParagraph1
+
+messageSignupSuccess :: MessageSignupSuccessTexts -> Html
+messageSignupSuccess MessageSignupSuccessTexts {..} =
+  div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+    div "u-container u-container-vertical" $
+      div "c-text flow" $
+        div "box c-text flow" $ do
+          H.h2 $ H.text messageSignupSuccessTitle
+          H.p $ H.preEscapedToMarkup messageSignupSuccessParagraph1
 
 prototypeRefliMessageRunResult :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Text -> Text -> Html
 prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTexts cmd content = do
@@ -513,7 +539,7 @@ signupForm SignupFormTexts {..} action = do
           H.span $ H.text signupFormSubmit
           arrowRight
         H.a ! A.class_ "c-button c-button--secondary c-button--tall"
-            ! A.href "signup.html" $
+            ! A.href "login" $
           H.span $ H.text signupFormLink
 
 resetPasswordForm :: ResetPasswordFormTexts -> Text -> Html
@@ -541,7 +567,7 @@ resetPasswordForm ResetPasswordFormTexts {..} action = do
           H.span $ H.text resetPasswordFormSubmit
           arrowRight
         H.a ! A.class_ "c-button c-button--secondary c-button--tall"
-            ! A.href "resetPassword.html" $
+            ! A.href "login" $
           H.span $ H.text resetPasswordFormLink
 
 loginForm :: LoginFormTexts -> Text -> Html
@@ -571,14 +597,14 @@ loginForm LoginFormTexts {..} action = do
                   ! A.id "current-language"
                   ! A.value (H.toValue loginFormLanguage)
           H.div $
-            H.a ! A.href "reset.html" $ H.text loginFormLink1
+            H.a ! A.href "login" $ H.text loginFormLink1
       div "switcher-0px" $ do
         H.button ! A.class_ "c-button c-button--primary c-button--tall"
                  ! A.type_ "submit" $ do
           H.span $ H.text loginFormSubmit
           arrowRight
         H.a ! A.class_ "c-button c-button--secondary c-button--tall"
-            ! A.href "signup.html" $
+            ! A.href "signup" $
           H.span $ H.text loginFormLink2
 
 --------------------------------------------------------------------------------
