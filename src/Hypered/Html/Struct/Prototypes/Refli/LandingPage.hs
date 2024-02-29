@@ -335,30 +335,54 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
           loginForm lfTexts action
 
 -- HTTP status code page.
+prototypeRefliError404PageEn :: Bool -> Html
+prototypeRefliError404PageEn autoreload = do
+  prototypeRefliErrorPageLang autoreload title404 $
+    H.p $ H.text message404En
+
+prototypeRefliError404PageFr :: Bool -> Html
+prototypeRefliError404PageFr autoreload = do
+  prototypeRefliErrorPageLang autoreload title404 $
+    H.p $ H.text message404Fr
+
+prototypeRefliError404PageNl :: Bool -> Html
+prototypeRefliError404PageNl autoreload = do
+  prototypeRefliErrorPageLang autoreload title404 $
+    H.p $ H.text message404Nl
+
+prototypeRefliError404Page :: Bool -> Html
+prototypeRefliError404Page autoreload = do
+  let title = "404 Internal Server Error"
+  prototypeRefliErrorPageLang autoreload title404 $ do
+    H.p $ H.text $ "EN: " <> message404En
+    H.p $ H.text $ "FR: " <> message404Fr
+    H.p $ H.text $ "NL: " <> message404Nl
+
 prototypeRefliError500PageEn :: Bool -> Html
 prototypeRefliError500PageEn autoreload = do
-  prototypeRefliError500PageLang autoreload $
-    H.p $ H.text messageEn
+  prototypeRefliErrorPageLang autoreload title500 $
+    H.p $ H.text message500En
 
 prototypeRefliError500PageFr :: Bool -> Html
 prototypeRefliError500PageFr autoreload = do
-  prototypeRefliError500PageLang autoreload $
-    H.p $ H.text messageFr
+  prototypeRefliErrorPageLang autoreload title500 $
+    H.p $ H.text message500Fr
 
 prototypeRefliError500PageNl :: Bool -> Html
 prototypeRefliError500PageNl autoreload = do
-  prototypeRefliError500PageLang autoreload $
-    H.p $ H.text messageNl
+  prototypeRefliErrorPageLang autoreload title500 $
+    H.p $ H.text message500Nl
 
 prototypeRefliError500Page :: Bool -> Html
 prototypeRefliError500Page autoreload = do
-  prototypeRefliError500PageLang autoreload $ do
-    H.p $ H.text messageEn
-    H.p $ H.text messageFr
-    H.p $ H.text messageNl
+  let title = "500 Internal Server Error"
+  prototypeRefliErrorPageLang autoreload title500 $ do
+    H.p $ H.text $ "EN: " <> message500En
+    H.p $ H.text $ "FR: " <> message500Fr
+    H.p $ H.text $ "NL: " <> message500Nl
 
-prototypeRefliError500PageLang :: Bool -> Html -> Html
-prototypeRefliError500PageLang autoreload content = do
+prototypeRefliErrorPageLang :: Bool -> Text -> Html -> Html
+prototypeRefliErrorPageLang autoreload title content = do
   refliDocument
     autoreload "en" "" "" $ -- TODO page title, description, ...
       prototypeRefliCenterPage
@@ -369,14 +393,26 @@ prototypeRefliError500PageLang autoreload content = do
                   div "box c-text flow" $ do
                     H.a ! A.href "/" $
                         H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
-                    H.h2 $ H.text "500 Internal Server Error"
+                    H.h2 $ H.text title
                     content
 
-messageEn = "EN: Our server experienced an unexpected condition. Please try to refresh the page or come back later. We apologize for any inconvenience."
+title404, message404En, message404Fr, message404Nl :: Text
+title404 = "404 Not Found"
 
-messageFr = "FR: Notre serveur a rencontré une situation inattendue. Veuillez rafraîchir la page ou revenir plus tard. Nous vous prions de nous excuser pour la gêne occasionnée."
+message404En = "The resource you requested was not found at this URL."
 
-messageNl = "NL: Onze server ondervond een onverwachte omstandigheid. Probeer de pagina te vernieuwen of kom later terug. Onze excuses voor het ongemak."
+message404Fr = "La ressource demandée n'a pas été trouvée à cette URL."
+
+message404Nl = "De door u opgevraagde bron is niet gevonden op deze URL."
+
+title500, message500En, message500Fr, message500Nl :: Text
+title500 = "500 Internal Server Error"
+
+message500En = "Our server experienced an unexpected condition. Please try to refresh the page or come back later. We apologize for any inconvenience."
+
+message500Fr = "Notre serveur a rencontré une situation inattendue. Veuillez rafraîchir la page ou revenir plus tard. Nous vous prions de nous excuser pour la gêne occasionnée."
+
+message500Nl = "Onze server ondervond een onverwachte omstandigheid. Probeer de pagina te vernieuwen of kom later terug. Onze excuses voor het ongemak."
 
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
