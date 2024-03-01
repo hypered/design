@@ -466,6 +466,24 @@ fooForm FooFormTexts {..} =
         H.span $ H.text fooFormSubmit
         arrowRight
 
+-- Form that post a "b" containg a string, to trigger an error in either a
+-- handler that expects an "a", or a handler that expects a "b" but as an
+-- integer.
+-- TODO Make it inline (i.e. appear just as a link).
+aForm :: Text -> Html
+aForm action =
+  H.form ! A.class_ "c-text flow"
+         ! A.method "POST"
+         ! A.action (H.toValue action) $ do
+    H.div $ do
+      H.input ! A.type_ "hidden"
+              ! A.name "b"
+              ! A.id "b"
+              ! A.value "b"
+    H.button ! A.class_ "c-button c-button--primary" ! A.type_ "submit" $ do
+      H.span $ H.text "Submit"
+      arrowRight
+
 runForm :: Html
 runForm =
   div "box u-flow-c-4" $
