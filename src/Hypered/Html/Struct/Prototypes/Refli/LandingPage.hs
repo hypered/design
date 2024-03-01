@@ -98,7 +98,7 @@ prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts 
       prototypeRefliPage
         mainHeaderLanguage
         ""
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
           -- TODO body.u-container-vertical.cover
           div "flow-all limit-42em" $ do
@@ -123,7 +123,7 @@ prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} Descr
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
           div "switcher switch-at-60rem u-flow-c-4 u-space-after-c-4" $ do
             div "flow" $ do
@@ -153,7 +153,7 @@ prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts conte
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
           standardSmallBox $ do
             H.h4 $ "Echo"
@@ -169,7 +169,7 @@ prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts con
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           standardSmallBox $ do
             H.h4 $ "Submittal"
@@ -193,14 +193,14 @@ standardSmallForm action content =
         content
 
 -- Use this "base" page in the other functions in this file.
-prototypeRefliBasePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
-prototypeRefliBasePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+prototypeRefliBasePage :: Bool -> Text -> Maybe Profile -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliBasePage autoreload url mprofile mhTexts@MainHeaderTexts {..} nbTexts content = do
   refliDocument
     autoreload mainHeaderLanguage "" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader mprofile mhTexts)
         nbTexts $
           content
 
@@ -212,7 +212,7 @@ prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPost
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
           div "c-content flow-all limit-42em" $
             H.h1 "Blog"
@@ -252,7 +252,7 @@ prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostP
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
@@ -264,7 +264,7 @@ prototypeRefliFooPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts fTexts
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           refliFooPageContent fTexts
 
@@ -275,7 +275,7 @@ prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           refliRunPageContent
 
@@ -286,7 +286,7 @@ prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cf
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           refliCapturePageContent cfTexts action
 
@@ -297,7 +297,7 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           refliLandingPageContent texts cfTexts
 
@@ -308,7 +308,7 @@ prototypeRefliSignupPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts sfT
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           signupForm sfTexts action
 
@@ -319,7 +319,7 @@ prototypeRefliResetPasswordPage autoreload url mhTexts@MainHeaderTexts {..} nbTe
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           resetPasswordForm rpfTexts action
 
@@ -330,7 +330,7 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           loginForm lfTexts action
 
@@ -548,7 +548,7 @@ prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           messageSubscribeSuccess texts
 
@@ -559,7 +559,7 @@ prototypeRefliMessageFooSuccess autoreload url mhTexts@MainHeaderTexts {..} text
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           messageFooSuccess texts
 
@@ -570,7 +570,7 @@ prototypeRefliMessageSignupSuccess autoreload url mhTexts@MainHeaderTexts {..} t
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $
           messageSignupSuccess texts
 
@@ -610,7 +610,7 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mhTexts)
+        (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
           div "u-space-after-c-4" $
             div "u-container-vertical" $
@@ -785,8 +785,17 @@ prototypeRefliPage lang url header NavigationBlockTexts {..} content =
         div "flow u-flow-c-4" $
           H.span "© Hypered SRL, 2023-2024."
 
-prototypeRefliMainHeader :: MainHeaderTexts -> Html
-prototypeRefliMainHeader MainHeaderTexts {..} = do
+prototypeRefliMainHeader' :: MainHeaderTexts -> Html
+prototypeRefliMainHeader' = prototypeRefliMainHeader Nothing
+
+-- User profile informaton relevant to the UI.
+data Profile = Profile
+  { profileEmail :: Text -- ^ Email address (we currently use that instead of username)
+  }
+  deriving (Eq, Show)
+
+prototypeRefliMainHeader :: Maybe Profile -> MainHeaderTexts ->Html
+prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
   let linkBlog = "/" <> mainHeaderLanguage <> "/blog"
   H.ul $ do
     H.li $
@@ -801,6 +810,25 @@ prototypeRefliMainHeader MainHeaderTexts {..} = do
         div "menu-dropdown-content" $
           H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/describe") $
             H.text mainHeaderLinkComputeSalaries
+
+    maybe
+      mempty
+      ( \Profile {..} ->
+          H.li $ do
+            div "menu-item" ! A.tabindex "-1" $ do
+              H.i ! A.class_ "menu-mask" ! A.tabindex "-1" $ mempty
+              H.a ! A.class_ "menu-dropdown" $ H.text "Me" -- TODO Avatar image.
+              div "menu-dropdown-content" $ do
+                -- TODO Should not be a link.
+                -- TODO Should be the last H.li.
+                H.a ! A.href "#" $ do
+                  H.text $ "Signed in as"
+                  H.br
+                  H.text profileEmail
+                H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/settings/profile") $
+                  H.text "Settings"
+      )
+      mprofile
 
     H.li $
       div "menu-item" $
