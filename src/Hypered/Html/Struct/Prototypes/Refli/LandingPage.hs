@@ -335,6 +335,14 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
           loginForm lfTexts action
 
 -- HTTP status code page.
+prototypeRefliError400Page :: Bool -> Text -> Html
+prototypeRefliError400Page autoreload err = do
+  prototypeRefliErrorPageLang autoreload title400 $ do
+    H.p $ H.code $ H.text err
+    H.p $ H.text $ "EN: " <> message400En
+    H.p $ H.text $ "FR: " <> message400Fr
+    H.p $ H.text $ "NL: " <> message400Nl
+
 prototypeRefliError404PageEn :: Bool -> Html
 prototypeRefliError404PageEn autoreload = do
   prototypeRefliErrorPageLang autoreload title404 $
@@ -352,7 +360,6 @@ prototypeRefliError404PageNl autoreload = do
 
 prototypeRefliError404Page :: Bool -> Html
 prototypeRefliError404Page autoreload = do
-  let title = "404 Internal Server Error"
   prototypeRefliErrorPageLang autoreload title404 $ do
     H.p $ H.text $ "EN: " <> message404En
     H.p $ H.text $ "FR: " <> message404Fr
@@ -395,6 +402,15 @@ prototypeRefliErrorPageLang autoreload title content = do
                         H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
                     H.h2 $ H.text title
                     content
+
+title400, message400En, message400Fr, message400Nl :: Text
+title400 = "400 Bad Request"
+
+message400En = "Our server cannot process the request. This may be due to several reasons, including a bad request syntax, a missing field, a value of the wrong type, a size that is too large, or an invalid request message framing."
+
+message400Fr = "Notre serveur ne peut pas traiter la demande. Cela peut être dû à plusieurs raisons, notamment une mauvaise syntaxe de la demande, un champ manquant, une valeur d'un type incorrect, une taille trop importante ou un cadre de message de demande non valide."
+
+message400Nl = "Onze server kan het verzoek niet verwerken. Dit kan verschillende redenen hebben, waaronder een slechte verzoeksyntaxis, een ontbrekend veld, een waarde van het verkeerde type, een te grote grootte of een ongeldige framing van het verzoekbericht."
 
 title404, message404En, message404Fr, message404Nl :: Text
 title404 = "404 Not Found"
