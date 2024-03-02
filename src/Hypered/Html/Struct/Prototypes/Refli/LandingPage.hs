@@ -343,6 +343,34 @@ prototypeRefliError400Page autoreload err = do
     H.p $ H.text $ "FR: " <> message400Fr
     H.p $ H.text $ "NL: " <> message400Nl
 
+prototypeRefliError401PageEn :: Bool -> Html
+prototypeRefliError401PageEn autoreload = do
+  prototypeRefliErrorPageLang autoreload title401 $
+    H.p $ message401En "en"
+
+prototypeRefliError401PageFr :: Bool -> Html
+prototypeRefliError401PageFr autoreload = do
+  prototypeRefliErrorPageLang autoreload title401 $
+    H.p $ message401Fr "fr"
+
+prototypeRefliError401PageNl :: Bool -> Html
+prototypeRefliError401PageNl autoreload = do
+  prototypeRefliErrorPageLang autoreload title401 $
+    H.p $ message401Nl "nl"
+
+prototypeRefliError401Page :: Bool -> Html
+prototypeRefliError401Page autoreload = do
+  prototypeRefliErrorPageLang autoreload title401 $ do
+    H.p $ do
+      H.text $ "EN: "
+      message401En "en" -- Is it really useful to have this lang argument ?
+    H.p $ do
+      H.text $ "FR: "
+      message401Fr "fr"
+    H.p $ do
+      H.text $ "NL: "
+      message401Nl "nl"
+
 prototypeRefliError404PageEn :: Bool -> Html
 prototypeRefliError404PageEn autoreload = do
   prototypeRefliErrorPageLang autoreload title404 $
@@ -411,6 +439,37 @@ message400En = "Our server cannot process the request. This may be due to severa
 message400Fr = "Notre serveur ne peut pas traiter la demande. Cela peut être dû à plusieurs raisons, notamment une mauvaise syntaxe de la demande, un champ manquant, une valeur d'un type incorrect, une taille trop importante ou un cadre de message de demande non valide."
 
 message400Nl = "Onze server kan het verzoek niet verwerken. Dit kan verschillende redenen hebben, waaronder een slechte verzoeksyntaxis, een ontbrekend veld, een waarde van het verkeerde type, een te grote grootte of een ongeldige framing van het verzoekbericht."
+
+title401 :: Text
+message401En, message401Fr, message401Nl :: Text -> Html
+title401 = "401 Unauthorized"
+
+message401En lang = do
+  H.text "The email address or password you entered is incorrect. "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/login") $ H.text "Please try again"
+  H.text ". If necessary, you can "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/reset") $ H.text "reset your password"
+  H.text ". You can also "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/contact") $ H.text "contact us"
+  H.text "."
+
+message401Fr lang = do
+  H.text "L'adresse email ou le mot de passe que vous avez saisi est incorrect. "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/login") $ H.text "Veuillez réessayer"
+  H.text ". Si nécessaire, vous pouvez "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/reset") $ H.text "réinitialiser votre mot de passe"
+  H.text ". Vous pouvez également "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/contact") $ H.text "nous contacter"
+  H.text "."
+
+message401Nl lang = do
+  H.text "Het ingevoerde e-mailadres of wachtwoord is onjuist. "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/contact") $ H.text "Probeer het opnieuw"
+  H.text ". Indien nodig kunt u uw "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/reset") $ H.text "wachtwoord opnieuw instellen"
+  ". U kunt ook "
+  H.a ! A.href (H.toValue $ "/" <> lang <> "/contact") $ H.text "contact met ons opnemen"
+  "."
 
 title404, message404En, message404Fr, message404Nl :: Text
 title404 = "404 Not Found"
