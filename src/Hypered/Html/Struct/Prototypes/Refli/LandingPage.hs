@@ -410,7 +410,6 @@ prototypeRefliError500PageNl autoreload = do
 
 prototypeRefliError500Page :: Bool -> Html
 prototypeRefliError500Page autoreload = do
-  let title = "500 Internal Server Error"
   prototypeRefliErrorPageLang autoreload title500 $ do
     H.p $ H.text $ "EN: " <> message500En
     H.p $ H.text $ "FR: " <> message500Fr
@@ -420,16 +419,15 @@ prototypeRefliErrorPageLang :: Bool -> Text -> Html -> Html
 prototypeRefliErrorPageLang autoreload title content = do
   refliDocument
     autoreload "en" "" "" $ -- TODO page title, description, ...
-      prototypeRefliCenterPage
-        "en" $
-            div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
-              div "u-container u-container-vertical" $
-                div "c-text .flow" $
-                  div "box c-text flow" $ do
-                    H.a ! A.href "/" $
-                        H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
-                    H.h2 $ H.text title
-                    content
+      prototypeRefliCenterPage $
+        div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
+          div "u-container u-container-vertical" $
+            div "c-text .flow" $
+              div "box c-text flow" $ do
+                H.a ! A.href "/" $
+                    H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
+                H.h2 $ H.text title
+                content
 
 title400, message400En, message400Fr, message400Nl :: Text
 title400 = "400 Bad Request"
@@ -884,6 +882,8 @@ prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
                   H.text $ "Signed in as"
                   H.br
                   H.text profileEmail
+                H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/logout") $
+                  H.text "Sign out"
                 H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/settings/profile") $
                   H.text "Settings"
       )
@@ -895,8 +895,8 @@ prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
             ! A.class_ "menu-link" $
           H.text mainHeaderLinkDocumentation
 
-prototypeRefliCenterPage :: Text -> Html -> Html
-prototypeRefliCenterPage lang content =
+prototypeRefliCenterPage :: Html -> Html
+prototypeRefliCenterPage content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header mempty
 
