@@ -148,6 +148,15 @@ hr {
 .flow-all input {
   margin-top: calc(var(--flow-space) / 4);
 }
+
+em, i {
+  font-style: italic;
+}
+
+strong, b {
+  font-weight: 600;
+}
+
 // Similar to the margin added by `flow` for a h1 heading at scale C.
 // `flow` sets the margin to be 1.4em, while here we're not using ems,
 // but it seems to work.
