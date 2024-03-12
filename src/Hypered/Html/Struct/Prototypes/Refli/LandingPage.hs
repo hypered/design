@@ -177,7 +177,7 @@ prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts con
 
 standardSmallBox :: Html -> Html
 standardSmallBox content =
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
     div "box u-flow-c-4" $
       div "c-text flow" $
         content
@@ -185,7 +185,7 @@ standardSmallBox content =
 -- Use this "standard small" form function in other functions in this file.
 standardSmallForm :: Text -> Html -> Html
 standardSmallForm action content =
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
     div "box u-flow-c-4" $
       H.form ! A.class_ "c-text flow"
              ! A.method "POST"
@@ -489,17 +489,17 @@ message500Nl = "Onze server ondervond een onverwachte omstandigheid. Probeer de 
 
 refliFooPageContent :: FooFormTexts -> Html
 refliFooPageContent fTexts =
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
     fooForm fTexts
 
 refliRunPageContent :: Html
 refliRunPageContent =
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
     runForm
 
 refliCapturePageContent :: LandingPageCaptureFormTexts -> Text -> Html
 refliCapturePageContent cfTexts action =
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center" $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
     emailCaptureForm cfTexts action
 
 refliLandingPageContent :: LandingPageTexts -> LandingPageCaptureFormTexts -> Html
@@ -680,7 +680,7 @@ prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTex
 
 signupForm :: SignupFormTexts -> Text -> Html
 signupForm SignupFormTexts {..} action = do
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center " $
     H.form ! A.method "POST"
            ! A.action (H.toValue action) $ do
       div "u-container u-container-vertical bordered-3" $
@@ -715,7 +715,7 @@ signupForm SignupFormTexts {..} action = do
 
 resetPasswordForm :: ResetPasswordFormTexts -> Text -> Html
 resetPasswordForm ResetPasswordFormTexts {..} action = do
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center " $
     H.form ! A.method "POST"
            ! A.action (H.toValue action) $ do
       div "u-container u-container-vertical bordered-3" $
@@ -743,7 +743,7 @@ resetPasswordForm ResetPasswordFormTexts {..} action = do
 
 loginForm :: LoginFormTexts -> Text -> Html
 loginForm LoginFormTexts {..} action = do
-  div "max-48rem u-flow-c-4 u-space-after-c-4 center " $
+  div "max-30rem u-flow-c-4 u-space-after-c-4 center " $
     H.form ! A.method "POST"
            ! A.action (H.toValue action) $ do
       div "u-container u-container-vertical bordered-3" $
