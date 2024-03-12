@@ -232,6 +232,13 @@ strong, b {
   max-width: 30rem;
 }
 
+// A4 aspect ration is 1.414:1
+// If we use .max-50rem as width, here is the height:
+.a4-50rem--height {
+  height: calc(50rem * 1.414);
+}
+
+
 /* -----------------------------------------------------------------------------
    Menu items (dropdowns and links)
    -------------------------------------------------------------------------- */
