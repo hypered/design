@@ -4,7 +4,7 @@
 # We need to re-generate those files whenever `package-lock.json` changes.
 
 mkdir -p nix/node
-node2nix -18 \
+node2nix -16 \
     --development \
     --input package.json \
     --lock package-lock.json \
