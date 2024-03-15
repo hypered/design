@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/hypered/design/issues"
   },
-  "homepage": "https://github.com/hypered/design#readme"
+  "homepage": "https://github.com/hypered/design#readme",
+  "dependencies": {
+    "mjml": "^4.15.3"
+  }
 }
