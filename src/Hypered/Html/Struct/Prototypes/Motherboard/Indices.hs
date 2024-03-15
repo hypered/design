@@ -50,9 +50,9 @@ prototypeMotherboardHomepage refliHomepage homepage = do
               H.li $
                 H.a ! A.href "/fr/lex/law/2024" $ "Law"
               H.li $
-                H.a ! A.href "/fr/lex/decree/2023" $ "Decree"
+                H.a ! A.href "/fr/lex/decree/2024" $ "Decree"
               H.li $
-                H.a ! A.href "/fr/lex/ordinance/2023" $ "Ordinance"
+                H.a ! A.href "/fr/lex/ordinance/2024" $ "Ordinance"
               H.li $
                 H.a ! A.href "/fr/lex/order/2024" $ "Order"
             H.p "For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents."
