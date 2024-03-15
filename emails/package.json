@@ -1,0 +1,19 @@
+{
+  "name": "hypered-design-emails",
+  "version": "1.0.0",
+  "description": "Email templates for Hypered projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypered/design.git"
+  },
+  "author": "Hypered SRL",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/hypered/design/issues"
+  },
+  "homepage": "https://github.com/hypered/design#readme"
+}
