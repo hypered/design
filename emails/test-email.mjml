@@ -1,4 +1,4 @@
-<mjml>
+<mjml lang="fr">
    <mj-head>
      <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans" />
    </mj-head>
@@ -8,7 +8,7 @@
          <mj-image width="60px" src="https://refli.be/static/images/logo-120px.png" align="left" />
          <mj-spacer height="40px" />
          <mj-text font-family="IBM Plex Sans, Arial" font-size="20px">
-           This is a test email.
+           Ceci est un email de test.
          </mj-text>
        </mj-column>
       </mj-section>
