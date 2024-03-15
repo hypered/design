@@ -19,7 +19,8 @@ $ nix-build -A emails --no-out-link
 # Notes
 
 - Maybe add a `dir` attribute on the `<mjml>` element.
-- Host the font ourselves, instead of using Google Fonts.
+- Host the font ourselves, instead of using Google Fonts?
+- We're using a PNG logo. It seems the SVG wasn't visible in gmail.
 - There are interesting things listed here:
   https://documentation.mjml.io/#ports-and-language-bindings (e.g. a Rust
   version)
