@@ -361,6 +361,15 @@ for e.g. `height: 100vh`. But I can make the developer tools a separate window
 and it works.
 
 
+## Logo
+
+The PNG logo is generated with:
+
+```
+$ nix-shell -p inkscape --run 'inkscape -w 120 -b FFFFFF static/images/logo.svg --export-filename static/images/logo-120px.png'
+```
+
+
 ## Chromium scale factor
 
 Using a T480 2560x1440 laptop screen, Firefox displays 1280x720 on the

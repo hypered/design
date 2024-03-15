@@ -5,7 +5,7 @@
    <mj-body>
      <mj-section>
        <mj-column>
-         <mj-image width="60px" src="https://refli.be/static/images/logo.svg" align="left" />
+         <mj-image width="60px" src="https://refli.be/static/images/logo-120px.png" align="left" />
          <mj-spacer height="40px" />
          <mj-text font-family="IBM Plex Sans, Arial" font-size="20px">
            This is a test email.
