@@ -18,8 +18,7 @@ in rec
 
       ln -sf ${nodeDependencies}/lib/node_modules ./node_modules
       mkdir $out
-      node_modules/mjml/bin/mjml test-email.mjml -o output.html
-      cp output.html $out/
+      node_modules/mjml/bin/mjml example.mjml -o $out/example.html
     '';
   };
 }

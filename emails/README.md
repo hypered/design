@@ -3,6 +3,12 @@
 We use MJML to generate HTMLs. The example email should closely match the
 [reference email](https://hypered.design/prototypes/refli/email.html).
 
+- We include the font weight (600) necessary for the title (it uses Semi Bold).
+- We set the font size for the title and the paragraphs to match the
+  rendering of the reference email, when display on a 2560x1440 laptop
+  (but with high DPI scaling applied, so I think this matches 1280x720).
+- We also set the line height for paragraphs.
+
 There differences that we could fix (e.g. the size of the logo), although since
 we use a fluid design, matching the rendering (on e.g. a specific laptop) is
 arbitrary. (The mail is not using a fluid design.)
@@ -17,7 +23,7 @@ break in some email clients.
 $ nix-shell -p nodejs
 $ npm init # create the initial package.json
 $ npm i --lockfile-version 2 mjml
-$ node node_modules/mjml/bin/mjml test-email.mjml -o output.html
+$ node node_modules/mjml/bin/mjml example.mjml -o example.html
 ```
 
 The content of the input file can be created with
