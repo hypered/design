@@ -1,16 +1,22 @@
 <mjml lang="fr">
-   <mj-head>
-     <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans" />
-   </mj-head>
-   <mj-body>
-     <mj-section>
-       <mj-column>
-         <mj-image width="60px" src="https://refli.be/static/images/logo-120px.png" align="left" />
-         <mj-spacer height="40px" />
-         <mj-text font-family="IBM Plex Sans, Arial" font-size="20px">
-           Ceci est un email de test.
-         </mj-text>
-       </mj-column>
-      </mj-section>
-   </mj-body>
- </mjml>
+  <mj-head>
+    <mj-font name="IBM Plex Sans" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@0,400;0,600" />
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-image width="60px" src="https://refli.be/static/images/logo-120px.png" align="left" />
+        <mj-spacer height="30px" />
+        <mj-text font-family="IBM Plex Sans, Arial" font-size="25.6288px" font-weight="600">
+          Nisl vitae vitae in at
+        </mj-text>
+        <mj-text font-family="IBM Plex Sans, Arial" font-size="16px" line-height="1.5em">
+          Nunc consequat sodales purus aenean mattis at et risus nec. Lorem pretium sagittis odio faucibus imperdiet. Nisi, commodo proin accumsan, quis placerat. Vitae sed. Porta leo phasellus tristique augue odio et fringilla. Feugiat cursus id euismod eu aliquet quam. Nam tempor iaculis urna amet et commodo, arcu porta lectus. Sodales a netus dolor sociis nunc
+        </mj-text>
+        <mj-text font-family="IBM Plex Sans, Arial" font-size="16px" line-height="1.5em">
+          Odio eget condimentum cras non. Nisl vitae vitae in at ultrices nibh imperdiet risus. Ac tristique nibh praesent id auctor neque, ut sit. Dignissim facilisis ut pharetra, vel nibh habitant suspendisse. Vel id viverra ornare sagittis morbi pretium laoreet sit. Dignissim odio condimentum arcu risus scelerisque scelerisque in.
+        </mj-text>
+      </mj-column>
+     </mj-section>
+  </mj-body>
+</mjml></mjml>

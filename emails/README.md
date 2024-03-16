@@ -1,4 +1,17 @@
+# HTML emails
 
+We use MJML to generate HTMLs. The example email should closely match the
+[reference email](https://hypered.design/prototypes/refli/email.html).
+
+There differences that we could fix (e.g. the size of the logo), although since
+we use a fluid design, matching the rendering (on e.g. a specific laptop) is
+arbitrary. (The mail is not using a fluid design.)
+
+There are differences that may be harder to fix. For instance the mail is
+vertically centered. We could try to change that, with the risk that it would
+break in some email clients.
+
+# Development
 
 ```
 $ nix-shell -p nodejs
