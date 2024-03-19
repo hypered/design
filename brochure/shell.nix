@@ -5,7 +5,7 @@ in
   pkgs.runCommand "dummy" {
     buildInputs = [
       pkgs.biber
-      pkgs.mupdf
+      # pkgs.mupdf
       (pkgs.texlive.combine {
         inherit (pkgs.texlive)
           anyfontsize

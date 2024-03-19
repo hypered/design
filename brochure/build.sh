@@ -6,6 +6,7 @@ set -e
 # Actually example-large-table can be built with just one
 # call to pdflatex.
 for TEX_FILENAME in \
+  example-font \
   example-full \
   example-large-table \
   ; do
