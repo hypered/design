@@ -1,6 +1,8 @@
 # LaTeX brochure
 
 - `example-full.tex` demonstrates the full capabilities of `HyperedReport.cls`.
+  It is the original work and is used as reference. Other files are shorter
+  examples derived from it.
 - `example-large-table.tex` is a single page.
 
 # Embedding font
