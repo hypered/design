@@ -5,6 +5,14 @@
   examples derived from it.
 - `example-large-table.tex` is a single page.
 
+# Templating support
+
+`HyperedReport.cls` supports a simple templating mechanism. Key-value pairs are
+defined in a `ream-context.tex` file, which must be `\input` in a document.
+Then the `\replace` command can be used to lookup keys there.
+
+The `example-copyright.tex` file demonstrates the mechanism.
+
 # Embedding font
 
 Instructions from

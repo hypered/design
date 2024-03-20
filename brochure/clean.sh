@@ -13,4 +13,5 @@ rm -f \
   *.out \
   *.run.xml \
   *.toc \
-  texput.log
+  texput.log \
+  ream-replace.log

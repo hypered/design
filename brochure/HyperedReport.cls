@@ -415,3 +415,29 @@
 %----------------------------------------------------------------------------------------
 
 \newcommand{\doctitle}[1]{\renewcommand{\doctitle}{#1}}
+
+%----------------------------------------------------------------------------------------
+%       TEMPLATING SUPPORT
+%----------------------------------------------------------------------------------------
+
+% Open a log file for writing missing keys.
+\newwrite\logFile
+\immediate\openout\logFile=ream-replace.log
+
+% The \replace{name} command will look for key defined as follow:
+%     \newcommand{\reamname}{John Doe}
+% Note how "name" is prefixed with "ream" in the definition.
+% When a key is not found, this emits a placeholder, and log the key.
+\newcommand{\replace}[1]{%
+  \ifcsname ream#1\endcsname
+    \csname ream#1\endcsname
+  \else
+    \immediate\write\logFile{Missing key: #1}
+    \colorbox{yellow}{\texttt{\textbackslash replace\{#1\}}}
+  \fi
+}
+
+% Close the log file at the end of the document.
+\AtEndDocument{
+  \immediate\closeout\logFile
+}
