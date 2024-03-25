@@ -11,6 +11,7 @@ for TEX_FILENAME in \
   example-font \
   example-full \
   example-large-table \
+  example-simple \
   ; do
   pdflatex "${TEX_FILENAME}"
   biber "${TEX_FILENAME}"
