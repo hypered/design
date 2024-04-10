@@ -157,6 +157,12 @@ strong, b {
   font-weight: 600;
 }
 
+// This is enough to have the image take the same space as a paragraph, in e.g
+// .c-container or .max-40rem. Is there a customary name for this ?
+img.adapt {
+  width: 100%;
+}
+
 // Similar to the margin added by `flow` for a h1 heading at scale C.
 // `flow` sets the margin to be 1.4em, while here we're not using ems,
 // but it seems to work.
