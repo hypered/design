@@ -580,6 +580,18 @@ table.pairs tr:hover {
   background-color: #efefef;
 }
 
+// Basic tables.
+table.table {
+  width: 60%;
+}
+.table td {
+  padding: 0.2rem;
+}
+// A la Tachyons.
+.tr {
+  text-align: right;
+}
+
 /* Leader lines. Code from
  * https://markentier.tech/posts/2021/03/responsive-toc-leader-lines-with-css/
  */
