@@ -39,6 +39,8 @@ em {font-style: italic;}
 .limit-p p {max-width: 42em;}
 .limit-40ch {max-width: 40ch;}
 .limit-42em {max-width: 42em;}
+// This gives the same width as each of two divs under a .switcher.
+.limit-50pc {max-width: calc(50% - var(--space-m) / 2);}
 .mute {color: #666;}
 .c-text a {color: blue; text-decoration: none;}
 .c-content a {color: blue; text-decoration: none;}
@@ -551,6 +553,9 @@ i.mb-i {font-style: italic;}
 .mb-pairs dd {
   grid-column-start: span 1;
 }
+
+// Self-promotion text in the right part of a Lex Iterata document.
+.ad {max-width: 20em;}
 
 // Specific rules for blog posts.
 .blog-post-details {border: 2px solid #e4e4e4; padding: 1em;}

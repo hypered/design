@@ -71,6 +71,10 @@
   flex-grow: 1;
 }
 
+.switcher--bigger-left > :first-child {
+  flex-grow: 2.0; // Increase the flex-grow factor for the first child
+}
+
 .switch-at-60rem > * {
   --measure: 37.5rem;
   flex-basis: calc((var(--measure) - 100%) * 999);
