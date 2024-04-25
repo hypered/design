@@ -19,6 +19,9 @@ data Command =
   | GenerateFluidClamps
     -- ^ This is similar to https://utopia.fyi/space/calculator but allowing a
     -- rem to be 10px.
+  | GeneratePage
+    -- ^ Generate a page. This is hard-coded to a simple Struct specimen page
+    -- for now.
   | Wrapper
     -- ^ The document wrapper. This should match `pages/_app.js`.
   | Serve ServerConf
@@ -201,6 +204,12 @@ parser =
           "generate-fluid-clamps"
           ( A.info (parserGenerateFluidClamps <**> A.helper)
           $ A.progDesc "Generate CSS variables for fluid spaces"
+          )
+
+      <> A.command
+          "generate-page"
+          ( A.info (parserGeneratePage <**> A.helper)
+          $ A.progDesc "Generate an HTML page, hard-coded for now"
           )
 
       <> A.command
@@ -806,6 +815,9 @@ parserGenerateTemplates = GenerateTemplates <$> A.switch
 
 parserGenerateFluidClamps :: A.Parser Command
 parserGenerateFluidClamps = pure GenerateFluidClamps
+
+parserGeneratePage :: A.Parser Command
+parserGeneratePage = pure GeneratePage
 
 parserWrapper :: A.Parser Command
 parserWrapper = pure Wrapper

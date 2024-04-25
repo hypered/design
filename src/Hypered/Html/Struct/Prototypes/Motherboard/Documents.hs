@@ -37,7 +37,6 @@ data Block =
 --------------------------------------------------------------------------------
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
 prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = do
-  -- TODO Actually write the page in French.
   Struct.refliDocument
     False
     "fr"
@@ -49,48 +48,58 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
         div "u-container" $ do
             H.p $
                 H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
-            div "c-text flow-all limit-42em legislation" $ do
-                H.h1 ! A.class_ "mb-title" $ H.text documentFullTitle
+            div "switcher switcher--bigger-left" $ do
+                div "c-text flow-all limit-42em legislation" $ do
+                    H.h1 ! A.class_ "mb-title" $ H.text documentFullTitle
 
-                H.div $
-                    H.dl ! A.class_ "mb-pairs" $ do
-                        H.dt "ELI"
-                        H.dd $
-                          H.a ! A.href (H.toValue documentUrl) $ "Justel"
-                        H.dt "Source"
-                        H.dd $ H.text documentSource
-                        H.dt "Publication"
-                        H.dd $ H.text documentPublicationDate
-                        H.dt "Numéro"
-                        H.dd $ H.text documentNumber
-                        H.dt "Page"
-                        H.dd $ H.text $ show documentPageNumber
-                        H.dt "PDF"
-                        H.dd $
-                          maybe
-                            "verion originale"
-                            (\lnk -> H.a ! A.href (H.toValue $
-                              "https://www.ejustice.just.fgov.be" <> lnk) $
-                                "version originale")
-                            documentPDFOriginal
-                        H.dt "Dossier numéro"
-                        H.dd $ H.text documentCaseNumber
-                        H.dt "Entrée en vigueur / Effet"
-                        H.dd $
-                          mapM_ (\(a, b) -> H.text a >> H.text b) documentStartDates
-                        H.dt "Texte modifié"
-                        H.dd $
-                          mapM_ (\a -> H.text a) documentModifies
-                        H.dt "belgiquelex"
-                        H.dd $ do
-                          let f lnk =
-                                if "http://reflex.raadvst-consetat.be" `T.isPrefixOf` lnk
-                                then "Conseil d'Etat"
-                                else "TODO"
-                          mapM_
-                            (\lnk -> H.a ! A.href (H.toValue lnk) $ H.text (f lnk))
-                            documentLegislativeLinks
-                mapM_ showBlock documentBlocks
+                    H.div $
+                        H.dl ! A.class_ "mb-pairs" $ do
+                            H.dt "ELI"
+                            H.dd $
+                              H.a ! A.href (H.toValue documentUrl) $ "Justel"
+                            H.dt "Source"
+                            H.dd $ H.text documentSource
+                            H.dt "Publication"
+                            H.dd $ H.text documentPublicationDate
+                            H.dt "Numéro"
+                            H.dd $ H.text documentNumber
+                            H.dt "Page"
+                            H.dd $ H.text $ show documentPageNumber
+                            H.dt "PDF"
+                            H.dd $
+                              maybe
+                                "verion originale"
+                                (\lnk -> H.a ! A.href (H.toValue $
+                                  "https://www.ejustice.just.fgov.be" <> lnk) $
+                                    "version originale")
+                                documentPDFOriginal
+                            H.dt "Dossier numéro"
+                            H.dd $ H.text documentCaseNumber
+                            H.dt "Entrée en vigueur / Effet"
+                            H.dd $
+                              mapM_ (\(a, b) -> H.text a >> H.text b) documentStartDates
+                            H.dt "Texte modifié"
+                            H.dd $
+                              mapM_ (\a -> H.text a) documentModifies
+                            H.dt "belgiquelex"
+                            H.dd $ do
+                              let f lnk =
+                                    if "http://reflex.raadvst-consetat.be" `T.isPrefixOf` lnk
+                                    then "Conseil d'Etat"
+                                    else "TODO"
+                              mapM_
+                                (\lnk -> H.a ! A.href (H.toValue lnk) $ H.text (f lnk))
+                                documentLegislativeLinks
+                    mapM_ showBlock documentBlocks
+                div "c-text flow-all" $
+                  div "c-content center ad" $
+                    H.p $
+                      H.small $ do
+                        H.text "Lex Iterata est un site web qui propose les textes législatifs consolidés du Moniteur Belge sous une nouvelle forme. Lex Iterata fait partie de "
+                        H.a ! A.href "https://refli.be" $ H.text "Refli"
+                        H.text ", qui vise à simplifier le calcul de salaire. Ces deux projets sont conçus par la société namuroise de développement informatique "
+                        H.a ! A.href "https://hypered.be" $ H.text "Hypered"
+                        H.text "."
 
         motherboardDocumentFooter documentId documentUrl homepage refliHomepage
 
@@ -165,19 +174,24 @@ motherboardDocumentFooter documentId documentUrl homepage refliHomepage =
       div "c-text flow" $ do
         H.p $
           H.small $ do
-            "View this page in "
-            H.a ! A.href (H.toValue $ "/lex/" <> documentId) $ "JSON format"
+            "Voir cette page au "
+            H.a ! A.href (H.toValue $ "/lex/" <> documentId) $ "format JSON"
             "."
         H.p $
           H.small $ do
-            "View the "
-            H.a ! A.href (H.toValue $ documentUrl) $ "original page"
-            " on the Belgian Official Journal."
+            "Voir la "
+            H.a ! A.href (H.toValue $ documentUrl) $ "page originale"
+            " au Moniteur Belge."
         H.p $
           H.small $ do
-            "Lex Iterata is a Refli experiment. "
-            H.a ! A.href (H.toValue homepage) $ "Read more about Lex Iterata"
-            " or go "
-            H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
+            "Lex Iterata est une expérience Refli. "
+            H.a ! A.href (H.toValue homepage) $ "Lire au sujet de Lex Iterata"
+            " ou "
+            H.a ! A.href (H.toValue refliHomepage) $ "retourner vers Refli"
+            "."
+        H.p $
+          H.small $ do
+            "Lex Iterata et Refli sont des projets développés par "
+            H.a ! A.href "https://hypered.be" $ "Hypered"
             "."
         H.p "© Hypered SRL, 2023-2024."

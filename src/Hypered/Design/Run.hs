@@ -11,6 +11,7 @@ import           Hypered.Design.Guide           ( generateGuide )
 import qualified Hypered.Design.Server         as Server
 import           Hypered.Design.Stories         ( stories )
 import           Hypered.Design.Templates       ( generateTemplates )
+import qualified Hypered.Html.Struct.Specimens as Struct
 import           Hypered.Html.Tachyons
   ( defaultConfig, documentFile
 
@@ -49,6 +50,8 @@ run (Command.GenerateTemplates forGitHubPages) = generateTemplates forGitHubPage
 run Command.GenerateGuide = generateGuide
 
 run Command.GenerateFluidClamps = putStrLn $ properties 10.0
+
+run Command.GeneratePage = putStr $ renderHtml Struct.specimenNavigation
 
 run Command.Wrapper = generateWrapper
 
