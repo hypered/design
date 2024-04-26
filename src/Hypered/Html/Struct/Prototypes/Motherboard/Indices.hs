@@ -7,68 +7,145 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 --------------------------------------------------------------------------------
+data MotherboardHomepageTexts = MotherboardHomepageTexts
+  { motherboardHomepageLanguage :: Text
+  , motherboardHomepageTitle :: Text
+  , motherboardHomepageDescription :: Text
+  , motherboardHomepageParagraph1 :: Text
+  , motherboardHomepageParagraph2 :: Text
+  , motherboardHomepageParagraph3 :: Text
+  , motherboardHomepageWord1 :: Text
+  , motherboardHomepageWord2 :: Text
+  , motherboardHomepageWord3 :: Text
+  , motherboardHomepageWord4 :: Text
+  , motherboardHomepageWord5 :: Text
+  , motherboardHomepageFooter1 :: Text
+  , motherboardHomepageFooter2 :: Text
+  }
+
+-- Hard-coded for now. We should probably use the PO-based system from Refli.
+motherboardHomepageTextsEn :: MotherboardHomepageTexts
+motherboardHomepageTextsEn = MotherboardHomepageTexts
+  { motherboardHomepageLanguage = "en"
+  , motherboardHomepageTitle = "Lex Iterata"
+  , motherboardHomepageDescription = ""
+  , motherboardHomepageParagraph1 =
+      "Lex Iterata collects and transforms the content of the \
+      \<a href=\"https://www.ejustice.just.fgov.be/\">Belgian Official Journal</a>\
+      \, presenting it in an enhanced format for human comprehension, \
+      \while also providing structured data tailored for machine consumption."
+  , motherboardHomepageParagraph2 =
+      "Lex Iterata is continually evolving. At present, we provide \
+      \access to collections of documents under the \
+      \<a href=\"https://www.ejustice.just.fgov.be/eli/\">ELI (European \
+      \Legislation Identifier) scheme</a>\
+      \. Both user-friendly web pages and structured JSON indices \
+      \are available for your convenience."
+  , motherboardHomepageParagraph3 =
+      "The ELI framework as used in Belgium encompasses five distinct \
+      \document categories:"
+  , motherboardHomepageWord1 = "Constitution"
+  , motherboardHomepageWord2 = "Law"
+  , motherboardHomepageWord3 = "Decree"
+  , motherboardHomepageWord4 = "Ordinance"
+  , motherboardHomepageWord5 = "Order"
+  , motherboardHomepageFooter1 =
+      "Lex Iterata is a Refli experiment. \
+      \<a href=\"https://refli.be/fr/lex\">Read about Lex Iterata</a> or \
+      \<a href=\"https://refli.be\">go back to Refli</a>."
+  , motherboardHomepageFooter2 =
+      "Lex Iterata and Refli are projects written by \
+      \<a href=\"https://hypered.be\">Hypered</a>."
+  }
+
+motherboardHomepageTextsFr :: MotherboardHomepageTexts
+motherboardHomepageTextsFr = MotherboardHomepageTexts
+  { motherboardHomepageLanguage = "fr"
+  , motherboardHomepageTitle = "Lex Iterata"
+  , motherboardHomepageDescription = ""
+  , motherboardHomepageParagraph1 =
+      "Lex Iterata collecte et transforme le contenu du \
+      \<a href=\"https://www.ejustice.just.fgov.be/\">Moniteur Belge</a>, \
+      \en le présentant dans un format amélioré pour la compréhension humaine, \
+      \tout en fournissant des données structurées adaptées au traitement \
+      \informatique."
+  , motherboardHomepageParagraph2 =
+      "Lex Iterata est en constante évolution. Actuellement, nous donnons \
+      \accès à des collections de documents du système <a href=\
+      \\"https://www.ejustice.just.fgov.be/eli/\">ELI (European \
+      \Legislation Identifier)</a>. Aussi bien des pages web conviviales que \
+      \des index JSON structurés sont disponibles."
+  , motherboardHomepageParagraph3 =
+      "Le cadre ELI tel qu'il est utilisé en Belgique comprend cinq catégories \
+      \de documents distinctes:"
+  , motherboardHomepageWord1 = "Constitution"
+  , motherboardHomepageWord2 = "Loi"
+  , motherboardHomepageWord3 = "Décret"
+  , motherboardHomepageWord4 = "Ordonnance"
+  , motherboardHomepageWord5 = "Arrêté"
+  , motherboardHomepageFooter1 =
+      "Lex Iterata est une expérience Refli. \
+      \<a href=\"https://refli.be/fr/lex\">Lire au sujet de Lex Iterata</a> ou \
+      \<a href=\"https://refli.be\">retourner vers Refli</a>."
+  , motherboardHomepageFooter2 =
+      "Lex Iterata et Refli sont des projets développés par \
+      \<a href=\"https://hypered.be\">Hypered</a>."
+  }
+
+--------------------------------------------------------------------------------
 -- Prototype: motherboard-index.
 -- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.
-prototypeMotherboardHomepage :: Text -> Text -> Html
-prototypeMotherboardHomepage refliHomepage homepage = do
+prototypeMotherboardHomepage :: MotherboardHomepageTexts -> Text -> Text -> Html
+prototypeMotherboardHomepage texts refliHomepage homepage = do
+  let MotherboardHomepageTexts {..} = texts
   H.docType
-  H.html $ do -- TODO html(dir="ltr", lang="en")
+  H.html ! A.dir "ltr" ! A.lang (H.toValue motherboardHomepageLanguage) $ do
     H.head $ do
-        H.meta ! A.charset "utf-8"
-        H.meta ! A.name "viewport"
-               ! A.content "width=device-width, initial-scale=1"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
-        H.title "Lex Iterata"
+      H.meta ! A.charset "utf-8"
+      H.meta ! A.name "viewport"
+             ! A.content "width=device-width, initial-scale=1"
+      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
+      H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
-        H.header $
-            div "u-container" $
-                div "c-text" $
-                    H.div $
-                        H.span ! A.class_ "logo" $
-                            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
+      H.header $
+        div "u-container" $
+          div "c-text" $
+            H.div $
+              H.span ! A.class_ "logo" $
+                H.a ! A.href (H.toValue homepage) $
+                  H.text motherboardHomepageTitle
 
+      div "u-container" $ do
+        div "switcher" $ do
+          div "flow-all" $
+            H.p $ H.preEscapedText motherboardHomepageParagraph1
+
+          H.div $ pure ()
+
+        div "c-text flow-all limit-42em" $ do
+          H.p $ H.preEscapedText motherboardHomepageParagraph2
+          H.p $ H.preEscapedText motherboardHomepageParagraph3
+          H.ul $ do
+            H.li $
+              H.a ! A.href "/fr/lex/constitution/1994" $ H.text motherboardHomepageWord1
+            H.li $
+              H.a ! A.href "/fr/lex/law/2024" $ H.text motherboardHomepageWord2
+            H.li $
+              H.a ! A.href "/fr/lex/decree/2024" $ H.text motherboardHomepageWord3
+            H.li $
+              H.a ! A.href "/fr/lex/ordinance/2024" $ H.text motherboardHomepageWord4
+            H.li $
+              H.a ! A.href "/fr/lex/order/2024" $ H.text motherboardHomepageWord5
+
+      H.footer $
         div "u-container" $ do
-          div "switcher" $ do
-            div "flow-all" $
-              H.p $ do
-                "Lex Iterata collects and transforms the content of the "
-                H.a ! A.href "https://www.ejustice.just.fgov.be/" $
-                  "Belgian Official Journal"
-                ", presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption."
-
-            H.div $ pure ()
-
-          div "c-text flow-all limit-42em" $ do
-            H.p $ do
-              "Lex Iterata is continually evolving. At present, we provide access to collections of documents under the "
-              H.a ! A.href "https://www.ejustice.just.fgov.be/eli/" $ "ELI (European Legislation Identifier) scheme"
-              ". Both user-friendly web pages and structured JSON indices are available for your convenience."
-            H.p "The ELI framework as used in Belgium encompasses five distinct document categories:"
-            H.ul $ do
-              H.li $
-                H.a ! A.href "/fr/lex/constitution/1994" $ "Constitution"
-              H.li $
-                H.a ! A.href "/fr/lex/law/2024" $ "Law"
-              H.li $
-                H.a ! A.href "/fr/lex/decree/2024" $ "Decree"
-              H.li $
-                H.a ! A.href "/fr/lex/ordinance/2024" $ "Ordinance"
-              H.li $
-                H.a ! A.href "/fr/lex/order/2024" $ "Order"
-            H.p "For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents."
-
-        H.footer $
-          div "u-container" $ do
-            H.hr
-            div "c-text flow" $ do
-              H.p $
-                H.small $ do
-                  "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href (H.toValue homepage) $ "Read more"
-                  " or go "
-                  H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
-                  "."
-              H.p $ H.text copyrightLine
+          H.hr
+          div "c-text flow" $ do
+            H.p $
+              H.small $ H.preEscapedText motherboardHomepageFooter1
+            H.p $
+              H.small $ H.preEscapedText motherboardHomepageFooter2
+            H.p $ H.text copyrightLine
 
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index-1.
