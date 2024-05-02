@@ -90,6 +90,7 @@ in rec
     cp -r ${struct}/static/css/struct $out/static/css/struct
     cp -r ${struct}/static/css/min/struct.css $out/static/css/struct.min.css
     cp -r ${struct}/static/fonts/* $out/static/fonts/
+    cp -r ${struct}/static/js $out/static/
   '';
 
   static = pkgs.runCommand "static" {} ''

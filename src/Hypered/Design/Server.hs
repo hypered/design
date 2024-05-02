@@ -83,6 +83,7 @@ type App =    "" :> Raw
 
          :<|> "specimens" :> "navigation" :> Get '[HTML] Html
          :<|> "specimens" :> "invoke--form" :> Get '[HTML] Html
+         :<|> "specimens" :> "invoke--htmx" :> Get '[HTML] Html
          :<|> "specimens" :> "invoke-result"
               :> ReqBody '[FormUrlEncoded] InvokeForm
               :> Post '[HTML] Html
@@ -111,6 +112,7 @@ serverT root =
     :<|> edit -- Call here the page you want to work on.
     :<|> pure Specimens.specimenNavigation
     :<|> pure (Specimens.specimenInvokeForm "Edit this line." (T.reverse "Edit this line."))
+    :<|> pure (Specimens.specimenInvokeHtmx "Edit this line." (T.reverse "Edit this line."))
     :<|> echoInvokeForm
     :<|> pure (Motherboard.prototypeMotherboardHomepage
            Motherboard.motherboardHomepageTextsFr
