@@ -58,6 +58,7 @@ library
                        Hypered.Design.Templates,
                        Hypered.Html.Common,
                        Hypered.Html.Helpers,
+                       Hypered.Html.Struct.Icons,
                        Hypered.Html.Struct.Prototypes.Motherboard.Documents,
                        Hypered.Html.Struct.Prototypes.Motherboard.Indices,
                        Hypered.Html.Struct.Prototypes.Refli.Common,

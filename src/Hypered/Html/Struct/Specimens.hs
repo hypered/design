@@ -2,6 +2,7 @@
 module Hypered.Html.Struct.Specimens where
 
 import Hypered.Html.Helpers
+import Hypered.Html.Struct.Icons (arrowRight)
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -65,7 +66,7 @@ specimenInvokeForm input output = do
             H.div $
               H.button ! A.class_ "c-button c-button--primary" $ do
                 H.span "Process"
-                -- +arrow-right
+                arrowRight
             H.div $
               H.button ! A.class_ "c-button c-button--secondary" $
                 H.span "Reset"
