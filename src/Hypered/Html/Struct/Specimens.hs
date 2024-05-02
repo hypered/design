@@ -88,10 +88,10 @@ specimenInvokeHtmx input output = do
     H.body $ do
       div "u-container" $ do
         div "c-text flow-all" $ do
-          H.h1 "The Invoke (form)"
+          H.h1 "The Invoke (htmx)"
           H.p "The Invoke is a two-column layout where the left part is some kind of input (e.g. a text editor, some UI widgets, a form, ...) and the right part shows some result."
       div "u-container" $
-        div "switcher" $ do
+        div "switcher" ! A.id "invoke" $ do
           H.form ! A.action "/specimens/invoke-result"
                  ! A.method "POST"
                  ! customAttribute "hx-post" "/specimens/invoke-result"
@@ -109,7 +109,13 @@ specimenInvokeHtmx input output = do
                 H.span "Process"
                 arrowRight
             H.div $
-              H.button ! A.class_ "c-button c-button--secondary" $
+              H.button ! A.formaction "/specimens/invoke--htmx"
+                       ! A.formmethod "GET"
+                       ! customAttribute "hx-get" "/specimens/invoke--htmx"
+                       ! customAttribute "hx-swap" "outerHTML"
+                       ! customAttribute "hx-target" "#invoke"
+                       ! customAttribute "hx-select" "#invoke"
+                       ! A.class_ "c-button c-button--secondary" $
                 H.span "Reset"
           div "flow" $
             H.p ! A.id "output-text" $ H.text output
