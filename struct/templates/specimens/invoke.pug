@@ -1,0 +1,41 @@
+include ../includes/mixins/icons.pug
+doctype html
+html(dir="ltr", lang="fr")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct.css")
+        script.
+            function reverseString(str) {
+                return str.trim().split('').reverse().join('');
+            }
+
+            function updateOutput() {
+                var inputText = document.getElementById('input-text').innerText;
+                document.getElementById('output-text').innerText = reverseString(inputText);
+            }
+
+            function resetInput() {
+                document.getElementById('input-text').innerText = 'Edit this line.';
+                updateOutput();
+            }
+
+            window.onload = resetInput;
+    body
+        .u-container
+            .c-text.flow-all
+                h1 The Invoke
+                p The Invoke is a two-column layout where the left part is some kind of input (e.g. a text editor, some UI widgets, a form, ...) and the right part shows some result.
+        .u-container
+            .switcher
+                .c-content.flow
+                    p#input-text(contenteditable="true" spellcheck="false")
+                    div
+                        button.c-button.c-button--primary(onclick="updateOutput()")
+                            span Process
+                            +arrow-right
+                    div
+                        button.c-button.c-button--secondary(onclick="resetInput()")
+                            span Reset
+                .flow
+                    p#output-text
