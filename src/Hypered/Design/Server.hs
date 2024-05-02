@@ -12,6 +12,7 @@ import           Control.Monad.Catch            ( MonadCatch
                                                 , MonadThrow
                                                 )
 import           Data.Aeson
+import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Fluid          as Fluid
 import qualified Hypered.Html.Struct.Prototypes.Motherboard.Indices as Motherboard
@@ -81,6 +82,10 @@ type App =    "" :> Raw
          :<|> "edit" :> Get '[HTML] Html
 
          :<|> "specimens" :> "navigation" :> Get '[HTML] Html
+         :<|> "specimens" :> "invoke--form" :> Get '[HTML] Html
+         :<|> "specimens" :> "invoke-result"
+              :> ReqBody '[FormUrlEncoded] InvokeForm
+              :> Post '[HTML] Html
          :<|> "prototypes" :> "refli" :> "motherboard-index" :> Get '[HTML] Html
          :<|> "prototypes" :> "refli" :> "motherboard-index-1" :> Get '[HTML] Html
          :<|> "prototypes" :> "refli" :> "motherboard-index-dense" :> Get '[HTML] Html
@@ -105,6 +110,8 @@ serverT root =
     :<|> showSettings
     :<|> edit -- Call here the page you want to work on.
     :<|> pure Specimens.specimenNavigation
+    :<|> pure (Specimens.specimenInvokeForm "Edit this line." (T.reverse "Edit this line."))
+    :<|> echoInvokeForm
     :<|> pure (Motherboard.prototypeMotherboardHomepage
            Motherboard.motherboardHomepageTextsFr
            "/specimens/navigation"
@@ -237,6 +244,23 @@ instance H.ToMarkup EchoPage where
 echoLogin :: ServerC m => Login -> m EchoPage
 echoLogin = pure . EchoPage . show
 
+--------------------------------------------------------------------------------
+-- | Represents the data on the invoke-form page.
+data InvokeForm = InvokeForm
+  { _invokeFormText :: Text
+  }
+  deriving (Eq, Show, Generic)
+  deriving anyclass (ToJSON, FromJSON)
+
+instance FromForm InvokeForm where
+  fromForm f = InvokeForm <$> parseUnique "input-text" f
+
+echoInvokeForm :: ServerC m => InvokeForm -> m Html
+echoInvokeForm InvokeForm {..} = do
+  let reversed = T.reverse _invokeFormText
+  pure $ Specimens.specimenInvokeForm _invokeFormText reversed
+
+--------------------------------------------------------------------------------
 edit :: ServerC m => m Html
 edit = pure $ Hy.document "Refli" Hy.homePageRefli
 

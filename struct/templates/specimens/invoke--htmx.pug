@@ -1,0 +1,26 @@
+include ../includes/mixins/icons.pug
+doctype html
+html(dir="ltr", lang="fr")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct.css")
+        script(src="/static/js/htmx-1.9.12.min.js")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 The Invoke (htmx)
+                p The Invoke is a two-column layout where the left part is some kind of input (e.g. a text editor, some UI widgets, a form, ...) and the right part shows some result.
+        .u-container
+            .switcher
+                form(action="/specimens/invoke-result.html" method="GET" hx-get="/specimens/invoke-result.html" hx-swap="outerHTML" hx-target="#output-text" hx-select="#output-text").c-content.flow
+                    input#input-text.no-style(type="text" name="input-text" value="Edit this line.")
+                    div
+                        button.c-button.c-button--primary
+                            span Process
+                            +arrow-right
+                    div
+                        button.c-button.c-button--secondary
+                            span Reset
+                .flow
+                    p#output-text

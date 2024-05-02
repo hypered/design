@@ -5,31 +5,16 @@ html(dir="ltr", lang="fr")
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
-        script.
-            function reverseString(str) {
-                return str.trim().split('').reverse().join('');
-            }
 
-            function updateOutput() {
-                var inputText = document.getElementById('input-text').innerText;
-                document.getElementById('output-text').innerText = reverseString(inputText);
-            }
-
-            function resetInput() {
-                document.getElementById('input-text').innerText = 'Edit this line.';
-                updateOutput();
-            }
-
-            window.onload = resetInput;
     body
         .u-container
             .c-text.flow-all
-                h1 The Invoke (JavaScript)
+                h1 The Invoke (Result)
                 p The Invoke is a two-column layout where the left part is some kind of input (e.g. a text editor, some UI widgets, a form, ...) and the right part shows some result.
         .u-container
             .switcher
-                .c-content.flow
-                    p#input-text(contenteditable="true" spellcheck="false")
+                form(action="/specimens/invoke-result.html" method="GET").c-content.flow
+                    input#input-text.no-style(type="text" name="input-text" value="Edit this line.")
                     div
                         button.c-button.c-button--primary(onclick="updateOutput()")
                             span Process
@@ -39,3 +24,4 @@ html(dir="ltr", lang="fr")
                             span Reset
                 .flow
                     p#output-text
+                        | .enil siht tidE
