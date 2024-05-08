@@ -29,3 +29,17 @@ Building the static site is also possible as an Nix attribute:
 $ nix-build --/itcss -A struct
 $ nix-shell -p busybox --run "httpd -f -p 9000 -h result/"
 ```
+
+# language-pug
+
+I've started to write language-pug. One goal is to be able to generate similar
+HTML pages to what we're already doing with Pug.js (as driven by the Gulpfile).
+
+Instead of a Gulpfile to find the `.pug` source file and translate them to
+HTML, a Makefile is provided.
+
+```
+$ nix-shell ../../language-pug/default.nix -A shell
+$ make -j 8
+$ make serve
+```
