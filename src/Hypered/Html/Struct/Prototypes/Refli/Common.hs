@@ -9,16 +9,26 @@ import qualified Text.Blaze.Html5 as H
 import qualified Text.Blaze.Html5.Attributes as A
 
 --------------------------------------------------------------------------------
-refliDocument :: Bool -> Text -> Text -> Text -> Html -> Html
-refliDocument autoreload lang title description body = do
+data RefliDocumentOptions = RefliDocumentOptions
+  { refliDocumentAutoreload :: Bool -- ^ Whether to inject the auto-reloading JavaScript (websocket-based) code to refresh the page during development.
+  }
+
+defaultOptions :: RefliDocumentOptions
+defaultOptions = RefliDocumentOptions
+  { refliDocumentAutoreload = False
+  }
+
+--------------------------------------------------------------------------------
+refliDocument :: RefliDocumentOptions -> Text -> Text -> Text -> Html -> Html
+refliDocument opts lang title description body = do
   H.docType
   H.html ! A.dir "ltr" ! A.lang (H.toValue lang) $ do
-    refliHead autoreload title description
+    refliHead opts title description
     body
 
 --------------------------------------------------------------------------------
-refliHead :: Bool -> Text -> Text -> Html
-refliHead autoreload title description =
+refliHead :: RefliDocumentOptions -> Text -> Text -> Html
+refliHead RefliDocumentOptions {..} title description =
   H.head $ do
     H.meta ! A.charset "utf-8"
     H.meta ! A.name "viewport"
@@ -39,4 +49,4 @@ refliHead autoreload title description =
     H.meta ! A.name "description"
            ! A.content (H.toValue description)
     H.title $ H.text title
-    when autoreload autoReload
+    when refliDocumentAutoreload autoReload

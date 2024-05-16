@@ -90,10 +90,10 @@ data DescribeFormPageTexts = DescribeFormPageTexts
   }
 
 -- Move elsewhere.
-prototypeRefliRootPage :: Bool -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> Html
-prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts {..} nbTexts = do
+prototypeRefliRootPage :: RefliDocumentOptions -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> Html
+prototypeRefliRootPage opts mhTexts@MainHeaderTexts {..} LandingPageTexts {..} nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Refli" landingPageDescription $
+    opts mainHeaderLanguage "Refli" landingPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         ""
@@ -115,10 +115,10 @@ prototypeRefliRootPage autoreload mhTexts@MainHeaderTexts {..} LandingPageTexts 
               "."
 
 -- Move elsewhere.
-prototypeRefliDescribeFormPage :: Bool -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> NavigationBlockTexts -> Html
-prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} nbTexts = do
+prototypeRefliDescribeFormPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> DescribeFormPageTexts  -> NavigationBlockTexts -> Html
+prototypeRefliDescribeFormPage opts url mhTexts@MainHeaderTexts {..} DescribeFormPageTexts {..} nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage describeFormPageTitle describeFormPageDescription $
+    opts mainHeaderLanguage describeFormPageTitle describeFormPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -145,10 +145,10 @@ prototypeRefliDescribeFormPage autoreload url mhTexts@MainHeaderTexts {..} Descr
                   H.span $ H.text describeFormPageFormSubmit
                   arrowRight
 
-prototypeRefliEchoPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> TL.Text -> Html
-prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+prototypeRefliEchoPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> TL.Text -> Html
+prototypeRefliEchoPage opts url mhTexts@MainHeaderTexts {..} nbTexts content = do
   refliDocument
-    autoreload mainHeaderLanguage "Echo" "" $
+    opts mainHeaderLanguage "Echo" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -161,10 +161,10 @@ prototypeRefliEchoPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts conte
                 H.lazyText content
 
 -- Similar to the echo page, but for Forming forms.
-prototypeRefliSubmitPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
-prototypeRefliSubmitPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts content = do
+prototypeRefliSubmitPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliSubmitPage opts url mhTexts@MainHeaderTexts {..} nbTexts content = do
   refliDocument
-    autoreload mainHeaderLanguage "Echo" "" $
+    opts mainHeaderLanguage "Echo" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -192,10 +192,10 @@ standardSmallForm action content =
         content
 
 -- Use this "base" page in the other functions in this file.
-prototypeRefliBasePage :: Bool -> Text -> Maybe Profile -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
-prototypeRefliBasePage autoreload url mprofile mhTexts@MainHeaderTexts {..} nbTexts content = do
+prototypeRefliBasePage :: RefliDocumentOptions -> Text -> Maybe Profile -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliBasePage opts url mprofile mhTexts@MainHeaderTexts {..} nbTexts content = do
   refliDocument
-    autoreload mainHeaderLanguage "" "" $
+    opts mainHeaderLanguage "" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -204,10 +204,10 @@ prototypeRefliBasePage autoreload url mprofile mhTexts@MainHeaderTexts {..} nbTe
           content
 
 -- Move elsewhere.
-prototypeRefliBlogIndexPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
-prototypeRefliBlogIndexPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} nbTexts = do
+prototypeRefliBlogIndexPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> BlogPostPageTexts -> NavigationBlockTexts -> Html
+prototypeRefliBlogIndexPage opts url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Blog" "" $ -- TODO Description.
+    opts mainHeaderLanguage "Blog" "" $ -- TODO Description.
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -239,10 +239,10 @@ data BlogPostPageTexts = BlogPostPageTexts
   }
 
 -- Move elsewhere.
-prototypeRefliBlogPostPage :: Bool -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Text -> NavigationBlockTexts -> Html
-prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual nbTexts = do
+prototypeRefliBlogPostPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> BlogPostPageTexts -> Text -> NavigationBlockTexts -> Html
+prototypeRefliBlogPostPage opts url mhTexts@MainHeaderTexts {..} BlogPostPageTexts {..} virtual nbTexts = do
   refliDocument
-    autoreload blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
+    opts blogPostPageLanguage blogPostPageTitle blogPostPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -251,10 +251,10 @@ prototypeRefliBlogPostPage autoreload url mhTexts@MainHeaderTexts {..} BlogPostP
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
 
-prototypeRefliFooPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> FooFormTexts -> Html
-prototypeRefliFooPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts fTexts = do
+prototypeRefliFooPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> FooFormTexts -> Html
+prototypeRefliFooPage opts url mhTexts@MainHeaderTexts {..} nbTexts fTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "" "" $ -- TODO page title, description, ...
+    opts mainHeaderLanguage "" "" $ -- TODO page title, description, ...
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -262,10 +262,10 @@ prototypeRefliFooPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts fTexts
         nbTexts $
           refliFooPageContent fTexts
 
-prototypeRefliRunPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html
-prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
+prototypeRefliRunPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html
+prototypeRefliRunPage opts url mhTexts@MainHeaderTexts {..} nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Run" "Run commands using the Refli CLI." $
+    opts mainHeaderLanguage "Run" "Run commands using the Refli CLI." $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -273,10 +273,10 @@ prototypeRefliRunPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts = do
         nbTexts $
           refliRunPageContent
 
-prototypeRefliCapturePage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Text -> Html
-prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cfTexts action = do
+prototypeRefliCapturePage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Text -> Html
+prototypeRefliCapturePage opts url mhTexts@MainHeaderTexts {..} nbTexts cfTexts action = do
   refliDocument
-    autoreload mainHeaderLanguage "" "" $ -- TODO page title, description, ...
+    opts mainHeaderLanguage "" "" $ -- TODO page title, description, ...
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -284,10 +284,10 @@ prototypeRefliCapturePage autoreload url mhTexts@MainHeaderTexts {..} nbTexts cf
         nbTexts $
           refliCapturePageContent cfTexts action
 
-prototypeRefliLandingPage :: Bool -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
-prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
+prototypeRefliLandingPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> LandingPageTexts -> NavigationBlockTexts -> LandingPageCaptureFormTexts -> Html
+prototypeRefliLandingPage opts url mhTexts@MainHeaderTexts {..} texts@LandingPageTexts {..} nbTexts cfTexts = do
   refliDocument
-    autoreload landingPageLanguage landingPageTitle landingPageDescription $
+    opts landingPageLanguage landingPageTitle landingPageDescription $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -295,10 +295,10 @@ prototypeRefliLandingPage autoreload url mhTexts@MainHeaderTexts {..} texts@Land
         nbTexts $
           refliLandingPageContent texts cfTexts
 
-prototypeRefliSignupPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> SignupFormTexts -> Text -> Html
-prototypeRefliSignupPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts sfTexts action = do
+prototypeRefliSignupPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> SignupFormTexts -> Text -> Html
+prototypeRefliSignupPage opts url mhTexts@MainHeaderTexts {..} nbTexts sfTexts action = do
   refliDocument
-    autoreload "xx" "" "" $
+    opts "xx" "" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -306,10 +306,10 @@ prototypeRefliSignupPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts sfT
         nbTexts $
           signupForm sfTexts action
 
-prototypeRefliResetPasswordPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> ResetPasswordFormTexts -> Text -> Html
-prototypeRefliResetPasswordPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts rpfTexts action = do
+prototypeRefliResetPasswordPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> ResetPasswordFormTexts -> Text -> Html
+prototypeRefliResetPasswordPage opts url mhTexts@MainHeaderTexts {..} nbTexts rpfTexts action = do
   refliDocument
-    autoreload "xx" "" "" $
+    opts "xx" "" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -317,10 +317,10 @@ prototypeRefliResetPasswordPage autoreload url mhTexts@MainHeaderTexts {..} nbTe
         nbTexts $
           resetPasswordForm rpfTexts action
 
-prototypeRefliLoginPage :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Text -> Html
-prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTexts action = do
+prototypeRefliLoginPage :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> LoginFormTexts -> Text -> Html
+prototypeRefliLoginPage opts url mhTexts@MainHeaderTexts {..} nbTexts lfTexts action = do
   refliDocument
-    autoreload "xx" "" "" $
+    opts "xx" "" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -329,32 +329,32 @@ prototypeRefliLoginPage autoreload url mhTexts@MainHeaderTexts {..} nbTexts lfTe
           loginForm lfTexts action
 
 -- HTTP status code page.
-prototypeRefliError400Page :: Bool -> Text -> Html
-prototypeRefliError400Page autoreload err = do
-  prototypeRefliErrorPageLang autoreload title400 $ do
+prototypeRefliError400Page :: RefliDocumentOptions -> Text -> Html
+prototypeRefliError400Page opts err = do
+  prototypeRefliErrorPageLang opts title400 $ do
     H.p $ H.code $ H.text err
     H.p $ H.text $ "EN: " <> message400En
     H.p $ H.text $ "FR: " <> message400Fr
     H.p $ H.text $ "NL: " <> message400Nl
 
-prototypeRefliError401PageEn :: Bool -> Html
-prototypeRefliError401PageEn autoreload = do
-  prototypeRefliErrorPageLang autoreload title401 $
+prototypeRefliError401PageEn :: RefliDocumentOptions -> Html
+prototypeRefliError401PageEn opts = do
+  prototypeRefliErrorPageLang opts title401 $
     H.p $ message401En "en"
 
-prototypeRefliError401PageFr :: Bool -> Html
-prototypeRefliError401PageFr autoreload = do
-  prototypeRefliErrorPageLang autoreload title401 $
+prototypeRefliError401PageFr :: RefliDocumentOptions -> Html
+prototypeRefliError401PageFr opts = do
+  prototypeRefliErrorPageLang opts title401 $
     H.p $ message401Fr "fr"
 
-prototypeRefliError401PageNl :: Bool -> Html
-prototypeRefliError401PageNl autoreload = do
-  prototypeRefliErrorPageLang autoreload title401 $
+prototypeRefliError401PageNl :: RefliDocumentOptions -> Html
+prototypeRefliError401PageNl opts = do
+  prototypeRefliErrorPageLang opts title401 $
     H.p $ message401Nl "nl"
 
-prototypeRefliError401Page :: Bool -> Html
-prototypeRefliError401Page autoreload = do
-  prototypeRefliErrorPageLang autoreload title401 $ do
+prototypeRefliError401Page :: RefliDocumentOptions -> Html
+prototypeRefliError401Page opts = do
+  prototypeRefliErrorPageLang opts title401 $ do
     H.p $ do
       H.text $ "EN: "
       message401En "en" -- Is it really useful to have this lang argument ?
@@ -365,54 +365,54 @@ prototypeRefliError401Page autoreload = do
       H.text $ "NL: "
       message401Nl "nl"
 
-prototypeRefliError404PageEn :: Bool -> Html
-prototypeRefliError404PageEn autoreload = do
-  prototypeRefliErrorPageLang autoreload title404 $
+prototypeRefliError404PageEn :: RefliDocumentOptions -> Html
+prototypeRefliError404PageEn opts = do
+  prototypeRefliErrorPageLang opts title404 $
     H.p $ H.text message404En
 
-prototypeRefliError404PageFr :: Bool -> Html
-prototypeRefliError404PageFr autoreload = do
-  prototypeRefliErrorPageLang autoreload title404 $
+prototypeRefliError404PageFr :: RefliDocumentOptions -> Html
+prototypeRefliError404PageFr opts = do
+  prototypeRefliErrorPageLang opts title404 $
     H.p $ H.text message404Fr
 
-prototypeRefliError404PageNl :: Bool -> Html
-prototypeRefliError404PageNl autoreload = do
-  prototypeRefliErrorPageLang autoreload title404 $
+prototypeRefliError404PageNl :: RefliDocumentOptions -> Html
+prototypeRefliError404PageNl opts = do
+  prototypeRefliErrorPageLang opts title404 $
     H.p $ H.text message404Nl
 
-prototypeRefliError404Page :: Bool -> Html
-prototypeRefliError404Page autoreload = do
-  prototypeRefliErrorPageLang autoreload title404 $ do
+prototypeRefliError404Page :: RefliDocumentOptions -> Html
+prototypeRefliError404Page opts = do
+  prototypeRefliErrorPageLang opts title404 $ do
     H.p $ H.text $ "EN: " <> message404En
     H.p $ H.text $ "FR: " <> message404Fr
     H.p $ H.text $ "NL: " <> message404Nl
 
-prototypeRefliError500PageEn :: Bool -> Html
-prototypeRefliError500PageEn autoreload = do
-  prototypeRefliErrorPageLang autoreload title500 $
+prototypeRefliError500PageEn :: RefliDocumentOptions -> Html
+prototypeRefliError500PageEn opts = do
+  prototypeRefliErrorPageLang opts title500 $
     H.p $ H.text message500En
 
-prototypeRefliError500PageFr :: Bool -> Html
-prototypeRefliError500PageFr autoreload = do
-  prototypeRefliErrorPageLang autoreload title500 $
+prototypeRefliError500PageFr :: RefliDocumentOptions -> Html
+prototypeRefliError500PageFr opts = do
+  prototypeRefliErrorPageLang opts title500 $
     H.p $ H.text message500Fr
 
-prototypeRefliError500PageNl :: Bool -> Html
-prototypeRefliError500PageNl autoreload = do
-  prototypeRefliErrorPageLang autoreload title500 $
+prototypeRefliError500PageNl :: RefliDocumentOptions -> Html
+prototypeRefliError500PageNl opts = do
+  prototypeRefliErrorPageLang opts title500 $
     H.p $ H.text message500Nl
 
-prototypeRefliError500Page :: Bool -> Html
-prototypeRefliError500Page autoreload = do
-  prototypeRefliErrorPageLang autoreload title500 $ do
+prototypeRefliError500Page :: RefliDocumentOptions -> Html
+prototypeRefliError500Page opts = do
+  prototypeRefliErrorPageLang opts title500 $ do
     H.p $ H.text $ "EN: " <> message500En
     H.p $ H.text $ "FR: " <> message500Fr
     H.p $ H.text $ "NL: " <> message500Nl
 
-prototypeRefliErrorPageLang :: Bool -> Text -> Html -> Html
-prototypeRefliErrorPageLang autoreload title content = do
+prototypeRefliErrorPageLang :: RefliDocumentOptions -> Text -> Html -> Html
+prototypeRefliErrorPageLang opts title content = do
   refliDocument
-    autoreload "en" "" "" $ -- TODO page title, description, ...
+    opts "en" "" "" $ -- TODO page title, description, ...
       prototypeRefliCenterPage $
         div "max-50rem u-flow-c-4 u-space-after-c-4 center" $
           div "u-container u-container-vertical" $
@@ -592,10 +592,10 @@ emailCaptureForm LandingPageCaptureFormTexts {..} action =
         arrowRight
       H.p $ H.text landingPageCaptureFormPrivacyNotice
 
-prototypeRefliMessageSubscribeSuccess :: Bool -> Text -> MainHeaderTexts -> MessageSubscribeSuccessTexts -> NavigationBlockTexts -> Html
-prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
+prototypeRefliMessageSubscribeSuccess :: RefliDocumentOptions -> Text -> MainHeaderTexts -> MessageSubscribeSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageSubscribeSuccess opts url mhTexts@MainHeaderTexts {..} texts nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Refli" "" $
+    opts mainHeaderLanguage "Refli" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -603,10 +603,10 @@ prototypeRefliMessageSubscribeSuccess autoreload url mhTexts@MainHeaderTexts {..
         nbTexts $
           messageSubscribeSuccess texts
 
-prototypeRefliMessageFooSuccess :: Bool -> Text -> MainHeaderTexts -> MessageFooSuccessTexts -> NavigationBlockTexts -> Html
-prototypeRefliMessageFooSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
+prototypeRefliMessageFooSuccess :: RefliDocumentOptions -> Text -> MainHeaderTexts -> MessageFooSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageFooSuccess opts url mhTexts@MainHeaderTexts {..} texts nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Refli" "" $
+    opts mainHeaderLanguage "Refli" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -614,10 +614,10 @@ prototypeRefliMessageFooSuccess autoreload url mhTexts@MainHeaderTexts {..} text
         nbTexts $
           messageFooSuccess texts
 
-prototypeRefliMessageSignupSuccess :: Bool -> Text -> MainHeaderTexts -> MessageSignupSuccessTexts -> NavigationBlockTexts -> Html
-prototypeRefliMessageSignupSuccess autoreload url mhTexts@MainHeaderTexts {..} texts nbTexts = do
+prototypeRefliMessageSignupSuccess :: RefliDocumentOptions -> Text -> MainHeaderTexts -> MessageSignupSuccessTexts -> NavigationBlockTexts -> Html
+prototypeRefliMessageSignupSuccess opts url mhTexts@MainHeaderTexts {..} texts nbTexts = do
   refliDocument
-    autoreload mainHeaderLanguage "Refli" "" $
+    opts mainHeaderLanguage "Refli" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
@@ -654,10 +654,10 @@ messageSignupSuccess MessageSignupSuccessTexts {..} =
           H.h2 $ H.text messageSignupSuccessTitle
           H.p $ H.preEscapedToMarkup messageSignupSuccessParagraph1
 
-prototypeRefliMessageRunResult :: Bool -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Text -> Text -> Html
-prototypeRefliMessageRunResult autoreload url mhTexts@MainHeaderTexts {..} nbTexts cmd content = do
+prototypeRefliMessageRunResult :: RefliDocumentOptions -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Text -> Text -> Html
+prototypeRefliMessageRunResult opts url mhTexts@MainHeaderTexts {..} nbTexts cmd content = do
   refliDocument
-    autoreload mainHeaderLanguage "Run" "" $
+    opts mainHeaderLanguage "Run" "" $
       prototypeRefliPage
         mainHeaderLanguage
         url

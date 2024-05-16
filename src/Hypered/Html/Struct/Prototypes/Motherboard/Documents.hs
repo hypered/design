@@ -38,7 +38,7 @@ data Block =
 prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
 prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = do
   Struct.refliDocument
-    False
+    Struct.defaultOptions
     "fr"
     documentFullTitle
     (documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.") $
