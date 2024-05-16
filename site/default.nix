@@ -94,7 +94,7 @@ in rec
   '';
 
   static = pkgs.runCommand "static" {} ''
-    mkdir -p out/{css,fonts,images,img}
+    mkdir -p out/{css,fonts,images,img,js}
 
     cp -r ${../static}/css/* out/css/
     cp -r ${../static}/fonts/* out/fonts/
@@ -104,6 +104,7 @@ in rec
     cp -r ${struct}/static/css/min/struct.css out/css/struct.min.css
     cp -r ${struct}/static/fonts/* out/fonts/
     cp -r ${struct}/static/images/* out/images/
+    cp -r ${struct}/static/js/* out/js/
 
     cp -r out $out
   '';
