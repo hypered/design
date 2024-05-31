@@ -19,5 +19,5 @@ import ../../layouts/refli/page
 
             a.c-button.c-button--primary(href='blog-post-introducing-refli.html')
                 span Read more
-                include ../../includes/mixins/icons.pug
+                include ../../includes/mixins/icons.slab
                 +arrow-right

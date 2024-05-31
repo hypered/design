@@ -19,5 +19,5 @@ import ../../layouts/refli/page
 
                             button.c-button.c-button--secondary
                                 span Submit
-                                include ../../includes/mixins/icons.pug
+                                include ../../includes/mixins/icons.slab
                                 +arrow-right

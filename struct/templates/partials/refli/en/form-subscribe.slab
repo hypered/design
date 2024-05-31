@@ -1,4 +1,4 @@
-include ../../../includes/mixins/icons.pug
+include ../../../includes/mixins/icons.slab
 
 .box.u-flow-c-4
     form.c-text.flow
