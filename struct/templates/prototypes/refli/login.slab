@@ -18,6 +18,6 @@ import ../../layouts/refli/page.slab
                     button.c-button.c-button--primary.c-button--tall(type="submit")
                         span Log in
                         include ../../includes/mixins/icons.slab
-                        +arrow-right
+                        arrow-right
                     a.c-button.c-button--secondary.c-button--tall(href="signup.html")
                         span Sign up

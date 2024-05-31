@@ -18,7 +18,7 @@ html(dir="ltr", lang="fr")
                     div
                         button.c-button.c-button--primary
                             span Process
-                            +arrow-right
+                            arrow-right
                     div
                         button.c-button.c-button--secondary
                             span Reset

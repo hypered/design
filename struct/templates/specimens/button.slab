@@ -21,10 +21,10 @@ html(dir="ltr", lang="en")
                     span Register
                 button.c-button.c-button--primary.c-button--tall(type="submit")
                     span Log in
-                    +arrow-right
+                    arrow-right
                 .switcher-0px
                     button.c-button.c-button--primary.c-button--tall(type="submit")
                         span Log in
-                        +arrow-right
+                        arrow-right
                     button.c-button.c-button--secondary.c-button--tall(type="submit")
                         span Register

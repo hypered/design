@@ -13,6 +13,6 @@ import ../../layouts/refli/page
                     button.c-button.c-button--primary.c-button--tall(type="submit")
                         span Reset password
                         include ../../includes/mixins/icons.slab
-                        +arrow-right
+                        arrow-right
                     a.c-button.c-button--secondary.c-button--tall(href="login.html")
                         span Log in

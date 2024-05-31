@@ -18,12 +18,12 @@ html(dir="ltr", lang="en")
                 div
                     button.c-button.c-button--primary(type="submit")
                         span Log in
-                        +arrow-right
+                        arrow-right
 
                 div
                     button.c-button.c-button--primary.c-button--primary-push(type="submit")
                         span Log in
-                        +arrow-right
+                        arrow-right
 
                 style.
                   button.x-button {display: inline-flex; text-align: center; align-items: center;}
@@ -39,17 +39,17 @@ html(dir="ltr", lang="en")
                 div
                     button.x-button
                         span Log in
-                        +arrow-right
+                        arrow-right
 
                 p Styling links as buttons.
                 div
                     a.c-button.c-button--primary(href='#')
                         span Login
-                        +arrow-right
+                        arrow-right
                 div
                     a.c-button.c-button--secondary(href='#')
                         span Register
-                        +arrow-right
+                        arrow-right
                 div
                     a.c-button.c-button--secondary.c-button--tall(href="signup")
                         span Register

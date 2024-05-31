@@ -20,4 +20,4 @@ import ../../layouts/refli/page
                             button.c-button.c-button--primary(type="submit")
                                 span Submit
                                 include ../../includes/mixins/icons.slab
-                                +arrow-right
+                                arrow-right

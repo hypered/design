@@ -8,5 +8,5 @@ include ../../../includes/mixins/icons.slab
             input.c-input
         button.c-button.c-button--primary(type="submit")
             span Keep me updated
-            +arrow-right
+            arrow-right
         p We respect your privacy. You can unsubscribe at any time.

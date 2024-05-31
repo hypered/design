@@ -18,7 +18,7 @@ html(dir="ltr", lang="fr")
                     div
                         button.c-button.c-button--primary(onclick="updateOutput()")
                             span Process
-                            +arrow-right
+                            arrow-right
                     div
                         button.c-button.c-button--secondary(onclick="resetInput()")
                             span Reset

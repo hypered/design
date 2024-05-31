@@ -30,7 +30,7 @@ html(dir="ltr", lang="en")
                                 p Lorem ipsum.
                             button.c-button.c-button--primary(type="submit")
                                 span Log in
-                                +arrow-right
+                                arrow-right
 
             .max-30rem.u-flow-c-0
                 form
@@ -48,6 +48,6 @@ html(dir="ltr", lang="en")
                     .switcher-0px
                         button.c-button.c-button--primary.c-button--tall(type="submit")
                             span Log in
-                            +arrow-right
+                            arrow-right
                         a.c-button.c-button--secondary.c-button--tall(href="#")
                             span Sign up
