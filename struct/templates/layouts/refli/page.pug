@@ -6,12 +6,12 @@ html(dir="ltr", lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
         link(rel="stylesheet", href="/static/css/struct/lorem.css")
-        block canonical
+        default canonical
             //-
               By default, noindex. You should use a link rel="canonical"
               when creating a prototype page, and point to the real page.
             meta(name="robots" content="noindex")
-        block title
+        default title
     body.u-container-vertical
         header
             .u-container
@@ -24,7 +24,7 @@ html(dir="ltr", lang="en")
 
         main
             .u-container
-                block content
+                default content
 
         footer
             .u-container

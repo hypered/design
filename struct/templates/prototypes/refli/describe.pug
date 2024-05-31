@@ -1,16 +1,17 @@
-extends ../../layouts/refli/page
+import ../../layouts/refli/page
 
-block content
-    .switcher.switch-at-60rem.u-flow-c-4.u-space-after-c-4
-        .flow
-            h1 Compute a gross-to-net salary conversion
-            p Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions.
-        .box
-            form.c-text.flow
-                h4 Salary computation
-                div
-                    label Gross monthly salary
-                    input.c-input
-                button.c-button.c-button--primary(type="submit")
-                    span Compute
-                    +arrow-right
+    frag content
+        .switcher.switch-at-60rem.u-flow-c-4.u-space-after-c-4
+            .flow
+                h1 Compute a gross-to-net salary conversion
+                p Using the form on this page, you can compute a net salary and its associated professional withholding tax and social security contributions.
+            .box
+                form.c-text.flow
+                    h4 Salary computation
+                    div
+                        label Gross monthly salary
+                        input.c-input
+                    button.c-button.c-button--primary(type="submit")
+                        span Compute
+                        include ../../includes/mixins/icons.pug
+                        +arrow-right

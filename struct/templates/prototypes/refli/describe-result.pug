@@ -1,57 +1,57 @@
-extends ../../layouts/refli/page
+import ../../layouts/refli/page
 
-block content
-    .c-content.flow-all.limit-42em
-        h1 Gross-to-net salary conversion
-        small.breadcrumb 3600.00 EUR → 2399.65 EUR
-    .switcher
-        .flow-all
-            p This page presents a net monthly salary calculation based on a <strong>gross</strong> salary of <strong>3600.00 EUR</strong> for a <strong>single employee</strong> with no disabilities, no children and no dependents. <i>The information on this page is for general guidance only.</i>
+    frag content
+        .c-content.flow-all.limit-42em
+            h1 Gross-to-net salary conversion
+            small.breadcrumb 3600.00 EUR → 2399.65 EUR
+        .switcher
+            .flow-all
+                p This page presents a net monthly salary calculation based on a <strong>gross</strong> salary of <strong>3600.00 EUR</strong> for a <strong>single employee</strong> with no disabilities, no children and no dependents. <i>The information on this page is for general guidance only.</i>
 
-        div
-            // empty
+            div
+                // empty
 
-    .c-content.flow-leader-line.limit-42em
-        <div class="leader-line">
-            <div class="leader-line-a">Revenu brut</div>
-            <div class="leader-line-b">3600.00 EUR</div>
-        </div>
-        <div class="leader-line">
-            <div class="leader-line-a">Cotisations sociales personnelles</div>
-            <div class="leader-line-b">-470.52 EUR</div>
-        </div>
-        <div class="leader-line">
-            <div class="leader-line-a"><strong>Revenu brut imposable</strong></div>
-            <div class="leader-line-b"><strong>3129.48 EUR</strong></div>
-        </div>
-        <div class="leader-line">
-            <div class="leader-line-a">Précompte professionnel</div>
-            <div class="leader-line-b">-703.99 EUR</div>
-        </div>
-        <div class="leader-line">
-            <div class="leader-line-a">Cotisation spéciale pour la sécurité sociale</div>
-            <div class="leader-line-b">-25.84 EUR</div>
-        </div><div class="leader-line">
-            <div class="leader-line-a"><strong>Revenu net</strong></div>
-            <div class="leader-line-b"><strong>2399.65 EUR</strong></div>
-        </div>
-    .c-content.flow-all.limit-42em
-        <p>
-        <a href="/fr/describe/3600.00?details">→ Afficher plus de détails</a>
-        </p>
-        <p>
-        <a href="/fr/describe/3600.00?status=worker">= Le travailleur est ouvrier</a><br>
-        <a href="/fr/describe/3600.00?status=administrator">= Le travailleur est dirigeant</a><br>
-        <a href="/fr/describe/3600.00?disability">= Le travailleur a un handicap</a><br>
-        <a href="/fr/describe/3600.00?children=1">+ Ajouter un enfant</a><br>
-        <a href="/fr/describe/3600.00?c-with-d=1">+ Ajouter un enfant avec un handicap</a><br>
-        <a href="/fr/describe/3600.00?65-dep=1">+ Ajouter une personne de 65 ans et plus avec situation de dépendance</a><br>
-        <a href="/fr/describe/3600.00?65-plus=1">+ Ajouter une personne de 65 ans et plus (mesure transitoire)</a><br>
-        <a href="/fr/describe/3600.00?65-p-with-d=1">+ Ajouter une personne de 65 ans et plus (mesure transitoire) avec un handicap</a><br>
-        <a href="/fr/describe/3600.00?others=1">+ Ajouter une personne à charge</a><br>
-        <a href="/fr/describe/3600.00?o-with-d=1">+ Ajouter une personne à charge avec un handicap</a><br>
-        <a href="/fr/describe/3600.00?second=yes">= Le conjoint a un revenu</a><br>
-        <a href="/fr/describe/3600.00?second=a">= Le conjoint a un revenu limité</a><br>
-        <a href="/fr/describe/3600.00?second=b">= Le conjoint a une pension limitée</a><br>
-        <a href="/fr/describe/3600.00?second=no">= Le conjoint n&#39;a pas de revenu</a>
-        </p>
+        .c-content.flow-leader-line.limit-42em
+            <div class="leader-line">
+                <div class="leader-line-a">Revenu brut</div>
+                <div class="leader-line-b">3600.00 EUR</div>
+            </div>
+            <div class="leader-line">
+                <div class="leader-line-a">Cotisations sociales personnelles</div>
+                <div class="leader-line-b">-470.52 EUR</div>
+            </div>
+            <div class="leader-line">
+                <div class="leader-line-a"><strong>Revenu brut imposable</strong></div>
+                <div class="leader-line-b"><strong>3129.48 EUR</strong></div>
+            </div>
+            <div class="leader-line">
+                <div class="leader-line-a">Précompte professionnel</div>
+                <div class="leader-line-b">-703.99 EUR</div>
+            </div>
+            <div class="leader-line">
+                <div class="leader-line-a">Cotisation spéciale pour la sécurité sociale</div>
+                <div class="leader-line-b">-25.84 EUR</div>
+            </div><div class="leader-line">
+                <div class="leader-line-a"><strong>Revenu net</strong></div>
+                <div class="leader-line-b"><strong>2399.65 EUR</strong></div>
+            </div>
+        .c-content.flow-all.limit-42em
+            <p>
+            <a href="/fr/describe/3600.00?details">→ Afficher plus de détails</a>
+            </p>
+            <p>
+            <a href="/fr/describe/3600.00?status=worker">= Le travailleur est ouvrier</a><br>
+            <a href="/fr/describe/3600.00?status=administrator">= Le travailleur est dirigeant</a><br>
+            <a href="/fr/describe/3600.00?disability">= Le travailleur a un handicap</a><br>
+            <a href="/fr/describe/3600.00?children=1">+ Ajouter un enfant</a><br>
+            <a href="/fr/describe/3600.00?c-with-d=1">+ Ajouter un enfant avec un handicap</a><br>
+            <a href="/fr/describe/3600.00?65-dep=1">+ Ajouter une personne de 65 ans et plus avec situation de dépendance</a><br>
+            <a href="/fr/describe/3600.00?65-plus=1">+ Ajouter une personne de 65 ans et plus (mesure transitoire)</a><br>
+            <a href="/fr/describe/3600.00?65-p-with-d=1">+ Ajouter une personne de 65 ans et plus (mesure transitoire) avec un handicap</a><br>
+            <a href="/fr/describe/3600.00?others=1">+ Ajouter une personne à charge</a><br>
+            <a href="/fr/describe/3600.00?o-with-d=1">+ Ajouter une personne à charge avec un handicap</a><br>
+            <a href="/fr/describe/3600.00?second=yes">= Le conjoint a un revenu</a><br>
+            <a href="/fr/describe/3600.00?second=a">= Le conjoint a un revenu limité</a><br>
+            <a href="/fr/describe/3600.00?second=b">= Le conjoint a une pension limitée</a><br>
+            <a href="/fr/describe/3600.00?second=no">= Le conjoint n&#39;a pas de revenu</a>
+            </p>

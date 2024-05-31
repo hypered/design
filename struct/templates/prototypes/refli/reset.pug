@@ -1,17 +1,18 @@
-extends ../../layouts/refli/page
+import ../../layouts/refli/page
 
-block content
-    .max-30rem.u-flow-c-4.u-space-after-c-4.center
-        form
-            .u-container.u-container-vertical.bordered-3
-                .c-text.flow
-                    h2 Reset password for Refli
-                    div
-                        label Email address
-                        input.c-input
-            .switcher-0px
-                button.c-button.c-button--primary.c-button--tall(type="submit")
-                    span Reset password
-                    +arrow-right
-                a.c-button.c-button--secondary.c-button--tall(href="login.html")
-                    span Log in
+    frag content
+        .max-30rem.u-flow-c-4.u-space-after-c-4.center
+            form
+                .u-container.u-container-vertical.bordered-3
+                    .c-text.flow
+                        h2 Reset password for Refli
+                        div
+                            label Email address
+                            input.c-input
+                .switcher-0px
+                    button.c-button.c-button--primary.c-button--tall(type="submit")
+                        span Reset password
+                        include ../../includes/mixins/icons.pug
+                        +arrow-right
+                    a.c-button.c-button--secondary.c-button--tall(href="login.html")
+                        span Log in

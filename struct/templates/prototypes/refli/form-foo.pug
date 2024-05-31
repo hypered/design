@@ -1,13 +1,14 @@
-extends ../../layouts/refli/page
+import ../../layouts/refli/page
 
-block content
-    .max-30rem.u-flow-c-4.u-space-after-c-4.center
-        .box.u-flow-c-4
-            form.c-text.flow(action="/prototypes/refli/message-foo-success.html")
-                h4 Foo
-                div
-                    label Text input
-                    input.c-input
-                button.c-button.c-button--primary(type="submit")
-                    span Submit
-                    +arrow-right
+    frag content
+        .max-30rem.u-flow-c-4.u-space-after-c-4.center
+            .box.u-flow-c-4
+                form.c-text.flow(action="/prototypes/refli/message-foo-success.html")
+                    h4 Foo
+                    div
+                        label Text input
+                        input.c-input
+                    button.c-button.c-button--primary(type="submit")
+                        span Submit
+                        include ../../includes/mixins/icons.pug
+                        +arrow-right

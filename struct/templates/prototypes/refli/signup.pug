@@ -1,23 +1,24 @@
-extends ../../layouts/refli/page
+import ../../layouts/refli/page
 
-block content
-    .max-30rem.u-flow-c-4.u-space-after-c-4.center
-        form(method="GET", action="message-signup-success.html")
-            .u-container.u-container-vertical.bordered-3
-                .c-text.flow
-                    h2 Sign up for Refli
-                    div
-                        label Username
-                        input.c-input
-                    div
-                        label Email address
-                        input.c-input
-                    div
-                        label Password
-                        input.c-input
-            .switcher-0px
-                button.c-button.c-button--primary.c-button--tall(type="submit")
-                    span Sign up
-                    +arrow-right
-                a.c-button.c-button--secondary.c-button--tall(href="login.html")
-                    span Log in
+    frag content
+        .max-30rem.u-flow-c-4.u-space-after-c-4.center
+            form(method="GET", action="message-signup-success.html")
+                .u-container.u-container-vertical.bordered-3
+                    .c-text.flow
+                        h2 Sign up for Refli
+                        div
+                            label Username
+                            input.c-input
+                        div
+                            label Email address
+                            input.c-input
+                        div
+                            label Password
+                            input.c-input
+                .switcher-0px
+                    button.c-button.c-button--primary.c-button--tall(type="submit")
+                        span Sign up
+                        include ../../includes/mixins/icons.pug
+                        +arrow-right
+                    a.c-button.c-button--secondary.c-button--tall(href="login.html")
+                        span Log in
