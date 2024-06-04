@@ -21,16 +21,4 @@ in rec
       mv itcss/dist $out
     '';
   };
-  struct = nixpkgs.stdenv.mkDerivation {
-    name = "struct";
-    src = ../.;
-    installPhase = ''
-      # Make sure we don't use an already built dist/.
-      rm -rf dist node_modules
-
-      ln -sf ${nodeDependencies}/lib/node_modules ./node_modules
-      ./node_modules/gulp/bin/gulp.js build --gulpfile itcss/gulpfile.js --cwd struct/
-      mv struct/dist $out
-    '';
-  };
 }

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 let
   site = (import ../.).site;
-  itcss = (import ../itcss {}).site;
-  struct = (import ../itcss {}).struct;
+  itcss = (import ../.).itcss;
+  struct = (import ../.).struct;
   hs = (import ../.).hs;
   haddock = (import ../.).haddock;
   brochure = (import ../.).brochure;

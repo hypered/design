@@ -9,7 +9,7 @@ let
   # TODO We need to update our change-haddock.sh script to use
   # this more recent derivation.
   haddock = (import ../.).haddock;
-  struct = (import ../itcss {}).struct;
+  struct = (import ../.).struct;
 
 in rec
 {

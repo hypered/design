@@ -55,7 +55,7 @@ in rec
   site = (import site/default.nix {}).html.all;
   hs = (import site/default.nix {}).html.hs;
   itcss = (import ./itcss {}).site;
-  struct = (import ./itcss {}).struct;
+  struct = (import ./struct {}).site;
   emails = import ./emails {};
 
   # This is the static directory, usually hosted as /static

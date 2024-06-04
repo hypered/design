@@ -23,7 +23,7 @@ CSS_TARGETS := $(patsubst $(SCSS_DIR)/%.css,$(SCSS_OUTPUT_DIR)/%.css,$(CSS_FILES
 STATIC_TARGETS := $(patsubst $(STATIC_DIR)/%, $(STATIC_OUTPUT_DIR)/%, $(STATIC_FILES))
 
 # Combined output targets
-ALL_TARGETS := $(HTML_TARGETS) $(CSS_TARGETS) $(STATIC_TARGETS) $(STATIC_OUTPUT_DIR)/css/struct.css
+ALL_TARGETS := $(HTML_TARGETS) $(CSS_TARGETS) $(STATIC_TARGETS) $(STATIC_OUTPUT_DIR)/css/struct.css $(STATIC_OUTPUT_DIR)/css/min/struct.css
 
 # Default goal
 .PHONY: all
@@ -43,6 +43,11 @@ $(STATIC_OUTPUT_DIR)/css/%.css: scss/%.scss
 $(STATIC_OUTPUT_DIR)/css/struct.css: scss/struct.scss
 	mkdir -p $(dir $@)
 	sass --precision 4 $< > $@
+
+# Combined and minified CSS rule
+$(STATIC_OUTPUT_DIR)/css/min/struct.css: scss/struct.scss
+	mkdir -p $(dir $@)
+	sass --precision 4 --style=compressed $< > $@
 
 # Copy static files rule
 $(STATIC_OUTPUT_DIR)/%: $(STATIC_DIR)/%
