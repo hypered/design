@@ -1,22 +1,7 @@
-doctype html
-html(dir="ltr", lang="en")
-    head
-        meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/static/css/struct.css")
-    -- TODO This should'nt use a .cover (here with empty header and footer).
-    body.u-container-vertical.cover
-        header
-        main.center
-            .max-50rem.u-flow-c-4.u-space-after-c-4.center
-                    .u-container.u-container-vertical
-                        .c-text.flow
-                            .box.c-text.flow
-                                a(href="/prototypes/refli/index-constant.html")
-                                    img(src="/static/images/logo.svg" alt="Refli")
-                                h2 500 Internal Server Error
-                                p EN: Our server experienced an unexpected condition. Please try to refresh the page or come back later. We apologize for any inconvenience.
-                                p FR: Notre serveur a rencontré une situation inattendue. Veuillez rafraîchir la page ou revenir plus tard. Nous vous prions de nous excuser pour la gêne occasionnée.
-                                p NL: Onze server ondervond een onverwachte omstandigheid. Probeer de pagina te vernieuwen of kom later terug. Onze excuses voor het ongemak.
+include ./http-xxx.slab
 
-        footer
+http-error-message
+    h2 500 Internal Server Error
+    p EN: Our server experienced an unexpected condition. Please try to refresh the page or come back later. We apologize for any inconvenience.
+    p FR: Notre serveur a rencontré une situation inattendue. Veuillez rafraîchir la page ou revenir plus tard. Nous vous prions de nous excuser pour la gêne occasionnée.
+    p NL: Onze server ondervond een onverwachte omstandigheid. Probeer de pagina te vernieuwen of kom later terug. Onze excuses voor het ongemak.
