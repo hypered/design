@@ -1,6 +1,6 @@
 # Directory variables
-PUG_BASE_DIR := templates
-PUG_DIRS := templates/notes templates/specimens templates/index.pug templates/struct.pug
+SLAB_BASE_DIR := templates
+SLAB_DIRS := templates/notes templates/specimens templates/index.slab templates/struct.slab
 SCSS_DIR := scss/struct
 STATIC_DIR := static
 
@@ -10,15 +10,15 @@ SCSS_OUTPUT_DIR := _site/static/css/struct
 STATIC_OUTPUT_DIR := _site/static
 
 # Find sources
-PUG_SOURCES := $(shell find $(PUG_DIRS) -name '*.pug')
+SLAB_SOURCES := $(shell find $(SLAB_DIRS) -name '*.slab')
 SCSS_SOURCES := $(shell find $(SCSS_DIR) -name '*.scss')
 STATIC_FILES := $(shell find $(STATIC_DIR) -type f)
 
 # Targets
-HTML_FILES := $(patsubst %.pug,%.html,$(PUG_SOURCES))
+HTML_FILES := $(patsubst %.slab,%.html,$(SLAB_SOURCES))
 CSS_FILES := $(patsubst %.scss,%.css,$(SCSS_SOURCES))
 
-HTML_TARGETS := $(addprefix $(HTML_OUTPUT_BASE)/,$(subst $(PUG_BASE_DIR)/,,$(HTML_FILES)))
+HTML_TARGETS := $(addprefix $(HTML_OUTPUT_BASE)/,$(subst $(SLAB_BASE_DIR)/,,$(HTML_FILES)))
 CSS_TARGETS := $(patsubst $(SCSS_DIR)/%.css,$(SCSS_OUTPUT_DIR)/%.css,$(CSS_FILES))
 STATIC_TARGETS := $(patsubst $(STATIC_DIR)/%, $(STATIC_OUTPUT_DIR)/%, $(STATIC_FILES))
 
@@ -30,9 +30,9 @@ ALL_TARGETS := $(HTML_TARGETS) $(CSS_TARGETS) $(STATIC_TARGETS) $(STATIC_OUTPUT_
 all: $(ALL_TARGETS)
 
 # HTML generation rule
-$(HTML_OUTPUT_BASE)/%.html: $(PUG_BASE_DIR)/%.pug
+$(HTML_OUTPUT_BASE)/%.html: $(SLAB_BASE_DIR)/%.slab
 	mkdir -p $(dir $@)
-	pughs render $< > $@
+	slab render $< > $@
 
 # SCSS to CSS rule
 $(STATIC_OUTPUT_DIR)/css/%.css: scss/%.scss
