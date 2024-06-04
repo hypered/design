@@ -6,7 +6,7 @@
         p Nearly a year into its development, it's about time we introduced Refli. This blog post is our first step to share the concept and vision behind our project, which is focused on simplifying Belgian payroll calculations.
 
     div
-        // empty
+        --- empty
 
 .c-content.flow-all.limit-42em
     p Refli is primarily dedicated to making Belgian payroll calculations clearer and more accessible. Our work is designed to serve a wide audience, including students, payroll professionals, and developers, by providing essential tools and information in a single, unified and comprehensive platform.

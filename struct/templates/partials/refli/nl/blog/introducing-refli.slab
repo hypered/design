@@ -6,7 +6,7 @@
         p Na bijna een jaar ontwikkeling is het tijd om Refli voor te stellen. Deze blogpost is onze eerste stap om het concept en de visie achter ons project te delen, dat gericht is op het vereenvoudigen van Belgische loonberekeningen.
 
     div
-        // empty
+        --- empty
 
 .c-content.flow-all.limit-42em
     p Refli richt zich in de eerste plaats op het duidelijker en toegankelijker maken van Belgische loonberekeningen. Ons werk is ontworpen om een breed publiek te bedienen, waaronder studenten, payroll professionals en ontwikkelaars, door essentiële tools en informatie aan te bieden in één enkel, uniform en uitgebreid platform.

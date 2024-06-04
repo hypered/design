@@ -15,7 +15,7 @@ html(dir="ltr", lang="en")
             hr
 
             .u-bar__right
-                include ../includes/main-header--page-struct
+                include ../includes/main-header--page-struct.slab
             hr
 
         .u-container

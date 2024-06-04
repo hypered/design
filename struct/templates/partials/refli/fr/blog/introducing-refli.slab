@@ -6,7 +6,7 @@
         p Près d'un an après le début de son développement, il est temps de présenter Refli. Ce blog post est notre première étape pour partager le concept et la vision derrière notre projet, qui se concentre sur la simplification des calculs de salaires belges.
 
     div
-        // empty
+        --- empty
 
 .c-content.flow-all.limit-42em
     p Refli se consacre principalement à rendre les calculs de salaires belges plus clairs et plus accessibles. Notre travail est conçu pour servir un large public, y compris les étudiants, les professionnels de la paie et les développeurs, en fournissant des outils et des informations essentiels sur une plate-forme unique, unifiée et complète.

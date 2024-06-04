@@ -1,4 +1,4 @@
-import ../../layouts/refli/page
+import ../../layouts/refli/page.slab
 
     frag content
         style.
@@ -13,7 +13,7 @@ import ../../layouts/refli/page
 
                 p We believe that even the most complex concepts can be made understandable, and we're committed to breaking down barriers in payroll calculation.
 
-                include ../../partials/refli/en/form-subscribe
+                include ../../partials/refli/en/form-subscribe.slab
 
             div
-                // empty
+                --- empty

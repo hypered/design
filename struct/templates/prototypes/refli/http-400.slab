@@ -4,7 +4,7 @@ html(dir="ltr", lang="en")
         meta(charset="utf-8")
         meta(name="viewport" content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
-    //- TODO This should'nt use a .cover (here with empty header and footer).
+    -- TODO This should'nt use a .cover (here with empty header and footer).
     body.u-container-vertical.cover
         header
         main.center

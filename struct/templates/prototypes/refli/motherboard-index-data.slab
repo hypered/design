@@ -21,12 +21,10 @@ html(dir="ltr", lang="en")
             p
                 small.breadcrumb Loi / 2022
 
-            // Given from the root of the project. See the definition of `require`
-            // in the gulpfile.
-            - var entries = require("./data/lex/law/2022.json")
+            let entries = ../../../data/lex/law/2022.json
 
             .c-text
-              each entry, index in entries
+              for entry, index in entries
                 .mb-entry
                   div.mb-num
                     p= index + 1 + '.'

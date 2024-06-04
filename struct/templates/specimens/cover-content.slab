@@ -17,7 +17,7 @@ html(dir="ltr", lang="en")
                         a(href="#")
                             img(src="/static/images/logo.svg" alt="Refli")
                     .u-bar__right
-                        include ../includes/main-header--page-struct
+                        include ../includes/main-header--page-struct.slab
         main.center
             p Hello.
 

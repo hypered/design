@@ -23,7 +23,7 @@ html(dir="ltr", lang="en")
                     p Lex Iterata collects and transforms the content of the <a href="https://www.ejustice.just.fgov.be/">Belgian Official Journal</a>, presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption.
 
                 div
-                    // empty
+                    --- empty
 
             .c-text.flow-all.limit-42em
                 p Lex Iterata is continually evolving. At present, we provide access to collections of documents under the <a href="https://www.ejustice.just.fgov.be/eli/">ELI (European Legislation Identifier) scheme</a>. Both user-friendly web pages and structured JSON indices are available for your convenience.

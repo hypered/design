@@ -1,4 +1,4 @@
-// A variant of the main header for the web site (page) using scss/struct.
+--- A variant of the main header for the web site (page) using scss/struct.
 ul
     li
         .menu-item

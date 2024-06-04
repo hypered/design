@@ -7,7 +7,7 @@ html(dir="ltr", lang="en")
         link(rel="stylesheet", href="/static/css/struct.css")
         link(rel="stylesheet", href="/static/css/struct/lorem.css")
         default canonical
-            //-
+            --
               By default, noindex. You should use a link rel="canonical"
               when creating a prototype page, and point to the real page.
             meta(name="robots" content="noindex")
@@ -20,7 +20,7 @@ html(dir="ltr", lang="en")
                         a(href="/prototypes/refli/index-constant.html")
                             img(src="/static/images/logo.svg" alt="Refli")
                     .u-bar__right
-                        include ../../includes/main-header--page-struct
+                        include ../../includes/main-header--page-struct.slab
 
         main
             .u-container

@@ -9,7 +9,7 @@ import ../../layouts/refli/page
                 p This page presents a net monthly salary calculation based on a <strong>gross</strong> salary of <strong>3600.00 EUR</strong> for a <strong>single employee</strong> with no disabilities, no children and no dependents. <i>The information on this page is for general guidance only.</i>
 
             div
-                // empty
+                --- empty
 
         .c-content.flow-leader-line.limit-42em
             <div class="leader-line">

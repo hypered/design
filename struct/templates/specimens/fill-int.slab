@@ -12,7 +12,7 @@ html(dir="ltr", lang="en")
                         a(href="#")
                             img(src="/static/images/logo.svg" alt="Refli")
                     .u-bar__right
-                        // empty
+                        --- empty
         main.center
             form.flow
                 label Number
@@ -21,4 +21,4 @@ html(dir="ltr", lang="en")
                     span Next
 
         footer
-            // empty
+            --- empty
