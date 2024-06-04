@@ -1,4 +1,4 @@
-include ../includes/mixins/icons.slab
+include ../includes/icons.slab
 doctype html
 html(dir="ltr", lang="en")
     head

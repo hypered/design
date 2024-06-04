@@ -18,7 +18,7 @@ import ../../layouts/refli/page.slab
                 .switcher-0px
                     button.c-button.c-button--primary.c-button--tall(type="submit")
                         span Sign up
-                        include ../../includes/mixins/icons.slab
+                        include ../../includes/icons.slab
                         arrow-right
                     a.c-button.c-button--secondary.c-button--tall(href="login.html")
                         span Log in

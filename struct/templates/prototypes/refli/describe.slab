@@ -13,5 +13,5 @@ import ../../layouts/refli/page.slab
                         input.c-input
                     button.c-button.c-button--primary(type="submit")
                         span Compute
-                        include ../../includes/mixins/icons.slab
+                        include ../../includes/icons.slab
                         arrow-right
