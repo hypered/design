@@ -1,4 +1,4 @@
-import ../../layouts/refli/page
+import ../../layouts/refli/page.slab
 
     frag content
         .max-50rem.u-flow-c-4.u-space-after-c-4.center
