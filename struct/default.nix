@@ -1,13 +1,14 @@
 { nixpkgs ? import (import ../nix/sources.nix {}).nixpkgs {}
 }:
 let
+  sources = import ../nix/sources.nix;
 in
 {
   site = nixpkgs.stdenv.mkDerivation {
     name = "site";
     src = ./.;
     buildInputs = [
-      (import ../../slab/default.nix).binaries
+      (import sources.slab).binaries
       nixpkgs.sass
       nixpkgs.glibcLocales
     ];

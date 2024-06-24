@@ -46,5 +46,17 @@
         "type": "tarball",
         "url": "https://github.com/NixOS/nixpkgs/archive/b3a8f7ed267e0a7ed100eb7d716c9137ff120fe3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "slab": {
+        "branch": "main",
+        "description": "A programmable markup language to generate HTML.",
+        "homepage": "https://slab-lang.org",
+        "owner": "hypered",
+        "repo": "slab",
+        "rev": "9c10f314170bb80ef468782b966e5408def5aab4",
+        "sha256": "0wncwa2d7p3ljq86j5c6c311kzdbsp2sxygk8h6xw1jhm8556g3c",
+        "type": "tarball",
+        "url": "https://github.com/hypered/slab/archive/9c10f314170bb80ef468782b966e5408def5aab4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
