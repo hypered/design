@@ -27,7 +27,7 @@ html(dir="ltr", lang="en")
               for entry, index in entries
                 .mb-entry
                   div.mb-num
-                    p= index + 1 + '.'
+                    p= show (index + 1) + '.'
                   div.mb-grow
                     p= entry['title-fr']
                     .mb-second-line.mb-second-line--dense
@@ -41,11 +41,11 @@ html(dir="ltr", lang="en")
                           = entry['source']
                       p
                         small
-                          if entry['journal']
-                            span <a href="#{entry['journal']}">Moniteur</a>
-                          else
+                          if null entry['journal']
                             span Moniteur
-                          span <a href="#{entry['justel']}">Justel</a>
+                          else
+                            span <a href="#(entry['journal'])">Moniteur</a>
+                          span <a href="#(entry['justel'])">Justel</a>
 
         footer
             .u-container
