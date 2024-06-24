@@ -113,7 +113,7 @@ serverT root =
     :<|> pure Specimens.specimenNavigation
     :<|> pure (Specimens.specimenInvokeForm "Edit this line." (T.reverse "Edit this line."))
     :<|> pure (Specimens.specimenInvokeHtmx "Edit this line." (T.reverse "Edit this line."))
-    :<|> echoInvokeForm
+    :<|> handleInvokeForm
     :<|> pure (Motherboard.prototypeMotherboardHomepage
            Motherboard.motherboardHomepageTextsFr
            "/specimens/navigation"
@@ -257,8 +257,8 @@ data InvokeForm = InvokeForm
 instance FromForm InvokeForm where
   fromForm f = InvokeForm <$> parseUnique "input-text" f
 
-echoInvokeForm :: ServerC m => InvokeForm -> m Html
-echoInvokeForm InvokeForm {..} = do
+handleInvokeForm :: ServerC m => InvokeForm -> m Html
+handleInvokeForm InvokeForm {..} = do
   let reversed = T.reverse _invokeFormText
   pure $ Specimens.specimenInvokeForm _invokeFormText reversed
 
