@@ -1,6 +1,6 @@
 # Directory variables
 SLAB_BASE_DIR := templates
-SLAB_DIRS := templates/notes templates/specimens templates/index.slab templates/struct.slab
+SLAB_DIRS := templates/notes templates/partials templates/prototypes templates/specimens templates/index.slab templates/struct.slab
 SCSS_DIR := scss/struct
 STATIC_DIR := static
 
