@@ -1,9 +1,3 @@
--- Experiment with defining a few CSS classes that could be used to visualize
--- a layout created with Slab, provided that some fragments are annotated.
---
--- .a defines a "leaf" in the layout tree or a standard (vertical) container.
--- .side-by-side is supposed to be a layouting primitive.
-
 doctype html
 html(dir="ltr", lang="en")
   head
@@ -12,65 +6,7 @@ html(dir="ltr", lang="en")
     link(rel="stylesheet", href="/static/css/struct.css")
     link(rel="stylesheet", href="/static/css/struct/lorem.css")
     link(rel="stylesheet", href="/static/css/struct/placeholders.css")
-
-    style.
-      body.with-layout {
-        margin: 0px;
-        padding: 2px;
-
-        display: flex;
-        gap: 1em;
-        flex-direction: column;
-      }
-
-      .a {
-        min-height: 32px;
-
-        display: flex;
-        gap: 1em;
-        flex-direction: column;
-      }
-
-      .side-by-side {
-        display: flex;
-        gap: 1em;
-      }
-
-      .side-by-side > div {
-        flex: 1;
-      }
-
-      .with-layout .a,
-      .with-layout .side-by-side,
-      .with-layout .switcher {
-        outline: 2px dashed purple;
-        margin-top: 12px; /* Room for the label. */
-        position: relative; /* Necessary for the absolute positioning of the label. */
-        padding: calc(var(--grid-gutter) / 3);
-      }
-
-      .with-layout .a::before,
-      .with-layout .side-by-side::before,
-      .with-layout .switcher::before {
-        content: "label";
-        position: absolute; /* Positioning relative to the .a div */
-        top: -14px;
-        left: -4px;
-        color: purple;
-        font-family: monospace;
-      }
-
-      .with-layout .a::before {
-        content: ".a";
-      }
-
-      .with-layout .side-by-side::before {
-        content: ".side-by-side";
-      }
-
-      .with-layout .switcher::before {
-        content: ".switcher";
-      }
+    link(rel="stylesheet", href="/static/css/struct/wireframe.css")
 
   body.with-layout
     .a

@@ -1,0 +1,100 @@
+/* Debugging classes to visualize layouting primitives.
+
+   Together with layouts.scss and placeholders.scss, this file should also be
+   enough to create wireframes (low-fidelity prototypes).
+ */
+
+
+/* Used to display layouting primitives. This adds some padding so that the
+   borders of other (displayed) layout primitives and placeholders don't touch
+   each others.
+ */
+.wrapper {
+  padding: calc(var(--grid-gutter) / 3);
+  outline: 2px dashed purple;
+}
+.wrapper + .wrapper {
+  margin-top: calc(var(--grid-gutter) / 3);
+}
+
+/* .wrapper adds a small padding. In the case of .u-container and .inset,
+   we want to visualize the additional padding they introduce, so redefine them
+   here. (wireframe.css is typically added after layouts.css or struct.css. If it
+   was added before, we wouldn't need this redefinition.
+ */
+.u-container {
+  padding-inline: var(--grid-gutter);
+}
+.inset {
+  padding: var(--grid-gutter);
+}
+
+
+/* Similar to .wrapper but used to also display a small label in the top-left
+   corner of each layouting primitive.
+
+   While .wrapper can be added to specific divs, here the intended usage is to
+   only place the .with-layout class on the body element.
+ */
+.with-layout {
+  margin: 0px;
+  padding: 2px;
+
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+/* .a defines a "leaf" in the layout tree or a standard (vertical) container.
+ */
+.a {
+  min-height: 32px;
+
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+/* .side-by-side is supposed to be a layouting primitive.
+   TODO Use the one from layouts.scss instead.
+ */
+.side-by-side {
+  display: flex;
+  gap: 1em;
+}
+
+.side-by-side > div {
+  flex: 1;
+}
+
+.with-layout .a,
+.with-layout .side-by-side,
+.with-layout .switcher {
+  outline: 2px dashed purple;
+  margin-top: 12px; /* Room for the label. */
+  position: relative; /* Necessary for the absolute positioning of the label. */
+  padding: calc(var(--grid-gutter) / 3);
+}
+
+.with-layout .a::before,
+.with-layout .side-by-side::before,
+.with-layout .switcher::before {
+  content: "label";
+  position: absolute; /* Positioning relative to the .a div */
+  top: -14px;
+  left: -4px;
+  color: purple;
+  font-family: monospace;
+}
+
+.with-layout .a::before {
+  content: ".a";
+}
+
+.with-layout .side-by-side::before {
+  content: ".side-by-side";
+}
+
+.with-layout .switcher::before {
+  content: ".switcher";
+}
