@@ -1,0 +1,45 @@
+include ../includes/icons.slab
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct.css")
+        link(rel="stylesheet", href="/static/css/struct/lorem.css")
+        link(rel="stylesheet", href="/static/css/struct/placeholders.css")
+        link(rel="stylesheet", href="/static/css/struct/wireframe.css")
+    body
+        .u-container
+            .c-text.flow-all
+                h1 Bar
+            --
+              In this example, the logo is vertically centered in the bar.
+              This looks ok unless the menu items are spread on multiple lines.
+            .u-bar.wrapper
+                .u-bar__left
+                    a(href="/prototypes/refli/index-constant.html")
+                        img(src="/static/images/logo.svg" alt="Refli")
+                .u-bar__right
+                    include ../includes/main-header--page-struct.slab
+            --
+              In this example, everything is aligned to the top of the bar,
+              and we use .menu-item-height to ensure the logo is aligned on
+              the first line of menu items.
+            .u-bar.u-bar--top-aligned.wrapper
+                .u-bar__left
+                    .menu-item-height
+                        a(href="/prototypes/refli/index-constant.html")
+                            img(src="/static/images/logo.svg" alt="Refli")
+                .u-bar__right
+                    include ../includes/main-header--page-struct.slab
+            .u-bar.wrapper
+                .u-bar__left
+                    .b-128x64
+                .u-bar__right
+                    .b-x64
+            .u-bar.wrapper
+                .b-128x64
+                .b-x64
+            .u-bar.wrapper
+                .b-128x64
+                .b-256x64

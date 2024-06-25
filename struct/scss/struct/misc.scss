@@ -263,6 +263,21 @@ img.adapt {
   cursor: pointer;
 }
 
+/* This matches the height of .menu-item (when used with a .menu-link or
+   .menu-dropdown) and center its content vertically.
+   This is meant to be used in .u-bar with the .u-bar--top-aligned modifier.
+   For instance when used on a logo, this ensures the logo is on the same line
+   as the menu items, but remains on the top of the bar, instead of being
+   vertically-centered when the menu items are spread on multiple line (on
+   a narrow screen).
+   See the examples at specimens/layout-bar.slab.
+ */
+.menu-item-height {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
 /* Add a small down arrow to the dropdown button. */
 .menu-dropdown:before {
   pointer-events: none;

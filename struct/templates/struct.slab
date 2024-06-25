@@ -58,6 +58,8 @@ html(dir="ltr", lang="en")
                     li
                         a(href="/specimens/flexbox.html") Flexbox
                     li
+                        a(href="/specimens/layout-bar.html") Bar
+                    li
                         a(href="/specimens/key-values.html") Key values
                     li
                         a(href="/specimens/tables.html") Tables
