@@ -9,16 +9,16 @@ html(dir="ltr", lang="en")
     link(rel="stylesheet", href="/static/css/struct/wireframe.css")
 
   body.with-layout
-    .a
+    .div
     .side-by-side
-      .a
-      .a
-    .a
+      .div
+      .div
+    .div
       .side-by-side
-        .a
-        .a
-          .a
-            .a
+        .div
+        .div
+          .div
+            .div
       .switcher
         .b-x64
         .b-x64

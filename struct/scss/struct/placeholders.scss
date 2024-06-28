@@ -45,24 +45,13 @@ $g-placeholder-unit: 0.5rem !default; // Same as g-spacer-unit.
   }
 }
 
-.i-128x64 {
-  width: 128px;
-  height: 64px;
-  border: 2px solid black;
-  display: inline-block;
-
-  &:before {
-    content: 'i128x64';
-  }
-}
-
 .b-256x64 {
   width: 256px;
   height: 64px;
   border: 2px solid black;
 
   &:before {
-    content: '256x64';
+    content: 'b256x64';
   }
 }
 
@@ -71,7 +60,7 @@ $g-placeholder-unit: 0.5rem !default; // Same as g-spacer-unit.
   border: 2px solid black;
 
   &:before {
-    content: '*x64';
+    content: 'b*x64';
   }
 }
 
@@ -92,5 +81,28 @@ $g-placeholder-unit: 0.5rem !default; // Same as g-spacer-unit.
 
   &:before {
     content: 'xl-xl';
+  }
+}
+
+.i-128x64 {
+  width: 128px;
+  height: 64px;
+  border: 2px solid black;
+  display: inline-block;
+  align-self: flex-start;
+
+  &:before {
+    content: 'i128x64';
+  }
+}
+
+.i-x64 {
+  height: 64px;
+  border: 2px solid black;
+  display: inline-block;
+  align-self: flex-start;
+
+  &:before {
+    content: 'i*x64';
   }
 }

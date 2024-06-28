@@ -14,16 +14,16 @@ html(dir="ltr", lang="en")
         p It is possible to combine classes from <code>layouts.css</code> and <code>placeholders.css</code> together to create simple wireframes. Visualizing the layouts can be done by helpers from the <code>wireframe.css</code> file. (<a href="wireframe-body.html">Example with the <code>.with-layout</code> class on the <code>body</code></a>)
 
       .with-layout
-        .a
+        .div
         .side-by-side
-          .a
-          .a
-        .a
+          .div
+          .div
+        .div
           .side-by-side
-            .a
-            .a
-              .a
-                .a
+            .div
+            .div
+              .div
+                .div
           .switcher
             .b-x64
             .b-x64

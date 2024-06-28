@@ -1,0 +1,99 @@
+doctype html
+html(dir="ltr", lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/static/css/struct.css")
+    link(rel="stylesheet", href="/static/css/struct/lorem.css")
+    link(rel="stylesheet", href="/static/css/struct/placeholders.css")
+    link(rel="stylesheet", href="/static/css/struct/wireframe.css")
+  body
+    .u-container.u-container-vertical
+      .with-layout
+
+        .div
+        .inline
+        .div
+          .div
+          .inline
+        .inline
+          .div
+          .inline
+        .vsep
+          .div
+          .inline
+        .hsep
+          .div
+          .inline
+        .div
+          .b-x64
+          .b-x64
+        .div
+          .i-x64
+          .i-x64
+        .vsep
+          .b-x64
+          .i-x64
+          -- If the .i-x64 had not "align-self: flex-start;", it would still be
+          -- possible to stop its growing behavior by wrapping it with a div.
+          .div
+            .i-x64
+        .hsep
+          .b-x64
+          .i-x64
+          .i-x64
+        .hspread
+          .b-x64
+          .i-x64
+        .hspread
+          .b-x64
+          .b-x64
+          .b-x64
+        .hspread
+          .b-x64
+          .b-x64
+          .b-x64
+          .b-x64
+        .hspread
+          .div
+            .b-x64
+          .div
+            .b-x64
+            .b-x64
+            .b-x64
+        .hspread
+          .div
+            .b-x64
+          .hspread
+            .b-x64
+            .b-x64
+            .b-x64
+        -- The short "name" for this reusable piece of layout could be
+        --     hspread (grow + hspread)
+        -- We can count the branches to know how many "arguments" it takes.
+        -- If we want to be more specific, we can also take the placeholders
+        -- (.b-x64) into account and count that.
+        .hspread
+          .grow
+            .b-x64
+          .hspread
+            .b-x64
+            .b-x64
+            .b-x64
+        .hspread
+          .div
+            -- We should be able to label a branch as being empty, and thus not
+            -- count as an "argument".
+          .hspread
+            .b-x64
+            .b-x64
+            .b-x64
+
+        .hsep
+          .height-64px
+            p Logo
+          .b-x64
+        .hspread
+          .height-64px
+            span.logo Logo
+          .b-x64

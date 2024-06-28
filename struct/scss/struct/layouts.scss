@@ -63,6 +63,33 @@
   }
 }
 
+.hsep {
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.vsep {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+
+.hspread {
+  display: flex;
+  gap: 1em;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+
+// Use to make child div of .hspread take more horizontal room.
+.grow {
+  flex-grow: 1;
+}
+
 // Switcher. Separate items organized horizontally, or vertically if the parent
 // is too narrow.
 
@@ -100,3 +127,10 @@
   flex-grow: 1;
 }
 
+// Ensure a child content has a specific height, and place it vertically centered.
+// I think this is a "strut".
+.height-64px {
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
