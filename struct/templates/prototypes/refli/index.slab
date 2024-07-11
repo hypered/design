@@ -1,6 +1,5 @@
-import ../../layouts/refli/page.slab
-
-    frag content
+include ../../layouts/refli/page.slab
+page
         .switcher
             .flow-all
                 h1 Exploring compensation calculation in Belgium

@@ -1,6 +1,5 @@
-import ../../layouts/refli/page.slab
-
-    frag content
+include ../../layouts/refli/page.slab
+page
         .c-content.flow-all.limit-42em
             h1 Gross-to-net salary conversion
             small.breadcrumb 3600.00 EUR → 2399.65 EUR

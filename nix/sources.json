@@ -53,10 +53,10 @@
         "homepage": "https://slab-lang.org",
         "owner": "hypered",
         "repo": "slab",
-        "rev": "9c10f314170bb80ef468782b966e5408def5aab4",
-        "sha256": "0wncwa2d7p3ljq86j5c6c311kzdbsp2sxygk8h6xw1jhm8556g3c",
+        "rev": "a7b456d63f8a904555184cedaccf143b2a427981",
+        "sha256": "13kszhglg04jsigak3lb4lpkyq44g59sarf4bnav4kh1imh0n77h",
         "type": "tarball",
-        "url": "https://github.com/hypered/slab/archive/9c10f314170bb80ef468782b966e5408def5aab4.tar.gz",
+        "url": "https://github.com/hypered/slab/archive/a7b456d63f8a904555184cedaccf143b2a427981.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -1,25 +1,26 @@
 include ../../includes/icons.slab
-doctype html
-html(dir="ltr", lang="en")
+frag page{canonical,titl}
+  doctype html
+  html(dir="ltr", lang="en")
     head
         meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
         link(rel="stylesheet", href="/static/css/struct/lorem.css")
         default canonical
             --
               By default, noindex. You should use a link rel="canonical"
               when creating a prototype page, and point to the real page.
-            meta(name="robots" content="noindex")
+            meta(name="robots", content="noindex")
         default titl
     body.u-container-vertical
         header
             .u-container
-                .u-bar.u-bar--top-aligned.wrapper
+                .u-bar.u-bar--top-aligned
                     .u-bar__left
                         .menu-item-height
                             a(href="/prototypes/refli/index-constant.html")
-                                img(src="/static/images/logo.svg" alt="Refli")
+                                img(src="/static/images/logo.svg", alt="Refli")
                     .u-bar__right
                         include ../../includes/main-header--page-struct.slab
 

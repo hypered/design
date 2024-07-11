@@ -2,7 +2,7 @@ doctype html
 html(dir="ltr", lang="en")
     head
         meta(charset="utf-8")
-        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
     body
         .u-container
@@ -10,7 +10,7 @@ html(dir="ltr", lang="en")
                 h1 Pikchr
                 p The generated SVG file doesn't specify a font. And it seems that when using a <code>img</code> element, it's not possible to influence the font to be used.
 
-                img(src="/static/images/introducing-layers.svg" alt="The Refli three-layer core")
+                img(src="/static/images/introducing-layers.svg", alt="The Refli three-layer core")
 
                 p Instead, we can inline it:
 

@@ -1,10 +1,9 @@
-import ../../layouts/refli/page.slab
-
-    frag canonical
+include ../../layouts/refli/page.slab
+page
+    with canonical
         link(rel="canonical", href="https://refli.be/en/blog/2024/01/19/introducing-refli")
 
-    frag titl
+    with titl
         title Introducing Refli
 
-    frag content
-        include ../../partials/refli/en/blog/introducing-refli.slab
+    include ../../partials/refli/en/blog/introducing-refli.slab

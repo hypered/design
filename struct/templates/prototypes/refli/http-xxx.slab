@@ -3,7 +3,7 @@ frag http-error-message
     html(dir="ltr", lang="en")
         head
             meta(charset="utf-8")
-            meta(name="viewport" content="width=device-width, initial-scale=1")
+            meta(name="viewport", content="width=device-width, initial-scale=1")
             link(rel="stylesheet", href="/static/css/struct.css")
         -- TODO This shouldn't use a .cover (here with empty header and footer).
         body.u-container-vertical.cover
@@ -14,7 +14,7 @@ frag http-error-message
                             .c-text.flow
                                 .box.c-text.flow
                                     a(href="/prototypes/refli/index-constant.html")
-                                        img(src="/static/images/logo.svg" alt="Refli")
+                                        img(src="/static/images/logo.svg", alt="Refli")
                                     default content
                                         h2 XXX Http Code
                                         p

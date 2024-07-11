@@ -1,23 +1,22 @@
-import ../../layouts/refli/page.slab
-
-    frag canonical
+include ../../layouts/refli/page.slab
+page
+    with canonical
         link(rel="canonical", href="https://refli.be/en/blog")
 
-    frag titl
+    with titl
         title Blog
 
-    frag content
-        .c-content.flow-all.limit-42em
-            h1 Blog
+    .c-content.flow-all.limit-42em
+        h1 Blog
 
-        .c-content.flow-all.limit-42em
-            h2 Introducing Refli
-            small.breadcrumb 2024-01-19
+    .c-content.flow-all.limit-42em
+        h2 Introducing Refli
+        small.breadcrumb 2024-01-19
 
-        .flow-all.limit-42em
-            p Nearly a year into its development, it's about time we introduced Refli. This blog post is our first step to share the concept and vision behind our project, which is focused on simplifying Belgian payroll calculations.
+    .flow-all.limit-42em
+        p Nearly a year into its development, it's about time we introduced Refli. This blog post is our first step to share the concept and vision behind our project, which is focused on simplifying Belgian payroll calculations.
 
-            a.c-button.c-button--primary(href='blog-post-introducing-refli.html')
-                span Read more
-                include ../../includes/icons.slab
-                arrow-right
+        a.c-button.c-button--primary(href='blog-post-introducing-refli.html')
+            span Read more
+            include ../../includes/icons.slab
+            arrow-right
