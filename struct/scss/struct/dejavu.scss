@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: normal;
+  src: local(DejaVu Sans Mono), local(DejaVuSansMono),
+    url('/static/fonts/DejaVuSansMono.woff2') format('woff2'),
+    url('/static/fonts/DejaVuSansMono.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: normal;
+  font-weight: bold;
+  src: local(DejaVu Sans Mono Bold), local(DejaVuSansMono-Bold),
+    url('/static/fonts/DejaVuSansMono-Bold.woff2') format('woff2'),
+    url('/static/fonts/DejaVuSansMono-Bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: oblique;
+  font-weight: normal;
+  src: local(DejaVu Sans Mono Oblique), local(DejaVuSansMono-Oblique),
+    url('/static/fonts/DejaVuSansMono-Oblique.woff2') format('woff2'),
+    url('/static/fonts/DejaVuSansMono-Oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DejaVu Sans Mono';
+  font-style: oblique;
+  font-weight: bold;
+  src: local(DejaVu Sans Mono Bold Oblique), local(DejaVuSansMono-BoldOblique),
+    url('/static/fonts/DejaVuSansMono-BoldOblique.woff2') format('woff2'),
+    url('/static/fonts/DejaVuSansMono-BoldOblique.woff') format('woff');
+}
