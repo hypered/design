@@ -107,6 +107,8 @@ html(dir="ltr", lang="en")
                         a(href="/specimens/wireframe.html") Wireframe
                     li
                         a(href="/specimens/layout-lang.html") Wireframe (layouts)
+                    li
+                        a(href="/specimens/code.html") Code (with syntax highlighting)
 
                 h2 Prototypes
                 p These are (meant to be) complete, high-fidelity pages for existing or future application pages, including occasional variants.

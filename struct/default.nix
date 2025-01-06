@@ -8,6 +8,7 @@ in
     name = "site";
     src = ./.;
     buildInputs = [
+      (import sources.red).wrapped-binaries
       (import sources.slab).binaries
       nixpkgs.sass
       nixpkgs.glibcLocales

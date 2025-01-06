@@ -47,16 +47,28 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/b3a8f7ed267e0a7ed100eb7d716c9137ff120fe3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "red": {
+        "branch": "main",
+        "description": "A Nix-based Neovim configuration",
+        "homepage": "",
+        "owner": "hypered",
+        "repo": "red",
+        "rev": "92f4846cbfb9fd8e896ae7a7506813f1d8019a09",
+        "sha256": "09h1zpy03npm6jbl64dj1ypa2g1kpmbvxq92dlbv844g07f0rngj",
+        "type": "tarball",
+        "url": "https://github.com/hypered/red/archive/92f4846cbfb9fd8e896ae7a7506813f1d8019a09.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "slab": {
         "branch": "main",
         "description": "A programmable markup language to generate HTML.",
         "homepage": "https://slab-lang.org",
         "owner": "hypered",
         "repo": "slab",
-        "rev": "a7b456d63f8a904555184cedaccf143b2a427981",
-        "sha256": "13kszhglg04jsigak3lb4lpkyq44g59sarf4bnav4kh1imh0n77h",
+        "rev": "9b1520d7d3092faf8e3a7bf448e369641f76ccdc",
+        "sha256": "1mcpvfxi1wjghah8yykakb0lapj0n85z2aksw8nmfjij17pnw5nv",
         "type": "tarball",
-        "url": "https://github.com/hypered/slab/archive/a7b456d63f8a904555184cedaccf143b2a427981.tar.gz",
+        "url": "https://github.com/hypered/slab/archive/9b1520d7d3092faf8e3a7bf448e369641f76ccdc.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

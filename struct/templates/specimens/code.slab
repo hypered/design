@@ -1,0 +1,21 @@
+doctype html
+html(dir="ltr", lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", href="/static/css/struct.css")
+
+  body
+    .u-container.u-container-bottom
+      .c-text.flow-all
+        h1 Code
+        p This shows syntax highlighting using Slab's `run` block and the `red highlight` command.
+
+        style
+          run red css
+
+        pre
+	  code
+	    run red highlight -
+	      main :: IO ()
+	      main = pure ()
