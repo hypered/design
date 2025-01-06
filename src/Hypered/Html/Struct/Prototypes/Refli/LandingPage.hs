@@ -834,7 +834,7 @@ prototypeRefliPage lang url header NavigationBlockTexts {..} content =
                 H.a ! A.href (H.toValue $ "/nl" <> url) $ "NL"
 
         div "flow u-flow-c-4" $
-          H.span "© Hypered SRL, 2023-2024."
+          H.span "© Hypered SRL, 2023-2025."
 
 prototypeRefliMainHeader' :: MainHeaderTexts -> Html
 prototypeRefliMainHeader' = prototypeRefliMainHeader Nothing
