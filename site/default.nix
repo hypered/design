@@ -1,8 +1,7 @@
-{ nixpkgs ? <nixpkgs>
-}:
-
 let
-  pkgs = import nixpkgs {};
+  sources = import ../nix/sources.nix;
+  pkgs = import sources.nixpkgs { };
+
   inherit (import ../.) to-prefixed-html replace-md-links;
   to-html = src: to-prefixed-html "" "ibm-plex" src;
   binaries = (import ../.).binaries;

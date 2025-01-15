@@ -52,17 +52,17 @@ in rec
 
   # This is the non-Next, non-Storybook static site. It contains
   # some rendered Markdown documentation and Haddock.
-  site = (import site/default.nix {}).html.all;
-  hs = (import site/default.nix {}).html.hs;
+  site = (import site/default.nix).html.all;
+  hs = (import site/default.nix).html.hs;
   itcss = (import ./itcss {}).site;
   struct = (import ./struct {}).site;
   emails = import ./emails {};
 
   # This is the static directory, usually hosted as /static
   # on websites using this design system.
-  static = (import site/default.nix {}).static;
+  static = (import site/default.nix).static;
   # all + static, to serve locally with scripts/ghcid.sh
-  all-with-static = (import site/default.nix {}).html.all-with-static;
+  all-with-static = (import site/default.nix).html.all-with-static;
 
   # An example PDF brochure created with LaTeX.
   brochure = (import brochure/default.nix { inherit nixpkgs; }).brochure;
