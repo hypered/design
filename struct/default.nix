@@ -13,7 +13,7 @@ in
       nixpkgs.sass
       nixpkgs.glibcLocales
     ];
-    installPhase = ''
+    buildPhase = ''
       # Make sure we don't rely on an existing _site.
       rm -r _site
 
@@ -22,6 +22,9 @@ in
 
       make -j 8
       mv _site $out
+    '';
+    installPhase = ''
+      # Nothing.
     '';
   };
 }
