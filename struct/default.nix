@@ -15,7 +15,7 @@ in
     ];
     buildPhase = ''
       # Make sure we don't rely on an existing _site.
-      rm -r _site
+      rm -rf _site
 
       export LANG="en_US.UTF-8"
       export LC_ALL="en_US.UTF-8"
