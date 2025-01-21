@@ -1,4 +1,4 @@
-{ nixpkgs ? import (import ../nix/sources.nix {}).nixpkgs {}
+{ nixpkgs ? import (import ../nix/sources.nix {}).nixpkgs-22-05 {}
 }:
 let
   nodeEnv = nixpkgs.callPackage ./nix/node/node-env.nix { };

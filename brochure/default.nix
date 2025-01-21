@@ -17,6 +17,7 @@ in rec
           biblatex-apa
           booktabs
           caption
+          catchfile
           changepage
           datatool # provides datatool-base
           enumitem
@@ -25,6 +26,7 @@ in rec
           fontaxes
           fontsize
           glossaries
+          hardwrap
           marginnote
           mfirstuc
           pagecolor
