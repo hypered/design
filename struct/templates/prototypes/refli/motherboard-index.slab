@@ -1,3 +1,5 @@
+include ../../../data/current-copyright-year.slab
+
 doctype html
 html(dir="ltr", lang="en")
     head
@@ -47,4 +49,4 @@ html(dir="ltr", lang="en")
                 .c-text.flow
                     p
                         small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more</a> or go <a href="/prototypes/refli/index-constant.html">back to Refli</a>.
-                    p © Hypered SRL, 2023.
+                    p © Hypered SRL, 2023-#(current-copyright-year).

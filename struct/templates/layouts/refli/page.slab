@@ -1,4 +1,6 @@
 include ../../includes/icons.slab
+include ../../../data/current-copyright-year.slab
+
 frag page{canonical,titl}
   doctype html
   html(dir="ltr", lang="en")
@@ -83,4 +85,4 @@ frag page{canonical,titl}
                                 a(href="#") Professional tax withholding details
 
                 .flow.u-flow-c-4
-                    span © Hypered SRL, 2023-2025.
+                    span © Hypered SRL, 2023-#(current-copyright-year).
