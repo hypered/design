@@ -174,6 +174,24 @@ prototypeRefliSubmitPage opts url mhTexts@MainHeaderTexts {..} nbTexts content =
             H.h4 $ "Submittal"
             content
 
+-- Similar to the echo page, but for Playground forms.
+prototypeRefliSubmitPlaygroundPage :: RefliDocumentOptions -> Text -> Text -> Text -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliSubmitPlaygroundPage opts title formTitle conceptUrl url mhTexts@MainHeaderTexts {..} nbTexts content = do
+  refliDocument
+    opts mainHeaderLanguage ("Playground - " <> title) "" $
+      prototypeRefliPage
+        mainHeaderLanguage
+        url
+        (prototypeRefliMainHeader' mhTexts)
+        nbTexts $ do
+          H.div ! A.class_ "c-content flow-all paragraph-70ch" $
+            H.h1 $ H.text title
+          standardSmallBox $ do
+            H.h4 $ H.text formTitle
+            content
+          H.div ! A.class_ "c-content flow-all paragraph-70ch" $
+            H.p $ H.a ! A.href (H.toValue conceptUrl) $ H.text "View concepts"
+
 standardSmallBox :: Html -> Html
 standardSmallBox content =
   div "max-30rem u-flow-c-4 u-space-after-c-4 center" $
@@ -190,6 +208,14 @@ standardSmallForm action content =
              ! A.method "POST"
              ! A.action (H.toValue action) $
         content
+
+standardSmallPlaygroundForm :: Text -> Text -> Text -> Html -> Html
+standardSmallPlaygroundForm title url action content = do
+  H.div ! A.class_ "c-content flow-all paragraph-70ch" $
+    H.h1 $ H.text title
+  standardSmallForm action content
+  H.div ! A.class_ "c-content flow-all paragraph-70ch" $
+    H.p $ H.a ! A.href (H.toValue url) $ H.text "View concepts"
 
 -- Use this "base" page in the other functions in this file.
 prototypeRefliBasePage :: RefliDocumentOptions -> Text -> Maybe Profile -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html

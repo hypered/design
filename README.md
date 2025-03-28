@@ -192,7 +192,7 @@ command-line tool. That tool can generate the design system website (i.e. the
 component code (that can be compared with the `./diff.sh` script against the
 Next.js implementation).
 
-The `hypered-design` program has also a `serve` subcommand that is uses as a
+The `hypered-design` program has also a `serve` subcommand that is used as a
 backend on `hypered.design`. It currently serves a echo handler for the login
 form and is meant to evolve to serve e.g. HTML fragments that can be used with
 something like htmx.
