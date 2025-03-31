@@ -1,0 +1,38 @@
+{
+    "niv": {
+        "branch": "master",
+        "description": "Easy dependency management for Nix projects",
+        "homepage": "https://github.com/nmattia/niv",
+        "owner": "nmattia",
+        "repo": "niv",
+        "rev": "82e5cd1ad3c387863f0545d7591512e76ab0fc41",
+        "sha256": "090l219mzc0gi33i3psgph6s2pwsc8qy4lyrqjdj4qzkvmaj65a7",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/niv/archive/82e5cd1ad3c387863f0545d7591512e76ab0fc41.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nix-filter": {
+        "branch": "master",
+        "description": "a small self-container source filtering lib",
+        "homepage": "",
+        "owner": "numtide",
+        "repo": "nix-filter",
+        "rev": "3b821578685d661a10b563cba30b1861eec05748",
+        "sha256": "0gzx750j06f0j1wi006rhb1xhxaszlbqi7vg0cysrffvgwjccb26",
+        "type": "tarball",
+        "url": "https://github.com/numtide/nix-filter/archive/3b821578685d661a10b563cba30b1861eec05748.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "nixos-24.05",
+        "description": "Nix Packages collection & NixOS",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a3f9ad65a0bf298ed5847629a57808b97e6e8077",
+        "sha256": "0mwibvglm5m4dcylggi47z7ysc5ma7qa1gpb3fhmrljspw1z3smv",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixpkgs/archive/a3f9ad65a0bf298ed5847629a57808b97e6e8077.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
