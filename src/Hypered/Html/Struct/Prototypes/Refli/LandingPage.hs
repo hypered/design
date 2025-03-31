@@ -817,10 +817,11 @@ prototypeRefliPage lang url header NavigationBlockTexts {..} content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
       div "u-container" $
-        div "u-bar" $ do
+        div "u-bar u-bar--top-aligned" $ do
           div "u-bar__left" $
-            H.a ! A.href (H.toValue $ "/" <> lang) $
-              H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
+            div "menu-item-height" $
+              H.a ! A.href (H.toValue $ "/" <> lang) $
+                H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
           div "u-bar__right" $
             header
 
