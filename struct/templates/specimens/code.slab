@@ -6,7 +6,7 @@ html(dir="ltr", lang="en")
     link(rel="stylesheet", href="/static/css/struct.css")
 
   body
-    .u-container.u-container-bottom
+    .u-container
       .c-text.flow-all
         h1 Code
         p This shows syntax highlighting using Slab's `run` block and the `red highlight` command.

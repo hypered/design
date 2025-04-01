@@ -6,8 +6,8 @@ html(dir="ltr", lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1")
         link(rel="stylesheet", href="/static/css/struct.css")
     body
-        .u-container.u-container-vertical
-            .c-text.flow
+        .u-container
+            .c-text.flow-all
                 h1 Form
                 p This page shows how .box can be replaced by a combination of .bordered and .u-container-vertical if a horizontal rule or buttons should reach the border.
             .bordered.max-40rem.u-flow-c-0
