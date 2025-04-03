@@ -12,140 +12,10 @@
   grid-template-columns: repeat(12, 1fr);
 }
 
-/* */
-h1, h2, h3, h4 {font-weight: 600;}
-h1 {letter-spacing: -0.15rem;}
-h2 {letter-spacing: -0.1rem;}
-h3 {letter-spacing: -0.05rem;}
-h1 {font-size: var(--step-c-4);}
-h2 {font-size: var(--step-c-3);}
-h3 {font-size: var(--step-c-2);}
-h4 {font-size: var(--step-c-1);}
-p {font-size: var(--step-c-0); line-height: 1.5em;}
-p small {font-size: var(--step-c--1); line-height: 1.5em;}
-em {font-style: italic;}
-.limit-p p {max-width: 42em;}
-.limit-40ch {max-width: 40ch;}
-.limit-42em {max-width: 42em;}
-// This gives the same width as each of two divs under a .switcher.
-.limit-50pc {max-width: calc(50% - var(--space-m) / 2);}
-.mute {color: #666;}
-.c-text a {color: blue; text-decoration: none;}
-.c-content a {color: blue; text-decoration: none;}
-pre {font-size: 0.875rem; padding: 0.5rem 0.75rem; background-color: #f2f2f2;}
-code {background-color: #f2f2f2; font-family: 'DejaVu Sans Mono'; font-size: 95%;}
-pre > code {line-height: 120%;}
-hr {
-  font-size: var(--step-c-4); /* like h1, for flow spacing */
-  color: black;
-  background-color: black;
-  width: 8rem;
-  border: none;
-  height: 0.125rem;
-  margin: 2.125rem 0;
-}
-.hr-full {
-  width: 100%;
-}
-.c-text h1 {font-size: var(--step-a-4);}
-.c-text h2 {font-size: var(--step-a-3);}
-.c-text h3 {font-size: var(--step-a-2);}
-.c-text h4 {font-size: var(--step-a-1);}
-.c-text p {font-size: var(--step-a-0); line-height: 1.5em;}
-.c-text p small {font-size: var(--step-a--1); line-height: 1.5em;}
-.c-text h1 {letter-spacing: 0rem;}
-.c-text h2 {letter-spacing: 0rem;}
-.c-text h3 {letter-spacing: 0rem;}
-.c-text label {font-weight: 600;}
-.c-text ul {list-style: disc; padding-left: 3rem;}
-.c-text ul li {line-height: 1.5em;}
-.c-content h1 {font-size: var(--step-b-4);}
-.c-content h2 {font-size: var(--step-b-3);}
-.c-content h3 {font-size: var(--step-b-2);}
-.c-content h4 {font-size: var(--step-b-1);}
-.c-content p {font-size: var(--step-b-0); line-height: 1.5em;}
-.c-content p small {font-size: var(--step-b--1); line-height: 1.5em;}
-.c-content ul {
-  list-style: disc;
-  padding-left: 3rem;
-  &.no-disc {list-style: none; padding-left: 0;}
-  &.horizontal > li {display: inline-block;}
-  &.horizontal > *:not(:last-child) {margin-right: 1em;}
-
-}
-.c-content ul li {line-height: 1.5em;}
-.type-scale-d h1 {font-size: var(--step-d-4);}
-.type-scale-d h2 {font-size: var(--step-d-3);}
-.type-scale-d h3 {font-size: var(--step-d-2);}
-.type-scale-d h4 {font-size: var(--step-d-1);}
-.type-scale-d p {font-size: var(--step-d-0); line-height: 1.5em;}
-.type-scale-d p small {font-size: var(--step-d--1); line-height: 1.5em;}
-.u-step-a-5, .u-step-a-4, .u-step-a-3, .u-step-a-2, .u-step-a-1 {font-weight: 600;}
-.u-step-a-5 {font-size: var(--step-a-5);}
-.u-step-a-4 {font-size: var(--step-a-4);}
-.u-step-a-3 {font-size: var(--step-a-3);}
-.u-step-a-2 {font-size: var(--step-a-2);}
-.u-step-a-1 {font-size: var(--step-a-1);}
-.u-step-a-0 {font-size: var(--step-a-0);}
-.u-step-a--1 {font-size: var(--step-a--1);}
-.u-step-a--2 {font-size: var(--step-a--2);}
-.u-step-b-5, .u-step-b-4, .u-step-b-3, .u-step-b-2, .u-step-b-1 {font-weight: 600;}
-.u-step-b-5 {font-size: var(--step-b-5);}
-.u-step-b-4 {font-size: var(--step-b-4);}
-.u-step-b-3 {font-size: var(--step-b-3);}
-.u-step-b-2 {font-size: var(--step-b-2);}
-.u-step-b-1 {font-size: var(--step-b-1);}
-.u-step-b-0 {font-size: var(--step-b-0);}
-.u-step-b--1 {font-size: var(--step-b--1);}
-.u-step-b--2 {font-size: var(--step-b--2);}
-.u-step-c-5, .u-step-c-4, .u-step-c-3, .u-step-c-2, .u-step-c-1 {font-weight: 600;}
-.u-step-c-5 {font-size: var(--step-c-5);}
-.u-step-c-4 {font-size: var(--step-c-4);}
-.u-step-c-3 {font-size: var(--step-c-3);}
-.u-step-c-2 {font-size: var(--step-c-2);}
-.u-step-c-1 {font-size: var(--step-c-1);}
-.u-step-c-0 {font-size: var(--step-c-0);}
-.u-step-c--1 {font-size: var(--step-c--1);}
-.u-step-c--2 {font-size: var(--step-c--2);}
-.u-step-d-5 {font-size: var(--step-d-5);}
-.u-step-d-4 {font-size: var(--step-d-4);}
-.u-step-d-3 {font-size: var(--step-d-3);}
-.u-step-d-2 {font-size: var(--step-d-2);}
-.u-step-d-1 {font-size: var(--step-d-1);}
-.u-step-d-0 {font-size: var(--step-d-0);}
-.label-step {font-size: 0.875rem; color: grey;}
 .debug-gap-color {background: #eed9eb;}
 .debug-column-color > span {font-size: 0.875rem; font-family: monospace; background: white;}
 .full-height {
   height: 100vh;
-}
-.flow {
-  --flow-space: 1.4em;
-}
-.flow > * + * {
-  margin-top: var(--flow-space);
-}
-.flow input {
-  margin-top: calc(var(--flow-space) / 4);
-}
-.flow-all > * {
-  --flow-space: 1.4em;
-  margin-top: var(--flow-space);
-}
-.flow-all > *:last-child {
-  --flow-space: 1.4em;
-  margin-bottom: var(--flow-space);
-}
-.flow-all input {
-  margin-top: calc(var(--flow-space) / 4);
-}
-
-em, i {
-  font-style: italic;
-}
-
-strong, b {
-  font-weight: 600;
 }
 
 // This is enough to have the image take the same space as a paragraph, in e.g
@@ -153,27 +23,6 @@ strong, b {
 img.adapt {
   width: 100%;
 }
-
-// Similar to the margin added by `flow` for a h1 heading at scale C.
-// `flow` sets the margin to be 1.4em, while here we're not using ems,
-// but it seems to work.
-.u-flow-c-4 {
-  margin-top: calc(var(--step-c-4) * 1.4);
-}
-.u-flow-c-0 {
-  margin-top: calc(var(--step-c-0) * 1.4);
-}
-.u-space-after-c-4 {
-  margin-bottom: calc(var(--step-c-4) * 1.4);
-}
-
-.paragraph-70ch p {
-  max-width: 70ch;
-}
-.limit-70ch {
-  max-width: 70ch;
-}
-
 
 .with-sidebar {
   display: flex;
@@ -497,15 +346,6 @@ a.c-button--secondary {
 .wrrrap iframe {
   border: 2px solid #DDD;
 }
-
-// Textual "logo" (instead of a SVG).
-// See https://hypered.design/specimens/logo.html.
-.logo {font-weight: 700; font-size: 2rem; letter-spacing: -0.05rem;}
-.logo a {color: black;}
-
-
-// Used for simple / bread / crumbs.
-.breadcrumb { color: #555; }
 
 // Specific rules for the Motherboard listings.
 .mb-entry {
