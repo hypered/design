@@ -26,6 +26,7 @@ data Document = Document
   , documentBlocks :: [Block]
     -- ^ TODO Probably change this to Html so there is a bit more control
     -- offered to the caller.
+  , documentHasConcept :: Bool
   }
 
 data Block =
@@ -90,6 +91,12 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                               mapM_
                                 (\lnk -> H.a ! A.href (H.toValue lnk) $ H.text (f lnk))
                                 documentLegislativeLinks
+                            when documentHasConcept $ do
+                              H.dt $
+                                H.dfn ! A.title "Ce texte est présent dans la base de connaissances de Refli" $ "Refli Concepts ✓"
+                              H.dd $
+                                H.a ! A.href "/en/concepts" $
+                                  "Voir dans la base de connaissances"
                     mapM_ showBlock documentBlocks
                 div "c-text flow-all" $
                   div "c-content center ad" $
