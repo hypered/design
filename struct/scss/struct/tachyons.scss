@@ -8,6 +8,8 @@
  *      /_/    \__,_/ \___/ /_/ /_/_\__, / \____//_/ /_//____/
  *                                 /____/
  *
+ * Some things were removed for inclusion in Struct.
+ *
  *    TABLE OF CONTENTS
  *
  *    1. External Library Includes
@@ -36,11 +38,6 @@ html { line-height: 1.15; /* 1 */ -webkit-text-size-adjust: 100%; /* 2 */ }
  * Remove the margin in all browsers.
  */
 body { margin: 0; }
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Firefox, and Safari.
- */
-h1 { font-size: 2em; margin: .67em 0; }
 /* Grouping content
    ========================================================================== */
 /**
@@ -73,11 +70,7 @@ b, strong { font-weight: bolder; }
  * 1. Correct the inheritance and scaling of font size in all browsers.
  * 2. Correct the odd `em` font sizing in all browsers.
  */
-code, kbd, samp { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
-/**
- * Add the correct font size in all browsers.
- */
-small { font-size: 80%; }
+kbd, samp { font-family: monospace, monospace; /* 1 */ font-size: 1em; /* 2 */ }
 /**
  * Prevent `sub` and `sup` elements from affecting the line height in
  * all browsers.
@@ -719,9 +712,6 @@ img { max-width: 100%; }
 .serif { font-family: georgia, times, serif; }
 .system-sans-serif { font-family: sans-serif; }
 .system-serif { font-family: serif; }
-/* Monospaced Typefaces (for code) */
-/* From http://cssfontstack.com */
-code, .code { font-family: Consolas, monaco, monospace; }
 .courier { font-family: 'Courier Next', courier, monospace; }
 /* Sans-Serif Typefaces */
 .helvetica { font-family: 'helvetica neue', helvetica, sans-serif; }
@@ -822,12 +812,6 @@ code, .code { font-family: Consolas, monaco, monospace; }
      -l  = large
 
 */
-/* Height Scale */
-.h1 { height: 1rem; }
-.h2 { height: 2rem; }
-.h3 { height: 4rem; }
-.h4 { height: 8rem; }
-.h5 { height: 16rem; }
 /* Height Percentages - Based off of height of parent */
 .h-25 { height: 25%; }
 .h-50 { height: 50%; }
