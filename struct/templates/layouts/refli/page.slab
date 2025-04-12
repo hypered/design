@@ -63,4 +63,5 @@ frag page{canonical,titl}
                         -- Empty
 
                 .flow.u-flow-c-4
-                    span © Hypered SRL, 2023-#(current-copyright-year).
+                    img(src="/static/images/belgium-flag.svg", alt="The flag of Belgium", width="15px", height="13px")
+                    span &nbsp; &nbsp; &nbsp; © <a class="normal-link" href="https://hypered.be">Hypered SRL</a>, 2023-#(current-copyright-year).
