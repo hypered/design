@@ -1,53 +1,34 @@
+include ../../layouts/refli/page.slab
 include ../../../data/current-copyright-year.slab
+page
+    with canonical
+        link(rel="canonical", href="https://refli.be/en/lex")
 
-doctype html
-html(dir="ltr", lang="en")
-    head
-        meta(charset="utf-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1")
-        link(rel="stylesheet", href="/static/css/struct/foundations.css")
-        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
-        link(rel="stylesheet", href="/static/css/struct/fonts.css")
-        link(rel="stylesheet", href="/static/css/struct/scale.css")
-        link(rel="stylesheet", href="/static/css/struct/layouts.css")
-        link(rel="stylesheet", href="/static/css/struct/components/typography.css")
-        link(rel="stylesheet", href="/static/css/struct/misc.css")
-    body.u-container-vertical.cover
-        header
-            .u-container
-                .c-text
-                    div
-                        span.logo
-                            a(href="motherboard-index.html") Lex Iterata
+    with titl
+        title Lex Iterata
 
-        .u-container
-            .switcher
-                .flow-all
-                    p Lex Iterata collects and transforms the content of the <a href="https://www.ejustice.just.fgov.be/">Belgian Official Journal</a>, presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption.
+    .c-content.flow-all.limit-42em
+        h1 Lex Iterata
 
-                div
-                    --- empty
+    .switcher
+        .flow-all
+            p Lex Iterata collects and transforms the content of the <a href="https://www.ejustice.just.fgov.be/">Belgian Official Journal</a>, presenting it in an enhanced format for human comprehension, while also providing structured data tailored for machine consumption.
 
-            .c-text.flow-all.limit-42em
-                p Lex Iterata is continually evolving. At present, we provide access to collections of documents under the <a href="https://www.ejustice.just.fgov.be/eli/">ELI (European Legislation Identifier) scheme</a>. Both user-friendly web pages and structured JSON indices are available for your convenience.
-                p The ELI framework as used in Belgium encompasses five distinct document categories:
-                ul
-                    li
-                        a(href="motherboard-index-1.html") Constitution
-                    li
-                        a(href="motherboard-index-2.html") Law
-                    li
-                        a(href="#") Decree
-                    li
-                        a(href="#") Ordinance
-                    li
-                        a(href="#") Order
-                p For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents.
+        div
+            --- empty
 
-        footer
-            .u-container
-                hr
-                .c-text.flow
-                    p
-                        small Lex Iterata is a Refli experiment. <a href="motherboard-index.html">Read more</a> or go <a href="/prototypes/refli/index-constant.html">back to Refli</a>.
-                    p © Hypered SRL, 2023-#(current-copyright-year).
+    .c-text.flow-all.limit-42em
+        p Lex Iterata is continually evolving. At present, we provide access to collections of documents under the <a href="https://www.ejustice.just.fgov.be/eli/">ELI (European Legislation Identifier) scheme</a>. Both user-friendly web pages and structured JSON indices are available for your convenience.
+        p The ELI framework as used in Belgium encompasses five distinct document categories:
+        ul
+            li
+                a(href="motherboard-index-1.html") Constitution
+            li
+                a(href="motherboard-index-2.html") Law
+            li
+                a(href="#") Decree
+            li
+                a(href="#") Ordinance
+            li
+                a(href="#") Order
+        p For each of the categories listed above, you can specify a particular year directly within the URL to obtain the corresponding documents.

@@ -205,3 +205,5 @@ html(dir="ltr", lang="en")
                         a(href="/prototypes/refli/motherboard-index-data.html") Index (dense and complete)
                     li
                         a(href="/prototypes/refli/motherboard-document.html") Justel document
+                    li
+                        a(href="/prototypes/refli/motherboard-document-spec.html") Justel document (spec)

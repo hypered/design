@@ -9,6 +9,10 @@ ul
             a(href="#").menu-link Documentation
 
     li
+        .menu-item
+            a(href="#").menu-link Lex
+
+    li
         .menu-item(tabindex="-1")
             i.menu-mask(tabindex="-1")
             a.menu-dropdown Playground
