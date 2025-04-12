@@ -175,17 +175,20 @@ prototypeRefliSubmitPage opts url mhTexts@MainHeaderTexts {..} nbTexts content =
             content
 
 -- Similar to the echo page, but for Playground forms.
-prototypeRefliSubmitPlaygroundPage :: RefliDocumentOptions -> Text -> Text -> Text -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
-prototypeRefliSubmitPlaygroundPage opts title formTitle conceptUrl url mhTexts@MainHeaderTexts {..} nbTexts content = do
+prototypeRefliSubmitPlaygroundPage :: RefliDocumentOptions -> Text -> Text -> Text -> Text -> Text -> MainHeaderTexts -> NavigationBlockTexts -> Html -> Html
+prototypeRefliSubmitPlaygroundPage opts name symbol formTitle conceptUrl url mhTexts@MainHeaderTexts {..} nbTexts content = do
   refliDocument
-    opts mainHeaderLanguage ("Playground - " <> title) "" $
+    opts mainHeaderLanguage ("Playground - " <> name) "" $
       prototypeRefliPage
         mainHeaderLanguage
         url
         (prototypeRefliMainHeader' mhTexts)
         nbTexts $ do
-          H.div ! A.class_ "c-content flow-all paragraph-70ch" $
-            H.h1 $ H.text title
+          H.div ! A.class_ "c-content flow-all" $ do
+            H.h1 $ H.text name
+            H.small ! A.class_ "breadcrumb" $ do
+              H.text "Computation "
+              H.code $ H.text symbol
           standardSmallBox $ do
             H.h4 $ H.text formTitle
             content
@@ -209,10 +212,13 @@ standardSmallForm action content =
              ! A.action (H.toValue action) $
         content
 
-standardSmallPlaygroundForm :: Text -> Text -> Text -> Html -> Html
-standardSmallPlaygroundForm title url action content = do
-  H.div ! A.class_ "c-content flow-all paragraph-70ch" $
-    H.h1 $ H.text title
+standardSmallPlaygroundForm :: Text -> Text -> Text -> Text -> Html -> Html
+standardSmallPlaygroundForm name symbol url action content = do
+  H.div ! A.class_ "c-content flow-all" $ do
+    H.h1 $ H.text name
+    H.small ! A.class_ "breadcrumb" $ do
+      H.text $ "Computation "
+      H.code $ H.text symbol
   standardSmallForm action content
   H.div ! A.class_ "c-content flow-all paragraph-70ch" $
     H.p $ H.a ! A.href (H.toValue url) $ H.text "View concepts"
