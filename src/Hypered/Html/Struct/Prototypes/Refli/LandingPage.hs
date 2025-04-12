@@ -890,11 +890,17 @@ data Profile = Profile
 prototypeRefliMainHeader :: Maybe Profile -> MainHeaderTexts ->Html
 prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
   let linkBlog = "/" <> mainHeaderLanguage <> "/blog"
+      linkLex = "/" <> mainHeaderLanguage <> "/lex"
   H.ul $ do
     H.li $
       div "menu-item" $
         H.a ! A.href (H.toValue linkBlog) ! A.class_ "menu-link" $
           H.text mainHeaderLinkBlog
+
+    H.li $
+      div "menu-item" $
+        H.a ! A.href (H.toValue linkLex) ! A.class_ "menu-link" $
+          H.text "Lex"
 
     H.li $
       div "menu-item" ! A.tabindex "-1" $ do
