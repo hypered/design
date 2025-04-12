@@ -16,8 +16,7 @@ html(dir="ltr", lang="en")
                 h1 Lex Iterata
                 p Attempt at presenting a better Belgian official document (actually, a Justel one). Note: we replaced manually the quotation marks with guillemets, as in the PDF, and used italics in some places, as in the PDF. The dash after the date in the title is replaced by an em dash. The collapsible preamble and signature blocks are exclusive (as they use focus, instead of e.g. checkboxes).
 
-          .switcher.switcher--bigger-left
-            .c-text.flow.limit-42em.legislation
+          .c-text.flow.limit-42em.legislation
                 h1.mb-title 15 JUILLET 2016. — Arrêté royal modifiant l'arrêté royal du 19 décembre 1967 portant règlement général en exécution de l'arrêté royal n° 38 du 27 juillet 1967 organisant le statut social des travailleurs indépendants
 
                 div
@@ -104,7 +103,3 @@ html(dir="ltr", lang="en")
                         p Maggie DE BLOCK
                         p Le Ministre des Indépendants,
                         p Willy BORSUS
-            .c-text.flow
-                .c-content.center.ad
-                    p
-                        small Lex Iterata est un site web qui propose les textes législatifs consolidés du Moniteur Belge sous une nouvelle forme. Lex Iterata fait partie de <a href="https://refli.be">Refli</a>, qui vise à simplifier le calcul de salaire. Ces deux projets sont conçus par la société namuroise de développement informatique <a href="https://hypered.be">Hypered</a>.
