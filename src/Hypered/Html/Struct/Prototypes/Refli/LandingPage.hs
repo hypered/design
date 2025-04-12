@@ -866,8 +866,17 @@ prototypeRefliPage lang url header NavigationBlockTexts {..} content =
               H.li $
                 H.a ! A.href (H.toValue $ "/nl" <> url) $ "NL"
 
-        div "flow u-flow-c-4" $
-          H.span "© Hypered SRL, 2023-2025."
+        div "flow u-flow-c-4" $ do
+          H.img ! A.src "/static/images/belgium-flag.svg"
+                ! A.alt "The flag of Belgium"
+                ! A.width "15px"
+                ! A.height "13px"
+          H.span $ do
+            H.preEscapedText "&nbsp; &nbsp; &nbsp; © "
+            H.a ! A.class_ "normal-link"
+                ! A.href "https://hypered.be/en" $
+              "Hypered SRL"
+            H.text ", 2023-2025."
 
 prototypeRefliMainHeader' :: MainHeaderTexts -> Html
 prototypeRefliMainHeader' = prototypeRefliMainHeader Nothing
