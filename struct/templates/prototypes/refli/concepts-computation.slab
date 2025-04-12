@@ -1,0 +1,12 @@
+include ../../layouts/refli/page.slab
+page
+
+    with titl
+        title Computation
+
+    .c-content.flow-all
+        h1 Cotisations sociales indépendant trimestre simple
+        small.breadcrumb Computation <code>quarterly_selfempl_ssc_base_comp</code>
+
+    .c-content.flow-all.limit-42em
+        -- Empty
