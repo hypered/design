@@ -1,0 +1,8 @@
+include ../../layouts/refli/page-complete-footer.slab
+page
+
+    with titl
+        title Page with complete footer
+
+    .c-content.flow-all.limit-42em
+        -- Empty

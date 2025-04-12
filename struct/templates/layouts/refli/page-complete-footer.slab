@@ -60,7 +60,29 @@ frag page{canonical,titl}
                             li
                                 a(href="#") NL
                     .c-content.flow
-                        -- Empty
+                        h4 Social security contributions
+                        ul.no-disc
+                            li
+                                a(href="#") Personal contributions
+                            li
+                                a(href="#") Employment bonus
+                            li
+                                a(href="#") Special contribution
+                    .c-content.flow
+                        h4 Professional tax withholding
+                        ul.no-disc
+                            li
+                                a(href="#") Fixed professional fees
+                            li
+                                a(href="#") Basic scale
+                            li
+                                a(href="#") Reductions for dependant children
+                        h4 Rounding method
+                        ul.no-disc
+                            li
+                                a(href="#") Rounding
+                            li
+                                a(href="#") Professional tax withholding details
 
                 .flow.u-flow-c-4
                     span © Hypered SRL, 2023-#(current-copyright-year).

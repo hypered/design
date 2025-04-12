@@ -121,6 +121,8 @@ html(dir="ltr", lang="en")
                     li
                         a(href="/prototypes/refli/index-constant.html") Homepage (constant)
                     li
+                        a(href="/prototypes/refli/page-complete-footer.html") Complete footer
+                    li
                         a(href="/prototypes/refli/login.html") Log in
                     li
                         a(href="/prototypes/refli/signup.html") Sign up
