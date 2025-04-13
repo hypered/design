@@ -74,6 +74,33 @@ motherboardHomepageTextsFr = MotherboardHomepageTexts
   , motherboardHomepageWord5 = "Arrêté"
   }
 
+motherboardHomepageTextsNl :: MotherboardHomepageTexts
+motherboardHomepageTextsNl = MotherboardHomepageTexts
+  { motherboardHomepageLanguage = "nl"
+  , motherboardHomepageDescription = ""
+  , motherboardHomepageParagraph1 =
+      "Lex Iterata verzamelt en transformeert de inhoud van het \
+      \<a href=\"https://www.ejustice.just.fgov.be/\">Belgisch Staatsblad</a>, \
+      \en presenteert deze in een verbeterd formaat voor menselijk begrip, \
+      \terwijl ook gestructureerde gegevens worden aangeboden die geschikt zijn \
+      \voor machinale verwerking."
+  , motherboardHomepageParagraph2 =
+      "Lex Iterata evolueert voortdurend. Momenteel bieden we \
+      \toegang tot verzamelingen documenten onder het \
+      \<a href=\"https://www.ejustice.just.fgov.be/eli/\">ELI (European \
+      \Legislation Identifier) schema</a>. \
+      \Zowel gebruiksvriendelijke webpagina's als gestructureerde JSON-indexen \
+      \zijn beschikbaar voor uw gemak."
+  , motherboardHomepageParagraph3 =
+      "Het ELI-kader zoals gebruikt in België omvat vijf verschillende \
+      \documentcategorieën:"
+  , motherboardHomepageWord1 = "Grondwet"
+  , motherboardHomepageWord2 = "Wet"
+  , motherboardHomepageWord3 = "Decreet"
+  , motherboardHomepageWord4 = "Ordonnantie"
+  , motherboardHomepageWord5 = "Besluit"
+  }
+
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index.
 -- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.

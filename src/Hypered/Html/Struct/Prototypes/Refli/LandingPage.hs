@@ -818,6 +818,27 @@ data NavigationBlockTexts = NavigationBlockTexts
   , navigationBlockDocumentation :: Text
   }
 
+refliMainHeaderTextsEn :: MainHeaderTexts
+refliMainHeaderTextsEn = MainHeaderTexts
+  "en" "Blog" "Playground" "Compute salaries" "Documentation"
+
+refliMainHeaderTextsFr :: MainHeaderTexts
+refliMainHeaderTextsFr = MainHeaderTexts
+  "fr" "Blog" "Playground" "Calculs de salaires" "Documentation"
+
+refliMainHeaderTextsNl :: MainHeaderTexts
+refliMainHeaderTextsNl = MainHeaderTexts
+  "nl" "Blog" "Playground" "Salarisberekeningen" "Documentatie"
+
+refliNavigationBlockTextsEn :: NavigationBlockTexts
+refliNavigationBlockTextsEn = NavigationBlockTexts "en" "Documentation"
+
+refliNavigationBlockTextsFr :: NavigationBlockTexts
+refliNavigationBlockTextsFr = NavigationBlockTexts "fr" "Documentation"
+
+refliNavigationBlockTextsNl :: NavigationBlockTexts
+refliNavigationBlockTextsNl = NavigationBlockTexts "nl" "Documentatie"
+
 prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
 prototypeRefliPage lang url header nbTexts content =
   H.body ! A.class_ "u-container-vertical" $ do
