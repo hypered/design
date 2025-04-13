@@ -3,7 +3,7 @@ module Hypered.Html.Struct.Prototypes.Motherboard.Documents where
 import qualified Data.Text as T
 import Hypered.Html.Helpers
 import Hypered.Html.Struct.Prototypes.Refli.Common as Struct
-import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, MainHeaderTexts(..), NavigationBlockTexts(..))
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, refliMainHeaderTextsEn, refliMainHeaderTextsFr, refliMainHeaderTextsNl, refliNavigationBlockTextsEn, refliNavigationBlockTextsFr, refliNavigationBlockTextsNl)
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -36,16 +36,134 @@ data Block =
   | Table [[(Int, [Tag Text])]] -- TODO Remove dependency on TagSoup.
   | Monospace [Tag Text]
 
+
+data MotherboardDocumentTexts = MotherboardDocumentTexts
+  { motherboardDocumentLanguage :: Text
+  , motherboardDocumentTitlePresentation :: Text
+  , motherboardDocumentSource :: Text
+  , motherboardDocumentPublication :: Text
+  , motherboardDocumentNumber :: Text
+  , motherboardDocumentPage :: Text
+  , motherboardDocumentOriginal :: Text
+  , motherboardDocumentCase :: Text
+  , motherboardDocumentStart :: Text
+  , motherboardDocumentModify :: Text
+  , motherboardDocumentXxx :: Text
+  , motherboardDocumentConcept :: Text
+  , motherboardDocumentConceptLink :: Text
+  }
+
+motherboardDocumentTextsEn :: MotherboardDocumentTexts
+motherboardDocumentTextsEn = MotherboardDocumentTexts
+  { motherboardDocumentLanguage = "en"
+  , motherboardDocumentTitlePresentation =
+      "Text presented by Lex Iterata, a project to facilitate the understanding and analysis of Belgian legislative texts."
+  , motherboardDocumentSource = "Source"
+  , motherboardDocumentPublication = "Publication"
+  , motherboardDocumentNumber = "Number"
+  , motherboardDocumentPage = "Page"
+  , motherboardDocumentOriginal = "original version"
+  , motherboardDocumentCase = "Case number"
+  , motherboardDocumentStart = "Entry into force / Effect"
+  , motherboardDocumentModify = "Modified text"
+  , motherboardDocumentXxx = "Council of State"
+  , motherboardDocumentConcept =
+      "This text is present in the Refli knowledge base"
+  , motherboardDocumentConceptLink = "View in knowledge base"
+  }
+
+motherboardDocumentTextsFr :: MotherboardDocumentTexts
+motherboardDocumentTextsFr = MotherboardDocumentTexts
+  { motherboardDocumentLanguage = "fr"
+  , motherboardDocumentTitlePresentation =
+      "Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges."
+  , motherboardDocumentSource = "Source"
+  , motherboardDocumentPublication = "Publication"
+  , motherboardDocumentNumber = "Numéro"
+  , motherboardDocumentPage = "Page"
+  , motherboardDocumentOriginal = "version originale"
+  , motherboardDocumentCase = "Dossier numéro"
+  , motherboardDocumentStart = "Entrée en vigueur / Effet"
+  , motherboardDocumentModify = "Texte modifié"
+  , motherboardDocumentXxx = "Conseil d'Etat"
+  , motherboardDocumentConcept =
+      "Ce texte est présent dans la base de connaissances de Refli"
+  , motherboardDocumentConceptLink = "Voir dans la base de connaissances"
+  }
+
+motherboardDocumentTextsNl :: MotherboardDocumentTexts
+motherboardDocumentTextsNl = MotherboardDocumentTexts
+  { motherboardDocumentLanguage = "nl"
+  , motherboardDocumentTitlePresentation =
+      "Tekst gepresenteerd door Lex Iterata, een project om het begrip en de analyse van Belgische wetgevende teksten te vergemakkelijken."
+  , motherboardDocumentSource = "Bron"
+  , motherboardDocumentPublication = "Publicatie"
+  , motherboardDocumentNumber = "Nummer"
+  , motherboardDocumentPage = "Pagina"
+  , motherboardDocumentOriginal = "originele versie"
+  , motherboardDocumentCase = "Dossiernummer"
+  , motherboardDocumentStart = "Inwerkingtreding / Effect"
+  , motherboardDocumentModify = "Gewijzigde tekst"
+  , motherboardDocumentXxx = "Raad van State"
+  , motherboardDocumentConcept =
+      "Deze tekst is aanwezig in de kennisbank van Refli"
+  , motherboardDocumentConceptLink = "Bekijk in kennisbank"
+  }
+
 --------------------------------------------------------------------------------
-prototypeMotherboardDocument :: Text -> Text -> Text -> Document -> Html
-prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = do
+data MotherboardDocumentFooterTexts = MotherboardDocumentFooterTexts
+  { motherboardDocumentFooterLanguage :: Text
+  , motherboardDocumentFooterSeeJson :: Text
+  , motherboardDocumentFooterJsonFormat :: Text
+  , motherboardDocumentFooterSeeOriginal :: Text
+  , motherboardDocumentFooterOriginalPage :: Text
+  , motherboardDocumentFooterJournal :: Text
+  }
+
+motherboardDocumentFooterTextsEn :: MotherboardDocumentFooterTexts
+motherboardDocumentFooterTextsEn = MotherboardDocumentFooterTexts
+  { motherboardDocumentFooterLanguage = "en"
+  , motherboardDocumentFooterSeeJson = "View this page in"
+  , motherboardDocumentFooterJsonFormat = "JSON format"
+  , motherboardDocumentFooterSeeOriginal = "View the"
+  , motherboardDocumentFooterOriginalPage = "original page"
+  , motherboardDocumentFooterJournal = "in the Belgian Official Journal."
+  }
+
+motherboardDocumentFooterTextsFr :: MotherboardDocumentFooterTexts
+motherboardDocumentFooterTextsFr = MotherboardDocumentFooterTexts
+  { motherboardDocumentFooterLanguage = "fr"
+  , motherboardDocumentFooterSeeJson = "Voir cette page au"
+  , motherboardDocumentFooterJsonFormat = "format JSON"
+  , motherboardDocumentFooterSeeOriginal = "Voir la"
+  , motherboardDocumentFooterOriginalPage = "page originale"
+  , motherboardDocumentFooterJournal = "au Moniteur Belge."
+  }
+
+motherboardDocumentFooterTextsNl :: MotherboardDocumentFooterTexts
+motherboardDocumentFooterTextsNl = MotherboardDocumentFooterTexts
+  { motherboardDocumentFooterLanguage = "nl"
+  , motherboardDocumentFooterSeeJson = "Bekijk deze pagina in"
+  , motherboardDocumentFooterJsonFormat = "JSON-formaat"
+  , motherboardDocumentFooterSeeOriginal = "Bekijk de"
+  , motherboardDocumentFooterOriginalPage = "originele pagina"
+  , motherboardDocumentFooterJournal = "in het Belgisch Staatsblad."
+  }
+
+--------------------------------------------------------------------------------
+prototypeMotherboardDocument :: Text -> Text -> Text -> Text -> Document -> Html
+prototypeMotherboardDocument lang refliHomepage homepage breadcrumb Document {..} = do
+  let MotherboardDocumentTexts {..} = case lang of
+        "en" -> motherboardDocumentTextsEn
+        "nl" -> motherboardDocumentTextsNl
+        _ -> motherboardDocumentTextsFr
   Struct.refliDocument
     Struct.defaultOptions
-    "fr"
+    lang
     documentFullTitle
-    (documentFullTitle <> " Texte présenté par Lex Iterata, un projet pour faciliter la compréhension et l'analyse de textes législatifs belges.") $
+    (documentFullTitle <> " " <> motherboardDocumentTitlePresentation ) $
     H.body ! A.class_ "u-container-vertical cover" $ do
-        motherboardHeader homepage
+        motherboardHeader lang homepage
 
         div "u-container" $ do
             div "flow-all" $ do
@@ -59,48 +177,48 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                             H.dt "ELI"
                             H.dd $
                               H.a ! A.href (H.toValue documentUrl) $ "Justel"
-                            H.dt "Source"
+                            H.dt $ H.text motherboardDocumentSource
                             H.dd $ H.text documentSource
-                            H.dt "Publication"
+                            H.dt $ H.text motherboardDocumentPublication
                             H.dd $ H.text documentPublicationDate
-                            H.dt "Numéro"
+                            H.dt $ H.text motherboardDocumentNumber
                             H.dd $ H.text documentNumber
-                            H.dt "Page"
+                            H.dt $ H.text motherboardDocumentPage
                             H.dd $ H.text $ show documentPageNumber
                             H.dt "PDF"
                             H.dd $
                               maybe
-                                "verion originale"
+                                (H.text motherboardDocumentOriginal)
                                 (\lnk -> H.a ! A.href (H.toValue $
                                   "https://www.ejustice.just.fgov.be" <> lnk) $
-                                    "version originale")
+                                    H.text motherboardDocumentOriginal)
                                 documentPDFOriginal
-                            H.dt "Dossier numéro"
+                            H.dt $ H.text motherboardDocumentCase
                             H.dd $ H.text documentCaseNumber
-                            H.dt "Entrée en vigueur / Effet"
+                            H.dt $ H.text motherboardDocumentStart
                             H.dd $
                               mapM_ (\(a, b) -> H.text a >> H.text b) documentStartDates
-                            H.dt "Texte modifié"
+                            H.dt $ H.text motherboardDocumentModify
                             H.dd $
                               mapM_ (\a -> H.text a) documentModifies
                             H.dt "belgiquelex"
                             H.dd $ do
                               let f lnk =
                                     if "http://reflex.raadvst-consetat.be" `T.isPrefixOf` lnk
-                                    then "Conseil d'Etat"
+                                    then motherboardDocumentXxx
                                     else "TODO"
                               mapM_
                                 (\lnk -> H.a ! A.href (H.toValue lnk) $ H.text (f lnk))
                                 documentLegislativeLinks
                             when documentHasConcept $ do
                               H.dt $
-                                H.dfn ! A.title "Ce texte est présent dans la base de connaissances de Refli" $ "Refli Concepts ✓"
+                                H.dfn ! A.title (H.toValue motherboardDocumentConcept) $ "Refli Concepts ✓"
                               H.dd $
                                 H.a ! A.href "/en/concepts" $
-                                  "Voir dans la base de connaissances"
+                                  H.text motherboardDocumentConceptLink
                     mapM_ showBlock documentBlocks
 
-        motherboardDocumentFooter documentId documentUrl homepage refliHomepage
+        motherboardDocumentFooter lang documentId documentUrl homepage refliHomepage
 
 showBlock :: Block -> Html
 showBlock (Pair level content) =
@@ -156,30 +274,43 @@ formatMonospace xs =
   g c = c
 
 --------------------------------------------------------------------------------
-motherboardHeader :: Text -> Html
-motherboardHeader homepage =
+motherboardHeader :: Text -> Text -> Html
+motherboardHeader lang homepage =
   prototypeRefliHeader
-    "fr"
+    lang
     ( prototypeRefliMainNav' $
-        MainHeaderTexts "fr" "Blog" "Playground" "Calculs de salaire" "Documentation"
+        case lang of
+          "en" -> refliMainHeaderTextsEn
+          "nl" -> refliMainHeaderTextsNl
+          _ -> refliMainHeaderTextsFr
     )
 
-motherboardDocumentFooter :: Text -> Text -> Text -> Text -> Html
-motherboardDocumentFooter documentId documentUrl homepage refliHomepage = do
-  let url = "/lex/" <> documentId
+motherboardDocumentFooter :: Text -> Text -> Text -> Text -> Text -> Html
+motherboardDocumentFooter lang documentId documentUrl homepage refliHomepage = do
+  let MotherboardDocumentFooterTexts {..} = case lang of
+        "en" -> motherboardDocumentFooterTextsEn
+        "nl" -> motherboardDocumentFooterTextsNl
+        _ -> motherboardDocumentFooterTextsFr
+      nbTexts = case lang of
+        "en" -> refliNavigationBlockTextsEn
+        "nl" -> refliNavigationBlockTextsNl
+        _ -> refliNavigationBlockTextsFr
+      url = "/lex/" <> documentId
   H.footer $
     div "u-container" $ do
       H.hr
       div "c-text flow" $ do
         H.p $
           H.small $ do
-            "Voir cette page au "
-            H.a ! A.href (H.toValue url) $ "format JSON"
+            H.text $ motherboardDocumentFooterSeeJson <> " "
+            H.a ! A.href (H.toValue url) $
+              H.text motherboardDocumentFooterJsonFormat
             "."
         H.p $
           H.small $ do
-            "Voir la "
-            H.a ! A.href (H.toValue $ documentUrl) $ "page originale"
-            " au Moniteur Belge."
+            H.text $ motherboardDocumentFooterSeeOriginal <> " "
+            H.a ! A.href (H.toValue $ documentUrl) $
+              H.text motherboardDocumentFooterOriginalPage
+            H.text $ " " <> motherboardDocumentFooterJournal
 
-  prototypeRefliFooter "fr" url (NavigationBlockTexts "fr" "Documentation")
+  prototypeRefliFooter lang url nbTexts
