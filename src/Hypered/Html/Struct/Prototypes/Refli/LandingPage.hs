@@ -97,7 +97,7 @@ prototypeRefliRootPage opts mhTexts@MainHeaderTexts {..} LandingPageTexts {..} n
       prototypeRefliPage
         mainHeaderLanguage
         ""
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           -- TODO body.u-container-vertical.cover
           div "flow-all limit-42em" $ do
@@ -122,7 +122,7 @@ prototypeRefliDescribeFormPage opts url mhTexts@MainHeaderTexts {..} DescribeFor
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           div "switcher switch-at-60rem u-flow-c-4 u-space-after-c-4" $ do
             div "flow" $ do
@@ -152,7 +152,7 @@ prototypeRefliEchoPage opts url mhTexts@MainHeaderTexts {..} nbTexts content = d
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           standardSmallBox $ do
             H.h4 $ "Echo"
@@ -168,7 +168,7 @@ prototypeRefliSubmitPage opts url mhTexts@MainHeaderTexts {..} nbTexts content =
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           standardSmallBox $ do
             H.h4 $ "Submittal"
@@ -182,7 +182,7 @@ prototypeRefliSubmitPlaygroundPage opts name symbol formTitle conceptUrl url mhT
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           H.div ! A.class_ "c-content flow-all" $ do
             H.h1 $ H.text name
@@ -231,7 +231,7 @@ prototypeRefliBasePage opts url mprofile mhTexts@MainHeaderTexts {..} nbTexts co
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader mprofile mhTexts)
+        (prototypeRefliMainNav mprofile mhTexts)
         nbTexts $
           content
 
@@ -243,7 +243,7 @@ prototypeRefliBlogIndexPage opts url mhTexts@MainHeaderTexts {..} BlogPostPageTe
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           div "c-content flow-all limit-42em" $
             H.h1 "Blog"
@@ -278,7 +278,7 @@ prototypeRefliBlogPostPage opts url mhTexts@MainHeaderTexts {..} BlogPostPageTex
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           H.preEscapedText $
             "\n<!--# include virtual=\"" <> virtual <> "\" -->"
@@ -290,7 +290,7 @@ prototypeRefliFooPage opts url mhTexts@MainHeaderTexts {..} nbTexts fTexts = do
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           refliFooPageContent fTexts
 
@@ -301,7 +301,7 @@ prototypeRefliRunPage opts url mhTexts@MainHeaderTexts {..} nbTexts = do
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           refliRunPageContent
 
@@ -312,7 +312,7 @@ prototypeRefliCapturePage opts url mhTexts@MainHeaderTexts {..} nbTexts cfTexts 
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           refliCapturePageContent cfTexts action
 
@@ -323,7 +323,7 @@ prototypeRefliLandingPage opts url mhTexts@MainHeaderTexts {..} texts@LandingPag
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           refliLandingPageContent texts cfTexts
 
@@ -334,7 +334,7 @@ prototypeRefliSignupPage opts url mhTexts@MainHeaderTexts {..} nbTexts sfTexts a
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           signupForm sfTexts action
 
@@ -345,7 +345,7 @@ prototypeRefliResetPasswordPage opts url mhTexts@MainHeaderTexts {..} nbTexts rp
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           resetPasswordForm rpfTexts action
 
@@ -356,7 +356,7 @@ prototypeRefliLoginPage opts url mhTexts@MainHeaderTexts {..} nbTexts lfTexts ac
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           loginForm lfTexts action
 
@@ -631,7 +631,7 @@ prototypeRefliMessageSubscribeSuccess opts url mhTexts@MainHeaderTexts {..} text
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           messageSubscribeSuccess texts
 
@@ -642,7 +642,7 @@ prototypeRefliMessageFooSuccess opts url mhTexts@MainHeaderTexts {..} texts nbTe
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           messageFooSuccess texts
 
@@ -653,7 +653,7 @@ prototypeRefliMessageSignupSuccess opts url mhTexts@MainHeaderTexts {..} texts n
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $
           messageSignupSuccess texts
 
@@ -693,7 +693,7 @@ prototypeRefliMessageRunResult opts url mhTexts@MainHeaderTexts {..} nbTexts cmd
       prototypeRefliPage
         mainHeaderLanguage
         url
-        (prototypeRefliMainHeader' mhTexts)
+        (prototypeRefliMainNav' mhTexts)
         nbTexts $ do
           div "u-space-after-c-4" $
             div "u-container-vertical" $
@@ -821,6 +821,16 @@ data NavigationBlockTexts = NavigationBlockTexts
 prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
 prototypeRefliPage lang url header nbTexts content =
   H.body ! A.class_ "u-container-vertical" $ do
+    prototypeRefliHeader lang header
+
+    H.main $
+      div "u-container" $
+        content
+
+    prototypeRefliFooter lang url nbTexts
+
+prototypeRefliHeader :: Text -> Html -> Html
+prototypeRefliHeader lang header =
     H.header $
       div "u-container" $
         div "u-bar u-bar--top-aligned" $ do
@@ -830,12 +840,6 @@ prototypeRefliPage lang url header nbTexts content =
                 H.img ! A.src "/static/images/logo.svg" ! A.alt "Refli"
           div "u-bar__right" $
             header
-
-    H.main $
-      div "u-container" $
-        content
-
-    prototypeRefliFooter lang url nbTexts
 
 prototypeRefliFooter :: Text -> Text -> NavigationBlockTexts -> Html
 prototypeRefliFooter lang url NavigationBlockTexts {..} =
@@ -882,17 +886,14 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
               "Hypered SRL"
             H.text ", 2023-2025."
 
-prototypeRefliMainHeader' :: MainHeaderTexts -> Html
-prototypeRefliMainHeader' = prototypeRefliMainHeader Nothing
-
 -- User profile informaton relevant to the UI.
 data Profile = Profile
   { profileEmail :: Text -- ^ Email address (we currently use that instead of username)
   }
   deriving (Eq, Show)
 
-prototypeRefliMainHeader :: Maybe Profile -> MainHeaderTexts ->Html
-prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
+prototypeRefliMainNav :: Maybe Profile -> MainHeaderTexts ->Html
+prototypeRefliMainNav mprofile MainHeaderTexts {..} = do
   let linkBlog = "/" <> mainHeaderLanguage <> "/blog"
       linkLex = "/" <> mainHeaderLanguage <> "/lex"
   H.ul $ do
@@ -940,6 +941,9 @@ prototypeRefliMainHeader mprofile MainHeaderTexts {..} = do
         H.a ! A.href (H.toValue $ "/" <> mainHeaderLanguage <> "/documentation")
             ! A.class_ "menu-link" $
           H.text mainHeaderLinkDocumentation
+
+prototypeRefliMainNav' :: MainHeaderTexts -> Html
+prototypeRefliMainNav' = prototypeRefliMainNav Nothing
 
 prototypeRefliCenterPage :: Html -> Html
 prototypeRefliCenterPage content =

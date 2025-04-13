@@ -1,7 +1,7 @@
 module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
 import Hypered.Html.Helpers
-import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliFooter, NavigationBlockTexts(..))
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, MainHeaderTexts(..), NavigationBlockTexts(..))
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -10,7 +10,6 @@ import qualified Text.Blaze.Html5.Attributes as A
 --------------------------------------------------------------------------------
 data MotherboardHomepageTexts = MotherboardHomepageTexts
   { motherboardHomepageLanguage :: Text
-  , motherboardHomepageTitle :: Text
   , motherboardHomepageDescription :: Text
   , motherboardHomepageParagraph1 :: Text
   , motherboardHomepageParagraph2 :: Text
@@ -26,7 +25,6 @@ data MotherboardHomepageTexts = MotherboardHomepageTexts
 motherboardHomepageTextsEn :: MotherboardHomepageTexts
 motherboardHomepageTextsEn = MotherboardHomepageTexts
   { motherboardHomepageLanguage = "en"
-  , motherboardHomepageTitle = "Lex Iterata"
   , motherboardHomepageDescription = ""
   , motherboardHomepageParagraph1 =
       "Lex Iterata collects and transforms the content of the \
@@ -53,7 +51,6 @@ motherboardHomepageTextsEn = MotherboardHomepageTexts
 motherboardHomepageTextsFr :: MotherboardHomepageTexts
 motherboardHomepageTextsFr = MotherboardHomepageTexts
   { motherboardHomepageLanguage = "fr"
-  , motherboardHomepageTitle = "Lex Iterata"
   , motherboardHomepageDescription = ""
   , motherboardHomepageParagraph1 =
       "Lex Iterata collecte et transforme le contenu du \
@@ -80,8 +77,8 @@ motherboardHomepageTextsFr = MotherboardHomepageTexts
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index.
 -- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.
-prototypeMotherboardHomepage :: Text -> MotherboardHomepageTexts -> NavigationBlockTexts -> Text -> Text -> Html
-prototypeMotherboardHomepage lang texts nbTexts refliHomepage homepage = do
+prototypeMotherboardHomepage :: Text -> MainHeaderTexts -> MotherboardHomepageTexts -> NavigationBlockTexts -> Text -> Text -> Html
+prototypeMotherboardHomepage lang mhTexts texts nbTexts refliHomepage homepage = do
   let MotherboardHomepageTexts {..} = texts
   H.docType
   H.html ! A.dir "ltr" ! A.lang (H.toValue motherboardHomepageLanguage) $ do
@@ -92,15 +89,11 @@ prototypeMotherboardHomepage lang texts nbTexts refliHomepage homepage = do
       H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
       H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
-      H.header $
-        div "u-container" $
-          div "c-text" $
-            H.div $
-              H.span ! A.class_ "logo" $
-                H.a ! A.href (H.toValue homepage) $
-                  H.text motherboardHomepageTitle
+      prototypeRefliHeader lang (prototypeRefliMainNav' mhTexts)
 
       div "u-container" $ do
+        div "c-content flow-all limit-42em" $
+          H.h1 "Lex Iterata"
         div "switcher" $ do
           div "flow-all" $
             H.p $ H.preEscapedText motherboardHomepageParagraph1
@@ -130,11 +123,15 @@ prototypeMotherboardHomepage lang texts nbTexts refliHomepage homepage = do
 prototypeMotherboardIndex1 :: Html
 prototypeMotherboardIndex1 =
   prototypeMotherboardIndex
+    "fr"
+    (NavigationBlockTexts "fr" "Documentation")
+    (MainHeaderTexts "fr" "Blog" "Playground" "Compute salary" "Documentation")
     "/specimens/navigation"
     "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
     [1000, 2000] -- TODO Better example years
  where
   entry = Entry {..}
+  entryId = "1831020701"
   entryTitle = "7 FEVRIER 1831. - CONSTITUTION DE LA BELGIQUE."
   entrySource = ""
   entryPublicationDate = "07-02-1831"
@@ -148,12 +145,16 @@ prototypeMotherboardIndex1 =
 prototypeMotherboardIndexDense :: Html
 prototypeMotherboardIndexDense =
   prototypeMotherboardIndex
+    "fr"
+    (NavigationBlockTexts "fr" "Documentation")
+    (MainHeaderTexts "fr" "Blog" "Playground" "Compute salary" "Documentation")
     "/specimens/navigation"
     "/lex" "law/2022" "loi/2022" True "Loi / 2022" [entry1, entry2, entry3, entry4]
     [1000, 2000] -- TODO Better example years
  where
   entry1 = Entry
-    { entryTitle = "19 JANVIER 2022. - Loi portant le livre 2, titre 3, \"Les relations patrimoniales des couples\" et le livre 4 \"Les successions, donations et testaments\" du Code civil (1)"
+    { entryId = "2022030600"
+    , entryTitle = "19 JANVIER 2022. - Loi portant le livre 2, titre 3, \"Les relations patrimoniales des couples\" et le livre 4 \"Les successions, donations et testaments\" du Code civil (1)"
     , entryPublicationDate = "14-03-2022"
     , entrySource = "SERVICE PUBLIC FEDERAL JUSTICE"
     , entryJournalLink = Just
@@ -162,7 +163,8 @@ prototypeMotherboardIndexDense =
         "https://www.ejustice.just.fgov.be/eli/loi/2022/01/19/2022030600/justel"
     }
   entry2 = Entry
-    { entryTitle = "19 JANVIER 2022. - CODE CIVIL - LIVRE 2, Titre 3 : \" Les relations patrimoniales des couples \""
+    { entryId = "2022A30600"
+    , entryTitle = "19 JANVIER 2022. - CODE CIVIL - LIVRE 2, Titre 3 : \" Les relations patrimoniales des couples \""
     , entryPublicationDate = "14-03-2022"
     , entrySource = "JUSTICE"
     , entryJournalLink = Nothing
@@ -170,7 +172,8 @@ prototypeMotherboardIndexDense =
         "https://www.ejustice.just.fgov.be/eli/loi/2022/01/19/2022A30600/justel"
     }
   entry3 = Entry
-    { entryTitle = "19 JANVIER 2022. - CODE CIVIL - LIVRE 4 : \" Les successions, donations et testaments \""
+    { entryId = "2022B30600"
+    , entryTitle = "19 JANVIER 2022. - CODE CIVIL - LIVRE 4 : \" Les successions, donations et testaments \""
     , entryPublicationDate = "14-03-2022"
     , entrySource = "JUSTICE"
     , entryJournalLink = Nothing
@@ -178,7 +181,8 @@ prototypeMotherboardIndexDense =
         "https://www.ejustice.just.fgov.be/eli/loi/2022/01/19/2022B30600/justel"
     }
   entry4 = Entry
-    { entryTitle = "21 JANVIER 2022. - Loi portant des dispositions fiscales diverses (1)"
+    { entryId = "2022040046"
+    , entryTitle = "21 JANVIER 2022. - Loi portant des dispositions fiscales diverses (1)"
     , entryPublicationDate = "28-01-2022"
     , entrySource = "SERVICE PUBLIC FEDERAL FINANCES"
     , entryJournalLink = Just
@@ -197,8 +201,8 @@ data Entry = Entry
   }
 
 --------------------------------------------------------------------------------
-prototypeMotherboardIndex :: Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> [Int] -> Html
-prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense breadcrumb entries years = do
+prototypeMotherboardIndex :: Text -> NavigationBlockTexts -> MainHeaderTexts -> Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> [Int] -> Html
+prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment fragmentFr dense breadcrumb entries years = do
   let entries' = zip [(1 :: Int) ..] entries
   H.docType
   H.html $ do -- TODO html(dir="ltr", lang="en")
@@ -209,16 +213,12 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
         H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
         H.title "Lex Iterata"
     H.body ! A.class_ "u-container-vertical cover" $ do
-        H.header $
-            div "u-container" $
-                div "c-text" $
-                    H.div $
-                        H.span ! A.class_ "logo" $
-                            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
+        prototypeRefliHeader lang (prototypeRefliMainNav' mhTexts)
 
         div "u-container" $ do
-            H.p $
-                H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
+            div "flow-all" $ do
+              H.h3 "Lex Iterata"
+              H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
 
             if dense
               then
@@ -292,14 +292,8 @@ prototypeMotherboardIndex refliHomepage homepage fragment fragmentFr dense bread
                   "View the "
                   H.a ! A.href (H.toValue $ "https://www.ejustice.just.fgov.be/eli/" <> fragmentFr) $ "original page"
                   " on the Belgian Official Journal."
-              H.p $
-                H.small $ do
-                  "Lex Iterata is a Refli experiment. "
-                  H.a ! A.href (H.toValue homepage) $ "Read more"
-                  " or go "
-                  H.a ! A.href (H.toValue refliHomepage) $ "back to Refli"
-                  "."
-              H.p $ H.text copyrightLine
+
+        prototypeRefliFooter "/lex" lang nbTexts
 
 copyrightLine :: Text
 copyrightLine = "© Hypered SRL, 2023-2024."

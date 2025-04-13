@@ -16,7 +16,7 @@ import qualified Data.Text                     as T
 import qualified Hypered.Design.Command        as Command
 import qualified Hypered.Design.Fluid          as Fluid
 import qualified Hypered.Html.Struct.Prototypes.Motherboard.Indices as Motherboard
-import Hypered.Html.Struct.Prototypes.Refli.LandingPage (NavigationBlockTexts(..))
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (MainHeaderTexts(..), NavigationBlockTexts(..))
 import qualified Hypered.Html.Struct.Specimens as Specimens
 import qualified Hypered.Html.Tachyons         as Hy
 import qualified Network.HTTP.Types.Status     as Status
@@ -117,6 +117,7 @@ serverT root =
     :<|> handleInvokeForm
     :<|> pure (Motherboard.prototypeMotherboardHomepage
            "fr"
+           (MainHeaderTexts "fr" "Blog" "Playground" "Compute salary" "Documentation")
            Motherboard.motherboardHomepageTextsFr
            (NavigationBlockTexts "fr" "Documentation")
            "/specimens/navigation"
