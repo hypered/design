@@ -819,7 +819,7 @@ data NavigationBlockTexts = NavigationBlockTexts
   }
 
 prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
-prototypeRefliPage lang url header NavigationBlockTexts {..} content =
+prototypeRefliPage lang url header nbTexts content =
   H.body ! A.class_ "u-container-vertical" $ do
     H.header $
       div "u-container" $
@@ -835,6 +835,10 @@ prototypeRefliPage lang url header NavigationBlockTexts {..} content =
       div "u-container" $
         content
 
+    prototypeRefliFooter lang url nbTexts
+
+prototypeRefliFooter :: Text -> Text -> NavigationBlockTexts -> Html
+prototypeRefliFooter lang url NavigationBlockTexts {..} =
     H.footer $
       div "u-container" $ do
         H.hr

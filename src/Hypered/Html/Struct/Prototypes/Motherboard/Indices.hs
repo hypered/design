@@ -1,6 +1,7 @@
 module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
 import Hypered.Html.Helpers
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliFooter, NavigationBlockTexts(..))
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -19,8 +20,6 @@ data MotherboardHomepageTexts = MotherboardHomepageTexts
   , motherboardHomepageWord3 :: Text
   , motherboardHomepageWord4 :: Text
   , motherboardHomepageWord5 :: Text
-  , motherboardHomepageFooter1 :: Text
-  , motherboardHomepageFooter2 :: Text
   }
 
 -- Hard-coded for now. We should probably use the PO-based system from Refli.
@@ -49,13 +48,6 @@ motherboardHomepageTextsEn = MotherboardHomepageTexts
   , motherboardHomepageWord3 = "Decree"
   , motherboardHomepageWord4 = "Ordinance"
   , motherboardHomepageWord5 = "Order"
-  , motherboardHomepageFooter1 =
-      "Lex Iterata is a Refli experiment. \
-      \<a href=\"https://refli.be/fr/lex\">Read about Lex Iterata</a> or \
-      \<a href=\"https://refli.be\">go back to Refli</a>."
-  , motherboardHomepageFooter2 =
-      "Lex Iterata and Refli are projects written by \
-      \<a href=\"https://hypered.be\">Hypered</a>."
   }
 
 motherboardHomepageTextsFr :: MotherboardHomepageTexts
@@ -83,20 +75,13 @@ motherboardHomepageTextsFr = MotherboardHomepageTexts
   , motherboardHomepageWord3 = "Décret"
   , motherboardHomepageWord4 = "Ordonnance"
   , motherboardHomepageWord5 = "Arrêté"
-  , motherboardHomepageFooter1 =
-      "Lex Iterata est une expérience Refli. \
-      \<a href=\"https://refli.be/fr/lex\">Lire au sujet de Lex Iterata</a> ou \
-      \<a href=\"https://refli.be\">retourner vers Refli</a>."
-  , motherboardHomepageFooter2 =
-      "Lex Iterata et Refli sont des projets développés par \
-      \<a href=\"https://hypered.be\">Hypered</a>."
   }
 
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index.
 -- See http://127.0.0.1:3002/prototypes/refli/motherboard-index.html.
-prototypeMotherboardHomepage :: MotherboardHomepageTexts -> Text -> Text -> Html
-prototypeMotherboardHomepage texts refliHomepage homepage = do
+prototypeMotherboardHomepage :: Text -> MotherboardHomepageTexts -> NavigationBlockTexts -> Text -> Text -> Html
+prototypeMotherboardHomepage lang texts nbTexts refliHomepage homepage = do
   let MotherboardHomepageTexts {..} = texts
   H.docType
   H.html ! A.dir "ltr" ! A.lang (H.toValue motherboardHomepageLanguage) $ do
@@ -137,15 +122,7 @@ prototypeMotherboardHomepage texts refliHomepage homepage = do
             H.li $
               H.a ! A.href "/fr/lex/order/2024" $ H.text motherboardHomepageWord5
 
-      H.footer $
-        div "u-container" $ do
-          H.hr
-          div "c-text flow" $ do
-            H.p $
-              H.small $ H.preEscapedText motherboardHomepageFooter1
-            H.p $
-              H.small $ H.preEscapedText motherboardHomepageFooter2
-            H.p $ H.text copyrightLine
+      prototypeRefliFooter "/lex" lang nbTexts
 
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index-1.
