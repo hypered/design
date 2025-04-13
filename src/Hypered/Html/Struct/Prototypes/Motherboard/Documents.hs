@@ -3,6 +3,7 @@ module Hypered.Html.Struct.Prototypes.Motherboard.Documents where
 import qualified Data.Text as T
 import Hypered.Html.Helpers
 import Hypered.Html.Struct.Prototypes.Refli.Common as Struct
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, MainHeaderTexts(..), NavigationBlockTexts(..))
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -47,10 +48,10 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
         motherboardHeader homepage
 
         div "u-container" $ do
-            H.p $
-                H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
-            div "switcher switcher--bigger-left" $ do
-                div "c-text flow-all limit-42em legislation" $ do
+            div "flow-all" $ do
+              H.h3 "Lex Iterata"
+              H.small ! A.class_ "breadcrumb" $ H.text breadcrumb
+            div "c-text flow-all limit-42em legislation" $ do
                     H.h1 ! A.class_ "mb-title" $ H.text documentFullTitle
 
                     H.div $
@@ -98,15 +99,6 @@ prototypeMotherboardDocument refliHomepage homepage breadcrumb Document {..} = d
                                 H.a ! A.href "/en/concepts" $
                                   "Voir dans la base de connaissances"
                     mapM_ showBlock documentBlocks
-                div "c-text flow-all" $
-                  div "c-content center ad" $
-                    H.p $
-                      H.small $ do
-                        H.text "Lex Iterata est un site web qui propose les textes législatifs consolidés du Moniteur Belge sous une nouvelle forme. Lex Iterata fait partie de "
-                        H.a ! A.href "https://refli.be" $ H.text "Refli"
-                        H.text ", qui vise à simplifier le calcul de salaire. Ces deux projets sont conçus par la société namuroise de développement informatique "
-                        H.a ! A.href "https://hypered.be" $ H.text "Hypered"
-                        H.text "."
 
         motherboardDocumentFooter documentId documentUrl homepage refliHomepage
 
@@ -166,15 +158,15 @@ formatMonospace xs =
 --------------------------------------------------------------------------------
 motherboardHeader :: Text -> Html
 motherboardHeader homepage =
-  H.header $
-    div "u-container" $
-      div "c-text" $
-        H.div $
-          H.span ! A.class_ "logo" $
-            H.a ! A.href (H.toValue homepage) $ "Lex Iterata"
+  prototypeRefliHeader
+    "fr"
+    ( prototypeRefliMainNav' $
+        MainHeaderTexts "fr" "Blog" "Playground" "Calculs de salaire" "Documentation"
+    )
 
 motherboardDocumentFooter :: Text -> Text -> Text -> Text -> Html
-motherboardDocumentFooter documentId documentUrl homepage refliHomepage =
+motherboardDocumentFooter documentId documentUrl homepage refliHomepage = do
+  let url = "/lex/" <> documentId
   H.footer $
     div "u-container" $ do
       H.hr
@@ -182,23 +174,12 @@ motherboardDocumentFooter documentId documentUrl homepage refliHomepage =
         H.p $
           H.small $ do
             "Voir cette page au "
-            H.a ! A.href (H.toValue $ "/lex/" <> documentId) $ "format JSON"
+            H.a ! A.href (H.toValue url) $ "format JSON"
             "."
         H.p $
           H.small $ do
             "Voir la "
             H.a ! A.href (H.toValue $ documentUrl) $ "page originale"
             " au Moniteur Belge."
-        H.p $
-          H.small $ do
-            "Lex Iterata est une expérience Refli. "
-            H.a ! A.href (H.toValue homepage) $ "Lire au sujet de Lex Iterata"
-            " ou "
-            H.a ! A.href (H.toValue refliHomepage) $ "retourner vers Refli"
-            "."
-        H.p $
-          H.small $ do
-            "Lex Iterata et Refli sont des projets développés par "
-            H.a ! A.href "https://hypered.be" $ "Hypered"
-            "."
-        H.p "© Hypered SRL, 2023-2024."
+
+  prototypeRefliFooter "fr" url (NavigationBlockTexts "fr" "Documentation")

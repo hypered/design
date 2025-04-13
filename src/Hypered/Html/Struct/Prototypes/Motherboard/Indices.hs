@@ -107,15 +107,15 @@ prototypeMotherboardHomepage lang mhTexts texts nbTexts refliHomepage homepage =
             H.li $
               H.a ! A.href "/fr/lex/constitution/1994" $ H.text motherboardHomepageWord1
             H.li $
-              H.a ! A.href "/fr/lex/law/2024" $ H.text motherboardHomepageWord2
+              H.a ! A.href "/fr/lex/law/2025" $ H.text motherboardHomepageWord2
             H.li $
-              H.a ! A.href "/fr/lex/decree/2024" $ H.text motherboardHomepageWord3
+              H.a ! A.href "/fr/lex/decree/2025" $ H.text motherboardHomepageWord3
             H.li $
-              H.a ! A.href "/fr/lex/ordinance/2024" $ H.text motherboardHomepageWord4
+              H.a ! A.href "/fr/lex/ordinance/2025" $ H.text motherboardHomepageWord4
             H.li $
-              H.a ! A.href "/fr/lex/order/2024" $ H.text motherboardHomepageWord5
+              H.a ! A.href "/fr/lex/order/2025" $ H.text motherboardHomepageWord5
 
-      prototypeRefliFooter "/lex" lang nbTexts
+      prototypeRefliFooter lang "/lex" nbTexts
 
 --------------------------------------------------------------------------------
 -- Prototype: motherboard-index-1.
@@ -125,7 +125,7 @@ prototypeMotherboardIndex1 =
   prototypeMotherboardIndex
     "fr"
     (NavigationBlockTexts "fr" "Documentation")
-    (MainHeaderTexts "fr" "Blog" "Playground" "Compute salary" "Documentation")
+    (MainHeaderTexts "fr" "Blog" "Playground" "Calculs de salaire" "Documentation")
     "/specimens/navigation"
     "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
     [1000, 2000] -- TODO Better example years
@@ -278,6 +278,7 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
                     )
                     years
 
+        let url = "/lex/" <> fragment
         H.footer $
           div "u-container" $ do
             H.hr
@@ -285,7 +286,7 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
               H.p $
                 H.small $ do
                   "View this page in "
-                  H.a ! A.href (H.toValue $ "/lex/" <> fragment) $ "JSON format"
+                  H.a ! A.href (H.toValue url) $ "JSON format"
                   "."
               H.p $
                 H.small $ do
@@ -293,7 +294,7 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
                   H.a ! A.href (H.toValue $ "https://www.ejustice.just.fgov.be/eli/" <> fragmentFr) $ "original page"
                   " on the Belgian Official Journal."
 
-        prototypeRefliFooter "/lex" lang nbTexts
+        prototypeRefliFooter lang url nbTexts
 
 copyrightLine :: Text
 copyrightLine = "© Hypered SRL, 2023-2024."
