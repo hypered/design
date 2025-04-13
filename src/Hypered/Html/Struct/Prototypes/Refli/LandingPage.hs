@@ -885,7 +885,7 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
               H.li $
                 H.a ! A.href "/changelog" $ "Changelog"
               H.li $
-                H.a ! A.href "/fr/lex" $ "Lex Iterata" -- TODO Translate.
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex") $ "Lex Iterata"
             H.hr
             H.ul ! A.class_ "no-disc horizontal" $ do
               H.li $
@@ -902,8 +902,12 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
                 ! A.height "13px"
           H.span $ do
             H.preEscapedText "&nbsp; &nbsp; &nbsp; © "
+            let hyperedLink =
+                  if lang == "fr"
+                  then "https://hypered.be"
+                  else "https://hypered.be/en"
             H.a ! A.class_ "normal-link"
-                ! A.href "https://hypered.be/en" $
+                ! A.href hyperedLink $
               "Hypered SRL"
             H.text ", 2023-2025."
 
