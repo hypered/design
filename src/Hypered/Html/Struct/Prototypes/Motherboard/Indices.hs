@@ -1,6 +1,7 @@
 module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
 import Hypered.Html.Helpers
+import Hypered.Html.Struct.Prototypes.Motherboard.Documents (motherboardDocumentFooterTextsEn, motherboardDocumentFooterTextsFr, motherboardDocumentFooterTextsNl, MotherboardDocumentFooterTexts(..))
 import Hypered.Html.Struct.Prototypes.Refli.Common (defaultOptions, refliHead')
 import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, refliMainHeaderTextsFr, refliNavigationBlockTextsFr, MainHeaderTexts(..), NavigationBlockTexts(..))
 import Protolude hiding (div)
@@ -128,15 +129,15 @@ prototypeMotherboardHomepage lang mhTexts texts nbTexts refliHomepage homepage =
           H.p $ H.preEscapedText motherboardHomepageParagraph3
           H.ul $ do
             H.li $
-              H.a ! A.href "/fr/lex/constitution/1994" $ H.text motherboardHomepageWord1
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/constitution/1994") $ H.text motherboardHomepageWord1
             H.li $
-              H.a ! A.href "/fr/lex/law/2025" $ H.text motherboardHomepageWord2
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/law/2025") $ H.text motherboardHomepageWord2
             H.li $
-              H.a ! A.href "/fr/lex/decree/2025" $ H.text motherboardHomepageWord3
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/decree/2025") $ H.text motherboardHomepageWord3
             H.li $
-              H.a ! A.href "/fr/lex/ordinance/2025" $ H.text motherboardHomepageWord4
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/ordinance/2025") $ H.text motherboardHomepageWord4
             H.li $
-              H.a ! A.href "/fr/lex/order/2025" $ H.text motherboardHomepageWord5
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/order/2025") $ H.text motherboardHomepageWord5
 
       prototypeRefliFooter lang "/lex" nbTexts
 
@@ -256,7 +257,7 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
                               H.text entrySource
                           H.p $
                             H.small $ do
-                              H.span $ H.a ! A.href (H.toValue $ "/fr/lex/" <> entryId) $
+                              H.span $ H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/" <> entryId) $
                                 "View"
                               H.span $
                                 maybe
@@ -297,22 +298,25 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
                     )
                     years
 
+        let MotherboardDocumentFooterTexts {..} = case lang of
+              "en" -> motherboardDocumentFooterTextsEn
+              "nl" -> motherboardDocumentFooterTextsNl
+              _ -> motherboardDocumentFooterTextsFr
         H.footer $
           div "u-container" $ do
             H.hr
             div "c-text flow" $ do
               H.p $
                 H.small $ do
-                  "View this page in "
-                  H.a ! A.href (H.toValue url) $ "JSON format"
+                  H.text $ motherboardDocumentFooterSeeJson <> " "
+                  H.a ! A.href (H.toValue url) $
+                    H.text motherboardDocumentFooterJsonFormat
                   "."
               H.p $
                 H.small $ do
-                  "View the "
-                  H.a ! A.href (H.toValue $ "https://www.ejustice.just.fgov.be/eli/" <> fragmentFr) $ "original page"
-                  " on the Belgian Official Journal."
+                  H.text $ motherboardDocumentFooterSeeOriginal <> " "
+                  H.a ! A.href (H.toValue $ "https://www.ejustice.just.fgov.be/eli/" <> fragmentFr) $
+                    H.text motherboardDocumentFooterOriginalPage
+                  H.text $ " " <> motherboardDocumentFooterJournal
 
         prototypeRefliFooter lang url nbTexts
-
-copyrightLine :: Text
-copyrightLine = "© Hypered SRL, 2023-2024."
