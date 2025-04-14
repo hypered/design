@@ -1,7 +1,8 @@
 module Hypered.Html.Struct.Prototypes.Motherboard.Indices where
 
 import Hypered.Html.Helpers
-import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, MainHeaderTexts(..), NavigationBlockTexts(..))
+import Hypered.Html.Struct.Prototypes.Refli.Common (defaultOptions, refliHead')
+import Hypered.Html.Struct.Prototypes.Refli.LandingPage (prototypeRefliHeader, prototypeRefliMainNav', prototypeRefliFooter, refliMainHeaderTextsFr, refliNavigationBlockTextsFr, MainHeaderTexts(..), NavigationBlockTexts(..))
 import Protolude hiding (div)
 import Text.Blaze.Html5 (Html, (!))
 import qualified Text.Blaze.Html5 as H
@@ -109,12 +110,7 @@ prototypeMotherboardHomepage lang mhTexts texts nbTexts refliHomepage homepage =
   let MotherboardHomepageTexts {..} = texts
   H.docType
   H.html ! A.dir "ltr" ! A.lang (H.toValue motherboardHomepageLanguage) $ do
-    H.head $ do
-      H.meta ! A.charset "utf-8"
-      H.meta ! A.name "viewport"
-             ! A.content "width=device-width, initial-scale=1"
-      H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
-      H.title "Lex Iterata"
+    refliHead' defaultOptions (Just "/lex") "Lex Iterata" ""
     H.body ! A.class_ "u-container-vertical cover" $ do
       prototypeRefliHeader lang (prototypeRefliMainNav' mhTexts)
 
@@ -151,8 +147,8 @@ prototypeMotherboardIndex1 :: Html
 prototypeMotherboardIndex1 =
   prototypeMotherboardIndex
     "fr"
-    (NavigationBlockTexts "fr" "Documentation")
-    (MainHeaderTexts "fr" "Blog" "Playground" "Calculs de salaire" "Documentation")
+    refliNavigationBlockTextsFr
+    refliMainHeaderTextsFr
     "/specimens/navigation"
     "/lex" "constitution/1831" "constitution/1831" False "Constitution / 1831" [entry]
     [1000, 2000] -- TODO Better example years
@@ -173,8 +169,8 @@ prototypeMotherboardIndexDense :: Html
 prototypeMotherboardIndexDense =
   prototypeMotherboardIndex
     "fr"
-    (NavigationBlockTexts "fr" "Documentation")
-    (MainHeaderTexts "fr" "Blog" "Playground" "Compute salary" "Documentation")
+    refliNavigationBlockTextsFr
+    refliMainHeaderTextsFr
     "/specimens/navigation"
     "/lex" "law/2022" "loi/2022" True "Loi / 2022" [entry1, entry2, entry3, entry4]
     [1000, 2000] -- TODO Better example years
@@ -230,15 +226,11 @@ data Entry = Entry
 --------------------------------------------------------------------------------
 prototypeMotherboardIndex :: Text -> NavigationBlockTexts -> MainHeaderTexts -> Text -> Text -> Text -> Text -> Bool -> Text -> [Entry] -> [Int] -> Html
 prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment fragmentFr dense breadcrumb entries years = do
-  let entries' = zip [(1 :: Int) ..] entries
+  let url = "/lex/" <> fragment
+      entries' = zip [(1 :: Int) ..] entries
   H.docType
-  H.html $ do -- TODO html(dir="ltr", lang="en")
-    H.head $ do
-        H.meta ! A.charset "utf-8"
-        H.meta ! A.name "viewport"
-               ! A.content "width=device-width, initial-scale=1"
-        H.link ! A.rel "stylesheet" ! A.href "/static/css/struct.min.css"
-        H.title "Lex Iterata"
+  H.html ! A.dir "ltr" ! A.lang (H.toValue lang) $ do
+    refliHead' defaultOptions (Just url) "Lex Iterata" ""
     H.body ! A.class_ "u-container-vertical cover" $ do
         prototypeRefliHeader lang (prototypeRefliMainNav' mhTexts)
 
@@ -305,7 +297,6 @@ prototypeMotherboardIndex lang nbTexts mhTexts refliHomepage homepage fragment f
                     )
                     years
 
-        let url = "/lex/" <> fragment
         H.footer $
           div "u-container" $ do
             H.hr

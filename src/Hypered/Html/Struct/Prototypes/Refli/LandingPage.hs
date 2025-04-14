@@ -815,6 +815,7 @@ data MainHeaderTexts = MainHeaderTexts
 
 data NavigationBlockTexts = NavigationBlockTexts
   { navigationBlockLanguage :: Text
+  , navigationBlockAbout :: Text
   , navigationBlockDocumentation :: Text
   }
 
@@ -831,13 +832,13 @@ refliMainHeaderTextsNl = MainHeaderTexts
   "nl" "Blog" "Playground" "Salarisberekeningen" "Documentatie"
 
 refliNavigationBlockTextsEn :: NavigationBlockTexts
-refliNavigationBlockTextsEn = NavigationBlockTexts "en" "Documentation"
+refliNavigationBlockTextsEn = NavigationBlockTexts "en" "About" "Documentation"
 
 refliNavigationBlockTextsFr :: NavigationBlockTexts
-refliNavigationBlockTextsFr = NavigationBlockTexts "fr" "Documentation"
+refliNavigationBlockTextsFr = NavigationBlockTexts "fr" "A propos" "Documentation"
 
 refliNavigationBlockTextsNl :: NavigationBlockTexts
-refliNavigationBlockTextsNl = NavigationBlockTexts "nl" "Documentatie"
+refliNavigationBlockTextsNl = NavigationBlockTexts "nl" "Ongeveer" "Documentatie"
 
 prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
 prototypeRefliPage lang url header nbTexts content =
@@ -872,7 +873,8 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
             H.h4 "Refli"
             H.ul ! A.class_ "no-disc" $ do
               H.li $
-                H.a ! A.href (H.toValue $ "/" <> lang <> "/about") $ "About"
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/about") $
+                  H.text navigationBlockAbout
               H.li $
                 H.a ! A.href (H.toValue $ "/" <> lang <> "/blog") $ "Blog"
               H.li $

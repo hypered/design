@@ -153,13 +153,15 @@ motherboardDocumentFooterTextsNl = MotherboardDocumentFooterTexts
 --------------------------------------------------------------------------------
 prototypeMotherboardDocument :: Text -> Text -> Text -> Text -> Document -> Html
 prototypeMotherboardDocument lang refliHomepage homepage breadcrumb Document {..} = do
-  let MotherboardDocumentTexts {..} = case lang of
+  let url = "/lex/" <> documentId
+      MotherboardDocumentTexts {..} = case lang of
         "en" -> motherboardDocumentTextsEn
         "nl" -> motherboardDocumentTextsNl
         _ -> motherboardDocumentTextsFr
-  Struct.refliDocument
+  Struct.refliDocument'
     Struct.defaultOptions
     lang
+    (Just url)
     documentFullTitle
     (documentFullTitle <> " " <> motherboardDocumentTitlePresentation ) $
     H.body ! A.class_ "u-container-vertical cover" $ do
