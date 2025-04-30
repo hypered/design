@@ -20,7 +20,7 @@ html(dir="ltr", lang="en")
                     a(href="/prototypes/refli/index-constant.html")
                         img(src="/static/images/logo.svg", alt="Refli")
                 .u-bar__right
-                    include ../includes/main-header--page-struct.slab
+                    include ../includes/refli-main-nav-2.slab
             --
               In this example, everything is aligned to the top of the bar,
               and we use .menu-item-height to ensure the logo is aligned on
@@ -31,7 +31,7 @@ html(dir="ltr", lang="en")
                         a(href="/prototypes/refli/index-constant.html")
                             img(src="/static/images/logo.svg", alt="Refli")
                 .u-bar__right
-                    include ../includes/main-header--page-struct.slab
+                    include ../includes/refli-main-nav-2.slab
             .u-bar.wrapper
                 .u-bar__left
                     .b-128x64

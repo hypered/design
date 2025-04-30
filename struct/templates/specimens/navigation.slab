@@ -18,4 +18,4 @@ html(dir="ltr", lang="en")
                             a(href="#")
                                 img(src="/static/images/logo.svg", alt="Refli")
                     .u-bar__right
-                        include ../includes/main-header--page-struct.slab
+                        include ../includes/refli-main-nav-2.slab

@@ -24,7 +24,7 @@ frag page{canonical,titl}
                             a(href="/prototypes/refli/index-constant.html")
                                 img(src="/static/images/logo.svg", alt="Refli")
                     .u-bar__right
-                        include ../../includes/main-header--page-struct.slab
+                        include ../../includes/refli-main-nav-2.slab
 
         main
             .u-container
