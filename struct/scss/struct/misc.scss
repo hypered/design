@@ -1,28 +1,14 @@
-.bordered {
-  border: 2px solid black;
-}
-.bordered-3 {
-  border: 2px solid black;
-  border-bottom: none;
-}
+/* -----------------------------------------------------------------------------
+   STRUCT misc.scss - Reorganized according to layered architecture
+   
+   This file contains styles that need to be reorganized into appropriate
+   files within the existing layered structure.
+   -------------------------------------------------------------------------- */
 
-.u-grid {
-  display: grid;
-  gap: var(--grid-gutter);
-  grid-template-columns: repeat(12, 1fr);
-}
-
-.debug-gap-color {background: #eed9eb;}
-.debug-column-color > span {font-size: 0.875rem; font-family: monospace; background: white;}
-.full-height {
-  height: 100vh;
-}
-
-// This is enough to have the image take the same space as a paragraph, in e.g
-// .c-container or .max-40rem. Is there a customary name for this ?
-img.adapt {
-  width: 100%;
-}
+/* -----------------------------------------------------------------------------
+   UTILITIES - Layout & Container utilities
+   These should move to struct/layouts.scss
+   -------------------------------------------------------------------------- */
 
 .with-sidebar {
   display: flex;
@@ -61,10 +47,17 @@ img.adapt {
   margin-top: auto;
 }
 
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+  grid-template-columns: repeat(12, 1fr);
+}
+
 .center {
   margin-left: auto;
   margin-right: auto;
 }
+
 // Tachyons would call this mw8 or something.
 // Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
 // instead of some specific value (like o-containers).
@@ -84,9 +77,50 @@ img.adapt {
   height: calc(50rem * 1.414);
 }
 
+.full-height {
+  height: 100vh;
+}
 
 /* -----------------------------------------------------------------------------
-   Menu items (dropdowns and links)
+   UTILITIES - Basic styling utilities
+   These should be moved to a new struct/utilities.scss file
+   -------------------------------------------------------------------------- */
+
+.bordered {
+  border: 2px solid black;
+}
+.bordered-3 {
+  border: 2px solid black;
+  border-bottom: none;
+}
+
+// This is enough to have the image take the same space as a paragraph, in e.g
+// .c-container or .max-40rem. Is there a customary name for this ?
+img.adapt {
+  width: 100%;
+}
+
+// A la Tachyons.
+.tr {
+  text-align: right;
+}
+
+// Try to make a simple text input look like a paragraph.
+input.no-style {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   COMPONENTS - Navigation & Menu components
+   These should move to a new struct/components/navigation.scss file
    -------------------------------------------------------------------------- */
 
 /* The menu-item container div. This can contain a dropdown button,
@@ -215,9 +249,9 @@ img.adapt {
   --menu-mask-opacity: 0.8;
 }
 
-
 /* -----------------------------------------------------------------------------
-   Buttons
+   COMPONENTS - Buttons
+   These should move to a new struct/components/buttons.scss file
    -------------------------------------------------------------------------- */
 
 .c-button {
@@ -321,6 +355,11 @@ a.c-button--secondary {
   }
 }
 
+/* -----------------------------------------------------------------------------
+   COMPONENTS - Forms & Inputs
+   These should move to a new struct/components/forms.scss file
+   -------------------------------------------------------------------------- */
+
 // Input field
 .c-input {
   appearance: none;
@@ -338,14 +377,110 @@ a.c-button--secondary {
   }
 }
 
-// Style iframes in the notes.
-.wrrrap {
-  width: 964px;
-  margin: 1.4em auto 0 0;
+/* -----------------------------------------------------------------------------
+   COMPONENTS - Tables
+   These should move to a new struct/components/tables.scss file
+   -------------------------------------------------------------------------- */
+
+// Key-values, when using tables.
+table.pairs {
+  table-layout: fixed;
+  width: 100%;
 }
-.wrrrap iframe {
-  border: 2px solid #DDD;
+table.pairs tr td:first-child {
+  font-weight: 500;
+  width: calc(33.3333%);
+  padding: 0.5em 0.5em 0.5em 0;
 }
+table.pairs tr td:last-child {
+  width: calc(66.6667%);
+}
+table.pairs tr {
+  /* Take some space, even without .pairs--border-bottom. */
+  border-bottom: 1px solid #fff;
+}
+table.pairs.pairs--border-bottom tr {
+  border-bottom: 1px solid #ddd;
+}
+table.pairs tr:hover {
+  background-color: #efefef;
+}
+
+// Basic tables.
+table.table {
+  width: 60%;
+}
+.table td {
+  padding: 0.2rem;
+}
+
+/* -----------------------------------------------------------------------------
+   COMPONENTS - Leader lines
+   These should move to struct/components/typography.scss or a new patterns file
+   -------------------------------------------------------------------------- */
+
+/* Leader lines. Code from
+ * https://markentier.tech/posts/2021/03/responsive-toc-leader-lines-with-css/
+ */
+
+.leader-line {
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-template-areas: "a b";
+  align-items: end;
+  gap: 0 .25rem;
+}
+
+.leader-line-a {
+  margin: 0;
+  padding: 0;
+  grid-area: a;
+  position: relative;
+  overflow: hidden;
+}
+
+.leader-line-a::after {
+  position: absolute;
+  padding-left: .25ch;
+  content: " . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . ";
+  text-align: right;
+}
+
+.leader-line-b {
+  grid-area: b;
+}
+
+// Specific spacing for leader lines.
+.flow-leader-line > * + * {
+  --flow-space: 0.6em;
+  margin-top: var(--flow-space);
+}
+
+/* -----------------------------------------------------------------------------
+   DEBUG & DEVELOPMENT - Debug utilities
+   These should move to a new struct/debug.scss file (or struct/debug/ folder)
+   -------------------------------------------------------------------------- */
+
+.debug-gap-color {background: #eed9eb;}
+.debug-column-color > span {font-size: 0.875rem; font-family: monospace; background: white;}
+
+/* -----------------------------------------------------------------------------
+   APPLICATION-SPECIFIC - Refli Blog styles
+   These should move to app-specific stylesheets (e.g., app/blog.scss)
+   -------------------------------------------------------------------------- */
+
+// Specific rules for blog posts.
+.blog-post-details {border: 2px solid #e4e4e4; padding: 1em;}
+.blog-post-centered-svg svg {display: block; margin: auto;}
+
+/* -----------------------------------------------------------------------------
+   APPLICATION-SPECIFIC - Motherboard/Legal document styles
+   These should move to app-specific stylesheets (e.g., app/motherboard.scss)
+   -------------------------------------------------------------------------- */
 
 // Specific rules for the Motherboard listings.
 .mb-entry {
@@ -398,96 +533,16 @@ i.mb-i {font-style: italic;}
   grid-column-start: span 1;
 }
 
-// Specific rules for blog posts.
-.blog-post-details {border: 2px solid #e4e4e4; padding: 1em;}
-.blog-post-centered-svg svg {display: block; margin: auto;}
+/* -----------------------------------------------------------------------------
+   APPLICATION-SPECIFIC - Documentation/Notes styles
+   These should move to app-specific stylesheets (e.g., app/notes.scss)
+   -------------------------------------------------------------------------- */
 
-// Key-values, when using tables.
-table.pairs {
-  table-layout: fixed;
-  width: 100%;
+// Style iframes in the notes.
+.wrrrap {
+  width: 964px;
+  margin: 1.4em auto 0 0;
 }
-table.pairs tr td:first-child {
-  font-weight: 500;
-  width: calc(33.3333%);
-  padding: 0.5em 0.5em 0.5em 0;
-}
-table.pairs tr td:last-child {
-  width: calc(66.6667%);
-}
-table.pairs tr {
-  /* Take some space, even without .pairs--border-bottom. */
-  border-bottom: 1px solid #fff;
-}
-table.pairs.pairs--border-bottom tr {
-  border-bottom: 1px solid #ddd;
-}
-table.pairs tr:hover {
-  background-color: #efefef;
-}
-
-// Basic tables.
-table.table {
-  width: 60%;
-}
-.table td {
-  padding: 0.2rem;
-}
-// A la Tachyons.
-.tr {
-  text-align: right;
-}
-
-/* Leader lines. Code from
- * https://markentier.tech/posts/2021/03/responsive-toc-leader-lines-with-css/
- */
-
-.leader-line {
-  display: grid;
-  grid-template-columns: auto max-content;
-  grid-template-areas: "a b";
-  align-items: end;
-  gap: 0 .25rem;
-}
-
-.leader-line-a {
-  margin: 0;
-  padding: 0;
-  grid-area: a;
-  position: relative;
-  overflow: hidden;
-}
-
-.leader-line-a::after {
-  position: absolute;
-  padding-left: .25ch;
-  content: " . . . . . . . . . . . . . . . . . . . "
-    ". . . . . . . . . . . . . . . . . . . . . . . "
-    ". . . . . . . . . . . . . . . . . . . . . . . "
-    ". . . . . . . . . . . . . . . . . . . . . . . "
-    ". . . . . . . . . . . . . . . . . . . . . . . ";
-  text-align: right;
-}
-
-.leader-line-b {
-  grid-area: b;
-}
-
-// Specific spacing for leader lines.
-.flow-leader-line > * + * {
-  --flow-space: 0.6em;
-  margin-top: var(--flow-space);
-}
-
-// Try to make a simple text input look like a paragraph.
-input.no-style {
-  border: none;
-  outline: none;
-  background: none;
-  width: 100%;
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  line-height: inherit;
-  padding: 0;
+.wrrrap iframe {
+  border: 2px solid #DDD;
 }
