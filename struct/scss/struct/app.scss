@@ -1,0 +1,133 @@
+/* -----------------------------------------------------------------------------
+   STRUCT app.scss - Application-specific styles
+   
+   This file contains application-specific styles that don't belong in the 
+   core design system. These are temporary styles that should eventually be
+   moved to proper application-specific stylesheets.
+   -------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+   Refli blog styles
+   -------------------------------------------------------------------------- */
+
+// Specific rules for blog posts.
+.blog-post-details {
+  border: 2px solid #e4e4e4;
+  padding: 1em;
+}
+
+.blog-post-centered-svg svg {
+  display: block;
+  margin: auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Motherboard styles
+   -------------------------------------------------------------------------- */
+
+// Specific rules for the Motherboard listings.
+.mb-entry {
+  display: flex;
+  gap: 1em;
+  justify-content: flex-start;
+  padding-right: 0.5em;
+}
+
+.mb-entry:hover {
+  background-color: #F5F5F5;
+}
+
+.mb-entry {
+  margin-top: 1em;
+}
+
+.mb-num {
+  width: 3em;
+  text-align: right;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.mb-grow {
+  flex-grow: 1;
+}
+
+.mb-second-line {
+  color: #555;
+  margin-top: 0.5em;
+}
+
+.mb-second-line--dense {
+  color: #555;
+  margin-top: 0em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.mb-second-line span {
+  margin-left: 4em;
+}
+
+.mb-second-line p + p {
+  margin-top: -0.3em;
+}
+
+// Specific rules for the Motherboard documents.
+h1.mb-title {
+  text-indent: 1.8em;
+  text-align: justify;
+}
+
+.legislation p {
+  text-indent: 1em;
+}
+
+.legislation p.first {
+  text-indent: 3em;
+}
+
+.legislation p.second {
+  text-indent: 3em;
+  margin-top: 0;
+}
+
+.article {
+  color: #666;
+}
+
+.article:after {
+  content: '\00a0\00a0';
+}
+
+i.mb-i {
+  font-style: italic;
+}
+
+// We reuse the menu dropdown mechanism, but this is not right:
+// we want only one active menu dropdown at a time, but here we want
+// to allow multiple folded texts to be unfolded at the same time.
+.menu-item .menu-dropdown-content-mb {
+  display: none;
+}
+
+.menu-item:focus .menu-dropdown-content-mb {
+  display: block;
+  padding-left: 2em;
+  border-left: 4px solid #DFDFDF;
+}
+
+.mb-pairs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10ch, 1fr));
+  grid-gap: 1em;
+}
+
+.mb-pairs dt {
+  grid-column-start: 1;
+  /* I should separate layouting and styling. */
+  font-weight: 500;
+}
+
+.mb-pairs dd {
+  grid-column-start: span 1;
+}

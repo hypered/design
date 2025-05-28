@@ -6,8 +6,15 @@
 @import "struct/fonts";
 @import "struct/scale";
 @import "struct/layouts";
+@import "struct/utilities";
 @import "struct/components/typography";
-@import "struct/misc";
+@import "struct/components/navigation";
+@import "struct/components/buttons";
+@import "struct/components/forms";
+@import "struct/components/tables";
+@import "struct/patterns";
+@import "struct/dev";
+@import "struct/app";
 
 /* Optional */
 // struct/lorem

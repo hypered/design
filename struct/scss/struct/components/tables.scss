@@ -1,0 +1,43 @@
+/* -----------------------------------------------------------------------------
+   STRUCT tables.scss - Table components
+   
+   This file contains table components and styling.
+   -------------------------------------------------------------------------- */
+
+// Key-values, when using tables.
+table.pairs {
+  table-layout: fixed;
+  width: 100%;
+}
+
+table.pairs tr td:first-child {
+  font-weight: 500;
+  width: calc(33.3333%);
+  padding: 0.5em 0.5em 0.5em 0;
+}
+
+table.pairs tr td:last-child {
+  width: calc(66.6667%);
+}
+
+table.pairs tr {
+  /* Take some space, even without .pairs--border-bottom. */
+  border-bottom: 1px solid #fff;
+}
+
+table.pairs.pairs--border-bottom tr {
+  border-bottom: 1px solid #ddd;
+}
+
+table.pairs tr:hover {
+  background-color: #efefef;
+}
+
+// Basic tables.
+table.table {
+  width: 60%;
+}
+
+.table td {
+  padding: 0.2rem;
+}

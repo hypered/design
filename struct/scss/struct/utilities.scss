@@ -1,0 +1,68 @@
+/* -----------------------------------------------------------------------------
+   STRUCT utilities.scss - Basic styling utilities
+   
+   This file contains utility classes for common styling patterns.
+   -------------------------------------------------------------------------- */
+
+.bordered {
+  border: 2px solid black;
+}
+
+.bordered-3 {
+  border: 2px solid black;
+  border-bottom: none;
+}
+
+// This is enough to have the image take the same space as a paragraph, in e.g
+// .c-container or .max-40rem. Is there a customary name for this ?
+img.adapt {
+  width: 100%;
+}
+
+// A la Tachyons.
+.tr {
+  text-align: right;
+}
+
+// Try to make a simple text input look like a paragraph.
+input.no-style {
+  border: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  line-height: inherit;
+  padding: 0;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Tachyons would call this mw8 or something.
+// Naming-wise, I would prefer something like t-shirt sizes (small, large, ...)
+// instead of some specific value (like o-containers).
+.max-50rem {
+  max-width: 50rem;
+}
+
+.max-40rem {
+  max-width: 40rem;
+}
+
+.max-30rem {
+  max-width: 30rem;
+}
+
+// A4 aspect ration is 1.414:1
+// If we use .max-50rem as width, here is the height:
+.a4-50rem--height {
+  height: calc(50rem * 1.414);
+}
+
+.full-height {
+  height: 100vh;
+}

@@ -134,3 +134,52 @@
   display: flex;
   align-items: center;
 }
+
+/* -----------------------------------------------------------------------------
+   Layout Utilities moved from misc.scss
+   -------------------------------------------------------------------------- */
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+}
+
+.with-sidebar .sidebar {
+  flex-grow: 1;
+}
+
+.with-sidebar .main {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: 50%;
+}
+
+/* Top-level wrapper to push the footer at the bottom of the viewport.
+   This is useful when there is not enough content to push the footer
+   down the page.
+   This should be used on the main div, or directly on the body (and
+   should directly enclose the footer).
+
+   This could be extended to vertically center some main content:
+   https://github.com/aprietof/every-layout/blob/master/layouts.css#L156-L185
+*/
+.cover {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cover > main {
+  margin-block: auto;
+}
+
+.cover > footer {
+  margin-top: auto;
+}
+
+.u-grid {
+  display: grid;
+  gap: var(--grid-gutter);
+  grid-template-columns: repeat(12, 1fr);
+}

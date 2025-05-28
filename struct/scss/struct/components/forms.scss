@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+   STRUCT forms.scss - Forms & Input components
+   
+   This file contains form elements and their styling.
+   -------------------------------------------------------------------------- */
+
+// Input field
+.c-input {
+  appearance: none;
+  height: 2.25rem;
+  width: calc(100% - 2px);
+  padding: 0.5rem;
+  background: #f4f4f4;
+  border: 1px solid #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  font-size: inherit;
+  
+  &:focus {
+    outline: 0;
+    border-color: blue;
+    box-shadow: inset 0 0 0 0.0625rem blue;
+  }
+}

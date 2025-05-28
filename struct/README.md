@@ -22,7 +22,5 @@ Instead of a Gulpfile to find the `.pug` source file and translate them to
 HTML, a Makefile is provided.
 
 ```
-$ nix-shell ../../slab/default.nix -A shell
-$ make -j 8
-$ make serve
+$ nix-shell --run 'make -j 8 && make serve'
 ```

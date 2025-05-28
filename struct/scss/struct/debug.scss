@@ -36,3 +36,13 @@ $g-bp4: 1200px;
 .bg-bands {
   background: no-repeat url("/static/images/2560x1440-bands.svg");
 }
+
+.debug-gap-color {
+  background: #eed9eb;
+}
+
+.debug-column-color > span {
+  font-size: 0.875rem;
+  font-family: monospace;
+  background: white;
+}

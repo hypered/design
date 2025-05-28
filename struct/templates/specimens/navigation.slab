@@ -8,7 +8,7 @@ html(dir="ltr", lang="en")
         link(rel="stylesheet", href="/static/css/struct/fonts.css")
         link(rel="stylesheet", href="/static/css/struct/scale.css")
         link(rel="stylesheet", href="/static/css/struct/layouts.css")
-        link(rel="stylesheet", href="/static/css/struct/misc.css")
+        link(rel="stylesheet", href="/static/css/struct/components/navigation.css")
     body.u-container-vertical
         header
             .u-container

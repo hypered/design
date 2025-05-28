@@ -23,11 +23,10 @@ Binary files 2025-04-01/motherboard-motherboard-document.png and result/motherbo
 ```
 
 One way to see the differences is to redirect the above output to a file, and
-edit that file to look like:
+edit:
 
 ```
-feh 2025-04-01/motherboard-motherboard-document.png result/motherboard-motherboard-document.png
-...
+$ sed -i -e 's/Binary files /feh /' -e 's/png and /png /' -e 's/png differ/png/' a
 ```
 
 Then execute that file: is displays each pair of files, making it easy to see

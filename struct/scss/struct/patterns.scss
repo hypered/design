@@ -1,0 +1,47 @@
+/* -----------------------------------------------------------------------------
+   STRUCT patterns.scss - Design patterns and specialized components
+   
+   This file contains advanced patterns like leader lines and other 
+   specialized design components.
+   -------------------------------------------------------------------------- */
+
+/* Leader lines. Code from
+ * https://markentier.tech/posts/2021/03/responsive-toc-leader-lines-with-css/
+ */
+
+.leader-line {
+  display: grid;
+  grid-template-columns: auto max-content;
+  grid-template-areas: "a b";
+  align-items: end;
+  gap: 0 .25rem;
+}
+
+.leader-line-a {
+  margin: 0;
+  padding: 0;
+  grid-area: a;
+  position: relative;
+  overflow: hidden;
+}
+
+.leader-line-a::after {
+  position: absolute;
+  padding-left: .25ch;
+  content: " . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . "
+    ". . . . . . . . . . . . . . . . . . . . . . . ";
+  text-align: right;
+}
+
+.leader-line-b {
+  grid-area: b;
+}
+
+// Specific spacing for leader lines.
+.flow-leader-line > * + * {
+  --flow-space: 0.6em;
+  margin-top: var(--flow-space);
+}

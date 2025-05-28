@@ -1,0 +1,106 @@
+/* -----------------------------------------------------------------------------
+   STRUCT buttons.scss - Button components
+   
+   This file contains button components and their variants.
+   -------------------------------------------------------------------------- */
+
+.c-button {
+  appearance: none;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  display: inline-flex;
+}
+
+a.c-button--primary {
+  color: white;
+  text-decoration: none;
+}
+
+a.c-button--secondary {
+  color: black;
+  text-decoration: none;
+}
+
+.c-button--tall {
+  padding: 0.625rem 1.25rem 1.875rem;
+  justify-content: left;
+  vertical-align: top;
+}
+
+// Button label
+.c-button span {
+  white-space: nowrap;
+}
+
+// Button icon
+.c-button svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+// Space between label and icon
+.c-button span + svg {
+  margin-left: 0.4rem;
+}
+
+// Primary button variant
+.c-button--primary {
+  background: #000;
+  color: #fff;
+
+  svg * {
+    fill: currentColor;
+  }
+
+  &:hover {
+    background: #999;
+    border-color: #999;
+  }
+
+  &:active {
+    background: #777;
+    border-color: #777;
+  }
+}
+
+.c-button--primary-push {
+  &:active {
+    transform: translateY(2px);
+    background: #999;
+    border-color: #999;
+  }
+}
+
+// Secondary button variant
+.c-button--secondary {
+  background: #fff;
+  color: #000;
+
+  svg * {
+    fill: currentColor;
+  }
+
+  &:hover {
+    background: #ddd;
+    border-color: #000;
+  }
+
+  &:active {
+    background: #999;
+    border-color: #000;
+  }
+}
+
+.c-button--secondary-push {
+  &:active {
+    transform: translateY(2px);
+    background: #ddd;
+    border-color: #000;
+  }
+}
