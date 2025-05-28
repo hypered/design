@@ -164,20 +164,20 @@
 // Navigation sidebar component styling
 .sidebar--nav {
   width: 16em;
-  background: #f8f8f8;
+  background: var(--color-grey-100);
   background: linear-gradient(
     180deg,
-    rgba(248,248,248,1) 0%,
-    rgba(248,248,248,1) 94%,
-    rgba(255,255,255,1) 100%);
-  border-top-left-radius: 1em; 
-  border-bottom-left-radius: 1em;
+    var(--color-grey-100) 0%,
+    var(--color-grey-100) 94%,
+    var(--color-white) 100%);
+  border-top-left-radius: var(--space-s); 
+  border-bottom-left-radius: var(--space-s);
 }
 
 .sidebar-menu {
   list-style: none;
   margin: 0;
-  padding: 1.5rem 0;
+  padding: var(--space-m) 0;
 }
 
 .sidebar-menu li {
@@ -185,24 +185,27 @@
   padding: 0;
 }
 
+// TODO We need a combination of padding/margins that align menu entries' text
+// with the rest of the page (e.g. the Refli logo, of the copyright line in the
+// footer).
 .sidebar-menu a {
   display: block;
-  padding: 0.75rem 1.5rem;
-  margin: 0 0.75rem;
-  color: #4a4a4a;
+  padding: var(--space-xs) var(--space-s);
+  margin: 0 var(--space-xs);
+  color: var(--color-grey-970);
   text-decoration: none;
   font-weight: 400;
-  border-radius: 0.375rem;
+  border-radius: var(--space-2xs);
 }
 
 .sidebar-menu a:hover {
-  background-color: #e8e8e8;
-  color: #2c2c2c;
+  background-color: var(--color-grey-500);
+  color: var(--color-grey-980);
 }
 
 .sidebar-menu a.active {
-  background-color: #e8e8e8;
-  color: #2c2c2c;
+  background-color: var(--color-grey-500);
+  color: var(--color-grey-980);
   font-weight: 500;
 }
 
