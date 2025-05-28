@@ -1,0 +1,77 @@
+include ../../layouts/refli/page.slab
+
+frag chat-header
+    .c-content.flow-all
+        h1 SPEC
+        small.breadcrumb Chat
+
+    .c-content.flow-all.limit-42em
+        p A SPEC project to work on SPEC itself. See bin/spec.hs, features/ and README.md.
+
+    .c-content.flow-all
+        small Files: 1, Total size: 427 characters
+
+frag chat-files
+    .files
+        .file
+            .file-header
+                span conversation.dump
+                span.file-type Text File
+            .file-content
+                pre
+                    code.
+                        [ RegularMessage
+                            { msgRole = "system"
+                            , msgContent = "You're the SPEC system, an LLM-based assistant that helps develop software systems. You're working on workspace: 'SPEC'. Description: A SPEC project to work on SPEC itself. See bin/spec.hs, features/ and README.md.. You can list and read files from the workspace using tools. Use the spec_help tool to see available CLI commands (similar to `spec --help`)."
+                            }
+                        ]
+
+frag chat-input
+    .chat-input
+        form(method="post", action="/chat")
+            textarea.c-input(name="message", placeholder="Type your message here...", rows="4", style="width: 100%; margin-bottom: 1rem; height: 6rem; font-family: inherit;")
+            button.c-button.c-button--primary(type="submit") Send
+
+page(titl="SPEC Chat")
+    .max-50rem.u-flow-c-4.center.flow
+        style.
+            .file-type {
+                color: #586069;
+                font-size: 12px;
+                margin-left: 0.5rem;
+            }
+            .file-content {
+                padding: 0;
+                overflow: auto;
+            }
+            .file-content pre {
+                margin: 0;
+                white-space: pre-wrap;
+                background-color: #fff;
+            }
+            .file-content pre code {
+                background-color: #fff;
+            }
+
+        -- Project header outside the document
+        chat-header
+
+        -- File header outside the document
+        .file-header
+            span dump.txt
+            span.file-type Text File
+
+        -- Document content within the bordered area
+        .box--light.c-text
+            .file-content
+                pre
+                    code.
+                        [ RegularMessage
+                            { msgRole = "system"
+                            , msgContent = "You're the SPEC system, an LLM-based assistant that helps develop software systems. You're working on workspace: 'SPEC'. Description: A SPEC project to work on SPEC itself. See bin/spec.hs, features/ and README.md.. You can list and read files from the workspace using tools. Use the spec_help tool to see available CLI commands (similar to `spec --help`)."
+                            }
+                        ]
+
+        -- Chat input outside the document
+        .box.box--light
+            chat-input

@@ -213,3 +213,9 @@ html(dir="ltr", lang="en")
                         a(href="/prototypes/refli/motherboard-document.html") Justel document
                     li
                         a(href="/prototypes/refli/motherboard-document-spec.html") Justel document (spec)
+
+                h3 SPEC
+                p An experimental LLM-based tool
+                ul
+                    li
+                        a(href="/prototypes/spec/chat.html") Chat
