@@ -25,29 +25,21 @@ html(dir="ltr", lang="en")
                     .u-bar__right
                         include ../includes/refli-main-nav-2.slab
 
-        style.
-          .with-sidebar { flex: 1 1 100%; }
-          .sidebar {
-            width: 16em;
-            background: #f6f6f6;
-            background: linear-gradient(
-              180deg,
-              rgba(246,246,246,1) 0%,
-              rgba(246,246,246,1) 94%,
-              rgba(255,255,255,1) 100%);
-            border-top-left-radius: 1em; border-bottom-left-radius: 1em;
-          }
-        .with-sidebar.u-flow-c-0
-            .sidebar
-                .u-container
-                  .c-text.flow-all
-                      ul
-                          li Xxx
-                          li Xxx
-                          li Xxx
-                          li Xxx
-                          li Xxx
-                          li Xxx
+        .with-sidebar.with-sidebar--fill-height.u-flow-c-0
+            .sidebar.sidebar--nav
+                ul.sidebar-menu
+                    li
+                        a.active(href="#") Dashboard
+                    li
+                        a(href="#") Billing
+                    li
+                        a(href="#") Notifications
+                    li
+                        a(href="#") Settings
+                    li
+                        a(href="#") Team
+                    li
+                        a(href="#") Account
             .main
                 .c-text.flow
                     h1 Yyy
