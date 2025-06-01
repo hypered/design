@@ -300,6 +300,16 @@ $ ./build.sh
 
 The resulting PDF file is then `template.pdf`.
 
+The example presented on `hypered.design` at [`/pdf/brochure/example-full.pdf`]
+has its first page converted to PNG with:
+
+```
+$ nix-shell -p imagemagick
+$ magick -density 300 brochure/example-full.pdf\[0\] -background white -flatten -quality 100 struct/static/images/example-brochure-cover-white.png
+```
+
+TODO The size is probably overkill for preview images.
+
 
 ## Nix
 
