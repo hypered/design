@@ -1,0 +1,50 @@
+include ../../layouts/refli/page.slab
+
+page
+
+    style.
+      .a4-border {
+        width: 25rem;
+        height: calc(25rem * 1.414);
+        border: 2px solid #DDD;
+      }
+
+    frag table-content
+        tr
+            td Key
+            td Value
+        tr
+            td A
+            td B
+        tr
+            td Some key value pairs.
+            td Some pairs.
+        tr
+            td Type
+            td PNG
+
+    .c-content.flow-all.u-flow-c-4.max-50rem.center
+      img.a4-border(width=200, height=300, src="/static/images/example-brochure-cover-white.png")
+
+    .c-content.flow-all.u-flow-c-4.max-50rem.center
+      .switcher.u-flow-c-4
+        img.a4-border(width=200, height=300, src="/static/images/example-brochure-cover-white.png")
+        .c-content.flow
+          p <b>Fermentum</b> fusce imperdiet non, id massa consequat. Ut malesuada sed mauris facilisis quam. Orci diam quam a maecenas netus at venenatis ac gravida. Dictum nisi aliquam, mus venenatis amet egestas nulla tellus. Amet vel gravida viverra sed bibendum gravida sed. Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque turpis. Ut potenti praesent bibendum eu iaculis.
+
+    .c-content.flow-all.u-flow-c-4.max-50rem.center
+      .switcher.u-flow-c-4
+        img.a4-border(width=200, height=300, src="/static/images/example-brochure-cover-white.png")
+        .c-content.flow
+          p <b>Fermentum</b> fusce imperdiet non, id massa consequat. Ut malesuada sed mauris facilisis quam. Orci diam quam a maecenas netus at venenatis ac gravida. Dictum nisi aliquam, mus venenatis amet egestas nulla tellus. Amet vel gravida viverra sed bibendum gravida sed. Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque turpis. Ut potenti praesent bibendum eu iaculis.
+          table.pairs.pairs--border-bottom
+              table-content
+
+    .c-content.flow-all.u-flow-c-4
+      .switcher.u-flow-c-4
+        img.adapt.blog-post-details(src="/static/images/example-brochure-cover-white.png", alt="An example brochure cover")
+        .c-content.flow
+          p <b>Fermentum</b> fusce imperdiet non, id massa consequat. Ut malesuada sed mauris facilisis quam. Orci diam quam a maecenas netus at venenatis ac gravida. Dictum nisi aliquam, mus venenatis amet egestas nulla tellus. Amet vel gravida viverra sed bibendum gravida sed. Vitae sed lectus sem arcu quam eu ac laoreet vel. Lobortis euismod aenean augue felis diam quisque turpis. Ut potenti praesent bibendum eu iaculis.
+          a.c-button.c-button--secondary(href='#')
+            span Enim at
+            arrow-right
