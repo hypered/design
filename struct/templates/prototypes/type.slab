@@ -1,0 +1,123 @@
+doctype html
+html(dir="ltr", lang="en")
+  head
+    meta(charset="utf-8")
+    meta(viewport="width=device-width, initial-scale=1")
+    title Touch Typing
+    --
+      Basic touch typing app with character set "enia":
+      - Generates random words from the 4 characters
+      - Shows current character to type with black underline (thicker, offset)
+      - Spaces displayed as white dots + zero-width space for proper word wrapping
+      - Press Escape to generate new text
+      - Clean separation: conf object (config), state object (runtime data)
+    style.
+      body {
+        font-family: monospace;
+        background: white;
+        color: black;
+        margin: 40px;
+        font-size: 18px;
+      }
+      #text {
+        line-height: 1.5;
+      }
+      .current {
+        text-decoration: underline;
+        text-decoration-color: black;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+      }
+      .space-dot {
+        color: white;
+      }
+  body
+    div#text
+    
+    script.
+      const conf = {
+        characters: ['e', 'n', 'i', 'a']
+      };
+      const state = {
+        words: [],
+        joinedWords: '',
+        currentPosition: 0
+      };
+      
+      function generateWord(chars) {
+        const length = Math.floor(Math.random() * 4) + 2; // 2-5 characters
+        let word = '';
+        for (let i = 0; i < length; i++) {
+          word += chars[Math.floor(Math.random() * chars.length)];
+        }
+        return word;
+      }
+      
+      function generateText(chars) {
+        const generatedWords = [];
+        for (let i = 0; i < 20; i++) {
+          generatedWords.push(generateWord(chars));
+        }
+        return generatedWords;
+      }
+      
+      function initialize_state() {
+        state.words = generateText(conf.characters);
+        state.joinedWords = state.words.join(' ');
+        state.currentPosition = 0;
+      }
+      
+      function update_state(typedChar) {
+        const expectedChar = state.joinedWords[state.currentPosition];
+        
+        if (typedChar === expectedChar) {
+          state.currentPosition++;
+          if (state.currentPosition >= state.joinedWords.length) {
+            initialize_state();
+          }
+        }
+      }
+      
+      function display_state() {
+        const textElement = document.getElementById('text');
+        let html = '';
+        
+        for (let i = 0; i < state.joinedWords.length; i++) {
+          const char = state.joinedWords[i];
+          
+          if (i === state.currentPosition) {
+            if (char === ' ') {
+              // White dot + zero-width space: the dot provides visual space for underline,
+              // the zero-width space allows word wrapping after the dot
+              html += '<span class="current space-dot">·\u200B</span>';
+            } else {
+              html += '<span class="current">' + char + '</span>';
+            }
+          } else {
+            if (char === ' ') {
+              // White dot + zero-width space: invisible dot maintains layout,
+              // zero-width space enables proper word wrapping
+              html += '<span class="space-dot">·\u200B</span>';
+            } else {
+              html += char;
+            }
+          }
+        }
+        
+        textElement.innerHTML = html;
+      }
+      
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          initialize_state();
+          display_state();
+          return;
+        }
+        
+        update_state(e.key);
+        display_state();
+      });
+      
+      // Initialize
+      initialize_state();
+      display_state();
