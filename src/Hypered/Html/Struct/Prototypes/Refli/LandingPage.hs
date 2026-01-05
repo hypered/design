@@ -911,7 +911,7 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
             H.a ! A.class_ "normal-link"
                 ! A.href hyperedLink $
               "Hypered SRL"
-            H.text ", 2023-2025."
+            H.text ", 2023-2026."
 
 -- User profile informaton relevant to the UI.
 data Profile = Profile
