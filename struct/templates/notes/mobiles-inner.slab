@@ -1,0 +1,70 @@
+doctype html
+html(dir="ltr", lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    style.
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      [data-page] {
+        display: none;
+      }
+
+      [data-page].--active {
+        display: block;
+      }
+  body
+
+    div(data-page="home")
+      h1 Home
+      p Welcome to the home page.
+
+    div(data-page="about")
+      h1 About
+      p This is the about page.
+
+    div(data-page="contact")
+      h1 Contact
+      p Get in touch with us.
+
+    script.
+      const app = (() => {
+        const pages = document.querySelectorAll('[data-page]');
+        const pageNames = [...pages].map(p => p.dataset.page);
+        const defaultPage = pageNames[0];
+
+        function goTo(pageName) {
+          const target = pageName || defaultPage;
+
+          if (!pageNames.includes(target)) {
+            console.warn(`Page "${target}" not found. Available: ${pageNames.join(', ')}`);
+            return false;
+          }
+
+          pages.forEach(p => p.classList.remove('--active'));
+          document.querySelector(`[data-page="${target}"]`).classList.add('--active');
+          console.log(`Navigated to: ${target}`);
+          return true;
+        }
+
+        function listPages() {
+          console.log('Available pages:', pageNames);
+          return pageNames;
+        }
+
+        function init() {
+          const params = new URLSearchParams(window.location.hash.slice(1));
+          goTo(params.get('page'));
+        }
+
+        init();
+        window.addEventListener('hashchange', init);
+
+        return { goTo, listPages };
+      })();

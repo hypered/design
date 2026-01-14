@@ -41,6 +41,8 @@ html(dir="ltr", lang="en")
                         a(href="/notes/mobiles.html") Mobiles
                     li
                         a(href="/notes/mobiles-standalone.html") Mobiles (standalone file)
+                    li
+                        a(href="/notes/mobiles-standalone-select.html") Mobiles (multi inner pages)
 
                 h2 Specimens
                 p These are card-like pages to showcase specifics of the design implementation.
