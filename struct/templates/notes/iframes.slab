@@ -1,0 +1,75 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/components/typography.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 IFrames
+                p This page mimics the Responsive design mode of some browsers by using iframes to display example pages. They are sized to simulate different viewport dimensions, and scaled down to make them easier to see on this page.
+
+        .u-container-vertical
+            style.
+              .wrrrap {
+                width: 1028px;
+                margin: 0 auto;
+              }
+              iframe {
+                border: 2px solid #DDD;
+              }
+            -- width: dimensions we want within the iframe plus the border
+            -- around the iframe.
+            .wrrrap
+              iframe(width=1028, height=580, src="/prototypes/refli/index-constant.html")
+            style.
+              #frame0 {
+                transform: scale(0.8); 
+                transform-origin: 0 0;
+                border: 2.5px solid #DDD;
+                margin-bottom: -145px; -- 1/5 of the height 725
+              }
+            .wrrrap
+              iframe(id="frame0", width=1285, height=725, src="/prototypes/refli/index-constant.html")
+            style.
+              #frame1 {
+                transform: scale(0.5333); 
+                transform-origin: 0 0;
+                border: 3.75px solid #DDD;
+                margin-bottom: -507.4275px; -- 0.4666 of the height 1087.5
+              }
+            .wrrrap
+              iframe(id="frame1", width="1927.5", height="1087.5", src="/prototypes/refli/index-constant.html")
+            style.
+              #frame2 {
+                transform: scale(0.4); 
+                transform-origin: 0 0;
+                border: 5px solid #DDD;
+                margin-bottom: -870px; -- 6/10 of the height 1450
+              }
+            .wrrrap
+              iframe(id="frame2", width=2570, height=1450, src="/prototypes/refli/index-constant.html")
+            .wrrrap
+              iframe(width=544, height=964, src="/prototypes/refli/index-constant.html")
+            .wrrrap
+              iframe(width=384, height=674, src="/prototypes/refli/index-constant.html")
+            style.
+              #frame3 {
+                transform: scale(0.8); 
+                transform-origin: 0 0;
+                border: 2.5px solid #DDD;
+                margin-bottom: -135.8px; -- 0.2 of the height 679
+              }
+            .wrrrap
+              -- 384x674 at 0.625
+              iframe(id="frame3", width=389, height=679, src="/prototypes/refli/index-constant.html")
+            .wrrrap
+              iframe(width=1028, height=580, src="/static/images/2560x1440.svg", scrolling="no")
+            .wrrrap
+              iframe(id="frame2", width=2570, height=1450, src="/static/images/2560x1440.svg")

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440">
+  <rect x="2" y="2" width="2556" height="1436"
+    fill="none" stroke="black" stroke-width="4"/>
+  <text
+    x="2530" y="1410"
+    font-family="'DejaVu Sans Mono', monospace" font-size="20"
+    text-anchor="end" fill="black">2560x1440</text>
+  <rect x="2" y="2" width="1916" height="1076"
+    fill="none" stroke="black" stroke-width="4"/>
+  <text
+    x="1890" y="1050"
+    font-family="'DejaVu Sans Mono', monospace" font-size="20"
+    text-anchor="end" fill="black">1920x1080</text>
+  <rect x="2" y="2" width="1276" height="716"
+    fill="none" stroke="black" stroke-width="4"/>
+  <text
+    x="1250" y="690"
+    font-family="'DejaVu Sans Mono', monospace" font-size="20"
+    text-anchor="end" fill="black">1280x720</text>
+  <rect x="2" y="2" width="1020" height="572"
+    fill="none" stroke="black" stroke-width="4"/>
+  <text
+    x="994" y="546"
+    font-family="'DejaVu Sans Mono', monospace" font-size="20"
+    text-anchor="end" fill="black">1024x576</text>
+</svg>

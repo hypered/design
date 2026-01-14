@@ -1,0 +1,33 @@
+doctype html
+html(dir="ltr", lang="en")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/static/css/struct/foundations.css")
+        link(rel="stylesheet", href="/static/css/struct/ibm-plex.css")
+        link(rel="stylesheet", href="/static/css/struct/fonts.css")
+        link(rel="stylesheet", href="/static/css/struct/scale.css")
+        link(rel="stylesheet", href="/static/css/struct/layouts.css")
+        link(rel="stylesheet", href="/static/css/struct/components/typography.css")
+    body
+        .u-container
+            .c-content.flow-all.paragraph-70ch
+                h1 Mobile
+
+        .u-container-bottom
+            style.
+              .wrrrap {
+                width: 1028px;
+                margin: 0 auto;
+              }
+              iframe {
+                border: 2px solid #DDD;
+              }
+            -- width: dimensions we want within the iframe plus the border
+            -- around the iframe.
+            -- 372x790 is what Firefox reports on my OnePlus Nord 4, when the
+            -- address bar is hidden and font size setting is 110%.
+            -- although the result is different (maybe because of the way
+            -- my browser setup is, or somenthing entirely else.
+            .wrrrap
+              iframe(width=376, height=794, src="/notes/dimensions.html")

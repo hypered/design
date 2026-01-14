@@ -33,6 +33,10 @@ html(dir="ltr", lang="en")
                         a(href="/notes/placeholders.html") Placeholders
                     li
                         a(href="/notes/layouts.html") Layouts
+                    li
+                        a(href="/notes/mobile.html") Mobile
+                    li
+                        a(href="/notes/iframes.html") IFrames
 
                 h2 Specimens
                 p These are card-like pages to showcase specifics of the design implementation.
