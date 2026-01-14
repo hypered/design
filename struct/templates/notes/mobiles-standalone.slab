@@ -1,0 +1,91 @@
+-- Minimal version with no dependencies of mobiles.slab (so
+-- it can be replicated elsewhere easily).
+doctype html
+html(dir="ltr", lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    style.
+      /* Reset CSS - Eric Meyer's Reset (subset for elements used) */
+      html, body, div, iframe {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+      }
+      
+      body {
+        line-height: 1;
+      }
+      
+      /* Box-sizing */
+      *,
+      *:before,
+      *:after {
+        box-sizing: border-box;
+      }
+      
+      /* CSS Variables (subset needed) */
+      :root {
+        --space-m: clamp(1.5000rem, 1.3966rem + 0.5172vw, 1.8750rem);
+        --space-m-l: clamp(1.5000rem, 1.2241rem + 1.3793vw, 2.5000rem);
+        --grid-max-width: 148rem;
+        --grid-gutter: var(--space-m-l);
+      }
+      
+      /* Layout utilities */
+      .cover {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      
+      .cover > main {
+        margin-block: auto;
+      }
+      
+      .u-container {
+        width: 100%;
+        min-width: calc(15.1rem - 2 * var(--grid-gutter));
+        max-width: var(--grid-max-width);
+        padding-inline: var(--grid-gutter);
+        margin-inline: auto;
+      }
+      
+      /* Component-specific styles */
+      iframe {
+        transform: scale(0.8);
+        transform-origin: 0 0;
+        border: 2.5px solid #DDD;
+        margin-bottom: -158.8px;
+        margin-right: -75.2px;
+        flex-shrink: 0;
+      }
+      
+      .horizontally {
+        display: flex;
+        overflow-x: auto;
+        gap: var(--space-m);
+        padding-block: var(--grid-gutter);
+      }
+  body
+    .cover
+      -- 1/5 of the height 794 is 158.8
+      -- 1/5 of the height 376 is 75.2
+      main.u-container
+        .horizontally
+          -- width: dimensions we want within the iframe plus the border
+          -- around the iframe.
+          -- 372x790 is what Firefox reports on my OnePlus Nord 4, when the
+          -- address bar is hidden and font size setting is 110%.
+          -- although the result is different (maybe because of the way
+          -- my browser setup is, or somenthing entirely else.
+          iframe(width=376, height=794, src="/notes/dimensions.html")
+
+          iframe(width=376, height=794, src="/notes/dimensions.html")
+
+          iframe(width=376, height=794, src="/notes/dimensions.html")
+
+          iframe(width=376, height=794, src="/notes/dimensions.html")
