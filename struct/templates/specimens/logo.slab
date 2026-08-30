@@ -24,3 +24,9 @@ html(dir="ltr", lang="en")
                     span.logo Reesd
                 div
                     span.logo Logo
+
+            .c-text.flow-all
+                p The Hypered logo uses all-caps <a href="https://fonts.google.com/specimen/Petrona">Petrona</a> at weight 500 with a wide <code>0.18em</code> letter-spacing.
+
+                div
+                    span.logo-hypered Hypered

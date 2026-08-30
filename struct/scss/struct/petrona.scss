@@ -1,0 +1,10 @@
+// This defines the Petrona font (Medium / 500), used for the alternate
+// Hypered wordmark. See https://hypered.design/specimens/logo.html.
+
+@font-face {
+  font-family: 'Petrona';
+  font-style: normal;
+  font-weight: 500;
+  src:
+    url('/static/fonts/Petrona-Medium.woff2') format('woff2');
+}
