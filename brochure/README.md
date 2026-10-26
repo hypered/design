@@ -5,6 +5,23 @@
   examples derived from it.
 - `example-large-table.tex` is a single page.
 
+# TeX Live version
+
+When bumping nixpkgs to 26.05, `example-full.tex` changes slightly (e.g. line
+breaks and vertical positions).
+
+To see how the brochure looks with the main nixpkgs:
+
+```
+$ nix-build -A brochure-latest
+$ nix-build -A brochure-comparison
+$ cat result/summary.txt
+```
+
+`brochure-comparison` lists the pages that differ from the reference and, for
+each of them, produces a side-by-side image and an image with the differences
+in red. `text.diff` compares the extracted text.
+
 # Templating support
 
 `HyperedReport.cls` supports a simple templating mechanism. Key-value pairs are

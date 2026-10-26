@@ -65,7 +65,17 @@ in rec
   all-with-static = (import site/default.nix).html.all-with-static;
 
   # An example PDF brochure created with LaTeX.
-  brochure = (import brochure/default.nix { inherit nixpkgs; }).brochure;
+  brochure = (import brochure/default.nix {
+    nixpkgs = import sources.nixpkgs-brochure { };
+  }).brochure;
+  # The same brochure with the main nixpkgs, and a page-by-page comparison
+  # against the reference.
+  brochure-latest = (import brochure/default.nix { inherit nixpkgs; }).brochure;
+  brochure-comparison = import brochure/compare.nix {
+    inherit nixpkgs;
+    reference = brochure;
+    candidate = brochure-latest;
+  };
 
   # A shell to try out our binaries
   # Run with nix-shell default.nix -A shell

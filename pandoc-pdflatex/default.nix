@@ -3,7 +3,7 @@ let
 in
   pkgs.runCommand "example" {
     buildInputs = [
-      pkgs.haskellPackages.pandoc
+      pkgs.pandoc
       pkgs.texlive.combined.scheme-small
     ];
     example = ./example.md;

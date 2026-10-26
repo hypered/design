@@ -50,7 +50,7 @@ in rec
     mkdir -p docs/hs
     ${binaries}/bin/hypered-design generate-templates
 
-    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+    ${pkgs.pandoc}/bin/pandoc \
       --standalone \
       --template generated/templates/default.html \
       --lua-filter ${../pandoc/tachyons.lua} \
@@ -59,7 +59,7 @@ in rec
       -M font="inter" \
       ${../pandoc/lua.md}
 
-    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+    ${pkgs.pandoc}/bin/pandoc \
       --standalone \
       --template generated/templates/default.html \
       --lua-filter ${../pandoc/tachyons.lua} \
@@ -68,7 +68,7 @@ in rec
       -M font="ibm-plex" \
       ${../pandoc/lua.md}
 
-    ${pkgs.haskellPackages.pandoc}/bin/pandoc \
+    ${pkgs.pandoc}/bin/pandoc \
       --standalone \
       --template ${../pandoc/struct.html} \
       --output docs/hs/example--template-struct.html \

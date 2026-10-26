@@ -5,7 +5,8 @@ let
   nodePackages = nixpkgs.callPackage ./nix/node/node-packages.nix {
     inherit nodeEnv;
   };
-  nodeDependencies = (import ./nix/node { pkgs = nixpkgs; }).nodeDependencies;
+  # TODO Replace with importNpmLock or something.
+  nodeDependencies = (import ./nix/node { pkgs = nixpkgs; nodejs = nixpkgs.nodejs; }).nodeDependencies;
 in rec
 {
   inherit nodePackages;
