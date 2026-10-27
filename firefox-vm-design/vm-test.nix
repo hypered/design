@@ -6,7 +6,7 @@ let
     ${nodes.server.networking.primaryIPAddress} hypered.design
   '';
 
-in nixpkgs.nixosTest {
+in nixpkgs.testers.nixosTest {
   name = "firefox-vm/text";
   enableOCR = true;
   nodes = {
@@ -19,7 +19,7 @@ in nixpkgs.nixosTest {
     };
     client = { nodes, ... }: {
       imports = [
-        ../../firefox-vm/machine/configuration.nix
+        "${sources.firefox-vm}/machine/configuration.nix"
         "${toString sources.nixpkgs}/nixos/modules/virtualisation/qemu-vm.nix"
       ];
       networking.extraHosts = hosts nodes;
