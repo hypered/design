@@ -11,6 +11,18 @@
         "url": "https://github.com/hypered/commence/archive/dfd7f0ff5051169b6a7e2a5064902f36b3eae598.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nginx-bits": {
+        "branch": "main",
+        "description": "",
+        "homepage": "",
+        "owner": "hypered",
+        "repo": "nginx-bits",
+        "rev": "26394cb316dc65328817d1eb219ab98329495a40",
+        "sha256": "0fh87l5vl3g03icp4rsc0g6gmiib76av66nibvvgj826fi1n1wmx",
+        "type": "tarball",
+        "url": "https://github.com/hypered/nginx-bits/archive/26394cb316dc65328817d1eb219ab98329495a40.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "niv": {
         "branch": "master",
         "description": "Easy dependency management for Nix projects",

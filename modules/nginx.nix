@@ -8,7 +8,8 @@ let
   brochure = (import ../.).brochure;
   static = (import ../.).static;
 
-  nginx-bits = import ../../nginx-bits;
+  sources = import ../nix/sources.nix;
+  nginx-bits = import sources.nginx-bits;
   inherit (nginx-bits) blackhole-locations;
 in
 {
