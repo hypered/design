@@ -34,11 +34,8 @@ You can then visit `http://127.0.0.1:3002` or
 
 # Using Nix
 
-Instead of running `npm install` and getting a `node_modules/` directory, we
-can have a Nix shell populated by node2nix.
-
-The script `node2nix.sh` is used to (re-)generate the necessary files in
-`nix/node/`.
+After changing dependencies in `package.json`, update the lock file with `npm
+install --package-lock-only`.
 
 Building or serving are then just:
 

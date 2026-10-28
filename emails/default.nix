@@ -1,15 +1,14 @@
 { nixpkgs ? import (import ../nix/sources.nix {}).nixpkgs {}
 }:
 let
-  nodeEnv = nixpkgs.callPackage ./nix/node/node-env.nix { };
-  nodePackages = nixpkgs.callPackage ./nix/node/node-packages.nix {
-    inherit nodeEnv;
+  nodeModules = nixpkgs.importNpmLock.buildNodeModules {
+    package = nixpkgs.lib.importJSON ./package.json;
+    packageLock = nixpkgs.lib.importJSON ./package-lock.json;
+    inherit (nixpkgs) nodejs;
   };
-  # TODO Replace with importNpmLock or something.
-  nodeDependencies = (import ./nix/node { pkgs = nixpkgs; nodejs = nixpkgs.nodejs; }).nodeDependencies;
 in rec
 {
-  inherit nodePackages;
+  inherit nodeModules;
   emails = nixpkgs.stdenv.mkDerivation {
     name = "emails";
     src = ./.;
@@ -17,7 +16,7 @@ in rec
       # Make sure we don't use an already built dist/.
       rm -rf dist node_modules
 
-      ln -sf ${nodeDependencies}/lib/node_modules ./node_modules
+      ln -sf ${nodeModules}/node_modules ./node_modules
       mkdir $out
       node_modules/mjml/bin/mjml example.mjml -o $out/example.html
     '';

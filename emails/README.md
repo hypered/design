@@ -30,9 +30,8 @@ The content of the input file can be created with
 `https://mjml.io/try-it-live/`.
 
 ```
-$ rm -r node_modules
-$ ../itcss/node2nix.sh
-$ nix-build -A emails --no-out-link
+$ npm install --package-lock-only
+$ nix-build -A emails.emails --no-out-link
 ```
 
 # Notes

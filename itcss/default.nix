@@ -1,15 +1,14 @@
 { nixpkgs ? import (import ../nix/sources.nix {}).nixpkgs {}
 }:
 let
-  nodeEnv = nixpkgs.callPackage ./nix/node/node-env.nix { };
-  nodePackages = nixpkgs.callPackage ./nix/node/node-packages.nix {
-    inherit nodeEnv;
+  nodeModules = nixpkgs.importNpmLock.buildNodeModules {
+    package = nixpkgs.lib.importJSON ./package.json;
+    packageLock = nixpkgs.lib.importJSON ./package-lock.json;
+    inherit (nixpkgs) nodejs;
   };
-  # TODO Replace with importNpmLock or something.
-  nodeDependencies = (import ./nix/node { pkgs = nixpkgs; nodejs = nixpkgs.nodejs; }).nodeDependencies;
 in rec
 {
-  inherit nodePackages;
+  inherit nodeModules;
   site = nixpkgs.stdenv.mkDerivation {
     name = "itcss";
     src = ../.;
@@ -17,9 +16,16 @@ in rec
       # Make sure we don't use an already built dist/.
       rm -rf dist node_modules
 
-      ln -sf ${nodeDependencies}/lib/node_modules ./node_modules
+      ln -sf ${nodeModules}/node_modules ./node_modules
       ./node_modules/gulp/bin/gulp.js build --gulpfile itcss/gulpfile.js --cwd itcss/
       mv itcss/dist $out
     '';
+  };
+
+  # Links node_modules/ in the current directory and puts its binaries (e.g.
+  # gulp) on the PATH.
+  shell = nixpkgs.mkShell {
+    packages = [ nixpkgs.importNpmLock.hooks.linkNodeModulesHook nixpkgs.nodejs ];
+    npmDeps = nodeModules;
   };
 }

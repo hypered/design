@@ -1,1 +1,1 @@
-(import ./default.nix {}).nodePackages.shell
+(import ./default.nix {}).shell
