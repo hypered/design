@@ -131,13 +131,13 @@ prototypeMotherboardHomepage lang mhTexts texts nbTexts refliHomepage homepage =
             H.li $
               H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/constitution/1994") $ H.text motherboardHomepageWord1
             H.li $
-              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/law/2025") $ H.text motherboardHomepageWord2
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/law/2026") $ H.text motherboardHomepageWord2
             H.li $
-              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/decree/2025") $ H.text motherboardHomepageWord3
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/decree/2026") $ H.text motherboardHomepageWord3
             H.li $
-              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/ordinance/2025") $ H.text motherboardHomepageWord4
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/ordinance/2026") $ H.text motherboardHomepageWord4
             H.li $
-              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/order/2025") $ H.text motherboardHomepageWord5
+              H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/order/2026") $ H.text motherboardHomepageWord5
 
       prototypeRefliFooter lang "/lex" nbTexts
 
