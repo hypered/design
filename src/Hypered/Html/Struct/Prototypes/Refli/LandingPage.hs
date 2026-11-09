@@ -16,6 +16,15 @@ data LandingPageTexts = LandingPageTexts
   , landingPageDescription :: Text
   , landingPageParagraph1 :: Text
   , landingPageParagraph2 :: Text
+  , landingPageExploreTitle :: Text
+  , landingPageExploreLexParagraph :: Text -- Contains HTML.
+  , landingPageExploreLexLink :: Text
+  , landingPageExplorePlaygroundsTitle :: Text
+  , landingPageExplorePlaygroundsParagraph :: Text
+  , landingPageExplorePlaygroundsLink :: Text
+  , landingPageExploreBlogTitle :: Text
+  , landingPageBlogPostSystematicApproach :: Text
+  , landingPageBlogPostIntroducingRefli :: Text
   }
 
 data LandingPageCaptureFormTexts = LandingPageCaptureFormTexts
@@ -542,6 +551,37 @@ refliLandingPageContent LandingPageTexts {..} cfTexts = do
       H.p $ H.text landingPageParagraph2
       emailCaptureForm cfTexts "/a/subscribe"
     H.div mempty
+  div "c-content flow-all u-flow-c-4" $
+    H.h2 $ H.text landingPageExploreTitle
+  div "switcher u-space-after-c-4" $ do
+    div "c-content flow" $ do
+      H.h3 "Lex Iterata"
+      H.p $ H.preEscapedToMarkup landingPageExploreLexParagraph
+      H.p $
+        H.a ! A.href (H.toValue $ "/" <> landingPageLanguage <> "/lex") $
+          H.text landingPageExploreLexLink
+    div "c-content flow" $ do
+      H.h3 $ H.text landingPageExplorePlaygroundsTitle
+      H.p $ H.text landingPageExplorePlaygroundsParagraph
+      H.p $
+        H.a ! A.href (H.toValue $ "/" <> landingPageLanguage <> "/describe") $
+          H.text landingPageExplorePlaygroundsLink
+    div "c-content flow" $ do
+      H.h3 $ H.text landingPageExploreBlogTitle
+      H.p $ do
+        H.a ! A.href
+              (H.toValue $ "/" <> landingPageLanguage
+                <> "/blog/2025/05/14/systematic-approach") $
+          H.text landingPageBlogPostSystematicApproach
+        H.br
+        H.small ! A.class_ "breadcrumb" $ "2025-05-14"
+      H.p $ do
+        H.a ! A.href
+              (H.toValue $ "/" <> landingPageLanguage
+                <> "/blog/2024/01/19/introducing-refli") $
+          H.text landingPageBlogPostIntroducingRefli
+        H.br
+        H.small ! A.class_ "breadcrumb" $ "2024-01-19"
 
 fooForm :: FooFormTexts -> Html
 fooForm FooFormTexts {..} =
@@ -817,6 +857,17 @@ data NavigationBlockTexts = NavigationBlockTexts
   { navigationBlockLanguage :: Text
   , navigationBlockAbout :: Text
   , navigationBlockDocumentation :: Text
+  , navigationBlockLexOverview :: Text
+  , navigationBlockLexConstitution :: Text
+  , navigationBlockLexLaw :: Text
+  , navigationBlockLexDecree :: Text
+  , navigationBlockLexOrdinance :: Text
+  , navigationBlockLexOrder :: Text
+  , navigationBlockPlaygrounds :: Text
+  , navigationBlockComputeSalaries :: Text
+  , navigationBlockBlog :: Text
+  , navigationBlockBlogPostSystematicApproach :: Text
+  , navigationBlockBlogPostIntroducingRefli :: Text
   }
 
 refliMainHeaderTextsEn :: MainHeaderTexts
@@ -832,13 +883,25 @@ refliMainHeaderTextsNl = MainHeaderTexts
   "nl" "Blog" "Playground" "Salarisberekeningen" "Documentatie"
 
 refliNavigationBlockTextsEn :: NavigationBlockTexts
-refliNavigationBlockTextsEn = NavigationBlockTexts "en" "About" "Documentation"
+refliNavigationBlockTextsEn = NavigationBlockTexts
+  "en" "About" "Documentation"
+  "Overview" "Constitution" "Law" "Decree" "Ordinance" "Order"
+  "Playgrounds" "Compute salaries"
+  "Blog" "Attempting a systematic approach" "Introducing Refli"
 
 refliNavigationBlockTextsFr :: NavigationBlockTexts
-refliNavigationBlockTextsFr = NavigationBlockTexts "fr" "A propos" "Documentation"
+refliNavigationBlockTextsFr = NavigationBlockTexts
+  "fr" "A propos" "Documentation"
+  "Présentation" "Constitution" "Loi" "Décret" "Ordonnance" "Arrêté"
+  "Playgrounds" "Calculs de salaires"
+  "Blog" "Vers une approche systématique" "Découvrons Refli"
 
 refliNavigationBlockTextsNl :: NavigationBlockTexts
-refliNavigationBlockTextsNl = NavigationBlockTexts "nl" "Ongeveer" "Documentatie"
+refliNavigationBlockTextsNl = NavigationBlockTexts
+  "nl" "Ongeveer" "Documentatie"
+  "Overzicht" "Grondwet" "Wet" "Decreet" "Ordonnantie" "Besluit"
+  "Playgrounds" "Salarisberekeningen"
+  "Blog" "Naar een systematische aanpak" "Refli introduceren"
 
 prototypeRefliPage :: Text -> Text -> Html -> NavigationBlockTexts -> Html -> Html
 prototypeRefliPage lang url header nbTexts content =
@@ -868,15 +931,13 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
     H.footer $
       div "u-container" $ do
         H.hr
-        div "switcher" $
+        div "switcher" $ do
           div "c-content flow" $ do
             H.h4 "Refli"
             H.ul ! A.class_ "no-disc" $ do
               H.li $
                 H.a ! A.href (H.toValue $ "/" <> lang <> "/about") $
                   H.text navigationBlockAbout
-              H.li $
-                H.a ! A.href (H.toValue $ "/" <> lang <> "/blog") $ "Blog"
               H.li $
                 H.a ! A.href (H.toValue $ "/" <> lang <> "/documentation") $
                   H.text navigationBlockDocumentation
@@ -886,16 +947,55 @@ prototypeRefliFooter lang url NavigationBlockTexts {..} =
                 H.a ! A.href (H.toValue $ "/" <> lang <> "/disclaimer") $ "Disclaimer"
               H.li $
                 H.a ! A.href "/changelog" $ "Changelog"
+          div "c-content flow" $ do
+            H.h4 "Lex Iterata"
+            H.ul ! A.class_ "no-disc" $ do
               H.li $
-                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex") $ "Lex Iterata"
-            H.hr
-            H.ul ! A.class_ "no-disc horizontal" $ do
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex") $
+                  H.text navigationBlockLexOverview
               H.li $
-                H.a ! A.href (H.toValue $ "/en" <> url) $ "EN"
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/constitution/1994") $
+                  H.text navigationBlockLexConstitution
               H.li $
-                H.a ! A.href (H.toValue $ "/fr" <> url) $ "FR"
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/law/2026") $
+                  H.text navigationBlockLexLaw
               H.li $
-                H.a ! A.href (H.toValue $ "/nl" <> url) $ "NL"
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/decree/2026") $
+                  H.text navigationBlockLexDecree
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/ordinance/2026") $
+                  H.text navigationBlockLexOrdinance
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/lex/order/2026") $
+                  H.text navigationBlockLexOrder
+          div "c-content flow" $ do
+            H.h4 $ H.text navigationBlockPlaygrounds
+            H.ul ! A.class_ "no-disc" $
+              H.li $
+                H.a ! A.href (H.toValue $ "/" <> lang <> "/describe") $
+                  H.text navigationBlockComputeSalaries
+          div "c-content flow" $ do
+            H.h4 $ H.text navigationBlockBlog
+            H.ul ! A.class_ "no-disc" $ do
+              H.li $
+                H.a ! A.href
+                      (H.toValue $ "/" <> lang
+                        <> "/blog/2025/05/14/systematic-approach") $
+                  H.text navigationBlockBlogPostSystematicApproach
+              H.li $
+                H.a ! A.href
+                      (H.toValue $ "/" <> lang
+                        <> "/blog/2024/01/19/introducing-refli") $
+                  H.text navigationBlockBlogPostIntroducingRefli
+        div "c-content" $ do
+          H.hr
+          H.ul ! A.class_ "no-disc horizontal" $ do
+            H.li $
+              H.a ! A.href (H.toValue $ "/en" <> url) $ "EN"
+            H.li $
+              H.a ! A.href (H.toValue $ "/fr" <> url) $ "FR"
+            H.li $
+              H.a ! A.href (H.toValue $ "/nl" <> url) $ "NL"
 
         div "flow u-flow-c-4" $ do
           H.img ! A.src "/static/images/belgium-flag.svg"
