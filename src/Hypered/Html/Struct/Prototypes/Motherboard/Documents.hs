@@ -32,6 +32,8 @@ data Document = Document
 
 data Block =
     Pair Text Text
+  | -- | An article: its id in the page, its label and its content.
+    Article Text Text Text
   | Indent Text
   | Table [[(Int, [Tag Text])]] -- TODO Remove dependency on TagSoup.
   | Monospace [Tag Text]
@@ -225,6 +227,11 @@ prototypeMotherboardDocument lang refliHomepage homepage breadcrumb Document {..
 showBlock :: Block -> Html
 showBlock (Pair level content) =
   H.p $ do
+    H.span ! A.class_ "article" $ H.text level
+    H.text content
+
+showBlock (Article id level content) =
+  H.p ! A.id (H.toValue id) $ do
     H.span ! A.class_ "article" $ H.text level
     H.text content
 
